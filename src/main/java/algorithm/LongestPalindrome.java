@@ -1,4 +1,4 @@
-package answer;
+package algorithm;
 
 public class LongestPalindrome {
     //dynamic programming

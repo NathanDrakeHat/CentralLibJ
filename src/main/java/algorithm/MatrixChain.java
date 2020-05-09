@@ -1,4 +1,4 @@
-package answer;
+package algorithm;
 
 public class MatrixChain { // dynamic programming
 

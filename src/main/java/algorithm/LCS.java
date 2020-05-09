@@ -1,4 +1,4 @@
-package answer;
+package algorithm;
 
 import java.util.Arrays;
 

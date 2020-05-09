@@ -1,4 +1,4 @@
-package answer;
+package algorithm;
 
 public class ReverseInt {
     public static int reverse(int x){
