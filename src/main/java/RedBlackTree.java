@@ -1,3 +1,5 @@
+import tool.IntegerPair;
+
 public class RedBlackTree<V> {
     enum COLOR{ RED, BLACK }
     private ColorNode root;

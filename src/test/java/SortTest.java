@@ -1,8 +1,8 @@
-import com.sun.source.tree.AssertTree;
-
 import java.util.Arrays;
+import tool.SimpleDate;
 
 import static org.junit.jupiter.api.Assertions.*;
+
 
 class SortTest {
     private static class Data {
@@ -20,10 +20,10 @@ class SortTest {
         private static int[] years = new int[] {2020, 2019, 2017, 2018, 2019, 2016, 2018, 2017, 2016, 2020, 2015, 2019, 2020, 2017, 2015, 2015, 2020, 2020, 2016, 2018};
         private static int[] months = new int[] {6, 9, 1, 7, 10, 11, 7, 4, 2, 7, 8, 9, 6, 3, 1, 6, 3, 4, 2, 5};
         private static int[] days = new int[] {11, 10, 11, 24, 2, 3, 8, 5, 16, 3, 9, 19, 23, 22, 1, 11, 17, 29, 15, 11};
-        public static Date[] buildDate(){
-            Date[] res = new Date[20];
+        public static SimpleDate[] buildDate(){
+            SimpleDate[] res = new SimpleDate[20];
             for(int i=0; i < 20; i++){
-                res[i] = new Date(years[i], months[i], days[i]);
+                res[i] = new SimpleDate(years[i], months[i], days[i]);
             }
             return res;
         }
@@ -48,7 +48,7 @@ class SortTest {
         }
         return is_sorted;
     }
-    private static boolean isSorted(Date[] d){
+    private static boolean isSorted(SimpleDate[] d){
         boolean is_sorted = true;
         for(int i=1; i < d.length; i++){
             if(d[i - 1].year > d[i].year ){
@@ -310,7 +310,7 @@ class SortTest {
 
     @org.junit.jupiter.api.Test
     void radixSort1() {
-        var t = Data.buildDate();
+        SimpleDate[] t = Data.buildDate();
         Sort.radixSort(t);
         assertTrue(isSorted(t));
     }

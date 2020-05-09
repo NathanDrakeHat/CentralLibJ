@@ -1,12 +1,14 @@
-class IntegerPair<V> {
+package tool;
+
+public class IntegerPair<V> {
     private int key;
     private V value;
 
-    IntegerPair(int key, V value){
+    public IntegerPair(int key, V value){
         this.key = key;
         this.value = value;
     }
-    IntegerPair(int key){ this.key = key; }
+    public IntegerPair(int key){ this.key = key; }
     public IntegerPair() {}
 
     public int getKey() { return key; }
