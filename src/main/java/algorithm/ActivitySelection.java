@@ -1,16 +1,12 @@
 package algorithm;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 public class ActivitySelection {
     // greedy algorithm
-    public static void test(){
-        Node res = recursiveActivitySelector(Data.s, Data.f);
-        res.print();
-        res = greedyActivitySelector(Data.s, Data.f);
-        res.print();
-    }
-
     public static class Node{
         private int val ;
         private Node next;
@@ -43,6 +39,20 @@ public class ActivitySelection {
 
         public void setValue(int val) { this.val = val; }
 
+        public int[] getResult(){
+            var t = new ArrayList<Integer>();
+            Node ptr = this;
+            do {
+                t.add(ptr.val);
+                ptr = ptr.getNext();
+            } while (ptr != null);
+            var res = new int[t.size()];
+            int idx = 0;
+            for(var i : t)
+                res[idx++] = i;
+            return res;
+        }
+
         public void print(){
             Node ptr = this;
             do {
@@ -53,15 +63,10 @@ public class ActivitySelection {
         }
     }
 
-    public static class Data{
-        public static int[] s = {1, 3, 0, 5, 3, 5, 6, 8, 8, 2, 12};
-        public static int[] f = {4, 5, 6, 7, 9, 9, 10, 11, 12, 14, 16};
-    }
 
     public static Node recursiveActivitySelector(int[] s, int[] f){
         return new Node(0).setNext(recursiveActivitySelector(s, f, 0));
     }
-
     public static Node recursiveActivitySelector(int[] s, int[] f, int k){
         int m = k + 1;
         if(k >= s.length | m >= s.length){
@@ -72,7 +77,6 @@ public class ActivitySelection {
         }
         return new Node(m).setNext(recursiveActivitySelector(s, f, m));
     }
-
     public static Node greedyActivitySelector(int[] s, int[] f){
         int len = s.length;
         Node ptr = new Node(0);

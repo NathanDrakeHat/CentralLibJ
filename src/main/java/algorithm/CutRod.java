@@ -15,26 +15,6 @@ public class CutRod {
             System.out.print(" result--");
             System.out.println(Arrays.toString(res.getApproach()));
         }
-        System.out.println('\n');
-        for (int i = 1; i <= 15; i++) {
-            System.out.print(i);
-            System.out.print(": ");
-            CutResult res = CutRod.topDownCutRod(CutRod.p, i);
-            System.out.print(" price--");
-            System.out.print(res.getPrice());
-            System.out.print(" result--");
-            System.out.println(Arrays.toString(res.getApproach()));
-        }
-        System.out.println('\n');
-        for (int i = 1; i <= 15; i++) {
-            System.out.print(i);
-            System.out.print(": ");
-            CutResult res = CutRod.bottomUpCutRod(CutRod.p, i);
-            System.out.print(" price--");
-            System.out.print(res.getPrice());
-            System.out.print(" result--");
-            System.out.println(Arrays.toString(res.getApproach()));
-        }
     }
 
     public static class Node{
