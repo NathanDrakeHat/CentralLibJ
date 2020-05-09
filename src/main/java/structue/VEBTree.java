@@ -8,35 +8,6 @@ public class VEBTree {
     private final int NONE = -1;
     private int min = NONE; // hidden in cluster
     private int max = NONE;
-    private static boolean has(VEBTree V, int[] a){
-        for(var i : a)
-            if(!V.hasMember(i))
-                return false;
-        return true;
-    }
-    public static void test(){
-        var V = new VEBTree(4);
-        V.safeInsert(1).safeInsert(9).safeInsert(5).safeInsert(3).safeInsert(15);
-        V.safeInsert(5).safeInsert(3).safeInsert(15).safeInsert(1);
-        System.out.println(V.successor(15) == null);
-        System.out.println(V.predecessor(1) == null);
-        System.out.println(V.predecessor(3) == 1);
-        System.out.println(V.successor(9) == 15);
-        System.out.println(V.predecessor(5) == 3);
-        System.out.println(has(V, new int[] {1, 3, 5, 9, 15}));
-        System.out.println(!has(V, new int[] {2, 4, 6, 7, 8, 10, 11, 12, 13, 14}));
-        System.out.println(V.minimum() == 1);
-        System.out.println(V.maximum() == 15);
-        System.out.println("----");
-        V.safeDelete(1).safeDelete(5).safeDelete(15);
-        System.out.println(!V.hasMember(1));
-        System.out.println(has(V, new int[]{3, 9}));
-        System.out.println(V.minimum() == 3);
-        System.out.println(V.maximum() == 9);
-        System.out.println(!has(V, new int[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}));
-        System.out.println(V.successor(3) == 9);
-        System.out.println(V.predecessor(9) == 3);
-    }
 
     private VEBTree(){ }
     private VEBTree(double u){

@@ -58,28 +58,6 @@ public class RedBlackTree<V> {
 
         private void setRight(ColorNode right){ this.right = right; }
     }
-    public static void test(){
-        var RBtree = new RedBlackTree<Integer>();
-        RBtree.insert(11);
-        RBtree.insert(2);
-        RBtree.insert(14);
-        RBtree.insert(1);
-        RBtree.insert(7);
-        RBtree.insert(15);
-        RBtree.insert(5);
-        RBtree.insert(8);
-        RBtree.insert(4);
-        var root = RBtree.getRoot();
-        System.out.println(root.getKey()); // 7
-        System.out.println(root.getLeft().getKey()); // 2
-        System.out.println(root.getRight().getKey()); // 11
-        System.out.println(root.getLeft().getLeft().getKey()); // 1
-        System.out.println(root.getLeft().getRight().getKey()); // 5
-        System.out.println(root.getLeft().getRight().getLeft().getKey()); // 4
-        System.out.println(root.getRight().getLeft().getKey()); // 8
-        System.out.println(root.getRight().getRight().getKey()); // 14
-        System.out.println(root.getRight().getRight().getRight().getKey()); // 15
-    }
 
     public ColorNode getMinimum(){
         if(getRoot() != null & getSentinel() != getRoot()) {
@@ -156,7 +134,6 @@ public class RedBlackTree<V> {
         }
         insertFixUp(n);
     }
-    private void insert(int key){ insert(new ColorNode(key)); }
     public void insert(int key, V val){ insert(new ColorNode(key, val)); }
     private void insertFixUp(ColorNode ptr){
         while(ptr.getParent().isRed()){

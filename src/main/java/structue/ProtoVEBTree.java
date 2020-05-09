@@ -8,17 +8,11 @@ public class ProtoVEBTree {
     private ProtoVEBTree[] cluster;
     public static void test(){
         var T = new ProtoVEBTree(2);
-//        System.out.print("\nput 1\n");
         T.insert(1);
-//        System.out.print("\nput 3\n");
         T.insert(3);
-//        System.out.print("\nput 5\n");
         T.insert(5);
-//        System.out.print("\nput 11\n");
         T.insert(11);
-//        System.out.print("\nput 13\n");
         T.insert(13);
-//        System.out.print("\nput 15\n");
         T.insert(15);
         System.out.println(T.hasMember(3));
         System.out.println(T.predecessor(3));
