@@ -1,3 +1,5 @@
+package algorithm;
+
 import tool.SimpleDate;
 
 import java.util.Random;

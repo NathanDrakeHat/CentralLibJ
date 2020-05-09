@@ -1,3 +1,5 @@
+package structue;
+
 class BinarySearchTree {
     public static class BinaryNode{
         private double value;

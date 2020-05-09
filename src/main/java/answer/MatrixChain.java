@@ -1,3 +1,5 @@
+package answer;
+
 public class MatrixChain { // dynamic programming
 
     public static void test(){

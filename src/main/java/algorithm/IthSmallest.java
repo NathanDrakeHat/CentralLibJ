@@ -1,3 +1,5 @@
+package algorithm;
+
 import java.util.concurrent.ThreadLocalRandom;
 
 public class IthSmallest {

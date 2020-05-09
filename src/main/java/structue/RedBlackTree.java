@@ -1,3 +1,5 @@
+package structue;
+
 import tool.IntegerPair;
 
 public class RedBlackTree<V> {

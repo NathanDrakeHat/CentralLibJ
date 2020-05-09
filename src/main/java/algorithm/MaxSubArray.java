@@ -1,3 +1,5 @@
+package algorithm;
+
 public class MaxSubArray {
     // find max sum consequent sequence
     public static void test(){

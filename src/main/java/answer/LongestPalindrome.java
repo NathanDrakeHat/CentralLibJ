@@ -1,3 +1,5 @@
+package answer;
+
 public class LongestPalindrome {
     //dynamic programming
     public static String solve(String s) {

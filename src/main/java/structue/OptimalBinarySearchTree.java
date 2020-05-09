@@ -1,3 +1,5 @@
+package structue;
+
 public class OptimalBinarySearchTree {
     // dynamic programming
     // class table arrangement

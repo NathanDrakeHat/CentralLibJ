@@ -1,3 +1,5 @@
+package structue;
+
 public class OrderStatisticTree{ // ger rank of node from left to right
     private ColorSizeNode root;
     private ColorSizeNode sentinel = new ColorSizeNode(0, Color.BLACK);

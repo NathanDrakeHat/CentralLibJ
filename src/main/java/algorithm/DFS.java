@@ -1,3 +1,5 @@
+package algorithm;
+
 public class DFS {
     enum COLOR{ WHITE, GRAY, BLACK}
     public static class Vertex{

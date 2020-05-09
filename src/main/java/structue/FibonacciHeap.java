@@ -1,4 +1,8 @@
+package structue;
+
 import java.util.HashSet;
+
+import tool.GenericArray;
 import tool.IntegerPair;
 
 public class FibonacciHeap<V> {

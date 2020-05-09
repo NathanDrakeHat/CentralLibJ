@@ -1,3 +1,5 @@
+package answer;
+
 import java.util.ArrayList;
 
 public class ActivitySelection {

@@ -1,3 +1,5 @@
+package structue;
+
 public class VEBTree {
     //keys are not duplicate and confined in a range
     private int u; //universe size
