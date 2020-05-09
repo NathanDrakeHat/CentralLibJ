@@ -77,7 +77,7 @@ public class RedBlackTree<V> {
     private ColorNode getSentinel() { return sentinel; }
     private void setRoot(ColorNode r) {
         root = r;
-        getRoot().setParent(getSentinel());
+        root.setParent(getSentinel());
     }
     public ColorNode getRoot() { return root; }
 
@@ -108,6 +108,7 @@ public class RedBlackTree<V> {
     }
 
     private void insert(ColorNode n){
+        if(n == null | n == sentinel) return;
         if(getRoot() == null | getRoot() == getSentinel()){
             setRoot(n);
             getRoot().setRight(getSentinel());

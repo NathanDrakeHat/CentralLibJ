@@ -5,23 +5,10 @@ import java.util.Arrays;
 public class LCS { // longest common sequence problem, biological problem
     // dynamic programming
 
-    public static void test(){
-        char[] r = solve(Data.s1, Data.s2);
-        System.out.println(Arrays.equals(r, Data.res));
-    }
-
-    private static class Data{
-        // gene sequence
-        public static char[] s1 = {'A','C','C','G','G','T','C','G','A','G','T','G','C','G','C','G','G','A','A','G','C','C','G','G','C','C','G','A','A'};
-        public static char[] s2 = {'G','T','C','G','T','T','C','G','G','A','A','T','G','C','C','G','T','T','G','C','T','C','T','G','T','A','A','A'};
-        public static char[] res = {'G','T','C','G','T','C','G','G','A','A','G','C','C','G','G','C','C','G','A','A'};
-    }
-
     public static char[] solve(char[] x, char[] y){
         return solve(x, y, false);
     }
-
-    public static char[] solve(char[] x, char[] y, boolean print){
+    private static char[] solve(char[] x, char[] y, boolean print){
         int m = x.length;
         int n = y.length;
         char[][] b = new char[m][n]; // result
@@ -70,7 +57,6 @@ public class LCS { // longest common sequence problem, biological problem
             printLCS(b, x, i, j - 1);
         }
     }
-
     private static int getCount(char[][] b, char[] x, int i, int j, int count){
         if(i == 0 | j == 0){
             return count;
@@ -83,7 +69,6 @@ public class LCS { // longest common sequence problem, biological problem
             return getCount(b, x, i, j - 1, count);
         }
     }
-
     private static void getResult(char[][] b, char[] x, int i, int j, char[] res, int index){
         if(i == 0 | j == 0){
             return;

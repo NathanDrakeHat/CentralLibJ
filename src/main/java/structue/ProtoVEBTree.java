@@ -6,27 +6,6 @@ public class ProtoVEBTree {
     private boolean[] array;
     private ProtoVEBTree summary;
     private ProtoVEBTree[] cluster;
-    public static void test(){
-        var T = new ProtoVEBTree(2);
-        T.insert(1);
-        T.insert(3);
-        T.insert(5);
-        T.insert(11);
-        T.insert(13);
-        T.insert(15);
-        System.out.println(T.hasMember(3));
-        System.out.println(T.predecessor(3));
-        System.out.println(T.successor(3));
-        System.out.println(T.maximum());
-        System.out.println(T.minimum());
-        try{
-            System.out.println(T.successor(15));
-        }
-        catch (NullPointerException e){
-            System.out.println(String.format("exception message: %s", e.getMessage()));
-            System.out.println("successful exception");
-        }
-    }
 
     private ProtoVEBTree(){}
     private ProtoVEBTree(int u, String s){

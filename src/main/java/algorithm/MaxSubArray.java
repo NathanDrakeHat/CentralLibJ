@@ -2,16 +2,15 @@ package algorithm;
 
 public class MaxSubArray {
     // find max sum consequent sequence
-    public static void test(){
-        int[] test = {-3, -4, -1, -6, -5, -4, 2, -6, -6, 3, 3, 3, 2, 2, 1, -2, -1, 1, -6, -2, -1};
-        Interval result_one = MaxSubArray.divideAndConquer(test, 0, 20);
-        Interval result_two = MaxSubArray.onlineMaxSub(test, 20);
-        System.out.print('[');System.out.print(result_one.start);System.out.print(", ");
-        System.out.print(result_one.end);System.out.print(')');
-        System.out.print(" max sum: ");System.out.print(result_one.max_sum);System.out.print('\n');
-        System.out.print('[');System.out.print(result_two.start);System.out.print(", ");
-        System.out.print(result_two.end);System.out.print(')');
-        System.out.print(" max sum: ");System.out.print(result_two.max_sum);
+    public static class Interval{
+        public int start;
+        public int end;
+        public int max_sum;
+        public Interval(int s, int e, int m){
+            this.start = s;
+            this.end = e;
+            this.max_sum = m;
+        }
     }
 
     public static Interval divideAndConquer(int[] array, int start, int end){
@@ -67,7 +66,6 @@ public class MaxSubArray {
         }
         return new Interval(start, end, array[start]);
     }
-
     public static Interval onlineMaxSub(int[] array, int len){
         int a = 0, b = 1, acc_sum = 0; // a and b indicate the acc_sum [a,b)
         int start = 0, end = 1;
@@ -89,16 +87,4 @@ public class MaxSubArray {
         }
         return new Interval(start ,end, max_sum);
     }
-
-    public static class Interval{
-        public int start;
-        public int end;
-        public int max_sum;
-        public Interval(int s, int e, int m){
-            this.start = s;
-            this.end = e;
-            this.max_sum = m;
-        }
-    }
-
 }

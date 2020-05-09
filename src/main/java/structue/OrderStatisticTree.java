@@ -88,13 +88,63 @@ public class OrderStatisticTree{ // ger rank of node from left to right
         ColorSizeNode n = rankSelect(rank);
         return n.key;
     }
+    private ColorSizeNode rankSelect(int ith){
+        int rank = root.left.size + 1;
+        if(rank == ith){
+            return root;
+        }else if(ith < rank){
+            return rankSelectChild(root.left, ith);
+        }else{
+            return rankSelectChild(root.right, ith -rank);
+        }
+    }
+    private ColorSizeNode rankSelectChild(ColorSizeNode current, int ith){
+        int rank = current.left.size + 1;
+        if(rank == ith){
+            return current;
+        }else if(ith < rank){
+            return rankSelectChild(current.left, ith);
+        }else{
+            return rankSelectChild(current.right, ith -rank);
+        }
+    }
 
     public int keyGetRank(double key){
         ColorSizeNode n = search(key);
         return getNodeRank(n);
     }
+    private int getNodeRank(ColorSizeNode node){
+        int rank = node.left.size + 1;
+        while(node != root){
+            if(node == node.parent.right){
+                rank += node.parent.left.size + 1;
+            }
+            node = node.parent;
+        }
+        return rank;
+    }
 
+    public ColorSizeNode search(double key){
+        if(root == null | root == sentinel){
+            return null;
+        }
+        return search(root, key);
+    }
+    private ColorSizeNode search(ColorSizeNode n, double key){
+        if(n.key == key){
+            return n;
+        }else if(key < n.key & n.left != sentinel){
+            return search(n.left, key);
+        }else if(key > n.key & n.right != sentinel){
+            return search(n.right, key);
+        }
+        return null;
+    }
     public ColorSizeNode getRoot() { return this.root; }
+    private void setRoot(ColorSizeNode n){
+        root = n;
+        n.parent = sentinel;
+    }
 
     public ColorSizeNode getMinimum(){
         if(root != null | sentinel != root) {
@@ -103,7 +153,6 @@ public class OrderStatisticTree{ // ger rank of node from left to right
             return null;
         }
     }
-
     public ColorSizeNode getMaximum(){
         if(root != null | root != sentinel) {
             return getMaximum(root);
@@ -112,44 +161,84 @@ public class OrderStatisticTree{ // ger rank of node from left to right
         }
     }
 
-    public void printTree(){ // inorder print
-        if(root == null | sentinel == root){
-            return;
-        }
-        inorderTreeWalk(root.left);
-        System.out.print(root.key);
-        System.out.print(' ');
-        inorderTreeWalk(root.right);
-        System.out.print('\n');
-    }
-
-    public int getNodesNumber(){
-        if(root == sentinel){
-            return 0;
-        }
-        return inorderTreeWalk(root, "sum");
-    }
-
-    public int getHeight(){
-        if(root == null | root == sentinel){
-            return 0;
-        }
-        int count = 1;
-        int left_max = inorderTreeWalk(root.left, count);
-        int right_max = inorderTreeWalk(root.right, count);
-        return Math.max(left_max, right_max);
-    }
-
     public void insertKey(double key){
         ColorSizeNode n = new ColorSizeNode(key); // default red
         insertNode(n);
+    }
+    private void insertNode(ColorSizeNode n){
+        if(n == null | n == sentinel) return;
+
+        if(root == null | root == sentinel){
+            n.setBlack();
+            setRoot(n);
+            root.right = sentinel;
+            root.left = sentinel;
+        }else{
+            ColorSizeNode store = sentinel;
+            ColorSizeNode ptr = root;
+            while(ptr != sentinel){
+                store = ptr;
+                ptr.size = ptr.size + 1;
+                if(n.key < ptr.key){
+                    ptr = ptr.left;
+                }else{
+                    ptr = ptr.right;
+                }
+            }
+            n.parent = store;
+            if(n.key < store.key){
+                store.left = n;
+            }else{
+                store.right = n;
+            }
+            n.left = sentinel;
+            n.right = sentinel;
+        }
+        insertFixUp(n);
+    }
+    private void insertFixUp(ColorSizeNode ptr){
+        while(ptr.parent.isRed()){
+            if(ptr.parent == ptr.parent.parent.left){
+                ColorSizeNode right = ptr.parent.parent.right;
+                if(right.isRed()){ // case1: sibling is red
+                    ptr.parent.setBlack();
+                    right.setBlack();
+                    ptr.parent.parent.setRed();
+                    ptr = ptr.parent.parent;
+                    continue;
+                }else if(ptr == ptr.parent.right){ //case 2 convert to case 3
+                    ptr = ptr.parent;
+                    leftRotate(ptr);
+                }
+                ptr.parent.setBlack(); // case3
+                ptr.parent.parent.setRed();
+                rightRotate(ptr.parent.parent); // ptr.getParent will be black and then break
+                ptr = ptr.getParent();
+            }else{
+                ColorSizeNode left = ptr.parent.parent.left;
+                if(left.isRed()){
+                    ptr.parent.setBlack();
+                    left.setBlack();
+                    ptr.parent.parent.setRed();
+                    ptr = ptr.parent.parent;
+                    continue;
+                }else if(ptr == ptr.parent.left){
+                    ptr = ptr.parent;
+                    rightRotate(ptr);
+                }
+                ptr.parent.setBlack();
+                ptr.parent.parent.setRed();
+                leftRotate(ptr.parent.parent);
+                ptr = ptr.getParent();
+            }
+        }
+        root.setBlack();
     }
 
     public void deleteKey(double key){
         ColorSizeNode target = search(key);
         delete(target);
     }
-
     private void delete(ColorSizeNode target) {
         if(target == null | target == sentinel){
             return;
@@ -189,73 +278,6 @@ public class OrderStatisticTree{ // ger rank of node from left to right
             deleteFixUp(fix_up);
         }
     }
-
-    private ColorSizeNode rankSelect(int ith){
-        int rank = root.left.size + 1;
-        if(rank == ith){
-            return root;
-        }else if(ith < rank){
-            return rankSelectChild(root.left, ith);
-        }else{
-            return rankSelectChild(root.right, ith -rank);
-        }
-    }
-
-    private void insertNode(ColorSizeNode n){
-        if(n == null | n == sentinel){
-            return;
-        }
-        if(root == null | root == sentinel){
-            n.setBlack();
-            root = n;
-            root.right = sentinel;
-            root.left = sentinel;
-        }else{
-            ColorSizeNode store = sentinel;
-            ColorSizeNode ptr = root;
-            while(ptr != sentinel){
-                store = ptr;
-                ptr.size = ptr.size + 1;
-                if(n.key < ptr.key){
-                    ptr = ptr.left;
-                }else{
-                    ptr = ptr.right;
-                }
-            }
-            n.parent = store;
-            if(n.key < store.key){
-                store.left = n;
-            }else{
-                store.right = n;
-            }
-            n.left = sentinel;
-            n.right = sentinel;
-        }
-        insertFixUp(n);
-    }
-
-    private int getNodeRank(ColorSizeNode node){
-        int rank = node.left.size + 1;
-        while(node != root){
-            if(node == node.parent.right){
-                rank += node.parent.left.size + 1;
-            }
-            node = node.parent;
-        }
-        return rank;
-    }
-
-    private ColorSizeNode rankSelectChild(ColorSizeNode current, int ith){
-        int rank = current.left.size + 1;
-        if(rank == ith){
-            return current;
-        }else if(ith < rank){
-            return rankSelectChild(current.left, ith);
-        }else{
-            return rankSelectChild(current.right, ith -rank);
-        }
-    }
-
     private void deleteFixUp(ColorSizeNode fix_up){
         while(fix_up != root & fix_up.isBlack()){
             if(fix_up == fix_up.parent.left){
@@ -308,10 +330,9 @@ public class OrderStatisticTree{ // ger rank of node from left to right
         }
         fix_up.setBlack();
     }
-
     private void transplant(ColorSizeNode a, ColorSizeNode b){
         if(a.parent == sentinel){
-            root = b;
+            setRoot(b);
         }else if(a.parent.right == a){
             a.parent.right = b;
             b.parent = a.parent; // permissible if b is sentinel
@@ -319,13 +340,6 @@ public class OrderStatisticTree{ // ger rank of node from left to right
             a.parent.left = b;
             b.parent = a.parent;
         }
-    }
-
-    public ColorSizeNode search(double key){
-        if(root == null | root == sentinel){
-            return null;
-        }
-        return search(root, key);
     }
 
     private void leftRotate(ColorSizeNode left_node){
@@ -338,7 +352,7 @@ public class OrderStatisticTree{ // ger rank of node from left to right
         //exchange
         right_node.parent = left_node.parent; // double link right_node to left_node parent
         if(left_node.parent == sentinel){
-            root = right_node;
+            setRoot(right_node);
         }else if(left_node.parent.left == left_node){
             left_node.parent.left = right_node;
         }else{
@@ -350,7 +364,6 @@ public class OrderStatisticTree{ // ger rank of node from left to right
         right_node.size = left_node.size;
         left_node.size = left_node.left.size + left_node.right.size + 1;
     }
-
     private void rightRotate(ColorSizeNode right_node){ // mirror of leftRotate
         ColorSizeNode left_node = right_node.left;
         //exchange
@@ -361,7 +374,7 @@ public class OrderStatisticTree{ // ger rank of node from left to right
         //exchange
         left_node.parent = right_node.parent; // double link right_node to left_node parent
         if(right_node.parent == sentinel){
-            root = left_node;
+            setRoot(left_node);
         }else if(right_node.parent.right == right_node){
             right_node.parent.right = left_node;
         }else{
@@ -374,43 +387,6 @@ public class OrderStatisticTree{ // ger rank of node from left to right
         right_node.size = right_node.left.size + right_node.right.size + 1;
     }
 
-    private void insertFixUp(ColorSizeNode ptr){
-        while(ptr.parent.isRed()){
-            if(ptr.parent == ptr.parent.parent.left){
-                ColorSizeNode right = ptr.parent.parent.right;
-                if(right.isRed()){ // case1: sibling is red
-                    ptr.parent.setBlack();
-                    right.setBlack();
-                    ptr.parent.parent.setRed();
-                    ptr = ptr.parent.parent;
-                    continue;
-                }else if(ptr == ptr.parent.right){ //case 2 convert to case 3
-                    ptr = ptr.parent;
-                    leftRotate(ptr);
-                }
-                ptr.parent.setBlack(); // case3
-                ptr.parent.parent.setRed();
-                rightRotate(ptr.parent.parent); // ptr.getParent will be black and then break
-            }else{
-                ColorSizeNode left = ptr.parent.parent.left;
-                if(left.isRed()){
-                    ptr.parent.setBlack();
-                    left.setBlack();
-                    ptr.parent.parent.setRed();
-                    ptr = ptr.parent.parent;
-                    continue;
-                }else if(ptr == ptr.parent.left){
-                    ptr = ptr.parent;
-                    rightRotate(ptr);
-                }
-                ptr.parent.setBlack();
-                ptr.parent.parent.setRed();
-                leftRotate(ptr.parent.parent);
-            }
-        }
-        root.setBlack();
-    }
-
     private ColorSizeNode getMinimum(ColorSizeNode current){
         ColorSizeNode target = null;
         ColorSizeNode ptr = current;
@@ -420,7 +396,6 @@ public class OrderStatisticTree{ // ger rank of node from left to right
         }
         return target;
     }
-
     private ColorSizeNode getMaximum(ColorSizeNode current){
         ColorSizeNode target = null;
         ColorSizeNode ptr = current;
@@ -430,7 +405,6 @@ public class OrderStatisticTree{ // ger rank of node from left to right
         }
         return target;
     }
-
     private ColorSizeNode getSuccessor(ColorSizeNode current){
         if(current.right != sentinel){
             return getMinimum(current.right);
@@ -444,7 +418,6 @@ public class OrderStatisticTree{ // ger rank of node from left to right
             return target;
         }
     }
-
     private ColorSizeNode getPredecessor(ColorSizeNode current){
         if(current.left != null){
             return getMaximum(current.left);
@@ -459,17 +432,31 @@ public class OrderStatisticTree{ // ger rank of node from left to right
         }
     }
 
-    private ColorSizeNode search(ColorSizeNode n, double key){
-        if(n.key == key){
-            return n;
-        }else if(key < n.key & n.left != sentinel){
-            return search(n.left, key);
-        }else if(key > n.key & n.right != sentinel){
-            return search(n.right, key);
+    public void printTree(){ // inorder print
+        if(root == null | sentinel == root){
+            return;
         }
-        return null;
+        inorderTreeWalk(root.left);
+        System.out.print(root.key);
+        System.out.print(' ');
+        inorderTreeWalk(root.right);
+        System.out.print('\n');
     }
-
+    public int getNodesNumber(){
+        if(root == sentinel){
+            return 0;
+        }
+        return inorderTreeWalk(root, "sum");
+    }
+    public int getHeight(){
+        if(root == null | root == sentinel){
+            return 0;
+        }
+        int count = 1;
+        int left_max = inorderTreeWalk(root.left, count);
+        int right_max = inorderTreeWalk(root.right, count);
+        return Math.max(left_max, right_max);
+    }
     private void inorderTreeWalk(ColorSizeNode n){
         if(n != sentinel){
             inorderTreeWalk(n.left);
@@ -478,7 +465,6 @@ public class OrderStatisticTree{ // ger rank of node from left to right
             inorderTreeWalk(n.right);
         }
     }
-
     private int inorderTreeWalk(ColorSizeNode n, int count){
         if(n != sentinel){
             int left_max = inorderTreeWalk(n.left, count + 1);
@@ -487,7 +473,6 @@ public class OrderStatisticTree{ // ger rank of node from left to right
         }
         return count;
     }
-
     private int inorderTreeWalk(ColorSizeNode n, String way){ //overload trick
         if(!way.equals("sum")) throw new IllegalArgumentException();
         if(n.right != sentinel & n.left == sentinel){
