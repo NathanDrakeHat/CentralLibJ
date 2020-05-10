@@ -46,22 +46,6 @@ public class BFS {
                     Q.add(v);
                 }
             }
-//            int i = 0; // find u container
-//            var n = G.Nodes[i];
-//            while(!n.vertex.equals(u)){
-//                n = G.Nodes[++i];
-//            }
-//            n = n.next;
-//            while(n != null){ // search u adjacent vertex
-//                var v = n.vertex;
-//                if(v.color == COLOR.WHITE){
-//                    v.color = COLOR.GRAY;
-//                    v.d = u.d + 1;
-//                    v.parent = u;
-//                    Q.add(v);
-//                }
-//                n = n.next;
-//            }
             u.color = COLOR.BLACK;
         }
     }

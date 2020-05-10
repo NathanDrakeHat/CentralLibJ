@@ -46,21 +46,6 @@ public class DFS {
                 time = depthFirstSearchVisit(G, v, time);
             }
         }
-//        int i = 0; // find u container
-//        var t = G.getVertexAt(i);
-//        while(!t.equals(u)){
-//            t = G.getVertexAt(++i);
-//        }
-//
-////        t = t.next;
-////        while(t != null){ // search u adjacent vertex
-//        for(var v : G.getNeighbors(t)) {
-//            if (v.color == COLOR.WHITE) {
-//                v.parent = u;
-//                time = depthFirstSearchVisit(G, v, time);
-//            }
-//        }
-////        }
         u.color = COLOR.BLACK;
         time++;
         u.f = time;
