@@ -121,6 +121,7 @@ public class FibonacciHeap<V> {
         bilinearPrintChildList(H.root_list.getChildList().left.getChildList().getChildList());
         bilinearPrintChildList(H.root_list.right.right.getChildList());
         /* answer:
+        Min node key: 3
         7 18 38 | 7 38 18
         39 21 | 39 21
         52 | 52
