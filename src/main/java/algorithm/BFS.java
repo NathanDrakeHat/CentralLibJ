@@ -54,7 +54,7 @@ public class BFS {
         if(v == s){
             System.out.println(s.name);
         }else if(v.parent == null){
-            System.out.println("no path from 's' to 'v' exists.");
+            System.out.println("no path found.");
         }else{
             printPath(s, v.parent);
             System.out.println(v.name);
