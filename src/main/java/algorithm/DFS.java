@@ -3,6 +3,7 @@ package algorithm;
 import tool.LinkedGraph;
 
 public class DFS {
+    // depth first search
     enum COLOR{ WHITE, GRAY, BLACK}
 
     public static class Vertex{
@@ -22,24 +23,6 @@ public class DFS {
             return name.hashCode();
         }
     }
-//    public static class Graph{
-//
-//        public static class Node{
-//            public Vertex vertex;
-//            public Node next;
-//            private Node(Vertex v){ vertex = v; }
-//            public boolean equals(Node other){
-//                return this.vertex.equals(other.vertex);
-//            }
-//        }
-//        public Node[] Nodes;
-//
-//        public Graph(int s){
-//            Nodes = new Node[s];
-//        }
-//        public Node buildNext(Vertex v) { return new Node(v); }
-//        public Node buildVertex(Vertex v) { return new Node(v); }
-//    }
 
     public static void depthFirstSearch(LinkedGraph<Vertex> G) {
         for (var v : G.getVertexes()) {
@@ -84,11 +67,11 @@ public class DFS {
         return time;
     }
 
-    //public static void typologicalSort(Graph G){
+    //public static void typologicalSort(LinkedGraph G){
         // 1.call depthFirstSearch to compute f
         // 2.sort f in descend order
     //}
-    //public static void stronglyConnectedComponents(Graph G){
+    //public static void stronglyConnectedComponents(LinkedGraph G){
         // 1.call depthFirstSearch on G to compute f
         // 2.compute G^T which is reverse directed G
         // 3.call depthFirstSearch on G^T in the order of decreasing f

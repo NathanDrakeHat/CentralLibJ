@@ -1,7 +1,5 @@
 package algorithm;
 
-import java.util.Arrays;
-
 public class CutRod {
     // dynamic programming
     public static class CutResult{

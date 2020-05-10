@@ -1,6 +1,5 @@
 package algorithm;
 
-import java.util.Arrays;
 
 public class LCS { // longest common sequence problem, biological problem
     // dynamic programming

@@ -1,6 +1,7 @@
 package algorithm;
 
 public class MatrixChain { // dynamic programming
+    // optimal matrix multiply complexity
     public static class MatrixChainResult{
         public int min_cost;
         private PairNode res;

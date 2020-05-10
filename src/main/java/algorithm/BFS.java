@@ -5,6 +5,7 @@ import tool.LinkedGraph;
 import java.util.*;
 
 public class BFS {
+    // breath first search
     enum COLOR{ WHITE, GRAY, BLACK}
     public static class Vertex{
         private Vertex parent;
@@ -20,19 +21,6 @@ public class BFS {
             return name;
         }
     }
-//    public static class Graph{
-//        public static class Node{
-//            public Vertex vertex;
-//            public Node next;
-//            private Node(Vertex v){ vertex = v; }
-//            public boolean equals(Node other) { return vertex.equals(other.vertex); }
-//        }
-//        Node[] Nodes;
-//        public Graph(int s) { Nodes = new Node[s]; }
-//        public Node buildNext(Vertex v){
-//            return new Node(v);
-//        }
-//    }
 
     public static void breathFirstSearch(LinkedGraph<Vertex> G, Vertex s) {
         var vs = G.getVertexes();
