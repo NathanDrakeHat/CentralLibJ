@@ -22,15 +22,15 @@ public class BFS {
             private Node(Vertex v){ vertex = v; }
             public boolean equals(Node other) { return vertex.equals(other.vertex); }
         }
-        Node[] Vertexs;
-        public Graph(int s) { Vertexs = new Node[s]; }
+        Node[] Nodes;
+        public Graph(int s) { Nodes = new Node[s]; }
         public Node buildNext(Vertex v){
             return new Node(v);
         }
     }
 
     public static void breathFirstSearch(Graph G, Graph.Vertex s) {
-        for(var n : G.Vertexs){
+        for(var n : G.Nodes){
             var v = n.vertex;
             if(!v.equals(s)){
                 v.color = COLOR.WHITE;
@@ -47,9 +47,9 @@ public class BFS {
             Graph.Vertex u = Q.remove();
 
             int i = 0; // find u container
-            var n = G.Vertexs[i];
+            var n = G.Nodes[i];
             while(!n.vertex.equals(u)){
-                n = G.Vertexs[++i];
+                n = G.Nodes[++i];
             }
             n = n.next;
             while(n != null){ // search u adjacent vertex
@@ -76,7 +76,6 @@ public class BFS {
             System.out.println(v.name);
         }
     }
-
     public static char[] getPath(Graph G, Graph.Vertex s, Graph.Vertex v){
         List<Character> t = new ArrayList<>();
         getPath(G, s, v, t);
