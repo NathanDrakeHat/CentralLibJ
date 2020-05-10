@@ -1,8 +1,10 @@
 package structue;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 
-import tool.GenericArray;
+
 import tool.IntegerPair;
 
 public class FibonacciHeap<V> {
@@ -188,7 +190,10 @@ public class FibonacciHeap<V> {
         return z.content;
     }
     private void consolidate(){
-        var A = new GenericArray<Node>(upperBound()+1);
+        List<Node> A = new ArrayList<>();
+        for(int i=0;i < upperBound()+1; i++){
+            A.add(null);
+        }
         var w = root_list;
         if(w == null) return;
         var dict = new HashSet<Node>(32);
