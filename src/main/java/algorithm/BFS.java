@@ -6,56 +6,59 @@ import java.util.*;
 
 public class BFS {
     enum COLOR{ WHITE, GRAY, BLACK}
-    public static class Vertex{
-        private Vertex parent;
-        private COLOR color;
-        private double d; //distance
-        private char name;
+    public static class Graph{
+        public static class Vertex{
+            private Vertex parent;
+            private COLOR color;
+            private double d; //distance
+            private final char name;
 
-        Vertex(char name){ this.name = name; }
-
-        public double getDistance() { return this.d; }
-
-        public char getName() {return name;}
-
-        public boolean equals(Vertex other){ return name == other.getName(); }
+            Vertex(char name){ this.name = name; }
+            public boolean equals(Vertex other){ return name == other.name; }
+        }
+        public static class Node{
+            public Vertex vertex;
+            public Node next;
+            private Node(Vertex v){ vertex = v; }
+            public boolean equals(Node other) { return vertex.equals(other.vertex); }
+        }
+        Node[] Vertexs;
+        public Graph(int s) { Vertexs = new Node[s]; }
+        public Node buildNext(Vertex v){
+            return new Node(v);
+        }
     }
-    public static class Node{
-        public Vertex vertex;
-        public Node next;
 
-        public Node(Vertex v){ vertex = v; }
-        public Node getNext(){ return this.next;}
-    }
-
-    public static void breathFirstSearch(Node[] G, Vertex s) {
-        for(Node n : G){
-            if(n.vertex != s){
-                n.vertex.color = COLOR.WHITE;
-                n.vertex.d = Double.POSITIVE_INFINITY;
-                n.vertex.parent = null;
+    public static void breathFirstSearch(Graph G, Graph.Vertex s) {
+        for(var n : G.Vertexs){
+            var v = n.vertex;
+            if(!v.equals(s)){
+                v.color = COLOR.WHITE;
+                v.d = Double.POSITIVE_INFINITY;
+                v.parent = null;
             }
         }
         s.color = COLOR.GRAY;
         s.d = 0;
         s.parent = null;
-        Queue<Vertex> Q = new LinkedList<>();
+        Queue<Graph.Vertex> Q = new LinkedList<>();
         Q.add(s);
         while(!Q.isEmpty()){
-            Vertex u = Q.remove();
+            Graph.Vertex u = Q.remove();
 
             int i = 0; // find u container
-            Node n = G[i];
+            var n = G.Vertexs[i];
             while(!n.vertex.equals(u)){
-                n = G[++i];
+                n = G.Vertexs[++i];
             }
             n = n.next;
             while(n != null){ // search u adjacent vertex
-                if(n.vertex.color == COLOR.WHITE){
-                    n.vertex.color = COLOR.GRAY;
-                    n.vertex.d = u.d + 1;
-                    n.vertex.parent = u;
-                    Q.add(n.vertex);
+                var v = n.vertex;
+                if(v.color == COLOR.WHITE){
+                    v.color = COLOR.GRAY;
+                    v.d = u.d + 1;
+                    v.parent = u;
+                    Q.add(v);
                 }
                 n = n.next;
             }
@@ -63,7 +66,7 @@ public class BFS {
         }
     }
 
-    public static void printPath(Node[] G, Vertex s, Vertex v){
+    public static void printPath(Graph G, Graph.Vertex s, Graph.Vertex v){
         if(v == s){
             System.out.println(s.name);
         }else if(v.parent == null){
@@ -74,7 +77,7 @@ public class BFS {
         }
     }
 
-    public static char[] getPath(Node[] G, Vertex s, Vertex v){
+    public static char[] getPath(Graph G, Graph.Vertex s, Graph.Vertex v){
         List<Character> t = new ArrayList<>();
         getPath(G, s, v, t);
         int idx = 0;
@@ -83,8 +86,7 @@ public class BFS {
             res[idx++] = i;
         return res;
     }
-
-    private static void getPath(Node[] G, Vertex s, Vertex v, List<Character> res){
+    private static void getPath(Graph G, Graph.Vertex s, Graph.Vertex v, List<Character> res){
         if(v == s){
             res.add(s.name);
         } else if(v.parent != null){
