@@ -36,10 +36,13 @@ public class LinkedGraph<V> {
         ns.clear();
         Collections.addAll(ns, vertexes);
     }
+    public void cleanNeighbors(V v){ map.get(v).neighbors.clear(); }
+
     public void putNeighbor(V v, V n){
         var ns = map.get(v).neighbors;
         if(ns != null)
             ns.add(n);
     }
+    public void removeNeighbor(V v, V n){ map.get(v).neighbors.remove(n); }
 
 }
