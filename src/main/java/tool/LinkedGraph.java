@@ -3,46 +3,48 @@ package tool;
 import java.util.*;
 
 public class LinkedGraph<V> {
-    private class Head{
-        V v = null;
-        List<V> neighbors = new ArrayList<>();
-
-        Head(V v){ this.v = v; }
-    }
-    List<Head> vs = new ArrayList<>();
-    Map<V, Head> map = new HashMap<>();
+    Map<V, List<V>> map = new HashMap<>();
 
     public LinkedGraph(){}
     public LinkedGraph(V[] vertexes) {
-        for (var v : vertexes) {
-            var h = new Head(v);
-            this.vs.add(h);
-            this.map.put(v, h);
-        }
+        for (var v : vertexes)
+            this.map.put(v, null);
+
     }
 
-    public List<V> getVertexes() {
-        List<V> res = new ArrayList<>();
-        for(var h : vs)
-            res.add(h.v);
-        return res;
+    public Set<V> getVertexes() {
+        return map.keySet();
     }
 
     public List<V> getNeighbors(V v){
-        return map.get(v).neighbors;
+        return map.get(v);
     }
     public void setNeighbors(V v, V[] vertexes){
-        List<V> ns = map.get(v).neighbors;
-        ns.clear();
-        Collections.addAll(ns, vertexes);
+        List<V> ns = map.get(v);
+        if(ns != null) {
+            ns.clear();
+            Collections.addAll(ns, vertexes);
+        }else{
+            ns = new ArrayList<>();
+            Collections.addAll(ns, vertexes);
+            map.put(v, ns);
+        }
     }
-    public void cleanNeighbors(V v){ map.get(v).neighbors.clear(); }
+    public void cleanNeighbors(V v){
+        var ns = map.get(v);
+        if(ns != null) ns.clear();
+    }
 
     public void putNeighbor(V v, V n){
-        var ns = map.get(v).neighbors;
+        List<V> ns = map.get(v);
         if(ns != null)
             ns.add(n);
+        else{
+            ns = new ArrayList<>();
+            map.put(v, ns);
+            ns.add(n);
+        }
     }
-    public void removeNeighbor(V v, V n){ map.get(v).neighbors.remove(n); }
+    public void removeNeighbor(V v, V n){ map.get(v).remove(n); }
 
 }
