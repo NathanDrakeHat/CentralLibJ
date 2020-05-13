@@ -16,9 +16,7 @@ public class LinkedGraph<V> {
         return map.keySet();
     }
 
-    public List<V> getNeighbors(V v){
-        return map.get(v);
-    }
+    public List<V> getNeighbors(V v){ return map.get(v); }
     public void setNeighbors(V v, V[] vertexes){
         List<V> ns = map.get(v);
         if(ns != null) {
@@ -37,9 +35,9 @@ public class LinkedGraph<V> {
 
     public void putNeighbor(V v, V n){
         List<V> ns = map.get(v);
-        if(ns != null)
-            ns.add(n);
-        else{
+        if(ns != null) {
+            if(!ns.contains(n)) ns.add(n);
+        }else{
             ns = new ArrayList<>();
             map.put(v, ns);
             ns.add(n);
