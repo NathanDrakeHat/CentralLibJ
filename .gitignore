@@ -6,7 +6,7 @@
 *.bat
 *Main.java*
 *Temp.java*
-*Solution.java*
+*Solutions.java*
 *temp*
 /target
 ./target/*
