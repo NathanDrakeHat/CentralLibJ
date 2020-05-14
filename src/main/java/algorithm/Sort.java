@@ -52,6 +52,30 @@ public class Sort {
         }// else end, because only one element
     }
 
+    private static void minHeapify(int[] arr, int idx, int heap_size){
+        int l = 2 * (idx + 1);
+        int l_idx = l - 1;
+        int r = 2 * (idx + 1) + 1;
+        int r_idx = r - 1;
+        int min_idx = idx;
+        if ((l_idx < heap_size) && (arr[l_idx] < arr[min_idx])) {
+            min_idx = l_idx;
+        }
+        if ((r_idx < heap_size) && (arr[r_idx] < arr[min_idx])) {
+            min_idx = r_idx;
+        }
+        if (min_idx != idx) {
+            int t = arr[min_idx];
+            arr[min_idx] = arr[idx];
+            arr[idx] = t;
+            minHeapify(arr, min_idx, heap_size);
+        }
+    }
+    private static void buildMinHeap(int[] arr){
+        for(int i = arr.length/2 - 1; i >= 0; i--){
+            minHeapify(arr, i, arr.length);
+        }
+    }
     private static void maxHeapify(int[] arr, int idx, int heap_size){
         int l = 2 * (idx + 1);
         int l_idx = l - 1;
