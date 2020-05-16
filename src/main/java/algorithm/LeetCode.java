@@ -6,6 +6,7 @@ import java.util.List;
 
 public class LeetCode {
     // reverse int with restriction
+    // 123 ---> 321
     public int reverse(int x){
         int rev = 0;
         while (x != 0) {
@@ -19,6 +20,7 @@ public class LeetCode {
     }
 
     // remove the nth node of reverse order
+    // 1->2->3->4, 2 ---> 1->2->4
     public ListNode removeNthFromEnd(ListNode head, int n) {
         boolean is_len_one = (head.next == null);
         int head_order = RecursiveRemoveNthFromEnd(head, n);
@@ -35,7 +37,8 @@ public class LeetCode {
         }else return this_order;
     }
 
-    //  length k parenthesis permutation
+    //  k pairs parenthesis permutation
+    // 3 ---> [((())), (()()), (())(), ()(()), ()()()]
     public List<String> generateParenthesis(int n) {
         List<String> res = new ArrayList<>();
         StringBuilder init = new StringBuilder("(");
@@ -63,6 +66,7 @@ public class LeetCode {
     }
 
     // merge k sorted lists
+    //[[1 4 6] [2 3 5]]  ---> [1 2 3 4 5 6]
     public ListNode mergeKLists(ListNode[] lists) {
         if(lists.length == 0) return null;
         ListNode[] lst = new ListNode[lists.length];
@@ -126,6 +130,7 @@ public class LeetCode {
     }
 
     // reverse a linked list every k elements
+    //1->2->3->4->5->6, 3  --->  3->2->1->6->5->4
     public ListNode reverseKGroup(ListNode head, int k) {
         if(head == null | k <= 1) return head;
         ListNode res = new ListNode();
@@ -168,6 +173,7 @@ public class LeetCode {
     }
 
     // find the count of continue sub-arrays which sum is k
+    //[1, 2, 3, 4], 3 ---> 3
     public int subarraySum(int[] nums, int k) {
         int count = 0, pre = 0;
         HashMap< Integer, Integer > mp = new HashMap < > ();
