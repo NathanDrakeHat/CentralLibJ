@@ -18,7 +18,7 @@ public class LeetCode {
         return rev;
     }
 
-    // remove nth node from end
+    // remove the nth node of reverse order
     public ListNode removeNthFromEnd(ListNode head, int n) {
         boolean is_len_one = (head.next == null);
         int head_order = RecursiveRemoveNthFromEnd(head, n);
@@ -26,7 +26,7 @@ public class LeetCode {
         else if(head_order == n) return head.next;
         else return head;
     }
-    public int RecursiveRemoveNthFromEnd(ListNode node, int n){
+    private int RecursiveRemoveNthFromEnd(ListNode node, int n){
         if(node.next == null) return 1;
         int this_order = RecursiveRemoveNthFromEnd(node.next, n) + 1;
         if(this_order == n + 1) {
@@ -35,14 +35,14 @@ public class LeetCode {
         }else return this_order;
     }
 
-    //  all parenthesis permutation
+    //  length k parenthesis permutation
     public List<String> generateParenthesis(int n) {
         List<String> res = new ArrayList<>();
         StringBuilder init = new StringBuilder("(");
         RecursiveGenerateParenthesis(init, 1, 1, 1, res, n);
         return res;
     }
-    public void RecursiveGenerateParenthesis(StringBuilder strb, int str_len, int left_count, int stack_ptr, List<String> res, int n){
+    private void RecursiveGenerateParenthesis(StringBuilder strb, int str_len, int left_count, int stack_ptr, List<String> res, int n){
         if(str_len == (2*n)) res.add(strb.toString());
         else{
             str_len++;
@@ -100,7 +100,7 @@ public class LeetCode {
         }
         return head;
     }
-    public void minHeapify(ListNode[] arr, int idx, int heap_size){
+    private void minHeapify(ListNode[] arr, int idx, int heap_size){
         int l = 2 * (idx + 1);
         int l_idx = l - 1;
         int r = 2 * (idx + 1) + 1;
@@ -119,7 +119,7 @@ public class LeetCode {
             minHeapify(arr, min_idx, heap_size);
         }
     }
-    public void buildMinHeap(ListNode[] arr, int heap_size){
+    private void buildMinHeap(ListNode[] arr, int heap_size){
         for(int i = heap_size/2 - 1; i >= 0; i--){
             minHeapify(arr, i, heap_size);
         }
@@ -138,7 +138,7 @@ public class LeetCode {
         }
         return res.next;
     }
-    public ListNode reverseGroup(ListNode handle, int k){
+    private ListNode reverseGroup(ListNode handle, int k){
         // have at least k node
         ListNode rest, ptr1, ptr2, head;
         head = handle.next;
@@ -159,7 +159,7 @@ public class LeetCode {
         handle.next = ptr2;
         return head;
     }
-    public boolean hasKChildren(ListNode handle, int k){
+    private boolean hasKChildren(ListNode handle, int k){
         for(int i = 0; i < k; i++){
             handle = handle.next;
             if(handle == null) return false;
