@@ -5,7 +5,7 @@
 *.idea*
 *.bat
 *Main.java*
-*Temp.java*
+*Demo.java*
 *Solutions.java*
 *temp*
 /target
