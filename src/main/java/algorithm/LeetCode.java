@@ -38,7 +38,7 @@ public class LeetCode {
     }
 
     //  k pairs parenthesis permutation
-    // 3 ---> [((())), (()()), (())(), ()(()), ()()()]
+    // 3 ---> ["((()))", "(()())", "(())()", "()(())", "()()()"]
     public static List<String> generateParenthesis(int n) {
         List<String> res = new ArrayList<>();
         StringBuilder init = new StringBuilder("(");
@@ -173,7 +173,7 @@ public class LeetCode {
     }
 
     // find the count of continue sub-arrays which sum is k
-    //[1, 2, 3, 4], 3 ---> 3
+    //[1, 2, 3, 4], 3 ---> 2    ([1, 2] and [3])
     public static int subarraySum(int[] nums, int k) {
         int count = 0, pre = 0;
         HashMap< Integer, Integer > mp = new HashMap < > ();
