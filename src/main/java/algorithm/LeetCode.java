@@ -7,7 +7,7 @@ import java.util.List;
 public class LeetCode {
     // reverse int with restriction
     // 123 ---> 321
-    public int reverse(int x){
+    public static int reverse(int x){
         int rev = 0;
         while (x != 0) {
             int pop = x % 10;
@@ -21,14 +21,14 @@ public class LeetCode {
 
     // remove the nth node of reverse order
     // 1->2->3->4, 2 ---> 1->2->4
-    public ListNode removeNthFromEnd(ListNode head, int n) {
+    public static ListNode removeNthFromEnd(ListNode head, int n) {
         boolean is_len_one = (head.next == null);
         int head_order = RecursiveRemoveNthFromEnd(head, n);
         if(is_len_one & n == 1) return null;
         else if(head_order == n) return head.next;
         else return head;
     }
-    private int RecursiveRemoveNthFromEnd(ListNode node, int n){
+    private static int RecursiveRemoveNthFromEnd(ListNode node, int n){
         if(node.next == null) return 1;
         int this_order = RecursiveRemoveNthFromEnd(node.next, n) + 1;
         if(this_order == n + 1) {
@@ -39,13 +39,13 @@ public class LeetCode {
 
     //  k pairs parenthesis permutation
     // 3 ---> [((())), (()()), (())(), ()(()), ()()()]
-    public List<String> generateParenthesis(int n) {
+    public static List<String> generateParenthesis(int n) {
         List<String> res = new ArrayList<>();
         StringBuilder init = new StringBuilder("(");
         RecursiveGenerateParenthesis(init, 1, 1, 1, res, n);
         return res;
     }
-    private void RecursiveGenerateParenthesis(StringBuilder strb, int str_len, int left_count, int stack_ptr, List<String> res, int n){
+    private static void RecursiveGenerateParenthesis(StringBuilder strb, int str_len, int left_count, int stack_ptr, List<String> res, int n){
         if(str_len == (2*n)) res.add(strb.toString());
         else{
             str_len++;
@@ -67,7 +67,7 @@ public class LeetCode {
 
     // merge k sorted lists
     //[[1 4 6] [2 3 5]]  ---> [1 2 3 4 5 6]
-    public ListNode mergeKLists(ListNode[] lists) {
+    public static ListNode mergeKLists(ListNode[] lists) {
         if(lists.length == 0) return null;
         ListNode[] lst = new ListNode[lists.length];
         int heap_size = lst.length;
@@ -104,7 +104,7 @@ public class LeetCode {
         }
         return head;
     }
-    private void minHeapify(ListNode[] arr, int idx, int heap_size){
+    private static void minHeapify(ListNode[] arr, int idx, int heap_size){
         int l = 2 * (idx + 1);
         int l_idx = l - 1;
         int r = 2 * (idx + 1) + 1;
@@ -123,7 +123,7 @@ public class LeetCode {
             minHeapify(arr, min_idx, heap_size);
         }
     }
-    private void buildMinHeap(ListNode[] arr, int heap_size){
+    private static void buildMinHeap(ListNode[] arr, int heap_size){
         for(int i = heap_size/2 - 1; i >= 0; i--){
             minHeapify(arr, i, heap_size);
         }
@@ -131,7 +131,7 @@ public class LeetCode {
 
     // reverse a linked list every k elements
     //1->2->3->4->5->6, 3  --->  3->2->1->6->5->4
-    public ListNode reverseKGroup(ListNode head, int k) {
+    public static ListNode reverseKGroup(ListNode head, int k) {
         if(head == null | k <= 1) return head;
         ListNode res = new ListNode();
         ListNode handle;
@@ -143,7 +143,7 @@ public class LeetCode {
         }
         return res.next;
     }
-    private ListNode reverseGroup(ListNode handle, int k){
+    private static ListNode reverseGroup(ListNode handle, int k){
         // have at least k node
         ListNode rest, ptr1, ptr2, head;
         head = handle.next;
@@ -164,7 +164,7 @@ public class LeetCode {
         handle.next = ptr2;
         return head;
     }
-    private boolean hasKChildren(ListNode handle, int k){
+    private static boolean hasKChildren(ListNode handle, int k){
         for(int i = 0; i < k; i++){
             handle = handle.next;
             if(handle == null) return false;
@@ -174,7 +174,7 @@ public class LeetCode {
 
     // find the count of continue sub-arrays which sum is k
     //[1, 2, 3, 4], 3 ---> 3
-    public int subarraySum(int[] nums, int k) {
+    public static int subarraySum(int[] nums, int k) {
         int count = 0, pre = 0;
         HashMap< Integer, Integer > mp = new HashMap < > ();
         mp.put(0, 1);
