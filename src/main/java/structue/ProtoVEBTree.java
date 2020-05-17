@@ -2,10 +2,10 @@ package structue;
 
 public class ProtoVEBTree {
     //keys are not duplicate and confined in a range
-    private int u; //universe size
-    private boolean[] array;
-    private ProtoVEBTree summary;
-    private ProtoVEBTree[] cluster;
+    private int u = 0; //universe size
+    private boolean[] array = null;
+    private ProtoVEBTree summary = null;
+    private ProtoVEBTree[] cluster = null;
 
     private ProtoVEBTree(){}
     private ProtoVEBTree(int u, String s){

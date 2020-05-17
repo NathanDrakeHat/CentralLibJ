@@ -6,7 +6,7 @@ public class DisjointSet <V>{
         V content;
         int rank = 0;
     }
-    Node root;
+    Node root = null;
     public DisjointSet(){
         root = new Node();
         root.parent = root;

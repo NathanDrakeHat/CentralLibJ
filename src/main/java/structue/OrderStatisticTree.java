@@ -1,7 +1,7 @@
 package structue;
 
 public class OrderStatisticTree{ // ger rank of node from left to right
-    private ColorSizeNode root;
+    private ColorSizeNode root = null;
     private ColorSizeNode sentinel = new ColorSizeNode(0, Color.BLACK);
     // sentinel: denote leaf and parent of root
     public static class ColorSizeNode{

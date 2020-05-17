@@ -4,14 +4,14 @@ import tool.IntegerPair;
 
 public class RedBlackTree<V> {
     enum COLOR{ RED, BLACK }
-    private ColorNode root;
+    private ColorNode root = null;
     private final ColorNode sentinel = new ColorNode( COLOR.BLACK);// sentinel: denote leaf and parent of root
     public class ColorNode{
-        private IntegerPair<V> content;
+        private IntegerPair<V> content = null;
         private COLOR color;
-        private ColorNode parent;
-        private ColorNode left;
-        private ColorNode right;
+        private ColorNode parent = null;
+        private ColorNode left = null;
+        private ColorNode right = null;
 
         private ColorNode(int key){
             content = new IntegerPair<V>();

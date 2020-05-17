@@ -2,9 +2,9 @@ package structue;
 
 public class VEBTree {
     //keys are not duplicate and confined in a range
-    private int u; //universe size
-    private VEBTree summary;
-    private VEBTree[] cluster;
+    private int u = 0; //universe size
+    private VEBTree summary = null;
+    private VEBTree[] cluster = null;
     private final int NONE = -1;
     private int min = NONE; // hidden in cluster
     private int max = NONE;

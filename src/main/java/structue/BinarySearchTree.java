@@ -17,7 +17,7 @@ class BinarySearchTree {
 
         public BinaryNode getRight(){ return this.right; }
     }
-    private BinaryNode root;
+    private BinaryNode root = null;
 
     public BinaryNode getMinimum(){
         if(root != null) {
