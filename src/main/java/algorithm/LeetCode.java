@@ -5,6 +5,16 @@ import java.util.HashMap;
 import java.util.List;
 
 public class LeetCode {
+    static class ListNode {
+        int val;
+        ListNode next;
+
+        ListNode(int x) {
+            val = x;
+        }
+        ListNode(){}
+    }
+    //#7
     // reverse int with restriction
     // 123 ---> 321
     public static int reverse(int x){
@@ -18,7 +28,7 @@ public class LeetCode {
         }
         return rev;
     }
-
+    //#19
     // remove the nth node of reverse order
     // 1->2->3->4, 2 ---> 1->2->4
     public static ListNode removeNthFromEnd(ListNode head, int n) {
@@ -36,7 +46,7 @@ public class LeetCode {
             return this_order;
         }else return this_order;
     }
-
+    //#22
     //  k pairs parenthesis permutation
     // 3 ---> ["((()))", "(()())", "(())()", "()(())", "()()()"]
     public static List<String> generateParenthesis(int n) {
@@ -64,7 +74,7 @@ public class LeetCode {
             }
         }
     }
-
+    //#23
     // merge k sorted lists
     //[[1 4 6] [2 3 5]]  ---> [1 2 3 4 5 6]
     public static ListNode mergeKLists(ListNode[] lists) {
@@ -128,7 +138,7 @@ public class LeetCode {
             minHeapify(arr, i, heap_size);
         }
     }
-
+    //#25
     // reverse a linked list every k elements
     //1->2->3->4->5->6, 3  --->  3->2->1->6->5->4
     public static ListNode reverseKGroup(ListNode head, int k) {
@@ -171,7 +181,7 @@ public class LeetCode {
         }
         return true;
     }
-
+    //#560
     // find the count of continue sub-arrays which sum is k
     //[1, 2, 3, 4], 3 ---> 2    ([1, 2] and [3])
     public static int subarraySum(int[] nums, int k) {
@@ -186,19 +196,6 @@ public class LeetCode {
         }
         return count;
     }
+    //
 
-    //aoti
-    // "-123 +123" ---> -123
-
-
-
-}
-class ListNode {
-    int val;
-    ListNode next;
-
-    ListNode(int x) {
-        val = x;
-    }
-    ListNode(){}
 }
