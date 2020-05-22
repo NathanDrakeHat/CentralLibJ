@@ -41,10 +41,8 @@ public class LeetCode {
     private static int RecursiveRemoveNthFromEnd(ListNode node, int n){
         if(node.next == null) return 1;
         int this_order = RecursiveRemoveNthFromEnd(node.next, n) + 1;
-        if(this_order == n + 1) {
-            node.next = node.next.next;
-            return this_order;
-        }else return this_order;
+        if(this_order == n + 1) node.next = node.next.next;
+        return this_order;
     }
     //#22
     //  k pairs parenthesis permutation
@@ -147,10 +145,8 @@ public class LeetCode {
         ListNode handle;
         res.next = head;
         handle = res;
-        while(hasKChildren(handle, k)){
-            ListNode new_handle = reverseGroup(handle, k);
-            handle = new_handle;
-        }
+        while(hasKChildren(handle, k))
+            handle = reverseGroup(handle, k);
         return res.next;
     }
     private static ListNode reverseGroup(ListNode handle, int k){
