@@ -1,9 +1,9 @@
 package structue;
 
 public class DisjointSet <V>{
-    DisjointSet <V> parent;
-    V content = null;
-    int rank = 0;
+    private DisjointSet <V> parent;
+    private V content = null;
+    private int rank = 0;
 
     public DisjointSet(V v){
         this.parent = this;
