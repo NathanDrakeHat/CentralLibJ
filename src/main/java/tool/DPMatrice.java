@@ -15,11 +15,7 @@ public class DPMatrice<V> {//matrice for DP problem
     }
 
     @SuppressWarnings("unchecked")
-    public V getAt(int r, int c){
-        return (V)matrice[r][c-r];
-    }
+    public V getAt(int r, int c){ return (V)matrice[r][c-r]; }
 
-    public void setAt(V v, int r, int c) {
-        matrice[r][c-r] = v;
-    }
+    public void setAt(V v, int r, int c) { matrice[r][c-r] = v; }
 }
