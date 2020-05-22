@@ -1,23 +1,21 @@
 package structue;
 
 public class DisjointSet <V>{
-    public class Node{
-        Node parent;
-        V content;
-        int rank = 0;
-    }
-    Node root = null;
-    public DisjointSet(){
-        root = new Node();
-        root.parent = root;
-        root.rank = 0;
+    DisjointSet <V> parent;
+    V content = null;
+    int rank = 0;
+
+    public DisjointSet(V v){
+        this.parent = this;
+        this.rank = 0;
+        content = v;
     }
 
     public void union(DisjointSet<V> other){
-        link(findSet(this.root), findSet(other.root));
+        link(findSetRoot(this), findSetRoot(other));
     }
 
-    public void link(Node x, Node y){
+    public void link(DisjointSet<V> x, DisjointSet<V> y){
         if(x.rank > y.rank)
             y.parent = x;
         else {
@@ -26,9 +24,14 @@ public class DisjointSet <V>{
         }
     }
 
-    public Node findSet(Node x){
+    private DisjointSet<V> findSetRoot(DisjointSet<V> x){
         if(x != x.parent)
-            x.parent = findSet(x.parent);
+            x.parent = findSetRoot(x.parent);
         return x.parent;
+    }
+    public DisjointSet<V> findSetRoot(){
+        if(this != this.parent)
+            this.parent = findSetRoot(this.parent);
+        return this.parent;
     }
 }
