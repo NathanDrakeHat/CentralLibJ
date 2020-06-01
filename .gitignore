@@ -1,14 +1,10 @@
 *.iml
-/out
 /.idea
 /.idea/*
-*.idea*
 *.bat
-*Main.java*
-*Demo.java*
-*Solutions.java*
+src/main/java/Main.java
+src/main/java/Demo.java
 *temp*
 /target
-./target/*
-src/main/java/Solution.java
+/target/*
 src/main/resources/
