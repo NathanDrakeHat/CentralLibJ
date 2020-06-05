@@ -145,8 +145,7 @@ public class LeetCode {
         ListNode handle;
         res.next = head;
         handle = res;
-        while(hasKChildren(handle, k))
-            handle = reverseGroup(handle, k);
+        while(hasKChildren(handle, k)) handle = reverseGroup(handle, k);
         return res.next;
     }
     private static ListNode reverseGroup(ListNode handle, int k){
