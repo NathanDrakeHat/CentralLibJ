@@ -75,9 +75,7 @@ public class DFS {
         }
         int time = 0;
         for(var v : order){
-            if(v.color == COLOR.WHITE){
-                time = depthFirstSearchVisit(G, v, time);
-            }
+            if(v.color == COLOR.WHITE){ time = depthFirstSearchVisit(G, v, time); }
         }
     }
     private static LinkedGraph<Vertex> transposeGraph(LinkedGraph<Vertex> graph){
