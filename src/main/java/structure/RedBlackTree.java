@@ -9,7 +9,7 @@ public class RedBlackTree<V> {
     enum COLOR{ RED, BLACK }
     private ColorNode root = null;
     private final ColorNode sentinel = new ColorNode( COLOR.BLACK);// sentinel: denote leaf and parent of root
-    public class ColorNode extends TripleLinkedNode<IntegerPair<V>> {
+    public class ColorNode{
         private IntegerPair<V> content;
         private COLOR color;
         private ColorNode parent;
