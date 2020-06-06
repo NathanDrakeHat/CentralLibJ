@@ -10,6 +10,8 @@ public class LinkedGraph<V extends Comparable<V>> {
     public LinkedGraph(Set<V> set){ for(var i : set) { map.put(i, new ArrayList<>()); } }
 
     public Set<V> getVertexes() { return map.keySet(); }
+    public void putVertex(V v){ map.put(v, new ArrayList<>()); }
+    public boolean hasVertex(V v) { return map.containsKey(v); }
 
     public List<V> getNeighbors(V v){ return map.get(v); }
     public void setNeighbors(V v, V[] vertexes){
@@ -38,7 +40,7 @@ public class LinkedGraph<V extends Comparable<V>> {
             ns.add(n);
         }
     }
-    public boolean haveNeighbor(V a, V n) { return map.get(a).contains(n); }
+    public boolean haveNeighbor(V v, V neighbor) { return map.get(v).contains(neighbor); }
     public void removeNeighbor(V v, V n){ map.get(v).remove(n); }
 
 }

@@ -1,7 +1,6 @@
 package algorithms;
 
 import tools.LinkedGraph;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +9,7 @@ public class DFS {
     enum COLOR{ WHITE, GRAY, BLACK}
 
     public static class Vertex implements Comparable<Vertex>{
-        private Vertex parent;
+        public Vertex parent;
         private COLOR color;
         public int d; //discovered time
         public int f; // finished time
@@ -47,7 +46,7 @@ public class DFS {
         u.color = COLOR.GRAY;
         for(var v : G.getNeighbors(u)){
             if(v.color == COLOR.WHITE){
-                v.parent = null;
+                v.parent = u;
                 time = depthFirstSearchVisit(G, v, time);
             }
         }
@@ -63,13 +62,33 @@ public class DFS {
         l.sort((o1, o2) -> o2.f - o1.f); // descend order
         return l;
     }
-    //public static void stronglyConnectedComponents(LinkedGraph G){
-        // 1.call depthFirstSearch on G to compute f
-        // 2.compute G^T which is reverse directed G
-        // 3.call depthFirstSearch on G^T in the order of decreasing f
-        // 4.output forest formed by line 3
-    //}
+
     public static void stronglyConnectedComponents(LinkedGraph<Vertex> G){
         var l = topologicalSort(G);
+        var G_T = transposeGraph(G);
+        depthFirstSearchWithOrder(G_T, l);
+    }
+    private static void depthFirstSearchWithOrder(LinkedGraph<Vertex> G, List<Vertex> order){
+        for (var v : G.getVertexes()) {
+            v.color = COLOR.WHITE;
+            v.parent = null;
+        }
+        int time = 0;
+        for(var v : order){
+            if(v.color == COLOR.WHITE){
+                time = depthFirstSearchVisit(G, v, time);
+            }
+        }
+    }
+    private static LinkedGraph<Vertex> transposeGraph(LinkedGraph<Vertex> graph){
+        var new_graph = new LinkedGraph<Vertex>();
+        for(var v : graph.getVertexes()){
+            var neighbors = graph.getNeighbors(v);
+            for(var n : neighbors){
+                if(!new_graph.hasVertex(n)) { new_graph.putVertex(n); }
+                if(!new_graph.haveNeighbor(n, v)){ new_graph.putNeighbor(n, v); }
+            }
+        }
+        return new_graph;
     }
 }
