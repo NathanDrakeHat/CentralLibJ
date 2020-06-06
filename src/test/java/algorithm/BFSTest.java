@@ -1,7 +1,7 @@
 package algorithm;
 
 import org.junit.jupiter.api.Test;
-import tool.LinkedGraph;
+import tools.LinkedGraph;
 
 import static org.junit.jupiter.api.Assertions.*;
 

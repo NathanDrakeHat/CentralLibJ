@@ -1,4 +1,4 @@
-package tool;
+package tools;
 
 public class SimpleDate {
     public int year;

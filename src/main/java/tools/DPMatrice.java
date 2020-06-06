@@ -1,4 +1,4 @@
-package tool;
+package tools;
 
 
 public class DPMatrice<V> {//matrice for DP problem

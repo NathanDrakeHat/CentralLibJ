@@ -1,7 +1,7 @@
 package algorithm;
 
-import tool.SimpleDate;
-import tool.SingleLinkedNode;
+import tools.SimpleDate;
+import tools.SingleLinkedNode;
 
 import java.util.Random;
 
@@ -233,8 +233,9 @@ public class Sort {
         }
     }
 
-    @SuppressWarnings("unchecked")
+
     public static void bucketSort(double[] a){
+        @SuppressWarnings("unchecked")
         SingleLinkedNode<Double>[] b = (SingleLinkedNode<Double>[])new SingleLinkedNode[a.length];
         for(int i=0; i < b.length; i++){ b[i] = new SingleLinkedNode<>(); } // initialization
         for (double v : a) { //build bucket

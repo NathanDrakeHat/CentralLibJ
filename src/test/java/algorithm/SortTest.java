@@ -2,8 +2,7 @@ package algorithm;
 
 import java.util.Arrays;
 
-import algorithm.Sort;
-import tool.SimpleDate;
+import tools.SimpleDate;
 
 import static org.junit.jupiter.api.Assertions.*;
 

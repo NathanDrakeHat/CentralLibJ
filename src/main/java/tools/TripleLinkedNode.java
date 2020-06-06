@@ -1,4 +1,4 @@
-package tool;
+package tools;
 
 public class TripleLinkedNode<V> implements TripleLinks<TripleLinkedNode<V>>, Vessel<V>{
     private V content;

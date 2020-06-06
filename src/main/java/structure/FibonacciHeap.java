@@ -3,7 +3,7 @@ package structure;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import tool.IntegerPair;
+import tools.IntegerPair;
 
 public class FibonacciHeap<V> {
     protected Node root_list = null;

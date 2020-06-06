@@ -1,6 +1,6 @@
 package algorithm;
 
-import tool.LinkedGraph;
+import tools.LinkedGraph;
 
 public class DFS {
     // depth first search

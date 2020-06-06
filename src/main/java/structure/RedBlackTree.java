@@ -1,9 +1,7 @@
 package structure;
 
-import tool.DoubleLinkedNode;
-import tool.IntegerPair;
-import tool.DoubleLinks;
-import tool.TripleLinkedNode;
+import tools.IntegerPair;
+
 
 public class RedBlackTree<V> {
     enum COLOR{ RED, BLACK }
@@ -21,11 +19,9 @@ public class RedBlackTree<V> {
             content.setKey(key);
             color = COLOR.RED;
         }
-
         private ColorNode(COLOR color){
             this.color = color;
         }
-
         private ColorNode(int key, V val){
             content = new IntegerPair<>();
             color = COLOR.RED;
@@ -33,12 +29,11 @@ public class RedBlackTree<V> {
             content.setValue(val);
         }
 
-        public void setColor(COLOR color){ this.color = color; }
-
         public boolean isRed(){ return color == COLOR.RED; }
         public boolean isBlack(){ return color == COLOR.BLACK; }
 
         public COLOR getColor(){ return color; }
+        public void setColor(COLOR color){ this.color = color; }
 
         private void setRed(){ color = COLOR.RED; }
         private void setBlack() { color = COLOR.BLACK; }

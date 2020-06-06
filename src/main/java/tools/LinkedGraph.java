@@ -1,4 +1,4 @@
-package tool;
+package tools;
 
 import java.util.*;
 

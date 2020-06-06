@@ -1,4 +1,4 @@
-package tool;
+package tools;
 
 public interface Vessel<V> {
     V getContent();
