@@ -1,6 +1,6 @@
 package tools;
 
-public class SingleLinkedNode<V> implements SingleLink<SingleLinkedNode<V>>, Vessel<V> {
+public class SingleLinkedNode<V>  {
     private V val ;
     private SingleLinkedNode<V> parent;
 
@@ -10,9 +10,9 @@ public class SingleLinkedNode<V> implements SingleLink<SingleLinkedNode<V>>, Ves
         this.parent = null;
     }
 
-    @Override public SingleLinkedNode<V> getParent(){ return this.parent;}
-    @Override public void setParent(SingleLinkedNode<V> p) { this.parent = p; }
+    public SingleLinkedNode<V> getParent(){ return this.parent;}
+    public void setParent(SingleLinkedNode<V> p) { this.parent = p; }
 
-    @Override public V getContent(){ return this.val; }
-    @Override public void setContent(V val) { this.val = val; }
+    public V getContent(){ return this.val; }
+    public void setContent(V val) { this.val = val; }
 }
