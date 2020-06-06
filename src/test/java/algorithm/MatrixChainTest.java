@@ -1,5 +1,6 @@
 package algorithm;
 
+import algorithm.DP.MatrixChain;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

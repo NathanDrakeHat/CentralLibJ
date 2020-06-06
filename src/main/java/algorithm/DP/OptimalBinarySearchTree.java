@@ -1,4 +1,4 @@
-package algorithm;
+package algorithm.DP;
 
 public class OptimalBinarySearchTree {
     // dynamic programming

@@ -1,4 +1,4 @@
-package algorithm;
+package algorithm.DP;
 
 
 public class LCS { // longest common sequence problem, biological problem

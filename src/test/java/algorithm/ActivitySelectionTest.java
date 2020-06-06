@@ -2,8 +2,8 @@ package algorithm;
 
 import org.junit.jupiter.api.Test;
 
-import static algorithm.ActivitySelection.greedyActivitySelector;
-import static algorithm.ActivitySelection.recursiveActivitySelector;
+import static algorithm.DP.ActivitySelection.greedyActivitySelector;
+import static algorithm.DP.ActivitySelection.recursiveActivitySelector;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ActivitySelectionTest {

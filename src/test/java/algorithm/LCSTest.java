@@ -2,7 +2,7 @@ package algorithm;
 
 import org.junit.jupiter.api.Test;
 
-import static algorithm.LCS.solve;
+import static algorithm.DP.LCS.solve;
 import static org.junit.jupiter.api.Assertions.*;
 
 class LCSTest {
