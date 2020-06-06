@@ -9,12 +9,12 @@ public class DFS {
     // depth first search
     enum COLOR{ WHITE, GRAY, BLACK}
 
-    public static class Vertex{
+    public static class Vertex implements Comparable<Vertex>{
         private Vertex parent;
         private COLOR color;
         public int d; //discovered time
         public int f; // finished time
-        private final String name;
+        private final String name; // this could changed into generic
 
         public Vertex(String name){ this.name = name; }
 
@@ -22,11 +22,11 @@ public class DFS {
 
         public boolean equals(Vertex other){ return name.equals(other.getName()); }
 
-        public int hashCode(){
-            return name.hashCode();
-        }
+        @Override public int hashCode(){ return name.hashCode(); }
 
-        public String toString(){ return name; }
+        @Override public String toString(){ return name; }
+
+        @Override public int compareTo(Vertex other) {return this.name.compareTo(other.name); }
     }
 
     public static void depthFirstSearch(LinkedGraph<Vertex> G) {
@@ -69,4 +69,7 @@ public class DFS {
         // 3.call depthFirstSearch on G^T in the order of decreasing f
         // 4.output forest formed by line 3
     //}
+    public static void stronglyConnectedComponents(LinkedGraph<Vertex> G){
+        var l = topologicalSort(G);
+    }
 }

@@ -2,19 +2,14 @@ package tools;
 
 import java.util.*;
 
-public class LinkedGraph<V> {
-    Map<V, List<V>> map = new HashMap<>();
+public class LinkedGraph<V extends Comparable<V>> {
+    Map<V, List<V>> map = new TreeMap<>();
 
     public LinkedGraph(){}
-    public LinkedGraph(V[] vertexes) {
-        for (var v : vertexes)
-            this.map.put(v, new ArrayList<>());
+    public LinkedGraph(V[] vertexes) { for(var v : vertexes) { this.map.put(v, new ArrayList<>());} }
+    public LinkedGraph(Set<V> set){ for(var i : set) { map.put(i, new ArrayList<>()); } }
 
-    }
-
-    public Set<V> getVertexes() {
-        return map.keySet();
-    }
+    public Set<V> getVertexes() { return map.keySet(); }
 
     public List<V> getNeighbors(V v){ return map.get(v); }
     public void setNeighbors(V v, V[] vertexes){

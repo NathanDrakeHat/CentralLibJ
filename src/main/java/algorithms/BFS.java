@@ -7,18 +7,22 @@ import java.util.*;
 public class BFS {
     // breath first search
     enum COLOR{ WHITE, GRAY, BLACK}
-    public static class Vertex{
+    public static class Vertex implements Comparable<Vertex>{
         private Vertex parent;
         private COLOR color;
         private double d; //distance
-        private final char name;
+        private final char name; // generic
 
         Vertex(char name){ this.name = name; }
 
         public boolean equals(Vertex other){ return name == other.name; }
 
-        public int hashCode(){
+        @Override public int hashCode(){
             return name;
+        }
+
+        @Override public int compareTo(Vertex other) {
+            return Character.compare(this.name, other.name);
         }
     }
 
