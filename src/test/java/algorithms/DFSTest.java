@@ -3,6 +3,9 @@ package algorithms;
 import org.junit.jupiter.api.Test;
 import tools.LinkedGraph;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class DFSTest {
@@ -80,7 +83,7 @@ class DFSTest {
         boolean flag = true;
         for(int i = 1; i < l.size(); i++){
             for(int j = 0; j < i; j++){
-                flag = resursiveSearch(l.get(j), l.get(i), graph);
+                flag = recursiveSearch(l.get(j), l.get(i), graph);
                 if(!flag) break;
             }
             if(!flag) break;
@@ -88,17 +91,32 @@ class DFSTest {
         assertTrue(flag);
     }
 
-    boolean resursiveSearch(DFS.Vertex target, DFS.Vertex current, LinkedGraph<DFS.Vertex> G){
+    boolean recursiveSearch(DFS.Vertex target, DFS.Vertex current, LinkedGraph<DFS.Vertex> G){
         if(current.equals(target)) return false;
         var neighbors = G.getNeighbors(current);
         if(neighbors.isEmpty()) return true;
         else{
             boolean t = true;
             for(var i : neighbors){
-                t = resursiveSearch(target, i, G);
+                t = recursiveSearch(target, i, G);
                 if(!t) break;
             }
             return t;
         }
+    }
+
+    @Test
+    void recursiveSearchTest(){
+        var graph = Data.makeTopographicalDemo();
+        boolean flag = true;
+        List<DFS.Vertex> t = new ArrayList<>(graph.getVertexes());
+        for(int i = 1; i < t.size(); i++){
+            for(int j = 0; j < i; j++){
+                flag = recursiveSearch(t.get(j), t.get(i), graph);
+                if(!flag) break;
+            }
+            if(!flag) break;
+        }
+        assertFalse(flag);
     }
 }
