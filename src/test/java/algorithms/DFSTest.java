@@ -79,11 +79,26 @@ class DFSTest {
         var l = DFS.topologicalSort(graph);
         boolean flag = true;
         for(int i = 1; i < l.size(); i++){
-            if(l.get(i).f > l.get(i - 1).f){
-                flag = false;
-                break;
+            for(int j = 0; j < i; j++){
+                flag = resursiveSearch(l.get(j), l.get(i), graph);
+                if(!flag) break;
             }
+            if(!flag) break;
         }
         assertTrue(flag);
+    }
+
+    boolean resursiveSearch(DFS.Vertex target, DFS.Vertex current, LinkedGraph<DFS.Vertex> G){
+        if(current.equals(target)) return false;
+        var neighbors = G.getNeighbors(current);
+        if(neighbors.isEmpty()) return true;
+        else{
+            boolean t = true;
+            for(var i : neighbors){
+                t = resursiveSearch(target, i, G);
+                if(!t) break;
+            }
+            return t;
+        }
     }
 }
