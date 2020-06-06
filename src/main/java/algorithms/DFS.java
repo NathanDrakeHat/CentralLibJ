@@ -2,6 +2,11 @@ package algorithms;
 
 import tools.LinkedGraph;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
 public class DFS {
     // depth first search
     enum COLOR{ WHITE, GRAY, BLACK}
@@ -11,17 +16,19 @@ public class DFS {
         private COLOR color;
         public int d; //discovered time
         public int f; // finished time
-        private final Character name;
+        private final String name;
 
-        Vertex(char name){ this.name = name; }
+        public Vertex(String name){ this.name = name; }
 
-        public char getName() {return name;}
+        public String getName() {return name;}
 
-        public boolean equals(Vertex other){ return name == other.getName(); }
+        public boolean equals(Vertex other){ return name.equals(other.getName()); }
 
         public int hashCode(){
             return name.hashCode();
         }
+
+        public String toString(){ return name; }
     }
 
     public static void depthFirstSearch(LinkedGraph<Vertex> G) {
@@ -52,10 +59,12 @@ public class DFS {
         return time;
     }
 
-    //public static void typologicalSort(LinkedGraph G){
-        // 1.call depthFirstSearch to compute f
-        // 2.sort f in descend order
-    //}
+    public static List<Vertex> topologicalSort(LinkedGraph<Vertex> G){
+        depthFirstSearch(G);
+        List<Vertex> l = new ArrayList<>(G.getVertexes());
+        l.sort((o1, o2) -> o2.f - o1.f); // descend order
+        return l;
+    }
     //public static void stronglyConnectedComponents(LinkedGraph G){
         // 1.call depthFirstSearch on G to compute f
         // 2.compute G^T which is reverse directed G

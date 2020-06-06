@@ -13,7 +13,7 @@ class DFSTest {
 
             var vs = new DFS.Vertex[6];
             for(int i = 0; i < 6; i++){
-                vs[i] = new DFS.Vertex(names.charAt(i));
+                vs[i] = new DFS.Vertex(String.valueOf(names.charAt(i)));
             }
             var G = new LinkedGraph<>(vs);
             G.putNeighbor(vs[0], vs[1]);
@@ -36,10 +36,34 @@ class DFSTest {
             return G;
         }
         public static int[][] res = new int[][] {{1, 2, 9, 4, 3, 10}, {8, 7, 12, 5, 6, 11}};
+
+        public static LinkedGraph<DFS.Vertex> makeTopographicalDemo(){
+            DFS.Vertex[] A = new DFS.Vertex[9];
+            String t = "undershorts,pants,belt,shirt,tie,jacket,socks,shoes,watch";
+            var names = t.split(",");
+            for(int i = 0; i < 9; i++) { A[i] = new DFS.Vertex(names[i]); }
+            LinkedGraph<DFS.Vertex> G = new LinkedGraph<>(A);
+            G.putNeighbor(A[0], A[1]);
+            G.putNeighbor(A[0], A[6]);
+
+            G.putNeighbor(A[1], A[2]);
+            G.putNeighbor(A[1], A[6]);
+
+            G.putNeighbor(A[2], A[5]);
+
+            G.putNeighbor(A[3], A[2]);
+            G.putNeighbor(A[3], A[4]);
+
+            G.putNeighbor(A[4], A[5]);
+
+            G.putNeighbor(A[6], A[7]);
+
+            return G;
+        }
     }
 
     @Test
-    void depthFirstSearch() {
+    void depthFirstSearchTest() {
         var G = Data.makeGraph();
         DFS.depthFirstSearch(G);
         int idx = 0;
@@ -47,5 +71,19 @@ class DFSTest {
             assertEquals(v.d, Data.res[0][idx]);
             assertEquals(v.f, Data.res[1][idx++]);
         }
+    }
+
+    @Test
+    void topologicalSortTest(){
+        var graph = Data.makeTopographicalDemo();
+        var l = DFS.topologicalSort(graph);
+        boolean flag = true;
+        for(int i = 1; i < l.size(); i++){
+            if(l.get(i).f > l.get(i - 1).f){
+                flag = false;
+                break;
+            }
+        }
+        assertTrue(flag);
     }
 }

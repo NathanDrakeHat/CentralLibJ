@@ -8,7 +8,7 @@ public class LinkedGraph<V> {
     public LinkedGraph(){}
     public LinkedGraph(V[] vertexes) {
         for (var v : vertexes)
-            this.map.put(v, null);
+            this.map.put(v, new ArrayList<>());
 
     }
 
@@ -43,6 +43,7 @@ public class LinkedGraph<V> {
             ns.add(n);
         }
     }
+    public boolean haveNeighbor(V a, V n) { return map.get(a).contains(n); }
     public void removeNeighbor(V v, V n){ map.get(v).remove(n); }
 
 }
