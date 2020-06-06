@@ -1,12 +1,8 @@
 package tool;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 
 public class DPMatrice<V> {//matrice for DP problem
-    private Object[][] matrice = null;
+    private final Object[][] matrice;
 
     public DPMatrice(int size) {
         matrice = new Object[size][];
