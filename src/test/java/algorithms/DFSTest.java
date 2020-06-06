@@ -2,7 +2,6 @@ package algorithms;
 
 import org.junit.jupiter.api.Test;
 import tools.LinkedGraph;
-
 import java.util.ArrayList;
 import java.util.List;
 
