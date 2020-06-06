@@ -1,6 +1,7 @@
 package algorithm;
 
 import tool.SimpleDate;
+import tool.SingleLinkedNode;
 
 import java.util.Random;
 
@@ -232,70 +233,51 @@ public class Sort {
         }
     }
 
-    private static class SingleLinkedNode{
-        private double val ;
-        private SingleLinkedNode next;
-
-        SingleLinkedNode(){}
-
-        SingleLinkedNode(double val){
-            this.val = val;
-            this.next = null;
-        }
-
-        public SingleLinkedNode next(){ return this.next;}
-
-        public void setNext(SingleLinkedNode n){ this.next = n; }
-
-        public double value(){ return this.val; }
-
-        public void setValue(double val) { this.val = val; }
-
-    }
+    @SuppressWarnings("unchecked")
     public static void bucketSort(double[] a){
-        SingleLinkedNode[] b = new SingleLinkedNode[a.length];
-        for(int i=0; i < b.length; i++){ b[i] = new SingleLinkedNode(); } // initialization
+        SingleLinkedNode<Double>[] b = (SingleLinkedNode<Double>[])new SingleLinkedNode[a.length];
+        for(int i=0; i < b.length; i++){ b[i] = new SingleLinkedNode<>(); } // initialization
         for (double v : a) { //build bucket
-            SingleLinkedNode handle = b[(int) (a.length * v)];
-            while (handle.next() != null) {
-                handle = handle.next();
+            SingleLinkedNode<Double> handle = b[(int) (a.length * v)];
+            while (handle.getParent() != null) {
+                handle = handle.getParent();
             }
-            SingleLinkedNode t = new SingleLinkedNode(v);
-            handle.setNext(t);
+            SingleLinkedNode<Double> t = new SingleLinkedNode<>(v);
+            handle.setParent(t);
         }
         //sort
         for(int i=0; i < a.length; i++){
-            SingleLinkedNode handle = b[i].next();
+            var handle = b[i].getParent();
             if(handle == null) { continue; } // zero elem
-            SingleLinkedNode itr = handle.next();
+            var itr = handle.getParent();
             if (itr == null) { continue; } // one elem already sorted
             while(itr != null) {
-                double min_value = handle.value();
-                SingleLinkedNode min_node = handle;
+                double min_value = handle.getContent();
+                var min_node = handle;
                 while (itr != null) {
-                    if (itr.value() <= min_value) {
-                        min_value = itr.value();
+                    if (itr.getContent() <= min_value) {
+                        min_value = itr.getContent();
                         min_node = itr;
                     }
-                    itr = itr.next();
+                    itr = itr.getParent();
                 }
-                double t = min_node.value();
-                min_node.setValue(handle.value());
-                handle.setValue(t);
-                handle = handle.next();
-                itr = handle.next();
+                double t = min_node.getContent();
+                min_node.setContent(handle.getContent());
+                handle.setContent(t);
+                handle = handle.getParent();
+                itr = handle.getParent();
             }
         }
         //get result
         int idx = 0;
-        for (SingleLinkedNode node : b) {
-            if (node.next() == null) {
+        for (var node : b) {
+            if (node.getParent() == null) {
                 continue;
             } // zero elem continue
-            SingleLinkedNode handle = node.next();
+            var handle = node.getParent();
             while (handle != null) {
-                a[idx++] = handle.value();
-                handle = handle.next();
+                a[idx++] = handle.getContent();
+                handle = handle.getParent();
             }
         }
     }

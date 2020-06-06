@@ -1,4 +1,4 @@
-package structue;
+package structure;
 
 import org.junit.jupiter.api.Test;
 

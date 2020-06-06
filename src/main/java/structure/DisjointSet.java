@@ -1,4 +1,4 @@
-package structue;
+package structure;
 
 public class DisjointSet <V>{
     private DisjointSet <V> parent;

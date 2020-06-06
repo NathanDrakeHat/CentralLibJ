@@ -1,4 +1,4 @@
-package structue;
+package structure;
 
 public class OrderStatisticTree{ // ger rank of node from left to right
     private ColorSizeNode root = null;

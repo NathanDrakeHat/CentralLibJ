@@ -1,24 +1,24 @@
-package structue;
+package structure;
 
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class OrderStatisticTreeTest {
+class RedBlackTreeTest {
 
     @Test
-    void testCase1() {
-        OrderStatisticTree RBtree = new OrderStatisticTree();
-        RBtree.insertKey(11);
-        RBtree.insertKey(2);
-        RBtree.insertKey(14);
-        RBtree.insertKey(1);
-        RBtree.insertKey(7);
-        RBtree.insertKey(15);
-        RBtree.insertKey(5);
-        RBtree.insertKey(8);
-        RBtree.insertKey(4);
-        OrderStatisticTree.ColorSizeNode root = RBtree.getRoot();
+    public void RedBlackTreeTestCase(){
+        var RBtree = new RedBlackTree<Integer>();
+        RBtree.insert(11, 0);
+        RBtree.insert(2, 0);
+        RBtree.insert(14, 0);
+        RBtree.insert(1, 0);
+        RBtree.insert(7, 0);
+        RBtree.insert(15, 0);
+        RBtree.insert(5, 0);
+        RBtree.insert(8, 0);
+        RBtree.insert(4, 0);
+        var root = RBtree.getRoot();
         assertEquals(root.getKey(), 7); // 7
         assertEquals(root.getLeft().getKey(), 2); // 2
         assertEquals(root.getRight().getKey(), 11); // 11

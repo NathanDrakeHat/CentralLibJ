@@ -1,4 +1,4 @@
-package structue;
+package structure;
 
 public class ProtoVEBTree {
     //keys are not duplicate and confined in a range

@@ -8,3 +8,5 @@ src/main/java/Demo.java
 /target
 /target/*
 src/main/resources/
+*.txt
+src/backup/

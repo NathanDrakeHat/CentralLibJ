@@ -1,4 +1,4 @@
-package structue;
+package structure;
 
 public class VEBTree {
     //keys are not duplicate and confined in a range

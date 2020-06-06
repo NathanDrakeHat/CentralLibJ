@@ -1,4 +1,4 @@
-package algorithm;
+package algorithm.DP;
 
 import org.junit.jupiter.api.Test;
 

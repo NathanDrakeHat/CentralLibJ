@@ -1,17 +1,20 @@
-package structue;
+package structure;
 
+import tool.DoubleLinkedNode;
 import tool.IntegerPair;
+import tool.DoubleLinks;
+import tool.TripleLinkedNode;
 
 public class RedBlackTree<V> {
     enum COLOR{ RED, BLACK }
     private ColorNode root = null;
     private final ColorNode sentinel = new ColorNode( COLOR.BLACK);// sentinel: denote leaf and parent of root
-    public class ColorNode{
-        private IntegerPair<V> content = null;
+    public class ColorNode extends TripleLinkedNode<IntegerPair<V>> {
+        private IntegerPair<V> content;
         private COLOR color;
-        private ColorNode parent = null;
-        private ColorNode left = null;
-        private ColorNode right = null;
+        private ColorNode parent;
+        private ColorNode left;
+        private ColorNode right;
 
         private ColorNode(int key){
             content = new IntegerPair<V>();
@@ -33,29 +36,23 @@ public class RedBlackTree<V> {
         public void setColor(COLOR color){ this.color = color; }
 
         public boolean isRed(){ return color == COLOR.RED; }
-
         public boolean isBlack(){ return color == COLOR.BLACK; }
 
         public COLOR getColor(){ return color; }
 
         private void setRed(){ color = COLOR.RED; }
-
         private void setBlack() { color = COLOR.BLACK; }
 
         public V getValue(){ return content.getValue(); }
-
         public int getKey() { return content.getKey(); }
 
         public ColorNode getParent(){ return parent; }
-
         private void setParent(ColorNode parent){ this.parent = parent; }
 
         public ColorNode getLeft(){ return left; }
-
         private void setLeft(ColorNode left){ this.left = left; }
 
         public ColorNode getRight(){ return right; }
-
         private void setRight(ColorNode right){ this.right = right; }
     }
 

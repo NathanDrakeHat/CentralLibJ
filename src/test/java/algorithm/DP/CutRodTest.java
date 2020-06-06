@@ -1,4 +1,4 @@
-package algorithm;
+package algorithm.DP;
 
 import algorithm.DP.CutRod;
 import org.junit.jupiter.api.Test;
