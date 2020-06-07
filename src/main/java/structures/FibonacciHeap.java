@@ -107,13 +107,8 @@ public class FibonacciHeap<V> {
         return z.content;
     }
     protected void consolidate(){
-//        List<Node> A = new ArrayList<>();
-//        for(int i=0;i < upperBound()+1; i++){
-//            A.add(null);
-//        }
-        var ncls = Node.class;
         @SuppressWarnings("unchecked")
-        Node[] A = (Node[])Array.newInstance(ncls, upperBound()+1);
+        Node[] A = (Node[])Array.newInstance(Node.class, upperBound()+1);
         var w = root_list;
         if(w == null) return;
         var dict = new HashSet<Node>(32);
