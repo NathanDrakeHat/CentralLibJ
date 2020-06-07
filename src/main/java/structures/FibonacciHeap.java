@@ -1,8 +1,7 @@
 package structures;
 
-import java.util.ArrayList;
+import java.lang.reflect.Array;
 import java.util.HashSet;
-import java.util.List;
 import tools.IntegerPair;
 
 public class FibonacciHeap<V> {
@@ -19,10 +18,10 @@ public class FibonacciHeap<V> {
 
         protected Node(int key, V val) { content = new IntegerPair<>(key, val); }
         
-        protected Node(int key) { content = new IntegerPair<V>(key);}
+        protected Node(int key) { content = new IntegerPair<>(key);}
 
         protected Node(int key, boolean m){
-            this.content = new IntegerPair<V>(key);
+            this.content = new IntegerPair<>(key);
             mark = m;
         }
 
@@ -108,38 +107,40 @@ public class FibonacciHeap<V> {
         return z.content;
     }
     protected void consolidate(){
-        List<Node> A = new ArrayList<>();
-        for(int i=0;i < upperBound()+1; i++){
-            A.add(null);
-        }
+//        List<Node> A = new ArrayList<>();
+//        for(int i=0;i < upperBound()+1; i++){
+//            A.add(null);
+//        }
+        var ncls = Node.class;
+        @SuppressWarnings("unchecked")
+        Node[] A = (Node[])Array.newInstance(ncls, upperBound()+1);
         var w = root_list;
         if(w == null) return;
         var dict = new HashSet<Node>(32);
-        do{ // for w in root list>>
+        do{ // for w in root list start
             var x = w; // x current node
             var next = x.right;
             int d = x.degree;
-            while(A.get(d) != null){
-                var y = A.get(d); // y stored node
+            while(A[d] != null){
+                var y = A[d]; // y stored node
                 if(x.compareTo(y) > 0) { // exchange pointer
                     var t = x;
                     x = y;
                     y = t;
                 }
                 linkTo(y, x);
-                A.set(d, null);
+                A[d] = null;
                 d++;
             }
-            A.set(d, x);
-            // for w in root list<<
+            A[d] = x;
+            // for w in root list end
             dict.add(w);
             w = next;
-
         }while(!dict.contains(w));
         dict.clear();
         root_list = null;
         for(int i = 0; i <= upperBound(); i++){
-            var t = A.get(i);
+            var t = A[i];
             if(t != null){
                 if(root_list == null){
                     t.right = t;
@@ -194,14 +195,14 @@ public class FibonacciHeap<V> {
             }
         }
     }
-    protected void cut(Node x, Node y){
-        if(x == null & y == null) throw new IllegalArgumentException("Two arg is null");
-        else if(x == null) throw new IllegalArgumentException("First arg is null");
-        else if(y == null ) throw new IllegalArgumentException("Second arg is null.");
-        removeNodeFromList(x);
-        y.degree--;
-        addNodeToList(x, rootList());
-        x.mark = false;
+    protected void cut(Node a, Node b){
+        if(a == null & b == null) throw new IllegalArgumentException("Two arg is null");
+        else if(a == null) throw new IllegalArgumentException("First arg is null");
+        else if(b == null ) throw new IllegalArgumentException("Second arg is null.");
+        removeNodeFromList(a);
+        b.degree--;
+        addNodeToList(a, rootList());
+        a.mark = false;
     }
     protected void cascadingCut(Node y){
         if(y == null) throw new IllegalArgumentException("Null arg.");
