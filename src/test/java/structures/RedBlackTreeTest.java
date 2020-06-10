@@ -8,7 +8,7 @@ class RedBlackTreeTest {
 
     @Test
     public void RedBlackTreeTestCase(){
-        var RBtree = new RedBlackTree<Integer>();
+        var RBtree = new RedBlackTree<Integer, Integer>();
         RBtree.insert(11, 0);
         RBtree.insert(2, 0);
         RBtree.insert(14, 0);

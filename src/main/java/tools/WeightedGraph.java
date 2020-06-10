@@ -104,9 +104,13 @@ public class WeightedGraph<V extends Comparable<V>>  {
         return edge_map.get(vertex).remove(new Edge(vertex,neighbor,weight));
     }
 
-    public Set<Edge> getEdgesAt(V vertex) { return edge_map.get(vertex); }
+    public Set<Edge> getEdgesAt(V vertex) {
+        return new TreeSet<>(edge_map.computeIfAbsent(vertex, k -> new TreeSet<>()));
+    }
 
-    public Set<V> getVertexes(){ return edge_map.keySet(); }
+    public Set<V> getVertexes(){
+        return new HashSet<>(edge_map.keySet());
+    }
     
     public Set<Edge> getEdges(){
         Set<Edge> res = new TreeSet<>();

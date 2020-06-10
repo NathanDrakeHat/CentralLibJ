@@ -12,11 +12,11 @@ public class LinkedGraph<V extends Comparable<V>> {
     }
     public LinkedGraph(Set<V> set){ for(var i : set) { vertex_map.put(i, new TreeSet<>()); } }
 
-    public Set<V> getVertexes() { return vertex_map.keySet(); }
+    public Set<V> getVertexes() { return new TreeSet<>(vertex_map.keySet()); }
     public void putVertex(V v){ vertex_map.put(v, new TreeSet<>()); }
     public boolean hasVertex(V v) { return vertex_map.containsKey(v); }
 
-    public Set<V> getNeighbors(V v){ return vertex_map.get(v); }
+    public Set<V> getNeighbors(V v){ return new TreeSet<>(vertex_map.get(v)); }
     public void setNeighbors(V v, V[] vertexes){
         Set<V> ns = vertex_map.get(v);
         if(ns != null) {

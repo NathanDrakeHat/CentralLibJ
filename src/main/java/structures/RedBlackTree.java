@@ -2,27 +2,23 @@ package structures;
 
 import tools.IntegerPair;
 
-public class RedBlackTree<V> {
+public class RedBlackTree<K extends Comparable<K>, V> {
     enum COLOR{ RED, BLACK }
     private ColorNode root = null;
     private final ColorNode sentinel = new ColorNode( COLOR.BLACK);// sentinel: denote leaf and parent of root
     public class ColorNode{
-        private IntegerPair<V> content;
+        private Pair<K,V> content;
         private COLOR color;
         private ColorNode parent;
         private ColorNode left;
         private ColorNode right;
 
-        private ColorNode(int key){
-            content = new IntegerPair<V>();
-            content.setKey(key);
-            color = COLOR.RED;
-        }
+
         private ColorNode(COLOR color){
             this.color = color;
         }
-        private ColorNode(int key, V val){
-            content = new IntegerPair<>();
+        private ColorNode(K key, V val){
+            content = new Pair<>();
             color = COLOR.RED;
             content.setKey(key);
             content.setValue(val);
@@ -38,7 +34,7 @@ public class RedBlackTree<V> {
         private void setBlack() { color = COLOR.BLACK; }
 
         public V getValue(){ return content.getValue(); }
-        public int getKey() { return content.getKey(); }
+        public K getKey() { return content.getKey(); }
 
         public ColorNode getParent(){ return parent; }
         private void setParent(ColorNode parent){ this.parent = parent; }
@@ -48,6 +44,21 @@ public class RedBlackTree<V> {
 
         public ColorNode getRight(){ return right; }
         private void setRight(ColorNode right){ this.right = right; }
+    }
+    public static class Pair<A extends Comparable<A>, B>{
+        A key;
+        B value;
+        public Pair(A key, B value){
+            this.key = key;
+            this.value = value;
+        }
+        public Pair(){}
+
+        public A getKey() { return key; }
+        public void setKey(A key) { this.key = key; }
+
+        public B getValue() { return value; }
+        public void setValue(B value) { this.value = value; }
     }
 
     public ColorNode getMinimum(){
@@ -109,14 +120,14 @@ public class RedBlackTree<V> {
             var ptr = getRoot();
             while(ptr != getSentinel()){
                 store = ptr;
-                if(n.getKey() < ptr.getKey()){
+                if(n.getKey().compareTo(ptr.getKey()) < 0){
                     ptr = ptr.getLeft();
                 }else{
                     ptr = ptr.getRight();
                 }
             }
             n.setParent(store);
-            if(n.getKey() < store.getKey()){
+            if(n.getKey().compareTo(store.getKey()) < 0){
                 store.setLeft(n);
             }else{
                 store.setRight(n);
@@ -126,7 +137,7 @@ public class RedBlackTree<V> {
         }
         insertFixUp(n);
     }
-    public void insert(int key, V val){ insert(new ColorNode(key, val)); }
+    public void insert(K key, V val){ insert(new ColorNode(key, val)); }
     private void insertFixUp(ColorNode ptr){
         while(ptr.getParent().isRed()){
             if(ptr.getParent() == ptr.getParent().getParent().getLeft()){
@@ -264,18 +275,18 @@ public class RedBlackTree<V> {
         }
     }
 
-    public ColorNode search(int key){
+    public ColorNode search(K key){
         if(getRoot() == null | getRoot() == getSentinel()){
             return null;
         }
         return search(getRoot(), key);
     }
-    private ColorNode search(ColorNode n, int key){
-        if(n.getKey() == key){
+    private ColorNode search(ColorNode n, K key){
+        if(n.getKey().compareTo(key) == 0){
             return n;
-        }else if(key < n.getKey() & n.getLeft() != getSentinel()){
+        }else if(key.compareTo(n.getKey()) < 0 & n.getLeft() != getSentinel()){
             return search(n.getLeft(), key);
-        }else if(key > n.getKey() & n.getRight() != getSentinel()){
+        }else if(key.compareTo(n.getKey()) > 0 & n.getRight() != getSentinel()){
             return search(n.getRight(), key);
         }
         return null;
