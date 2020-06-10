@@ -1,4 +1,4 @@
-package algorithms;
+package algorithms.graph;
 
 import tools.LinkedGraph;
 import java.util.ArrayList;

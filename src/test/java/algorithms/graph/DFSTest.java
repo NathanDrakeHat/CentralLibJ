@@ -1,5 +1,6 @@
-package algorithms;
+package algorithms.graph;
 
+import algorithms.graph.DFS;
 import org.junit.jupiter.api.Test;
 import tools.LinkedGraph;
 import java.util.ArrayList;

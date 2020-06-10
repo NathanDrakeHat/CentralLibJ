@@ -1,5 +1,6 @@
-package algorithms;
+package algorithms.graph;
 
+import algorithms.graph.BFS;
 import org.junit.jupiter.api.Test;
 import tools.LinkedGraph;
 
