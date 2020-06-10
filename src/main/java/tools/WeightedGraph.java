@@ -1,6 +1,8 @@
 package tools;
 
 import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class WeightedGraph<V extends Comparable<V>> extends LinkedGraph<V> {
     public class Edge implements Comparable<Edge> {
@@ -42,6 +44,11 @@ public class WeightedGraph<V extends Comparable<V>> extends LinkedGraph<V> {
         public int compareTo(Edge other){
             return weight - other.weight;
         }
+
+        @Override
+        public String toString(){
+            return String.format("%s %s %d",one_vertex,another_vertex,weight);
+        }
     }
     Map<V, List<Edge>> edge_map = new HashMap<>();
 
@@ -77,20 +84,38 @@ public class WeightedGraph<V extends Comparable<V>> extends LinkedGraph<V> {
     }
 
     public void putNeighborPair(V v, V n, int w){
-        addOneNeighbor(v, n, w);
-        addOneNeighbor(n ,v, w);
+        super.addOneNeighbor(v, n);
+        var edges_list = edge_map.get(v);
+        var edge_t = new Edge(v, n, w);
+        if(edges_list != null){
+            if(!edges_list.contains(edge_t)) edges_list.add(edge_t);
+        }else{
+            edges_list = new ArrayList<>();
+            edge_map.put(v, edges_list);
+            edges_list.add(edge_t);
+        }
+
+        super.addOneNeighbor(n, v);
+        edges_list = edge_map.get(n);
+        if(edges_list != null){
+            if(!edges_list.contains(edge_t)) edges_list.add(edge_t);
+        }else{
+            edges_list = new ArrayList<>();
+            edge_map.put(n, edges_list);
+            edges_list.add(edge_t);
+        }
     }
 
     public void addOneNeighbor(V v, V n, int w){
         super.addOneNeighbor(v, n);
         var edges_list = edge_map.get(v);
+        var edge_t = new Edge(v, n, w);
         if(edges_list != null){
-            var edge_t = new Edge(v, n, w);
             if(!edges_list.contains(edge_t)) edges_list.add(edge_t);
         }else{
             edges_list = new ArrayList<>();
             edge_map.put(v, edges_list);
-            edges_list.add(new Edge(v, n ,w));
+            edges_list.add(edge_t);
         }
     }
     @Override
@@ -102,10 +127,10 @@ public class WeightedGraph<V extends Comparable<V>> extends LinkedGraph<V> {
     public List<Edge> getEdgesAt(V v) { return edge_map.get(v); }
 
     public List<Edge> getEdges(){
-        List<Edge> res = new ArrayList<>();
+        List<Edge> edges_list = new ArrayList<>();
         for(var v : getVertexes()){
-            res.addAll(getEdgesAt(v));
+            edges_list.addAll(getEdgesAt(v));
         }
-        return res;
+        return edges_list.stream().distinct().collect(Collectors.toList());
     }
 }
