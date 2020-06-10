@@ -7,7 +7,7 @@ public class RedBlackTree<K extends Comparable<K>, V> {
     enum COLOR{ RED, BLACK }
     private ColorNode root = null;
     private final ColorNode sentinel = new ColorNode( COLOR.BLACK);// sentinel: denote leaf and parent of root
-    private class ColorNode{
+    protected class ColorNode{
         private KeyValuePair<K,V> content;
         private COLOR color;
         private ColorNode parent;
@@ -97,7 +97,7 @@ public class RedBlackTree<K extends Comparable<K>, V> {
         root = r;
         root.setParent(getSentinel());
     }
-    private ColorNode getRoot() { return root; }
+    protected ColorNode getRoot() { return root; }
 
     public void printTreeInLine(){ // inorder print
         if(getRoot() == null | getSentinel() == getRoot()){
@@ -193,9 +193,7 @@ public class RedBlackTree<K extends Comparable<K>, V> {
         getRoot().setBlack();
     }
 
-    public void delete(K key){
-        delete(search(getRoot(), key));
-    }
+    public void delete(K key){ delete(search(getRoot(), key)); }
     private void delete(ColorNode target) {
         if(target == null | target == getSentinel()){
             throw new NoSuchElementException("null tree");
