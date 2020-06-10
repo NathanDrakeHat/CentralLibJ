@@ -42,14 +42,12 @@ public class MST {
         public void setParent(Vertex r) { this.parent = r; }
 
         @Override
-        public String toString(){
-            return name;
-        }
+        public String toString(){ return String.format("(MST vertex) %s", name); }
         
     }
 
-    public static List<WeightedGraph<Vertex>.Edge> algorithmKruskal(WeightedGraph<Vertex> graph){
-        List<WeightedGraph<Vertex>.Edge> res = new ArrayList<>();
+    public static Set<WeightedGraph<Vertex>.Edge> algorithmKruskal(WeightedGraph<Vertex> graph){
+        Set<WeightedGraph<Vertex>.Edge> res = new HashSet<>();
         var edges_list = graph.getEdges();
         Collections.sort(edges_list);
         for(var edge : edges_list){

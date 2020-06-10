@@ -41,14 +41,13 @@ public class WeightedGraph<V extends Comparable<V>> extends LinkedGraph<V> {
         public int getWeight() { return weight; }
 
         @Override
-        public int compareTo(Edge other){
-            return weight - other.weight;
-        }
+        public int compareTo(Edge other){ return weight - other.weight; }
 
         @Override
-        public String toString(){
-            return String.format("%s %s %d",one_vertex,another_vertex,weight);
-        }
+        public String toString(){ return String.format("edge(%s, %s), weight:%d",one_vertex,another_vertex,weight); }
+
+        @Override
+        public int hashCode(){ return Objects.hash(one_vertex, another_vertex, weight); }
     }
     Map<V, List<Edge>> edge_map = new HashMap<>();
 
