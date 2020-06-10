@@ -1,7 +1,5 @@
 package structures;
 
-import tools.IntegerPair;
-
 public class RedBlackTree<K extends Comparable<K>, V> {
     enum COLOR{ RED, BLACK }
     private ColorNode root = null;
@@ -409,5 +407,4 @@ public class RedBlackTree<K extends Comparable<K>, V> {
             return 1;
         }
     }
-
 }
