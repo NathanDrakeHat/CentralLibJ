@@ -1,11 +1,14 @@
 package structures;
 
+import java.util.NoSuchElementException;
+import java.util.Objects;
+
 public class RedBlackTree<K extends Comparable<K>, V> {
     enum COLOR{ RED, BLACK }
     private ColorNode root = null;
     private final ColorNode sentinel = new ColorNode( COLOR.BLACK);// sentinel: denote leaf and parent of root
-    public class ColorNode{
-        private Pair<K,V> content;
+    private class ColorNode{
+        private KeyValuePair<K,V> content;
         private COLOR color;
         private ColorNode parent;
         private ColorNode left;
@@ -16,7 +19,7 @@ public class RedBlackTree<K extends Comparable<K>, V> {
             this.color = color;
         }
         private ColorNode(K key, V val){
-            content = new Pair<>();
+            content = new KeyValuePair<>();
             color = COLOR.RED;
             content.setKey(key);
             content.setValue(val);
@@ -43,34 +46,49 @@ public class RedBlackTree<K extends Comparable<K>, V> {
         public ColorNode getRight(){ return right; }
         private void setRight(ColorNode right){ this.right = right; }
     }
-    public static class Pair<A extends Comparable<A>, B>{
+    public static class KeyValuePair<A extends Comparable<A>, B>{
         A key;
         B value;
-        public Pair(A key, B value){
+        public KeyValuePair(A key, B value){
             this.key = key;
             this.value = value;
         }
-        public Pair(){}
+        public KeyValuePair(){}
 
         public A getKey() { return key; }
         public void setKey(A key) { this.key = key; }
 
         public B getValue() { return value; }
         public void setValue(B value) { this.value = value; }
+
+        @Override
+        @SuppressWarnings("unchecked")
+        public boolean equals(Object other){
+            if(other == null) return false;
+            else if(other.getClass().equals(this.getClass())){
+                return key.equals(((KeyValuePair<A, B>) other).key) & value.equals(((KeyValuePair<A,B>) other).value);
+            }else return false;
+        }
+
+        @Override
+        public int hashCode() { return Objects.hash(key, value); }
+
+        @Override
+        public String toString() { return String.format("Pair (key: %s, value: %s)",key.toString(),value.toString()); }
     }
 
-    public ColorNode getMinimum(){
+    public V getValueOfMinKey(){
         if(getRoot() != null & getSentinel() != getRoot()) {
-            return getMinimum(getRoot());
+            return getMinimum(getRoot()).getValue();
         }else{
-            return null;
+            throw new NoSuchElementException("null tree");
         }
     }
-    public ColorNode getMaximum(){
+    public V getValueOfMaxKey(){
         if(getRoot() != null & getRoot() != getSentinel()) {
-            return getMaximum(getRoot());
+            return getMaximum(getRoot()).getValue();
         }else{
-            return null;
+            throw new NoSuchElementException("null tree");
         }
     }
 
@@ -79,9 +97,9 @@ public class RedBlackTree<K extends Comparable<K>, V> {
         root = r;
         root.setParent(getSentinel());
     }
-    public ColorNode getRoot() { return root; }
+    private ColorNode getRoot() { return root; }
 
-    public void printTree(){ // inorder print
+    public void printTreeInLine(){ // inorder print
         if(getRoot() == null | getSentinel() == getRoot()){
             return;
         }
@@ -175,9 +193,12 @@ public class RedBlackTree<K extends Comparable<K>, V> {
         getRoot().setBlack();
     }
 
-    public void delete(ColorNode target) {
+    public void delete(K key){
+        delete(search(getRoot(), key));
+    }
+    private void delete(ColorNode target) {
         if(target == null | target == getSentinel()){
-            return;
+            throw new NoSuchElementException("null tree");
         }
         var ptr = target;
         var ptr_color = ptr.getColor();
@@ -273,11 +294,11 @@ public class RedBlackTree<K extends Comparable<K>, V> {
         }
     }
 
-    public ColorNode search(K key){
+    public V search(K key){
         if(getRoot() == null | getRoot() == getSentinel()){
-            return null;
+            throw new NoSuchElementException();
         }
-        return search(getRoot(), key);
+        return search(getRoot(), key).getValue();
     }
     private ColorNode search(ColorNode n, K key){
         if(n.getKey().compareTo(key) == 0){
@@ -287,7 +308,7 @@ public class RedBlackTree<K extends Comparable<K>, V> {
         }else if(key.compareTo(n.getKey()) > 0 & n.getRight() != getSentinel()){
             return search(n.getRight(), key);
         }
-        return null;
+        throw new NoSuchElementException();
     }
 
     private void leftRotate(ColorNode left_node){
