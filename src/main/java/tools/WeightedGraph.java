@@ -52,17 +52,19 @@ public class WeightedGraph<V extends Comparable<V>> extends LinkedGraph<V> {
         int len = vertexes.length;
         if(weights.length != len) throw new IllegalArgumentException();
         super.setNeighbors(v, vertexes);
+
         List<Edge> edges_list = edge_map.get(v);
-        if(edges_list != null) {
-            edges_list.clear();
-            for(int i = 0; i < len; i++){
-                edges_list.add(new Edge(v, vertexes[i], weights[i]));
-            }
-        }else{
-            edges_list = new ArrayList<>();
-            for(int i = 0; i < len; i++){
-                edges_list.add(new Edge(v, vertexes[i], weights[i]));
-            }
+        if(edges_list != null) { edges_list.clear(); }
+        else{ edges_list = new ArrayList<>(); }
+        for(int i = 0; i < len; i++){
+            edges_list.add(new Edge(v, vertexes[i], weights[i]));
+        }
+
+        for(int i = 0; i < len; i++){
+            edges_list = edge_map.get(vertexes[i]);
+            if(edges_list != null) { edges_list.clear(); }
+            else{ edges_list = new ArrayList<>(); }
+            edges_list.add(new Edge(v, vertexes[i], weights[i]));
         }
     }
     @Override
@@ -72,7 +74,12 @@ public class WeightedGraph<V extends Comparable<V>> extends LinkedGraph<V> {
     }
 
     public void putNeighbor(V v, V n, double w){
-        super.putNeighbor(v, n);
+        addNeighbor(v, n, w);
+        addNeighbor(n ,v, w);
+    }
+
+    private void addNeighbor(V v, V n, double w){
+        super.addNeighbor(v, n);
         var edges_list = edge_map.get(v);
         if(edges_list != null){
             var edge_t = new Edge(v, n, w);
@@ -89,43 +96,5 @@ public class WeightedGraph<V extends Comparable<V>> extends LinkedGraph<V> {
         edge_map.get(v).clear();
     }
 
-
-//    public WeightedGraph(){}
-//    public WeightedGraph(V[] vertexes) { for(var v : vertexes) { this.map.put(v, new ArrayList<>());} }
-//    public WeightedGraph(Set<V> set){ for(var i : set) { map.put(i, new ArrayList<>()); } }
-//
-//    public Set<V> getVertexes() { return map.keySet(); }
-//    public void putVertex(V v){ map.put(v, new ArrayList<>()); }
-//    public boolean hasVertex(V v) { return map.containsKey(v); }
-//
-//    public List<V> getNeighbors(V v){ return map.get(v); }
-//    public void setNeighbors(V v, V[] vertexes){
-//        List<V> ns = map.get(v);
-//        if(ns != null) {
-//            ns.clear();
-//            Collections.addAll(ns, vertexes);
-//        }else{
-//            ns = new ArrayList<>();
-//            Collections.addAll(ns, vertexes);
-//            map.put(v, ns);
-//        }
-//    }
-//    public void cleanNeighbors(V v){
-//        var ns = map.get(v);
-//        if(ns != null) ns.clear();
-//    }
-//
-//    public void putNeighbor(V v, V n){
-//        List<V> ns = map.get(v);
-//        if(ns != null) {
-//            if(!ns.contains(n)) ns.add(n);
-//        }else{
-//            ns = new ArrayList<>();
-//            map.put(v, ns);
-//            ns.add(n);
-//        }
-//    }
-//    public boolean haveNeighbor(V v, V neighbor) { return map.get(v).contains(neighbor); }
-//    public void removeNeighbor(V v, V n){ map.get(v).remove(n); }
-
+    public List<Edge> getEdges(V v) { return edge_map.get(v); }
 }

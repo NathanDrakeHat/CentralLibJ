@@ -31,6 +31,10 @@ public class LinkedGraph<V extends Comparable<V>> {
     }
 
     public void putNeighbor(V v, V n){
+        addNeighbor(v, n);
+        addNeighbor(n, v);
+    }
+    protected void addNeighbor(V v, V n){
         List<V> ns = vertex_map.get(v);
         if(ns != null) {
             if(!ns.contains(n)) ns.add(n);
