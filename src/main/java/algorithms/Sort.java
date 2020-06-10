@@ -2,7 +2,6 @@ package algorithms;
 
 import tools.SimpleDate;
 import tools.SingleLinkedNode;
-
 import java.util.Random;
 
 public class Sort {

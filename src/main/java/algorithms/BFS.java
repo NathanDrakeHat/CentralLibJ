@@ -1,7 +1,6 @@
 package algorithms;
 
 import tools.LinkedGraph;
-
 import java.util.*;
 
 public class BFS {

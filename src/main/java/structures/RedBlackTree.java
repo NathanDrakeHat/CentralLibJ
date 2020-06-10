@@ -2,7 +2,6 @@ package structures;
 
 import tools.IntegerPair;
 
-
 public class RedBlackTree<V> {
     enum COLOR{ RED, BLACK }
     private ColorNode root = null;

@@ -61,29 +61,6 @@ public class OrderStatisticTree{ // get rank of node from left to right
         BLACK
     }
 
-    public static void test(){
-        OrderStatisticTree RBtree = new OrderStatisticTree();
-        RBtree.insertKey(11);
-        RBtree.insertKey(2);
-        RBtree.insertKey(14);
-        RBtree.insertKey(1);
-        RBtree.insertKey(7);
-        RBtree.insertKey(15);
-        RBtree.insertKey(5);
-        RBtree.insertKey(8);
-        RBtree.insertKey(4);
-        ColorSizeNode root = RBtree.getRoot();
-        System.out.println(root.key); // 7
-        System.out.println(root.getLeft().key); // 2
-        System.out.println(root.getRight().key); // 11
-        System.out.println(root.getLeft().getLeft().key); // 1
-        System.out.println(root.getLeft().getRight().key); // 5
-        System.out.println(root.getLeft().getRight().getLeft().key); // 4
-        System.out.println(root.getRight().getLeft().key); // 8
-        System.out.println(root.right.getRight().key); // 14
-        System.out.println(root.getRight().getRight().getRight().key); // 15
-    }
-
     public double rankGetKey(int rank){
         ColorSizeNode n = rankSelect(rank);
         return n.key;

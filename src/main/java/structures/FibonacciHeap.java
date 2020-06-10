@@ -66,7 +66,6 @@ public class FibonacciHeap<V> {
         @Override
         public int compareTo(Node other){ return content.getKey() - other.content.getKey(); }
     }
-    
 
     public int minKey() { return root_list.getKey(); }
     public V minValue() { return root_list.getValue(); }
@@ -219,8 +218,7 @@ public class FibonacciHeap<V> {
 
     public Node rootList(){ return root_list; }
     protected int upperBound(){ return (int)(Math.log(number)/Math.log(2)); }
-    
-    
+
     protected void addNodeToList(Node x, Node list){
         if(x == null & list == null) throw new IllegalArgumentException("Two arg is null");
         else if(x == null) throw new IllegalArgumentException("First arg is null");
@@ -263,5 +261,4 @@ public class FibonacciHeap<V> {
         else addNodeToList(l, m.getChildList());
         l.mark = false;
     }
-    
 }

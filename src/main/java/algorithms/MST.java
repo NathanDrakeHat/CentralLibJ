@@ -2,7 +2,6 @@ package algorithms;
 
 import structures.DisjointSet;
 import tools.WeightedGraph;
-
 import java.util.*;
 
 // minimum spanning tree
