@@ -1,19 +1,25 @@
 package tools;
 
 import java.util.*;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class WeightedGraph<V extends Comparable<V>> extends LinkedGraph<V> {
+public class WeightedGraph<V extends Comparable<V>>  {
     public class Edge implements Comparable<Edge> {
-        private final V one_vertex;
-        private final V another_vertex;
+        private final V smaller_vertex;
+        private final V bigger_vertex;
         private final int weight;
 
-        public Edge(V a, V b, int weight){
-            one_vertex = a;
-            another_vertex = b;
+        public Edge(V small, V bigger, int weight){
             this.weight = weight;
+            if(small.compareTo(bigger) <= 0){
+                smaller_vertex = small;
+                bigger_vertex = bigger;
+            }else{
+                smaller_vertex = bigger;
+                bigger_vertex = small;
+            }
         }
 
         @Override
@@ -22,120 +28,89 @@ public class WeightedGraph<V extends Comparable<V>> extends LinkedGraph<V> {
             if(other_edge == null){
                 return false;
             }else if(Edge.class.equals(other_edge.getClass())){
-                if(one_vertex.equals(((Edge) other_edge).one_vertex) &
-                        another_vertex.equals(((Edge)other_edge).another_vertex) &
-                        this.weight == ((Edge) other_edge).weight){
-                    return true;
-                }else return (one_vertex.equals(((Edge) other_edge).another_vertex)) &
-                        (another_vertex.equals(((Edge) other_edge).one_vertex) &
-                                (this.weight == ((Edge) other_edge).weight));
+                return this.smaller_vertex.equals(((Edge) other_edge).smaller_vertex) &
+                        this.bigger_vertex.equals(((Edge) other_edge).bigger_vertex) &
+                        this.weight == ((Edge) other_edge).weight;
             }else{
                 return false;
             }
         }
 
-        public V getOneVertex() { return one_vertex; }
+        public V getSmallerVertex() { return smaller_vertex; }
 
-        public V getAnotherVertex() { return another_vertex; }
+        public V getBiggerVertex() { return bigger_vertex; }
 
         public int getWeight() { return weight; }
 
         @Override
-        public int compareTo(Edge other){ return weight - other.weight; }
-
-        @Override
-        public String toString(){ return String.format("edge(%s, %s), weight:%d",one_vertex,another_vertex,weight); }
-
-        @Override
-        public int hashCode(){
-            if(one_vertex.compareTo(another_vertex) > 0){
-                return Objects.hash(one_vertex, another_vertex, weight);
+        public int compareTo(Edge other){ 
+            if(weight != other.weight){
+                return weight - other.weight;
             }else{
-                return Objects.hash(another_vertex, one_vertex, weight);
+                int small_check = smaller_vertex.compareTo(other.smaller_vertex);
+                if(small_check != 0) return small_check;
+                else return bigger_vertex.compareTo(other.bigger_vertex);
             }
         }
-    }
-    Map<V, List<Edge>> edge_map = new HashMap<>();
 
-    public WeightedGraph(){ super(); }
-    public WeightedGraph(V[] vertexes){
-        super(vertexes);
-        for(var v : vertexes){
-            edge_map.put(v, new ArrayList<>());
-        }
-    }
+        @Override
+        public String toString(){ return String.format("Edge( %s, %s ), Weight:%d",smaller_vertex,bigger_vertex,weight); }
 
-    public void setNeighbors(V v, V[] vertexes, int[] weights){
+        @Override
+        public int hashCode(){ return Objects.hash(smaller_vertex, bigger_vertex, weight); }
+    }
+    Map<V, Set<Edge>> edge_map = new HashMap<>();
+
+    public WeightedGraph(){}
+
+    public void setNeighbors(V vertex, V[] vertexes, int[] weights){
         int len = vertexes.length;
         if(weights.length != len) throw new IllegalArgumentException();
-        super.setNeighbors(v, vertexes);
 
-        List<Edge> edges_list = edge_map.get(v);
-        if(edges_list != null) { edges_list.clear(); }
-        else{ edges_list = new ArrayList<>(); }
+        Set<Edge> edges_set = edge_map.get(vertex);
+        if(edges_set != null) { edges_set.clear(); }
+        else{ edges_set = new TreeSet<>(); }
+
         for(int i = 0; i < len; i++){
-            edges_list.add(new Edge(v, vertexes[i], weights[i]));
+            edges_set.add(new Edge(vertex, vertexes[i], weights[i]));
         }
     }
-    public void setNeighborPairs(V v, V[] vertexes, int[] weights){
+    public void setNeighborPairs(V vertex, V[] vertexes, int[] weights){
         int len = vertexes.length;
         if(weights.length != len) throw new IllegalArgumentException();
-        for(int i = 0; i < len; i++) putNeighborPair(v, vertexes[i],weights[i]);
+        for(int i = 0; i < len; i++) putNeighborPair(vertex, vertexes[i],weights[i]);
     }
-    @Override
-    public void clearNeighbors(V v){
-        super.clearNeighbors(v);
-        edge_map.get(v).clear();
+    public void clearNeighbors(V vertex){
+        edge_map.get(vertex).clear();
     }
 
-    public void putNeighborPair(V v, V n, int w){
-        super.addOneNeighbor(v, n);
-        var edges_list = edge_map.get(v);
-        var edge_t = new Edge(v, n, w);
-        if(edges_list != null){
-            if(!edges_list.contains(edge_t)) edges_list.add(edge_t);
-        }else{
-            edges_list = new ArrayList<>();
-            edge_map.put(v, edges_list);
-            edges_list.add(edge_t);
+    public void putNeighborPair(V vertex, V neighbor, int w){
+        var edge_t = new Edge(vertex, neighbor, w);
+        var edges_set = edge_map.computeIfAbsent(vertex, k -> new TreeSet<>());
+        edges_set.add(edge_t);
+        edges_set = edge_map.computeIfAbsent(neighbor, k -> new TreeSet<>());
+        edges_set.add(edge_t);
+    }
+
+    public void addOneNeighbor(V vertex, V neighbor, int w){
+        var edge_t = new Edge(vertex, neighbor, w);
+        var edges_set = edge_map.computeIfAbsent(vertex, k -> new TreeSet<>());
+        edges_set.add(edge_t);
+    }
+
+    public boolean removeOneNeighbor(V vertex, V neighbor, int weight){
+        return edge_map.get(vertex).remove(new Edge(vertex,neighbor,weight));
+    }
+
+    public Set<Edge> getEdgesAt(V vertex) { return edge_map.get(vertex); }
+
+    public Set<V> getVertexes(){ return edge_map.keySet(); }
+    
+    public Set<Edge> getEdges(){
+        Set<Edge> res = new TreeSet<>();
+        for(var vertex : getVertexes()){
+            res.addAll(getEdgesAt(vertex));
         }
-
-        super.addOneNeighbor(n, v);
-        edges_list = edge_map.get(n);
-        if(edges_list != null){
-            if(!edges_list.contains(edge_t)) edges_list.add(edge_t);
-        }else{
-            edges_list = new ArrayList<>();
-            edge_map.put(n, edges_list);
-            edges_list.add(edge_t);
-        }
-    }
-
-    public void addOneNeighbor(V v, V n, int w){
-        super.addOneNeighbor(v, n);
-        var edges_list = edge_map.get(v);
-        var edge_t = new Edge(v, n, w);
-        if(edges_list != null){
-            if(!edges_list.contains(edge_t)) edges_list.add(edge_t);
-        }else{
-            edges_list = new ArrayList<>();
-            edge_map.put(v, edges_list);
-            edges_list.add(edge_t);
-        }
-    }
-    @Override
-    public void removeOneNeighbor(V v, V n){
-        super.removeOneNeighbor(v, n);
-        edge_map.get(v).clear();
-    }
-
-    public List<Edge> getEdgesAt(V v) { return edge_map.get(v); }
-
-    public List<Edge> getEdges(){
-        List<Edge> edges_list = new ArrayList<>();
-        for(var v : getVertexes()){
-            edges_list.addAll(getEdgesAt(v));
-        }
-        return edges_list.stream().distinct().collect(Collectors.toList());
+        return res;
     }
 }

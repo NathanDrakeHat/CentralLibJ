@@ -48,11 +48,12 @@ public class MST {
 
     public static Set<WeightedGraph<Vertex>.Edge> algorithmKruskal(WeightedGraph<Vertex> graph){
         Set<WeightedGraph<Vertex>.Edge> res = new HashSet<>();
-        var edges_list = graph.getEdges();
+        var edges_set = graph.getEdges();
+        var edges_list = new ArrayList<>(edges_set);
         Collections.sort(edges_list);
         for(var edge : edges_list){
-            var v1 = edge.getOneVertex();
-            var v2 = edge.getAnotherVertex();
+            var v1 = edge.getSmallerVertex();
+            var v2 = edge.getBiggerVertex();
             if(DisjointSet.findSet(v1) != DisjointSet.findSet(v2)){
                 res.add(edge);
                 DisjointSet.union(v1, v2);
