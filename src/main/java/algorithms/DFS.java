@@ -84,7 +84,7 @@ public class DFS {
             var neighbors = graph.getNeighbors(v);
             for(var n : neighbors){
                 if(!new_graph.hasVertex(n)) { new_graph.putVertex(n); }
-                if(!new_graph.haveNeighbor(n, v)){ new_graph.putNeighbor(n, v); }
+                if(!new_graph.haveOneNeighbor(n, v)){ new_graph.addOneNeighbor(n, v); }
             }
         }
         return new_graph;

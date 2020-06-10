@@ -30,11 +30,11 @@ public class LinkedGraph<V extends Comparable<V>> {
         if(ns != null) ns.clear();
     }
 
-    public void putNeighbor(V v, V n){
-        addNeighbor(v, n);
-        addNeighbor(n, v);
+    public void putNeighborPair(V v, V n){
+        addOneNeighbor(v, n);
+        addOneNeighbor(n, v);
     }
-    protected void addNeighbor(V v, V n){
+    public void addOneNeighbor(V v, V n){
         List<V> ns = vertex_map.get(v);
         if(ns != null) {
             if(!ns.contains(n)) ns.add(n);
@@ -44,7 +44,11 @@ public class LinkedGraph<V extends Comparable<V>> {
             ns.add(n);
         }
     }
-    public boolean haveNeighbor(V v, V neighbor) { return vertex_map.get(v).contains(neighbor); }
-    public void removeNeighbor(V v, V n){ vertex_map.get(v).remove(n); }
+    public boolean haveOneNeighbor(V v, V neighbor) { return vertex_map.get(v).contains(neighbor); }
+    public void removeOneNeighbor(V v, V n){ vertex_map.get(v).remove(n); }
+    public void removeOneNeighborPair(V v, V n){
+        removeOneNeighbor(v, n);
+        removeOneNeighbor(n, v);
+    }
 
 }

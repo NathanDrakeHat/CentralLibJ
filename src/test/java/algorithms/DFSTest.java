@@ -8,8 +8,6 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class DFSTest {
-
-
     static String names = "uvwxyz";
     static LinkedGraph<DFS.Vertex> makeGraph(){
         var vs = new DFS.Vertex[6];
@@ -17,19 +15,19 @@ class DFSTest {
             vs[i] = new DFS.Vertex(String.valueOf(names.charAt(i)));
         }
         var G = new LinkedGraph<>(vs);
-        G.putNeighbor(vs[0], vs[1]);
-        G.putNeighbor(vs[0], vs[3]);
+        G.addOneNeighbor(vs[0], vs[1]);
+        G.addOneNeighbor(vs[0], vs[3]);
 
-        G.putNeighbor(vs[1], vs[4]);
+        G.addOneNeighbor(vs[1], vs[4]);
 
-        G.putNeighbor(vs[2], vs[4]);
-        G.putNeighbor(vs[2], vs[5]);
+        G.addOneNeighbor(vs[2], vs[4]);
+        G.addOneNeighbor(vs[2], vs[5]);
 
-        G.putNeighbor(vs[3], vs[1]);
+        G.addOneNeighbor(vs[3], vs[1]);
 
-        G.putNeighbor(vs[4], vs[3]);
+        G.addOneNeighbor(vs[4], vs[3]);
 
-        G.putNeighbor(vs[5], vs[5]);
+        G.addOneNeighbor(vs[5], vs[5]);
 
         return G;
     }
@@ -41,20 +39,20 @@ class DFSTest {
             var names = t.split(",");
             for(int i = 0; i < 9; i++) { A[i] = new DFS.Vertex(names[i]); }
             LinkedGraph<DFS.Vertex> G = new LinkedGraph<>(A);
-            G.putNeighbor(A[0], A[1]);
-            G.putNeighbor(A[0], A[6]);
+            G.addOneNeighbor(A[0], A[1]);
+            G.addOneNeighbor(A[0], A[6]);
 
-            G.putNeighbor(A[1], A[2]);
-            G.putNeighbor(A[1], A[6]);
+            G.addOneNeighbor(A[1], A[2]);
+            G.addOneNeighbor(A[1], A[6]);
 
-            G.putNeighbor(A[2], A[5]);
+            G.addOneNeighbor(A[2], A[5]);
 
-            G.putNeighbor(A[3], A[2]);
-            G.putNeighbor(A[3], A[4]);
+            G.addOneNeighbor(A[3], A[2]);
+            G.addOneNeighbor(A[3], A[4]);
 
-            G.putNeighbor(A[4], A[5]);
+            G.addOneNeighbor(A[4], A[5]);
 
-            G.putNeighbor(A[6], A[7]);
+            G.addOneNeighbor(A[6], A[7]);
 
             return G;
         }
@@ -65,27 +63,27 @@ class DFSTest {
         DFS.Vertex[] A = new DFS.Vertex[names.length];
         for(int i = 0; i < names.length; i++) { A[i] = new DFS.Vertex(names[i]); }
         LinkedGraph<DFS.Vertex> G = new LinkedGraph<>(A);
-        G.putNeighbor(A[0], A[1]);
+        G.addOneNeighbor(A[0], A[1]);
 
-        G.putNeighbor(A[1], A[2]);
-        G.putNeighbor(A[1], A[4]);
-        G.putNeighbor(A[1], A[5]);
+        G.addOneNeighbor(A[1], A[2]);
+        G.addOneNeighbor(A[1], A[4]);
+        G.addOneNeighbor(A[1], A[5]);
 
-        G.putNeighbor(A[2], A[3]);
-        G.putNeighbor(A[2], A[6]);
+        G.addOneNeighbor(A[2], A[3]);
+        G.addOneNeighbor(A[2], A[6]);
 
-        G.putNeighbor(A[3], A[2]);
-        G.putNeighbor(A[3], A[7]);
+        G.addOneNeighbor(A[3], A[2]);
+        G.addOneNeighbor(A[3], A[7]);
 
-        G.putNeighbor(A[4], A[0]);
-        G.putNeighbor(A[4], A[5]);
+        G.addOneNeighbor(A[4], A[0]);
+        G.addOneNeighbor(A[4], A[5]);
 
-        G.putNeighbor(A[5], A[6]);
+        G.addOneNeighbor(A[5], A[6]);
 
-        G.putNeighbor(A[6], A[5]);
-        G.putNeighbor(A[6], A[7]);
+        G.addOneNeighbor(A[6], A[5]);
+        G.addOneNeighbor(A[6], A[7]);
 
-        G.putNeighbor(A[7], A[7]);
+        G.addOneNeighbor(A[7], A[7]);
 
         return G;
     }

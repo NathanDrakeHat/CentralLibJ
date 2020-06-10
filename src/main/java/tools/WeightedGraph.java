@@ -3,12 +3,12 @@ package tools;
 import java.util.*;
 
 public class WeightedGraph<V extends Comparable<V>> extends LinkedGraph<V> {
-    public class Edge {
+    public class Edge implements Comparable<Edge> {
         private final V one_vertex;
         private final V another_vertex;
-        private final double weight;
+        private final int weight;
 
-        public Edge(V a, V b, double weight){
+        public Edge(V a, V b, int weight){
             one_vertex = a;
             another_vertex = b;
             this.weight = weight;
@@ -36,7 +36,12 @@ public class WeightedGraph<V extends Comparable<V>> extends LinkedGraph<V> {
 
         public V getAnotherVertex() { return another_vertex; }
 
-        public double getWeight() { return weight; }
+        public int getWeight() { return weight; }
+
+        @Override
+        public int compareTo(Edge other){
+            return weight - other.weight;
+        }
     }
     Map<V, List<Edge>> edge_map = new HashMap<>();
 
@@ -48,7 +53,7 @@ public class WeightedGraph<V extends Comparable<V>> extends LinkedGraph<V> {
         }
     }
 
-    public void setNeighbors(V v, V[] vertexes, double[] weights){
+    public void setNeighbors(V v, V[] vertexes, int[] weights){
         int len = vertexes.length;
         if(weights.length != len) throw new IllegalArgumentException();
         super.setNeighbors(v, vertexes);
@@ -59,13 +64,11 @@ public class WeightedGraph<V extends Comparable<V>> extends LinkedGraph<V> {
         for(int i = 0; i < len; i++){
             edges_list.add(new Edge(v, vertexes[i], weights[i]));
         }
-
-        for(int i = 0; i < len; i++){
-            edges_list = edge_map.get(vertexes[i]);
-            if(edges_list != null) { edges_list.clear(); }
-            else{ edges_list = new ArrayList<>(); }
-            edges_list.add(new Edge(v, vertexes[i], weights[i]));
-        }
+    }
+    public void setNeighborPairs(V v, V[] vertexes, int[] weights){
+        int len = vertexes.length;
+        if(weights.length != len) throw new IllegalArgumentException();
+        for(int i = 0; i < len; i++) putNeighborPair(v, vertexes[i],weights[i]);
     }
     @Override
     public void clearNeighbors(V v){
@@ -73,13 +76,13 @@ public class WeightedGraph<V extends Comparable<V>> extends LinkedGraph<V> {
         edge_map.get(v).clear();
     }
 
-    public void putNeighbor(V v, V n, double w){
-        addNeighbor(v, n, w);
-        addNeighbor(n ,v, w);
+    public void putNeighborPair(V v, V n, int w){
+        addOneNeighbor(v, n, w);
+        addOneNeighbor(n ,v, w);
     }
 
-    private void addNeighbor(V v, V n, double w){
-        super.addNeighbor(v, n);
+    public void addOneNeighbor(V v, V n, int w){
+        super.addOneNeighbor(v, n);
         var edges_list = edge_map.get(v);
         if(edges_list != null){
             var edge_t = new Edge(v, n, w);
@@ -91,10 +94,18 @@ public class WeightedGraph<V extends Comparable<V>> extends LinkedGraph<V> {
         }
     }
     @Override
-    public void removeNeighbor(V v, V n){
-        super.removeNeighbor(v, n);
+    public void removeOneNeighbor(V v, V n){
+        super.removeOneNeighbor(v, n);
         edge_map.get(v).clear();
     }
 
-    public List<Edge> getEdges(V v) { return edge_map.get(v); }
+    public List<Edge> getEdgesAt(V v) { return edge_map.get(v); }
+
+    public List<Edge> getEdges(){
+        List<Edge> res = new ArrayList<>();
+        for(var v : getVertexes()){
+            res.addAll(getEdgesAt(v));
+        }
+        return res;
+    }
 }

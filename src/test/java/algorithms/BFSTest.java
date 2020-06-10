@@ -18,20 +18,20 @@ class BFSTest {
         }
         public static LinkedGraph<BFS.Vertex> makeGraph(BFS.Vertex[] vs){ ;
             var G = new LinkedGraph<>(vs);
-            G.putNeighbor(vs[0], vs[1]);
-            G.putNeighbor(vs[0], vs[4]);
+            G.putNeighborPair(vs[0], vs[1]);
+            G.putNeighborPair(vs[0], vs[4]);
 
-            G.putNeighbor(vs[1], vs[5]);
+            G.putNeighborPair(vs[1], vs[5]);
 
-            G.putNeighbor(vs[2], vs[3]);
-            G.putNeighbor(vs[2], vs[5]);
-            G.putNeighbor(vs[2], vs[6]);
+            G.putNeighborPair(vs[2], vs[3]);
+            G.putNeighborPair(vs[2], vs[5]);
+            G.putNeighborPair(vs[2], vs[6]);
 
-            G.putNeighbor(vs[3], vs[6]);
+            G.putNeighborPair(vs[3], vs[6]);
 
-            G.putNeighbor(vs[5], vs[6]);
+            G.putNeighborPair(vs[5], vs[6]);
 
-            G.putNeighbor(vs[6], vs[7]);
+            G.putNeighborPair(vs[6], vs[7]);
 
             return G;
         }
