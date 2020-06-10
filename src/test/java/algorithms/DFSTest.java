@@ -113,7 +113,7 @@ class DFSTest {
         boolean flag = true;
         for(int i = 1; i < l.size(); i++){
             for(int j = 0; j < i; j++){
-                flag = recursiveSearch(l.get(j), l.get(i), graph);
+                flag = recursiveTopologicalTest(l.get(j), l.get(i), graph);
                 if(!flag) break;
             }
             if(!flag) break;
@@ -121,14 +121,14 @@ class DFSTest {
         assertTrue(flag);
     }
 
-    boolean recursiveSearch(DFS.Vertex target, DFS.Vertex current, LinkedGraph<DFS.Vertex> G){
+    boolean recursiveTopologicalTest(DFS.Vertex target, DFS.Vertex current, LinkedGraph<DFS.Vertex> G){
         if(current.equals(target)) return false;
         var neighbors = G.getNeighbors(current);
         if(neighbors.isEmpty()) return true;
         else{
             boolean t = true;
             for(var i : neighbors){
-                t = recursiveSearch(target, i, G);
+                t = recursiveTopologicalTest(target, i, G);
                 if(!t) break;
             }
             return t;
@@ -136,13 +136,13 @@ class DFSTest {
     }
 
     @Test
-    void recursiveSearchTest(){
+    void recursiveTopologicalTest(){
         var graph = makeTopographicalDemo();
         boolean flag = true;
         List<DFS.Vertex> t = new ArrayList<>(graph.getVertexes());
         for(int i = 1; i < t.size(); i++){
             for(int j = 0; j < i; j++){
-                flag = recursiveSearch(t.get(j), t.get(i), graph);
+                flag = recursiveTopologicalTest(t.get(j), t.get(i), graph);
                 if(!flag) break;
             }
             if(!flag) break;
