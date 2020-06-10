@@ -80,9 +80,7 @@ public class WeightedGraph<V extends Comparable<V>>  {
         if(weights.length != len) throw new IllegalArgumentException();
         for(int i = 0; i < len; i++) putNeighborPair(vertex, vertexes[i],weights[i]);
     }
-    public void clearNeighbors(V vertex){
-        edge_map.get(vertex).clear();
-    }
+    public void clearNeighbors(V vertex){ edge_map.get(vertex).clear(); }
 
     public void putNeighborPair(V vertex, V neighbor, int w){
         var edge_t = new Edge(vertex, neighbor, w);
