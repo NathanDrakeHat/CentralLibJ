@@ -38,6 +38,12 @@ public class WeightedGraph<V extends Comparable<V>>  {
 
         public V getBiggerVertex() { return bigger_vertex; }
 
+        public V getAnotherVertex(V vertex){
+            if(smaller_vertex.equals(vertex)) return bigger_vertex;
+            else if(bigger_vertex.equals(vertex)) return smaller_vertex;
+            else throw new IllegalArgumentException("Not match.");
+        }
+
         public int getWeight() { return weight; }
 
         @Override
