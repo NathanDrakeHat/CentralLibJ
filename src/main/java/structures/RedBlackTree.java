@@ -125,6 +125,7 @@ public class RedBlackTree<K extends Comparable<K>, V> {
         return Math.max(left_max, right_max) - 1;
     }
 
+    public void insert(K key, V val){ insert(new ColorNode(key, val)); }
     private void insert(ColorNode n){
         if(n == null | n == sentinel) return;
         if(getRoot() == null | getRoot() == getSentinel()){
@@ -153,7 +154,6 @@ public class RedBlackTree<K extends Comparable<K>, V> {
         }
         insertFixUp(n);
     }
-    public void insert(K key, V val){ insert(new ColorNode(key, val)); }
     private void insertFixUp(ColorNode ptr){
         while(ptr.getParent().isRed()){
             if(ptr.getParent() == ptr.getParent().getParent().getLeft()){

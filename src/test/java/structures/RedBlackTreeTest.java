@@ -29,4 +29,18 @@ class RedBlackTreeTest extends RedBlackTree<Integer, Integer>{
         assertEquals(root.getRight().getRight().getKey(), 14); // 14
         assertEquals(root.getRight().getRight().getRight().getKey(), 15); // 15
     }
+
+    @Test
+    public void balanceTest(){
+        RedBlackTree<Integer,Integer> t = new RedBlackTree<>();
+        for(int i = 0; i < 2047; i++){
+            t.insert(i, i);
+        }
+        assertEquals(t.getHeight(), 10);
+        for(int i = 0; i < 1025; i++){
+            t.delete(i);
+        }
+        System.out.println(t.getHeight());
+        assertEquals(t.getHeight(), 9);
+    }
 }
