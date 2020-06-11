@@ -46,8 +46,8 @@ class MSTTest {
         return res;
     }
     @Test
-    public void algorithmKruskalTest(){
-        var t = MST.algorithmKruskal(buildKruskalExample());
+    public void algorithmOfKruskalTest(){
+        var t = MST.algorithmOfKruskal(buildKruskalExample());
         assertEquals(t, buildKruskalAnswer());
         int i = 0;
         for(var e : t){
@@ -98,8 +98,8 @@ class MSTTest {
         return res;
     }
     @Test
-    public void algorithmPrimTest(){
-        var graph = MST.algorithmPrim(buildPrimExample(), new MST.PrimVertex("a"));
+    public void algorithmOfPrimTest(){
+        var graph = MST.algorithmOfPrim(buildPrimExample(), new MST.PrimVertex("a"));
         var vertexes = graph.getVertexes();
         Set<Set<MST.PrimVertex>> res = new HashSet<>();
         for(var vertex : vertexes){

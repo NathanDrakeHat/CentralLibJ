@@ -78,7 +78,7 @@ public class MST {
         public String toString() { return String.format("PrimVertex %s, Key: %.2f", name,key); }
     }
 
-    public static Set<WeightedGraph<KruskalVertex>.Edge> algorithmKruskal(WeightedGraph<KruskalVertex> graph){
+    public static Set<WeightedGraph<KruskalVertex>.Edge> algorithmOfKruskal(WeightedGraph<KruskalVertex> graph){
         Set<WeightedGraph<KruskalVertex>.Edge> res = new HashSet<>();
         var edges_set = graph.getEdges();
         var edges_list = new ArrayList<>(edges_set);
@@ -94,7 +94,7 @@ public class MST {
         return res;
     }
 
-    public static WeightedGraph<PrimVertex> algorithmPrim(WeightedGraph<PrimVertex> graph, PrimVertex r){
+    public static WeightedGraph<PrimVertex> algorithmOfPrim(WeightedGraph<PrimVertex> graph, PrimVertex r){
         Queue<PrimVertex> Q = new PriorityQueue<>();
         var vertexes = graph.getVertexes();
         for(var vertex : vertexes){
