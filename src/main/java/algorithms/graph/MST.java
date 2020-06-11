@@ -52,6 +52,12 @@ public class MST {
 
         public PrimVertex(String name) { this.name = name; }
 
+        public PrimVertex(PrimVertex other){
+            this.name = other.name;
+            this.parent = other.parent;
+            this.key = other.key;
+        }
+
         @Override
         public int hashCode() { return name.hashCode(); }
 
@@ -70,7 +76,7 @@ public class MST {
         }
 
         @Override
-        public String toString() { return String.format("PrimVertex %s, Key: %f", name,key); }
+        public String toString() { return String.format("PrimVertex %s, Key: %.2f", name,key); }
     }
 
     public static Set<WeightedGraph<KruskalVertex>.Edge> algorithmKruskal(WeightedGraph<KruskalVertex> graph){
@@ -96,11 +102,10 @@ public class MST {
             if(!vertex.equals(r)) vertex.key = Double.POSITIVE_INFINITY;
             else {
                 vertex.key = 0.0;
-                Q.add(vertex);
+                Q.add(vertex); // init
             }
             vertex.parent = null;
         }
-
         while(!vertexes.isEmpty()){
             PrimVertex u;
             do { // ignore encountered vertex
@@ -113,7 +118,7 @@ public class MST {
                 if(vertexes.contains(v) & edge.getWeight() < v.key){
                     v.parent = u;
                     v.key = edge.getWeight();
-                    Q.add(v); // dynamic update
+                    Q.add(new PrimVertex(v)); // prevent update
                 }
             }
         }
