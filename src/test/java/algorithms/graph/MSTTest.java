@@ -21,12 +21,9 @@ class MSTTest {
         int[] weights =  new int[]{4,8,7,9,10,2,1,8,11,2,7,6,4,14};
         int len_ = indexes1.length;
         for(int i = 0; i < len_; i++){
-            putPairHelperKruskal(res, vertexes, indexes1[i], indexes2[i],weights[i]);
+            res.putNeighborPair(vertexes[indexes1[i]], vertexes[indexes2[i]], weights[i]);
         }
         return res;
-    }
-    static void putPairHelperKruskal(WeightedGraph<MST.KruskalVertex> res, MST.KruskalVertex[] vertexes, int idx1, int idx2, int w){
-        res.putNeighborPair(vertexes[idx1], vertexes[idx2], w);
     }
     static Set<WeightedGraph<MST.KruskalVertex>.Edge> buildKruskalAnswer(){
         String n = "a,b,c,d,e,f,g,h,i";
@@ -69,12 +66,9 @@ class MSTTest {
         int[] weights =  new int[]{4,8,7,9,10,2,1,8,11,2,7,6,4,14};
         int len_ = indexes1.length;
         for(int i = 0; i < len_; i++){
-            putPairHelper(res, vertexes, indexes1[i], indexes2[i],weights[i]);
+            res.putNeighborPair(vertexes[indexes1[i]], vertexes[indexes2[i]], weights[i]);
         }
         return res;
-    }
-    static void putPairHelper(WeightedGraph<MST.PrimVertex> res, MST.PrimVertex[] vertexes, int idx1, int idx2, int w){
-        res.putNeighborPair(vertexes[idx1], vertexes[idx2], w);
     }
     static Set<Set<MST.PrimVertex>> buildPrimAnswer(){
         String n = "a,b,c,d,e,f,g,h,i";
