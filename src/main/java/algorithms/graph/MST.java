@@ -10,7 +10,6 @@ public class MST {
         private final String name;
         private int rank = 0;
         private KruskalVertex parent = this;
-        private double key;
 
         public KruskalVertex(String n) { name = n; }
 
