@@ -119,25 +119,25 @@ public class Graph<V extends Comparable<V>>  {
         return false;
     }
 
-    //    public void setNeighbors(V vertex, V[] vertexes, int[] weights){
-    //        int len = vertexes.length;
-    //        if(weights.length != len) throw new IllegalArgumentException();
-    //
-    //        Set<Edge> edges_set = edge_map.get(vertex);
-    //        if(edges_set != null) { edges_set.clear(); }
-    //        else{ edges_set = new TreeSet<>(); }
-    //
-    //        for(int i = 0; i < len; i++){
-    //            edges_set.add(new Edge(vertex, vertexes[i], weights[i]));
-    //        }
-    //    }
-    //    public void setNeighborPairs(V vertex, V[] vertexes, int[] weights){
-    //        int len = vertexes.length;
-    //        if(weights.length != len) throw new IllegalArgumentException();
-    //        for(int i = 0; i < len; i++) putNeighborPair(vertex, vertexes[i],weights[i]);
-    //    }
-    //    public void clearNeighbors(V vertex){ edge_map.get(vertex).clear(); }
-    //    public boolean removeOneNeighbor(V vertex, V neighbor, int weight){
-    //        return edge_map.get(vertex).remove(new Edge(vertex,neighbor,weight));
-    //    }
+//    public void setNeighbors(V vertex, V[] vertexes, int[] weights){
+//        int len = vertexes.length;
+//        if(weights.length != len) throw new IllegalArgumentException();
+//
+//        Set<Edge> edges_set = edge_map.get(vertex);
+//        if(edges_set != null) { edges_set.clear(); }
+//        else{ edges_set = new TreeSet<>(); }
+//
+//        for(int i = 0; i < len; i++){
+//            edges_set.add(new Edge(vertex, vertexes[i], weights[i]));
+//        }
+//    }
+//    public void setNeighborPairs(V vertex, V[] vertexes, int[] weights){
+//        int len = vertexes.length;
+//        if(weights.length != len) throw new IllegalArgumentException();
+//        for(int i = 0; i < len; i++) putNeighborPair(vertex, vertexes[i],weights[i]);
+//    }
+//    public void clearNeighbors(V vertex){ edge_map.get(vertex).clear(); }
+//    public boolean removeOneNeighbor(V vertex, V neighbor, int weight){
+//        return edge_map.get(vertex).remove(new Edge(vertex,neighbor,weight));
+//    }
 }
