@@ -10,81 +10,83 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class DFSTest {
     static String names = "uvwxyz";
-    static Graph<DFS.Vertex> makeGraph(){
-        var vs = new DFS.Vertex[6];
+    static Graph<DFS.Vertex<String>> makeGraph(){
+        var vs = new ArrayList<DFS.Vertex<String>>(6);
+        
         for(int i = 0; i < 6; i++){
-            vs[i] = new DFS.Vertex(String.valueOf(names.charAt(i)));
+            vs.add(i, new DFS.Vertex<>(String.valueOf(names.charAt(i))));
         }
         var G = new Graph<>(vs);
-        G.addOneNeighbor(vs[0], vs[1]);
-        G.addOneNeighbor(vs[0], vs[3]);
+        G.addOneNeighbor(vs.get(0), vs.get(1));
+        G.addOneNeighbor(vs.get(0), vs.get(3));
 
-        G.addOneNeighbor(vs[1], vs[4]);
+        G.addOneNeighbor(vs.get(1), vs.get(4));
 
-        G.addOneNeighbor(vs[2], vs[4]);
-        G.addOneNeighbor(vs[2], vs[5]);
+        G.addOneNeighbor(vs.get(2), vs.get(4));
+        G.addOneNeighbor(vs.get(2), vs.get(5));
 
-        G.addOneNeighbor(vs[3], vs[1]);
+        G.addOneNeighbor(vs.get(3), vs.get(1));
 
-        G.addOneNeighbor(vs[4], vs[3]);
+        G.addOneNeighbor(vs.get(4), vs.get(3));
 
-        G.addOneNeighbor(vs[5], vs[5]);
+        G.addOneNeighbor(vs.get(5), vs.get(5));
 
         return G;
     }
     static int[][] res = new int[][] {{1, 2, 9, 4, 3, 10}, {8, 7, 12, 5, 6, 11}};
 
-    static Graph<DFS.Vertex> makeTopographicalDemo(){
-            DFS.Vertex[] A = new DFS.Vertex[9];
+    static Graph<DFS.Vertex<String>> makeTopographicalDemo(){
+//            DFS.Vertex[] A = new DFS.Vertex[9];
+            var A = new ArrayList<DFS.Vertex<String>>(9);
             String t = "undershorts,pants,belt,shirt,tie,jacket,socks,shoes,watch";
             var names = t.split(",");
-            for(int i = 0; i < 9; i++) { A[i] = new DFS.Vertex(names[i]); }
-            Graph<DFS.Vertex> G = new Graph<>(A);
-            G.addOneNeighbor(A[0], A[1]);
-            G.addOneNeighbor(A[0], A[6]);
+            for(int i = 0; i < 9; i++) { A.add(i, new DFS.Vertex<>(names[i])); }
+            Graph<DFS.Vertex<String>> G = new Graph<>(A);
+            G.addOneNeighbor(A.get(0), A.get(1));
+            G.addOneNeighbor(A.get(0), A.get(6));
 
-            G.addOneNeighbor(A[1], A[2]);
-            G.addOneNeighbor(A[1], A[6]);
+            G.addOneNeighbor(A.get(1), A.get(2));
+            G.addOneNeighbor(A.get(1), A.get(6));
 
-            G.addOneNeighbor(A[2], A[5]);
+            G.addOneNeighbor(A.get(2), A.get(5));
 
-            G.addOneNeighbor(A[3], A[2]);
-            G.addOneNeighbor(A[3], A[4]);
+            G.addOneNeighbor(A.get(3), A.get(2));
+            G.addOneNeighbor(A.get(3), A.get(4));
 
-            G.addOneNeighbor(A[4], A[5]);
+            G.addOneNeighbor(A.get(4), A.get(5));
 
-            G.addOneNeighbor(A[6], A[7]);
+            G.addOneNeighbor(A.get(6), A.get(7));
 
             return G;
         }
 
-    static Graph<DFS.Vertex> makeStronglyConnectedComponentsDemo(){
+    static Graph<DFS.Vertex<String>> makeStronglyConnectedComponentsDemo(){
         String t = "a,b,c,d,e,f,g,h";
         var names = t.split(",");
-        DFS.Vertex[] A = new DFS.Vertex[names.length];
-        for(int i = 0; i < names.length; i++) { A[i] = new DFS.Vertex(names[i]); }
-        Graph<DFS.Vertex> G = new Graph<>(A);
-        G.addOneNeighbor(A[0], A[1]);
+        var A = new ArrayList<DFS.Vertex<String>>(names.length);
+        for(int i = 0; i < names.length; i++) { A.add(i,new DFS.Vertex<>(names[i])); }
+        Graph<DFS.Vertex<String>> G = new Graph<>(A);
+        G.addOneNeighbor(A.get(0), A.get(1));
 
-        G.addOneNeighbor(A[1], A[2]);
-        G.addOneNeighbor(A[1], A[4]);
-        G.addOneNeighbor(A[1], A[5]);
+        G.addOneNeighbor(A.get(1), A.get(2));
+        G.addOneNeighbor(A.get(1), A.get(4));
+        G.addOneNeighbor(A.get(1), A.get(5));
 
-        G.addOneNeighbor(A[2], A[3]);
-        G.addOneNeighbor(A[2], A[6]);
+        G.addOneNeighbor(A.get(2), A.get(3));
+        G.addOneNeighbor(A.get(2), A.get(6));
 
-        G.addOneNeighbor(A[3], A[2]);
-        G.addOneNeighbor(A[3], A[7]);
+        G.addOneNeighbor(A.get(3), A.get(2));
+        G.addOneNeighbor(A.get(3), A.get(7));
 
-        G.addOneNeighbor(A[4], A[0]);
-        G.addOneNeighbor(A[4], A[5]);
+        G.addOneNeighbor(A.get(4), A.get(0));
+        G.addOneNeighbor(A.get(4), A.get(5));
 
-        G.addOneNeighbor(A[5], A[6]);
+        G.addOneNeighbor(A.get(5), A.get(6));
 
-        G.addOneNeighbor(A[6], A[5]);
-        G.addOneNeighbor(A[6], A[7]);
+        G.addOneNeighbor(A.get(6), A.get(5));
+        G.addOneNeighbor(A.get(6), A.get(7));
 
-        G.addOneNeighbor(A[7], A[7]);
+        G.addOneNeighbor(A.get(7), A.get(7));
 
         return G;
     }
@@ -120,7 +122,7 @@ class DFSTest {
         assertTrue(flag);
     }
 
-    boolean recursiveTopologicalTest(DFS.Vertex target, DFS.Vertex current, Graph<DFS.Vertex> G){
+    boolean recursiveTopologicalTest(DFS.Vertex<String> target, DFS.Vertex<String> current, Graph<DFS.Vertex<String>> G){
         if(current.equals(target)) return false;
         var neighbors = G.getNeighborsAt(current);
         if(neighbors.isEmpty()) return true;
@@ -138,7 +140,7 @@ class DFSTest {
     void recursiveTopologicalTest(){
         var graph = makeTopographicalDemo();
         boolean flag = true;
-        List<DFS.Vertex> t = new ArrayList<>(graph.getAllVertices());
+        List<DFS.Vertex<String>> t = new ArrayList<>(graph.getAllVertices());
         for(int i = 1; i < t.size(); i++){
             for(int j = 0; j < i; j++){
                 flag = recursiveTopologicalTest(t.get(j), t.get(i), graph);
@@ -154,7 +156,7 @@ class DFSTest {
         var G = makeStronglyConnectedComponentsDemo();
         DFS.stronglyConnectedComponents(G);
         var vertices = G.getAllVertices();
-        List<DFS.Vertex> vs = new ArrayList<>(vertices);
+        List<DFS.Vertex<String>> vs = new ArrayList<>(vertices);
         assertTrue((getRoot(vs.get(0)) == getRoot(vs.get(1))) & (getRoot(vs.get(1)) == getRoot(vs.get(4))));
         assertSame(getRoot(vs.get(2)), getRoot(vs.get(3)));
         assertSame(getRoot(vs.get(5)), getRoot(vs.get(6)));
@@ -162,7 +164,7 @@ class DFSTest {
 
     }
 
-    DFS.Vertex getRoot(DFS.Vertex v){
+    DFS.Vertex<String> getRoot(DFS.Vertex<String> v){
         var t = v;
         while(t.parent != null){ t = t.parent; }
         return t;
