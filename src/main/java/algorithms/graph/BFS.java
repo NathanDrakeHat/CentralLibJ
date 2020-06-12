@@ -25,9 +25,9 @@ public class BFS {
         }
     }
 
-    public static void breathFirstSearch(Graph<Vertex> G, Vertex s) {
+    public static <T extends Comparable<T>> void breathFirstSearch(Graph<Vertex<T>> G, Vertex<T> s) {
         var vs = G.getAllVertices();
-        for (Vertex v : vs) {
+        for (var v : vs) {
             if (!v.equals(s)) {
                 v.color = COLOR.WHITE;
                 v.d = Double.POSITIVE_INFINITY;
@@ -37,10 +37,10 @@ public class BFS {
         s.color = COLOR.GRAY;
         s.d = 0;
         s.parent = null;
-        Queue<Vertex> Q = new LinkedList<>();
+        Queue<Vertex<T>> Q = new LinkedList<>();
         Q.add(s);
         while(!Q.isEmpty()){
-            Vertex u = Q.remove();
+            var u = Q.remove();
             for(var v : G.getNeighborsAt(u)){
                 if(v.color == COLOR.WHITE){
                     v.color = COLOR.GRAY;
@@ -53,18 +53,8 @@ public class BFS {
         }
     }
 
-    public static void printPath(Vertex s, Vertex v){
-        if(v == s){
-            System.out.println(s.name);
-        }else if(v.parent == null){
-            System.out.println("no path found.");
-        }else{
-            printPath(s, v.parent);
-            System.out.println(v.name);
-        }
-    }
-    public static List<Character> getPath( Vertex s, Vertex v){
-        List<Character> t = new ArrayList<>();
+    public static <T extends Comparable<T>> List<Character> getPath( Vertex<T> s, Vertex<T> v){
+        List<T> t = new ArrayList<>();
         getPath(s, v, t);
         int idx = 0;
         List<Character> res = new ArrayList<>(t.size());
@@ -72,7 +62,7 @@ public class BFS {
             res.add(idx++, i);
         return res;
     }
-    private static void getPath(Vertex s, Vertex v, List<Character> res){
+    private static <T extends Comparable<T>> void getPath(Vertex<T> s, Vertex<T> v, List<T> res){
         if(v == s){
             res.add(s.name);
         } else if(v.parent != null){
