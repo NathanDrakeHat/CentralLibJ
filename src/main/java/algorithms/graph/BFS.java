@@ -6,22 +6,22 @@ import java.util.*;
 public class BFS {
     // breath first search
     enum COLOR{ WHITE, GRAY, BLACK}
-    public static class Vertex implements Comparable<Vertex>{
-        private Vertex parent;
+    public static class Vertex<V extends Comparable<V>> implements Comparable<Vertex<V>>{
+        private Vertex<V> parent;
         private COLOR color;
         private double d; //distance
-        private final char name; // generic
+        private final V name; // generic
 
-        Vertex(char name){ this.name = name; }
+        Vertex(V name){ this.name = name; }
 
-        public boolean equals(Vertex other){ return name == other.name; }
+        public boolean equals(Vertex<V> other){ return name.equals(other.name); }
 
         @Override public int hashCode(){
-            return name;
+            return name.hashCode();
         }
 
-        @Override public int compareTo(Vertex other) {
-            return Character.compare(this.name, other.name);
+        @Override public int compareTo(Vertex<V> other) {
+            return this.name.compareTo(other.name);
         }
     }
 
