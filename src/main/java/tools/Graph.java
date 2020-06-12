@@ -71,6 +71,10 @@ public class Graph<V extends Comparable<V>>  {
         for(var v : vertices) {
             this.edge_map.put(v, new TreeSet<>());}
     }
+    public Graph(List<V> vertices){
+        for(var v : vertices) {
+            this.edge_map.put(v, new TreeSet<>());}
+    }
 
     public void putNeighborPair(V vertex, V neighbor){
         putNeighborPair(vertex, neighbor, 1);

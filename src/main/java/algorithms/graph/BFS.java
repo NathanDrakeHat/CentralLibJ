@@ -63,13 +63,13 @@ public class BFS {
             System.out.println(v.name);
         }
     }
-    public static char[] getPath( Vertex s, Vertex v){
+    public static List<Character> getPath( Vertex s, Vertex v){
         List<Character> t = new ArrayList<>();
         getPath(s, v, t);
         int idx = 0;
-        char[] res = new char[t.size()];
+        List<Character> res = new ArrayList<>(t.size());
         for(var i : t)
-            res[idx++] = i;
+            res.add(idx++, i);
         return res;
     }
     private static void getPath(Vertex s, Vertex v, List<Character> res){

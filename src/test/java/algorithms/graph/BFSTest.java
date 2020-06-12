@@ -4,6 +4,8 @@ package algorithms.graph;
 import org.junit.jupiter.api.Test;
 import tools.Graph;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class BFSTest {
@@ -43,6 +45,6 @@ class BFSTest {
         var vs = Data.makeVertexes();
         var t = Data.makeGraph(vs);
         BFS.breathFirstSearch(t, vs[1]);
-        assertArrayEquals(BFS.getPath(vs[1], vs[7]), new char[] {'s','w','x','y'});
+        assertEquals(BFS.getPath(vs[1], vs[7]), List.of('s','w','x','y'));
     }
 }
