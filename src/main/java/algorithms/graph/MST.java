@@ -6,19 +6,20 @@ import java.util.*;
 
 // minimum spanning tree
 public class MST {
-    public static class KruskalVertex implements Comparable<KruskalVertex>, DisjointSet<KruskalVertex> {
-        private final String name;
+    public static class KruskalVertex<V extends Comparable<V>> implements Comparable<KruskalVertex<V>>, DisjointSet<KruskalVertex<V>> {
+        private final V name;
         private int rank = 0;
-        private KruskalVertex parent = this;
+        private KruskalVertex<V> parent = this;
 
-        public KruskalVertex(String n) { name = n; }
+        public KruskalVertex(V n) { name = n; }
 
-        public String getName() { return name; }
+        public V getName() { return name; }
 
         @Override
+        @SuppressWarnings("unchecked")
         public boolean equals(Object other_vertex){
-            if(other_vertex instanceof KruskalVertex){
-                return name.equals(((KruskalVertex) other_vertex).name);
+            if(this.getClass().equals(other_vertex.getClass())){
+                return name.equals(((KruskalVertex<V>) other_vertex).name);
             }else return false;
         }
 
@@ -26,7 +27,7 @@ public class MST {
         public int hashCode(){ return name.hashCode(); }
 
         @Override
-        public int compareTo(KruskalVertex other){
+        public int compareTo(KruskalVertex<V> other){
             return name.compareTo(other.name);
         }
         
@@ -36,22 +37,22 @@ public class MST {
         public void setRank(int rank) { this.rank = rank; }
         
         @Override
-        public KruskalVertex getParent() { return parent; }
+        public KruskalVertex<V> getParent() { return parent; }
         @Override
-        public void setParent(KruskalVertex r) { this.parent = r; }
+        public void setParent(KruskalVertex<V> r) { this.parent = r; }
 
         @Override
-        public String toString(){ return String.format("KruskalVertex: %s", name); }
+        public String toString(){ return String.format("KruskalVertex: %s", name.toString()); }
         
     }
-    public static class PrimVertex implements Comparable<PrimVertex>{
-        public final String name;
-        public PrimVertex parent;
+    public static class PrimVertex<V extends Comparable<V>> implements Comparable<PrimVertex<V>>{
+        public final V name;
+        public PrimVertex<V> parent;
         public double key = 0;
 
-        public PrimVertex(String name) { this.name = name; }
+        public PrimVertex(V name) { this.name = name; }
 
-        public PrimVertex(PrimVertex other){
+        public PrimVertex(PrimVertex<V> other){
             this.name = other.name;
             this.parent = other.parent;
             this.key = other.key;
@@ -61,25 +62,26 @@ public class MST {
         public int hashCode() { return name.hashCode(); }
 
         @Override
-        public int compareTo(PrimVertex other){
+        public int compareTo(PrimVertex<V> other){
             int key_check =  Double.compare(key, other.key);
             if(key_check == 0) return name.compareTo(other.name);
             else return key_check;
         }
 
         @Override
+        @SuppressWarnings("unchecked")
         public boolean equals(Object other){
-            if(other instanceof PrimVertex){
-                return name.equals(((PrimVertex) other).name);
+            if(this.getClass().equals(other.getClass())){
+                return name.equals(((PrimVertex<V>) other).name);
             }else return false;
         }
 
         @Override
-        public String toString() { return String.format("PrimVertex %s, Key: %.2f", name,key); }
+        public String toString() { return String.format("PrimVertex %s, Key: %.2f", name.toString(),key); }
     }
 
-    public static Set<Graph<KruskalVertex>.Edge> algorithmOfKruskal(Graph<KruskalVertex> graph){
-        Set<Graph<KruskalVertex>.Edge> res = new HashSet<>();
+    public static <T extends Comparable<T>> Set<Graph<KruskalVertex<T>>.Edge> algorithmOfKruskal(Graph<KruskalVertex<T>> graph){
+        Set<Graph<KruskalVertex<T>>.Edge> res = new HashSet<>();
         var edges_set = graph.getAllEdges();
         var edges_list = new ArrayList<>(edges_set);
         Collections.sort(edges_list);
@@ -94,8 +96,8 @@ public class MST {
         return res;
     }
 
-    public static Graph<PrimVertex> algorithmOfPrim(Graph<PrimVertex> graph, PrimVertex r){
-        Queue<PrimVertex> Q = new PriorityQueue<>();
+    public static <T extends Comparable<T>> Graph<PrimVertex<T>> algorithmOfPrim(Graph<PrimVertex<T>> graph, PrimVertex<T> r){
+        Queue<PrimVertex<T>> Q = new PriorityQueue<>();
         var vertices = graph.getAllVertices();
         for(var vertex : vertices){
             if(!vertex.equals(r)) vertex.key = Double.POSITIVE_INFINITY;
@@ -106,7 +108,7 @@ public class MST {
             vertex.parent = null;
         }
         while(!vertices.isEmpty()){
-            PrimVertex u;
+            PrimVertex<T> u;
             do { // ignore encountered vertex
                 u = Q.remove();
             }while(!vertices.contains(u));
@@ -117,7 +119,7 @@ public class MST {
                 if(vertices.contains(v) & edge.getWeight() < v.key){
                     v.parent = u;
                     v.key = edge.getWeight();
-                    Q.add(new PrimVertex(v)); // prevent update
+                    Q.add(new PrimVertex<>(v)); // prevent update
                 }
             }
         }
