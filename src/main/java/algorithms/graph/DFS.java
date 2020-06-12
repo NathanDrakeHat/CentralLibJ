@@ -8,24 +8,24 @@ public class DFS {
     // depth first search
     enum COLOR{ WHITE, GRAY, BLACK}
 
-    public static class Vertex implements Comparable<Vertex>{
-        public Vertex parent;
+    public static class Vertex<V extends Comparable<V>> implements Comparable<Vertex<V>>{
+        public Vertex<V> parent;
         private COLOR color;
         public int d; //discovered time
         public int f; // finished time
-        private final String name; // this could changed into generic
+        private final V name; // this could changed into generic
 
-        public Vertex(String name){ this.name = name; }
+        public Vertex(V name){ this.name = name; }
 
-        public String getName() {return name;}
+        public V getName() {return name;}
 
-        public boolean equals(Vertex other){ return name.equals(other.getName()); }
+        public boolean equals(Vertex<V> other){ return name.equals(other.getName()); }
 
         @Override public int hashCode(){ return name.hashCode(); }
 
-        @Override public String toString(){ return name; }
+        @Override public String toString(){ return name.toString(); }
 
-        @Override public int compareTo(Vertex other) {return this.name.compareTo(other.name); }
+        @Override public int compareTo(Vertex<V> other) {return this.name.compareTo(other.name); }
     }
 
     public static void depthFirstSearch(Graph<Vertex> G) {
