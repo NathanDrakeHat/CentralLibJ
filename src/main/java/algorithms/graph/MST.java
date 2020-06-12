@@ -80,7 +80,7 @@ public class MST {
 
     public static Set<WeightedGraph<KruskalVertex>.Edge> algorithmOfKruskal(WeightedGraph<KruskalVertex> graph){
         Set<WeightedGraph<KruskalVertex>.Edge> res = new HashSet<>();
-        var edges_set = graph.getEdges();
+        var edges_set = graph.getAllEdges();
         var edges_list = new ArrayList<>(edges_set);
         Collections.sort(edges_list);
         for(var edge : edges_list){

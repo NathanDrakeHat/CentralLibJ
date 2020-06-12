@@ -99,7 +99,6 @@ public class WeightedGraph<V extends Comparable<V>>  {
         var edges_set = edge_map.computeIfAbsent(vertex, k -> new TreeSet<>());
         edges_set.add(edge_t);
     }
-
     public boolean removeOneNeighbor(V vertex, V neighbor, int weight){
         return edge_map.get(vertex).remove(new Edge(vertex,neighbor,weight));
     }
@@ -107,12 +106,10 @@ public class WeightedGraph<V extends Comparable<V>>  {
     public Set<Edge> getEdgesAt(V vertex) {
         return new TreeSet<>(edge_map.computeIfAbsent(vertex, k -> new TreeSet<>()));
     }
-
     public Set<V> getVertices(){
         return new HashSet<>(edge_map.keySet());
     }
-    
-    public Set<Edge> getEdges(){
+    public Set<Edge> getAllEdges(){
         Set<Edge> res = new TreeSet<>();
         for(var vertex : getVertices()){
             res.addAll(getEdgesAt(vertex));
