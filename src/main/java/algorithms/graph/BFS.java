@@ -53,11 +53,11 @@ public class BFS {
         }
     }
 
-    public static <T extends Comparable<T>> List<Character> getPath( Vertex<T> s, Vertex<T> v){
+    public static <T extends Comparable<T>> List<T> getPath( Vertex<T> s, Vertex<T> v){
         List<T> t = new ArrayList<>();
         getPath(s, v, t);
         int idx = 0;
-        List<Character> res = new ArrayList<>(t.size());
+        List<T> res = new ArrayList<>(t.size());
         for(var i : t)
             res.add(idx++, i);
         return res;
