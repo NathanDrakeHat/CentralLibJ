@@ -92,7 +92,7 @@ class MSTTest {
     @Test
     public void algorithmOfPrimTest(){
         var graph = MST.algorithmOfPrim(buildPrimExample(), new MST.PrimVertex("a"));
-        var vertices = graph.getVertexes();
+        var vertices = graph.getVertices();
         Set<Set<MST.PrimVertex>> res = new HashSet<>();
         for(var vertex : vertices){
             if(vertex.parent != null){

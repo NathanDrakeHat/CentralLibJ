@@ -96,7 +96,7 @@ public class MST {
 
     public static WeightedGraph<PrimVertex> algorithmOfPrim(WeightedGraph<PrimVertex> graph, PrimVertex r){
         Queue<PrimVertex> Q = new PriorityQueue<>();
-        var vertices = graph.getVertexes();
+        var vertices = graph.getVertices();
         for(var vertex : vertices){
             if(!vertex.equals(r)) vertex.key = Double.POSITIVE_INFINITY;
             else {

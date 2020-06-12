@@ -108,13 +108,13 @@ public class WeightedGraph<V extends Comparable<V>>  {
         return new TreeSet<>(edge_map.computeIfAbsent(vertex, k -> new TreeSet<>()));
     }
 
-    public Set<V> getVertexes(){
+    public Set<V> getVertices(){
         return new HashSet<>(edge_map.keySet());
     }
     
     public Set<Edge> getEdges(){
         Set<Edge> res = new TreeSet<>();
-        for(var vertex : getVertexes()){
+        for(var vertex : getVertices()){
             res.addAll(getEdgesAt(vertex));
         }
         return res;
