@@ -1,9 +1,10 @@
 package tools;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 
-public class WeightedGraph<V extends Comparable<V>>  {
+public class Graph<V extends Comparable<V>>  {
     public class Edge implements Comparable<Edge> {
         private final V smaller_vertex;
         private final V bigger_vertex;
@@ -65,27 +66,15 @@ public class WeightedGraph<V extends Comparable<V>>  {
     }
     Map<V, Set<Edge>> edge_map = new HashMap<>();
 
-    public WeightedGraph(){}
-
-    public void setNeighbors(V vertex, V[] vertexes, int[] weights){
-        int len = vertexes.length;
-        if(weights.length != len) throw new IllegalArgumentException();
-
-        Set<Edge> edges_set = edge_map.get(vertex);
-        if(edges_set != null) { edges_set.clear(); }
-        else{ edges_set = new TreeSet<>(); }
-
-        for(int i = 0; i < len; i++){
-            edges_set.add(new Edge(vertex, vertexes[i], weights[i]));
-        }
+    public Graph(){}
+    public Graph(V[] vertices){
+        for(var v : vertices) {
+            this.edge_map.put(v, new TreeSet<>());}
     }
-    public void setNeighborPairs(V vertex, V[] vertexes, int[] weights){
-        int len = vertexes.length;
-        if(weights.length != len) throw new IllegalArgumentException();
-        for(int i = 0; i < len; i++) putNeighborPair(vertex, vertexes[i],weights[i]);
-    }
-    public void clearNeighbors(V vertex){ edge_map.get(vertex).clear(); }
 
+    public void putNeighborPair(V vertex, V neighbor){
+        putNeighborPair(vertex, neighbor, 1);
+    }
     public void putNeighborPair(V vertex, V neighbor, int w){
         var edge_t = new Edge(vertex, neighbor, w);
         var edges_set = edge_map.computeIfAbsent(vertex, k -> new TreeSet<>());
@@ -94,26 +83,61 @@ public class WeightedGraph<V extends Comparable<V>>  {
         edges_set.add(edge_t);
     }
 
+    public void addOneNeighbor(V vertex, V neighbor){ addOneNeighbor(vertex, neighbor, 1); }
     public void addOneNeighbor(V vertex, V neighbor, int w){
         var edge_t = new Edge(vertex, neighbor, w);
         var edges_set = edge_map.computeIfAbsent(vertex, k -> new TreeSet<>());
         edges_set.add(edge_t);
     }
-    public boolean removeOneNeighbor(V vertex, V neighbor, int weight){
-        return edge_map.get(vertex).remove(new Edge(vertex,neighbor,weight));
-    }
 
     public Set<Edge> getEdgesAt(V vertex) {
         return new TreeSet<>(edge_map.computeIfAbsent(vertex, k -> new TreeSet<>()));
     }
-    public Set<V> getVertices(){
-        return new HashSet<>(edge_map.keySet());
-    }
     public Set<Edge> getAllEdges(){
         Set<Edge> res = new TreeSet<>();
-        for(var vertex : getVertices()){
+        for(var vertex : getAllVertices()){
             res.addAll(getEdgesAt(vertex));
         }
         return res;
     }
+
+    public Set<V> getAllVertices(){
+        return new HashSet<>(edge_map.keySet());
+    }
+    public void putVertex(V vertex) { edge_map.put(vertex, new TreeSet<>()); }
+    public boolean hasVertex(V vertex) { return edge_map.containsKey(vertex); }
+
+    public Set<V> getNeighborsAt(V vertex){
+        return edge_map.get(vertex).stream().map((e) -> e.getAnotherVertex(vertex)).collect(Collectors.toCollection(TreeSet::new));
+    }
+    public boolean hasOneNeighbor(V vertex, V neighbor) {
+        var edges = edge_map.get(vertex);
+        for(var edge : edges){
+            var n = edge.getAnotherVertex(vertex);
+            if(neighbor.equals(n)) return true;
+        }
+        return false;
+    }
+
+    //    public void setNeighbors(V vertex, V[] vertexes, int[] weights){
+    //        int len = vertexes.length;
+    //        if(weights.length != len) throw new IllegalArgumentException();
+    //
+    //        Set<Edge> edges_set = edge_map.get(vertex);
+    //        if(edges_set != null) { edges_set.clear(); }
+    //        else{ edges_set = new TreeSet<>(); }
+    //
+    //        for(int i = 0; i < len; i++){
+    //            edges_set.add(new Edge(vertex, vertexes[i], weights[i]));
+    //        }
+    //    }
+    //    public void setNeighborPairs(V vertex, V[] vertexes, int[] weights){
+    //        int len = vertexes.length;
+    //        if(weights.length != len) throw new IllegalArgumentException();
+    //        for(int i = 0; i < len; i++) putNeighborPair(vertex, vertexes[i],weights[i]);
+    //    }
+    //    public void clearNeighbors(V vertex){ edge_map.get(vertex).clear(); }
+    //    public boolean removeOneNeighbor(V vertex, V neighbor, int weight){
+    //        return edge_map.get(vertex).remove(new Edge(vertex,neighbor,weight));
+    //    }
 }

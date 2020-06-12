@@ -1,7 +1,7 @@
 package algorithms.graph;
 
 import structures.DisjointSet;
-import tools.WeightedGraph;
+import tools.Graph;
 import java.util.*;
 
 // minimum spanning tree
@@ -78,8 +78,8 @@ public class MST {
         public String toString() { return String.format("PrimVertex %s, Key: %.2f", name,key); }
     }
 
-    public static Set<WeightedGraph<KruskalVertex>.Edge> algorithmOfKruskal(WeightedGraph<KruskalVertex> graph){
-        Set<WeightedGraph<KruskalVertex>.Edge> res = new HashSet<>();
+    public static Set<Graph<KruskalVertex>.Edge> algorithmOfKruskal(Graph<KruskalVertex> graph){
+        Set<Graph<KruskalVertex>.Edge> res = new HashSet<>();
         var edges_set = graph.getAllEdges();
         var edges_list = new ArrayList<>(edges_set);
         Collections.sort(edges_list);
@@ -94,9 +94,9 @@ public class MST {
         return res;
     }
 
-    public static WeightedGraph<PrimVertex> algorithmOfPrim(WeightedGraph<PrimVertex> graph, PrimVertex r){
+    public static Graph<PrimVertex> algorithmOfPrim(Graph<PrimVertex> graph, PrimVertex r){
         Queue<PrimVertex> Q = new PriorityQueue<>();
-        var vertices = graph.getVertices();
+        var vertices = graph.getAllVertices();
         for(var vertex : vertices){
             if(!vertex.equals(r)) vertex.key = Double.POSITIVE_INFINITY;
             else {

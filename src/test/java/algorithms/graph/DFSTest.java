@@ -2,7 +2,7 @@ package algorithms.graph;
 
 import algorithms.graph.DFS;
 import org.junit.jupiter.api.Test;
-import tools.LinkedGraph;
+import tools.Graph;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,12 +10,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class DFSTest {
     static String names = "uvwxyz";
-    static LinkedGraph<DFS.Vertex> makeGraph(){
+    static Graph<DFS.Vertex> makeGraph(){
         var vs = new DFS.Vertex[6];
         for(int i = 0; i < 6; i++){
             vs[i] = new DFS.Vertex(String.valueOf(names.charAt(i)));
         }
-        var G = new LinkedGraph<>(vs);
+        var G = new Graph<>(vs);
         G.addOneNeighbor(vs[0], vs[1]);
         G.addOneNeighbor(vs[0], vs[3]);
 
@@ -34,12 +34,12 @@ class DFSTest {
     }
     static int[][] res = new int[][] {{1, 2, 9, 4, 3, 10}, {8, 7, 12, 5, 6, 11}};
 
-    static LinkedGraph<DFS.Vertex> makeTopographicalDemo(){
+    static Graph<DFS.Vertex> makeTopographicalDemo(){
             DFS.Vertex[] A = new DFS.Vertex[9];
             String t = "undershorts,pants,belt,shirt,tie,jacket,socks,shoes,watch";
             var names = t.split(",");
             for(int i = 0; i < 9; i++) { A[i] = new DFS.Vertex(names[i]); }
-            LinkedGraph<DFS.Vertex> G = new LinkedGraph<>(A);
+            Graph<DFS.Vertex> G = new Graph<>(A);
             G.addOneNeighbor(A[0], A[1]);
             G.addOneNeighbor(A[0], A[6]);
 
@@ -58,12 +58,12 @@ class DFSTest {
             return G;
         }
 
-    static LinkedGraph<DFS.Vertex> makeStronglyConnectedComponentsDemo(){
+    static Graph<DFS.Vertex> makeStronglyConnectedComponentsDemo(){
         String t = "a,b,c,d,e,f,g,h";
         var names = t.split(",");
         DFS.Vertex[] A = new DFS.Vertex[names.length];
         for(int i = 0; i < names.length; i++) { A[i] = new DFS.Vertex(names[i]); }
-        LinkedGraph<DFS.Vertex> G = new LinkedGraph<>(A);
+        Graph<DFS.Vertex> G = new Graph<>(A);
         G.addOneNeighbor(A[0], A[1]);
 
         G.addOneNeighbor(A[1], A[2]);
@@ -94,11 +94,11 @@ class DFSTest {
         var G = makeGraph();
         DFS.depthFirstSearch(G);
         int idx = 0;
-        for(var v : G.getVertexes()){
+        for(var v : G.getAllVertices()){
             assertEquals(v.d, res[0][idx]);
             assertEquals(v.f, res[1][idx++]);
         }
-        for(var i : G.getVertexes()){
+        for(var i : G.getAllVertices()){
             var t = i;
             while(t.parent != null){ t = t.parent; }
             System.out.println(String.format("vertex %s parent is %s", i.getName(), t.getName()));
@@ -120,9 +120,9 @@ class DFSTest {
         assertTrue(flag);
     }
 
-    boolean recursiveTopologicalTest(DFS.Vertex target, DFS.Vertex current, LinkedGraph<DFS.Vertex> G){
+    boolean recursiveTopologicalTest(DFS.Vertex target, DFS.Vertex current, Graph<DFS.Vertex> G){
         if(current.equals(target)) return false;
-        var neighbors = G.getNeighbors(current);
+        var neighbors = G.getNeighborsAt(current);
         if(neighbors.isEmpty()) return true;
         else{
             boolean t = true;
@@ -138,7 +138,7 @@ class DFSTest {
     void recursiveTopologicalTest(){
         var graph = makeTopographicalDemo();
         boolean flag = true;
-        List<DFS.Vertex> t = new ArrayList<>(graph.getVertexes());
+        List<DFS.Vertex> t = new ArrayList<>(graph.getAllVertices());
         for(int i = 1; i < t.size(); i++){
             for(int j = 0; j < i; j++){
                 flag = recursiveTopologicalTest(t.get(j), t.get(i), graph);
@@ -153,7 +153,7 @@ class DFSTest {
     void stronglyConnectedComponentsTest(){
         var G = makeStronglyConnectedComponentsDemo();
         DFS.stronglyConnectedComponents(G);
-        var vertices = G.getVertexes();
+        var vertices = G.getAllVertices();
         List<DFS.Vertex> vs = new ArrayList<>(vertices);
         assertTrue((getRoot(vs.get(0)) == getRoot(vs.get(1))) & (getRoot(vs.get(1)) == getRoot(vs.get(4))));
         assertSame(getRoot(vs.get(2)), getRoot(vs.get(3)));

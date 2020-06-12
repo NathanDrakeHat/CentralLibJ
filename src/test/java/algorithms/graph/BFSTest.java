@@ -1,8 +1,8 @@
 package algorithms.graph;
 
-import algorithms.graph.BFS;
+
 import org.junit.jupiter.api.Test;
-import tools.LinkedGraph;
+import tools.Graph;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -17,8 +17,8 @@ class BFSTest {
             }
             return vs;
         }
-        public static LinkedGraph<BFS.Vertex> makeGraph(BFS.Vertex[] vs){ ;
-            var G = new LinkedGraph<>(vs);
+        public static Graph<BFS.Vertex> makeGraph(BFS.Vertex[] vs){ ;
+            var G = new Graph<>(vs);
             G.putNeighborPair(vs[0], vs[1]);
             G.putNeighborPair(vs[0], vs[4]);
 

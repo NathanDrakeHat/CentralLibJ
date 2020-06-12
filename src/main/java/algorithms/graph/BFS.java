@@ -1,6 +1,6 @@
 package algorithms.graph;
 
-import tools.LinkedGraph;
+import tools.Graph;
 import java.util.*;
 
 public class BFS {
@@ -25,8 +25,8 @@ public class BFS {
         }
     }
 
-    public static void breathFirstSearch(LinkedGraph<Vertex> G, Vertex s) {
-        var vs = G.getVertexes();
+    public static void breathFirstSearch(Graph<Vertex> G, Vertex s) {
+        var vs = G.getAllVertices();
         for (Vertex v : vs) {
             if (!v.equals(s)) {
                 v.color = COLOR.WHITE;
@@ -41,7 +41,7 @@ public class BFS {
         Q.add(s);
         while(!Q.isEmpty()){
             Vertex u = Q.remove();
-            for(var v : G.getNeighbors(u)){
+            for(var v : G.getNeighborsAt(u)){
                 if(v.color == COLOR.WHITE){
                     v.color = COLOR.GRAY;
                     v.d = u.d + 1;
