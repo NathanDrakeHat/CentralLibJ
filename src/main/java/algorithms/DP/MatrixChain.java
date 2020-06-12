@@ -23,7 +23,7 @@ public class MatrixChain { // dynamic programming
             System.out.println();
         }
         private void print(PairNode p){
-            if(p.left != null | p.right != null)
+            if(p.left != null || p.right != null)
                 System.out.print("(");
             if(p.left != null){
                 print(p.left);
@@ -31,14 +31,14 @@ public class MatrixChain { // dynamic programming
             if(p.right != null){
                 print(p.right);
             }
-            if(p.right == null & p.left == null)
+            if(p.right == null && p.left == null)
                 System.out.print(p.a + 1);
-            if(p.left != null | p.right != null)
+            if(p.left != null || p.right != null)
                 System.out.print(")");
         }
 
         private void walk(PairNode p, StringBuilder res){
-            if(p.left != null | p.right != null)
+            if(p.left != null || p.right != null)
                 res.append("(");
             if(p.left != null){
                 walk(p.left, res);
@@ -46,9 +46,9 @@ public class MatrixChain { // dynamic programming
             if(p.right != null){
                 walk(p.right, res);
             }
-            if(p.right == null & p.left == null)
+            if(p.right == null && p.left == null)
                 res.append(p.a + 1);
-            if(p.left != null | p.right != null)
+            if(p.left != null || p.right != null)
                 res.append(")");
         }
         public String toString(){

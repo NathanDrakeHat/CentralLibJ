@@ -151,7 +151,7 @@ public class FibonacciHeap<V> {
     public FibonacciHeap<V> union(FibonacciHeap<V> f1, FibonacciHeap<V> f2){
         var res = new FibonacciHeap<V>();
         res.root_list = f1.root_list;
-        if(f1.root_list == null | f2.root_list == null){
+        if(f1.root_list == null || f2.root_list == null){
             throw new IllegalArgumentException("Can't union null ");
         }
         var f1_right = f1.root_list.right; // concatenate two root list
@@ -190,7 +190,7 @@ public class FibonacciHeap<V> {
         }
     }
     protected void cut(Node a, Node b){
-        if(a == null & b == null) throw new IllegalArgumentException("Two arg is null");
+        if(a == null && b == null) throw new IllegalArgumentException("Two arg is null");
         else if(a == null) throw new IllegalArgumentException("First arg is null");
         else if(b == null ) throw new IllegalArgumentException("Second arg is null.");
         removeNodeFromList(a);
@@ -220,7 +220,7 @@ public class FibonacciHeap<V> {
     protected int upperBound(){ return (int)(Math.log(number)/Math.log(2)); }
 
     protected void addNodeToList(Node x, Node list){
-        if(x == null & list == null) throw new IllegalArgumentException("Two arg is null");
+        if(x == null && list == null) throw new IllegalArgumentException("Two arg is null");
         else if(x == null) throw new IllegalArgumentException("First arg is null");
         else if(list == null ) throw new IllegalArgumentException("Second arg is null.");
 

@@ -29,7 +29,7 @@ public class ProtoVEBTree {
     }
 
     public boolean hasMember(int x){
-        if(x < 0 | x >= u) throw new IllegalArgumentException("Input out of range.");
+        if(x < 0 || x >= u) throw new IllegalArgumentException("Input out of range.");
         return hasMember(this, x);
     }
     private boolean hasMember(ProtoVEBTree T, int x){
@@ -38,7 +38,7 @@ public class ProtoVEBTree {
     }
 
     public ProtoVEBTree insert(int x){
-        if(x < 0 | x >= u) throw new IllegalArgumentException("Input out of range.");
+        if(x < 0 || x >= u) throw new IllegalArgumentException("Input out of range.");
         insert(this, x);
         return this;
     }
@@ -96,14 +96,14 @@ public class ProtoVEBTree {
     }
 
     public int successor(int x) {
-        if(x < 0 | x >= u) throw new IllegalArgumentException("Input out of range.");
+        if(x < 0 || x >= u) throw new IllegalArgumentException("Input out of range.");
         var res = successor(this, x);
         if(res == null) throw new NullPointerException();
         else return res;
     }
     private Integer successor(ProtoVEBTree T, int x) {
         if(T.u == 2){
-            if(x == 0 & T.array[1]) return 1;
+            if(x == 0 && T.array[1]) return 1;
             else return null;
         }else{
             var offset = successor(T.cluster[T.high(x)], T.low(x));
@@ -120,14 +120,14 @@ public class ProtoVEBTree {
     }
 
     public int predecessor(int x) {
-        if(x < 0 | x >= u) throw new IllegalArgumentException("Input out of range.");
+        if(x < 0 || x >= u) throw new IllegalArgumentException("Input out of range.");
         var res = predecessor(this, x);
         if(res == null) throw new NullPointerException();
         else return res;
     }
     private Integer predecessor(ProtoVEBTree T, int x)  {
         if(T.u == 2){
-            if(x == 1 & T.array[0]) return 0;
+            if(x == 1 && T.array[0]) return 0;
             else return null;
         }else{
             var offset = predecessor(T.cluster[T.high(x)], T.low(x)); // search same cluster

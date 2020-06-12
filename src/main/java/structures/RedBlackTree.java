@@ -66,7 +66,7 @@ public class RedBlackTree<K extends Comparable<K>, V> {
         public boolean equals(Object other){
             if(other == null) return false;
             else if(other.getClass().equals(this.getClass())){
-                return key.equals(((KeyValuePair<A, B>) other).key) & value.equals(((KeyValuePair<A,B>) other).value);
+                return key.equals(((KeyValuePair<A, B>) other).key) && value.equals(((KeyValuePair<A,B>) other).value);
             }else return false;
         }
 
@@ -78,14 +78,14 @@ public class RedBlackTree<K extends Comparable<K>, V> {
     }
 
     public V getValueOfMinKey(){
-        if(getRoot() != null & getSentinel() != getRoot()) {
+        if(getRoot() != null && getSentinel() != getRoot()) {
             return getMinimum(getRoot()).getValue();
         }else{
             throw new NoSuchElementException("null tree");
         }
     }
     public V getValueOfMaxKey(){
-        if(getRoot() != null & getRoot() != getSentinel()) {
+        if(getRoot() != null && getRoot() != getSentinel()) {
             return getMaximum(getRoot()).getValue();
         }else{
             throw new NoSuchElementException("null tree");
@@ -100,7 +100,7 @@ public class RedBlackTree<K extends Comparable<K>, V> {
     protected ColorNode getRoot() { return root; }
 
     public void printTreeInLine(){ // inorder print
-        if(getRoot() == null | getSentinel() == getRoot()){
+        if(getRoot() == null || getSentinel() == getRoot()){
             return;
         }
         inorderTreeWalk(getRoot().getLeft());
@@ -116,7 +116,7 @@ public class RedBlackTree<K extends Comparable<K>, V> {
         return inorderTreeWalk(getRoot(), "sum");
     }
     public int getHeight(){
-        if(getRoot() == null | getRoot() == getSentinel()){
+        if(getRoot() == null || getRoot() == getSentinel()){
             return 0;
         }
         int count = 1;
@@ -127,8 +127,8 @@ public class RedBlackTree<K extends Comparable<K>, V> {
 
     public void insert(K key, V val){ insert(new ColorNode(key, val)); }
     private void insert(ColorNode n){
-        if(n == null | n == sentinel) return;
-        if(getRoot() == null | getRoot() == getSentinel()){
+        if(n == null || n == sentinel) return;
+        if(getRoot() == null || getRoot() == getSentinel()){
             setRoot(n);
             getRoot().setRight(getSentinel());
             getRoot().setLeft(getSentinel());
@@ -195,7 +195,7 @@ public class RedBlackTree<K extends Comparable<K>, V> {
 
     public void delete(K key){ delete(search(getRoot(), key)); }
     private void delete(ColorNode target) {
-        if(target == null | target == getSentinel()){
+        if(target == null || target == getSentinel()){
             throw new NoSuchElementException("null tree");
         }
         var ptr = target;
@@ -228,7 +228,7 @@ public class RedBlackTree<K extends Comparable<K>, V> {
         }
     }
     private void deleteFixUp(ColorNode fix_up){
-        while(fix_up != getRoot() & fix_up.isBlack()){
+        while(fix_up != getRoot() && fix_up.isBlack()){
             ColorNode sibling;
             if(fix_up == fix_up.getParent().getLeft()){
                 sibling = fix_up.getParent().getRight();
@@ -238,7 +238,7 @@ public class RedBlackTree<K extends Comparable<K>, V> {
                     leftRotate(fix_up.getParent());
                     sibling = fix_up.getParent().getRight();
                 }
-                if(sibling.getLeft().isBlack() & sibling.getRight().isBlack()){ // case2: sibling children is black
+                if(sibling.getLeft().isBlack() && sibling.getRight().isBlack()){ // case2: sibling children is black
                     sibling.setRed();
                     fix_up = fix_up.getParent();
                     continue; // may break while condition
@@ -260,7 +260,7 @@ public class RedBlackTree<K extends Comparable<K>, V> {
                     rightRotate(fix_up.getParent());
                     sibling = fix_up.getParent().getLeft();
                 }
-                if(sibling.getLeft().isBlack() & sibling.getRight().isBlack()){
+                if(sibling.getLeft().isBlack() && sibling.getRight().isBlack()){
                     sibling.setRed();
                     fix_up = fix_up.getParent();
                     continue;
@@ -293,7 +293,7 @@ public class RedBlackTree<K extends Comparable<K>, V> {
     }
 
     public V search(K key){
-        if(getRoot() == null | getRoot() == getSentinel()){
+        if(getRoot() == null || getRoot() == getSentinel()){
             throw new NoSuchElementException();
         }
         return search(getRoot(), key).getValue();
@@ -301,9 +301,9 @@ public class RedBlackTree<K extends Comparable<K>, V> {
     private ColorNode search(ColorNode n, K key){
         if(n.getKey().compareTo(key) == 0){
             return n;
-        }else if(key.compareTo(n.getKey()) < 0 & n.getLeft() != getSentinel()){
+        }else if(key.compareTo(n.getKey()) < 0 && n.getLeft() != getSentinel()){
             return search(n.getLeft(), key);
-        }else if(key.compareTo(n.getKey()) > 0 & n.getRight() != getSentinel()){
+        }else if(key.compareTo(n.getKey()) > 0 && n.getRight() != getSentinel()){
             return search(n.getRight(), key);
         }
         throw new NoSuchElementException();
@@ -375,7 +375,7 @@ public class RedBlackTree<K extends Comparable<K>, V> {
         }else{
             var target = current.getParent();
             var target_right = current;
-            while(target != getSentinel() & target.getRight() == target_right){
+            while(target != getSentinel() && target.getRight() == target_right){
                 target_right = target;
                 target = target.getParent();
             }
@@ -416,11 +416,11 @@ public class RedBlackTree<K extends Comparable<K>, V> {
     }
     private int inorderTreeWalk(ColorNode n, String sum){ //overload trick
         if(!sum.equals("sum")) throw new IllegalArgumentException();
-        if(n.getRight() != getSentinel() & n.getLeft() == getSentinel()){
+        if(n.getRight() != getSentinel() && n.getLeft() == getSentinel()){
             return inorderTreeWalk(n.getRight(), "sum") + 1;
-        }else if(n.getRight() == getSentinel() & n.getLeft() != getSentinel()){
+        }else if(n.getRight() == getSentinel() && n.getLeft() != getSentinel()){
             return inorderTreeWalk(n.getLeft(), "sum") + 1;
-        }else if(n.getRight() != getSentinel() & n.getLeft() != getSentinel()){
+        }else if(n.getRight() != getSentinel() && n.getLeft() != getSentinel()){
             return inorderTreeWalk(n.getLeft(), "sum") + inorderTreeWalk(n.getRight(), "sum") + 1;
         }else{
             return 1;

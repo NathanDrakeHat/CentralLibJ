@@ -26,8 +26,8 @@ public class WeightedGraph<V extends Comparable<V>>  {
             if(other_edge == null){
                 return false;
             }else if(Edge.class.equals(other_edge.getClass())){
-                return this.smaller_vertex.equals(((Edge) other_edge).smaller_vertex) &
-                        this.bigger_vertex.equals(((Edge) other_edge).bigger_vertex) &
+                return this.smaller_vertex.equals(((Edge) other_edge).smaller_vertex) &&
+                        this.bigger_vertex.equals(((Edge) other_edge).bigger_vertex) &&
                         this.weight == ((Edge) other_edge).weight;
             }else{
                 return false;

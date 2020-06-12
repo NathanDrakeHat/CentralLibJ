@@ -68,7 +68,7 @@ public class LCS { // longest common sequence problem, biological problem
         }
     }
     private static void getResult(char[][] b, char[] x, int i, int j, char[] res, int index){
-        if(i == 0 | j == 0){
+        if(i == 0 || j == 0){
             return;
         }
         if(b[i - 1][j - 1] == '\\'){

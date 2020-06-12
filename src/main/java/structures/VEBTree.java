@@ -64,27 +64,27 @@ public class VEBTree {
     }
     public VEBTree safeInsert(int x){
 //        System.out.println(String.format("insert: %d", x));
-        if(x < 0 | x >= u) throw new IllegalArgumentException("Input out of range.");
+        if(x < 0 || x >= u) throw new IllegalArgumentException("Input out of range.");
         if(!hasMember(x))
             insert(this, x);
         return this;
     }
     public VEBTree uncheckInsert(int x){
         // duplicate insert will invoke bug
-        if(x < 0 | x >= u) throw new IllegalArgumentException("Input out of range.");
+        if(x < 0 || x >= u) throw new IllegalArgumentException("Input out of range.");
         insert(this, x);
         return this;
     }
 
     public VEBTree safeDelete(int x){
-        if(x < 0 | x >= u) throw new IllegalArgumentException("Input out of range.");
+        if(x < 0 || x >= u) throw new IllegalArgumentException("Input out of range.");
         if(hasMember(x)) // can't delete multi-time, can't delete none
             delete(this, x);
         return this;
     }
     public VEBTree uncheckDelete(int x){
         //duplicate delete or delete items not in tree will invoke bug
-        if(x < 0 | x >= u) throw new IllegalArgumentException("Input out of range.");
+        if(x < 0 || x >= u) throw new IllegalArgumentException("Input out of range.");
         delete(this, x);
         return this;
     }
@@ -134,7 +134,7 @@ public class VEBTree {
 
     public boolean hasMember(int x){ return hasMember(this, x); }
     private boolean hasMember(VEBTree V, int x){
-        if(x == V.min | x == V.max) return true;
+        if(x == V.min || x == V.max) return true;
         else if(V.u == 2) return false;
         else return hasMember(V.cluster[V.high(x)], V.low((x)));
     }
@@ -147,12 +147,12 @@ public class VEBTree {
     private int successor(VEBTree V, int x){
         // base
         if(V.u == 2){
-            if(x == 0 & V.max == 1) return 1; // have x and successor
+            if(x == 0 && V.max == 1) return 1; // have x and successor
             else return NONE;
-        }else if(V.min != NONE & x < V.min) return V.min; // dose not have x but have successor
+        }else if(V.min != NONE && x < V.min) return V.min; // dose not have x but have successor
         else{// recursive
             var max_low = maximum(V.cluster[V.high(x)]);
-            if (max_low != NONE & V.low(x) < max_low) {
+            if (max_low != NONE && V.low(x) < max_low) {
                 var offset = successor(V.cluster[V.high(x)], V.low(x));
                 return V.index(V.high(x), offset);
             }else {
@@ -171,18 +171,18 @@ public class VEBTree {
     }
     private int predecessor(VEBTree V, int x){
         if(V.u == 2){
-            if(x == 1 & V.min == 0) return 0;
+            if(x == 1 && V.min == 0) return 0;
             else return NONE;
-        }else if(V.max != NONE & x > V.max)  return V.max;
+        }else if(V.max != NONE && x > V.max)  return V.max;
         else {
             var min_low = minimum(V.cluster[V.high(x)]);
-            if (min_low != NONE & V.low(x) > min_low) {//and
+            if (min_low != NONE && V.low(x) > min_low) {//and
                 var offset = predecessor(V.cluster[V.high(x)], V.low(x));
                 return V.index(V.high(x), offset);
             }else {
                 var pred_cluster = predecessor(V.summary, V.high(x));
                 if (pred_cluster == NONE) {
-                    if (V.min != NONE & x > V.min) return V.min;
+                    if (V.min != NONE && x > V.min) return V.min;
                     else return NONE;
                 }else{
                     var offset = maximum(V.cluster[pred_cluster]);
@@ -201,7 +201,7 @@ public class VEBTree {
         return (int)(x % Math.floor(Math.pow(u, 1/2.0)));
     }
     private int index(int h, int l) {
-        if(h < 0 | l < 0) throw new IllegalArgumentException();
+        if(h < 0 || l < 0) throw new IllegalArgumentException();
         return (int)(h * Math.floor(Math.pow(u, 1/2.0)) + l);
     }
 }

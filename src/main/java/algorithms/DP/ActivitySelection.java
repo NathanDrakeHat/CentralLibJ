@@ -66,10 +66,10 @@ public class ActivitySelection {
     }
     public static Node recursiveActivitySelector(int[] s, int[] f, int k){
         int m = k + 1;
-        if(k >= s.length | m >= s.length){
+        if(k >= s.length || m >= s.length){
             return null;
         }
-        while (m < s.length & s[m] < f[k]) { // f is sorted
+        while (m < s.length && s[m] < f[k]) { // f is sorted
             m++;
         }
         return new Node(m).setNext(recursiveActivitySelector(s, f, m));
