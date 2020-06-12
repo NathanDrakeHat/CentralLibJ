@@ -153,8 +153,8 @@ class DFSTest {
     void stronglyConnectedComponentsTest(){
         var G = makeStronglyConnectedComponentsDemo();
         DFS.stronglyConnectedComponents(G);
-        var vertexes = G.getVertexes();
-        List<DFS.Vertex> vs = new ArrayList<>(vertexes);
+        var vertices = G.getVertexes();
+        List<DFS.Vertex> vs = new ArrayList<>(vertices);
         assertTrue((getRoot(vs.get(0)) == getRoot(vs.get(1))) & (getRoot(vs.get(1)) == getRoot(vs.get(4))));
         assertSame(getRoot(vs.get(2)), getRoot(vs.get(3)));
         assertSame(getRoot(vs.get(5)), getRoot(vs.get(6)));

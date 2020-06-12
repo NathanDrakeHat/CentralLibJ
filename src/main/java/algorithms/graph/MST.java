@@ -96,8 +96,8 @@ public class MST {
 
     public static WeightedGraph<PrimVertex> algorithmOfPrim(WeightedGraph<PrimVertex> graph, PrimVertex r){
         Queue<PrimVertex> Q = new PriorityQueue<>();
-        var vertexes = graph.getVertexes();
-        for(var vertex : vertexes){
+        var vertices = graph.getVertexes();
+        for(var vertex : vertices){
             if(!vertex.equals(r)) vertex.key = Double.POSITIVE_INFINITY;
             else {
                 vertex.key = 0.0;
@@ -105,16 +105,16 @@ public class MST {
             }
             vertex.parent = null;
         }
-        while(!vertexes.isEmpty()){
+        while(!vertices.isEmpty()){
             PrimVertex u;
             do { // ignore encountered vertex
                 u = Q.remove();
-            }while(!vertexes.contains(u));
-            vertexes.remove(u);
+            }while(!vertices.contains(u));
+            vertices.remove(u);
 
             for(var edge : graph.getEdgesAt(u)){
                 var v = edge.getAnotherVertex(u);
-                if(vertexes.contains(v) & edge.getWeight() < v.key){
+                if(vertices.contains(v) & edge.getWeight() < v.key){
                     v.parent = u;
                     v.key = edge.getWeight();
                     Q.add(new PrimVertex(v)); // prevent update
