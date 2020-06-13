@@ -103,7 +103,7 @@ class DFSTest {
         for(var i : G.getAllVertices()){
             var t = i;
             while(t.parent != null){ t = t.parent; }
-            System.out.println(String.format("vertex %s parent is %s", i.getName(), t.getName()));
+            System.out.println(String.format("vertex %s parent is %s", i.getContent(), t.getContent()));
         }
     }
 

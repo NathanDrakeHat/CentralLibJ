@@ -7,28 +7,28 @@ import java.util.*;
 // minimum spanning tree
 public class MST {
     public static class KruskalVertex<V extends Comparable<V>> implements Comparable<KruskalVertex<V>>, DisjointSet<KruskalVertex<V>> {
-        private final V name;
+        private final V content;
         private int rank = 0;
         private KruskalVertex<V> parent = this;
 
-        public KruskalVertex(V n) { name = n; }
+        public KruskalVertex(V n) { content = n; }
 
-        public V getName() { return name; }
+        public V getContent() { return content; }
 
         @Override
         @SuppressWarnings("unchecked")
         public boolean equals(Object other_vertex){
             if(this.getClass().equals(other_vertex.getClass())){
-                return name.equals(((KruskalVertex<V>) other_vertex).name);
+                return content.equals(((KruskalVertex<V>) other_vertex).content);
             }else return false;
         }
 
         @Override
-        public int hashCode(){ return name.hashCode(); }
+        public int hashCode(){ return content.hashCode(); }
 
         @Override
         public int compareTo(KruskalVertex<V> other){
-            return name.compareTo(other.name);
+            return content.compareTo(other.content);
         }
         
         @Override
@@ -42,29 +42,31 @@ public class MST {
         public void setParent(KruskalVertex<V> r) { this.parent = r; }
 
         @Override
-        public String toString(){ return String.format("KruskalVertex: %s", name.toString()); }
+        public String toString(){ return String.format("KruskalVertex: %s", content.toString()); }
         
     }
     public static class PrimVertex<V extends Comparable<V>> implements Comparable<PrimVertex<V>>{
-        public final V name;
+        public final V content;
         public PrimVertex<V> parent;
         public double key = 0;
 
-        public PrimVertex(V name) { this.name = name; }
+        public PrimVertex(V name) { this.content = name; }
 
         public PrimVertex(PrimVertex<V> other){
-            this.name = other.name;
+            this.content = other.content;
             this.parent = other.parent;
             this.key = other.key;
         }
 
+        public V getContent() { return content; }
+
         @Override
-        public int hashCode() { return name.hashCode(); }
+        public int hashCode() { return content.hashCode(); }
 
         @Override
         public int compareTo(PrimVertex<V> other){
             int key_check =  Double.compare(key, other.key);
-            if(key_check == 0) return name.compareTo(other.name);
+            if(key_check == 0) return content.compareTo(other.content);
             else return key_check;
         }
 
@@ -72,12 +74,12 @@ public class MST {
         @SuppressWarnings("unchecked")
         public boolean equals(Object other){
             if(this.getClass().equals(other.getClass())){
-                return name.equals(((PrimVertex<V>) other).name);
+                return content.equals(((PrimVertex<V>) other).content);
             }else return false;
         }
 
         @Override
-        public String toString() { return String.format("PrimVertex %s, Key: %.2f", name.toString(),key); }
+        public String toString() { return String.format("PrimVertex %s, Key: %.2f", content.toString(),key); }
     }
 
     public static <T extends Comparable<T>> Set<Graph<KruskalVertex<T>>.Edge> algorithmOfKruskal(Graph<KruskalVertex<T>> graph){

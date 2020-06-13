@@ -13,19 +13,19 @@ public class DFS {
         private COLOR color;
         public int d; //discovered time
         public int f; // finished time
-        private final V name; // this could changed into generic
+        private final V content; // this could changed into generic
 
-        public Vertex(V name){ this.name = name; }
+        public Vertex(V name){ this.content = name; }
 
-        public V getName() {return name;}
+        public V getContent() {return content;}
 
-        public boolean equals(Vertex<V> other){ return name.equals(other.getName()); }
+        public boolean equals(Vertex<V> other){ return content.equals(other.getContent()); }
 
-        @Override public int hashCode(){ return name.hashCode(); }
+        @Override public int hashCode(){ return content.hashCode(); }
 
-        @Override public String toString(){ return name.toString(); }
+        @Override public String toString(){ return content.toString(); }
 
-        @Override public int compareTo(Vertex<V> other) {return this.name.compareTo(other.name); }
+        @Override public int compareTo(Vertex<V> other) {return this.content.compareTo(other.content); }
     }
 
     public static <T extends Comparable<T>> void depthFirstSearch(Graph<Vertex<T>> G) {

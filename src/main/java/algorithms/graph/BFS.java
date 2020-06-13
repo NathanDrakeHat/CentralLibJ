@@ -10,18 +10,20 @@ public class BFS {
         private Vertex<V> parent;
         private COLOR color;
         private double d; //distance
-        private final V name; // generic
+        private final V content; // generic
 
-        Vertex(V name){ this.name = name; }
+        Vertex(V name){ this.content = name; }
 
-        public boolean equals(Vertex<V> other){ return name.equals(other.name); }
+        public V getContent() { return content; }
+
+        public boolean equals(Vertex<V> other){ return content.equals(other.content); }
 
         @Override public int hashCode(){
-            return name.hashCode();
+            return content.hashCode();
         }
 
         @Override public int compareTo(Vertex<V> other) {
-            return this.name.compareTo(other.name);
+            return this.content.compareTo(other.content);
         }
     }
 
@@ -64,10 +66,10 @@ public class BFS {
     }
     private static <T extends Comparable<T>> void getPath(Vertex<T> s, Vertex<T> v, List<T> res){
         if(v == s){
-            res.add(s.name);
+            res.add(s.content);
         } else if(v.parent != null){
             getPath(s, v.parent, res);
-            res.add(v.name);
+            res.add(v.content);
         }
     }
 }
