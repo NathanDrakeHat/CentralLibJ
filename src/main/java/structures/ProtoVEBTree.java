@@ -1,6 +1,6 @@
 package structures;
 
-public class ProtoVEBTree {
+public final class ProtoVEBTree {
     //keys are not duplicate and confined in a range
     private int u = 0; //universe size
     private boolean[] array = null;

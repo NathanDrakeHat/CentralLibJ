@@ -1,10 +1,10 @@
 package tools;
 
 
-public class DPMatrice<V> {//matrice for DP problem
+public final class DPMatrix<V> {//matrice for DP problem
     private final Object[][] matrice;
 
-    public DPMatrice(int size) {
+    public DPMatrix(int size) {
         matrice = new Object[size][];
         for(int i = 0; i < size; i ++)
             matrice[i] = new Object[size-i];

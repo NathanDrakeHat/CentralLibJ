@@ -1,6 +1,6 @@
 package algorithms;
 
-public class MaxSubArray {
+public final class MaxSubArray {
     // find max sum consequent sequence
     public static class Interval{
         public int start;

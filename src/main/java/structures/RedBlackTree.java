@@ -4,7 +4,7 @@ import tools.KeyValuePair;
 import java.util.NoSuchElementException;
 
 
-public class RedBlackTree<K extends Comparable<K>, V> {
+public final class RedBlackTree<K extends Comparable<K>, V> {
     enum COLOR{ RED, BLACK }
     private ColorNode root = null;
     private final ColorNode sentinel = new ColorNode( COLOR.BLACK);// sentinel: denote leaf and parent of root

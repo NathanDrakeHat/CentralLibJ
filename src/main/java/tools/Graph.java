@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 
-public class Graph<V extends Comparable<V>>  {
+public final class Graph<V extends Comparable<V>>  {
     public class Edge implements Comparable<Edge> {
         private final V smaller_vertex;
         private final V bigger_vertex;

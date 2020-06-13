@@ -3,7 +3,7 @@ package algorithms;
 import tools.SimpleDate;
 import java.util.Random;
 
-public class Sort {
+public final class Sort {
     public static void mergeSort(int[] array){
         mergeSort(array, 0, array.length);
     }

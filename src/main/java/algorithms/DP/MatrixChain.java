@@ -1,6 +1,6 @@
 package algorithms.DP;
 
-public class MatrixChain { // dynamic programming
+public final class MatrixChain { // dynamic programming
     // optimal matrix multiply complexity
     public static class MatrixChainResult{
         public int min_cost;

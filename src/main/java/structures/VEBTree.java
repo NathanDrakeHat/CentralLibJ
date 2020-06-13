@@ -1,6 +1,6 @@
 package structures;
 
-public class VEBTree {
+public final class VEBTree {
     //keys are not duplicate and confined in a range
     private int u = 0; //universe size
     private VEBTree summary = null;

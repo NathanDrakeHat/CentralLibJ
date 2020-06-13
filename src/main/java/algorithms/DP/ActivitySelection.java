@@ -2,7 +2,7 @@ package algorithms.DP;
 
 import java.util.ArrayList;
 
-public class ActivitySelection {
+public final class ActivitySelection {
     // greedy algorithm
     public static class Node{
         private int val ;

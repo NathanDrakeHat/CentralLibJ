@@ -1,5 +1,5 @@
 package algorithms;
 
-public class FFT {
+public final class FFT {
 
 }

@@ -2,7 +2,7 @@ package algorithms;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-public class IthSmallest {
+public final class IthSmallest {
     private static int randPartition(int[] a, int start, int end){ // base case (end -start)
         int pivot_idx = ThreadLocalRandom.current().nextInt(start, end);
         int pivot = a[pivot_idx];

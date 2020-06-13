@@ -1,6 +1,6 @@
 package algorithms.DP;
 
-public class LongestPalindrome {
+public final class LongestPalindrome {
     //dynamic programming
     public static String solve(String s) {
         int len = s.length();

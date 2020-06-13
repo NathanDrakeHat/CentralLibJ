@@ -1,6 +1,6 @@
 package algorithms.DP;
 
-public class CutRod {
+public final class CutRod {
     // dynamic programming
     public static class CutResult{
         public static class Node{

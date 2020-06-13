@@ -1,6 +1,6 @@
 package structures;
 
-public class OrderStatisticTree{ // get rank of node from left to right
+public final class OrderStatisticTree{ // get rank of node from left to right
     private ColorSizeNode root = null;
     private ColorSizeNode sentinel = new ColorSizeNode(0, Color.BLACK);
     // sentinel: denote leaf and parent of root

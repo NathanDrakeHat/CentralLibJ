@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.NoSuchElementException;
 import tools.KeyValuePair;
 
-public class FibonacciHeap<V> {
+public final class FibonacciHeap<V> {
     private Node root_list = null;
     private int number = 0; // number of nodes
     void setNumber(int n) { this.number = n; }

@@ -4,7 +4,7 @@ import tools.Graph;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DFS {
+public final class DFS {
     // depth first search
     enum COLOR{ WHITE, GRAY, BLACK}
 

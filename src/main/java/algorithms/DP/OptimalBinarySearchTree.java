@@ -1,6 +1,6 @@
 package algorithms.DP;
 
-public class OptimalBinarySearchTree {
+public final class OptimalBinarySearchTree {
     // dynamic programming
     // class table arrangement
     public static double[] p = {0, 0.15, 0.10, 0.05, 0.10, 0.20};

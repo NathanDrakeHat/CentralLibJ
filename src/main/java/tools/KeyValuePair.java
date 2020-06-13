@@ -2,7 +2,7 @@ package tools;
 
 import java.util.Objects;
 
-public class KeyValuePair<A extends Comparable<A>, B> implements Comparable<KeyValuePair<A, B>>{
+public final class KeyValuePair<A extends Comparable<A>, B> implements Comparable<KeyValuePair<A, B>>{
     A key;
     B value;
     public KeyValuePair(A key, B value){
