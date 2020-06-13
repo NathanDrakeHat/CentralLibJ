@@ -1,6 +1,6 @@
 package algorithms.dynamic_programming;
 
-public final class LCS { // longest common sequence problem, biological problem
+public final class LongestCommonSequence { // longest common sequence problem, biological problem
     // dynamic programming
 
     public static char[] solve(char[] x, char[] y){

@@ -5,7 +5,7 @@ import tools.Graph;
 import java.util.*;
 
 // minimum spanning tree
-public final class MST {
+public final class MinimumSpanningTree {
     public static class KruskalVertex<V extends Comparable<V>> implements Comparable<KruskalVertex<V>>, DisjointSet<KruskalVertex<V>> {
         private final V content;
         private int rank = 0;

@@ -9,18 +9,18 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class BFSTest {
+class BreathFirstSearchTest {
 
     public static class Data{
         public static String names = "rstuvwxy";
-        public static List<BFS.Vertex<Character>> makeVertexes(){
-            List<BFS.Vertex<Character>> vs = new ArrayList<>(8);
+        public static List<BreathFirstSearch.Vertex<Character>> makeVertexes(){
+            List<BreathFirstSearch.Vertex<Character>> vs = new ArrayList<>(8);
             for(int i = 0; i < 8; i++){
-                vs.add(i, new BFS.Vertex<>(names.charAt(i)));
+                vs.add(i, new BreathFirstSearch.Vertex<>(names.charAt(i)));
             }
             return vs;
         }
-        public static Graph<BFS.Vertex<Character>> makeGraph(List<BFS.Vertex<Character>> vs){ ;
+        public static Graph<BreathFirstSearch.Vertex<Character>> makeGraph(List<BreathFirstSearch.Vertex<Character>> vs){ ;
             var G = new Graph<>(vs);
             G.putNeighborPair(vs.get(0), vs.get(1));
             G.putNeighborPair(vs.get(0), vs.get(4));
@@ -45,7 +45,7 @@ class BFSTest {
     void breathFirstSearch() {
         var vs = Data.makeVertexes();
         var t = Data.makeGraph(vs);
-        BFS.breathFirstSearch(t, vs.get(1));
-        assertEquals(BFS.getPath(vs.get(1), vs.get(7)), List.of('s','w','x','y'));
+        BreathFirstSearch.breathFirstSearch(t, vs.get(1));
+        assertEquals(BreathFirstSearch.getPath(vs.get(1), vs.get(7)), List.of('s','w','x','y'));
     }
 }

@@ -3,7 +3,7 @@ package algorithms.graph;
 import tools.Graph;
 import java.util.*;
 
-public final class BFS {
+public final class BreathFirstSearch {
     // breath first search
     enum COLOR{ WHITE, GRAY, BLACK}
     public static class Vertex<V extends Comparable<V>> implements Comparable<Vertex<V>>{
