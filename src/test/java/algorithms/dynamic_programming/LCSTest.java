@@ -1,8 +1,8 @@
-package algorithms.DP;
+package algorithms.dynamic_programming;
 
 import org.junit.jupiter.api.Test;
 
-import static algorithms.DP.LCS.solve;
+import static algorithms.dynamic_programming.LCS.solve;
 import static org.junit.jupiter.api.Assertions.*;
 
 class LCSTest {

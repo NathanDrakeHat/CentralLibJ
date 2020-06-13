@@ -1,7 +1,8 @@
-package algorithms;
+package algorithms.miscellaneous;
 
 import java.util.Arrays;
 
+import algorithms.miscellaneous.Sort;
 import tools.SimpleDate;
 
 import static org.junit.jupiter.api.Assertions.*;

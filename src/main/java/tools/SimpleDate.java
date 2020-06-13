@@ -1,9 +1,9 @@
 package tools;
 
 public final class SimpleDate {
-    int year;
-    int month;
-    int day;
+    public int year;
+    public int month;
+    public int day;
 
     public SimpleDate(int y, int m, int d){
         this.year = y;

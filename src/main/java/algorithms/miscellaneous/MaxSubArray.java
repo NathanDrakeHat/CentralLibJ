@@ -1,4 +1,4 @@
-package algorithms;
+package algorithms.miscellaneous;
 
 public final class MaxSubArray {
     // find max sum consequent sequence

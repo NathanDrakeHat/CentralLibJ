@@ -1,4 +1,4 @@
-package algorithms;
+package algorithms.miscellaneous;
 
 import tools.SimpleDate;
 import java.util.Random;

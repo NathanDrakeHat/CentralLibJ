@@ -1,4 +1,4 @@
-package algorithms;
+package algorithms.miscellaneous;
 
 import java.util.concurrent.ThreadLocalRandom;
 
