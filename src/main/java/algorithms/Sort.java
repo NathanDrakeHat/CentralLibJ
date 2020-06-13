@@ -231,7 +231,7 @@ public class Sort {
         }
     }
 
-    static class SingleLinkedNode<V>  {
+    private static class SingleLinkedNode<V>  {
         private V val ;
         private SingleLinkedNode<V> parent;
 
