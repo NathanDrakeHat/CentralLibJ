@@ -18,7 +18,8 @@ public class MST {
         @Override
         @SuppressWarnings("unchecked")
         public boolean equals(Object other_vertex){
-            if(this.getClass().equals(other_vertex.getClass())){
+            if(other_vertex == null) return false;
+            else if(this.getClass().equals(other_vertex.getClass())){
                 return content.equals(((KruskalVertex<V>) other_vertex).content);
             }else return false;
         }
@@ -73,7 +74,8 @@ public class MST {
         @Override
         @SuppressWarnings("unchecked")
         public boolean equals(Object other){
-            if(this.getClass().equals(other.getClass())){
+            if(other == null) return false;
+            else if(this.getClass().equals(other.getClass())){
                 return content.equals(((PrimVertex<V>) other).content);
             }else return false;
         }
