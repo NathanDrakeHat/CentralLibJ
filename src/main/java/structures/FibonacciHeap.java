@@ -2,13 +2,14 @@ package structures;
 
 import java.lang.reflect.Array;
 import java.util.HashSet;
-import tools.IntegerPair;
+import java.util.NoSuchElementException;
+import tools.KeyValuePair;
 
 public class FibonacciHeap<V> {
     protected Node root_list = null;
     protected int number = 0; // number of nodes
     protected class Node implements Comparable<Node>{
-        protected final IntegerPair<V> content;
+        protected final KeyValuePair<Integer,V> content;
         protected Node parent = null;
         protected Node childList = null; // int linked, circular list
         protected Node left = this;
@@ -16,12 +17,12 @@ public class FibonacciHeap<V> {
         protected int degree = 0; // number of children
         protected boolean mark = false; // whether the node had lost a child when it be made another node's child
 
-        protected Node(int key, V val) { content = new IntegerPair<>(key, val); }
+        protected Node(int key, V val) { content = new KeyValuePair<>(key, val); }
         
-        protected Node(int key) { content = new IntegerPair<>(key);}
+        protected Node(int key) { content = new KeyValuePair<>(key, null);}
 
         protected Node(int key, boolean m){
-            this.content = new IntegerPair<>(key);
+            this.content = new KeyValuePair<>(key, null);
             mark = m;
         }
 
@@ -84,7 +85,7 @@ public class FibonacciHeap<V> {
     protected void insert(int p){ insert(new Node(p)); }
     public void insert(int key, V val){ insert(new Node(key, val)); }
 
-    public IntegerPair<V> extractMin() {
+    public KeyValuePair<Integer,V> extractMin() {
         var z = rootList();
         if(z != null){
             var child_list = z.getChildList(); // add root_list's children list to root list
@@ -102,7 +103,7 @@ public class FibonacciHeap<V> {
             if(z == root_list) root_list = null;
             else consolidate();
             number--;
-        }else return null;
+        }else throw new NoSuchElementException();
         return z.content;
     }
     protected void consolidate(){

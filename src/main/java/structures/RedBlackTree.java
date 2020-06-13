@@ -1,7 +1,8 @@
 package structures;
 
+import tools.KeyValuePair;
 import java.util.NoSuchElementException;
-import java.util.Objects;
+
 
 public class RedBlackTree<K extends Comparable<K>, V> {
     enum COLOR{ RED, BLACK }
@@ -13,7 +14,6 @@ public class RedBlackTree<K extends Comparable<K>, V> {
         private ColorNode parent;
         private ColorNode left;
         private ColorNode right;
-
 
         private ColorNode(COLOR color){
             this.color = color;
@@ -45,36 +45,6 @@ public class RedBlackTree<K extends Comparable<K>, V> {
 
         public ColorNode getRight(){ return right; }
         private void setRight(ColorNode right){ this.right = right; }
-    }
-    public static class KeyValuePair<A extends Comparable<A>, B>{
-        A key;
-        B value;
-        public KeyValuePair(A key, B value){
-            this.key = key;
-            this.value = value;
-        }
-        public KeyValuePair(){}
-
-        public A getKey() { return key; }
-        public void setKey(A key) { this.key = key; }
-
-        public B getValue() { return value; }
-        public void setValue(B value) { this.value = value; }
-
-        @Override
-        @SuppressWarnings("unchecked")
-        public boolean equals(Object other){
-            if(other == null) return false;
-            else if(other.getClass().equals(this.getClass())){
-                return key.equals(((KeyValuePair<A, B>) other).key) && value.equals(((KeyValuePair<A,B>) other).value);
-            }else return false;
-        }
-
-        @Override
-        public int hashCode() { return Objects.hash(key, value); }
-
-        @Override
-        public String toString() { return String.format("Pair (key: %s, value: %s)",key.toString(),value.toString()); }
     }
 
     public V getValueOfMinKey(){
@@ -357,6 +327,7 @@ public class RedBlackTree<K extends Comparable<K>, V> {
             target = ptr;
             ptr = ptr.getLeft();
         }
+        if (target == null) throw new NoSuchElementException();
         return target;
     }
     private ColorNode getMaximum(ColorNode current){
@@ -366,6 +337,7 @@ public class RedBlackTree<K extends Comparable<K>, V> {
             target = ptr;
             ptr = ptr.getRight();
         }
+        if (target == null) throw new NoSuchElementException();
         return target;
     }
 

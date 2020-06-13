@@ -4,18 +4,12 @@ public interface DisjointSet<V> {
 
 
     static <T extends DisjointSet<T>> T findSet(T x) {
-        if(x.getParent() == null){
-            x.setParent(x);
-            return x;
-        }
         if(x != x.getParent())
             x.setParent(findSet(x.getParent()));
         return x.getParent();
     }
 
-    static <T extends DisjointSet<T>> void union(T a, T b){
-        link(findSet(a), findSet(b));
-    }
+    static <T extends DisjointSet<T>> void union(T a, T b){ link(findSet(a), findSet(b)); }
 
     static <T extends DisjointSet<T>> void link(T x, T y){
         if(x.getRank() > y.getRank())
