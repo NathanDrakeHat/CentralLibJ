@@ -1,7 +1,6 @@
 package algorithms.dynamic_programming;
 
 public final class CutRod {
-    // dynamic programming
     public static class CutResult{
         public static class Node{
             public int value;

@@ -1,7 +1,6 @@
 package algorithms.dynamic_programming;
 
 public final class OptimalBinarySearchTree {
-    // dynamic programming
     // class table arrangement
     public static double[] p = {0, 0.15, 0.10, 0.05, 0.10, 0.20};
     public static double[] q = {0.05, 0.10, 0.05, 0.05, 0.05, 0.10};

@@ -1,7 +1,6 @@
 package algorithms.dynamic_programming;
 
 public final class LongestCommonSequence { // longest common sequence problem, biological problem
-    // dynamic programming
 
     public static char[] solve(char[] x, char[] y){
         return solve(x, y, false);
