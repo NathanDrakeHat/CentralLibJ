@@ -1,8 +1,8 @@
-package algorithms.dynamic_programming;
+package algorithms.dynamicProgramming;
 
 import org.junit.jupiter.api.Test;
 
-import static algorithms.dynamic_programming.LongestCommonSequence.solve;
+import static algorithms.dynamicProgramming.LongestCommonSequence.solve;
 import static org.junit.jupiter.api.Assertions.*;
 
 class LongestCommonSequenceTest {

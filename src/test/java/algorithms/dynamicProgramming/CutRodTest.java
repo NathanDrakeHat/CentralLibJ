@@ -1,4 +1,4 @@
-package algorithms.dynamic_programming;
+package algorithms.dynamicProgramming;
 
 import org.junit.jupiter.api.Test;
 

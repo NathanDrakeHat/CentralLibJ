@@ -3,14 +3,15 @@ package algorithms.graph;
 import tools.Graph;
 import java.util.*;
 
-public final class BreathFirstSearch {
+public final class BFS {
     // breath first search
     enum COLOR{ WHITE, GRAY, BLACK}
-    public static class Vertex<V extends Comparable<V>> implements Comparable<Vertex<V>>{
-        private Vertex<V> parent;
-        private COLOR color;
-        private double d; //distance
-        private final V content; // generic
+    public static
+    class Vertex<V extends Comparable<V>> implements Comparable<Vertex<V>>{
+        Vertex<V> parent;
+        COLOR color;
+        double d; //distance
+        final V content; // generic
 
         Vertex(V name){ this.content = name; }
 
@@ -27,7 +28,8 @@ public final class BreathFirstSearch {
         }
     }
 
-    public static <T extends Comparable<T>> void breathFirstSearch(Graph<Vertex<T>> G, Vertex<T> s) {
+    public static <T extends Comparable<T>>
+    void breathFirstSearch(Graph<Vertex<T>> G, Vertex<T> s) {
         var vs = G.getAllVertices();
         for (var v : vs) {
             if (!v.equals(s)) {
@@ -55,7 +57,8 @@ public final class BreathFirstSearch {
         }
     }
 
-    public static <T extends Comparable<T>> List<T> getPath( Vertex<T> s, Vertex<T> v){
+    public static <T extends Comparable<T>>
+    List<T> getPath( Vertex<T> s, Vertex<T> v){
         List<T> t = new ArrayList<>();
         getPath(s, v, t);
         int idx = 0;
@@ -64,7 +67,8 @@ public final class BreathFirstSearch {
             res.add(idx++, i);
         return res;
     }
-    private static <T extends Comparable<T>> void getPath(Vertex<T> s, Vertex<T> v, List<T> res){
+    private static <T extends Comparable<T>>
+    void getPath(Vertex<T> s, Vertex<T> v, List<T> res){
         if(v == s){
             res.add(s.content);
         } else if(v.parent != null){

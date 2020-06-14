@@ -5,8 +5,9 @@ import tools.Graph;
 import java.util.*;
 
 // minimum spanning tree
-public final class MinimumSpanningTree {
-    public static class KruskalVertex<V extends Comparable<V>> implements Comparable<KruskalVertex<V>>, DisjointSet<KruskalVertex<V>> {
+public final class MST {
+    public static
+    class KruskalVertex<V extends Comparable<V>> implements Comparable<KruskalVertex<V>>, DisjointSet<KruskalVertex<V>> {
         private final V content;
         private int rank = 0;
         private KruskalVertex<V> parent = this;
@@ -46,7 +47,8 @@ public final class MinimumSpanningTree {
         public String toString(){ return String.format("KruskalVertex: %s", content.toString()); }
         
     }
-    public static class PrimVertex<V extends Comparable<V>> implements Comparable<PrimVertex<V>>{
+    public static
+    class PrimVertex<V extends Comparable<V>> implements Comparable<PrimVertex<V>>{
         public final V content;
         public PrimVertex<V> parent;
         public double key = 0;
@@ -84,7 +86,8 @@ public final class MinimumSpanningTree {
         public String toString() { return String.format("PrimVertex %s, Key: %.2f", content.toString(),key); }
     }
 
-    public static <T extends Comparable<T>> Set<Graph<KruskalVertex<T>>.Edge> algorithmOfKruskal(Graph<KruskalVertex<T>> graph){
+    public static <T extends Comparable<T>>
+    Set<Graph<KruskalVertex<T>>.Edge> algorithmOfKruskal(Graph<KruskalVertex<T>> graph){
         Set<Graph<KruskalVertex<T>>.Edge> res = new HashSet<>();
         var edges_set = graph.getAllEdges();
         var edges_list = new ArrayList<>(edges_set);
@@ -100,7 +103,8 @@ public final class MinimumSpanningTree {
         return res;
     }
 
-    public static <T extends Comparable<T>> Graph<PrimVertex<T>> algorithmOfPrim(Graph<PrimVertex<T>> graph, PrimVertex<T> r){
+    public static <T extends Comparable<T>>
+    Graph<PrimVertex<T>> algorithmOfPrim(Graph<PrimVertex<T>> graph, PrimVertex<T> r){
         Queue<PrimVertex<T>> Q = new PriorityQueue<>();
         var vertices = graph.getAllVertices();
         for(var vertex : vertices){

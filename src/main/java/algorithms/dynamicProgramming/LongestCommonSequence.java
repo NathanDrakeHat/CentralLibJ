@@ -1,4 +1,4 @@
-package algorithms.dynamic_programming;
+package algorithms.dynamicProgramming;
 
 public final class LongestCommonSequence { // longest common sequence problem, biological problem
 

@@ -1,9 +1,9 @@
-package algorithms.dynamic_programming;
+package algorithms.dynamicProgramming;
 
 import org.junit.jupiter.api.Test;
 
-import static algorithms.dynamic_programming.ActivitySelection.greedyActivitySelector;
-import static algorithms.dynamic_programming.ActivitySelection.recursiveActivitySelector;
+import static algorithms.dynamicProgramming.ActivitySelection.greedyActivitySelector;
+import static algorithms.dynamicProgramming.ActivitySelection.recursiveActivitySelector;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ActivitySelectionTest {

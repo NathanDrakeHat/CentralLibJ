@@ -1,4 +1,4 @@
-package algorithms.dynamic_programming;
+package algorithms.dynamicProgramming;
 
 public final class OptimalBinarySearchTree {
     // class table arrangement
