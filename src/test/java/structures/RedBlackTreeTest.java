@@ -2,12 +2,15 @@ package structures;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class RedBlackTreeTest{
 
     @Test
-    public void RedBlackTreeTestCase(){
+    public void insertFixUpTest(){
         var RBtree = new RedBlackTree<Integer, Integer>();
         RBtree.insert(11, 0);
         RBtree.insert(2, 0);
@@ -42,5 +45,25 @@ class RedBlackTreeTest{
         }
         System.out.println(t.getHeight());
         assertEquals(t.getHeight(), 9);
+    }
+
+    @Test
+    public void FunctionsTest(){
+        var t = new RedBlackTree<Integer, String>();
+        List<Integer> l1 = new ArrayList<>();
+        List<Integer> l2 = new ArrayList<>();
+        for(int i = 0; i < 16; i++){
+            t.insert(i, String.valueOf(i));
+            l1.add(i);
+        }
+        assertEquals(t.getHeight(),4);
+        assertEquals(t.getCount(), 16);
+        assertEquals(t.getMinKey(), 0);
+        assertEquals(t.getMaxKey(),15);
+        assertEquals(t.getValueOfMaxKey(), "15");
+        assertEquals(t.getValueOfMinKey(), "0");
+        t.inOrderForEach((i, s)->l2.add(i));
+        assertEquals(l1, l2);
+        assertEquals(t.search(5), "5");
     }
 }

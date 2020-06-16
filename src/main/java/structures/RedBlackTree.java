@@ -2,13 +2,14 @@ package structures;
 
 import tools.KeyValuePair;
 import java.util.NoSuchElementException;
+import java.util.function.BiConsumer;
 
 
 public final class RedBlackTree<K extends Comparable<K>, V> {
     enum COLOR{ RED, BLACK }
     private ColorNode root = null;
     private final ColorNode sentinel = new ColorNode( COLOR.BLACK);// sentinel: denote leaf and parent of root
-    protected class ColorNode{
+    class ColorNode{
         private KeyValuePair<K,V> content;
         private COLOR color;
         private ColorNode parent;
@@ -54,9 +55,23 @@ public final class RedBlackTree<K extends Comparable<K>, V> {
             throw new NoSuchElementException("null tree");
         }
     }
+    public K getMinKey(){
+        if(getRoot() != null && getSentinel() != getRoot()) {
+            return getMinimum(getRoot()).getKey();
+        }else{
+            throw new NoSuchElementException("null tree");
+        }
+    }
     public V getValueOfMaxKey(){
         if(getRoot() != null && getRoot() != getSentinel()) {
             return getMaximum(getRoot()).getValue();
+        }else{
+            throw new NoSuchElementException("null tree");
+        }
+    }
+    public K getMaxKey(){
+        if(getRoot() != null && getRoot() != getSentinel()) {
+            return getMaximum(getRoot()).getKey();
         }else{
             throw new NoSuchElementException("null tree");
         }
@@ -67,32 +82,56 @@ public final class RedBlackTree<K extends Comparable<K>, V> {
         root = r;
         root.setParent(getSentinel());
     }
-    protected ColorNode getRoot() { return root; }
+    ColorNode getRoot() { return root; }
 
-    public void printTreeInLine(){ // inorder print
+    public void inOrderForEach(BiConsumer<K, V> bc){ // inorder print
         if(getRoot() == null || getSentinel() == getRoot()){
             return;
         }
-        inorderTreeWalk(getRoot().getLeft());
-        System.out.print(getRoot().getKey());
-        System.out.print(' ');
-        inorderTreeWalk(getRoot().getRight());
-        System.out.print('\n');
+        inorderTreeWalk(getRoot(), bc);
     }
-    public int getNodesNumber(){
+    private void inorderTreeWalk(ColorNode n, BiConsumer<K, V> bc){
+        if(n != getSentinel() & n != null){
+            inorderTreeWalk(n.getLeft(), bc);
+            bc.accept(n.getKey(), n.getValue());
+            inorderTreeWalk(n.getRight(), bc);
+        }
+    }
+
+    public int getCount(){
         if(getRoot() == getSentinel()){
             return 0;
         }
-        return inorderTreeWalk(getRoot(), "sum");
+        return getCount(getRoot());
     }
+    private int getCount(ColorNode n){ //overload trick
+        if(n.getRight() != getSentinel() && n.getLeft() == getSentinel()){
+            return getCount(n.getRight()) + 1;
+        }else if(n.getRight() == getSentinel() && n.getLeft() != getSentinel()){
+            return getCount(n.getLeft()) + 1;
+        }else if(n.getRight() != getSentinel() && n.getLeft() != getSentinel()){
+            return getCount(n.getLeft()) + getCount(n.getRight()) + 1;
+        }else{
+            return 1;
+        }
+    }
+
     public int getHeight(){
         if(getRoot() == null || getRoot() == getSentinel()){
             return 0;
         }
-        int count = 1;
-        int left_max = inorderTreeWalk(getRoot().getLeft(), count);
-        int right_max = inorderTreeWalk(getRoot().getRight(), count);
+        int height = 1;
+        int left_max = getHeight(getRoot().getLeft(), height);
+        int right_max = getHeight(getRoot().getRight(), height);
         return Math.max(left_max, right_max) - 1;
+    }
+    private int getHeight(ColorNode n, int height){
+        if(n != getSentinel()){
+            int left_max = getHeight(n.getLeft(), height + 1);
+            int right_max = getHeight(n.getRight(), height + 1);
+            return Math.max(left_max, right_max);
+        }
+        return height;
     }
 
     public void insert(K key, V val){ insert(new ColorNode(key, val)); }
@@ -367,35 +406,6 @@ public final class RedBlackTree<K extends Comparable<K>, V> {
                 }else break;
             }
             return target;
-        }
-    }
-
-    private void inorderTreeWalk(ColorNode n){
-        if(n != getSentinel()){
-            inorderTreeWalk(n.getLeft());
-            System.out.print(n.getKey());
-            System.out.print(' ');
-            inorderTreeWalk(n.getRight());
-        }
-    }
-    private int inorderTreeWalk(ColorNode n, int count){
-        if(n != getSentinel()){
-            int left_max = inorderTreeWalk(n.getLeft(), count + 1);
-            int right_max = inorderTreeWalk(n.getRight(), count + 1);
-            return Math.max(left_max, right_max);
-        }
-        return count;
-    }
-    private int inorderTreeWalk(ColorNode n, String sum){ //overload trick
-        if(!sum.equals("sum")) throw new IllegalArgumentException();
-        if(n.getRight() != getSentinel() && n.getLeft() == getSentinel()){
-            return inorderTreeWalk(n.getRight(), "sum") + 1;
-        }else if(n.getRight() == getSentinel() && n.getLeft() != getSentinel()){
-            return inorderTreeWalk(n.getLeft(), "sum") + 1;
-        }else if(n.getRight() != getSentinel() && n.getLeft() != getSentinel()){
-            return inorderTreeWalk(n.getLeft(), "sum") + inorderTreeWalk(n.getRight(), "sum") + 1;
-        }else{
-            return 1;
         }
     }
 }
