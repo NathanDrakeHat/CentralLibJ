@@ -74,8 +74,7 @@ public final class MST {
         public String toString() { return String.format("PrimVertex %s", content.toString()); }
     }
 
-    public static <T>
-    Set<Graph<KruskalVertex<T>>.Edge> algorithmOfKruskal(Graph<KruskalVertex<T>> graph){
+    public static <T> Set<Graph<KruskalVertex<T>>.Edge> algorithmOfKruskal(Graph<KruskalVertex<T>> graph){
         Set<Graph<KruskalVertex<T>>.Edge> res = new HashSet<>();
         var edges_set = graph.getAllEdges();
         var edges_list = new ArrayList<>(edges_set);
@@ -91,8 +90,7 @@ public final class MST {
         return res;
     }
 
-    public static <T>
-    Graph<PrimVertex<T>> algorithmOfPrim(Graph<PrimVertex<T>> graph, PrimVertex<T> r){
+    public static <T> Graph<PrimVertex<T>> algorithmOfPrim(Graph<PrimVertex<T>> graph, PrimVertex<T> r){
         Queue<PrimVertex<T>> Q = new PriorityQueue<>(Comparator.comparingDouble(v -> v.key));
         var queue_set = graph.getAllVertices();
         for(var u : queue_set){

@@ -5,7 +5,7 @@ import tools.Graph;
 
 // single source shortest path
 public final class SSSP {
-    public static <T extends Comparable<T>>
+    public static <T>
     void initializeSingleSource(Graph<BFS.Vertex<T>> G, BFS.Vertex<T> s){
         for(var v : G.getAllVertices()){
             v.d = Double.POSITIVE_INFINITY;
@@ -14,8 +14,7 @@ public final class SSSP {
         s.d = 0;
     }
 
-    public static <T extends Comparable<T>>
-    void relax(BFS.Vertex<T> u, BFS.Vertex<T> v, Graph<BFS.Vertex<T>> G){
+    public static <T> void relax(BFS.Vertex<T> u, BFS.Vertex<T> v, Graph<BFS.Vertex<T>> G){
         var weight = G.computeWeight(u,v);
         if(v.d > u.d + weight){
             v.d = u.d + weight;
@@ -23,9 +22,8 @@ public final class SSSP {
         }
     }
 
-    // general case
-    public static <T extends Comparable<T>>
-    boolean algorithmBellmanFord(Graph<BFS.Vertex<T>> graph, BFS.Vertex<T> s){
+    // general case algorithm
+    public static <T> boolean algorithmBellmanFord(Graph<BFS.Vertex<T>> graph, BFS.Vertex<T> s){
         initializeSingleSource(graph, s);
         int len = graph.getAllVertices().toArray().length;
         for(int i = 1; i < len; i++){

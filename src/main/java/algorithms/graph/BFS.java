@@ -29,8 +29,7 @@ public final class BFS {
         }
     }
 
-    public static <T>
-    void breathFirstSearch(Graph<Vertex<T>> G, Vertex<T> s) {
+    public static <T> void breathFirstSearch(Graph<Vertex<T>> G, Vertex<T> s) {
         var vs = G.getAllVertices();
         for (var v : vs) {
             if (!v.equals(s)) {
@@ -58,8 +57,7 @@ public final class BFS {
         }
     }
 
-    public static <T>
-    List<T> getPath( Vertex<T> s, Vertex<T> v){
+    public static <T> List<T> getPath( Vertex<T> s, Vertex<T> v){
         List<T> t = new ArrayList<>();
         traverse(s, v, t);
         int idx = 0;
@@ -68,8 +66,7 @@ public final class BFS {
             res.add(idx++, i);
         return res;
     }
-    private static <T>
-    void traverse(Vertex<T> s, Vertex<T> v, List<T> res){
+    private static <T> void traverse(Vertex<T> s, Vertex<T> v, List<T> res){
         if(v == s){
             res.add(s.content);
         } else if(v.parent != null){
