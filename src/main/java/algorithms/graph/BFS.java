@@ -65,7 +65,7 @@ public final class BFS {
     public static <T extends Comparable<T>>
     List<T> getPath( Vertex<T> s, Vertex<T> v){
         List<T> t = new ArrayList<>();
-        getPath(s, v, t);
+        traverse(s, v, t);
         int idx = 0;
         List<T> res = new ArrayList<>(t.size());
         for(var i : t)
@@ -73,11 +73,11 @@ public final class BFS {
         return res;
     }
     private static <T extends Comparable<T>>
-    void getPath(Vertex<T> s, Vertex<T> v, List<T> res){
+    void traverse(Vertex<T> s, Vertex<T> v, List<T> res){
         if(v == s){
             res.add(s.content);
         } else if(v.parent != null){
-            getPath(s, v.parent, res);
+            traverse(s, v.parent, res);
             res.add(v.content);
         }
     }
