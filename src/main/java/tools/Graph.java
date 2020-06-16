@@ -45,12 +45,11 @@ public final class Graph<V>  {
 
         public V getLaterVertex() { return later_vertex; }
 
-        public V getAnotherVertex(V vertex){
+        public V getAnotherSide(V vertex){
             if(former_vertex.equals(vertex)) return later_vertex;
             else if(later_vertex.equals(vertex)) return former_vertex;
             else throw new IllegalArgumentException("Not match.");
         }
-
 
         @Override
         public String toString(){
