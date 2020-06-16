@@ -8,9 +8,9 @@ public final class Graph<V extends Comparable<V>>  {
     public class Edge implements Comparable<Edge> {
         private final V smaller_vertex;
         private final V bigger_vertex;
-        private final int weight;
+        private final double weight;
 
-        public Edge(V small, V bigger, int weight){
+        public Edge(V small, V bigger, double weight){
             this.weight = weight;
             if(small.compareTo(bigger) <= 0){
                 smaller_vertex = small;
@@ -45,12 +45,12 @@ public final class Graph<V extends Comparable<V>>  {
             else throw new IllegalArgumentException("Not match.");
         }
 
-        public int getWeight() { return weight; }
+        public double getWeight() { return weight; }
 
         @Override
         public int compareTo(Edge other){ 
             if(weight != other.weight){
-                return weight - other.weight;
+                return (int) (weight - other.weight);
             }else{
                 int small_check = smaller_vertex.compareTo(other.smaller_vertex);
                 if(small_check != 0) return small_check;
@@ -79,7 +79,7 @@ public final class Graph<V extends Comparable<V>>  {
     public void putNeighborPair(V vertex, V neighbor){
         putNeighborPair(vertex, neighbor, 1);
     }
-    public void putNeighborPair(V vertex, V neighbor, int w){
+    public void putNeighborPair(V vertex, V neighbor, double w){
         var edge_t = new Edge(vertex, neighbor, w);
         var edges_set = edge_map.computeIfAbsent(vertex, k -> new TreeSet<>());
         edges_set.add(edge_t);
@@ -88,7 +88,7 @@ public final class Graph<V extends Comparable<V>>  {
     }
 
     public void addOneNeighbor(V vertex, V neighbor){ addOneNeighbor(vertex, neighbor, 1); }
-    public void addOneNeighbor(V vertex, V neighbor, int w){
+    public void addOneNeighbor(V vertex, V neighbor, double w){
         var edge_t = new Edge(vertex, neighbor, w);
         var edges_set = edge_map.computeIfAbsent(vertex, k -> new TreeSet<>());
         edges_set.add(edge_t);
@@ -123,25 +123,4 @@ public final class Graph<V extends Comparable<V>>  {
         return false;
     }
 
-//    public void setNeighbors(V vertex, V[] vertexes, int[] weights){
-//        int len = vertexes.length;
-//        if(weights.length != len) throw new IllegalArgumentException();
-//
-//        Set<Edge> edges_set = edge_map.get(vertex);
-//        if(edges_set != null) { edges_set.clear(); }
-//        else{ edges_set = new TreeSet<>(); }
-//
-//        for(int i = 0; i < len; i++){
-//            edges_set.add(new Edge(vertex, vertexes[i], weights[i]));
-//        }
-//    }
-//    public void setNeighborPairs(V vertex, V[] vertexes, int[] weights){
-//        int len = vertexes.length;
-//        if(weights.length != len) throw new IllegalArgumentException();
-//        for(int i = 0; i < len; i++) putNeighborPair(vertex, vertexes[i],weights[i]);
-//    }
-//    public void clearNeighbors(V vertex){ edge_map.get(vertex).clear(); }
-//    public boolean removeOneNeighbor(V vertex, V neighbor, int weight){
-//        return edge_map.get(vertex).remove(new Edge(vertex,neighbor,weight));
-//    }
 }
