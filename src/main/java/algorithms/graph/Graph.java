@@ -1,6 +1,7 @@
 package algorithms.graph;
 
 import java.util.*;
+import java.util.function.Function;
 
 
 public final class Graph<V>  {
@@ -130,6 +131,23 @@ public final class Graph<V>  {
         var t = weight_map.get(e);
         if(t == null) throw new NoSuchElementException();
         return t;
+    }
+
+    public static <A, B> Graph<B> convert(Graph<A> origin, Function<A, B> func){
+        var res = new Graph<B>(origin.graph_directed);
+        for(var kv : origin.neighbors_map.entrySet()){
+            var set_t = new HashSet<B>();
+            for(var v : kv.getValue()){
+                set_t.add(func.apply(v));
+            }
+            res.neighbors_map.put(func.apply(kv.getKey()), set_t);
+        }
+        for(var kv : origin.weight_map.entrySet()){
+            var oe = kv.getKey();
+            var e = res.new Edge(func.apply(oe.former_vertex),func.apply(oe.later_vertex),oe.directed);
+            res.weight_map.put(e, kv.getValue());
+        }
+        return res;
     }
 
     @Override

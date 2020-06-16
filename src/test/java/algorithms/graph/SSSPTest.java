@@ -24,7 +24,7 @@ class SSSPTest {
     @Test
     void algorithmBellmanFord() {
         var G = buildBellmanFordCase();
-        SSSP.algorithmBellmanFord(G, new BFS.Vertex<>("s"));
+        var b = SSSP.algorithmBellmanFord(G, new BFS.Vertex<>("s"));
         BFS.Vertex<String> target = new BFS.Vertex<>("z");
         for(var v : G.getAllVertices()){
             if(v.equals(target)) { target = v; } }
@@ -33,6 +33,7 @@ class SSSPTest {
             res.add(target.getContent());
             target = target.parent;
         }
+        assertTrue(b);
         assertEquals(res, List.of("z", "t", "x", "y","s"));
     }
 
