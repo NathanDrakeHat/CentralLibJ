@@ -4,7 +4,7 @@ package algorithms.graph;
 import tools.Graph;
 
 // single source shortest path
-public final class ShortestPath {
+public final class SSSP {
     public static <T extends Comparable<T>>
     void initializeSingleSource(Graph<BFS.Vertex<T>> G, BFS.Vertex<T> s){
         for(var v : G.getAllVertices()){
