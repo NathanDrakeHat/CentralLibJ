@@ -6,6 +6,8 @@ import java.util.stream.Collectors;
 
 public final class Graph<V>  {
     private final boolean graph_directed;
+    private final Map<V, Set<V>> neighbors_map = new HashMap<>();
+    private final Map<Edge, Double> weight_map = new HashMap<>();
     public final class Edge {
         private final V former_vertex;
         private final V later_vertex;
@@ -67,8 +69,6 @@ public final class Graph<V>  {
             }
         }
     }
-    private final Map<V, Set<V>> neighbors_map = new HashMap<>();
-    private final Map<Edge, Double> weight_map = new HashMap<>();
 
     public Graph(boolean is_directed){  this.graph_directed = is_directed; }
     public Graph(List<V> vertices,boolean is_directed){
@@ -137,11 +137,12 @@ public final class Graph<V>  {
     @Override
     public String toString(){
         StringBuilder res = new StringBuilder();
-        res.append("EdgeMap:\n");
+        res.append("Edges Map:\n");
         for(var kv : weight_map.entrySet()){
             res.append(kv.toString());
             res.append('\n');
         }
+        res.append("Neighbors Map:\n");
         for(var kv : neighbors_map.entrySet()){
             res.append(kv.toString());
             res.append('\n');
