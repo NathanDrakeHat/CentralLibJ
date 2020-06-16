@@ -8,7 +8,7 @@ public final class DFS {
     // depth first search
     enum COLOR{ WHITE, GRAY, BLACK}
 
-    public static class Vertex<V extends Comparable<V>> implements Comparable<Vertex<V>>{
+    public static class Vertex<V>{
         public Vertex<V> parent;
         private COLOR color;
         public int d; //discovered time
@@ -26,8 +26,6 @@ public final class DFS {
         @Override public String toString(){
             return String.format("DFS.Vertex:%s, parent:%s",content.toString(),parent.toString());
         }
-
-        @Override public int compareTo(Vertex<V> other) {return this.content.compareTo(other.content); }
     }
 
     public static <T extends Comparable<T>>

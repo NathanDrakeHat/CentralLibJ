@@ -7,7 +7,7 @@ public final class BFS {
     // breath first search
     enum COLOR{ WHITE, GRAY, BLACK}
     public static
-    class Vertex<V extends Comparable<V>> implements Comparable<Vertex<V>>{
+    class Vertex<V>{
         Vertex<V> parent;
         COLOR color;
         double d; //distance
@@ -23,17 +23,13 @@ public final class BFS {
             return content.hashCode();
         }
 
-        @Override public int compareTo(Vertex<V> other) {
-            return this.content.compareTo(other.content);
-        }
-
         @Override
         public String toString() {
             return String.format("BFS.Vertex:%s, parent:%s",content.toString(),parent.toString());
         }
     }
 
-    public static <T extends Comparable<T>>
+    public static <T>
     void breathFirstSearch(Graph<Vertex<T>> G, Vertex<T> s) {
         var vs = G.getAllVertices();
         for (var v : vs) {
@@ -62,7 +58,7 @@ public final class BFS {
         }
     }
 
-    public static <T extends Comparable<T>>
+    public static <T>
     List<T> getPath( Vertex<T> s, Vertex<T> v){
         List<T> t = new ArrayList<>();
         traverse(s, v, t);
@@ -72,7 +68,7 @@ public final class BFS {
             res.add(idx++, i);
         return res;
     }
-    private static <T extends Comparable<T>>
+    private static <T>
     void traverse(Vertex<T> s, Vertex<T> v, List<T> res){
         if(v == s){
             res.add(s.content);

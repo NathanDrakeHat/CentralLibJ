@@ -7,7 +7,7 @@ import java.util.*;
 // minimum spanning tree
 public final class MST {
     public static
-    class KruskalVertex<V extends Comparable<V>> implements DisjointSet<KruskalVertex<V>> {
+    class KruskalVertex<V> implements DisjointSet<KruskalVertex<V>> {
         private final V content;
         private int rank = 0;
         private KruskalVertex<V> parent = this;
@@ -43,7 +43,7 @@ public final class MST {
         
     }
     public static
-    class PrimVertex<V extends Comparable<V>>{
+    class PrimVertex<V>{
         public final V content;
         public PrimVertex<V> parent;
         public double key = 0;
@@ -74,7 +74,7 @@ public final class MST {
         public String toString() { return String.format("PrimVertex %s", content.toString()); }
     }
 
-    public static <T extends Comparable<T>>
+    public static <T>
     Set<Graph<KruskalVertex<T>>.Edge> algorithmOfKruskal(Graph<KruskalVertex<T>> graph){
         Set<Graph<KruskalVertex<T>>.Edge> res = new HashSet<>();
         var edges_set = graph.getAllEdges();
@@ -91,7 +91,7 @@ public final class MST {
         return res;
     }
 
-    public static <T extends Comparable<T>>
+    public static <T>
     Graph<PrimVertex<T>> algorithmOfPrim(Graph<PrimVertex<T>> graph, PrimVertex<T> r){
         Queue<PrimVertex<T>> Q = new PriorityQueue<>(Comparator.comparingDouble(v -> v.key));
         var queue_set = graph.getAllVertices();
