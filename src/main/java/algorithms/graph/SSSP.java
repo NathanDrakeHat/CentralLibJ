@@ -13,4 +13,9 @@ public final class SSSP {
         }
         s.d = 0;
     }
+
+    public static <T extends Comparable<T>>
+    void relax(Graph<BFS.Vertex<T>>.Edge e){
+        
+    }
 }

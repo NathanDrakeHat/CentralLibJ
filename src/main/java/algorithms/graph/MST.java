@@ -93,8 +93,8 @@ public final class MST {
         var edges_list = new ArrayList<>(edges_set);
         Collections.sort(edges_list);
         for(var edge : edges_list){
-            var v1 = edge.getSmallerVertex();
-            var v2 = edge.getBiggerVertex();
+            var v1 = edge.getFormerVertex();
+            var v2 = edge.getLaterVertex();
             if(DisjointSet.findSet(v1) != DisjointSet.findSet(v2)){
                 res.add(edge);
                 DisjointSet.union(v1, v2);
@@ -124,9 +124,9 @@ public final class MST {
 
             for(var edge : graph.getEdgesAt(u)){
                 var v = edge.getAnotherVertex(u);
-                if(vertices.contains(v) & edge.getWeight() < v.key){
+                if(vertices.contains(v) & graph.computeWeight(edge) < v.key){
                     v.parent = u;
-                    v.key = edge.getWeight();
+                    v.key = graph.computeWeight(edge);
                     Q.add(new PrimVertex<>(v)); // prevent update
                 }
             }

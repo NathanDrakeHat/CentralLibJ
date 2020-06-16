@@ -88,12 +88,12 @@ public final class DFS {
     }
     private static <T extends Comparable<T>>
     Graph<Vertex<T>> transposeGraph(Graph<Vertex<T>> graph){
-        var new_graph = new Graph<Vertex<T>>();
+        var new_graph = new Graph<Vertex<T>>(true);
         for(var v : graph.getAllVertices()){
             var neighbors = graph.getNeighborsAt(v);
             for(var n : neighbors){
                 if(!new_graph.hasVertex(n)) { new_graph.putVertex(n); }
-                if(!new_graph.hasOneNeighbor(n, v)){ new_graph.addOneNeighbor(n, v); }
+                if(!new_graph.hasOneNeighbor(n, v)){ new_graph.setNeighbor(n, v); }
             }
         }
         return new_graph;

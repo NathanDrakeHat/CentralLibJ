@@ -21,21 +21,21 @@ class BFSTest {
             return vs;
         }
         public static Graph<BFS.Vertex<Character>> makeGraph(List<BFS.Vertex<Character>> vs){ ;
-            var G = new Graph<>(vs);
-            G.putNeighborPair(vs.get(0), vs.get(1));
-            G.putNeighborPair(vs.get(0), vs.get(4));
+            var G = new Graph<>(vs,false);
+            G.setNeighbor(vs.get(0), vs.get(1));
+            G.setNeighbor(vs.get(0), vs.get(4));
 
-            G.putNeighborPair(vs.get(1), vs.get(5));
+            G.setNeighbor(vs.get(1), vs.get(5));
 
-            G.putNeighborPair(vs.get(2), vs.get(3));
-            G.putNeighborPair(vs.get(2), vs.get(5));
-            G.putNeighborPair(vs.get(2), vs.get(6));
+            G.setNeighbor(vs.get(2), vs.get(3));
+            G.setNeighbor(vs.get(2), vs.get(5));
+            G.setNeighbor(vs.get(2), vs.get(6));
 
-            G.putNeighborPair(vs.get(3), vs.get(6));
+            G.setNeighbor(vs.get(3), vs.get(6));
 
-            G.putNeighborPair(vs.get(5), vs.get(6));
+            G.setNeighbor(vs.get(5), vs.get(6));
 
-            G.putNeighborPair(vs.get(6), vs.get(7));
+            G.setNeighbor(vs.get(6), vs.get(7));
 
             return G;
         }

@@ -15,20 +15,20 @@ class DFSTest {
         for(int i = 0; i < 6; i++){
             vs.add(i, new DFS.Vertex<>(String.valueOf(names.charAt(i))));
         }
-        var G = new Graph<>(vs);
-        G.addOneNeighbor(vs.get(0), vs.get(1));
-        G.addOneNeighbor(vs.get(0), vs.get(3));
+        var G = new Graph<>(vs,true);
+        G.setNeighbor(vs.get(0), vs.get(1));
+        G.setNeighbor(vs.get(0), vs.get(3));
 
-        G.addOneNeighbor(vs.get(1), vs.get(4));
+        G.setNeighbor(vs.get(1), vs.get(4));
 
-        G.addOneNeighbor(vs.get(2), vs.get(4));
-        G.addOneNeighbor(vs.get(2), vs.get(5));
+        G.setNeighbor(vs.get(2), vs.get(4));
+        G.setNeighbor(vs.get(2), vs.get(5));
 
-        G.addOneNeighbor(vs.get(3), vs.get(1));
+        G.setNeighbor(vs.get(3), vs.get(1));
 
-        G.addOneNeighbor(vs.get(4), vs.get(3));
+        G.setNeighbor(vs.get(4), vs.get(3));
 
-        G.addOneNeighbor(vs.get(5), vs.get(5));
+        G.setNeighbor(vs.get(5), vs.get(5));
 
         return G;
     }
@@ -40,21 +40,21 @@ class DFSTest {
             String t = "undershorts,pants,belt,shirt,tie,jacket,socks,shoes,watch";
             var names = t.split(",");
             for(int i = 0; i < 9; i++) { A.add(i, new DFS.Vertex<>(names[i])); }
-            Graph<DFS.Vertex<String>> G = new Graph<>(A);
-            G.addOneNeighbor(A.get(0), A.get(1));
-            G.addOneNeighbor(A.get(0), A.get(6));
+            Graph<DFS.Vertex<String>> G = new Graph<>(A,true);
+            G.setNeighbor(A.get(0), A.get(1));
+            G.setNeighbor(A.get(0), A.get(6));
 
-            G.addOneNeighbor(A.get(1), A.get(2));
-            G.addOneNeighbor(A.get(1), A.get(6));
+            G.setNeighbor(A.get(1), A.get(2));
+            G.setNeighbor(A.get(1), A.get(6));
 
-            G.addOneNeighbor(A.get(2), A.get(5));
+            G.setNeighbor(A.get(2), A.get(5));
 
-            G.addOneNeighbor(A.get(3), A.get(2));
-            G.addOneNeighbor(A.get(3), A.get(4));
+            G.setNeighbor(A.get(3), A.get(2));
+            G.setNeighbor(A.get(3), A.get(4));
 
-            G.addOneNeighbor(A.get(4), A.get(5));
+            G.setNeighbor(A.get(4), A.get(5));
 
-            G.addOneNeighbor(A.get(6), A.get(7));
+            G.setNeighbor(A.get(6), A.get(7));
 
             return G;
         }
@@ -64,28 +64,28 @@ class DFSTest {
         var names = t.split(",");
         var A = new ArrayList<DFS.Vertex<String>>(names.length);
         for(int i = 0; i < names.length; i++) { A.add(i,new DFS.Vertex<>(names[i])); }
-        Graph<DFS.Vertex<String>> G = new Graph<>(A);
-        G.addOneNeighbor(A.get(0), A.get(1));
+        Graph<DFS.Vertex<String>> G = new Graph<>(A,true);
+        G.setNeighbor(A.get(0), A.get(1));
 
-        G.addOneNeighbor(A.get(1), A.get(2));
-        G.addOneNeighbor(A.get(1), A.get(4));
-        G.addOneNeighbor(A.get(1), A.get(5));
+        G.setNeighbor(A.get(1), A.get(2));
+        G.setNeighbor(A.get(1), A.get(4));
+        G.setNeighbor(A.get(1), A.get(5));
 
-        G.addOneNeighbor(A.get(2), A.get(3));
-        G.addOneNeighbor(A.get(2), A.get(6));
+        G.setNeighbor(A.get(2), A.get(3));
+        G.setNeighbor(A.get(2), A.get(6));
 
-        G.addOneNeighbor(A.get(3), A.get(2));
-        G.addOneNeighbor(A.get(3), A.get(7));
+        G.setNeighbor(A.get(3), A.get(2));
+        G.setNeighbor(A.get(3), A.get(7));
 
-        G.addOneNeighbor(A.get(4), A.get(0));
-        G.addOneNeighbor(A.get(4), A.get(5));
+        G.setNeighbor(A.get(4), A.get(0));
+        G.setNeighbor(A.get(4), A.get(5));
 
-        G.addOneNeighbor(A.get(5), A.get(6));
+        G.setNeighbor(A.get(5), A.get(6));
 
-        G.addOneNeighbor(A.get(6), A.get(5));
-        G.addOneNeighbor(A.get(6), A.get(7));
+        G.setNeighbor(A.get(6), A.get(5));
+        G.setNeighbor(A.get(6), A.get(7));
 
-        G.addOneNeighbor(A.get(7), A.get(7));
+        G.setNeighbor(A.get(7), A.get(7));
 
         return G;
     }

@@ -13,13 +13,13 @@ class MSTTest {
         int len = names.length;
         var vertices = new ArrayList<MST.KruskalVertex<String>>(len);
         for(int i = 0; i < len; i++){ vertices.add(i, new MST.KruskalVertex<>(names[i])); }
-        Graph<MST.KruskalVertex<String>> res = new Graph<>();
+        Graph<MST.KruskalVertex<String>> res = new Graph<>(true);
         int[] indexes1 = new int[]{0,1,2,3,4, 5,6,7,1, 2,8,8,2,3};
         int[] indexes2 = new int[]{1,2,3,4,5, 6,7,0,7, 8,7,6,5,5};
         double[] weights =  new double[]{4,8,7,9,10,2,1,8,11,2,7,6,4,14};
         int len_ = indexes1.length;
         for(int i = 0; i < len_; i++){
-            res.putNeighborPair(vertices.get(indexes1[i]), vertices.get(indexes2[i]), weights[i]);
+            res.setNeighbor(vertices.get(indexes1[i]), vertices.get(indexes2[i]), weights[i]);
         }
         return res;
     }
@@ -28,24 +28,25 @@ class MSTTest {
         String[] names = n.split(",");
         int len = names.length;
         var vertices = new ArrayList<MST.KruskalVertex<String>>(len);
-        Graph<MST.KruskalVertex<String>> g = new Graph<>();
+        Graph<MST.KruskalVertex<String>> g = new Graph<>(true);
         for(int i = 0; i < len; i++){ vertices.add(i,new MST.KruskalVertex<>(names[i])); }
         int[] indexes1 = new int[]{0,1,2,3,4, 5,6,7,1, 2,8,8,2,3};
         int[] indexes2 = new int[]{1,2,3,4,5, 6,7,0,7, 8,7,6,5,5};
-        double[] weights =  new double[]{4,8,7,9,10,2,1,8,11,2,7,6,4,14};
+//        double[] weights =  new double[]{4,8,7,9,10,2,1,8,11,2,7,6,4,14};
         Set<Graph<MST.KruskalVertex<String>>.Edge> res = new HashSet<>();
         int[] answers = new int[]{0, 2, 3, 5, 6, 7, 9, 12};
         for(var i : answers)
-            res.add(g.new Edge(vertices.get(indexes1[i]), vertices.get(indexes2[i]), weights[i]));
+            res.add(g.new Edge(vertices.get(indexes1[i]), vertices.get(indexes2[i])));
         return res;
     }
     @Test
     public void algorithmOfKruskalTest(){
-        var t = MST.algorithmOfKruskal(buildKruskalExample());
+        var G = buildKruskalExample();
+        var t = MST.algorithmOfKruskal(G);
         assertEquals(t, buildKruskalAnswer());
         int i = 0;
         for(var e : t){
-            i += e.getWeight();
+            i += G.computeWeight(e);
         }
         assertEquals(i, 37);
     }
@@ -57,13 +58,13 @@ class MSTTest {
         int len = names.length;
         var vertices = new ArrayList<MST.PrimVertex<String>>(len);
         for(int i = 0; i < len; i++){ vertices.add(i,new MST.PrimVertex<>(names[i])); }
-        Graph<MST.PrimVertex<String>> res = new Graph<>();
+        Graph<MST.PrimVertex<String>> res = new Graph<>(true);
         int[] indexes1 = new int[]{0,1,2,3,4, 5,6,7,1, 2,8,8,2,3};
         int[] indexes2 = new int[]{1,2,3,4,5, 6,7,0,7, 8,7,6,5,5};
         double[] weights =  new double[]{4,8,7,9,10,2,1,8,11,2,7,6,4,14};
         int len_ = indexes1.length;
         for(int i = 0; i < len_; i++){
-            res.putNeighborPair(vertices.get(indexes1[i]), vertices.get(indexes2[i]), weights[i]);
+            res.setNeighbor(vertices.get(indexes1[i]), vertices.get(indexes2[i]), weights[i]);
         }
         return res;
     }
@@ -72,7 +73,7 @@ class MSTTest {
         String[] names = n.split(",");
         int len = names.length;
         var vertices = new ArrayList<MST.PrimVertex<String>>(len);
-        Graph<MST.KruskalVertex<String>> g = new Graph<>();
+        Graph<MST.KruskalVertex<String>> g = new Graph<>(true);
         for(int i = 0; i < len; i++){ vertices.add(i,new MST.PrimVertex<>(names[i])); }
         int[] indexes1 = new int[]{0,1,2,3,4, 5,6,7,1, 2,8,8,2,3};
         int[] indexes2 = new int[]{1,2,3,4,5, 6,7,0,7, 8,7,6,5,5};
