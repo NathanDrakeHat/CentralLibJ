@@ -1,5 +1,7 @@
 package structures;
 
+import java.util.function.BiConsumer;
+
 public final class OrderStatisticTree{ // get rank of node from left to right
     private ColorSizeNode root = null;
     private final ColorSizeNode sentinel = new ColorSizeNode(0, Color.BLACK);
@@ -61,7 +63,7 @@ public final class OrderStatisticTree{ // get rank of node from left to right
         BLACK
     }
 
-    public double rankGetKey(int rank){
+    public double GetKeyFromRank(int rank){
         ColorSizeNode n = rankSelect(rank);
         return n.key;
     }
@@ -86,7 +88,7 @@ public final class OrderStatisticTree{ // get rank of node from left to right
         }
     }
 
-    public int keyGetRank(double key){
+    public int GetRankFromKey(double key){
         ColorSizeNode n = search(key);
         return getNodeRank(n);
     }
@@ -117,6 +119,7 @@ public final class OrderStatisticTree{ // get rank of node from left to right
         }
         return null;
     }
+    private ColorSizeNode getSentinel(){ return sentinel; }
     public ColorSizeNode getRoot() { return this.root; }
     private void setRoot(ColorSizeNode n){
         root = n;
@@ -382,6 +385,7 @@ public final class OrderStatisticTree{ // get rank of node from left to right
         }
         return target;
     }
+
     private ColorSizeNode getSuccessor(ColorSizeNode current){
         if(current.right != sentinel){
             return getMinimum(current.right);
@@ -409,57 +413,54 @@ public final class OrderStatisticTree{ // get rank of node from left to right
         }
     }
 
-    public void printTree(){ // inorder print
-        if(root == null || sentinel == root){
+    public void inOrderForEach(BiConsumer<Double, Integer> bc){ // inorder print
+        if(getRoot() == null || getSentinel() == getRoot()){
             return;
         }
-        inorderTreeWalk(root.left);
-        System.out.print(root.key);
-        System.out.print(' ');
-        inorderTreeWalk(root.right);
-        System.out.print('\n');
+        inorderTreeWalk(getRoot(), bc);
     }
-    public int getNodesNumber(){
-        if(root == sentinel){
+    private void inorderTreeWalk(ColorSizeNode n, BiConsumer<Double, Integer> bc){
+        if(n != getSentinel() & n != null){
+            inorderTreeWalk(n.getLeft(), bc);
+            bc.accept(n.getKey(), n.getSize());
+            inorderTreeWalk(n.getRight(), bc);
+        }
+    }
+
+    public int getCount(){
+        if(getRoot() == getSentinel()){
             return 0;
         }
-        return inorderTreeWalk(root, "sum");
+        return getCount(getRoot());
     }
-    public int getHeight(){
-        if(root == null || root == sentinel){
-            return 0;
-        }
-        int count = 1;
-        int left_max = inorderTreeWalk(root.left, count);
-        int right_max = inorderTreeWalk(root.right, count);
-        return Math.max(left_max, right_max);
-    }
-    private void inorderTreeWalk(ColorSizeNode n){
-        if(n != sentinel){
-            inorderTreeWalk(n.left);
-            System.out.print(n.key);
-            System.out.print(' ');
-            inorderTreeWalk(n.right);
-        }
-    }
-    private int inorderTreeWalk(ColorSizeNode n, int count){
-        if(n != sentinel){
-            int left_max = inorderTreeWalk(n.left, count + 1);
-            int right_max = inorderTreeWalk(n.right, count + 1);
-            return Math.max(left_max, right_max);
-        }
-        return count;
-    }
-    private int inorderTreeWalk(ColorSizeNode n, String way){ //overload trick
-        if(!way.equals("sum")) throw new IllegalArgumentException();
-        if(n.right != sentinel && n.left == sentinel){
-            return inorderTreeWalk(n.right, "sum") + 1;
-        }else if(n.right == sentinel && n.left != sentinel){
-            return inorderTreeWalk(n.left, "sum") + 1;
-        }else if(n.right != sentinel && n.left != sentinel){
-            return inorderTreeWalk(n.left, "sum") + inorderTreeWalk(n.right, "sum") + 1;
+    private int getCount(ColorSizeNode n){ //overload trick
+        if(n.getRight() != getSentinel() && n.getLeft() == getSentinel()){
+            return getCount(n.getRight()) + 1;
+        }else if(n.getRight() == getSentinel() && n.getLeft() != getSentinel()){
+            return getCount(n.getLeft()) + 1;
+        }else if(n.getRight() != getSentinel() && n.getLeft() != getSentinel()){
+            return getCount(n.getLeft()) + getCount(n.getRight()) + 1;
         }else{
             return 1;
         }
     }
+
+    public int getHeight(){
+        if(getRoot() == null || getRoot() == getSentinel()){
+            return 0;
+        }
+        int height = 1;
+        int left_max = getHeight(getRoot().getLeft(), height);
+        int right_max = getHeight(getRoot().getRight(), height);
+        return Math.max(left_max, right_max) - 1;
+    }
+    private int getHeight(ColorSizeNode n, int height){
+        if(n != getSentinel()){
+            int left_max = getHeight(n.getLeft(), height + 1);
+            int right_max = getHeight(n.getRight(), height + 1);
+            return Math.max(left_max, right_max);
+        }
+        return height;
+    }
+
 }
