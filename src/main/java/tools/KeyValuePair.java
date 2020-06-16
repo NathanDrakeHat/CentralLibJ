@@ -3,8 +3,8 @@ package tools;
 import java.util.Objects;
 
 public final class KeyValuePair<A extends Comparable<A>, B> implements Comparable<KeyValuePair<A, B>>{
-    A key;
-    B value;
+    private A key;
+    private B value;
     public KeyValuePair(A key, B value){
         this.key = key;
         this.value = value;
@@ -20,7 +20,8 @@ public final class KeyValuePair<A extends Comparable<A>, B> implements Comparabl
     @Override
     @SuppressWarnings("unchecked")
     public boolean equals(Object other){
-        if(other.getClass().equals(this.getClass())){
+        if(other == null) return false;
+        else if(other.getClass().equals(this.getClass())){
             return key.equals(((KeyValuePair<A, B>) other).key) && value.equals(((KeyValuePair<A,B>) other).value);
         }else return false;
     }
@@ -29,10 +30,8 @@ public final class KeyValuePair<A extends Comparable<A>, B> implements Comparabl
     public int hashCode() { return Objects.hash(key, value); }
 
     @Override
-    public int compareTo(KeyValuePair<A, B> other){
-        return key.compareTo(other.key);
-    }
+    public int compareTo(KeyValuePair<A, B> other){ return key.compareTo(other.key); }
 
     @Override
-    public String toString() { return String.format("Pair (key: %s, value: %s)",key.toString(),value.toString()); }
+    public String toString() { return String.format("Pair(key: %s, value: %s)",key.toString(),value.toString()); }
 }

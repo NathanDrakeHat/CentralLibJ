@@ -1,17 +1,17 @@
 package tools;
 
 
-public final class DPMatrix<V> {//matrice for DP problem
-    private final Object[][] matrice;
+public final class DPMatrix<V> {//matrix for dynamic programming problem
+    private final Object[][] matrix;
 
     public DPMatrix(int size) {
-        matrice = new Object[size][];
+        matrix = new Object[size][];
         for(int i = 0; i < size; i ++)
-            matrice[i] = new Object[size-i];
+            matrix[i] = new Object[size-i];
     }
 
     @SuppressWarnings("unchecked")
-    public V getAt(int r, int c){ return (V)matrice[r][c-r]; }
+    public V getAt(int r, int c){ return (V) matrix[r][c-r]; }
 
-    public void setAt(V v, int r, int c) { matrice[r][c-r] = v; }
+    public void setAt(V v, int r, int c) { matrix[r][c-r] = v; }
 }

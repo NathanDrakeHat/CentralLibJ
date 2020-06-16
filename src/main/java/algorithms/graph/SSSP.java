@@ -3,23 +3,6 @@ package algorithms.graph;
 
 // single source shortest path
 public final class SSSP {
-    public static <T>
-    void initializeSingleSource(Graph<BFS.Vertex<T>> G, BFS.Vertex<T> s){
-        for(var v : G.getAllVertices()){
-            v.d = Double.POSITIVE_INFINITY;
-            v.parent = null;
-        }
-        s.d = 0;
-    }
-
-    public static <T> void relax(BFS.Vertex<T> u, BFS.Vertex<T> v, Graph<BFS.Vertex<T>> G){
-        var weight = G.computeWeight(u,v);
-        if(v.d > u.d + weight){
-            v.d = u.d + weight;
-            v.parent = u;
-        }
-    }
-
     // general case algorithm
     public static <T> boolean algorithmBellmanFord(Graph<BFS.Vertex<T>> graph, BFS.Vertex<T> s){
         initializeSingleSource(graph, s);
@@ -35,4 +18,19 @@ public final class SSSP {
         }
         return true;
     }
+    private static <T> void initializeSingleSource(Graph<BFS.Vertex<T>> G, BFS.Vertex<T> s){
+        for(var v : G.getAllVertices()){
+            v.d = Double.POSITIVE_INFINITY;
+            v.parent = null;
+        }
+        s.d = 0;
+    }
+    private static <T> void relax(BFS.Vertex<T> u, BFS.Vertex<T> v, Graph<BFS.Vertex<T>> G){
+        var weight = G.computeWeight(u,v);
+        if(v.d > u.d + weight){
+            v.d = u.d + weight;
+            v.parent = u;
+        }
+    }
+
 }
