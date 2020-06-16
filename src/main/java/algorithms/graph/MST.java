@@ -7,7 +7,7 @@ import java.util.*;
 // minimum spanning tree
 public final class MST {
     public static
-    class KruskalVertex<V extends Comparable<V>> implements Comparable<KruskalVertex<V>>, DisjointSet<KruskalVertex<V>> {
+    class KruskalVertex<V extends Comparable<V>> implements DisjointSet<KruskalVertex<V>> {
         private final V content;
         private int rank = 0;
         private KruskalVertex<V> parent = this;
@@ -27,11 +27,6 @@ public final class MST {
 
         @Override
         public int hashCode(){ return content.hashCode(); }
-
-        @Override
-        public int compareTo(KruskalVertex<V> other){
-            return content.compareTo(other.content);
-        }
         
         @Override
         public int getRank() { return rank; }
@@ -44,11 +39,11 @@ public final class MST {
         public void setParent(KruskalVertex<V> r) { this.parent = r; }
 
         @Override
-        public String toString(){ return String.format("(KruskalVertex: %s)", content.toString()); }
+        public String toString(){ return String.format("KruskalVertex: %s", content.toString()); }
         
     }
     public static
-    class PrimVertex<V extends Comparable<V>> implements Comparable<PrimVertex<V>>{
+    class PrimVertex<V extends Comparable<V>>{
         public final V content;
         public PrimVertex<V> parent;
         public double key = 0;
@@ -67,13 +62,6 @@ public final class MST {
         public int hashCode() { return content.hashCode(); }
 
         @Override
-        public int compareTo(PrimVertex<V> other){
-            int key_check =  Double.compare(key, other.key);
-            if(key_check == 0) return content.compareTo(other.content);
-            else return key_check;
-        }
-
-        @Override
         @SuppressWarnings("unchecked")
         public boolean equals(Object other){
             if(other == null) return false;
@@ -83,7 +71,7 @@ public final class MST {
         }
 
         @Override
-        public String toString() { return String.format("(PrimVertex %s, Key: %.2f)", content.toString(),key); }
+        public String toString() { return String.format("PrimVertex %s", content.toString()); }
     }
 
     public static <T extends Comparable<T>>
@@ -105,7 +93,7 @@ public final class MST {
 
     public static <T extends Comparable<T>>
     Graph<PrimVertex<T>> algorithmOfPrim(Graph<PrimVertex<T>> graph, PrimVertex<T> r){
-        Queue<PrimVertex<T>> Q = new PriorityQueue<>();
+        Queue<PrimVertex<T>> Q = new PriorityQueue<>(Comparator.comparingDouble(v -> v.key));
         var queue_set = graph.getAllVertices();
         for(var u : queue_set){
             if(!u.equals(r)) u.key = Double.POSITIVE_INFINITY;

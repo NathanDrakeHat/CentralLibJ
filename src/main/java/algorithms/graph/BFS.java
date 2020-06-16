@@ -29,7 +29,7 @@ public final class BFS {
 
         @Override
         public String toString() {
-            return String.format("(BFS.Vertex:%s, parent:%s)",content.toString(),parent.toString());
+            return String.format("BFS.Vertex:%s, parent:%s",content.toString(),parent.toString());
         }
     }
 

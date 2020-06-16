@@ -36,7 +36,7 @@ class MSTTest {
         Set<Graph<MST.KruskalVertex<String>>.Edge> res = new HashSet<>();
         int[] answers = new int[]{0, 2, 3, 5, 6, 7, 9, 12};
         for(var i : answers)
-            res.add(g.new Edge(vertices.get(indexes1[i]), vertices.get(indexes2[i])));
+            res.add(g.new Edge(vertices.get(indexes1[i]), vertices.get(indexes2[i]), false));
         return res;
     }
     @Test
@@ -68,7 +68,7 @@ class MSTTest {
         }
         return res;
     }
-    static Set<Set<MST.PrimVertex<String>>> buildPrimAnswer(){
+    static Set<Set<MST.PrimVertex<String>>> buildPrimAnswer1(){
         String n = "a,b,c,d,e,f,g,h,i";
         String[] names = n.split(",");
         int len = names.length;
@@ -79,6 +79,25 @@ class MSTTest {
         int[] indexes2 = new int[]{1,2,3,4,5, 6,7,0,7, 8,7,6,5,5};
         Set<Set<MST.PrimVertex<String>>> res = new HashSet<>();
         int[] answers = new int[]{0, 1, 2, 3, 5, 6, 9, 12};
+        for (int answer : answers) {
+            Set<MST.PrimVertex<String>> t = new HashSet<>();
+            t.add(vertices.get(indexes1[answer]));
+            t.add(vertices.get(indexes2[answer]));
+            res.add(t);
+        }
+        return res;
+    }
+    static Set<Set<MST.PrimVertex<String>>> buildPrimAnswer2(){
+        String n = "a,b,c,d,e,f,g,h,i";
+        String[] names = n.split(",");
+        int len = names.length;
+        var vertices = new ArrayList<MST.PrimVertex<String>>(len);
+        Graph<MST.KruskalVertex<String>> g = new Graph<>(false);
+        for(int i = 0; i < len; i++){ vertices.add(i,new MST.PrimVertex<>(names[i])); }
+        int[] indexes1 = new int[]{0,1,2,3,4, 5,6,7,1, 2,8,8,2,3};
+        int[] indexes2 = new int[]{1,2,3,4,5, 6,7,0,7, 8,7,6,5,5};
+        Set<Set<MST.PrimVertex<String>>> res = new HashSet<>();
+        int[] answers = new int[]{0, 7, 2, 3, 5, 6, 9, 12};
         for (int answer : answers) {
             Set<MST.PrimVertex<String>> t = new HashSet<>();
             t.add(vertices.get(indexes1[answer]));
@@ -100,6 +119,6 @@ class MSTTest {
                 res.add(t);
             }
         }
-        assertEquals(buildPrimAnswer(), res);
+        assertTrue(res.equals(buildPrimAnswer1()) || res.equals(buildPrimAnswer2()));
     }
 }

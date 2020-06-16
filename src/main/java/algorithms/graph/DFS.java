@@ -24,7 +24,7 @@ public final class DFS {
         @Override public int hashCode(){ return content.hashCode(); }
 
         @Override public String toString(){
-            return String.format("(DFS.Vertex:%s, parent:%s)",content.toString(),parent.toString());
+            return String.format("DFS.Vertex:%s, parent:%s",content.toString(),parent.toString());
         }
 
         @Override public int compareTo(Vertex<V> other) {return this.content.compareTo(other.content); }

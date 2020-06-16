@@ -99,11 +99,6 @@ class DFSTest {
             assertEquals(v.d, res[0][idx]);
             assertEquals(v.f, res[1][idx++]);
         }
-        for(var i : G.getAllVertices()){
-            var t = i;
-            while(t.parent != null){ t = t.parent; }
-            System.out.println(String.format("vertex %s parent is %s", i.getContent(), t.getContent()));
-        }
     }
 
     @Test
