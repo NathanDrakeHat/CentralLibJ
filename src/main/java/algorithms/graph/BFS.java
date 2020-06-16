@@ -26,6 +26,11 @@ public final class BFS {
         @Override public int compareTo(Vertex<V> other) {
             return this.content.compareTo(other.content);
         }
+
+        @Override
+        public String toString() {
+            return String.format("(BFS.Vertex:%s, parent:%s)",content.toString(),parent.toString());
+        }
     }
 
     public static <T extends Comparable<T>>

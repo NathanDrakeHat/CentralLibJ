@@ -44,7 +44,7 @@ public final class MST {
         public void setParent(KruskalVertex<V> r) { this.parent = r; }
 
         @Override
-        public String toString(){ return String.format("KruskalVertex: %s", content.toString()); }
+        public String toString(){ return String.format("(KruskalVertex: %s)", content.toString()); }
         
     }
     public static
@@ -83,7 +83,7 @@ public final class MST {
         }
 
         @Override
-        public String toString() { return String.format("PrimVertex %s, Key: %.2f", content.toString(),key); }
+        public String toString() { return String.format("(PrimVertex %s, Key: %.2f)", content.toString(),key); }
     }
 
     public static <T extends Comparable<T>>
@@ -106,28 +106,27 @@ public final class MST {
     public static <T extends Comparable<T>>
     Graph<PrimVertex<T>> algorithmOfPrim(Graph<PrimVertex<T>> graph, PrimVertex<T> r){
         Queue<PrimVertex<T>> Q = new PriorityQueue<>();
-        var vertices = graph.getAllVertices();
-        for(var vertex : vertices){
-            if(!vertex.equals(r)) vertex.key = Double.POSITIVE_INFINITY;
+        var queue_set = graph.getAllVertices();
+        for(var u : queue_set){
+            if(!u.equals(r)) u.key = Double.POSITIVE_INFINITY;
             else {
-                vertex.key = 0.0;
-                Q.add(vertex); // init
+                u.key = 0.0;
+                Q.add(u); // init
             }
-            vertex.parent = null;
+            u.parent = null;
         }
-        while(!vertices.isEmpty()){
+        while(!queue_set.isEmpty()){
             PrimVertex<T> u;
             do { // ignore encountered vertex
                 u = Q.remove();
-            }while(!vertices.contains(u));
-            vertices.remove(u);
+            }while(!queue_set.contains(u));
+            queue_set.remove(u);
 
-            for(var edge : graph.getEdgesAt(u)){
-                var v = edge.getAnotherVertex(u);
-                if(vertices.contains(v) & graph.computeWeight(edge) < v.key){
+            for(var v : graph.getNeighborsAt(u)){
+                if(queue_set.contains(v) && graph.computeWeight(u,v) < v.key){
                     v.parent = u;
-                    v.key = graph.computeWeight(edge);
-                    Q.add(new PrimVertex<>(v)); // prevent update
+                    v.key = graph.computeWeight(u,v);
+                    Q.add(new PrimVertex<>(v)); // add decreased key and prevent update origin
                 }
             }
         }

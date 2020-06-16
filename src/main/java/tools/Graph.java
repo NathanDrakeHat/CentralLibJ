@@ -28,13 +28,16 @@ public final class Graph<V extends Comparable<V>>  {
                 return false;
             }else if(Edge.class.equals(other_edge.getClass())){
                 if(directed != ((Edge) other_edge).directed) return false;
-                else if(directed) return former_vertex.equals(((Edge) other_edge).former_vertex) &&
-                        later_vertex.equals(((Edge) other_edge).later_vertex);
-                else return (former_vertex.equals(((Edge) other_edge).former_vertex) &&
+                else if(directed) {
+                    return former_vertex.equals(((Edge) other_edge).former_vertex) &&
+                            later_vertex.equals(((Edge) other_edge).later_vertex);
+                }else {
+                    return (former_vertex.equals(((Edge) other_edge).former_vertex) &&
                             later_vertex.equals(((Edge) other_edge).later_vertex)) ||
 
                             (later_vertex.equals(((Edge) other_edge).former_vertex) &&
-                            former_vertex.equals(((Edge) other_edge).later_vertex));
+                                    former_vertex.equals(((Edge) other_edge).later_vertex));
+                }
             }else{
                 return false;
             }
@@ -128,7 +131,7 @@ public final class Graph<V extends Comparable<V>>  {
         return neighbors_map.get(vertex).stream().map((n)->new Edge(vertex,n)).collect(Collectors.toSet());
     }
     public Set<Edge> getAllEdges(){
-        Set<Edge> res = new TreeSet<>();
+        Set<Edge> res = new HashSet<>();
         for(var vertex : getAllVertices()){
             res.addAll(getEdgesAt(vertex));
         }
@@ -149,6 +152,12 @@ public final class Graph<V extends Comparable<V>>  {
     }
 
     public double computeWeight(Edge e){
+        var t = weight_map.get(e);
+        if(t == null) throw new NoSuchElementException();
+        else return t;
+    }
+    public double computeWeight(V former, V later){
+        var e = new Edge(former, later);
         var t = weight_map.get(e);
         if(t == null) throw new NoSuchElementException();
         else return t;
