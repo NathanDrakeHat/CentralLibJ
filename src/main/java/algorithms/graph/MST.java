@@ -71,7 +71,7 @@ public final class MST {
         }
 
         @Override
-        public String toString() { return String.format("PrimVertex %s", content.toString()); }
+        public String toString() { return String.format("PrimVertex: %s", content.toString()); }
     }
 
     public static <T> Set<Graph<KruskalVertex<T>>.Edge> algorithmOfKruskal(Graph<KruskalVertex<T>> graph){

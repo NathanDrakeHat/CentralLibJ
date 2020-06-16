@@ -22,6 +22,7 @@ public final class SSSP {
         for(var v : G.getAllVertices()){
             v.d = Double.POSITIVE_INFINITY;
             v.parent = null;
+            if(s.equals(v)) s = v;
         }
         s.d = 0;
     }
