@@ -1,6 +1,5 @@
 package algorithms.graph;
 
-import tools.Graph;
 import java.util.*;
 
 public final class BFS {

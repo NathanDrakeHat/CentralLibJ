@@ -1,4 +1,4 @@
-package tools;
+package algorithms.graph;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -8,12 +8,12 @@ public final class Graph<V>  {
     private final boolean graph_directed;
     private final Map<V, Set<V>> neighbors_map = new HashMap<>();
     private final Map<Edge, Double> weight_map = new HashMap<>();
-    public final class Edge {
+    final class Edge {
         private final V former_vertex;
         private final V later_vertex;
         private final boolean directed;
 
-        public Edge(V former, V later, boolean is_directed){
+        Edge(V former, V later, boolean is_directed){
             former_vertex = former;
             later_vertex = later;
             this.directed = is_directed;

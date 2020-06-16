@@ -1,7 +1,7 @@
 package algorithms.graph;
 
 import structures.DisjointSet;
-import tools.Graph;
+
 import java.util.*;
 
 // minimum spanning tree

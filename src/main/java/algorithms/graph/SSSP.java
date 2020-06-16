@@ -1,8 +1,6 @@
 package algorithms.graph;
 
 
-import tools.Graph;
-
 // single source shortest path
 public final class SSSP {
     public static <T>
