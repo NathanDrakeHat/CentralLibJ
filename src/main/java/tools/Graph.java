@@ -5,11 +5,11 @@ import java.util.stream.Collectors;
 
 
 public final class Graph<V extends Comparable<V>>  {
-    private boolean graph_directed;
+    private final boolean graph_directed;
     public class Edge implements Comparable<Edge> {
         private final V former_vertex;
         private final V later_vertex;
-        private boolean directed = graph_directed;
+        private final boolean directed = graph_directed;
 
         public Edge(V small, V bigger){
             if(small.compareTo(bigger) <= 0){
@@ -91,8 +91,8 @@ public final class Graph<V extends Comparable<V>>  {
             else return Objects.hash(getSmallerVertex(), getBiggerVertex(), false);
         }
     }
-    private Map<V, Set<V>> neighbors_map = new HashMap<>();
-    private Map<Edge, Double> weight_map = new HashMap<>();
+    private final Map<V, Set<V>> neighbors_map = new HashMap<>();
+    private final Map<Edge, Double> weight_map = new HashMap<>();
 
     public Graph(boolean is_directed){  this.graph_directed = is_directed; }
     public Graph(V[] vertices,boolean is_directed){

@@ -91,7 +91,7 @@ public final class MST {
         Set<Graph<KruskalVertex<T>>.Edge> res = new HashSet<>();
         var edges_set = graph.getAllEdges();
         var edges_list = new ArrayList<>(edges_set);
-        Collections.sort(edges_list);
+        edges_list.sort(Comparator.comparingDouble(graph::computeWeight));
         for(var edge : edges_list){
             var v1 = edge.getFormerVertex();
             var v2 = edge.getLaterVertex();
