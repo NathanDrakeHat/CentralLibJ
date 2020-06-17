@@ -17,12 +17,21 @@ public final class DFS {
 
         public V getContent() {return content;}
 
-        public boolean equals(Vertex<V> other){ return content.equals(other.getContent()); }
+        @Override
+        @SuppressWarnings("unchecked")
+        public boolean equals(Object other_vertex){
+            if(other_vertex == null) return false;
+            else if(this.getClass().equals(other_vertex.getClass())){
+                return content.equals(((DFS.Vertex<V>) other_vertex).content);
+            }else return false;
+        }
 
-        @Override public int hashCode(){ return content.hashCode(); }
+        @Override
+        public int hashCode(){ return toString().hashCode(); }
 
-        @Override public String toString(){
-            return String.format("DFS.Vertex: %s",content.toString());
+        @Override
+        public String toString(){
+            return String.format("DFS.Vertex: (%s)",content.toString());
         }
     }
 
@@ -77,7 +86,7 @@ public final class DFS {
         }
     }
     private static <T> Graph<Vertex<T>> transposeGraph(Graph<Vertex<T>> graph){
-        var new_graph = new Graph<Vertex<T>>(Graph.Direction.DIRECTED);
+        var new_graph = new Graph<>(graph.getAllVertices(),Graph.Direction.DIRECTED);
         for(var v : graph.getAllVertices()){
             var neighbors = graph.getNeighborsAt(v);
             for(var n : neighbors){

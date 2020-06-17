@@ -1,7 +1,10 @@
 package algorithms.graph;
 
+
 import java.util.*;
+import java.util.function.Consumer;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
 
 public final class Graph<V>  {
@@ -74,10 +77,15 @@ public final class Graph<V>  {
         }
     }
 
-    public Graph(Direction direction){  this.graph_direction = direction; }
-    public Graph(List<V> vertices,Direction is_directed){
+//    public Graph(Direction direction){  this.graph_direction = direction; }
+    public Graph(List<V> vertices, Direction is_directed){
         for(var v : vertices) {
-            this.neighbors_map.put(v, null);}
+            this.neighbors_map.put(v, new HashSet<>());}
+        this.graph_direction = is_directed;
+    }
+    public Graph(Set<V> vertices, Direction is_directed){
+        for(var v : vertices) {
+            this.neighbors_map.put(v, new HashSet<>());}
         this.graph_direction = is_directed;
     }
 
@@ -139,7 +147,8 @@ public final class Graph<V>  {
     }
 
     public static <A, B> Graph<B> convert(Graph<A> origin, Function<A, B> func){
-        var res = new Graph<B>(origin.graph_direction);
+        var vertices = origin.getAllVertices();
+        var res = new Graph<>(vertices.stream().map(func).collect(Collectors.toList()), origin.graph_direction);
         for(var kv : origin.neighbors_map.entrySet()){
             var set_t = new HashSet<B>();
             for(var v : kv.getValue()){
@@ -161,11 +170,13 @@ public final class Graph<V>  {
         res.append("Edges Map:\n");
         for(var kv : weight_map.entrySet()){
             res.append(kv.toString());
+            res.append(String.format(" key hashcode: %d",kv.getKey().hashCode()));
             res.append('\n');
         }
         res.append("Neighbors Map:\n");
         for(var kv : neighbors_map.entrySet()){
             res.append(kv.toString());
+            res.append(String.format(" key hashcode: %d",kv.getKey().hashCode()));
             res.append('\n');
         }
         return res.toString();

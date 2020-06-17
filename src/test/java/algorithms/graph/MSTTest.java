@@ -13,7 +13,7 @@ class MSTTest {
         int len = names.length;
         var vertices = new ArrayList<MST.KruskalVertex<String>>(len);
         for(int i = 0; i < len; i++){ vertices.add(i, new MST.KruskalVertex<>(names[i])); }
-        Graph<MST.KruskalVertex<String>> res = new Graph<>(Graph.Direction.NON_DIRECTED);
+        Graph<MST.KruskalVertex<String>> res = new Graph<>(vertices,Graph.Direction.NON_DIRECTED);
         int[] indexes1 = new int[]{0,1,2,3,4, 5,6,7,1, 2,8,8,2,3};
         int[] indexes2 = new int[]{1,2,3,4,5, 6,7,0,7, 8,7,6,5,5};
         double[] weights =  new double[]{4,8,7,9,10,2,1,8,11,2,7,6,4,14};
@@ -28,7 +28,7 @@ class MSTTest {
         String[] names = n.split(",");
         int len = names.length;
         var vertices = new ArrayList<MST.KruskalVertex<String>>(len);
-        Graph<MST.KruskalVertex<String>> g = new Graph<>(Graph.Direction.NON_DIRECTED);
+        Graph<MST.KruskalVertex<String>> g = new Graph<>(vertices,Graph.Direction.NON_DIRECTED);
         for(int i = 0; i < len; i++){ vertices.add(i,new MST.KruskalVertex<>(names[i])); }
         int[] indexes1 = new int[]{0,1,2,3,4, 5,6,7,1, 2,8,8,2,3};
         int[] indexes2 = new int[]{1,2,3,4,5, 6,7,0,7, 8,7,6,5,5};
@@ -58,7 +58,7 @@ class MSTTest {
         int len = names.length;
         var vertices = new ArrayList<MST.PrimVertex<String>>(len);
         for(int i = 0; i < len; i++){ vertices.add(i,new MST.PrimVertex<>(names[i])); }
-        Graph<MST.PrimVertex<String>> res = new Graph<>(Graph.Direction.NON_DIRECTED);
+        Graph<MST.PrimVertex<String>> res = new Graph<>(vertices,Graph.Direction.NON_DIRECTED);
         int[] indices1 = new int[]{0,1,2,3,4, 5,6,7,1, 2,8,8,2,3};
         int[] indices2 = new int[]{1,2,3,4,5, 6,7,0,7, 8,7,6,5,5};
         double[] weights =  new double[]{4,8,7,9,10,2,1,8,11,2,7,6,4,14};
@@ -73,7 +73,6 @@ class MSTTest {
         String[] names = n.split(",");
         int len = names.length;
         var vertices = new ArrayList<MST.PrimVertex<String>>(len);
-        Graph<MST.KruskalVertex<String>> g = new Graph<>(Graph.Direction.NON_DIRECTED);
         for(int i = 0; i < len; i++){ vertices.add(i,new MST.PrimVertex<>(names[i])); }
         int[] indexes1 = new int[]{0,1,2,3,4, 5,6,7,1, 2,8,8,2,3};
         int[] indexes2 = new int[]{1,2,3,4,5, 6,7,0,7, 8,7,6,5,5};
@@ -92,7 +91,6 @@ class MSTTest {
         String[] names = n.split(",");
         int len = names.length;
         var vertices = new ArrayList<MST.PrimVertex<String>>(len);
-        Graph<MST.KruskalVertex<String>> g = new Graph<>(Graph.Direction.NON_DIRECTED);
         for(int i = 0; i < len; i++){ vertices.add(i,new MST.PrimVertex<>(names[i])); }
         int[] indexes1 = new int[]{0,1,2,3,4, 5,6,7,1, 2,8,8,2,3};
         int[] indexes2 = new int[]{1,2,3,4,5, 6,7,0,7, 8,7,6,5,5};

@@ -16,15 +16,22 @@ public final class BFS {
 
         public V getContent() { return content; }
 
-        public boolean equals(Vertex<V> other){ return content.equals(other.content); }
+        @Override
+        @SuppressWarnings("unchecked")
+        public boolean equals(Object other_vertex){
+            if(other_vertex == null) return false;
+            else if(this.getClass().equals(other_vertex.getClass())){
+                return content.equals(((BFS.Vertex<V>) other_vertex).content);
+            }else return false;
+        }
 
         @Override public int hashCode(){
-            return content.hashCode();
+            return toString().hashCode();
         }
 
         @Override
         public String toString() {
-            return String.format("BFS.Vertex: %s",content.toString());
+            return String.format("BFS.Vertex: (%s)",content.toString());
         }
     }
 

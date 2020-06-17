@@ -6,8 +6,7 @@ import java.util.*;
 
 // minimum spanning tree
 public final class MST {
-    public static
-    class KruskalVertex<V> implements DisjointSet<KruskalVertex<V>> {
+    public static class KruskalVertex<V> implements DisjointSet<KruskalVertex<V>> {
         private final V content;
         private int rank = 0;
         private KruskalVertex<V> parent = this;
@@ -26,7 +25,7 @@ public final class MST {
         }
 
         @Override
-        public int hashCode(){ return content.hashCode(); }
+        public int hashCode(){ return toString().hashCode(); }
         
         @Override
         public int getRank() { return rank; }
@@ -42,8 +41,7 @@ public final class MST {
         public String toString(){ return String.format("KruskalVertex: %s", content.toString()); }
         
     }
-    public static
-    class PrimVertex<V>{
+    public static class PrimVertex<V>{
         public final V content;
         public PrimVertex<V> parent;
         public double key = 0;
@@ -59,7 +57,7 @@ public final class MST {
         public V getContent() { return content; }
 
         @Override
-        public int hashCode() { return content.hashCode(); }
+        public int hashCode() { return toString().hashCode(); }
 
         @Override
         @SuppressWarnings("unchecked")
@@ -71,7 +69,7 @@ public final class MST {
         }
 
         @Override
-        public String toString() { return String.format("PrimVertex: %s", content.toString()); }
+        public String toString() { return String.format("PrimVertex: (%s)", content.toString()); }
     }
 
     public static <T> Set<Graph<KruskalVertex<T>>.Edge> algorithmOfKruskal(Graph<KruskalVertex<T>> graph){
