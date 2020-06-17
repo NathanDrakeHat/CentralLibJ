@@ -16,6 +16,8 @@ public final class BFS {
 
         public V getContent() { return content; }
 
+        public Vertex<V> getParent() {return parent;}
+
         @Override
         @SuppressWarnings("unchecked")
         public boolean equals(Object other_vertex){
