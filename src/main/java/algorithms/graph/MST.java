@@ -2,6 +2,7 @@ package algorithms.graph;
 
 import structures.DisjointSet;
 import structures.FibonacciHeap;
+import tools.MinHeap;
 
 import java.util.*;
 

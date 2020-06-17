@@ -292,4 +292,11 @@ public final class FibonacciHeap<V> {
         else addNodeToList(l, m.getChildList());
         l.mark = false;
     }
+
+    @Override
+    public String toString(){
+        if(root_list!=null)
+            return String.format("Min key: %f, value: %s",root_list.getKey(),root_list.getValue().toString());
+        else return "Null Heap";
+    }
 }

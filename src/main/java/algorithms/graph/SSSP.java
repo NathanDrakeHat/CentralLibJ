@@ -2,6 +2,8 @@ package algorithms.graph;
 
 
 import structures.FibonacciHeap;
+import tools.MinHeap;
+
 import java.util.stream.Collectors;
 
 // single source shortest path
@@ -55,8 +57,9 @@ public final class SSSP {
         return BFS_graph;
     }
 
-
-    // non-negative weight, T:O(V^2*lgV + V*E)
+    // non-negative weight,
+    // fibonacci heap time :O(V^2*lgV + V*E)
+    // min heap time :O(V*E*lgV)
     public enum DijkstraQueue{
         MIN_HEAP, FIBONACCI_HEAP
     }
@@ -82,7 +85,7 @@ public final class SSSP {
                 for (var v : G.getNeighborsAt(u)) {
                     var original = v.distance;
                     relax(u, v, G);
-                    if (v.distance < original) Q.decreaseKey(v, v.distance);
+                    if (v.distance < original && Q.contains(v)) Q.decreaseKey(v, v.distance);
                 }
             }
         }else throw new AssertionError();

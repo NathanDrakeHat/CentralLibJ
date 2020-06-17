@@ -1,4 +1,4 @@
-package algorithms.graph;
+package tools;
 
 import tools.KeyValuePair;
 
@@ -19,13 +19,15 @@ public class MinHeap<V> {
     }
 
     public MinHeap(Set<V> l, Function<V, Double> getKey){
-        length = l.size();
+        length = 0;
         int idx = 0;
         for(var i : l){
+            length++;
             var n = new KeyValuePair<>(getKey.apply(i),i);
             array.add(n);
             valuePairMap.put(n.getValue(),new NodeAndIndex(n,idx++));
         }
+        buildMinHeap(array);
     }
 
     public V extractMin(){
@@ -39,9 +41,9 @@ public class MinHeap<V> {
 
     public void decreaseKey(V value, double new_key){
         var store = valuePairMap.get(value);
-        if(store.node.getKey() <= new_key) throw new IllegalArgumentException();
+        if(store.node.getKey() < new_key) throw new IllegalArgumentException();
         else{
-            for(int i = store.index; i >= 0; i--){
+            for(int i = store.index/2; i >= 0; i--){
                 minHeapify(array,i,length);
             }
         }
