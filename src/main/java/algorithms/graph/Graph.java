@@ -12,7 +12,6 @@ public final class Graph<V>  {
         DIRECTED,NON_DIRECTED
     }
     private final Direction graph_direction;
-//    private final List<V> vertices;
     private final Map<V, Set<V>> neighbors_map = new HashMap<>();
     private final Map<Edge, Double> weight_map = new HashMap<>();
     final class Edge {
@@ -78,18 +77,15 @@ public final class Graph<V>  {
         }
     }
 
-//    public Graph(Direction direction){  this.graph_direction = direction; }
     public Graph(List<V> vertices, Direction is_directed){
         for(var v : vertices) {
             this.neighbors_map.put(v, new HashSet<>());}
         this.graph_direction = is_directed;
-//        this.vertices = new ArrayList<>(vertices);
     }
     public Graph(Set<V> vertices, Direction is_directed){
         for(var v : vertices) {
             this.neighbors_map.put(v, new HashSet<>());}
         this.graph_direction = is_directed;
-//        this.vertices = new ArrayList<>(vertices);
     }
 
     public void setNeighbor(V vertex, V neighbor){ setNeighbor(vertex, neighbor, 1); }
@@ -123,22 +119,14 @@ public final class Graph<V>  {
         }
         return res;
     }
-
-//    public List<V> getAllVertices(){
-//        return new ArrayList<>(vertices);
-//    }
     public Set<V> getAllVertices(){
         return new HashSet<>(neighbors_map.keySet());
     }
-//    public void putVertex(V vertex) { neighbors_map.put(vertex, new HashSet<>()); }
-//    public boolean hasVertex(V vertex) { return neighbors_map.containsKey(vertex); }
+
 
     public Set<V> getNeighborsAt(V vertex){
         return new HashSet<>(neighbors_map.computeIfAbsent(vertex,(k)->new HashSet<>()));
     }
-//    public boolean hasOneNeighbor(V vertex, V neighbor) {
-//        return neighbors_map.get(vertex).contains(neighbor);
-//    }
 
     public double computeWeight(Edge e){
         var t = weight_map.get(e);
@@ -152,39 +140,4 @@ public final class Graph<V>  {
         return t;
     }
 
-//    public static <A, B> Graph<B> convert(Graph<A> origin, Function<A, B> func){
-//        var vertices = origin.getAllVertices();
-//        var res = new Graph<>(vertices.stream().map(func).collect(Collectors.toList()), origin.graph_direction);
-//        for(var kv : origin.neighbors_map.entrySet()){
-//            var set_t = new HashSet<B>();
-//            for(var v : kv.getValue()){
-//                set_t.add(func.apply(v));
-//            }
-//            res.neighbors_map.put(func.apply(kv.getKey()), set_t);
-//        }
-//        for(var kv : origin.weight_map.entrySet()){
-//            var oe = kv.getKey();
-//            var e = res.new Edge(func.apply(oe.former_vertex),func.apply(oe.later_vertex),oe.edge_direction);
-//            res.weight_map.put(e, kv.getValue());
-//        }
-//        return res;
-//    }
-
-    @Override
-    public String toString(){
-        StringBuilder res = new StringBuilder();
-        res.append("Edges Map:\n");
-        for(var kv : weight_map.entrySet()){
-            res.append(kv.toString());
-            res.append(String.format(" key hashcode: %d",kv.getKey().hashCode()));
-            res.append('\n');
-        }
-        res.append("Neighbors Map:\n");
-        for(var kv : neighbors_map.entrySet()){
-            res.append(kv.toString());
-            res.append(String.format(" key hashcode: %d",kv.getKey().hashCode()));
-            res.append('\n');
-        }
-        return res.toString();
-    }
 }

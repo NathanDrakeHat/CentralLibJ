@@ -46,10 +46,7 @@ public final class SSSP {
                                            Graph<BFS.Vertex<T>> BFS_graph,
                                            BFS.Vertex<T> s){
         var DFS_list = DFS.topologicalSort(DFS_graph);
-//        var BFS_graph = Graph.convert(DFS_graph, DFS.Vertex::getContent);
         initializeSingleSource(BFS_graph, s);
-        var DFS_vertices = DFS_graph.getAllVertices();
-//        List<DFS.Vertex<BFS.Vertex<T>>> topological_order_list = new ArrayList<>(DFS_vertices);
         DFS_list.sort((d1,d2)->d2.f-d1.f);
         var BFS_list = DFS_list.stream().map(DFS.Vertex::getContent).collect(Collectors.toList());
         for(var u : BFS_list){
