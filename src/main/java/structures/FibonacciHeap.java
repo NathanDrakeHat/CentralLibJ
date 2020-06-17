@@ -9,7 +9,7 @@ public final class FibonacciHeap<V> {
     private Node root_list = null;
     private int number = 0; // number of nodes
     void setNumber(int n) { this.number = n; }
-    public class Node implements Comparable<Node>{
+    class Node implements Comparable<Node>{
         private final KeyValuePair<Double,V> content;
         private Node parent = null;
         private Node childList = null; // int linked, circular list
