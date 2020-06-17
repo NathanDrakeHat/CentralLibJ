@@ -1,9 +1,7 @@
 package structures;
 
 import java.lang.reflect.Array;
-import java.util.HashSet;
-import java.util.NoSuchElementException;
-import java.util.Set;
+import java.util.*;
 
 import tools.KeyValuePair;
 
@@ -77,13 +75,13 @@ public final class FibonacciHeap<V> {
         }
         void setDegree(int d) { this.degree = d; }
     }
-    private final Set<V> members = new HashSet<>();
+    private final Map<V,Node> value_Node_map = new HashMap<>();
 
     public double minKey() { return root_list.getKey(); }
     public V minValue() { return root_list.getValue(); }
 
     private void insert(Node x){
-        members.add(x.getValue());
+        value_Node_map.put(x.getValue(),x);
         if(root_list == null){
             root_list = x;
         }else{
@@ -95,34 +93,7 @@ public final class FibonacciHeap<V> {
         number++;
     }
     public void insert(double key, V val){ insert(new Node(key, val)); }
-    public Node unsafeAdd(double key, V val) {
-        var t = new Node(key,val);
-        insert(t);
-        return t;
-    }
 
-    public Node unsafePop(){
-        var z = rootList();
-        if(z != null){
-            var child_list = z.getChildList(); // add root_list's children list to root list
-            var p = child_list;
-            if(p != null) {
-                do {
-                    var t = p.right;
-                    p.parent = null;
-                    addNodeToList(p, root_list);
-                    p = t;
-                } while (p != child_list);
-            }
-            root_list = z.right;
-            removeNodeFromList(z);
-            if(z == root_list) root_list = null;
-            else consolidate();
-            number--;
-        }else throw new NoSuchElementException();
-        members.remove(z.getValue());
-        return z;
-    }
     public KeyValuePair<Double,V> extractMin() {
         var z = rootList();
         if(z != null){
@@ -142,7 +113,7 @@ public final class FibonacciHeap<V> {
             else consolidate();
             number--;
         }else throw new NoSuchElementException();
-        members.remove(z.getValue());
+        value_Node_map.remove(z.getValue());
         return z.content;
     }
     private void consolidate(){
@@ -208,7 +179,25 @@ public final class FibonacciHeap<V> {
         return res;
     }
 
-    public void decreaseKey(Node x, double new_key){
+    public void decreaseKey(V val, double new_key){
+        var x = value_Node_map.get(val);
+        if(new_key > x.getKey())
+            throw new IllegalArgumentException("New key should smaller than old key.");
+        else{
+            x.setKey(new_key);
+            var y = x.getParent();
+            if(y != null){
+                if(x.getKey() < (y.getKey())) {
+                    cut(x, y);
+                    cascadingCut(y);
+                }
+            }
+            if(x.getKey() < minKey()){
+                root_list = x;
+            }
+        }
+    }
+    void decreaseKey(Node x, double new_key){
         // move x to root list
         // set parent mark true if parent mark is false
         // else successively move true mark parents to root list
@@ -256,7 +245,7 @@ public final class FibonacciHeap<V> {
         extractMin();
     }
 
-    public boolean contains(V x) { return members.contains(x); }
+    public boolean contains(V x) { return value_Node_map.containsKey(x); }
     public int length() { return number; }
     Node rootList(){ return root_list; }
     private int upperBound(){ return (int)(Math.log(number)/Math.log(2)); }

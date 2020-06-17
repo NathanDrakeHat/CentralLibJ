@@ -1,6 +1,8 @@
 package algorithms.graph;
 
 
+import structures.FibonacciHeap;
+
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -58,24 +60,16 @@ public final class SSSP {
     // non-negative weight
     public static <T> void algorithmDijkstra(Graph<BFS.Vertex<T>> G, BFS.Vertex<T> s){
         initializeSingleSource(G, s);
-        Set<BFS.Vertex<T>> S = new HashSet<>();
-        Queue<BFS.Vertex<T>> Q = new PriorityQueue<BFS.Vertex<T>>(Comparator.comparingDouble(v -> v.distance));
-        var queue_set = G.getAllVertices();
-        Q.addAll(queue_set);
-        while(!queue_set.isEmpty()){
-            BFS.Vertex<T> u;
-            do { // ignore encountered vertex
-                u = Q.remove();
-            }while(!queue_set.contains(u));
-            queue_set.remove(u);
-            S.add(u);
+        FibonacciHeap<BFS.Vertex<T>> Q = new FibonacciHeap<>();
+        for(var vertex : G.getAllVertices()) Q.insert(vertex.distance,vertex);
+        while(Q.length()>0){
+            var u = Q.extractMin().getValue();
             for(var v : G.getNeighborsAt(u)){
-                var t = v.distance;
-                relax(u, v, G);
-                if(v.distance < t) {
-                    Q.add(v);
-                }
+                var original = v.distance;
+                relax(u,v,G);
+                if(v.distance < original) Q.decreaseKey(v,v.distance);
             }
         }
     }
+
 }
