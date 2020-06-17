@@ -18,6 +18,8 @@ public final class BFS {
 
         public Vertex<V> getParent() {return parent;}
 
+        public double getDistance() { return distance; }
+
         @Override
         @SuppressWarnings("unchecked")
         public boolean equals(Object other_vertex){
