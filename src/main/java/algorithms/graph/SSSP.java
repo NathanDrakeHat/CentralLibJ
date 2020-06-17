@@ -4,6 +4,8 @@ package algorithms.graph;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 // single source shortest path
 public final class SSSP {
@@ -39,18 +41,20 @@ public final class SSSP {
     }
 
     // shortest paths of directed acyclic graph
-    public static <T> Graph<BFS.Vertex<T>> shortestPathOfDAG(Graph<DFS.Vertex<BFS.Vertex<T>>> DFS_graph, BFS.Vertex<T> s){
-        DFS.topologicalSort(DFS_graph);
-        var BFS_graph = Graph.convert(DFS_graph, DFS.Vertex::getContent);
+    public static <T>
+    Graph<BFS.Vertex<T>> shortestPathOfDAG(Graph<DFS.Vertex<BFS.Vertex<T>>> DFS_graph,
+                                           Graph<BFS.Vertex<T>> BFS_graph,
+                                           BFS.Vertex<T> s){
+        var DFS_list = DFS.topologicalSort(DFS_graph);
+//        var BFS_graph = Graph.convert(DFS_graph, DFS.Vertex::getContent);
         initializeSingleSource(BFS_graph, s);
         var DFS_vertices = DFS_graph.getAllVertices();
-        List<DFS.Vertex<BFS.Vertex<T>>> topological_order_list = new ArrayList<>(DFS_vertices);
-        topological_order_list.sort((d1,d2)->d2.f-d1.f);
-        for(var vertex : topological_order_list){
-            var u = vertex.getContent();
-            for(var neighbor : DFS_graph.getNeighborsAt(vertex)){
-                var v = neighbor.getContent();
-                relax(u,v,BFS_graph);
+//        List<DFS.Vertex<BFS.Vertex<T>>> topological_order_list = new ArrayList<>(DFS_vertices);
+        DFS_list.sort((d1,d2)->d2.f-d1.f);
+        var BFS_list = DFS_list.stream().map(DFS.Vertex::getContent).collect(Collectors.toList());
+        for(var u : BFS_list){
+            for(var v : BFS_graph.getNeighborsAt(u)){
+                relax(u, v, BFS_graph);
             }
         }
         return BFS_graph;
