@@ -9,9 +9,9 @@ public final class DFS {
     public static class Vertex<V>{
         public Vertex<V> parent;
         private COLOR color;
-        public int d; //discovered time
-        public int f; // finished time
-        private final V content; // this could changed into generic
+        public int discover; //d
+        public int finish; // f
+        private final V content;
 
         public Vertex(V name){ this.content = name; }
 
@@ -51,7 +51,7 @@ public final class DFS {
     }
     private static <T > int DFSVisit(Graph<Vertex<T>> G, Vertex<T> u, int time){
         time++;
-        u.d = time;
+        u.discover = time;
         u.color = COLOR.GRAY;
         for(var v : G.getNeighborsAt(u)){
             if(v.color == COLOR.WHITE){
@@ -61,14 +61,14 @@ public final class DFS {
         }
         u.color = COLOR.BLACK;
         time++;
-        u.f = time;
+        u.finish = time;
         return time;
     }
 
     public static <T> List<Vertex<T>> topologicalSort(Graph<Vertex<T>> G){
         depthFirstSearch(G);
         List<Vertex<T>> l = new ArrayList<>(G.getAllVertices());
-        l.sort((o1, o2) -> o2.f - o1.f); // descend order
+        l.sort((o1, o2) -> o2.finish - o1.finish); // descend order
         return l;
     }
 

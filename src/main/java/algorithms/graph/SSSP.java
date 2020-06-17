@@ -1,10 +1,7 @@
 package algorithms.graph;
 
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.stream.Collector;
+import java.util.*;
 import java.util.stream.Collectors;
 
 // single source shortest path
@@ -19,23 +16,24 @@ public final class SSSP {
             }
         }
         for(var edge : graph.getAllEdges()){
-            if(edge.getLaterVertex().d > edge.getFormerVertex().d + graph.computeWeight(edge)){
+            if(edge.getLaterVertex().distance > edge.getFormerVertex().distance + graph.computeWeight(edge)){
                 return false;}
         }
         return true;
     }
     private static <T> void initializeSingleSource(Graph<BFS.Vertex<T>> G, BFS.Vertex<T> s){
         for(var v : G.getAllVertices()){
-            v.d = Double.POSITIVE_INFINITY;
+            v.distance = Double.POSITIVE_INFINITY;
             v.parent = null;
             if(s.equals(v)) s = v;
         }
-        s.d = 0;
+        s.distance = 0;
     }
     private static <T> void relax(BFS.Vertex<T> u, BFS.Vertex<T> v, Graph<BFS.Vertex<T>> G){
         var weight = G.computeWeight(u,v);
-        if(v.d > u.d + weight){
-            v.d = u.d + weight;
+        var sum = u.distance + weight;
+        if(v.distance > sum){
+            v.distance = sum;
             v.parent = u;
         }
     }
@@ -47,7 +45,7 @@ public final class SSSP {
                                            BFS.Vertex<T> s){
         var DFS_list = DFS.topologicalSort(DFS_graph);
         initializeSingleSource(BFS_graph, s);
-        DFS_list.sort((d1,d2)->d2.f-d1.f);
+        DFS_list.sort((d1,d2)->d2.finish -d1.finish);
         var BFS_list = DFS_list.stream().map(DFS.Vertex::getContent).collect(Collectors.toList());
         for(var u : BFS_list){
             for(var v : BFS_graph.getNeighborsAt(u)){
@@ -55,5 +53,30 @@ public final class SSSP {
             }
         }
         return BFS_graph;
+    }
+
+    // non-negative weight
+    public static <T> Set<BFS.Vertex<T>> algorithmDijkstra(Graph<BFS.Vertex<T>> G, BFS.Vertex<T> s){
+        initializeSingleSource(G, s);
+        Set<BFS.Vertex<T>> S = new HashSet<>();
+        Queue<BFS.Vertex<T>> Q = new PriorityQueue<BFS.Vertex<T>>(Comparator.comparingDouble(v -> v.distance));
+        var queue_set = G.getAllVertices();
+        Q.addAll(queue_set);
+        while(!queue_set.isEmpty()){
+            BFS.Vertex<T> u;
+            do { // ignore encountered vertex
+                u = Q.remove();
+            }while(!queue_set.contains(u));
+            queue_set.remove(u);
+            S.add(u);
+            for(var v : G.getNeighborsAt(u)){
+                var t = v.distance;
+                relax(u, v, G);
+                if(v.distance < t) {
+                    Q.add(v);
+                }
+            }
+        }
+        return S;
     }
 }

@@ -9,8 +9,8 @@ public final class BFS {
     class Vertex<V>{
         Vertex<V> parent;
         COLOR color;
-        double d; //distance
-        final V content; // generic
+        double distance; // d
+        final V content;
 
         Vertex(V name){ this.content = name; }
 
@@ -42,12 +42,12 @@ public final class BFS {
         for (var v : vs) {
             if (!v.equals(s)) {
                 v.color = COLOR.WHITE;
-                v.d = Double.POSITIVE_INFINITY;
+                v.distance = Double.POSITIVE_INFINITY;
                 v.parent = null;
             }
         }
         s.color = COLOR.GRAY;
-        s.d = 0;
+        s.distance = 0;
         s.parent = null;
         Queue<Vertex<T>> Q = new LinkedList<>();
         Q.add(s);
@@ -56,7 +56,7 @@ public final class BFS {
             for(var v : G.getNeighborsAt(u)){
                 if(v.color == COLOR.WHITE){
                     v.color = COLOR.GRAY;
-                    v.d = u.d + 1;
+                    v.distance = u.distance + 1;
                     v.parent = u;
                     Q.add(v);
                 }
