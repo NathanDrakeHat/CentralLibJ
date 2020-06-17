@@ -66,8 +66,9 @@ public final class SSSP {
     public static <T> void algorithmDijkstra(Graph<BFS.Vertex<T>> G, BFS.Vertex<T> s,DijkstraQueue structure){
         if(structure == DijkstraQueue.FIBONACCI_HEAP) {
             initializeSingleSource(G, s);
+            var vertices = G.getAllVertices();
             FibonacciHeap<BFS.Vertex<T>> Q = new FibonacciHeap<>();
-            for (var vertex : G.getAllVertices()) Q.insert(vertex.distance, vertex);
+            for (var vertex : vertices) Q.insert(vertex.distance, vertex);
             while (Q.length() > 0) {
                 var u = Q.extractMin();
                 for (var v : G.getNeighborsAt(u)) {
@@ -85,7 +86,7 @@ public final class SSSP {
                 for (var v : G.getNeighborsAt(u)) {
                     var original = v.distance;
                     relax(u, v, G);
-                    if (v.distance < original && Q.contains(v)) Q.decreaseKey(v, v.distance);
+                    if (v.distance < original) Q.decreaseKey(v, v.distance);
                 }
             }
         }else throw new AssertionError();
