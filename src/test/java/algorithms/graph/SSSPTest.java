@@ -89,9 +89,29 @@ class SSSPTest {
     }
 
     @Test
-    void algorithmDijkstraTest(){
+    void algorithmDijkstraTestWithFibonacciHeap(){
         var g = buildDijkstraCase();
-        SSSP.algorithmDijkstra(g, new BFS.Vertex<>("s"));
+        SSSP.algorithmDijkstra(g, new BFS.Vertex<>("s"), SSSP.DijkstraQueue.FIBONACCI_HEAP);
+        var vertices = g.getAllVertices().stream().sorted(Comparator.comparing(BFS.Vertex::getContent)).collect(Collectors.toList());
+        assertNull(vertices.get(0).getParent());
+
+        assertEquals(vertices.get(1).getParent(),vertices.get(3));
+        assertEquals(vertices.get(1).getDistance(),8);
+
+        assertEquals(vertices.get(2).getParent(),vertices.get(1));
+        assertEquals(vertices.get(2).getDistance(), 9);
+
+        assertEquals(vertices.get(3).getParent(),vertices.get(0));
+        assertEquals(vertices.get(3).getDistance(), 5);
+
+        assertEquals(vertices.get(4).getParent(),vertices.get(3));
+        assertEquals(vertices.get(4).getDistance(), 7);
+    }
+
+    @Test
+    void algorithmDijkstraTestWithMinHeap(){
+        var g = buildDijkstraCase();
+        SSSP.algorithmDijkstra(g, new BFS.Vertex<>("s"), SSSP.DijkstraQueue.MIN_HEAP);
         var vertices = g.getAllVertices().stream().sorted(Comparator.comparing(BFS.Vertex::getContent)).collect(Collectors.toList());
         assertNull(vertices.get(0).getParent());
 

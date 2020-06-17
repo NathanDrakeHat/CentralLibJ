@@ -94,7 +94,7 @@ public final class FibonacciHeap<V> {
     }
     public void insert(double key, V val){ insert(new Node(key, val)); }
 
-    public KeyValuePair<Double,V> extractMin() {
+    public V extractMin() {
         var z = rootList();
         if(z != null){
             var child_list = z.getChildList(); // add root_list's children list to root list
@@ -114,7 +114,7 @@ public final class FibonacciHeap<V> {
             number--;
         }else throw new NoSuchElementException();
         value_Node_map.remove(z.getValue());
-        return z.content;
+        return z.content.getValue();
     }
     private void consolidate(){
         @SuppressWarnings("unchecked")

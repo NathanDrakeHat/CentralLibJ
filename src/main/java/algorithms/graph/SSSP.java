@@ -55,18 +55,36 @@ public final class SSSP {
         return BFS_graph;
     }
 
-    // non-negative weight
-    public static <T> void algorithmDijkstra(Graph<BFS.Vertex<T>> G, BFS.Vertex<T> s){
-        initializeSingleSource(G, s);
-        FibonacciHeap<BFS.Vertex<T>> Q = new FibonacciHeap<>();
-        for(var vertex : G.getAllVertices()) Q.insert(vertex.distance,vertex);
-        while(Q.length()>0){
-            var u = Q.extractMin().getValue();
-            for(var v : G.getNeighborsAt(u)){
-                var original = v.distance;
-                relax(u,v,G);
-                if(v.distance < original) Q.decreaseKey(v,v.distance);
+
+    // non-negative weight, T:O(V^2*lgV + V*E)
+    public enum DijkstraQueue{
+        MIN_HEAP, FIBONACCI_HEAP
+    }
+    public static <T> void algorithmDijkstra(Graph<BFS.Vertex<T>> G, BFS.Vertex<T> s,DijkstraQueue structure){
+        if(structure == DijkstraQueue.FIBONACCI_HEAP) {
+            initializeSingleSource(G, s);
+            FibonacciHeap<BFS.Vertex<T>> Q = new FibonacciHeap<>();
+            for (var vertex : G.getAllVertices()) Q.insert(vertex.distance, vertex);
+            while (Q.length() > 0) {
+                var u = Q.extractMin();
+                for (var v : G.getNeighborsAt(u)) {
+                    var original = v.distance;
+                    relax(u, v, G);
+                    if (v.distance < original) Q.decreaseKey(v, v.distance);
+                }
             }
-        }
+        }else if(structure == DijkstraQueue.MIN_HEAP){
+            initializeSingleSource(G, s);
+            var vertices = G.getAllVertices();
+            MinHeap<BFS.Vertex<T>> Q = new MinHeap<>(vertices, BFS.Vertex::getDistance);
+            while (Q.length() > 0) {
+                var u = Q.extractMin();
+                for (var v : G.getNeighborsAt(u)) {
+                    var original = v.distance;
+                    relax(u, v, G);
+                    if (v.distance < original) Q.decreaseKey(v, v.distance);
+                }
+            }
+        }else throw new AssertionError();
     }
 }

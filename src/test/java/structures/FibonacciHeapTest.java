@@ -11,7 +11,7 @@ class FibonacciHeapTest{
     private static FibonacciHeap<Double> buildExample(){
         var H = new FibonacciHeap<Double>();
         var methods = H.getClass().getDeclaredMethods();
-        H.insert(3, 0.0);
+        H.insert(3, 3.0);
         var m = H.rootList();
         m.chainAdd(17).chainAdd(24).chainAdd(23).chainAdd(7).chainAdd(21);
         m.setChildList( H.new Node(18, true));
@@ -53,7 +53,7 @@ class FibonacciHeapTest{
     void example1(){
         var H = buildExample();
         var o = H.extractMin();
-        assertEquals(o.getKey(),3);
+        assertEquals(o,3.0);
         //see <<introduction to  algorithm>> to find this test sample.
         assertEquals(bcl(H.rootList()), List.of(7.0, 18.0, 38.0, 7.0, 38.0, 18.0));
         assertEquals(bcl(H.rootList().getRight().getChildList()),List.of(39.0, 21.0, 39.0, 21.0));

@@ -100,7 +100,7 @@ public final class MST {
             u.parent = null;
         }
         while(Q.length() > 0){
-            var u = Q.extractMin().getValue();
+            var u = Q.extractMin();
 
             for(var v : graph.getNeighborsAt(u)){
                 if(Q.contains(v) && graph.computeWeight(u,v) < v.key){
