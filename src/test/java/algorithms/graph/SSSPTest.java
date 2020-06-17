@@ -40,7 +40,6 @@ class SSSPTest {
         return res;
     }
 
-
     @Test
     void shortestPathOfDAG(){
         var two_graph = buildShortestPathOfDAGForBFS();
@@ -80,7 +79,6 @@ class SSSPTest {
         public Graph<BFS.Vertex<String>> BFS_G;
         public Graph<DFS.Vertex<BFS.Vertex<String>>> DFS_G;
     }
-
 
     @Test
     void algorithmDijkstraTest(){
