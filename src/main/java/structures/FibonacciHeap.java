@@ -207,7 +207,7 @@ public final class FibonacciHeap<V> {
         }
     }
 
-    public void delete(Node x){
+    private void delete(Node x){
         if(x == null) throw new IllegalArgumentException("Can not delete null.");
         decreaseKey(x, minKey() - 1);
         extractMin();
