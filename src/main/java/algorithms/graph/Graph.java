@@ -103,12 +103,6 @@ public final class Graph<V>  {
         }
     }
 
-    public Set<Edge> getEdgesAt(V vertex) {
-        var neighbors = getNeighborsAt(vertex);
-        Set<Edge> res = new HashSet<>();
-        for(var n : neighbors) res.add(new Edge(vertex, n,graph_direction));
-        return res;
-    }
     public Set<Edge> getAllEdges(){
         Set<Edge> res = new HashSet<>();
         for(var vertex : getAllVertices()){
@@ -119,8 +113,12 @@ public final class Graph<V>  {
     public Set<V> getAllVertices(){
         return new HashSet<>(neighbors_map.keySet());
     }
-
-
+    public Set<Edge> getEdgesAt(V vertex) {
+        var neighbors = getNeighborsAt(vertex);
+        Set<Edge> res = new HashSet<>();
+        for(var n : neighbors) res.add(new Edge(vertex, n,graph_direction));
+        return res;
+    }
     public Set<V> getNeighborsAt(V vertex){
         return new HashSet<>(neighbors_map.computeIfAbsent(vertex,(k)->new HashSet<>()));
     }
