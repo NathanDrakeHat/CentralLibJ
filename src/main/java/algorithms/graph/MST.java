@@ -111,32 +111,4 @@ public final class MST {
             }
         }
     }
-
-    //    public static <T> void algorithmOfPrim(Graph<PrimVertex<T>> graph, PrimVertex<T> r){
-//        Queue<PrimVertex<T>> Q = new PriorityQueue<>(Comparator.comparingDouble(v -> v.key));
-//        var queue_set = graph.getAllVertices();
-//        for(var u : queue_set){
-//            if(!u.equals(r)) u.key = Double.POSITIVE_INFINITY;
-//            else {
-//                u.key = 0.0;
-//                Q.add(u); // init
-//            }
-//            u.parent = null;
-//        }
-//        while(!queue_set.isEmpty()){
-//            PrimVertex<T> u;
-//            do { // ignore encountered vertex
-//                u = Q.remove();
-//            }while(!queue_set.contains(u));
-//            queue_set.remove(u);
-//
-//            for(var v : graph.getNeighborsAt(u)){
-//                if(queue_set.contains(v) && graph.computeWeight(u,v) < v.key){
-//                    v.parent = u;
-//                    v.key = graph.computeWeight(u,v);
-//                    Q.add(new PrimVertex<>(v)); // add decreased key and prevent update origin
-//                }
-//            }
-//        }
-//    }
 }
