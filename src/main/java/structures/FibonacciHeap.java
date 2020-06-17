@@ -2,9 +2,9 @@ package structures;
 
 import java.lang.reflect.Array;
 import java.util.*;
-
 import tools.KeyValuePair;
 
+// dynamic minimum priority queue
 public final class FibonacciHeap<V> {
     private Node root_list = null;
     private int number = 0; // number of nodes
