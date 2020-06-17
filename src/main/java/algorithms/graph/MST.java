@@ -42,9 +42,9 @@ public final class MST {
         
     }
     public static class PrimVertex<V>{
-        public final V content;
-        public PrimVertex<V> parent;
-        public double key = 0;
+        private final V content;
+        PrimVertex<V> parent;
+        private double key = 0;
 
         public PrimVertex(V name) { this.content = name; }
 

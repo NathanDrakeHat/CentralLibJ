@@ -7,10 +7,10 @@ public final class DFS {
     // depth first search
     enum COLOR{ WHITE, GRAY, BLACK}
     public static class Vertex<V>{
-        public Vertex<V> parent;
+        Vertex<V> parent;
         private COLOR color;
-        public int discover; //d
-        public int finish; // f
+        int discover; //d
+        int finish; // f
         private final V content;
 
         public Vertex(V name){ this.content = name; }

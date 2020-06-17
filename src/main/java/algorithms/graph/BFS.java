@@ -5,12 +5,11 @@ import java.util.*;
 public final class BFS {
     // breath first search
     enum COLOR{ WHITE, GRAY, BLACK}
-    public static
-    class Vertex<V>{
+    public static class Vertex<V>{
         Vertex<V> parent;
-        COLOR color;
+        private COLOR color;
         double distance; // d
-        final V content;
+        private final V content;
 
         Vertex(V name){ this.content = name; }
 
