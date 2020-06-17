@@ -96,7 +96,7 @@ public final class MST {
             else {
                 u.key = 0.0;
             }
-            Q.insert(u.key, u); // init
+            Q.insert(u.key, u);
             u.parent = null;
         }
         while(Q.length() > 0){
@@ -106,7 +106,7 @@ public final class MST {
                 if(Q.contains(v) && graph.computeWeight(u,v) < v.key){
                     v.parent = u;
                     v.key = graph.computeWeight(u,v);
-                    Q.decreaseKey(v,v.key); // add decreased key and prevent update origin
+                    Q.decreaseKey(v,v.key);
                 }
             }
         }
