@@ -90,7 +90,7 @@ public final class MST {
     }
 
     public static <T> void algorithmOfPrim(Graph<PrimVertex<T>> graph, PrimVertex<T> r){
-        var Q = new FibonacciHeap<PrimVertex<T>>();
+        FibonacciHeap<PrimVertex<T>> Q = new FibonacciHeap<>();
         for(var u : graph.getAllVertices()){
             if(!u.equals(r)) u.key = Double.POSITIVE_INFINITY;
             else {
