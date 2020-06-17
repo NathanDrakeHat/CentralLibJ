@@ -77,7 +77,7 @@ public final class DFS {
         }
     }
     private static <T> Graph<Vertex<T>> transposeGraph(Graph<Vertex<T>> graph){
-        var new_graph = new Graph<Vertex<T>>(true);
+        var new_graph = new Graph<Vertex<T>>(Graph.Direction.DIRECTED);
         for(var v : graph.getAllVertices()){
             var neighbors = graph.getNeighborsAt(v);
             for(var n : neighbors){

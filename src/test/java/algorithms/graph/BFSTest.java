@@ -20,7 +20,7 @@ class BFSTest {
             return vs;
         }
         public static Graph<BFS.Vertex<Character>> makeGraph(List<BFS.Vertex<Character>> vs){ ;
-            var G = new Graph<>(vs,false);
+            var G = new Graph<>(vs, Graph.Direction.NON_DIRECTED);
             G.setNeighbor(vs.get(0), vs.get(1));
             G.setNeighbor(vs.get(0), vs.get(4));
 

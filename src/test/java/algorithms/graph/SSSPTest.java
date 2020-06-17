@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class SSSPTest {
     static Graph<BFS.Vertex<String>> buildBellmanFordCase(){
-        var res = new Graph<BFS.Vertex<String>>(true);
+        var res = new Graph<BFS.Vertex<String>>(Graph.Direction.DIRECTED);
         String[] names = "s,t,x,y,z".split(",");
         List<BFS.Vertex<String>> vertices = new ArrayList<>();
         for(var n : names) vertices.add(new BFS.Vertex<>(n));
@@ -35,6 +35,16 @@ class SSSPTest {
         }
         assertTrue(b);
         assertEquals(res, List.of("z", "t", "x", "y","s"));
+    }
+
+    static Graph<DFS.Vertex<BFS.Vertex<String>>> buildShortestPathOfDAGCase(){
+        var g = new Graph<BFS.Vertex<String>>(Graph.Direction.DIRECTED);
+
+        return Graph.convert(g, DFS.Vertex::new);
+    }
+    @Test
+    void shortestPathOfDAG(){
+
     }
 
 }

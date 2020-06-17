@@ -15,7 +15,7 @@ class DFSTest {
         for(int i = 0; i < 6; i++){
             vs.add(i, new DFS.Vertex<>(String.valueOf(names.charAt(i))));
         }
-        var G = new Graph<>(vs,true);
+        var G = new Graph<>(vs, Graph.Direction.DIRECTED);
         G.setNeighbor(vs.get(0), vs.get(1));
         G.setNeighbor(vs.get(0), vs.get(3));
 
@@ -40,7 +40,7 @@ class DFSTest {
             String t = "undershorts,pants,belt,shirt,tie,jacket,socks,shoes,watch";
             var names = t.split(",");
             for(int i = 0; i < 9; i++) { A.add(i, new DFS.Vertex<>(names[i])); }
-            Graph<DFS.Vertex<String>> G = new Graph<>(A,true);
+            Graph<DFS.Vertex<String>> G = new Graph<>(A, Graph.Direction.DIRECTED);
             G.setNeighbor(A.get(0), A.get(1));
             G.setNeighbor(A.get(0), A.get(6));
 
@@ -64,7 +64,7 @@ class DFSTest {
         var names = t.split(",");
         var A = new ArrayList<DFS.Vertex<String>>(names.length);
         for(int i = 0; i < names.length; i++) { A.add(i,new DFS.Vertex<>(names[i])); }
-        Graph<DFS.Vertex<String>> G = new Graph<>(A,true);
+        Graph<DFS.Vertex<String>> G = new Graph<>(A, Graph.Direction.DIRECTED);
         G.setNeighbor(A.get(0), A.get(1));
 
         G.setNeighbor(A.get(1), A.get(2));
