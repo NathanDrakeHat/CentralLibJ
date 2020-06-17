@@ -1,6 +1,7 @@
 package algorithms.graph;
 
 import structures.DisjointSet;
+import structures.FibonacciHeap;
 
 import java.util.*;
 
@@ -111,6 +112,29 @@ public final class MST {
                     v.parent = u;
                     v.key = graph.computeWeight(u,v);
                     Q.add(new PrimVertex<>(v)); // add decreased key and prevent update origin
+                }
+            }
+        }
+    }
+
+    public static <T> void algorithmOfPrimWithFibonacciHeap(Graph<PrimVertex<T>> graph, PrimVertex<T> r){
+        var Q = new FibonacciHeap<PrimVertex<T>>();
+        for(var u : graph.getAllVertices()){
+            if(!u.equals(r)) u.key = Double.POSITIVE_INFINITY;
+            else {
+                u.key = 0.0;
+                var node = Q.unsafeAdd(u.key,u); // init
+            }
+            u.parent = null;
+        }
+        while(Q.length() > 0){
+            var u = Q.extractMin().getValue();
+
+            for(var v : graph.getNeighborsAt(u)){
+                if(Q.contains(v) && graph.computeWeight(u,v) < v.key){
+                    v.parent = u;
+                    v.key = graph.computeWeight(u,v);
+                    Q.unsafeAdd(v.key,v); // add decreased key and prevent update origin
                 }
             }
         }

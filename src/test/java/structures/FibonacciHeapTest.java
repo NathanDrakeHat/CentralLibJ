@@ -2,6 +2,8 @@ package structures;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class FibonacciHeapTest{
@@ -31,23 +33,20 @@ class FibonacciHeapTest{
         H.setNumber(15);
         return H;
     }
-    private static String bcl(FibonacciHeap<Double>.Node t){
-        var res = new StringBuilder();
+    private static List<Double> bcl(FibonacciHeap<Double>.Node t){
+        List<Double> res = new ArrayList<>();
         var p = t;
         do{
-            res.append(p.getKey());
-            res.append(" ");
+            res.add(p.getKey());
             p = p.getRight();
         }while(p != t);
-        res.append("| ");
         p = t;
         do{
-            res.append(p.getKey());
-            res.append(" ");
+            res.add(p.getKey());
             p = p.getLeft();
         }while(p != t);
         //res.append('\n');
-        return res.toString();
+        return res;
     }
 
     @Test
@@ -56,21 +55,21 @@ class FibonacciHeapTest{
         var o = H.extractMin();
         assertEquals(o.getKey(),3);
         //see <<introduction to  algorithm>> to find this test sample.
-        assertEquals(bcl(H.rootList()), "7 18 38 | 7 38 18 ");
-        assertEquals(bcl(H.rootList().getRight().getChildList()),"39 21 | 39 21 ");
-        assertEquals(bcl(H.rootList().getRight().getChildList().getLeft().getChildList()), "52 | 52 ");
-        assertEquals(bcl(H.rootList().getChildList()), "23 17 24 | 23 24 17 ");
-        assertEquals(bcl(H.rootList().getChildList().getLeft().getChildList()), "26 46 | 26 46 ");
-        assertEquals(bcl(H.rootList().getChildList().getLeft().getLeft().getChildList()),"30 | 30 ");
-        assertEquals(bcl(H.rootList().getChildList().getLeft().getChildList().getChildList()),"35 | 35 ");
-        assertEquals(bcl(H.rootList().getRight().getRight().getChildList()),"41 | 41 ");
+        assertEquals(bcl(H.rootList()), List.of(7.0, 18.0, 38.0, 7.0, 38.0, 18.0));
+        assertEquals(bcl(H.rootList().getRight().getChildList()),List.of(39.0, 21.0, 39.0, 21.0));
+        assertEquals(bcl(H.rootList().getRight().getChildList().getLeft().getChildList()), List.of(52.0, 52.0));
+        assertEquals(bcl(H.rootList().getChildList()), List.of(23.0, 17.0, 24.0,  23.0, 24.0, 17.0) );
+        assertEquals(bcl(H.rootList().getChildList().getLeft().getChildList()), List.of(26.0, 46.0,  26.0, 46.0) );
+        assertEquals(bcl(H.rootList().getChildList().getLeft().getLeft().getChildList()),List.of(30.0, 30.0));
+        assertEquals(bcl(H.rootList().getChildList().getLeft().getChildList().getChildList()),List.of(35.0, 35.0));
+        assertEquals(bcl(H.rootList().getRight().getRight().getChildList()),List.of(41.0, 41.0));
         
         H.decreaseKey(H.rootList().getChildList().getLeft().getChildList().getLeft(), 15);
         H.decreaseKey(H.rootList().getChildList().getLeft().getChildList().getChildList(), 5);
         
-        assertEquals(bcl(H.rootList()),"5 26 24 7 18 38 15 | 5 15 38 18 7 24 26 ");;
-        assertEquals(bcl(H.rootList().getRight().getRight().getRight().getChildList()),"23 17 | 23 17 ");
-        assertEquals(bcl(H.rootList().getRight().getRight().getRight().getChildList().getRight().getChildList()), "30 | 30 ");
-        assertEquals(bcl(H.rootList().getRight().getRight().getRight().getRight().getChildList()),"39 21 | 39 21 ");
+        assertEquals(bcl(H.rootList()),List.of(5.0, 26.0, 24.0, 7.0, 18.0, 38.0, 15.0, 5.0, 15.0, 38.0, 18.0, 7.0, 24.0, 26.0));;
+        assertEquals(bcl(H.rootList().getRight().getRight().getRight().getChildList()),List.of(23.0, 17.0, 23.0, 17.0));
+        assertEquals(bcl(H.rootList().getRight().getRight().getRight().getChildList().getRight().getChildList()), List.of(30.0, 30.0));
+        assertEquals(bcl(H.rootList().getRight().getRight().getRight().getRight().getChildList()),List.of(39.0, 21.0, 39.0, 21.0));
     }
 }
