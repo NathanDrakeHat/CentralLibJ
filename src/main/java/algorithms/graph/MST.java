@@ -88,7 +88,7 @@ public final class MST {
         return res;
     }
 
-    public static <T> Graph<PrimVertex<T>> algorithmOfPrim(Graph<PrimVertex<T>> graph, PrimVertex<T> r){
+    public static <T> void algorithmOfPrim(Graph<PrimVertex<T>> graph, PrimVertex<T> r){
         Queue<PrimVertex<T>> Q = new PriorityQueue<>(Comparator.comparingDouble(v -> v.key));
         var queue_set = graph.getAllVertices();
         for(var u : queue_set){
@@ -114,6 +114,5 @@ public final class MST {
                 }
             }
         }
-        return graph;
     }
 }

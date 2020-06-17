@@ -56,7 +56,7 @@ public final class SSSP {
     }
 
     // non-negative weight
-    public static <T> Set<BFS.Vertex<T>> algorithmDijkstra(Graph<BFS.Vertex<T>> G, BFS.Vertex<T> s){
+    public static <T> void algorithmDijkstra(Graph<BFS.Vertex<T>> G, BFS.Vertex<T> s){
         initializeSingleSource(G, s);
         Set<BFS.Vertex<T>> S = new HashSet<>();
         Queue<BFS.Vertex<T>> Q = new PriorityQueue<BFS.Vertex<T>>(Comparator.comparingDouble(v -> v.distance));
@@ -77,6 +77,5 @@ public final class SSSP {
                 }
             }
         }
-        return S;
     }
 }

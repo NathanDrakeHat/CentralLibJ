@@ -7,6 +7,17 @@ import java.util.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 class MSTTest {
+    @Test
+    public void algorithmOfKruskalTest(){
+        var G = buildKruskalExample();
+        var t = MST.algorithmOfKruskal(G);
+        assertTrue(t.equals(buildKruskalAnswer1()) || t.equals(buildKruskalAnswer2()));
+        int i = 0;
+        for(var e : t){
+            i += G.computeWeight(e);
+        }
+        assertEquals(i, 37);
+    }
     static Graph<MST.KruskalVertex<String>> buildKruskalExample(){
         String n = "a,b,c,d,e,f,g,h,i";
         String[] names = n.split(",");
@@ -55,19 +66,24 @@ class MSTTest {
             res.add(g.new Edge(vertices.get(indexes1[i]), vertices.get(indexes2[i]), Graph.Direction.NON_DIRECTED));
         return res;
     }
+
+
     @Test
-    public void algorithmOfKruskalTest(){
-        var G = buildKruskalExample();
-        var t = MST.algorithmOfKruskal(G);
-        assertTrue(t.equals(buildKruskalAnswer1()) || t.equals(buildKruskalAnswer2()));
-        int i = 0;
-        for(var e : t){
-            i += G.computeWeight(e);
+    public void algorithmOfPrimTest(){
+        var graph = buildPrimExample();
+        MST.algorithmOfPrim(graph, new MST.PrimVertex<>("a"));
+        var vertices = graph.getAllVertices();
+        Set<Set<MST.PrimVertex<String>>> res = new HashSet<>();
+        for(var vertex : vertices){
+            if(vertex.parent != null){
+                Set<MST.PrimVertex<String>> t = new HashSet<>();
+                t.add(vertex);
+                t.add(vertex.parent);
+                res.add(t);
+            }
         }
-        assertEquals(i, 37);
+        assertTrue(res.equals(buildPrimAnswer1()) || res.equals(buildPrimAnswer2()));
     }
-
-
     static Graph<MST.PrimVertex<String>> buildPrimExample(){
         String n = "a,b,c,d,e,f,g,h,i";
         String[] names = n.split(",");
@@ -120,19 +136,5 @@ class MSTTest {
         }
         return res;
     }
-    @Test
-    public void algorithmOfPrimTest(){
-        var graph = MST.algorithmOfPrim(buildPrimExample(), new MST.PrimVertex<>("a"));
-        var vertices = graph.getAllVertices();
-        Set<Set<MST.PrimVertex<String>>> res = new HashSet<>();
-        for(var vertex : vertices){
-            if(vertex.parent != null){
-                Set<MST.PrimVertex<String>> t = new HashSet<>();
-                t.add(vertex);
-                t.add(vertex.parent);
-                res.add(t);
-            }
-        }
-        assertTrue(res.equals(buildPrimAnswer1()) || res.equals(buildPrimAnswer2()));
-    }
+
 }

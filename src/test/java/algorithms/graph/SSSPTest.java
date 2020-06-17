@@ -80,4 +80,30 @@ class SSSPTest {
         public Graph<BFS.Vertex<String>> BFS_G;
         public Graph<DFS.Vertex<BFS.Vertex<String>>> DFS_G;
     }
+
+
+    @Test
+    void algorithmDijkstraTest(){
+        var g = buildDijkstraCase();
+        SSSP.algorithmDijkstra(g, new BFS.Vertex<>("s"));
+        var vertices = g.getAllVertices().stream().sorted(Comparator.comparing(BFS.Vertex::getContent)).collect(Collectors.toList());
+        assertNull(vertices.get(0).getParent());
+        assertEquals(vertices.get(1).getParent(),vertices.get(3));
+        assertEquals(vertices.get(2).getParent(),vertices.get(1));
+        assertEquals(vertices.get(3).getParent(),vertices.get(0));
+        assertEquals(vertices.get(4).getParent(),vertices.get(3));
+    }
+    static Graph<BFS.Vertex<String>> buildDijkstraCase(){
+        String[] names = "s,t,x,y,z".split(",");
+        List<BFS.Vertex<String>> vertices = new ArrayList<>();
+        for(var n : names) vertices.add(new BFS.Vertex<>(n));
+        var graph = new Graph<>(vertices, Graph.Direction.DIRECTED);
+        int[] indices1 =      new int[]{0, 0,1,1,2,3,3,3,4,4};
+        int[] indices2 =      new int[]{1, 3,2,3,4,1,2,4,0,2};
+        double[] weights = new double[]{10,5,1,2,4,3,9,2,7,6};
+        for(int i = 0; i < indices1.length; i++){
+            graph.setNeighbor(vertices.get(indices1[i]), vertices.get(indices2[i]),weights[i]);
+        }
+        return graph;
+    }
 }
