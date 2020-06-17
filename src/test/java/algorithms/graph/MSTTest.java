@@ -69,9 +69,26 @@ class MSTTest {
 
 
     @Test
-    public void algorithmOfPrimTest(){
+    public void algorithmOfPrimTestWithFibonacciHeap(){
         var graph = buildPrimExample();
-        MST.algorithmOfPrim(graph, new MST.PrimVertex<>("a"));
+        MST.algorithmOfPrim(graph, new MST.PrimVertex<>("a"), MST.PrimQueue.FIBONACCI_HEAP);
+        var vertices = graph.getAllVertices();
+        Set<Set<MST.PrimVertex<String>>> res = new HashSet<>();
+        for(var vertex : vertices){
+            if(vertex.parent != null){
+                Set<MST.PrimVertex<String>> t = new HashSet<>();
+                t.add(vertex);
+                t.add(vertex.parent);
+                res.add(t);
+            }
+        }
+        assertTrue(res.equals(buildPrimAnswer1()) || res.equals(buildPrimAnswer2()));
+    }
+
+    @Test
+    public void algorithmOfPrimTestWithMinHeap(){
+        var graph = buildPrimExample();
+        MST.algorithmOfPrim(graph, new MST.PrimVertex<>("a"), MST.PrimQueue.MIN_HEAP);
         var vertices = graph.getAllVertices();
         Set<Set<MST.PrimVertex<String>>> res = new HashSet<>();
         for(var vertex : vertices){

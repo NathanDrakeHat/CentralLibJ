@@ -47,6 +47,8 @@ public class MinHeap<V> {
         }
     }
 
+    public boolean contains(V value) { return valuePairMap.containsKey(value); }
+
     public int length() { return length; }
 
     private void minHeapify(List<KeyValuePair<Double,V>> arr, int idx, int heap_size){
