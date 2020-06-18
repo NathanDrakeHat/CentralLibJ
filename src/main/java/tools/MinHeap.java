@@ -32,6 +32,7 @@ public class MinHeap<V> {
     public V extractMin(){
         var res = array.get(0);
         array.set(0, array.get(heap_size -1));
+        array.set(heap_size-1,null);
         heap_size--;
         minHeapify(array,0, heap_size);
         value_node_map.remove(res.getValue());
