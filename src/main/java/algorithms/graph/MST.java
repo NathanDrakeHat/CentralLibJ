@@ -48,8 +48,8 @@ public final class MST {
         public String toString(){ return string; }
         
     }
-    public static <T> Set<Graph<KruskalVertex<T>>.Edge> algorithmOfKruskal(Graph<KruskalVertex<T>> graph){
-        Set<Graph<KruskalVertex<T>>.Edge> res = new HashSet<>();
+    public static <T> Set<Graph.Edge<KruskalVertex<T>>> algorithmOfKruskal(Graph<KruskalVertex<T>> graph){
+        Set<Graph.Edge<KruskalVertex<T>>> res = new HashSet<>();
         var edges_set = graph.getAllEdges();
         var edges_list = new ArrayList<>(edges_set);
         edges_list.sort(Comparator.comparingDouble(graph::computeWeight));
@@ -87,16 +87,13 @@ public final class MST {
         @Override
         @SuppressWarnings("unchecked")
         public boolean equals(Object other){
-            if(other instanceof PrimVertex){
-                return content.equals(((PrimVertex<V>) other).content);
-            }else return false;
+            if(this == other) return true;
+            else if(!(other instanceof PrimVertex)) return false;
+            else return content.equals(((PrimVertex<V>) other).content);
         }
 
         @Override
         public String toString() { return string; }
-    }
-    public enum PrimQueue{
-        MIN_HEAP, FIBONACCI_HEAP
     }
     public static <T> void algorithmOfPrimWithFibonacciHeap(Graph<PrimVertex<T>> graph, PrimVertex<T> r){
         FibonacciHeap<PrimVertex<T>> Q = new FibonacciHeap<>();
@@ -119,7 +116,6 @@ public final class MST {
             }
         }
     }
-
     public static <T> void algorithmOfPrimWithMinHeap(Graph<PrimVertex<T>> graph, PrimVertex<T> r){
         var vertices = graph.getAllVertices();
         for (var u : vertices) {

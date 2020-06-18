@@ -10,16 +10,16 @@ public final class Graph<V>  {
     }
     private final Direction graph_direction;
     private final Map<V, Set<V>> neighbors_map = new HashMap<>();
-    private final Map<Edge, Double> weight_map = new HashMap<>();
+    private final Map<Edge<V>, Double> weight_map = new HashMap<>();
     private int size;
-    final class Edge {
-        private final V former_vertex;
-        private final V later_vertex;
+    public static final class Edge<T> {
+        private final T former_vertex;
+        private final T later_vertex;
         private final Direction edge_direction;
         private final String string;
         private final int hash_code;
 
-        Edge(V former, V later, Direction is_directed){
+        Edge(T former, T later, Direction is_directed){
             former_vertex = former;
             later_vertex = later;
             this.edge_direction = is_directed;
@@ -41,29 +41,27 @@ public final class Graph<V>  {
 
         @Override
         @SuppressWarnings("unchecked")
-        public boolean equals(Object other_edge){
-            if(other_edge == null){
-                return false;
-            }else if(Edge.class.equals(other_edge.getClass())){
-                if(edge_direction != ((Edge) other_edge).edge_direction) return false;
-                else if(edge_direction == Direction.DIRECTED) {
-                    return former_vertex.equals(((Edge) other_edge).former_vertex) &&
-                            later_vertex.equals(((Edge) other_edge).later_vertex);
-                }else {
-                    return (former_vertex.equals(((Edge) other_edge).former_vertex) &&
-                            later_vertex.equals(((Edge) other_edge).later_vertex)) ||
+        public boolean equals(Object other_edge) {
+            if (other_edge == this) return true;
+             else if (!(other_edge instanceof Edge)) return false;
+             else {
+                if (edge_direction != ((Edge<T>) other_edge).edge_direction) return false;
+                else if (edge_direction == Direction.DIRECTED) {
+                    return former_vertex.equals(((Edge<T>) other_edge).former_vertex) &&
+                            later_vertex.equals(((Edge<T>) other_edge).later_vertex);
+                } else {
+                    return (former_vertex.equals(((Edge<T>) other_edge).former_vertex) &&
+                            later_vertex.equals(((Edge<T>) other_edge).later_vertex)) ||
 
-                            (later_vertex.equals(((Edge) other_edge).former_vertex) &&
-                                    former_vertex.equals(((Edge) other_edge).later_vertex));
+                            (later_vertex.equals(((Edge<T>) other_edge).former_vertex) &&
+                                    former_vertex.equals(((Edge<T>) other_edge).later_vertex));
                 }
-            }else{
-                return false;
             }
         }
 
-        public V getFormerVertex() { return former_vertex; }
+        public T getFormerVertex() { return former_vertex; }
 
-        public V getLaterVertex() { return later_vertex; }
+        public T getLaterVertex() { return later_vertex; }
 
         @Override
         public String toString(){ return string; }
@@ -85,7 +83,7 @@ public final class Graph<V>  {
 
     public void setNeighbor(V vertex, V neighbor){ setNeighbor(vertex, neighbor, 1); }
     public void setNeighbor(V vertex, V neighbor, double w){
-        var edge_t = new Edge(vertex, neighbor, graph_direction);
+        var edge_t = new Edge<>(vertex, neighbor, graph_direction);
         if(graph_direction == Direction.DIRECTED) {
             var neighbors_set = neighbors_map.computeIfAbsent(vertex, (k)->new HashSet<>());
             neighbors_set.add(neighbor);
@@ -96,13 +94,13 @@ public final class Graph<V>  {
             neighbors_set = neighbors_map.computeIfAbsent(neighbor, (k)->new HashSet<>());
             neighbors_set.add(vertex);
             weight_map.put(edge_t, w);
-            edge_t = new Edge(neighbor,vertex,graph_direction);
+            edge_t = new Edge<>(neighbor,vertex,graph_direction);
             weight_map.put(edge_t, w);
         }
     }
 
-    public Set<Edge> getAllEdges(){
-        Set<Edge> res = new HashSet<>();
+    public Set<Edge<V>> getAllEdges(){
+        Set<Edge<V>> res = new HashSet<>();
         for(var vertex : getAllVertices()){
             res.addAll(getEdgesAt(vertex));
         }
@@ -111,23 +109,23 @@ public final class Graph<V>  {
     public Set<V> getAllVertices(){
         return new HashSet<>(neighbors_map.keySet());
     }
-    public Set<Edge> getEdgesAt(V vertex) {
+    public Set<Edge<V>> getEdgesAt(V vertex) {
         var neighbors = getNeighborsAt(vertex);
-        Set<Edge> res = new HashSet<>();
-        for(var n : neighbors) res.add(new Edge(vertex, n,graph_direction));
+        Set<Edge<V>> res = new HashSet<>();
+        for(var n : neighbors) res.add(new Edge<>(vertex, n,graph_direction));
         return res;
     }
     public Set<V> getNeighborsAt(V vertex){
         return new HashSet<>(neighbors_map.computeIfAbsent(vertex,(k)->new HashSet<>()));
     }
 
-    public double computeWeight(Edge e){
+    public double computeWeight(Edge<V> e){
         var t = weight_map.get(e);
         if(t == null) throw new NoSuchElementException();
         else return t;
     }
     public double computeWeight(V former, V later){
-        var e = new Edge(former, later, graph_direction);
+        var e = new Edge<>(former, later, graph_direction);
         var t = weight_map.get(e);
         if(t == null) throw new NoSuchElementException();
         return t;

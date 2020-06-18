@@ -34,36 +34,32 @@ class MSTTest {
         }
         return res;
     }
-    static Set<Graph<MST.KruskalVertex<String>>.Edge> buildKruskalAnswer1(){
+    static Set<Graph.Edge<MST.KruskalVertex<String>>> buildKruskalAnswer1(){
         String n = "a,b,c,d,e,f,g,h,i";
         String[] names = n.split(",");
         int len = names.length;
         var vertices = new ArrayList<MST.KruskalVertex<String>>(len);
-        Graph<MST.KruskalVertex<String>> g = new Graph<>(vertices,Graph.Direction.NON_DIRECTED);
         for(int i = 0; i < len; i++){ vertices.add(i,new MST.KruskalVertex<>(names[i])); }
         int[] indexes1 = new int[]{0,1,2,3,4, 5,6,7,1, 2,8,8,2,3};
         int[] indexes2 = new int[]{1,2,3,4,5, 6,7,0,7, 8,7,6,5,5};
-//        double[] weights =  new double[]{4,8,7,9,10,2,1,8,11,2,7,6,4,14};
-        Set<Graph<MST.KruskalVertex<String>>.Edge> res = new HashSet<>();
+        Set<Graph.Edge<MST.KruskalVertex<String>>> res = new HashSet<>();
         int[] answers = new int[]{0, 2, 3, 5, 6, 7, 9, 12};
         for(var i : answers)
-            res.add(g.new Edge(vertices.get(indexes1[i]), vertices.get(indexes2[i]), Graph.Direction.NON_DIRECTED));
+            res.add(new Graph.Edge<>(vertices.get(indexes1[i]), vertices.get(indexes2[i]), Graph.Direction.NON_DIRECTED));
         return res;
     }
-    static Set<Graph<MST.KruskalVertex<String>>.Edge> buildKruskalAnswer2(){
+    static Set<Graph.Edge<MST.KruskalVertex<String>>> buildKruskalAnswer2(){
         String n = "a,b,c,d,e,f,g,h,i";
         String[] names = n.split(",");
         int len = names.length;
         var vertices = new ArrayList<MST.KruskalVertex<String>>(len);
-        Graph<MST.KruskalVertex<String>> g = new Graph<>(vertices,Graph.Direction.NON_DIRECTED);
         for(int i = 0; i < len; i++){ vertices.add(i,new MST.KruskalVertex<>(names[i])); }
         int[] indexes1 = new int[]{0,1,2,3,4, 5,6,7,1, 2,8,8,2,3};
         int[] indexes2 = new int[]{1,2,3,4,5, 6,7,0,7, 8,7,6,5,5};
-//        double[] weights =  new double[]{4,8,7,9,10,2,1,8,11,2,7,6,4,14};
-        Set<Graph<MST.KruskalVertex<String>>.Edge> res = new HashSet<>();
+        Set<Graph.Edge<MST.KruskalVertex<String>>> res = new HashSet<>();
         int[] answers = new int[]{0, 1, 2, 3, 5, 6, 9, 12};
         for(var i : answers)
-            res.add(g.new Edge(vertices.get(indexes1[i]), vertices.get(indexes2[i]), Graph.Direction.NON_DIRECTED));
+            res.add(new Graph.Edge<>(vertices.get(indexes1[i]), vertices.get(indexes2[i]), Graph.Direction.NON_DIRECTED));
         return res;
     }
 
