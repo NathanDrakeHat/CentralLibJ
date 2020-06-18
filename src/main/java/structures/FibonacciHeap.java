@@ -6,45 +6,45 @@ import java.util.*;
 // dynamic minimum priority queue
 // key must be a number
 public final class FibonacciHeap<V> {
-    private Node root_list = null;
+    private Node<V> root_list = null;
     private int number = 0; // number of nodes
     void setNumber(int n) { this.number = n; }
-    class Node implements Comparable<Node>{
+    static class Node<T> implements Comparable<Node<T>>{
         private double key;
-        private V value;
-        private Node parent = null;
-        private Node childList = null; // int linked, circular list
-        private Node left = this;
-        private Node right = this;
+        private T value;
+        private Node<T> parent = null;
+        private Node<T> childList = null; // int linked, circular list
+        private Node<T> left = this;
+        private Node<T> right = this;
         private int degree = 0; // number of children
         private boolean mark = false; // whether the node had lost a child when it be made another node's child
 
-        private Node(double key, V val) {
+        private Node(double key, T val) {
             this.key = key;
             this.value = val;
         }
 
-        public Node getLeft() { return left; }
-        public Node getRight() { return right; }
+        public Node<T> getLeft() { return left; }
+        public Node<T> getRight() { return right; }
 
         public double getKey() { return key; }
         private void setKey(double key) { this.key = key; }
         
-        public V getValue() { return value; }
-        private void setValue(V val) { this.value = val; }
+        public T getValue() { return value; }
+        private void setValue(T val) { this.value = val; }
 
-        public Node getParent() { return parent; }
-        private void setParent(Node p) { parent = p; }
+        public Node<T> getParent() { return parent; }
+        private void setParent(Node<T> p) { parent = p; }
 
-        void setChildList(Node x){
+        void setChildList(Node<T> x){
             childList = x;
             if(x != null) x.parent = this;
         }
 
-        public Node getChildList() { return childList; }
+        public Node<T> getChildList() { return childList; }
 
         @Override
-        public int compareTo(Node other){
+        public int compareTo(Node<T> other){
             var t =  (int) (key - other.key);
             if(t == 0) return value.equals(other.value)? 0 : value.hashCode() - other.value.hashCode();
             else return t;
@@ -58,9 +58,8 @@ public final class FibonacciHeap<V> {
         @Override
         @SuppressWarnings("unchecked")
         public boolean equals(Object other){
-            if(other == null) return false;
-            else if(getClass().equals(other.getClass())){
-                return (key == ((Node) other).key) && (value.equals(((Node)other).value));
+            if(other instanceof Node){
+                return (key == ((Node<T>) other).key) && (value.equals(((Node<T>)other).value));
             }else return false;
         }
 
@@ -69,8 +68,8 @@ public final class FibonacciHeap<V> {
             this.key = key;
             mark = m;
         }
-        Node chainAdd(int t, boolean m){
-            var x = new Node(t, m);
+        Node<T> chainAdd(int t){
+            var x = new Node<T>(t, false);
             var list_left = left;
             left = x;
             x.right = this;
@@ -79,17 +78,14 @@ public final class FibonacciHeap<V> {
             x.parent = this.parent;
             return this;
         }
-        Node chainAdd(int t){
-            return chainAdd(t, false);
-        }
         void setDegree(int d) { this.degree = d; }
     }
-    private final Map<V,Node> value_Node_map = new HashMap<>();
+    private final Map<V,Node<V>> value_Node_map = new HashMap<>();
 
     public double minKey() { return root_list.getKey(); }
     public V minValue() { return root_list.getValue(); }
 
-    private void insert(Node x){
+    private void insert(Node<V> x){
         value_Node_map.put(x.getValue(),x);
         if(root_list == null){
             root_list = x;
@@ -101,7 +97,7 @@ public final class FibonacciHeap<V> {
         }
         number++;
     }
-    public void insert(double key, V val){ insert(new Node(key, val)); }
+    public void insert(double key, V val){ insert(new Node<>(key, val)); }
 
     public V extractMin() {
         var z = rootList();
@@ -127,10 +123,10 @@ public final class FibonacciHeap<V> {
     }
     private void consolidate(){
         @SuppressWarnings("unchecked")
-        Node[] A = (Node[])Array.newInstance(Node.class, upperBound()+1);
+        Node<V>[] A = (Node<V>[])Array.newInstance(root_list.getClass(), upperBound()+1);
         var w = root_list;
         if(w == null) return;
-        var dict = new HashSet<Node>(32);
+        var dict = new HashSet<Node<V>>(32);
         do{ // for w in root list start
             var x = w; // x current node
             var next = x.right;
@@ -206,7 +202,7 @@ public final class FibonacciHeap<V> {
             }
         }
     }
-    void decreaseKey(Node x, double new_key){
+    void decreaseKey(Node<V> x, double new_key){
         // move x to root list
         // set parent mark true if parent mark is false
         // else successively move true mark parents to root list
@@ -227,7 +223,7 @@ public final class FibonacciHeap<V> {
             }
         }
     }
-    private void cut(Node a, Node b){
+    private void cut(Node<V> a, Node<V> b){
         if(a == null && b == null) throw new IllegalArgumentException("Two arg is null");
         else if(a == null) throw new IllegalArgumentException("First arg is null");
         else if(b == null ) throw new IllegalArgumentException("Second arg is null.");
@@ -236,7 +232,7 @@ public final class FibonacciHeap<V> {
         addNodeToList(a, rootList());
         a.mark = false;
     }
-    private void cascadingCut(Node y){
+    private void cascadingCut(Node<V> y){
         if(y == null) throw new IllegalArgumentException("Null arg.");
         var z = y.getParent();
         if(z != null){
@@ -248,7 +244,7 @@ public final class FibonacciHeap<V> {
         }
     }
 
-    private void delete(Node x){
+    private void delete(Node<V> x){
         if(x == null) throw new IllegalArgumentException("Can not delete null.");
         decreaseKey(x, minKey() - 1);
         extractMin();
@@ -256,10 +252,10 @@ public final class FibonacciHeap<V> {
 
     public boolean contains(V x) { return value_Node_map.containsKey(x); }
     public int length() { return number; }
-    Node rootList(){ return root_list; }
+    Node<V> rootList(){ return root_list; }
     private int upperBound(){ return (int)(Math.log(number)/Math.log(2)); }
 
-    private void addNodeToList(Node x, Node list){
+    private void addNodeToList(Node<V> x, Node<V> list){
         if(x == null && list == null) throw new IllegalArgumentException("Two arg is null");
         else if(x == null) throw new IllegalArgumentException("First arg is null");
         else if(list == null ) throw new IllegalArgumentException("Second arg is null.");
@@ -271,7 +267,7 @@ public final class FibonacciHeap<V> {
         list_left.right = x;
         x.left = list_left;
     }
-    private void removeNodeFromList(Node z){
+    private void removeNodeFromList(Node<V> z){
         if(z == null) throw new IllegalArgumentException("Receive a null arg.");
         var z_right = z.right;
         var z_left = z.left;
@@ -294,7 +290,7 @@ public final class FibonacciHeap<V> {
         z.left = z;
         z.parent = null;
     }
-    private void linkTo(Node l, Node m){ // larger, minor
+    private void linkTo(Node<V> l, Node<V> m){ // larger, minor
         removeNodeFromList(l);
         m.degree++;
         if(m.getChildList() == null) m.setChildList(l);

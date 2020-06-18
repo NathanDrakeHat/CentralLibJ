@@ -7,24 +7,26 @@ import java.util.function.BiConsumer;
 
 public final class RedBlackTree<K, V> {
     enum COLOR{ RED, BLACK }
-    private ColorNode root = null;
+    private ColorNode<K,V> root = null;
     private Comparator<K> k_comparator;
-    private final ColorNode sentinel = new ColorNode( COLOR.BLACK);// sentinel: denote leaf and parent of root
-    class ColorNode implements Comparable<ColorNode>{
-        private K key;
-        private V value;
+    private final ColorNode<K,V> sentinel = new ColorNode<>( COLOR.BLACK);// sentinel: denote leaf and parent of root
+    static class ColorNode<P,Q> implements Comparable<ColorNode<P,Q>>{
+        private P key;
+        private Q value;
         private COLOR color;
-        private ColorNode parent;
-        private ColorNode left;
-        private ColorNode right;
+        private ColorNode<P,Q> parent;
+        private ColorNode<P,Q> left;
+        private ColorNode<P,Q> right;
+        private Comparator<P> p_comparator;
 
         private ColorNode(COLOR color){ this.color = color; }
-        private ColorNode(K key, V val){
+        private ColorNode(P key, Q val, Comparator<P> p_comparator){
             if(key instanceof Comparable){
                 color = COLOR.RED;
                 this.key = key;
                 this.value = val;
-            }else if (k_comparator == null) throw new IllegalArgumentException("need a comparator.");
+            }else if (p_comparator == null) throw new IllegalArgumentException("need a comparator.");
+            this.p_comparator = p_comparator;
         }
 
         public boolean isRed(){ return color == COLOR.RED; }
@@ -36,39 +38,35 @@ public final class RedBlackTree<K, V> {
         private void setRed(){ color = COLOR.RED; }
         private void setBlack() { color = COLOR.BLACK; }
 
-        public V getValue(){ return value; }
-        public K getKey() { return key; }
+        public Q getValue(){ return value; }
+        public P getKey() { return key; }
 
-        public ColorNode getParent(){ return parent; }
-        private void setParent(ColorNode parent){ this.parent = parent; }
+        public ColorNode<P,Q> getParent(){ return parent; }
+        private void setParent(ColorNode<P,Q> parent){ this.parent = parent; }
 
-        public ColorNode getLeft(){ return left; }
-        private void setLeft(ColorNode left){ this.left = left; }
+        public ColorNode<P,Q> getLeft(){ return left; }
+        private void setLeft(ColorNode<P,Q> left){ this.left = left; }
 
-        public ColorNode getRight(){ return right; }
-        private void setRight(ColorNode right){ this.right = right; }
+        public ColorNode<P,Q> getRight(){ return right; }
+        private void setRight(ColorNode<P,Q> right){ this.right = right; }
 
         @Override
         @SuppressWarnings("unchecked")
         public int compareTo(ColorNode other){
             if(key instanceof Comparable){
-                var t = ((Comparable<K>) key).compareTo(other.key);
-                if(t == 0) return value.equals(other.value)? 0 : value.hashCode() - other.value.hashCode();
-                else return t;
-            }else if(k_comparator == null){
-                throw new IllegalArgumentException("need a comparator.");
-            }else{
-                var t = k_comparator.compare(key,other.key);
-                if(t == 0) return value.equals(other.value)? 0 : value.hashCode() - other.value.hashCode();
-                else return t;
-            }
+                var t = ((Comparable<P>) key).compareTo((P) other.key);
+                return (t == 0) ? (value.equals(other.value)? 0 : value.hashCode() - other.value.hashCode()) : t;
+            }else if(p_comparator != null){
+                var t = p_comparator.compare(key, (P) other.key);
+                return (t == 0)? (value.equals(other.value)? 0 : value.hashCode() - other.value.hashCode()) : t;
+            }else throw new IllegalArgumentException("need a comparator.");
         }
 
         @SuppressWarnings("unchecked")
-        public int compareKey(K key){
+        public int compareKey(P key){
             if(getKey() instanceof Comparable){
-                return ((Comparable<K>) getKey()).compareTo(key);
-            }else return k_comparator.compare(this.getKey(),key);
+                return ((Comparable<P>) getKey()).compareTo(key);
+            }else return p_comparator.compare(this.getKey(),key);
         }
     }
 
@@ -105,12 +103,12 @@ public final class RedBlackTree<K, V> {
         }
     }
 
-    private ColorNode getSentinel() { return sentinel; }
-    private void setRoot(ColorNode r) {
+    private ColorNode<K,V> getSentinel() { return sentinel; }
+    private void setRoot(ColorNode<K,V> r) {
         root = r;
         root.setParent(getSentinel());
     }
-    ColorNode getRoot() { return root; }
+    ColorNode<K,V> getRoot() { return root; }
 
     public void inOrderForEach(BiConsumer<K, V> bc){ // inorder print
         if(getRoot() == null || getSentinel() == getRoot()){
@@ -118,7 +116,7 @@ public final class RedBlackTree<K, V> {
         }
         inorderTreeWalk(getRoot(), bc);
     }
-    private void inorderTreeWalk(ColorNode n, BiConsumer<K, V> bc){
+    private void inorderTreeWalk(ColorNode<K,V> n, BiConsumer<K, V> bc){
         if(n != getSentinel() & n != null){
             inorderTreeWalk(n.getLeft(), bc);
             bc.accept(n.getKey(), n.getValue());
@@ -132,7 +130,7 @@ public final class RedBlackTree<K, V> {
         }
         return getCount(getRoot());
     }
-    private int getCount(ColorNode n){ //overload trick
+    private int getCount(ColorNode<K,V> n){ //overload trick
         if(n.getRight() != getSentinel() && n.getLeft() == getSentinel()){
             return getCount(n.getRight()) + 1;
         }else if(n.getRight() == getSentinel() && n.getLeft() != getSentinel()){
@@ -153,7 +151,7 @@ public final class RedBlackTree<K, V> {
         int right_max = getHeight(getRoot().getRight(), height);
         return Math.max(left_max, right_max) - 1;
     }
-    private int getHeight(ColorNode n, int height){
+    private int getHeight(ColorNode<K,V> n, int height){
         if(n != getSentinel()){
             int left_max = getHeight(n.getLeft(), height + 1);
             int right_max = getHeight(n.getRight(), height + 1);
@@ -162,8 +160,8 @@ public final class RedBlackTree<K, V> {
         return height;
     }
 
-    public void insert(K key, V val){ insert(new ColorNode(key, val)); }
-    private void insert(ColorNode n){
+    public void insert(K key, V val){ insert(new ColorNode<>(key, val,k_comparator)); }
+    private void insert(ColorNode<K,V> n){
         if(n == null || n == sentinel) return;
         if(getRoot() == null || getRoot() == getSentinel()){
             setRoot(n);
@@ -191,7 +189,7 @@ public final class RedBlackTree<K, V> {
         }
         insertFixUp(n);
     }
-    private void insertFixUp(ColorNode ptr){
+    private void insertFixUp(ColorNode<K,V> ptr){
         while(ptr.getParent().isRed()){
             if(ptr.getParent() == ptr.getParent().getParent().getLeft()){
                 var right = ptr.getParent().getParent().getRight();
@@ -231,13 +229,13 @@ public final class RedBlackTree<K, V> {
     }
 
     public void delete(K key){ delete(search(getRoot(), key)); }
-    private void delete(ColorNode target) {
+    private void delete(ColorNode<K,V> target) {
         if(target == null || target == getSentinel()){
             throw new NoSuchElementException("null tree");
         }
         var ptr = target;
         var ptr_color = ptr.getColor();
-        ColorNode fix_up;
+        ColorNode<K,V> fix_up;
         if(ptr.getLeft() == getSentinel()){
             fix_up = target.getRight();
             transplant(target, fix_up);
@@ -264,9 +262,9 @@ public final class RedBlackTree<K, V> {
             deleteFixUp(fix_up);
         }
     }
-    private void deleteFixUp(ColorNode fix_up){
+    private void deleteFixUp(ColorNode<K,V> fix_up){
         while(fix_up != getRoot() && fix_up.isBlack()){
-            ColorNode sibling;
+            ColorNode<K,V> sibling;
             if(fix_up == fix_up.getParent().getLeft()){
                 sibling = fix_up.getParent().getRight();
                 if(sibling.isRed()) { // case1:sibling is black, convert to case 2, 3 or 4
@@ -317,7 +315,7 @@ public final class RedBlackTree<K, V> {
         fix_up.setBlack();
     }
 
-    private void transplant(ColorNode a, ColorNode b){
+    private void transplant(ColorNode<K,V> a, ColorNode<K,V> b){
         if(a.getParent() == getSentinel()){
             setRoot(b);
         }else if(a.getParent().getRight() == a){
@@ -335,7 +333,7 @@ public final class RedBlackTree<K, V> {
         }
         return search(getRoot(), key).getValue();
     }
-    private ColorNode search(ColorNode n, K key){
+    private ColorNode<K,V> search(ColorNode<K,V> n, K key){
         if(n.compareKey(key) == 0){
             return n;
         }else if(n.compareKey(key) > 0 && n.getLeft() != getSentinel()){
@@ -346,7 +344,7 @@ public final class RedBlackTree<K, V> {
         throw new NoSuchElementException();
     }
 
-    private void leftRotate(ColorNode left_node){
+    private void leftRotate(ColorNode<K,V>left_node){
         var right_node = left_node.getRight();
         //exchange
         left_node.setRight(right_node.getLeft());
@@ -366,7 +364,7 @@ public final class RedBlackTree<K, V> {
         right_node.setLeft(left_node);
         left_node.setParent(right_node);
     }
-    private void rightRotate(ColorNode right_node){ // mirror of leftRotate
+    private void rightRotate(ColorNode<K,V> right_node){ // mirror of leftRotate
         var left_node = right_node.getLeft();
         //exchange
         right_node.setLeft(left_node.getRight());
@@ -387,8 +385,8 @@ public final class RedBlackTree<K, V> {
         right_node.setParent(left_node);
     }
 
-    private ColorNode getMinimum(ColorNode current){
-        ColorNode target = null;
+    private ColorNode<K,V> getMinimum(ColorNode<K,V> current){
+        ColorNode<K,V> target = null;
         var ptr = current;
         while(ptr != getSentinel()){
             target = ptr;
@@ -397,8 +395,8 @@ public final class RedBlackTree<K, V> {
         if (target == null) throw new NoSuchElementException();
         return target;
     }
-    private ColorNode getMaximum(ColorNode current){
-        ColorNode target = null;
+    private ColorNode<K,V> getMaximum(ColorNode<K,V> current){
+        ColorNode<K,V> target = null;
         var ptr = current;
         while(ptr != getSentinel()){
             target = ptr;
@@ -408,7 +406,7 @@ public final class RedBlackTree<K, V> {
         return target;
     }
 
-    private ColorNode getSuccessor(ColorNode current){
+    private ColorNode<K,V> getSuccessor(ColorNode<K,V> current){
         if(current.getRight() != getSentinel()){
             return getMinimum(current.getRight());
         }else{
@@ -421,7 +419,7 @@ public final class RedBlackTree<K, V> {
             return target;
         }
     }
-    private ColorNode getPredecessor(ColorNode current){
+    private ColorNode<K,V> getPredecessor(ColorNode<K,V> current){
         if(current.getLeft() != null){
             return getMaximum(current.getLeft());
         }else{

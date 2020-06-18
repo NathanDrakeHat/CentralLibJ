@@ -10,30 +10,29 @@ class FibonacciHeapTest{
 
     private static FibonacciHeap<Double> buildExample(){
         var H = new FibonacciHeap<Double>();
-        var methods = H.getClass().getDeclaredMethods();
         H.insert(3, 3.0);
         var m = H.rootList();
         m.chainAdd(17).chainAdd(24).chainAdd(23).chainAdd(7).chainAdd(21);
-        m.setChildList( H.new Node(18, true));
+        m.setChildList(new FibonacciHeap.Node<>(18, true));
         m.setDegree(2);
         var m_child = m.getChildList();
         m_child.setDegree(1);
-        m_child.setChildList(H.new Node(39, true));
+        m_child.setChildList(new FibonacciHeap.Node<>(39, true));
         m_child.chainAdd(52).chainAdd(38);
-        m_child.getLeft().setChildList( H.new Node(41));
+        m_child.getLeft().setChildList(new FibonacciHeap.Node<>(41));
         m_child.getLeft().setDegree(1);
-        m.getRight().setChildList(H.new Node(30));
+        m.getRight().setChildList(new FibonacciHeap.Node<>(30));
         m.getRight().setDegree(1);
-        var t = H.new Node(26, true);
+        FibonacciHeap.Node<Double> t = new FibonacciHeap.Node<>(26, true);
         t.setDegree(1);
-        t.setChildList(H.new Node(35));
+        t.setChildList(new FibonacciHeap.Node<>(35));
         m.getRight().getRight().setChildList(t);
         m.getRight().getRight().setDegree(2);
         t.chainAdd(46);
         H.setNumber(15);
         return H;
     }
-    private static List<Double> bcl(FibonacciHeap<Double>.Node t){
+    private static List<Double> bcl(FibonacciHeap.Node<Double> t){
         List<Double> res = new ArrayList<>();
         var p = t;
         do{
@@ -45,7 +44,6 @@ class FibonacciHeapTest{
             res.add(p.getKey());
             p = p.getLeft();
         }while(p != t);
-        //res.append('\n');
         return res;
     }
 
