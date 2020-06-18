@@ -53,13 +53,13 @@ public final class RedBlackTree<K, V> {
         public int compareTo(ColorNode other){
             if(key instanceof Comparable){
                 var t = ((Comparable<K>) key).compareTo(other.key);
-                if(t == 0) return value.hashCode() - other.value.hashCode();
+                if(t == 0) return value.equals(other.value)? 0 : value.hashCode() - other.value.hashCode();
                 else return t;
             }else if(k_comparator == null){
                 throw new IllegalArgumentException("need a comparator.");
             }else{
                 var t = k_comparator.compare(key,other.key);
-                if(t == 0) return value.hashCode() - other.value.hashCode();
+                if(t == 0) return value.equals(other.value)? 0 : value.hashCode() - other.value.hashCode();
                 else return t;
             }
         }

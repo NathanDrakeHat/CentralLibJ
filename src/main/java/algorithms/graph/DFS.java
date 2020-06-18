@@ -22,9 +22,8 @@ public final class DFS {
         @Override
         @SuppressWarnings("unchecked")
         public boolean equals(Object other_vertex){
-            if(other_vertex == null) return false;
-            else if(this.getClass().equals(other_vertex.getClass())){
-                return content.equals(((DFS.Vertex<V>) other_vertex).content);
+            if(other_vertex instanceof Vertex){
+                return content.equals(((Vertex<V>) other_vertex).content);
             }else return false;
         }
 

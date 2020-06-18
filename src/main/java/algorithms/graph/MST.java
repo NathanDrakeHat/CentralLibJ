@@ -20,8 +20,7 @@ public final class MST {
         @Override
         @SuppressWarnings("unchecked")
         public boolean equals(Object other_vertex){
-            if(other_vertex == null) return false;
-            else if(this.getClass().equals(other_vertex.getClass())){
+            if(other_vertex instanceof KruskalVertex){
                 return content.equals(((KruskalVertex<V>) other_vertex).content);
             }else return false;
         }

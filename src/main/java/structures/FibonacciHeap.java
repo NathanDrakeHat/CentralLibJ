@@ -46,7 +46,7 @@ public final class FibonacciHeap<V> {
         @Override
         public int compareTo(Node other){
             var t =  (int) (key - other.key);
-            if(t == 0) return value.hashCode() - other.value.hashCode();
+            if(t == 0) return value.equals(other.value)? 0 : value.hashCode() - other.value.hashCode();
             else return t;
         }
 
