@@ -98,47 +98,47 @@ public final class MST {
     public enum PrimQueue{
         MIN_HEAP, FIBONACCI_HEAP
     }
-    public static <T> void algorithmOfPrim(Graph<PrimVertex<T>> graph, PrimVertex<T> r, PrimQueue structure){
-        if(structure == PrimQueue.FIBONACCI_HEAP) {
-            FibonacciHeap<PrimVertex<T>> Q = new FibonacciHeap<>();
-            for (var u : graph.getAllVertices()) {
-                if (!u.equals(r)) u.key = Double.POSITIVE_INFINITY;
-                else {
-                    u.key = 0.0;
-                }
-                Q.insert(u.key, u);
-                u.parent = null;
+    public static <T> void algorithmOfPrimWithFibonacciHeap(Graph<PrimVertex<T>> graph, PrimVertex<T> r){
+        FibonacciHeap<PrimVertex<T>> Q = new FibonacciHeap<>();
+        for (var u : graph.getAllVertices()) {
+            if (!u.equals(r)) u.key = Double.POSITIVE_INFINITY;
+            else {
+                u.key = 0.0;
             }
-            while (Q.length() > 0) {
-                var u = Q.extractMin();
-                for (var v : graph.getNeighborsAt(u)) {
-                    if (Q.contains(v) && graph.computeWeight(u, v) < v.key) {
-                        v.parent = u;
-                        v.key = graph.computeWeight(u, v);
-                        Q.decreaseKey(v, v.key);
-                    }
+            Q.insert(u.key, u);
+            u.parent = null;
+        }
+        while (Q.length() > 0) {
+            var u = Q.extractMin();
+            for (var v : graph.getNeighborsAt(u)) {
+                if (Q.contains(v) && graph.computeWeight(u, v) < v.key) {
+                    v.parent = u;
+                    v.key = graph.computeWeight(u, v);
+                    Q.decreaseKey(v, v.key);
                 }
             }
-        }else if(structure == PrimQueue.MIN_HEAP){
-            var vertices = graph.getAllVertices();
-            for (var u : vertices) {
-                if (!u.equals(r)) u.key = Double.POSITIVE_INFINITY;
-                else {
-                    u.key = 0.0;
-                }
-                u.parent = null;
+        }
+    }
+
+    public static <T> void algorithmOfPrimWithMinHeap(Graph<PrimVertex<T>> graph, PrimVertex<T> r){
+        var vertices = graph.getAllVertices();
+        for (var u : vertices) {
+            if (!u.equals(r)) u.key = Double.POSITIVE_INFINITY;
+            else {
+                u.key = 0.0;
             }
-            MinHeap<PrimVertex<T>> Q = new MinHeap<>(vertices, PrimVertex::getKey);
-            while (Q.length() > 0) {
-                var u = Q.extractMin();
-                for (var v : graph.getNeighborsAt(u)) {
-                    if (Q.contains(v) && graph.computeWeight(u, v) < v.key) {
-                        v.parent = u;
-                        v.key = graph.computeWeight(u, v);
-                        Q.decreaseKey(v, v.key);
-                    }
+            u.parent = null;
+        }
+        MinHeap<PrimVertex<T>> Q = new MinHeap<>(vertices, PrimVertex::getKey);
+        while (Q.length() > 0) {
+            var u = Q.extractMin();
+            for (var v : graph.getNeighborsAt(u)) {
+                if (Q.contains(v) && graph.computeWeight(u, v) < v.key) {
+                    v.parent = u;
+                    v.key = graph.computeWeight(u, v);
+                    Q.decreaseKey(v, v.key);
                 }
             }
-        }else throw new AssertionError();
+        }
     }
 }

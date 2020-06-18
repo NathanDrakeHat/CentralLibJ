@@ -64,32 +64,32 @@ public final class SSSP {
     public enum DijkstraQueue{
         MIN_HEAP, FIBONACCI_HEAP
     }
-    public static <T> void algorithmDijkstra(Graph<BFS.Vertex<T>> G, BFS.Vertex<T> s,DijkstraQueue structure){
-        if(structure == DijkstraQueue.FIBONACCI_HEAP) {
-            initializeSingleSource(G, s);
-            var vertices = G.getAllVertices();
-            FibonacciHeap<BFS.Vertex<T>> Q = new FibonacciHeap<>();
-            for (var vertex : vertices) Q.insert(vertex.distance, vertex);
-            while (Q.length() > 0) {
-                var u = Q.extractMin();
-                for (var v : G.getNeighborsAt(u)) {
-                    var original = v.distance;
-                    relax(u, v, G);
-                    if (v.distance < original) Q.decreaseKey(v, v.distance);
-                }
+    public static <T> void algorithmDijkstraWithFibonacciHeap(Graph<BFS.Vertex<T>> G, BFS.Vertex<T> s){
+        initializeSingleSource(G, s);
+        var vertices = G.getAllVertices();
+        FibonacciHeap<BFS.Vertex<T>> Q = new FibonacciHeap<>();
+        for (var vertex : vertices) Q.insert(vertex.distance, vertex);
+        while (Q.length() > 0) {
+            var u = Q.extractMin();
+            for (var v : G.getNeighborsAt(u)) {
+                var original = v.distance;
+                relax(u, v, G);
+                if (v.distance < original) Q.decreaseKey(v, v.distance);
             }
-        }else if(structure == DijkstraQueue.MIN_HEAP){
-            initializeSingleSource(G, s);
-            var vertices = G.getAllVertices();
-            MinHeap<BFS.Vertex<T>> Q = new MinHeap<>(vertices, BFS.Vertex::getDistance);
-            while (Q.length() > 0) {
-                var u = Q.extractMin();
-                for (var v : G.getNeighborsAt(u)) {
-                    var original = v.distance;
-                    relax(u, v, G);
-                    if (v.distance < original) Q.decreaseKey(v, v.distance);
-                }
+        }
+    }
+
+    public static <T> void algorithmDijkstraWithMinHeap(Graph<BFS.Vertex<T>> G, BFS.Vertex<T> s){
+        initializeSingleSource(G, s);
+        var vertices = G.getAllVertices();
+        MinHeap<BFS.Vertex<T>> Q = new MinHeap<>(vertices, BFS.Vertex::getDistance);
+        while (Q.length() > 0) {
+            var u = Q.extractMin();
+            for (var v : G.getNeighborsAt(u)) {
+                var original = v.distance;
+                relax(u, v, G);
+                if (v.distance < original) Q.decreaseKey(v, v.distance);
             }
-        }else throw new AssertionError();
+        }
     }
 }

@@ -71,7 +71,7 @@ class MSTTest {
     @Test
     public void algorithmOfPrimTestWithFibonacciHeap(){
         var graph = buildPrimExample();
-        MST.algorithmOfPrim(graph, new MST.PrimVertex<>("a"), MST.PrimQueue.FIBONACCI_HEAP);
+        MST.algorithmOfPrimWithFibonacciHeap(graph, new MST.PrimVertex<>("a"));
         var vertices = graph.getAllVertices();
         Set<Set<MST.PrimVertex<String>>> res = new HashSet<>();
         for(var vertex : vertices){
@@ -88,7 +88,7 @@ class MSTTest {
     @Test
     public void algorithmOfPrimTestWithMinHeap(){
         var graph = buildPrimExample();
-        MST.algorithmOfPrim(graph, new MST.PrimVertex<>("a"), MST.PrimQueue.MIN_HEAP);
+        MST.algorithmOfPrimWithMinHeap(graph, new MST.PrimVertex<>("a"));
         var vertices = graph.getAllVertices();
         Set<Set<MST.PrimVertex<String>>> res = new HashSet<>();
         for(var vertex : vertices){

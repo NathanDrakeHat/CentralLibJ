@@ -91,7 +91,7 @@ class SSSPTest {
     @Test
     void algorithmDijkstraTestWithFibonacciHeap(){
         var g = buildDijkstraCase();
-        SSSP.algorithmDijkstra(g, new BFS.Vertex<>("s"), SSSP.DijkstraQueue.FIBONACCI_HEAP);
+        SSSP.algorithmDijkstraWithMinHeap(g, new BFS.Vertex<>("s"));
         var vertices = g.getAllVertices().stream().sorted(Comparator.comparing(BFS.Vertex::getContent)).collect(Collectors.toList());
         assertNull(vertices.get(0).getParent());
 
@@ -111,7 +111,7 @@ class SSSPTest {
     @Test
     void algorithmDijkstraTestWithMinHeap(){
         var g = buildDijkstraCase();
-        SSSP.algorithmDijkstra(g, new BFS.Vertex<>("s"), SSSP.DijkstraQueue.MIN_HEAP);
+        SSSP.algorithmDijkstraWithFibonacciHeap(g, new BFS.Vertex<>("s"));
         var vertices = g.getAllVertices().stream().sorted(Comparator.comparing(BFS.Vertex::getContent)).collect(Collectors.toList());
         assertNull(vertices.get(0).getParent());
 
