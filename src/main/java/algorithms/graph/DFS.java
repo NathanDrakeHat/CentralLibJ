@@ -41,12 +41,13 @@ public final class DFS {
     }
 
     public static <T> void depthFirstSearch(Graph<Vertex<T>> G) {
-        for (var v : G.getAllVertices()) {
+        var vertices = G.getAllVertices();
+        for (var v : vertices) {
             v.color = COLOR.WHITE;
             v.parent = null;
         }
         int time = 0;
-        for(var v : G.getAllVertices()){
+        for(var v : vertices){
             if(v.color == COLOR.WHITE){
                 time = DFSVisit(G, v, time);
             }

@@ -111,7 +111,6 @@ public final class MST {
             }
             while (Q.length() > 0) {
                 var u = Q.extractMin();
-
                 for (var v : graph.getNeighborsAt(u)) {
                     if (Q.contains(v) && graph.computeWeight(u, v) < v.key) {
                         v.parent = u;

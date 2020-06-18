@@ -11,13 +11,14 @@ public final class SSSP {
     // general case algorithm: negative weight, cyclic
     public static <T> boolean algorithmBellmanFord(Graph<BFS.Vertex<T>> graph, BFS.Vertex<T> s){
         initializeSingleSource(graph, s);
-        int len = graph.getAllVertices().toArray().length;
+        int len = graph.getVerticesCount();
+        var edges = graph.getAllEdges();
         for(int i = 1; i < len; i++){
-            for(var edge : graph.getAllEdges()){
+            for(var edge : edges){
                 relax(edge.getFormerVertex(), edge.getLaterVertex(), graph);
             }
         }
-        for(var edge : graph.getAllEdges()){
+        for(var edge : edges){
             if(edge.getLaterVertex().distance > edge.getFormerVertex().distance + graph.computeWeight(edge)){
                 return false;}
         }

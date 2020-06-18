@@ -11,6 +11,7 @@ public final class Graph<V>  {
     private final Direction graph_direction;
     private final Map<V, Set<V>> neighbors_map = new HashMap<>();
     private final Map<Edge, Double> weight_map = new HashMap<>();
+    private int size;
     final class Edge {
         private final V former_vertex;
         private final V later_vertex;
@@ -64,12 +65,6 @@ public final class Graph<V>  {
 
         public V getLaterVertex() { return later_vertex; }
 
-        public V getAnotherSide(V vertex){
-            if(former_vertex.equals(vertex)) return later_vertex;
-            else if(later_vertex.equals(vertex)) return former_vertex;
-            else throw new IllegalArgumentException("Not match.");
-        }
-
         @Override
         public String toString(){ return string; }
 
@@ -78,10 +73,15 @@ public final class Graph<V>  {
     }
 
     public Graph(Collection<V> vertices, Direction is_directed){
+        size = 0;
         for(var v : vertices) {
-            this.neighbors_map.put(v, new HashSet<>());}
+            this.neighbors_map.put(v, new HashSet<>());
+            size++;
+        }
         this.graph_direction = is_directed;
     }
+
+    public int getVerticesCount() { return size; }
 
     public void setNeighbor(V vertex, V neighbor){ setNeighbor(vertex, neighbor, 1); }
     public void setNeighbor(V vertex, V neighbor, double w){
