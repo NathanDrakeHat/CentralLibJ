@@ -6,10 +6,6 @@ import java.util.function.BiConsumer;
 
 
 public final class RedBlackTree<K, V> {
-    enum COLOR{ RED, BLACK }
-    private ColorNode<K,V> root = null;
-    private Comparator<K> k_comparator;
-    private final ColorNode<K,V> sentinel = new ColorNode<>( COLOR.BLACK);// sentinel: denote leaf and parent of root
     static class ColorNode<P,Q> implements Comparable<ColorNode<P,Q>>{
         private P key;
         private Q value;
@@ -69,6 +65,11 @@ public final class RedBlackTree<K, V> {
             }else return p_comparator.compare(this.getKey(),key);
         }
     }
+    enum COLOR{ RED, BLACK }
+    private ColorNode<K,V> root = null;
+    private Comparator<K> k_comparator;
+    private final ColorNode<K,V> sentinel = new ColorNode<>( COLOR.BLACK);// sentinel: denote leaf and parent of root
+
 
     public RedBlackTree(){}
     public RedBlackTree(Comparator<K> k_comparator){ this.k_comparator = k_comparator; }

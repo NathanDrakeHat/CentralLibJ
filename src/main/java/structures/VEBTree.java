@@ -1,5 +1,7 @@
 package structures;
 
+import java.util.NoSuchElementException;
+
 public final class VEBTree {
     //keys are not duplicate and confined in a range
     private int u = 0; //universe size
@@ -119,7 +121,7 @@ public final class VEBTree {
     public Integer maximum(){
         var res =  maximum(this);
         if(res != NONE) return res;
-        else return null;
+        else throw new NoSuchElementException();
     }
     private int maximum(VEBTree V){
         return V.max;
@@ -128,7 +130,7 @@ public final class VEBTree {
     public Integer minimum(){
         var res =  minimum(this);
         if(res != NONE) return res;
-        else return null;
+        else throw new NoSuchElementException();
     }
     private int minimum(VEBTree V){ return V.min; }
 
@@ -142,7 +144,7 @@ public final class VEBTree {
     public Integer successor(int x) {
         var res =  successor(this, x);
         if(res != NONE) return res;
-        else return null;
+        else throw new NoSuchElementException();
     }
     private int successor(VEBTree V, int x){
         // base
@@ -167,7 +169,7 @@ public final class VEBTree {
     public Integer predecessor(int x){
         var res =  predecessor(this, x);
         if(res != NONE) return res;
-        else return null;
+        else throw new NoSuchElementException();
     }
     private int predecessor(VEBTree V, int x){
         if(V.u == 2){

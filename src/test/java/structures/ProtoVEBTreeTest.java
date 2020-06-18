@@ -24,37 +24,20 @@ class ProtoVEBTreeTest {
     void clean() { T = null; }
 
     @Test
-    void hasMemberTest() {
-        assertTrue(T.hasMember(3));
-    }
+    void hasMemberTest() { assertTrue(T.hasMember(3)); }
 
     @Test
-    void predecessorTest(){
-        assertEquals(T.predecessor(3), 1);
-    }
+    void predecessorTest(){ assertEquals(1,T.predecessor(3)); }
 
     @Test
-    void successorTest(){
-        assertEquals(T.successor(3), 5);
-    }
+    void successorTest(){ assertEquals(5,T.successor(3)); }
 
     @Test
-    void maximumTest(){
-        assertEquals(T.maximum(), 15);
-    }
+    void maximumTest(){ assertEquals(15,T.maximum()); }
 
     @Test
-    void minimumTest(){
-        assertEquals(T.minimum(), 1);
-    }
+    void minimumTest(){ assertEquals(1,T.minimum()); }
 
     @Test
-    void exceptionTest(){
-        assertThrows(NullPointerException.class, new Executable() {
-            @Override
-            public void execute() throws Throwable {
-                T.successor(15);
-            }
-        });
-    }
+    void exceptionTest(){ assertThrows(NullPointerException.class, () -> T.successor(15)); }
 }

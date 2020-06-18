@@ -2,6 +2,8 @@ package structures;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.NoSuchElementException;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class VEBTreeTest {
@@ -17,8 +19,8 @@ class VEBTreeTest {
         var V = new VEBTree(4);
         V.safeInsert(1).safeInsert(9).safeInsert(5).safeInsert(3).safeInsert(15);
         V.safeInsert(5).safeInsert(3).safeInsert(15).safeInsert(1);
-        assertNull(V.successor(15));
-        assertNull(V.predecessor(1));
+        assertThrows(NoSuchElementException.class,()->V.successor(15));
+        assertThrows(NoSuchElementException.class,()->V.predecessor(1));
         assertEquals(1, (int) V.predecessor(3));
         assertEquals(15, (int) V.successor(9));
         assertEquals(3, (int) V.predecessor(5));

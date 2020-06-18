@@ -19,14 +19,14 @@ class OrderStatisticTreeTest {
         RBtree.insertKey(8);
         RBtree.insertKey(4);
         OrderStatisticTree.ColorSizeNode root = RBtree.getRoot();
-        assertEquals(root.getKey(), 7); // 7
-        assertEquals(root.getLeft().getKey(), 2); // 2
-        assertEquals(root.getRight().getKey(), 11); // 11
-        assertEquals(root.getLeft().getLeft().getKey(), 1); // 1
-        assertEquals(root.getLeft().getRight().getKey(), 5); // 5
-        assertEquals(root.getLeft().getRight().getLeft().getKey(), 4); // 4
-        assertEquals(root.getRight().getLeft().getKey(), 8); // 8
-        assertEquals(root.getRight().getRight().getKey(), 14); // 14
-        assertEquals(root.getRight().getRight().getRight().getKey(), 15); // 15
+        assertEquals(7,root.getKey()); // 7
+        assertEquals(2,root.getLeft().getKey()); // 2
+        assertEquals(11,root.getRight().getKey()); // 11
+        assertEquals(1,root.getLeft().getLeft().getKey()); // 1
+        assertEquals(5,root.getLeft().getRight().getKey()); // 5
+        assertEquals(4,root.getLeft().getRight().getLeft().getKey()); // 4
+        assertEquals(8,root.getRight().getLeft().getKey()); // 8
+        assertEquals(14,root.getRight().getRight().getKey()); // 14
+        assertEquals(15,root.getRight().getRight().getRight().getKey()); // 15
     }
 }
