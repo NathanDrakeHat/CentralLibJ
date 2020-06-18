@@ -66,8 +66,8 @@ class DFSTest {
         DFS.depthFirstSearch(G);
         int idx = 0;
         for(var v : G.getAllVertices()){
-            assertEquals(v.discover, res[0][idx]);
-            assertEquals(v.finish, res[1][idx++]);
+            assertEquals(res[0][idx],v.discover);
+            assertEquals(res[1][idx++],v.finish);
         }
     }
 

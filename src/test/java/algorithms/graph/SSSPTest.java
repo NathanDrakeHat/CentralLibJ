@@ -18,14 +18,14 @@ class SSSPTest {
         BFS.Vertex<String> target = new BFS.Vertex<>("z");
         for(var v : G.getAllVertices()){
             if(v.equals(target)) { target = v; } }
-        assertEquals(target.getDistance(), -2);
+        assertEquals(-2,target.getDistance());
         List<String> res = new ArrayList<>();
         while(target != null){
             res.add(target.getContent());
             target = target.getParent();
         }
         assertTrue(b);
-        assertEquals(res, List.of("z", "t", "x", "y","s"));
+        assertEquals(List.of("z", "t", "x", "y","s"),res);
     }
     static Graph<BFS.Vertex<String>> buildBellmanFordCase(){
         String[] names = "s,t,x,y,z".split(",");
@@ -49,17 +49,17 @@ class SSSPTest {
         var l = vertices.stream().sorted(Comparator.comparing(BFS.Vertex::getContent)).collect(Collectors.toList());
         assertNull(l.get(0).getParent());
         assertNull(l.get(1).getParent());
-        assertEquals(l.get(2).getParent(), l.get(1));
-        assertEquals(l.get(2).getDistance(), 2);
+        assertEquals(l.get(1),l.get(2).getParent());
+        assertEquals(2,l.get(2).getDistance());
 
-        assertEquals(l.get(3).getParent(), l.get(1));
-        assertEquals(l.get(3).getDistance(),6);
+        assertEquals(l.get(1),l.get(3).getParent());
+        assertEquals(6,l.get(3).getDistance());
 
-        assertEquals(l.get(4).getParent(), l.get(3));
-        assertEquals(l.get(4).getDistance(),5);
+        assertEquals(l.get(3),l.get(4).getParent());
+        assertEquals(5,l.get(4).getDistance());
 
-        assertEquals(l.get(5).getParent(), l.get(4));
-        assertEquals(l.get(5).getDistance(), 3);
+        assertEquals(l.get(4),l.get(5).getParent());
+        assertEquals(3,l.get(5).getDistance());
     }
     static Result buildShortestPathOfDAGForBFS(){
         String[] names = "r,s,t,x,y,z".split(",");
@@ -95,17 +95,17 @@ class SSSPTest {
         var vertices = g.getAllVertices().stream().sorted(Comparator.comparing(BFS.Vertex::getContent)).collect(Collectors.toList());
         assertNull(vertices.get(0).getParent());
 
-        assertEquals(vertices.get(1).getParent(),vertices.get(3));
-        assertEquals(vertices.get(1).getDistance(),8);
+        assertEquals(vertices.get(3),vertices.get(1).getParent());
+        assertEquals(8,vertices.get(1).getDistance());
 
-        assertEquals(vertices.get(2).getParent(),vertices.get(1));
-        assertEquals(vertices.get(2).getDistance(), 9);
+        assertEquals(vertices.get(1),vertices.get(2).getParent());
+        assertEquals(9,vertices.get(2).getDistance());
 
-        assertEquals(vertices.get(3).getParent(),vertices.get(0));
-        assertEquals(vertices.get(3).getDistance(), 5);
+        assertEquals(vertices.get(0),vertices.get(3).getParent());
+        assertEquals(5,vertices.get(3).getDistance());
 
-        assertEquals(vertices.get(4).getParent(),vertices.get(3));
-        assertEquals(vertices.get(4).getDistance(), 7);
+        assertEquals(vertices.get(3),vertices.get(4).getParent());
+        assertEquals(7,vertices.get(4).getDistance());
     }
 
     @Test
@@ -115,17 +115,17 @@ class SSSPTest {
         var vertices = g.getAllVertices().stream().sorted(Comparator.comparing(BFS.Vertex::getContent)).collect(Collectors.toList());
         assertNull(vertices.get(0).getParent());
 
-        assertEquals(vertices.get(1).getParent(),vertices.get(3));
-        assertEquals(vertices.get(1).getDistance(),8);
+        assertEquals(vertices.get(3),vertices.get(1).getParent());
+        assertEquals(8,vertices.get(1).getDistance());
 
-        assertEquals(vertices.get(2).getParent(),vertices.get(1));
-        assertEquals(vertices.get(2).getDistance(), 9);
+        assertEquals(vertices.get(1),vertices.get(2).getParent());
+        assertEquals(9,vertices.get(2).getDistance());
 
-        assertEquals(vertices.get(3).getParent(),vertices.get(0));
-        assertEquals(vertices.get(3).getDistance(), 5);
+        assertEquals(vertices.get(0),vertices.get(3).getParent());
+        assertEquals(5,vertices.get(3).getDistance());
 
-        assertEquals(vertices.get(4).getParent(),vertices.get(3));
-        assertEquals(vertices.get(4).getDistance(), 7);
+        assertEquals(vertices.get(3),vertices.get(4).getParent());
+        assertEquals(7,vertices.get(4).getDistance());
     }
     static Graph<BFS.Vertex<String>> buildDijkstraCase(){
         String[] names = "s,t,x,y,z".split(",");

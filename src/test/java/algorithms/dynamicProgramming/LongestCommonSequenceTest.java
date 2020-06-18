@@ -17,6 +17,6 @@ class LongestCommonSequenceTest {
     @Test
     void solveTest() {
         char[] r = solve(Data.s1, Data.s2);
-        assertArrayEquals(r, Data.res);
+        assertArrayEquals(Data.res,r);
     }
 }

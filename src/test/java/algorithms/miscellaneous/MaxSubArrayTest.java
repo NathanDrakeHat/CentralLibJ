@@ -12,16 +12,16 @@ class MaxSubArrayTest {
     @Test
     void divideAndConquer() {
         MaxSubArray.Interval res = MaxSubArray.divideAndConquer(test, 0, 20);
-        assertEquals(res.start, 9);
-        assertEquals(res.end, 15);
-        assertEquals(res.max_sum, 14);
+        assertEquals(9,res.start);
+        assertEquals(15,res.end);
+        assertEquals(14,res.max_sum);
     }
 
     @Test
     void onlineMaxSub() {
         MaxSubArray.Interval res = MaxSubArray.onlineMaxSub(test, 20);
-        assertEquals(res.start, 9);
-        assertEquals(res.end, 15);
-        assertEquals(res.max_sum, 14);
+        assertEquals(9,res.start);
+        assertEquals(15,res.end);
+        assertEquals(14,res.max_sum);
     }
 }

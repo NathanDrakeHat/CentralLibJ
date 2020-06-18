@@ -45,6 +45,6 @@ class BFSTest {
         var vs = Data.makeVertexes();
         var t = Data.makeGraph(vs);
         BFS.breathFirstSearch(t, vs.get(1));
-        assertEquals(BFS.getPath(vs.get(1), vs.get(7)), List.of('s','w','x','y'));
+        assertEquals(List.of('s','w','x','y'),BFS.getPath(vs.get(1), vs.get(7)));
     }
 }

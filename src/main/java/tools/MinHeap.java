@@ -5,8 +5,8 @@ import java.util.function.Function;
 
 public class MinHeap<V> {
     private final List<KeyValuePair<Double,V>> array = new ArrayList<>();
-    private final Map<V, NodeAndIndex> valuePairMap = new HashMap<>();
-    private int length;
+    private final Map<V, NodeAndIndex> value_node_map = new HashMap<>();
+    private int heap_size;
     private class NodeAndIndex{
         KeyValuePair<Double,V> node;
         int index;
@@ -16,42 +16,46 @@ public class MinHeap<V> {
         }
     }
 
-    public MinHeap(Set<V> l, Function<V, Double> getKey){
-        length = 0;
+    public MinHeap(Collection<V> l, Function<V, Double> getKey){
+        heap_size = 0;
         int idx = 0;
         for(var i : l){
-            length++;
+            heap_size++;
             var n = new KeyValuePair<>(getKey.apply(i),i);
             array.add(n);
-            valuePairMap.put(n.getValue(),new NodeAndIndex(n,idx++));
+            value_node_map.put(n.getValue(),new NodeAndIndex(n,idx++));
         }
         buildMinHeap(array);
     }
 
     public V extractMin(){
         var res = array.get(0);
-        array.set(0, array.get(length-1));
-        length--;
-        minHeapify(array,0,length);
-        valuePairMap.remove(res.getValue());
+        array.set(0, array.get(heap_size -1));
+        heap_size--;
+        minHeapify(array,0, heap_size);
+        value_node_map.remove(res.getValue());
         return res.getValue();
     }
 
     public void decreaseKey(V value, double new_key){
-        var store = valuePairMap.get(value);
+        var store = value_node_map.get(value);
         if(store.node.getKey() < new_key) throw new IllegalArgumentException();
         else{
-            for(int i = store.index/2; i >= 0; i--){
-                minHeapify(array,i,length);
-            }
+            store.node.setKey(new_key);
+            boolean min_property_breaked = true;
+            int parent_idx = (store.index+1)/2-1;
+            while (min_property_breaked && parent_idx >= 0){
+                min_property_breaked = minHeapify(array, parent_idx, heap_size);
+                parent_idx = (parent_idx+1)/2-1;
+            };
         }
     }
 
-    public boolean contains(V value) { return valuePairMap.containsKey(value); }
+    public boolean contains(V value) { return value_node_map.containsKey(value); }
 
-    public int length() { return length; }
+    public int length() { return heap_size; }
 
-    private void minHeapify(List<KeyValuePair<Double,V>> arr, int idx, int heap_size){
+    private boolean minHeapify(List<KeyValuePair<Double,V>> arr, int idx, int heap_size){
         int l = 2 * (idx + 1);
         int l_idx = l - 1;
         int r = 2 * (idx + 1) + 1;
@@ -68,11 +72,13 @@ public class MinHeap<V> {
             arr.set(min_idx,arr.get(idx))  ;
             arr.set(idx,t);
             minHeapify(arr, min_idx, heap_size);
+            return true;
         }
+        return false;
     }
     private void buildMinHeap(List<KeyValuePair<Double,V>> arr){
-        for(int i = arr.size()/2 - 1; i >= 0; i--){
-            minHeapify(arr, i, arr.size());
+        for(int i = heap_size /2 - 1; i >= 0; i--){
+            minHeapify(arr, i, heap_size);
         }
     }
 

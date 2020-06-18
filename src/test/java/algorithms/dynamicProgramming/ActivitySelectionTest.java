@@ -16,12 +16,12 @@ class ActivitySelectionTest {
     @Test
     void testRecursive() {
         var res = recursiveActivitySelector(Data.s, Data.f);
-        assertArrayEquals(res.getResult(), new int[]{0, 3, 7, 10});
+        assertArrayEquals(new int[]{0, 3, 7, 10},res.getResult());
     }
 
     @Test
     void testGreedy(){
         var res = greedyActivitySelector(Data.s, Data.f);
-        assertArrayEquals(res.getResult(), new int[]{0, 3, 7, 10});
+        assertArrayEquals(new int[]{0, 3, 7, 10},res.getResult());
     }
 }

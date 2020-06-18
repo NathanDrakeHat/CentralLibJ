@@ -15,8 +15,8 @@ class CutRodTest {
     void recursiveCutRod() {
         for(int i = 1; i <= 15; i++){
             var t = CutRod.recursiveCutRod(p, i);
-            assertEquals(t.getPrice(), price[i-1]);
-            assertArrayEquals(t.getApproach(), method[i-1]);
+            assertEquals(price[i-1],t.getPrice());
+            assertArrayEquals(method[i-1],t.getApproach());
         }
 
     }

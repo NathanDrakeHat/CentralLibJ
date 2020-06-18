@@ -74,12 +74,7 @@ public final class Graph<V>  {
         }
     }
 
-    public Graph(List<V> vertices, Direction is_directed){
-        for(var v : vertices) {
-            this.neighbors_map.put(v, new HashSet<>());}
-        this.graph_direction = is_directed;
-    }
-    public Graph(Set<V> vertices, Direction is_directed){
+    public Graph(Collection<V> vertices, Direction is_directed){
         for(var v : vertices) {
             this.neighbors_map.put(v, new HashSet<>());}
         this.graph_direction = is_directed;

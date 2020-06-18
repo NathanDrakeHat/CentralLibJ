@@ -16,7 +16,7 @@ class MSTTest {
         for(var e : t){
             i += G.computeWeight(e);
         }
-        assertEquals(i, 37);
+        assertEquals(37,i );
     }
     static Graph<MST.KruskalVertex<String>> buildKruskalExample(){
         String n = "a,b,c,d,e,f,g,h,i";
