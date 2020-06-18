@@ -42,10 +42,10 @@ public class MinHeap<V> {
         if(store.node.getKey() < new_key) throw new IllegalArgumentException();
         else{
             store.node.setKey(new_key);
-            boolean min_property_breaked = true;
+            boolean min_property_broken = true;
             int parent_idx = (store.index+1)/2-1;
-            while (min_property_breaked && parent_idx >= 0){
-                min_property_breaked = minHeapify(array, parent_idx, heap_size);
+            while (min_property_broken && parent_idx >= 0){
+                min_property_broken = minHeapify(array, parent_idx, heap_size);
                 parent_idx = (parent_idx+1)/2-1;
             };
         }
