@@ -68,13 +68,13 @@ public final class MST {
         private final V content;
         PrimVertex<V> parent;
         private double key = 0;
+        private final String string;
+        private final int hash_code;
 
-        public PrimVertex(V name) { this.content = name; }
-
-        public PrimVertex(PrimVertex<V> other){
-            this.content = other.content;
-            this.parent = other.parent;
-            this.key = other.key;
+        public PrimVertex(V name) {
+            this.content = name;
+            string = String.format("PrimVertex: (%s)", content.toString());
+            hash_code = string.hashCode();
         }
 
         public V getContent() { return content; }
@@ -82,19 +82,18 @@ public final class MST {
         public double getKey() { return key; }
 
         @Override
-        public int hashCode() { return toString().hashCode(); }
+        public int hashCode() { return hash_code; }
 
         @Override
         @SuppressWarnings("unchecked")
         public boolean equals(Object other){
-            if(other == null) return false;
-            else if(this.getClass().equals(other.getClass())){
+            if(other instanceof PrimVertex){
                 return content.equals(((PrimVertex<V>) other).content);
             }else return false;
         }
 
         @Override
-        public String toString() { return String.format("PrimVertex: (%s)", content.toString()); }
+        public String toString() { return string; }
     }
     public enum PrimQueue{
         MIN_HEAP, FIBONACCI_HEAP
