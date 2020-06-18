@@ -3,6 +3,7 @@ package tools;
 import java.util.*;
 import java.util.function.Function;
 
+// key must be a number
 public class MinHeap<V> {
     private final List<KeyValuePair<Double,V>> array = new ArrayList<>();
     private final Map<V, NodeAndIndex> value_node_map = new HashMap<>();

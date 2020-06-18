@@ -4,6 +4,7 @@ import java.lang.reflect.Array;
 import java.util.*;
 
 // dynamic minimum priority queue
+// key must be a number
 public final class FibonacciHeap<V> {
     private Node root_list = null;
     private int number = 0; // number of nodes
