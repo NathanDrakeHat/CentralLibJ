@@ -10,8 +10,14 @@ public final class BFS {
         private COLOR color;
         double distance; // d
         private final V content;
+        private final String string;
+        private final int hash_code;
 
-        Vertex(V name){ this.content = name; }
+        Vertex(V name){
+            this.content = name;
+            string = String.format("BFS.Vertex: (%s)",content.toString());
+            hash_code = string.hashCode();
+        }
 
         public V getContent() { return content; }
 
@@ -27,14 +33,10 @@ public final class BFS {
             }else return false;
         }
 
-        @Override public int hashCode(){
-            return toString().hashCode();
-        }
+        @Override public int hashCode(){ return hash_code; }
 
         @Override
-        public String toString() {
-            return String.format("BFS.Vertex: (%s)",content.toString());
-        }
+        public String toString() { return string; }
     }
 
     public static <T> void breathFirstSearch(Graph<Vertex<T>> G, Vertex<T> s) {

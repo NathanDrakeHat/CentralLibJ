@@ -15,11 +15,27 @@ public final class Graph<V>  {
         private final V former_vertex;
         private final V later_vertex;
         private final Direction edge_direction;
+        private final String string;
+        private final int hash_code;
 
         Edge(V former, V later, Direction is_directed){
             former_vertex = former;
             later_vertex = later;
             this.edge_direction = is_directed;
+            if(edge_direction == Direction.DIRECTED)
+                string =  String.format("[Edge(%s >>> %s)]", former_vertex, later_vertex);
+            else
+               string = String.format("[Edge(%s <-> %s)], %d", former_vertex, later_vertex, hashCode());
+            if(edge_direction == Direction.DIRECTED)
+                hash_code = Objects.hash(former_vertex, later_vertex, true);
+            else{
+                int t1 = Objects.hashCode(former_vertex);
+                int t2 = Objects.hashCode(later_vertex);
+                if(t1 <= t2)
+                    hash_code = Objects.hash(former_vertex,later_vertex,false);
+                else
+                    hash_code = Objects.hash(later_vertex,former_vertex,false);
+            }
         }
 
         @Override
@@ -55,23 +71,10 @@ public final class Graph<V>  {
         }
 
         @Override
-        public String toString(){
-            if(edge_direction == Direction.DIRECTED)
-                return String.format("[Edge(%s >>> %s)]", former_vertex, later_vertex);
-            else
-                return String.format("[Edge(%s <-> %s)], %d", former_vertex, later_vertex, hashCode());
-        }
+        public String toString(){ return string; }
 
         @Override
-        public int hashCode(){
-            if(edge_direction == Direction.DIRECTED) return Objects.hash(former_vertex, later_vertex, true);
-            else{
-                int t1 = Objects.hashCode(former_vertex);
-                int t2 = Objects.hashCode(later_vertex);
-                if(t1 <= t2) return Objects.hash(former_vertex,later_vertex,false);
-                else return Objects.hash(later_vertex,former_vertex,false);
-            }
-        }
+        public int hashCode(){ return hash_code; }
     }
 
     public Graph(Collection<V> vertices, Direction is_directed){

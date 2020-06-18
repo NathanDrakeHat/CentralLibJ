@@ -12,8 +12,14 @@ public final class DFS {
         int discover; //d
         int finish; // f
         private final V content;
+        private final String string;
+        private final int hash_code;
 
-        public Vertex(V name){ this.content = name; }
+        public Vertex(V name){
+            this.content = name;
+            string = String.format("DFS.Vertex: (%s)",content.toString());
+            hash_code = string.hashCode();
+        }
 
         public V getContent() {return content;}
 
@@ -28,12 +34,10 @@ public final class DFS {
         }
 
         @Override
-        public int hashCode(){ return toString().hashCode(); }
+        public int hashCode(){ return hash_code; }
 
         @Override
-        public String toString(){
-            return String.format("DFS.Vertex: (%s)",content.toString());
-        }
+        public String toString(){ return string; }
     }
 
     public static <T> void depthFirstSearch(Graph<Vertex<T>> G) {

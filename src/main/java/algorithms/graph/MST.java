@@ -12,8 +12,14 @@ public final class MST {
         private final V content;
         private int rank = 0;
         private KruskalVertex<V> parent = this;
+        private final String string;
+        private final int hash_code;
 
-        public KruskalVertex(V n) { content = n; }
+        public KruskalVertex(V n) {
+            content = n;
+            string = String.format("KruskalVertex: %s", content.toString());
+            hash_code = string.hashCode();
+        }
 
         public V getContent() { return content; }
 
@@ -26,7 +32,7 @@ public final class MST {
         }
 
         @Override
-        public int hashCode(){ return toString().hashCode(); }
+        public int hashCode(){ return hash_code; }
         
         @Override
         public int getRank() { return rank; }
@@ -39,7 +45,7 @@ public final class MST {
         public void setParent(KruskalVertex<V> r) { this.parent = r; }
 
         @Override
-        public String toString(){ return String.format("KruskalVertex: %s", content.toString()); }
+        public String toString(){ return string; }
         
     }
     public static <T> Set<Graph<KruskalVertex<T>>.Edge> algorithmOfKruskal(Graph<KruskalVertex<T>> graph){
