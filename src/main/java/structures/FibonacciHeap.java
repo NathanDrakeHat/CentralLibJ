@@ -2,7 +2,6 @@ package structures;
 
 import java.lang.reflect.Array;
 import java.util.*;
-import tools.KeyValuePair;
 
 // dynamic minimum priority queue
 public final class FibonacciHeap<V> {
@@ -10,7 +9,8 @@ public final class FibonacciHeap<V> {
     private int number = 0; // number of nodes
     void setNumber(int n) { this.number = n; }
     class Node implements Comparable<Node>{
-        private final KeyValuePair<Double,V> content;
+        private double key;
+        private V value;
         private Node parent = null;
         private Node childList = null; // int linked, circular list
         private Node left = this;
@@ -18,16 +18,19 @@ public final class FibonacciHeap<V> {
         private int degree = 0; // number of children
         private boolean mark = false; // whether the node had lost a child when it be made another node's child
 
-        private Node(double key, V val) { content = new KeyValuePair<>(key, val); }
+        private Node(double key, V val) {
+            this.key = key;
+            this.value = val;
+        }
 
         public Node getLeft() { return left; }
         public Node getRight() { return right; }
 
-        public double getKey() { return content.getKey(); }
-        private void setKey(double key) { content.setKey(key); }
+        public double getKey() { return key; }
+        private void setKey(double key) { this.key = key; }
         
-        public V getValue() { return content.getValue(); }
-        private void setValue(V val) { content.setValue(val); }
+        public V getValue() { return value; }
+        private void setValue(V val) { this.value = val; }
 
         public Node getParent() { return parent; }
         private void setParent(Node p) { parent = p; }
@@ -40,24 +43,29 @@ public final class FibonacciHeap<V> {
         public Node getChildList() { return childList; }
 
         @Override
-        public int compareTo(Node other){ return (int) (content.getKey() - other.content.getKey()); }
+        public int compareTo(Node other){
+            var t =  (int) (key - other.key);
+            if(t == 0) return value.hashCode() - other.value.hashCode();
+            else return t;
+        }
 
         @Override
         public int hashCode(){
-            return content.hashCode();
+            return Objects.hash(key,value);
         }
 
         @Override
+        @SuppressWarnings("unchecked")
         public boolean equals(Object other){
             if(other == null) return false;
             else if(getClass().equals(other.getClass())){
-                return content.equals(other);
+                return (key == ((Node) other).key) && (value.equals(((Node)other).value));
             }else return false;
         }
 
-        Node(double key) { content = new KeyValuePair<>(key, null);}
+        Node(double key) { this.key = key;}
         Node(double key, boolean m){
-            this.content = new KeyValuePair<>(key, null);
+            this.key = key;
             mark = m;
         }
         Node chainAdd(int t, boolean m){
@@ -114,7 +122,7 @@ public final class FibonacciHeap<V> {
             number--;
         }else throw new NoSuchElementException();
         value_Node_map.remove(z.getValue());
-        return z.content.getValue();
+        return z.getValue();
     }
     private void consolidate(){
         @SuppressWarnings("unchecked")

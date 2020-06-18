@@ -1,8 +1,6 @@
 package structures;
 
 public interface DisjointSet<V> {
-
-
     static <T extends DisjointSet<T>> T findSet(T x) {
         if(x != x.getParent())
             x.setParent(findSet(x.getParent()));

@@ -66,7 +66,7 @@ public final class BFS {
         }
     }
 
-    public static <T> List<T> getPath( Vertex<T> s, Vertex<T> v){
+    public static <T> List<T> getPath(Vertex<T> s, Vertex<T> v){
         List<T> t = new ArrayList<>();
         traverse(s, v, t);
         int idx = 0;

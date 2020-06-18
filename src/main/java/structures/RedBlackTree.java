@@ -1,29 +1,30 @@
 package structures;
 
-import tools.KeyValuePair;
+import java.util.Comparator;
 import java.util.NoSuchElementException;
 import java.util.function.BiConsumer;
 
 
-public final class RedBlackTree<K extends Comparable<K>, V> {
+public final class RedBlackTree<K, V> {
     enum COLOR{ RED, BLACK }
     private ColorNode root = null;
+    private Comparator<K> k_comparator;
     private final ColorNode sentinel = new ColorNode( COLOR.BLACK);// sentinel: denote leaf and parent of root
-    class ColorNode{
-        private KeyValuePair<K,V> content;
+    class ColorNode implements Comparable<ColorNode>{
+        private K key;
+        private V value;
         private COLOR color;
         private ColorNode parent;
         private ColorNode left;
         private ColorNode right;
 
-        private ColorNode(COLOR color){
-            this.color = color;
-        }
+        private ColorNode(COLOR color){ this.color = color; }
         private ColorNode(K key, V val){
-            content = new KeyValuePair<>();
-            color = COLOR.RED;
-            content.setKey(key);
-            content.setValue(val);
+            if(key instanceof Comparable){
+                color = COLOR.RED;
+                this.key = key;
+                this.value = val;
+            }else if (k_comparator == null) throw new IllegalArgumentException("need a comparator.");
         }
 
         public boolean isRed(){ return color == COLOR.RED; }
@@ -35,8 +36,8 @@ public final class RedBlackTree<K extends Comparable<K>, V> {
         private void setRed(){ color = COLOR.RED; }
         private void setBlack() { color = COLOR.BLACK; }
 
-        public V getValue(){ return content.getValue(); }
-        public K getKey() { return content.getKey(); }
+        public V getValue(){ return value; }
+        public K getKey() { return key; }
 
         public ColorNode getParent(){ return parent; }
         private void setParent(ColorNode parent){ this.parent = parent; }
@@ -46,7 +47,34 @@ public final class RedBlackTree<K extends Comparable<K>, V> {
 
         public ColorNode getRight(){ return right; }
         private void setRight(ColorNode right){ this.right = right; }
+
+        @Override
+        @SuppressWarnings("unchecked")
+        public int compareTo(ColorNode other){
+            if(key instanceof Comparable){
+                var t = ((Comparable<K>) key).compareTo(other.key);
+                if(t == 0) return value.hashCode() - other.value.hashCode();
+                else return t;
+            }else if(k_comparator == null){
+                throw new IllegalArgumentException("need a comparator.");
+            }else{
+                var t = k_comparator.compare(key,other.key);
+                if(t == 0) return value.hashCode() - other.value.hashCode();
+                else return t;
+            }
+        }
+
+        @SuppressWarnings("unchecked")
+        public int compareKey(K key){
+            if(getKey() instanceof Comparable){
+                return ((Comparable<K>) getKey()).compareTo(key);
+            }else return k_comparator.compare(this.getKey(),key);
+        }
     }
+
+    public RedBlackTree(){}
+    public RedBlackTree(Comparator<K> k_comparator){ this.k_comparator = k_comparator; }
+    public void setComparator(Comparator<K> k_comparator) { this.k_comparator = k_comparator; }
 
     public V getValueOfMinKey(){
         if(getRoot() != null && getSentinel() != getRoot()) {
@@ -146,14 +174,14 @@ public final class RedBlackTree<K extends Comparable<K>, V> {
             var ptr = getRoot();
             while(ptr != getSentinel()){
                 store = ptr;
-                if(n.getKey().compareTo(ptr.getKey()) < 0){
+                if(n.compareTo(ptr) < 0){
                     ptr = ptr.getLeft();
                 }else{
                     ptr = ptr.getRight();
                 }
             }
             n.setParent(store);
-            if(n.getKey().compareTo(store.getKey()) < 0){
+            if(n.compareTo(store) < 0){
                 store.setLeft(n);
             }else{
                 store.setRight(n);
@@ -308,11 +336,11 @@ public final class RedBlackTree<K extends Comparable<K>, V> {
         return search(getRoot(), key).getValue();
     }
     private ColorNode search(ColorNode n, K key){
-        if(n.getKey().compareTo(key) == 0){
+        if(n.compareKey(key) == 0){
             return n;
-        }else if(key.compareTo(n.getKey()) < 0 && n.getLeft() != getSentinel()){
+        }else if(n.compareKey(key) > 0 && n.getLeft() != getSentinel()){
             return search(n.getLeft(), key);
-        }else if(key.compareTo(n.getKey()) > 0 && n.getRight() != getSentinel()){
+        }else if(n.compareKey(key) < 0 && n.getRight() != getSentinel()){
             return search(n.getRight(), key);
         }
         throw new NoSuchElementException();

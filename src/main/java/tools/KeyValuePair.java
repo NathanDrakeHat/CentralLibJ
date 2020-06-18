@@ -1,28 +1,37 @@
 package tools;
 
+import java.util.Comparator;
 import java.util.Objects;
 
-public final class KeyValuePair<A extends Comparable<A>, B> implements Comparable<KeyValuePair<A, B>>{
-    private A key;
-    private B value;
-    public KeyValuePair(A key, B value){
+public final class KeyValuePair<K, V> implements Comparable<KeyValuePair<K, V>>{
+    private K key;
+    private V value;
+    private Comparator<K> k_comparator;
+    public KeyValuePair(K key, V value){
         this.key = key;
         this.value = value;
+        if(!(key instanceof Comparable)) throw new IllegalArgumentException();
     }
-    public KeyValuePair(){}
+    public KeyValuePair(K key, V value, Comparator<K> k_comparator){
+        this.key = key;
+        this.value = value;
+        this.k_comparator = k_comparator;
+    }
 
-    public A getKey() { return key; }
-    public void setKey(A key) { this.key = key; }
+    public void setComparator(Comparator<K> k_comparator){ this.k_comparator = k_comparator; }
 
-    public B getValue() { return value; }
-    public void setValue(B value) { this.value = value; }
+    public K getKey() { return key; }
+    public void setKey(K key) { this.key = key; }
+
+    public V getValue() { return value; }
+    public void setValue(V value) { this.value = value; }
 
     @Override
     @SuppressWarnings("unchecked")
     public boolean equals(Object other){
         if(other == null) return false;
         else if(other.getClass().equals(this.getClass())){
-            return key.equals(((KeyValuePair<A, B>) other).key) && value.equals(((KeyValuePair<A,B>) other).value);
+            return key.equals(((KeyValuePair<K, V>) other).key) && value.equals(((KeyValuePair<K, V>) other).value);
         }else return false;
     }
 
@@ -30,7 +39,18 @@ public final class KeyValuePair<A extends Comparable<A>, B> implements Comparabl
     public int hashCode() { return Objects.hash(key, value); }
 
     @Override
-    public int compareTo(KeyValuePair<A, B> other){ return key.compareTo(other.key); }
+    @SuppressWarnings("unchecked")
+    public int compareTo(KeyValuePair<K, V> other){
+        if(key instanceof Comparable){
+            var t = ((Comparable<K>) key).compareTo(other.key);
+            if(t == 0) return value.hashCode() - other.hashCode();
+            else return t;
+        }else if(k_comparator != null){
+            var t = k_comparator.compare(key, other.key);
+            if(t == 0) return value.hashCode() - other.hashCode();
+            else return t;
+        }else throw new AssertionError();
+    }
 
     @Override
     public String toString() { return String.format("Pair(key: %s, value: %s)",key.toString(),value.toString()); }

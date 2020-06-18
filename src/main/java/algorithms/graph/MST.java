@@ -43,6 +43,22 @@ public final class MST {
         public String toString(){ return String.format("KruskalVertex: %s", content.toString()); }
         
     }
+    public static <T> Set<Graph<KruskalVertex<T>>.Edge> algorithmOfKruskal(Graph<KruskalVertex<T>> graph){
+        Set<Graph<KruskalVertex<T>>.Edge> res = new HashSet<>();
+        var edges_set = graph.getAllEdges();
+        var edges_list = new ArrayList<>(edges_set);
+        edges_list.sort(Comparator.comparingDouble(graph::computeWeight));
+        for(var edge : edges_list){
+            var v1 = edge.getFormerVertex();
+            var v2 = edge.getLaterVertex();
+            if(DisjointSet.findSet(v1) != DisjointSet.findSet(v2)){
+                res.add(edge);
+                DisjointSet.union(v1, v2);
+            }
+        }
+        return res;
+    }
+
     public static class PrimVertex<V>{
         private final V content;
         PrimVertex<V> parent;
@@ -75,23 +91,6 @@ public final class MST {
         @Override
         public String toString() { return String.format("PrimVertex: (%s)", content.toString()); }
     }
-
-    public static <T> Set<Graph<KruskalVertex<T>>.Edge> algorithmOfKruskal(Graph<KruskalVertex<T>> graph){
-        Set<Graph<KruskalVertex<T>>.Edge> res = new HashSet<>();
-        var edges_set = graph.getAllEdges();
-        var edges_list = new ArrayList<>(edges_set);
-        edges_list.sort(Comparator.comparingDouble(graph::computeWeight));
-        for(var edge : edges_list){
-            var v1 = edge.getFormerVertex();
-            var v2 = edge.getLaterVertex();
-            if(DisjointSet.findSet(v1) != DisjointSet.findSet(v2)){
-                res.add(edge);
-                DisjointSet.union(v1, v2);
-            }
-        }
-        return res;
-    }
-
     public enum PrimQueue{
         MIN_HEAP, FIBONACCI_HEAP
     }
