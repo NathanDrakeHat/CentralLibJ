@@ -61,9 +61,6 @@ public final class SSSP {
     // non-negative weight,
     // fibonacci heap time :O(V^2*lgV + V*E)
     // min heap time :O(V*E*lgV)
-    public enum DijkstraQueue{
-        MIN_HEAP, FIBONACCI_HEAP
-    }
     public static <T> void algorithmDijkstraWithFibonacciHeap(Graph<BFS.Vertex<T>> G, BFS.Vertex<T> s){
         initializeSingleSource(G, s);
         var vertices = G.getAllVertices();
