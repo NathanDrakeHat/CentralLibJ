@@ -122,7 +122,7 @@ public final class FibonacciHeap<V> {
         return z.getValue();
     }
     private void consolidate(){
-        @SuppressWarnings("unchecked")
+        @SuppressWarnings("unchecked") // root_list cannot be null and is Node<V> when this function is called
         Node<V>[] A = (Node<V>[])Array.newInstance(root_list.getClass(), upperBound()+1);
         var w = root_list;
         if(w == null) return;
