@@ -7,22 +7,26 @@ import java.util.function.BiConsumer;
 
 
 public final class RedBlackTree<K, V> {
-    static class ColorNode<P,Q> implements Comparable<ColorNode<P,Q>>{
+    public static class ColorNode<P,Q> implements Comparable<ColorNode<P,Q>>{
         private P key;
         private Q value;
         private COLOR color;
         private ColorNode<P,Q> parent;
         private ColorNode<P,Q> left;
         private ColorNode<P,Q> right;
-        private Comparator<P> p_comparator;
+        private final Comparator<P> p_comparator;
 
-        private ColorNode(COLOR color){ this.color = color; }
+        private ColorNode(COLOR color){
+            this.color = color;
+            p_comparator = null;
+        }
         private ColorNode(P key, Q val, Comparator<P> p_comparator){
             Objects.requireNonNull(key);
             if(key instanceof Comparable){
                 color = COLOR.RED;
                 this.key = key;
                 this.value = val;
+                this.p_comparator = p_comparator;
             }else {
                 color = COLOR.RED;
                 this.key = key;
@@ -36,7 +40,7 @@ public final class RedBlackTree<K, V> {
         public boolean isBlack(){ return color == COLOR.BLACK; }
 
         public COLOR getColor(){ return color; }
-        public void setColor(COLOR color){ this.color = color; }
+        private void setColor(COLOR color){ this.color = color; }
 
         private void setRed(){ color = COLOR.RED; }
         private void setBlack() { color = COLOR.BLACK; }
@@ -76,16 +80,15 @@ public final class RedBlackTree<K, V> {
     }
     enum COLOR{ RED, BLACK }
     private ColorNode<K,V> root = null;
-    private Comparator<K> k_comparator;
+    private final Comparator<K> k_comparator;
     private final ColorNode<K,V> sentinel = new ColorNode<>(COLOR.BLACK);// sentinel: denote leaf and parent of root
 
 
-    public RedBlackTree(){ }
+    public RedBlackTree(){ k_comparator = null; }
     public RedBlackTree(Comparator<K> k_comparator){
         Objects.requireNonNull(k_comparator);
         this.k_comparator = k_comparator;
     }
-    public void setComparator(Comparator<K> k_comparator) { this.k_comparator = k_comparator; }
 
     public V getValueOfMinKey(){
         if(getRoot() != null && getSentinel() != getRoot()) {
@@ -122,7 +125,7 @@ public final class RedBlackTree<K, V> {
         root = r;
         root.setParent(getSentinel());
     }
-    ColorNode<K,V> getRoot() { return root; }
+    public ColorNode<K,V> getRoot() { return root; }
 
     public void inOrderForEach(BiConsumer<K, V> bc){ // inorder print
         if(getRoot() == null || getSentinel() == getRoot()){
