@@ -19,7 +19,6 @@ public final class RedBlackTree<K, V> {
         private ColorNode(COLOR color){ this.color = color; }
         private ColorNode(P key, Q val, Comparator<P> p_comparator){
             Objects.requireNonNull(key);
-            Objects.requireNonNull(p_comparator);
             if(key instanceof Comparable){
                 color = COLOR.RED;
                 this.key = key;
@@ -28,6 +27,7 @@ public final class RedBlackTree<K, V> {
                 color = COLOR.RED;
                 this.key = key;
                 this.value = val;
+                Objects.requireNonNull(p_comparator);
                 this.p_comparator = p_comparator;
             }
         }
