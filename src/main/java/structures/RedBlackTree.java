@@ -56,29 +56,31 @@ public final class RedBlackTree<K, V> {
         @Override
         @SuppressWarnings("unchecked")
         public int compareTo(ColorNode other){
-            if(key instanceof Comparable){
-                var t = ((Comparable<P>) key).compareTo((P) other.key);
-                return (t == 0) ? (value.equals(other.value)? 0 : value.hashCode() - other.value.hashCode()) : t;
-            }else if(p_comparator != null){
+            if(p_comparator != null){
                 var t = p_comparator.compare(key, (P) other.key);
                 return (t == 0)? (value.equals(other.value)? 0 : value.hashCode() - other.value.hashCode()) : t;
-            }else throw new IllegalArgumentException("need a comparator.");
+            }else if(key instanceof Comparable){
+                var t = ((Comparable<P>) key).compareTo((P) other.key);
+                return (t == 0) ? (value.equals(other.value)? 0 : value.hashCode() - other.value.hashCode()) : t;
+            } else throw new AssertionError();
         }
 
         @SuppressWarnings("unchecked")
         public int compareKey(P key){
-            if(getKey() instanceof Comparable){
+            if(p_comparator != null) {
+                return p_comparator.compare(this.getKey(),key);
+            } else if(getKey() instanceof Comparable){
                 return ((Comparable<P>) getKey()).compareTo(key);
-            }else return p_comparator.compare(this.getKey(),key);
+            }else throw new AssertionError();
         }
     }
     enum COLOR{ RED, BLACK }
     private ColorNode<K,V> root = null;
     private Comparator<K> k_comparator;
-    private final ColorNode<K,V> sentinel = new ColorNode<>( COLOR.BLACK);// sentinel: denote leaf and parent of root
+    private final ColorNode<K,V> sentinel = new ColorNode<>(COLOR.BLACK);// sentinel: denote leaf and parent of root
 
 
-    public RedBlackTree(){}
+    public RedBlackTree(){ }
     public RedBlackTree(Comparator<K> k_comparator){
         Objects.requireNonNull(k_comparator);
         this.k_comparator = k_comparator;
