@@ -122,8 +122,9 @@ public final class FibonacciHeap<V> {
         return z.getValue();
     }
     private void consolidate(){
-        @SuppressWarnings("unchecked") // root_list cannot be null and is Node<V> when this function is called
-        Node<V>[] A = (Node<V>[])Array.newInstance(root_list.getClass(), upperBound()+1);
+        List<Node<V>> A = new ArrayList<>();
+        int len = upperBound()+1;
+        for(int i = 0; i < len; i++) A.add(null);
         var w = root_list;
         if(w == null) return;
         var dict = new HashSet<Node<V>>(32);
@@ -131,18 +132,18 @@ public final class FibonacciHeap<V> {
             var x = w; // x current node
             var next = x.right;
             int d = x.degree;
-            Node<V> t = x;
-            while(A[d] != null){
-                var y = A[d]; // y stored node
+            while(A.get(d) != null){
+                var y = A.get(d); // y stored node
                 if(x.compareTo(y) > 0) { // exchange pointer
-                    linkTo(x, y);
-                    t = y;
-                }else linkTo(y, x);
-
-                A[d] = null;
+                    var t = x;
+                    x = y;
+                    y = t;
+                }
+                linkTo(y, x);
+                A.set(d,null);
                 d++;
             }
-            A[d] = t;
+            A.set(d,x);
             // for w in root list end
             dict.add(w);
             w = next;
@@ -150,7 +151,7 @@ public final class FibonacciHeap<V> {
         dict.clear();
         root_list = null;
         for(int i = 0; i <= upperBound(); i++){
-            var t = A[i];
+            var t = A.get(i);
             if(t != null){
                 if(root_list == null){
                     t.right = t;
