@@ -64,11 +64,14 @@ public final class RedBlackTree<K, V> {
                 var t = p_comparator.compare(key, (P) other.key);
                 return (t == 0)? (value.equals(other.value)? 0 : value.hashCode() - other.value.hashCode()) : t;
             }else if(key instanceof Comparable){
+                if(!this.key.getClass().equals(other.key.getClass()))
+                    throw new IllegalArgumentException("type match error");
                 var t = ((Comparable<P>) key).compareTo((P) other.key);
                 return (t == 0) ? (value.equals(other.value)? 0 : value.hashCode() - other.value.hashCode()) : t;
             } else throw new AssertionError();
         }
 
+        // It must be same
         @SuppressWarnings("unchecked")
         public int compareKey(P key){
             if(p_comparator != null) {
