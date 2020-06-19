@@ -65,7 +65,7 @@ public final class SSSP {
     }
 
     // non-negative weight,
-    // fibonacci heap time :O(V^2*lgV + V*E)
+    // fibonacci heap, time complexity: O(V^2*lgV + V*E)
     public static <T> void algorithmDijkstraWithFibonacciHeap(Graph<BFS.Vertex<T>> G, BFS.Vertex<T> s){
         Objects.requireNonNull(s);
         Objects.requireNonNull(G);
@@ -82,7 +82,7 @@ public final class SSSP {
             }
         }
     }
-    // min heap time :O(V*E*lgV)
+    // min heap, time complexity: O(V*E*lgV)
     public static <T> void algorithmDijkstraWithMinHeap(Graph<BFS.Vertex<T>> G, BFS.Vertex<T> s){
         Objects.requireNonNull(s);
         Objects.requireNonNull(G);
