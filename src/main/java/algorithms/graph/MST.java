@@ -25,10 +25,9 @@ public final class MST {
         public V getContent() { return content; }
 
         @Override
-        @SuppressWarnings("unchecked")
         public boolean equals(Object other_vertex){
             if(other_vertex instanceof KruskalVertex){
-                return content.equals(((KruskalVertex<V>) other_vertex).content);
+                return content.equals(((KruskalVertex<?>) other_vertex).content);
             }else return false;
         }
 
@@ -88,11 +87,10 @@ public final class MST {
         public int hashCode() { return hash_code; }
 
         @Override
-        @SuppressWarnings("unchecked")
         public boolean equals(Object other){
             if(this == other) return true;
             else if(!(other instanceof PrimVertex)) return false;
-            else return content.equals(((PrimVertex<V>) other).content);
+            else return content.equals(((PrimVertex<?>) other).content);
         }
 
         @Override

@@ -5,9 +5,6 @@ import java.util.function.Function;
 
 // key must be a number
 public class MinHeap<V> {
-    private final List<KeyValuePair<Double,V>> array = new ArrayList<>();
-    private final Map<V, NodeAndIndex> value_node_map = new HashMap<>();
-    private int heap_size;
     private class NodeAndIndex{
         KeyValuePair<Double,V> node;
         int index;
@@ -16,11 +13,17 @@ public class MinHeap<V> {
             this.index = index;
         }
     }
+    private final List<KeyValuePair<Double,V>> array = new ArrayList<>();
+    private final Map<V, NodeAndIndex> value_node_map = new HashMap<>();
+    private int heap_size;
 
-    public MinHeap(Collection<V> l, Function<V, Double> getKey){
+    public MinHeap(Collection<V> c, Function<V, Double> getKey){
+        Objects.requireNonNull(c);
+        Objects.requireNonNull(getKey);
         heap_size = 0;
         int idx = 0;
-        for(var i : l){
+        for(var i : c){
+            Objects.requireNonNull(i);
             heap_size++;
             var n = new KeyValuePair<>(getKey.apply(i),i);
             array.add(n);

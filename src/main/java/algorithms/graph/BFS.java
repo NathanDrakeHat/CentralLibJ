@@ -27,11 +27,10 @@ public final class BFS {
         public double getDistance() { return distance; }
 
         @Override
-        @SuppressWarnings("unchecked")
         public boolean equals(Object other_vertex){
             if(other_vertex == this) return true;
             else if(!(other_vertex instanceof  Vertex)) return false;
-            else return content.equals(((Vertex<V>) other_vertex).content);
+            else return content.equals(((Vertex<?>) other_vertex).content);
         }
 
         @Override public int hashCode(){ return hash_code; }
