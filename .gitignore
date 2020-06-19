@@ -9,3 +9,4 @@ src/main/java/Main.java
 src/main/resources/
 *.txt
 src/backup/
+GirProxy.java
