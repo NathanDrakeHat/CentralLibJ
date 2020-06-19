@@ -36,7 +36,6 @@ public final class Graph<V>  {
         }
 
         @Override
-        @SuppressWarnings("unchecked")
         public boolean equals(Object other_edge) {
             if (other_edge == this) return true;
             else if (!(other_edge instanceof Edge)) return false;

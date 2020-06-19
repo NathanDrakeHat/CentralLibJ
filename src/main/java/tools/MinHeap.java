@@ -52,7 +52,7 @@ public class MinHeap<V> {
             while (min_property_broken && parent_idx >= 0){
                 min_property_broken = minHeapify(array, parent_idx, heap_size);
                 parent_idx = (parent_idx+1)/2-1;
-            };
+            }
         }
     }
 

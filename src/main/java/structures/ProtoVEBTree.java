@@ -7,7 +7,6 @@ public final class ProtoVEBTree {
     private ProtoVEBTree summary = null;
     private ProtoVEBTree[] cluster = null;
 
-    private ProtoVEBTree(){}
     private ProtoVEBTree(int u, String s){
         if(!s.equals("universe")) throw new IllegalArgumentException();
         this.u = u;

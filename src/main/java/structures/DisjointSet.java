@@ -16,7 +16,7 @@ public interface DisjointSet<V> {
             x.setParent(y);
             if(x.getRank() == y.getRank()){
                 y.setRank(y.getRank()+1);
-            };
+            }
         }
     }
 

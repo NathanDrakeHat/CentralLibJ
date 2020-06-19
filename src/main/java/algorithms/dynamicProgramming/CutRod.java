@@ -59,7 +59,7 @@ public final class CutRod {
     }
 
     public static CutResult recursiveCutRod(int[] p, int rod_len){
-        if(rod_len == 0){ return null; }
+        if(rod_len <= 0){ throw new IllegalArgumentException(); }
 
         var res = new CutResult();
         int q ;
@@ -88,9 +88,7 @@ public final class CutRod {
 
     public static CutResult topDownCutRod(int[] p, int rod_len){
         // recursive with memory
-        if(rod_len == 0){
-            return null;
-        }
+        if(rod_len <= 0){ throw new IllegalArgumentException(); }
         CutResult[] memory = new CutResult[rod_len];
         return topDownCutRod(p, rod_len, memory);
     }
@@ -123,9 +121,7 @@ public final class CutRod {
     }
 
     public static CutResult bottomUpCutRod(int[] p, int rod_len){
-        if(rod_len == 0){
-            return null;
-        }
+        if(rod_len <= 0){ throw new IllegalArgumentException(); }
         CutResult[] cache = new CutResult[rod_len];
         for(int i = 1; i <= rod_len; i++){ // cache problem from 1 to rod_len
             int max_price = 0;

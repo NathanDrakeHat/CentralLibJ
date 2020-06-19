@@ -18,25 +18,6 @@ public final class MatrixChain {
             }
         }
 
-        public void print(){
-            print(this.res);
-            System.out.println();
-        }
-        private void print(PairNode p){
-            if(p.left != null || p.right != null)
-                System.out.print("(");
-            if(p.left != null){
-                print(p.left);
-            }
-            if(p.right != null){
-                print(p.right);
-            }
-            if(p.right == null && p.left == null)
-                System.out.print(p.a + 1);
-            if(p.left != null || p.right != null)
-                System.out.print(")");
-        }
-
         private void walk(PairNode p, StringBuilder res){
             if(p.left != null || p.right != null)
                 res.append("(");

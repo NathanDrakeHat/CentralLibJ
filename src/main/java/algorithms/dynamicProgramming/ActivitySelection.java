@@ -5,19 +5,12 @@ import java.util.ArrayList;
 public final class ActivitySelection {
     // greedy algorithm
     public static class Node{
-        private int val ;
+        private final int val ;
         private Node next;
-
-        Node(){}
 
         Node(int val){
             this.val = val;
             this.next = null;
-        }
-
-        Node(int val, Node n){
-            this.val = val;
-            this.next = n;
         }
 
         public Node getNext(){ return this.next;}
@@ -32,10 +25,6 @@ public final class ActivitySelection {
             return getNext();
         }
 
-        public int getValue(){ return this.val; }
-
-        public void setValue(int val) { this.val = val; }
-
         public int[] getResult(){
             var t = new ArrayList<Integer>();
             Node ptr = this;
@@ -48,15 +37,6 @@ public final class ActivitySelection {
             for(var i : t)
                 res[idx++] = i;
             return res;
-        }
-
-        public void print(){
-            Node ptr = this;
-            do {
-                System.out.print(ptr.val);
-                System.out.print(" ");
-                ptr = ptr.getNext();
-            } while (ptr != null);
         }
     }
 

@@ -131,18 +131,18 @@ public final class FibonacciHeap<V> {
             var x = w; // x current node
             var next = x.right;
             int d = x.degree;
+            Node<V> t = x;
             while(A[d] != null){
                 var y = A[d]; // y stored node
                 if(x.compareTo(y) > 0) { // exchange pointer
-                    var t = x;
-                    x = y;
-                    y = t;
-                }
-                linkTo(y, x);
+                    linkTo(x, y);
+                    t = y;
+                }else linkTo(y, x);
+
                 A[d] = null;
                 d++;
             }
-            A[d] = x;
+            A[d] = t;
             // for w in root list end
             dict.add(w);
             w = next;

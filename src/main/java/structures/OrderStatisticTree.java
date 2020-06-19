@@ -1,5 +1,6 @@
 package structures;
 
+import java.util.NoSuchElementException;
 import java.util.function.BiConsumer;
 
 public final class OrderStatisticTree{ // get rank of node from left to right
@@ -23,20 +24,8 @@ public final class OrderStatisticTree{ // get rank of node from left to right
         ColorSizeNode(double key, Color color){
             this.key = key;
             this.color = color;
-            int size = 1;
         }
 
-        ColorSizeNode(double key, int size){
-            this.key = key;
-            this.color = Color.RED;
-            this.size = size;
-        }
-
-        ColorSizeNode(double key, Color color, int size){
-            this.key = key;
-            this.color = color;
-            this.size = size;
-        }
 
         public int getSize() { return this.size; }
 
@@ -105,7 +94,7 @@ public final class OrderStatisticTree{ // get rank of node from left to right
 
     public ColorSizeNode search(double key){
         if(root == null || root == sentinel){
-            return null;
+            throw new NoSuchElementException();
         }
         return search(root, key);
     }
@@ -127,18 +116,10 @@ public final class OrderStatisticTree{ // get rank of node from left to right
     }
 
     public ColorSizeNode getMinimum(){
-        if(root != null || sentinel != root) {
-            return getMinimum(root);
-        }else{
-            return null;
-        }
+        return getMinimum(root);
     }
     public ColorSizeNode getMaximum(){
-        if(root != null || root != sentinel) {
-            return getMaximum(root);
-        }else{
-            return null;
-        }
+        return getMaximum(root);
     }
 
     public void insertKey(double key){
@@ -260,8 +241,9 @@ public final class OrderStatisticTree{ // get rank of node from left to right
     }
     private void deleteFixUp(ColorSizeNode fix_up){
         while(fix_up != root && fix_up.isBlack()){
+            ColorSizeNode sibling;
             if(fix_up == fix_up.parent.left){
-                ColorSizeNode sibling = fix_up.parent.right;
+                sibling = fix_up.parent.right;
                 if(sibling.isRed()) { // case1:sibling is black, convert to case 2, 3 or 4
                     sibling.setBlack(); // , which denote that sibling is black
                     fix_up.parent.setRed();
@@ -282,9 +264,8 @@ public final class OrderStatisticTree{ // get rank of node from left to right
                 fix_up.parent.setBlack();
                 sibling.right.setBlack();
                 leftRotate(fix_up.parent);
-                fix_up = root;
             }else{
-                ColorSizeNode sibling = fix_up.parent.left;
+                sibling = fix_up.parent.left;
                 if(sibling.isRed()) {
                     sibling.setBlack();
                     fix_up.parent.setRed();
@@ -305,8 +286,8 @@ public final class OrderStatisticTree{ // get rank of node from left to right
                 fix_up.parent.setBlack();
                 sibling.left.setBlack();
                 rightRotate(fix_up.parent);
-                fix_up = root;
             }
+            fix_up = root;
         }
         fix_up.setBlack();
     }
@@ -374,6 +355,7 @@ public final class OrderStatisticTree{ // get rank of node from left to right
             target = ptr;
             ptr = ptr.left;
         }
+        if(target == null) throw new NoSuchElementException();
         return target;
     }
     private ColorSizeNode getMaximum(ColorSizeNode current){
@@ -383,6 +365,7 @@ public final class OrderStatisticTree{ // get rank of node from left to right
             target = ptr;
             ptr = ptr.right;
         }
+        if(target == null) throw new NoSuchElementException();
         return target;
     }
 

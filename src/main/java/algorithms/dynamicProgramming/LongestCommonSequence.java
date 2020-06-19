@@ -34,7 +34,7 @@ public final class LongestCommonSequence { // longest common sequence problem, b
             printLCS(b, x, x.length, y.length);
         }
 
-        int count = getCount(b, x, x.length, y.length, 0);
+        int count = getCount(b, x.length, y.length, 0);
         char[] res = new char[count];
         getResult(b, x, x.length, y.length, res, count - 1);
         return res;
@@ -54,16 +54,16 @@ public final class LongestCommonSequence { // longest common sequence problem, b
             printLCS(b, x, i, j - 1);
         }
     }
-    private static int getCount(char[][] b, char[] x, int i, int j, int count){
+    private static int getCount(char[][] b, int i, int j, int count){
         if(i == 0 | j == 0){
             return count;
         }
         if(b[i - 1][j - 1] == '\\'){
-            return getCount(b, x, i - 1, j - 1, count + 1);
+            return getCount(b, i - 1, j - 1, count + 1);
         }else if(b[i - 1][j - 1] == '|'){
-            return getCount(b, x, i - 1, j, count);
+            return getCount(b, i - 1, j, count);
         }else{ // b[i][j] == '-'
-            return getCount(b, x, i, j - 1, count);
+            return getCount(b, i, j - 1, count);
         }
     }
     private static void getResult(char[][] b, char[] x, int i, int j, char[] res, int index){
