@@ -5,13 +5,6 @@ import java.util.*;
 
 
 public final class Graph<V>  {
-    public enum Direction{
-        DIRECTED,NON_DIRECTED
-    }
-    private final Direction graph_direction;
-    private final Map<V, Set<V>> neighbors_map = new HashMap<>();
-    private final Map<Edge<V>, Double> weight_map = new HashMap<>();
-    private int size;
     public static final class Edge<T> {
         private final T former_vertex;
         private final T later_vertex;
@@ -20,13 +13,16 @@ public final class Graph<V>  {
         private final int hash_code;
 
         Edge(T former, T later, Direction is_directed){
+            Objects.requireNonNull(former);
+            Objects.requireNonNull(later);
+            Objects.requireNonNull(is_directed);
             former_vertex = former;
             later_vertex = later;
             this.edge_direction = is_directed;
             if(edge_direction == Direction.DIRECTED)
                 string =  String.format("[Edge(%s >>> %s)]", former_vertex, later_vertex);
             else
-               string = String.format("[Edge(%s <-> %s)], %d", former_vertex, later_vertex, hashCode());
+                string = String.format("[Edge(%s <-> %s)], %d", former_vertex, later_vertex, hashCode());
             if(edge_direction == Direction.DIRECTED)
                 hash_code = Objects.hash(former_vertex, later_vertex, true);
             else{
@@ -43,8 +39,8 @@ public final class Graph<V>  {
         @SuppressWarnings("unchecked")
         public boolean equals(Object other_edge) {
             if (other_edge == this) return true;
-             else if (!(other_edge instanceof Edge)) return false;
-             else {
+            else if (!(other_edge instanceof Edge)) return false;
+            else {
                 if (edge_direction != ((Edge<T>) other_edge).edge_direction) return false;
                 else if (edge_direction == Direction.DIRECTED) {
                     return former_vertex.equals(((Edge<T>) other_edge).former_vertex) &&
@@ -69,10 +65,20 @@ public final class Graph<V>  {
         @Override
         public int hashCode(){ return hash_code; }
     }
+    public enum Direction{
+        DIRECTED,NON_DIRECTED
+    }
+    private final Direction graph_direction;
+    private final Map<V, Set<V>> neighbors_map = new HashMap<>();
+    private final Map<Edge<V>, Double> weight_map = new HashMap<>();
+    private int size;
+
 
     public Graph(Collection<V> vertices, Direction is_directed){
+        Objects.requireNonNull(is_directed);
         size = 0;
         for(var v : vertices) {
+            Objects.requireNonNull(v);
             this.neighbors_map.put(v, new HashSet<>());
             size++;
         }

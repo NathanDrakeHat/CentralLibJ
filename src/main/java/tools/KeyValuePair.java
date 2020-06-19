@@ -8,11 +8,14 @@ public final class KeyValuePair<K, V> implements Comparable<KeyValuePair<K, V>>{
     private V value;
     private Comparator<K> k_comparator;
     public KeyValuePair(K key, V value){
+        Objects.requireNonNull(key);
         this.key = key;
         this.value = value;
         if(!(key instanceof Comparable)) throw new IllegalArgumentException();
     }
     public KeyValuePair(K key, V value, Comparator<K> k_comparator){
+        Objects.requireNonNull(k_comparator);
+        Objects.requireNonNull(key);
         this.key = key;
         this.value = value;
         this.k_comparator = k_comparator;
@@ -21,7 +24,10 @@ public final class KeyValuePair<K, V> implements Comparable<KeyValuePair<K, V>>{
     public void setComparator(Comparator<K> k_comparator){ this.k_comparator = k_comparator; }
 
     public K getKey() { return key; }
-    public void setKey(K key) { this.key = key; }
+    public void setKey(K key) {
+        Objects.requireNonNull(key);
+        this.key = key;
+    }
 
     public V getValue() { return value; }
     public void setValue(V value) { this.value = value; }

@@ -16,6 +16,7 @@ public final class MST {
         private final int hash_code;
 
         public KruskalVertex(V n) {
+            Objects.requireNonNull(n);
             content = n;
             string = String.format("KruskalVertex: %s", content.toString());
             hash_code = string.hashCode();
@@ -49,6 +50,7 @@ public final class MST {
         
     }
     public static <T> Set<Graph.Edge<KruskalVertex<T>>> algorithmOfKruskal(Graph<KruskalVertex<T>> graph){
+        Objects.requireNonNull(graph);
         Set<Graph.Edge<KruskalVertex<T>>> res = new HashSet<>();
         var edges_set = graph.getAllEdges();
         var edges_list = new ArrayList<>(edges_set);
@@ -72,6 +74,7 @@ public final class MST {
         private final int hash_code;
 
         public PrimVertex(V name) {
+            Objects.requireNonNull(name);
             this.content = name;
             string = String.format("PrimVertex: (%s)", content.toString());
             hash_code = string.hashCode();
@@ -96,6 +99,8 @@ public final class MST {
         public String toString() { return string; }
     }
     public static <T> void algorithmOfPrimWithFibonacciHeap(Graph<PrimVertex<T>> graph, PrimVertex<T> r){
+        Objects.requireNonNull(r);
+        Objects.requireNonNull(graph);
         FibonacciHeap<PrimVertex<T>> Q = new FibonacciHeap<>();
         for (var u : graph.getAllVertices()) {
             if (!u.equals(r)) u.key = Double.POSITIVE_INFINITY;
@@ -117,6 +122,8 @@ public final class MST {
         }
     }
     public static <T> void algorithmOfPrimWithMinHeap(Graph<PrimVertex<T>> graph, PrimVertex<T> r){
+        Objects.requireNonNull(r);
+        Objects.requireNonNull(graph);
         var vertices = graph.getAllVertices();
         for (var u : vertices) {
             if (!u.equals(r)) u.key = Double.POSITIVE_INFINITY;

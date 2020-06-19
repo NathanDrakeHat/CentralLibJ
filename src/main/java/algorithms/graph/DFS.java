@@ -2,6 +2,7 @@ package algorithms.graph;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public final class DFS {
     // depth first search
@@ -16,6 +17,7 @@ public final class DFS {
         private final int hash_code;
 
         public Vertex(V name){
+            Objects.requireNonNull(name);
             this.content = name;
             string = String.format("DFS.Vertex: (%s)",content.toString());
             hash_code = string.hashCode();

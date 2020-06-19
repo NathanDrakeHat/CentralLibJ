@@ -4,12 +4,15 @@ package algorithms.graph;
 import structures.FibonacciHeap;
 import tools.MinHeap;
 
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 // single source shortest path
 public final class SSSP {
     // general case algorithm: negative weight, cyclic
     public static <T> boolean algorithmBellmanFord(Graph<BFS.Vertex<T>> graph, BFS.Vertex<T> s){
+        Objects.requireNonNull(s);
+        Objects.requireNonNull(graph);
         initializeSingleSource(graph, s);
         int len = graph.getVerticesCount();
         var edges = graph.getAllEdges();
@@ -46,6 +49,9 @@ public final class SSSP {
     Graph<BFS.Vertex<T>> shortestPathOfDAG(Graph<DFS.Vertex<BFS.Vertex<T>>> DFS_graph,
                                            Graph<BFS.Vertex<T>> BFS_graph,
                                            BFS.Vertex<T> s){
+        Objects.requireNonNull(s);
+        Objects.requireNonNull(DFS_graph);
+        Objects.requireNonNull(BFS_graph);
         var DFS_list = DFS.topologicalSort(DFS_graph);
         initializeSingleSource(BFS_graph, s);
         DFS_list.sort((d1,d2)->d2.finish -d1.finish);
@@ -62,6 +68,8 @@ public final class SSSP {
     // fibonacci heap time :O(V^2*lgV + V*E)
     // min heap time :O(V*E*lgV)
     public static <T> void algorithmDijkstraWithFibonacciHeap(Graph<BFS.Vertex<T>> G, BFS.Vertex<T> s){
+        Objects.requireNonNull(s);
+        Objects.requireNonNull(G);
         initializeSingleSource(G, s);
         var vertices = G.getAllVertices();
         FibonacciHeap<BFS.Vertex<T>> Q = new FibonacciHeap<>();
@@ -75,8 +83,9 @@ public final class SSSP {
             }
         }
     }
-
     public static <T> void algorithmDijkstraWithMinHeap(Graph<BFS.Vertex<T>> G, BFS.Vertex<T> s){
+        Objects.requireNonNull(s);
+        Objects.requireNonNull(G);
         initializeSingleSource(G, s);
         var vertices = G.getAllVertices();
         MinHeap<BFS.Vertex<T>> Q = new MinHeap<>(vertices, BFS.Vertex::getDistance);

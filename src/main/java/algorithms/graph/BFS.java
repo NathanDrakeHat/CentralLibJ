@@ -14,6 +14,7 @@ public final class BFS {
         private final int hash_code;
 
         Vertex(V name){
+            Objects.requireNonNull(name);
             this.content = name;
             string = String.format("BFS.Vertex: (%s)",content.toString());
             hash_code = string.hashCode();
@@ -40,6 +41,7 @@ public final class BFS {
     }
 
     public static <T> void breathFirstSearch(Graph<Vertex<T>> G, Vertex<T> s) {
+        Objects.requireNonNull(s);
         var vs = G.getAllVertices();
         for (var v : vs) {
             if (!v.equals(s)) {

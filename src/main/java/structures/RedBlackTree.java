@@ -2,6 +2,7 @@ package structures;
 
 import java.util.Comparator;
 import java.util.NoSuchElementException;
+import java.util.Objects;
 import java.util.function.BiConsumer;
 
 
@@ -17,12 +18,18 @@ public final class RedBlackTree<K, V> {
 
         private ColorNode(COLOR color){ this.color = color; }
         private ColorNode(P key, Q val, Comparator<P> p_comparator){
+            Objects.requireNonNull(key);
+            Objects.requireNonNull(p_comparator);
             if(key instanceof Comparable){
                 color = COLOR.RED;
                 this.key = key;
                 this.value = val;
-            }else if (p_comparator == null) throw new IllegalArgumentException("need a comparator.");
-            this.p_comparator = p_comparator;
+            }else {
+                color = COLOR.RED;
+                this.key = key;
+                this.value = val;
+                this.p_comparator = p_comparator;
+            }
         }
 
         public boolean isRed(){ return color == COLOR.RED; }
@@ -72,7 +79,10 @@ public final class RedBlackTree<K, V> {
 
 
     public RedBlackTree(){}
-    public RedBlackTree(Comparator<K> k_comparator){ this.k_comparator = k_comparator; }
+    public RedBlackTree(Comparator<K> k_comparator){
+        Objects.requireNonNull(k_comparator);
+        this.k_comparator = k_comparator;
+    }
     public void setComparator(Comparator<K> k_comparator) { this.k_comparator = k_comparator; }
 
     public V getValueOfMinKey(){
@@ -106,6 +116,7 @@ public final class RedBlackTree<K, V> {
 
     private ColorNode<K,V> getSentinel() { return sentinel; }
     private void setRoot(ColorNode<K,V> r) {
+        Objects.requireNonNull(r);
         root = r;
         root.setParent(getSentinel());
     }
@@ -115,6 +126,7 @@ public final class RedBlackTree<K, V> {
         if(getRoot() == null || getSentinel() == getRoot()){
             return;
         }
+        Objects.requireNonNull(bc);
         inorderTreeWalk(getRoot(), bc);
     }
     private void inorderTreeWalk(ColorNode<K,V> n, BiConsumer<K, V> bc){
@@ -161,9 +173,13 @@ public final class RedBlackTree<K, V> {
         return height;
     }
 
-    public void insert(K key, V val){ insert(new ColorNode<>(key, val,k_comparator)); }
+    public void insert(K key, V val){
+        Objects.requireNonNull(key);
+        insert(new ColorNode<>(key, val,k_comparator));
+    }
     private void insert(ColorNode<K,V> n){
-        if(n == null || n == sentinel) return;
+        Objects.requireNonNull(n);
+        if(n == sentinel) return;
         if(getRoot() == null || getRoot() == getSentinel()){
             setRoot(n);
             getRoot().setRight(getSentinel());
@@ -229,7 +245,10 @@ public final class RedBlackTree<K, V> {
         getRoot().setBlack();
     }
 
-    public void delete(K key){ delete(search(getRoot(), key)); }
+    public void delete(K key){
+        Objects.requireNonNull(key);
+        delete(search(getRoot(), key));
+    }
     private void delete(ColorNode<K,V> target) {
         if(target == null || target == getSentinel()){
             throw new NoSuchElementException("null tree");
@@ -332,6 +351,7 @@ public final class RedBlackTree<K, V> {
         if(getRoot() == null || getRoot() == getSentinel()){
             throw new NoSuchElementException();
         }
+        Objects.requireNonNull(key);
         return search(getRoot(), key).getValue();
     }
     private ColorNode<K,V> search(ColorNode<K,V> n, K key){
