@@ -76,6 +76,7 @@ public final class Graph<V>  {
     }
     private final Direction graph_direction;
     private final Map<V, Set<Edge<V>>> edge_map = new HashMap<>();
+    private final Map<V, Set<V>> neighbors_map = new HashMap<>();
     private final Map<Edge<V>, Double> weight_map = new HashMap<>();
     private int size;
 
@@ -96,14 +97,14 @@ public final class Graph<V>  {
     public void setNeighbor(V vertex, V neighbor, double w){
         var edge_t = new Edge<>(vertex, neighbor, graph_direction);
         if(graph_direction == Direction.DIRECTED) {
-            var neighbors_set = edge_map.computeIfAbsent(vertex, (k)->new HashSet<>());
-            neighbors_set.add(edge_t);
+            var edges_set = edge_map.computeIfAbsent(vertex, (k)->new HashSet<>());
+            edges_set.add(edge_t);
             weight_map.put(edge_t, w);
         }else{
-            var neighbors_set = edge_map.computeIfAbsent(vertex, (k)->new HashSet<>());
-            neighbors_set.add(edge_t);
-            neighbors_set = edge_map.computeIfAbsent(neighbor, (k)->new HashSet<>());
-            neighbors_set.add(edge_t);
+            var edges_set = edge_map.computeIfAbsent(vertex, (k)->new HashSet<>());
+            edges_set.add(edge_t);
+            edges_set = edge_map.computeIfAbsent(neighbor, (k)->new HashSet<>());
+            edges_set.add(edge_t);
             weight_map.put(edge_t, w);
             edge_t = new Edge<>(neighbor,vertex,graph_direction);
             weight_map.put(edge_t, w);
