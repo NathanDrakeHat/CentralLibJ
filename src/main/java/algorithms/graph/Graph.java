@@ -22,7 +22,7 @@ public final class Graph<V>  {
             later_vertex = later;
             this.edge_direction = is_directed;
             if(edge_direction == Direction.DIRECTED)
-                string =  String.format("[Edge(%s >>> %s)] weight:%f", former_vertex, later_vertex,weight);
+                string =  String.format("[Edge(%s >>> %s)], weight:%f", former_vertex, later_vertex,weight);
             else
                 string = String.format("[Edge(%s <-> %s)], weight:%f", former_vertex, later_vertex,weight);
 
