@@ -53,7 +53,7 @@ public final class MST {
         Set<Graph.Edge<KruskalVertex<T>>> res = new HashSet<>();
         var edges_set = graph.getAllEdges();
         var edges_list = new ArrayList<>(edges_set);
-        edges_list.sort(Comparator.comparingDouble(graph::computeWeight));
+        edges_list.sort(Comparator.comparingDouble(Graph.Edge::getWeight));
         for(var edge : edges_list){
             var v1 = edge.getFormerVertex();
             var v2 = edge.getLaterVertex();
@@ -94,7 +94,7 @@ public final class MST {
         }
 
         @Override
-        public String toString() { return string; }
+        public String toString() { return string.concat(String.format(" %f",key)); }
     }
     public static <T> void algorithmOfPrimWithFibonacciHeap(Graph<PrimVertex<T>> graph, PrimVertex<T> r){
         Objects.requireNonNull(r);
@@ -111,11 +111,12 @@ public final class MST {
         }
         while (Q.length() > 0) {
             var u = Q.extractMin();
-            var u_neighbors = graph.getNeighborsAt(u);
-            for (var v : u_neighbors) {
-                if (Q.contains(v) && graph.computeWeight(u, v) < v.key) {
+            var u_edges = graph.getEdgesAt(u);
+            for (var edge : u_edges) {
+                var v = edge.getAnotherSide(u);
+                if (Q.contains(v) && edge.getWeight() < v.key) {
                     v.parent = u;
-                    v.key = graph.computeWeight(u, v);
+                    v.key = edge.getWeight();
                     Q.decreaseKey(v, v.key);
                 }
             }
@@ -135,12 +136,14 @@ public final class MST {
         MinHeap<PrimVertex<T>> Q = new MinHeap<>(vertices, PrimVertex::getKey);
         while (Q.length() > 0) {
             var u = Q.extractMin();
-            var u_neighbors = graph.getNeighborsAt(u);
-            for (var v : u_neighbors) {
-                if (Q.contains(v) && graph.computeWeight(u, v) < v.key) {
+            var u_edges = graph.getEdgesAt(u);
+            for (var edge : u_edges) {
+                var v = edge.getAnotherSide(u);
+                if (Q.contains(v) && edge.getWeight() < v.key) {
                     v.parent = u;
-                    v.key = graph.computeWeight(u, v);
+                    v.key = edge.getWeight();
                     Q.decreaseKey(v, v.key);
+                    int t = 1;
                 }
             }
         }

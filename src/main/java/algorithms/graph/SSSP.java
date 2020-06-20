@@ -18,11 +18,11 @@ public final class SSSP {
         var edges = graph.getAllEdges();
         for(int i = 1; i < vertices_count; i++){
             for(var edge : edges){
-                relax(edge.getFormerVertex(), edge.getLaterVertex(), graph);
+                relax(edge);
             }
         }
         for(var edge : edges){
-            if(edge.getLaterVertex().distance > edge.getFormerVertex().distance + graph.computeWeight(edge)){
+            if(edge.getLaterVertex().distance > edge.getFormerVertex().distance + edge.getWeight()){
                 return false;}
         }
         return true;
@@ -36,8 +36,10 @@ public final class SSSP {
         }
         s.distance = 0;
     }
-    private static <T> void relax(BFS.BFSVertex<T> u, BFS.BFSVertex<T> v, Graph<BFS.BFSVertex<T>> G){
-        var weight = G.computeWeight(u,v);
+    private static <T> void relax(Graph.Edge<BFS.BFSVertex<T>> edge){
+        var weight = edge.getWeight();
+        var u = edge.getFormerVertex();
+        var v = edge.getLaterVertex();
         var sum = u.distance + weight;
         if(v.distance > sum){
             v.distance = sum;
@@ -58,9 +60,9 @@ public final class SSSP {
         DFS_list.sort((d1,d2)->d2.finish -d1.finish);
         var BFS_list = DFS_list.stream().map(DFS.DFSVertex::getContent).collect(Collectors.toList());
         for(var u : BFS_list){
-            var u_neighbors = BFS_graph.getNeighborsAt(u);
-            for(var v : u_neighbors){
-                relax(u, v, BFS_graph);
+            var u_edges = BFS_graph.getEdgesAt(u);
+            for(var edge : u_edges){
+                relax(edge);
             }
         }
         return BFS_graph;
@@ -77,10 +79,11 @@ public final class SSSP {
         for (var vertex : vertices) Q.insert(vertex.distance, vertex);
         while (Q.length() > 0) {
             var u = Q.extractMin();
-            var u_neighbors = G.getNeighborsAt(u);
-            for (var v : u_neighbors) {
+            var u_edges = G.getEdgesAt(u);
+            for (var edge : u_edges) {
+                var v = edge.getAnotherSide(u);
                 var original = v.distance;
-                relax(u, v, G);
+                relax(edge);
                 if (v.distance < original) Q.decreaseKey(v, v.distance);
             }
         }
@@ -94,10 +97,11 @@ public final class SSSP {
         MinHeap<BFS.BFSVertex<T>> Q = new MinHeap<>(vertices, BFS.BFSVertex::getDistance);
         while (Q.length() > 0) {
             var u = Q.extractMin();
-            var u_neighbors = G.getNeighborsAt(u);
-            for (var v : u_neighbors) {
+            var u_edges = G.getEdgesAt(u);
+            for (var edge : u_edges) {
+                var v = edge.getAnotherSide(u);
                 var original = v.distance;
-                relax(u, v, G);
+                relax(edge);
                 if (v.distance < original) Q.decreaseKey(v, v.distance);
             }
         }

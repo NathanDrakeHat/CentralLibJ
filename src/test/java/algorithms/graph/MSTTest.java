@@ -14,7 +14,7 @@ class MSTTest {
         assertTrue(t.equals(buildKruskalAnswer1()) || t.equals(buildKruskalAnswer2()));
         int i = 0;
         for(var e : t){
-            i += G.computeWeight(e);
+            i += e.getWeight();
         }
         assertEquals(37,i );
     }
@@ -42,10 +42,11 @@ class MSTTest {
         for(int i = 0; i < len; i++){ vertices.add(i,new MST.KruskalVertex<>(names[i])); }
         int[] indexes1 = new int[]{0,1,2,3,4, 5,6,7,1, 2,8,8,2,3};
         int[] indexes2 = new int[]{1,2,3,4,5, 6,7,0,7, 8,7,6,5,5};
+        double[] weights =  new double[]{4,8,7,9,10,2,1,8,11,2,7,6,4,14};
         Set<Graph.Edge<MST.KruskalVertex<String>>> res = new HashSet<>();
         int[] answers = new int[]{0, 2, 3, 5, 6, 7, 9, 12};
         for(var i : answers)
-            res.add(new Graph.Edge<>(vertices.get(indexes1[i]), vertices.get(indexes2[i]), Graph.Direction.NON_DIRECTED));
+            res.add(new Graph.Edge<>(vertices.get(indexes1[i]), vertices.get(indexes2[i]), weights[i],Graph.Direction.NON_DIRECTED));
         return res;
     }
     static Set<Graph.Edge<MST.KruskalVertex<String>>> buildKruskalAnswer2(){
@@ -56,10 +57,11 @@ class MSTTest {
         for(int i = 0; i < len; i++){ vertices.add(i,new MST.KruskalVertex<>(names[i])); }
         int[] indexes1 = new int[]{0,1,2,3,4, 5,6,7,1, 2,8,8,2,3};
         int[] indexes2 = new int[]{1,2,3,4,5, 6,7,0,7, 8,7,6,5,5};
+        double[] weights =  new double[]{4,8,7,9,10,2,1,8,11,2,7,6,4,14};
         Set<Graph.Edge<MST.KruskalVertex<String>>> res = new HashSet<>();
         int[] answers = new int[]{0, 1, 2, 3, 5, 6, 9, 12};
         for(var i : answers)
-            res.add(new Graph.Edge<>(vertices.get(indexes1[i]), vertices.get(indexes2[i]), Graph.Direction.NON_DIRECTED));
+            res.add(new Graph.Edge<>(vertices.get(indexes1[i]), vertices.get(indexes2[i]),weights[i], Graph.Direction.NON_DIRECTED));
         return res;
     }
 

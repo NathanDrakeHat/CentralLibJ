@@ -58,8 +58,9 @@ public final class DFS {
         time++;
         u.discover = time;
         u.color = COLOR.GRAY;
-        var u_neighbors = G.getNeighborsAt(u);
-        for(var v : u_neighbors){
+        var u_edges = G.getEdgesAt(u);
+        for(var edge : u_edges){
+            var v =edge.getAnotherSide(u);
             if(v.color == COLOR.WHITE){
                 v.parent = u;
                 time = DFSVisit(G, v, time);
@@ -98,8 +99,9 @@ public final class DFS {
         var new_graph = new Graph<>(graph.getAllVertices(),Graph.Direction.DIRECTED);
         var vertices = graph.getAllVertices();
         for(var v : vertices){
-            var neighbors = graph.getNeighborsAt(v);
-            for(var n : neighbors){
+            var edges = graph.getEdgesAt(v);
+            for(var edge : edges){
+                var n = edge.getAnotherSide(v);
                 new_graph.setNeighbor(n,v);
             }
         }

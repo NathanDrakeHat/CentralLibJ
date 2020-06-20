@@ -3,6 +3,7 @@ package algorithms.graph;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -66,10 +67,51 @@ class DFSTest {
         DFS.depthFirstSearch(G);
         int idx = 0;
         var vertices = G.getAllVertices();
-        for(var v : vertices){
-            assertEquals(res[0][idx],v.discover);
-            assertEquals(res[1][idx++],v.finish);
+        List<DFS.DFSVertex<String>> l = new ArrayList<>(vertices);
+        l.sort(Comparator.comparing(DFS.DFSVertex::getContent));
+        assertEquals(1, l.get(0).discover);
+        assertEquals(8, l.get(0).finish);
+
+        if(2 == l.get(1).discover){
+            assertEquals(7,l.get(1).finish);
+            if(l.get(3).discover == 4){
+                assertEquals(5, l.get(3).finish);
+                assertEquals(3, l.get(4).discover);
+                assertEquals(6, l.get(4).finish);
+            }else{
+                assertEquals(3,l.get(3).discover);
+                assertEquals(6, l.get(3).finish);
+                assertEquals(4, l.get(4).discover);
+                assertEquals(5, l.get(4).finish);
+            }
+        }else{
+            assertEquals(2, l.get(3).discover);
+            assertEquals(7, l.get(3).finish);
+            if(3 == l.get(4).discover){
+                assertEquals(6, l.get(4).finish);
+                assertEquals(4, l.get(1).discover);
+                assertEquals(5, l.get(1).finish);
+            }else{
+                assertEquals(4, l.get(4).discover);
+                assertEquals(5, l.get(4).finish);
+                assertEquals(3, l.get(1).discover);
+                assertEquals(6, l.get(1).finish);
+            }
+
         }
+
+        if(l.get(2).discover == 9){
+            assertEquals(12, l.get(2).finish);
+            assertEquals(10, l.get(5).discover);
+            assertEquals(11, l.get(5).finish);
+        }else{
+            assertEquals(11,l.get(2).discover);
+            assertEquals(12, l.get(2).finish);
+            assertEquals(9, l.get(5).discover);
+            assertEquals(10, l.get(5).finish);
+        }
+
+
     }
 
     @Test
@@ -89,11 +131,12 @@ class DFSTest {
 
     boolean recursiveTopologicalTest(DFS.DFSVertex<String> target, DFS.DFSVertex<String> current, Graph<DFS.DFSVertex<String>> G){
         if(current.equals(target)) return false;
-        var neighbors = G.getNeighborsAt(current);
-        if(neighbors.isEmpty()) return true;
+        var edges = G.getEdgesAt(current);
+        if(edges.isEmpty()) return true;
         else{
             boolean t = true;
-            for(var i : neighbors){
+            for(var edge : edges){
+                var i = edge.getAnotherSide(current);
                 t = recursiveTopologicalTest(target, i, G);
                 if(!t) break;
             }
