@@ -74,8 +74,10 @@ public class MinHeap<V> {
         }
         if (min_idx != idx) {
             var t = arr.get(min_idx);
-            arr.set(min_idx,arr.get(idx))  ;
+            arr.set(min_idx,arr.get(idx));
+            value_node_map.get(arr.get(idx).getValue()).index = min_idx;
             arr.set(idx,t);
+            value_node_map.get(t.getValue()).index = idx;
             minHeapify(arr, min_idx, heap_size);
             return true;
         }
