@@ -8,7 +8,7 @@ import java.util.*;
 
 // minimum spanning tree
 public final class MST {
-    public static class KruskalVertex<V> extends Vertex<V> implements DisjointSet<KruskalVertex<V>> {
+    public static class KruskalVertex<V> implements DisjointSet<KruskalVertex<V>> {
         private final V content;
         private int rank = 0;
         private KruskalVertex<V> parent = this;
@@ -65,7 +65,7 @@ public final class MST {
         return res;
     }
 
-    public static class PrimVertex<V> extends Vertex<V>{
+    public static class PrimVertex<V> {
         private final V content;
         PrimVertex<V> parent;
         private double key = 0;

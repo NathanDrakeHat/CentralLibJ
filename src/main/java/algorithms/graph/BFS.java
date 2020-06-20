@@ -5,7 +5,7 @@ import java.util.*;
 public final class BFS {
     // breath first search
     enum COLOR{ WHITE, GRAY, BLACK}
-    public static class BFSVertex<V> extends Vertex<V>{
+    public static class BFSVertex<V>{
         BFSVertex<V> parent;
         private COLOR color;
         double distance; // d

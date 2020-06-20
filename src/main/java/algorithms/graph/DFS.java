@@ -7,7 +7,7 @@ import java.util.Objects;
 public final class DFS {
     // depth first search
     enum COLOR{ WHITE, GRAY, BLACK}
-    public static class DFSVertex<V> extends Vertex<V> {
+    public static class DFSVertex<V>  {
         DFSVertex<V> parent;
         private COLOR color;
         int discover; //d
