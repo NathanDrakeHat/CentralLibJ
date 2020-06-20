@@ -2,7 +2,6 @@ package algorithms.graph;
 
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 
 public final class Graph<V>  {
@@ -86,6 +85,7 @@ public final class Graph<V>  {
         for(var v : vertices) {
             Objects.requireNonNull(v);
             this.edge_map.put(v, new HashSet<>());
+            neighbors_map.put(v, new HashSet<>());
             size++;
         }
         this.graph_direction = is_directed;
@@ -97,16 +97,23 @@ public final class Graph<V>  {
     public void setNeighbor(V vertex, V neighbor, double w){
         var edge_t = new Edge<>(vertex, neighbor, graph_direction);
         if(graph_direction == Direction.DIRECTED) {
-            var edges_set = edge_map.computeIfAbsent(vertex, (k)->new HashSet<>());
+            var edges_set = edge_map.get(vertex);
             edges_set.add(edge_t);
+            var neighbors_set = neighbors_map.get(vertex);
+            neighbors_set.add(neighbor);
+
             weight_map.put(edge_t, w);
         }else{
-            var edges_set = edge_map.computeIfAbsent(vertex, (k)->new HashSet<>());
+            var edges_set = edge_map.get(vertex);
             edges_set.add(edge_t);
-            edges_set = edge_map.computeIfAbsent(neighbor, (k)->new HashSet<>());
+            var neighbors_set = neighbors_map.get(vertex);
+            neighbors_set.add(neighbor);
+
+            edges_set = edge_map.get(neighbor);
             edges_set.add(edge_t);
-            weight_map.put(edge_t, w);
-            edge_t = new Edge<>(neighbor,vertex,graph_direction);
+            neighbors_set = neighbors_map.get(neighbor);
+            neighbors_set.add(vertex);
+
             weight_map.put(edge_t, w);
         }
     }
@@ -118,12 +125,7 @@ public final class Graph<V>  {
         return res;
     }
     public Set<V> getAllVertices(){ return new HashSet<>(edge_map.keySet()); }
-    public Set<V> getNeighborsAt(V vertex){
-        return edge_map.computeIfAbsent(vertex, (k) -> new HashSet<>()).
-                stream().
-                map((edge) -> edge.getAnotherSide(vertex)).
-                collect(Collectors.toSet());
-    }
+    public Set<V> getNeighborsAt(V vertex){ return new HashSet<>(neighbors_map.get(vertex)); }
 
     public double computeWeight(Edge<V> e){
         var t = weight_map.get(e);
