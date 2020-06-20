@@ -41,19 +41,19 @@ public final class Graph<V>  {
         @Override
         public boolean equals(Object other_edge) {
             if (other_edge == this) return true;
-            else if (!(other_edge instanceof Edge)) return false;
-            else {
-                if (edge_direction != ((Edge<?>) other_edge).edge_direction) return false;
-                else if (edge_direction == Direction.DIRECTED) {
-                    return former_vertex.equals(((Edge<?>) other_edge).former_vertex) &&
-                            later_vertex.equals(((Edge<?>) other_edge).later_vertex);
-                } else {
-                    return (former_vertex.equals(((Edge<?>) other_edge).former_vertex) &&
-                            later_vertex.equals(((Edge<?>) other_edge).later_vertex)) ||
+            if (!(other_edge instanceof Edge)) return false;
+            if (edge_direction != ((Edge<?>) other_edge).edge_direction) return false;
+            if(weight != ((Edge<?>) other_edge).weight) return false;
 
-                            (later_vertex.equals(((Edge<?>) other_edge).former_vertex) &&
-                                    former_vertex.equals(((Edge<?>) other_edge).later_vertex));
-                }
+            if (edge_direction == Direction.DIRECTED) {
+                return former_vertex.equals(((Edge<?>) other_edge).former_vertex) &&
+                        later_vertex.equals(((Edge<?>) other_edge).later_vertex);
+            } else {
+                return ( former_vertex.equals(((Edge<?>) other_edge).former_vertex) &&
+                        later_vertex.equals(((Edge<?>) other_edge).later_vertex) ) ||
+
+                        ( later_vertex.equals(((Edge<?>) other_edge).former_vertex) &&
+                                former_vertex.equals(((Edge<?>) other_edge).later_vertex) );
             }
         }
 
