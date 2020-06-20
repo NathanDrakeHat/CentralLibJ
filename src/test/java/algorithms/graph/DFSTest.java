@@ -65,7 +65,8 @@ class DFSTest {
         var G = makeGraph();
         DFS.depthFirstSearch(G);
         int idx = 0;
-        for(var v : G.getAllVertices()){
+        var vertices = G.getAllVertices();
+        for(var v : vertices){
             assertEquals(res[0][idx],v.discover);
             assertEquals(res[1][idx++],v.finish);
         }

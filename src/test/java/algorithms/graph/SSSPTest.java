@@ -16,7 +16,8 @@ class SSSPTest {
         var G = buildBellmanFordCase();
         var b = SSSP.algorithmBellmanFord(G, new BFS.BFSVertex<>("s"));
         BFS.BFSVertex<String> target = new BFS.BFSVertex<>("z");
-        for(var v : G.getAllVertices()){
+        var vertices = G.getAllVertices();
+        for(var v : vertices){
             if(v.equals(target)) { target = v; } }
         assertEquals(-2,target.getDistance());
         List<String> res = new ArrayList<>();

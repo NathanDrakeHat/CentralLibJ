@@ -58,7 +58,8 @@ public final class DFS {
         time++;
         u.discover = time;
         u.color = COLOR.GRAY;
-        for(var v : G.getNeighborsAt(u)){
+        var u_neighbors = G.getNeighborsAt(u);
+        for(var v : u_neighbors){
             if(v.color == COLOR.WHITE){
                 v.parent = u;
                 time = DFSVisit(G, v, time);
@@ -83,7 +84,8 @@ public final class DFS {
         depthFirstSearchOrderly(G_T, l);
     }
     private static <T> void depthFirstSearchOrderly(Graph<DFSVertex<T>> G, List<DFSVertex<T>> order){
-        for (var v : G.getAllVertices()) {
+        var vertices = G.getAllVertices();
+        for (var v : vertices) {
             v.color = COLOR.WHITE;
             v.parent = null;
         }
@@ -94,7 +96,8 @@ public final class DFS {
     }
     private static <T> Graph<DFSVertex<T>> transposeGraph(Graph<DFSVertex<T>> graph){
         var new_graph = new Graph<>(graph.getAllVertices(),Graph.Direction.DIRECTED);
-        for(var v : graph.getAllVertices()){
+        var vertices = graph.getAllVertices();
+        for(var v : vertices){
             var neighbors = graph.getNeighborsAt(v);
             for(var n : neighbors){
                 new_graph.setNeighbor(n,v);

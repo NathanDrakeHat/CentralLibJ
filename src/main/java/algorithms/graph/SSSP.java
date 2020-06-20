@@ -28,7 +28,8 @@ public final class SSSP {
         return true;
     }
     private static <T> void initializeSingleSource(Graph<BFS.BFSVertex<T>> G, BFS.BFSVertex<T> s){
-        for(var v : G.getAllVertices()){
+        var vertices = G.getAllVertices();
+        for(var v : vertices){
             v.distance = Double.POSITIVE_INFINITY;
             v.parent = null;
             if(s.equals(v)) s = v;
@@ -57,7 +58,8 @@ public final class SSSP {
         DFS_list.sort((d1,d2)->d2.finish -d1.finish);
         var BFS_list = DFS_list.stream().map(DFS.DFSVertex::getContent).collect(Collectors.toList());
         for(var u : BFS_list){
-            for(var v : BFS_graph.getNeighborsAt(u)){
+            var u_neighbors = BFS_graph.getNeighborsAt(u);
+            for(var v : u_neighbors){
                 relax(u, v, BFS_graph);
             }
         }
@@ -75,7 +77,8 @@ public final class SSSP {
         for (var vertex : vertices) Q.insert(vertex.distance, vertex);
         while (Q.length() > 0) {
             var u = Q.extractMin();
-            for (var v : G.getNeighborsAt(u)) {
+            var u_neighbors = G.getNeighborsAt(u);
+            for (var v : u_neighbors) {
                 var original = v.distance;
                 relax(u, v, G);
                 if (v.distance < original) Q.decreaseKey(v, v.distance);
@@ -91,7 +94,8 @@ public final class SSSP {
         MinHeap<BFS.BFSVertex<T>> Q = new MinHeap<>(vertices, BFS.BFSVertex::getDistance);
         while (Q.length() > 0) {
             var u = Q.extractMin();
-            for (var v : G.getNeighborsAt(u)) {
+            var u_neighbors = G.getNeighborsAt(u);
+            for (var v : u_neighbors) {
                 var original = v.distance;
                 relax(u, v, G);
                 if (v.distance < original) Q.decreaseKey(v, v.distance);

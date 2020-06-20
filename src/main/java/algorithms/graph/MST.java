@@ -100,7 +100,8 @@ public final class MST {
         Objects.requireNonNull(r);
         Objects.requireNonNull(graph);
         FibonacciHeap<PrimVertex<T>> Q = new FibonacciHeap<>();
-        for (var u : graph.getAllVertices()) {
+        var vertices = graph.getAllVertices();
+        for (var u : vertices) {
             if (!u.equals(r)) u.key = Double.POSITIVE_INFINITY;
             else {
                 u.key = 0.0;
@@ -110,7 +111,8 @@ public final class MST {
         }
         while (Q.length() > 0) {
             var u = Q.extractMin();
-            for (var v : graph.getNeighborsAt(u)) {
+            var u_neighbors = graph.getNeighborsAt(u);
+            for (var v : u_neighbors) {
                 if (Q.contains(v) && graph.computeWeight(u, v) < v.key) {
                     v.parent = u;
                     v.key = graph.computeWeight(u, v);
@@ -133,7 +135,8 @@ public final class MST {
         MinHeap<PrimVertex<T>> Q = new MinHeap<>(vertices, PrimVertex::getKey);
         while (Q.length() > 0) {
             var u = Q.extractMin();
-            for (var v : graph.getNeighborsAt(u)) {
+            var u_neighbors = graph.getNeighborsAt(u);
+            for (var v : u_neighbors) {
                 if (Q.contains(v) && graph.computeWeight(u, v) < v.key) {
                     v.parent = u;
                     v.key = graph.computeWeight(u, v);

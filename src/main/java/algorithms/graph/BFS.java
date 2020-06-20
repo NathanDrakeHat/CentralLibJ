@@ -56,7 +56,8 @@ public final class BFS {
         Q.add(s);
         while(!Q.isEmpty()){
             var u = Q.remove();
-            for(var v : G.getNeighborsAt(u)){
+            var u_neighbors = G.getNeighborsAt(u);
+            for(var v : u_neighbors){
                 if(v.color == COLOR.WHITE){
                     v.color = COLOR.GRAY;
                     v.distance = u.distance + 1;
