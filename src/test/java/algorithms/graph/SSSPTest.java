@@ -14,8 +14,8 @@ class SSSPTest {
     @Test
     void algorithmBellmanFord() {
         var G = buildBellmanFordCase();
-        var b = SSSP.algorithmBellmanFord(G, new BFS.Vertex<>("s"));
-        BFS.Vertex<String> target = new BFS.Vertex<>("z");
+        var b = SSSP.algorithmBellmanFord(G, new BFS.BFSVertex<>("s"));
+        BFS.BFSVertex<String> target = new BFS.BFSVertex<>("z");
         for(var v : G.getAllVertices()){
             if(v.equals(target)) { target = v; } }
         assertEquals(-2,target.getDistance());
@@ -27,10 +27,10 @@ class SSSPTest {
         assertTrue(b);
         assertEquals(List.of("z", "t", "x", "y","s"),res);
     }
-    static Graph<BFS.Vertex<String>> buildBellmanFordCase(){
+    static Graph<BFS.BFSVertex<String>> buildBellmanFordCase(){
         String[] names = "s,t,x,y,z".split(",");
-        List<BFS.Vertex<String>> vertices = new ArrayList<>();
-        for(var n : names) vertices.add(new BFS.Vertex<>(n));
+        List<BFS.BFSVertex<String>> vertices = new ArrayList<>();
+        for(var n : names) vertices.add(new BFS.BFSVertex<>(n));
         var res = new Graph<>(vertices,Graph.Direction.DIRECTED);
         int[] index1 =        new int[]{0,0,1,1, 1, 2, 3,3,4,4};
         int[] index2 =        new int[]{1,3,2,3, 4, 1, 2,4,0,2};
@@ -44,9 +44,9 @@ class SSSPTest {
     @Test
     void shortestPathOfDAG(){
         var two_graph = buildShortestPathOfDAGForBFS();
-        var res = SSSP.shortestPathOfDAG(two_graph.DFS_G,two_graph.BFS_G,new BFS.Vertex<>("s"));
+        var res = SSSP.shortestPathOfDAG(two_graph.DFS_G,two_graph.BFS_G,new BFS.BFSVertex<>("s"));
         var vertices = res.getAllVertices();
-        var l = vertices.stream().sorted(Comparator.comparing(BFS.Vertex::getContent)).collect(Collectors.toList());
+        var l = vertices.stream().sorted(Comparator.comparing(BFS.BFSVertex::getContent)).collect(Collectors.toList());
         assertNull(l.get(0).getParent());
         assertNull(l.get(1).getParent());
         assertEquals(l.get(1),l.get(2).getParent());
@@ -63,8 +63,8 @@ class SSSPTest {
     }
     static Result buildShortestPathOfDAGForBFS(){
         String[] names = "r,s,t,x,y,z".split(",");
-        List<BFS.Vertex<String>> BFS_vertex = new ArrayList<>();
-        for (String name : names) { BFS_vertex.add(new BFS.Vertex<>(name)); }
+        List<BFS.BFSVertex<String>> BFS_vertex = new ArrayList<>();
+        for (String name : names) { BFS_vertex.add(new BFS.BFSVertex<>(name)); }
         var BFS_G = new Graph<>(BFS_vertex,Graph.Direction.DIRECTED);
         int[] index1 =        new int[]{0,0,1,1,2,2,2, 3,3, 4};
         int[] index2 =        new int[]{1,2,2,3,3,4,5, 4,5, 5};
@@ -72,7 +72,7 @@ class SSSPTest {
         for(int i = 0; i < index1.length; i++){
             BFS_G.setNeighbor(BFS_vertex.get(index1[i]),BFS_vertex.get(index2[i]),weights[i]);
         }
-        var DFS_vertices = BFS_vertex.stream().map(DFS.Vertex::new).collect(Collectors.toList());
+        var DFS_vertices = BFS_vertex.stream().map(DFS.DFSVertex::new).collect(Collectors.toList());
         var DFS_G = new Graph<>(DFS_vertices, Graph.Direction.DIRECTED);
         int len = DFS_vertices.size();
         for(int i = 0; i < len - 1; i++){
@@ -84,15 +84,15 @@ class SSSPTest {
         return t;
     }
     static class Result{
-        public Graph<BFS.Vertex<String>> BFS_G;
-        public Graph<DFS.Vertex<BFS.Vertex<String>>> DFS_G;
+        public Graph<BFS.BFSVertex<String>> BFS_G;
+        public Graph<DFS.DFSVertex<BFS.BFSVertex<String>>> DFS_G;
     }
 
     @Test
     void algorithmDijkstraTestWithFibonacciHeap(){
         var g = buildDijkstraCase();
-        SSSP.algorithmDijkstraWithMinHeap(g, new BFS.Vertex<>("s"));
-        var vertices = g.getAllVertices().stream().sorted(Comparator.comparing(BFS.Vertex::getContent)).collect(Collectors.toList());
+        SSSP.algorithmDijkstraWithMinHeap(g, new BFS.BFSVertex<>("s"));
+        var vertices = g.getAllVertices().stream().sorted(Comparator.comparing(BFS.BFSVertex::getContent)).collect(Collectors.toList());
         assertNull(vertices.get(0).getParent());
 
         assertEquals(vertices.get(3),vertices.get(1).getParent());
@@ -111,8 +111,8 @@ class SSSPTest {
     @Test
     void algorithmDijkstraTestWithMinHeap(){
         var g = buildDijkstraCase();
-        SSSP.algorithmDijkstraWithFibonacciHeap(g, new BFS.Vertex<>("s"));
-        var vertices = g.getAllVertices().stream().sorted(Comparator.comparing(BFS.Vertex::getContent)).collect(Collectors.toList());
+        SSSP.algorithmDijkstraWithFibonacciHeap(g, new BFS.BFSVertex<>("s"));
+        var vertices = g.getAllVertices().stream().sorted(Comparator.comparing(BFS.BFSVertex::getContent)).collect(Collectors.toList());
         assertNull(vertices.get(0).getParent());
 
         assertEquals(vertices.get(3),vertices.get(1).getParent());
@@ -127,10 +127,10 @@ class SSSPTest {
         assertEquals(vertices.get(3),vertices.get(4).getParent());
         assertEquals(7,vertices.get(4).getDistance());
     }
-    static Graph<BFS.Vertex<String>> buildDijkstraCase(){
+    static Graph<BFS.BFSVertex<String>> buildDijkstraCase(){
         String[] names = "s,t,x,y,z".split(",");
-        List<BFS.Vertex<String>> vertices = new ArrayList<>();
-        for(var n : names) vertices.add(new BFS.Vertex<>(n));
+        List<BFS.BFSVertex<String>> vertices = new ArrayList<>();
+        for(var n : names) vertices.add(new BFS.BFSVertex<>(n));
         var graph = new Graph<>(vertices, Graph.Direction.DIRECTED);
         int[] indices1 =      new int[]{0, 0,1,1,2,3,3,3,4,4};
         int[] indices2 =      new int[]{1, 3,2,3,4,1,2,4,0,2};

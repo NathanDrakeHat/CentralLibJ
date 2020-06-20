@@ -5,15 +5,15 @@ import java.util.*;
 public final class BFS {
     // breath first search
     enum COLOR{ WHITE, GRAY, BLACK}
-    public static class Vertex<V>{
-        Vertex<V> parent;
+    public static class BFSVertex<V> extends Vertex<V>{
+        BFSVertex<V> parent;
         private COLOR color;
         double distance; // d
         private final V content;
         private final String string;
         private final int hash_code;
 
-        Vertex(V name){
+        BFSVertex(V name){
             Objects.requireNonNull(name);
             this.content = name;
             string = String.format("BFS.Vertex: (%s)",content.toString());
@@ -22,15 +22,15 @@ public final class BFS {
 
         public V getContent() { return content; }
 
-        public Vertex<V> getParent() {return parent;}
+        public BFSVertex<V> getParent() {return parent;}
 
         public double getDistance() { return distance; }
 
         @Override
         public boolean equals(Object other_vertex){
             if(other_vertex == this) return true;
-            else if(!(other_vertex instanceof  Vertex)) return false;
-            else return content.equals(((Vertex<?>) other_vertex).content);
+            else if(!(other_vertex instanceof BFSVertex)) return false;
+            else return content.equals(((BFSVertex<?>) other_vertex).content);
         }
 
         @Override public int hashCode(){ return hash_code; }
@@ -39,7 +39,7 @@ public final class BFS {
         public String toString() { return string; }
     }
 
-    public static <T> void breathFirstSearch(Graph<Vertex<T>> G, Vertex<T> s) {
+    public static <T> void breathFirstSearch(Graph<BFSVertex<T>> G, BFSVertex<T> s) {
         Objects.requireNonNull(s);
         var vs = G.getAllVertices();
         for (var v : vs) {
@@ -52,7 +52,7 @@ public final class BFS {
         s.color = COLOR.GRAY;
         s.distance = 0;
         s.parent = null;
-        Queue<Vertex<T>> Q = new LinkedList<>();
+        Queue<BFSVertex<T>> Q = new LinkedList<>();
         Q.add(s);
         while(!Q.isEmpty()){
             var u = Q.remove();
@@ -68,7 +68,7 @@ public final class BFS {
         }
     }
 
-    public static <T> List<T> getPath(Vertex<T> s, Vertex<T> v){
+    public static <T> List<T> getPath(BFSVertex<T> s, BFSVertex<T> v){
         List<T> t = new ArrayList<>();
         traverse(s, v, t);
         int idx = 0;
@@ -77,7 +77,7 @@ public final class BFS {
             res.add(idx++, i);
         return res;
     }
-    private static <T> void traverse(Vertex<T> s, Vertex<T> v, List<T> res){
+    private static <T> void traverse(BFSVertex<T> s, BFSVertex<T> v, List<T> res){
         if(v == s){
             res.add(s.content);
         } else if(v.parent != null){

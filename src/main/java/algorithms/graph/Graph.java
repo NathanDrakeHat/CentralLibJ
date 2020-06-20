@@ -4,8 +4,8 @@ package algorithms.graph;
 import java.util.*;
 
 
-public final class Graph<V>  {
-    public static final class Edge<T> {
+public final class Graph<V extends Vertex<?>>  {
+    public static final class Edge<T extends Vertex<?>> {
         private final T former_vertex;
         private final T later_vertex;
         private final Direction edge_direction;

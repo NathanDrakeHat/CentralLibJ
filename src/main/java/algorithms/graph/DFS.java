@@ -7,8 +7,8 @@ import java.util.Objects;
 public final class DFS {
     // depth first search
     enum COLOR{ WHITE, GRAY, BLACK}
-    public static class Vertex<V>{
-        Vertex<V> parent;
+    public static class DFSVertex<V> extends Vertex<V> {
+        DFSVertex<V> parent;
         private COLOR color;
         int discover; //d
         int finish; // f
@@ -16,7 +16,7 @@ public final class DFS {
         private final String string;
         private final int hash_code;
 
-        public Vertex(V name){
+        public DFSVertex(V name){
             Objects.requireNonNull(name);
             this.content = name;
             string = String.format("DFS.Vertex: (%s)",content.toString());
@@ -25,13 +25,13 @@ public final class DFS {
 
         public V getContent() {return content;}
 
-        public Vertex<V> getParent() { return parent; }
+        public DFSVertex<V> getParent() { return parent; }
 
         @Override
         public boolean equals(Object other_vertex){
             if(other_vertex == this)return true;
-            else if(!(other_vertex instanceof Vertex)) return false;
-            else return content.equals(((Vertex<?>) other_vertex).content);
+            else if(!(other_vertex instanceof DFSVertex)) return false;
+            else return content.equals(((DFSVertex<?>) other_vertex).content);
         }
 
         @Override
@@ -41,7 +41,7 @@ public final class DFS {
         public String toString(){ return string; }
     }
 
-    public static <T> void depthFirstSearch(Graph<Vertex<T>> G) {
+    public static <T> void depthFirstSearch(Graph<DFSVertex<T>> G) {
         var vertices = G.getAllVertices();
         for (var v : vertices) {
             v.color = COLOR.WHITE;
@@ -54,7 +54,7 @@ public final class DFS {
             }
         }
     }
-    private static <T > int DFSVisit(Graph<Vertex<T>> G, Vertex<T> u, int time){
+    private static <T > int DFSVisit(Graph<DFSVertex<T>> G, DFSVertex<T> u, int time){
         time++;
         u.discover = time;
         u.color = COLOR.GRAY;
@@ -70,19 +70,19 @@ public final class DFS {
         return time;
     }
 
-    public static <T> List<Vertex<T>> topologicalSort(Graph<Vertex<T>> G){
+    public static <T> List<DFSVertex<T>> topologicalSort(Graph<DFSVertex<T>> G){
         depthFirstSearch(G);
-        List<Vertex<T>> l = new ArrayList<>(G.getAllVertices());
+        List<DFSVertex<T>> l = new ArrayList<>(G.getAllVertices());
         l.sort((o1, o2) -> o2.finish - o1.finish); // descend order
         return l;
     }
 
-    public static <T> void stronglyConnectedComponents(Graph<Vertex<T>> G){
+    public static <T> void stronglyConnectedComponents(Graph<DFSVertex<T>> G){
         var l = topologicalSort(G);
         var G_T = transposeGraph(G);
         depthFirstSearchOrderly(G_T, l);
     }
-    private static <T> void depthFirstSearchOrderly(Graph<Vertex<T>> G, List<Vertex<T>> order){
+    private static <T> void depthFirstSearchOrderly(Graph<DFSVertex<T>> G, List<DFSVertex<T>> order){
         for (var v : G.getAllVertices()) {
             v.color = COLOR.WHITE;
             v.parent = null;
@@ -92,7 +92,7 @@ public final class DFS {
             if(v.color == COLOR.WHITE){ time = DFSVisit(G, v, time); }
         }
     }
-    private static <T> Graph<Vertex<T>> transposeGraph(Graph<Vertex<T>> graph){
+    private static <T> Graph<DFSVertex<T>> transposeGraph(Graph<DFSVertex<T>> graph){
         var new_graph = new Graph<>(graph.getAllVertices(),Graph.Direction.DIRECTED);
         for(var v : graph.getAllVertices()){
             var neighbors = graph.getNeighborsAt(v);

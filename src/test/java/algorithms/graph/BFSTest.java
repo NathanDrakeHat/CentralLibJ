@@ -12,14 +12,14 @@ class BFSTest {
 
     public static class Data{
         public static String names = "rstuvwxy";
-        public static List<BFS.Vertex<Character>> makeVertexes(){
-            List<BFS.Vertex<Character>> vs = new ArrayList<>(8);
+        public static List<BFS.BFSVertex<Character>> makeVertexes(){
+            List<BFS.BFSVertex<Character>> vs = new ArrayList<>(8);
             for(int i = 0; i < 8; i++){
-                vs.add(i, new BFS.Vertex<>(names.charAt(i)));
+                vs.add(i, new BFS.BFSVertex<>(names.charAt(i)));
             }
             return vs;
         }
-        public static Graph<BFS.Vertex<Character>> makeGraph(List<BFS.Vertex<Character>> vs){
+        public static Graph<BFS.BFSVertex<Character>> makeGraph(List<BFS.BFSVertex<Character>> vs){
             var G = new Graph<>(vs, Graph.Direction.NON_DIRECTED);
             G.setNeighbor(vs.get(0), vs.get(1));
             G.setNeighbor(vs.get(0), vs.get(4));

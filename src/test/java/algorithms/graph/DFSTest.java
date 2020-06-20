@@ -9,11 +9,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class DFSTest {
     static String names = "uvwxyz";
-    static Graph<DFS.Vertex<String>> makeGraph(){
-        var vs = new ArrayList<DFS.Vertex<String>>(6);
+    static Graph<DFS.DFSVertex<String>> makeGraph(){
+        var vs = new ArrayList<DFS.DFSVertex<String>>(6);
         
         for(int i = 0; i < 6; i++){
-            vs.add(i, new DFS.Vertex<>(String.valueOf(names.charAt(i))));
+            vs.add(i, new DFS.DFSVertex<>(String.valueOf(names.charAt(i))));
         }
         var G = new Graph<>(vs, Graph.Direction.DIRECTED);
         G.setNeighbor(vs.get(0), vs.get(1));
@@ -33,13 +33,13 @@ class DFSTest {
         return G;
     }
     static int[][] res = new int[][] {{1, 2, 9, 4, 3, 10}, {8, 7, 12, 5, 6, 11}};
-    static Graph<DFS.Vertex<String>> makeTopographicalDemo(){
+    static Graph<DFS.DFSVertex<String>> makeTopographicalDemo(){
 //            DFS.Vertex[] A = new DFS.Vertex[9];
-            var A = new ArrayList<DFS.Vertex<String>>(9);
+            var A = new ArrayList<DFS.DFSVertex<String>>(9);
             String t = "undershorts,pants,belt,shirt,tie,jacket,socks,shoes,watch";
             var names = t.split(",");
-            for(int i = 0; i < 9; i++) { A.add(i, new DFS.Vertex<>(names[i])); }
-            Graph<DFS.Vertex<String>> G = new Graph<>(A, Graph.Direction.DIRECTED);
+            for(int i = 0; i < 9; i++) { A.add(i, new DFS.DFSVertex<>(names[i])); }
+            Graph<DFS.DFSVertex<String>> G = new Graph<>(A, Graph.Direction.DIRECTED);
             G.setNeighbor(A.get(0), A.get(1));
             G.setNeighbor(A.get(0), A.get(6));
 
@@ -86,7 +86,7 @@ class DFSTest {
         assertTrue(flag);
     }
 
-    boolean recursiveTopologicalTest(DFS.Vertex<String> target, DFS.Vertex<String> current, Graph<DFS.Vertex<String>> G){
+    boolean recursiveTopologicalTest(DFS.DFSVertex<String> target, DFS.DFSVertex<String> current, Graph<DFS.DFSVertex<String>> G){
         if(current.equals(target)) return false;
         var neighbors = G.getNeighborsAt(current);
         if(neighbors.isEmpty()) return true;
@@ -104,7 +104,7 @@ class DFSTest {
     void recursiveTopologicalTest(){
         var graph = makeTopographicalDemo();
         boolean flag = true;
-        List<DFS.Vertex<String>> t = new ArrayList<>(graph.getAllVertices());
+        List<DFS.DFSVertex<String>> t = new ArrayList<>(graph.getAllVertices());
         for(int i = 1; i < t.size(); i++){
             for(int j = 0; j < i; j++){
                 flag = recursiveTopologicalTest(t.get(j), t.get(i), graph);
@@ -115,12 +115,12 @@ class DFSTest {
         assertFalse(flag);
     }
 
-    static Graph<DFS.Vertex<String>> makeStronglyConnectedComponentsDemo(){
+    static Graph<DFS.DFSVertex<String>> makeStronglyConnectedComponentsDemo(){
         String t = "a,b,c,d,e,f,g,h";
         var names = t.split(",");
-        var A = new ArrayList<DFS.Vertex<String>>(names.length);
-        for(int i = 0; i < names.length; i++) { A.add(i,new DFS.Vertex<>(names[i])); }
-        Graph<DFS.Vertex<String>> G = new Graph<>(A, Graph.Direction.DIRECTED);
+        var A = new ArrayList<DFS.DFSVertex<String>>(names.length);
+        for(int i = 0; i < names.length; i++) { A.add(i,new DFS.DFSVertex<>(names[i])); }
+        Graph<DFS.DFSVertex<String>> G = new Graph<>(A, Graph.Direction.DIRECTED);
         G.setNeighbor(A.get(0), A.get(1));
 
         G.setNeighbor(A.get(1), A.get(2));
@@ -150,7 +150,7 @@ class DFSTest {
         var G = makeStronglyConnectedComponentsDemo();
         DFS.stronglyConnectedComponents(G);
         var vertices = G.getAllVertices();
-        List<DFS.Vertex<String>> vs = new ArrayList<>(vertices);
+        List<DFS.DFSVertex<String>> vs = new ArrayList<>(vertices);
         assertTrue((getRoot(vs.get(0)) == getRoot(vs.get(1))) & (getRoot(vs.get(1)) == getRoot(vs.get(4))));
         assertSame(getRoot(vs.get(2)), getRoot(vs.get(3)));
         assertSame(getRoot(vs.get(5)), getRoot(vs.get(6)));
@@ -158,7 +158,7 @@ class DFSTest {
 
     }
 
-    DFS.Vertex<String> getRoot(DFS.Vertex<String> v){
+    DFS.DFSVertex<String> getRoot(DFS.DFSVertex<String> v){
         var t = v;
         while(t.parent != null){ t = t.parent; }
         return t;

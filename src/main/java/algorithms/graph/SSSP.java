@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 // single source shortest path
 public final class SSSP {
     // general case algorithm: negative weight, cyclic
-    public static <T> boolean algorithmBellmanFord(Graph<BFS.Vertex<T>> graph, BFS.Vertex<T> s){
+    public static <T> boolean algorithmBellmanFord(Graph<BFS.BFSVertex<T>> graph, BFS.BFSVertex<T> s){
         Objects.requireNonNull(s);
         Objects.requireNonNull(graph);
         initializeSingleSource(graph, s);
@@ -27,7 +27,7 @@ public final class SSSP {
         }
         return true;
     }
-    private static <T> void initializeSingleSource(Graph<BFS.Vertex<T>> G, BFS.Vertex<T> s){
+    private static <T> void initializeSingleSource(Graph<BFS.BFSVertex<T>> G, BFS.BFSVertex<T> s){
         for(var v : G.getAllVertices()){
             v.distance = Double.POSITIVE_INFINITY;
             v.parent = null;
@@ -35,7 +35,7 @@ public final class SSSP {
         }
         s.distance = 0;
     }
-    private static <T> void relax(BFS.Vertex<T> u, BFS.Vertex<T> v, Graph<BFS.Vertex<T>> G){
+    private static <T> void relax(BFS.BFSVertex<T> u, BFS.BFSVertex<T> v, Graph<BFS.BFSVertex<T>> G){
         var weight = G.computeWeight(u,v);
         var sum = u.distance + weight;
         if(v.distance > sum){
@@ -46,16 +46,16 @@ public final class SSSP {
 
     // shortest paths of directed acyclic graph
     public static <T>
-    Graph<BFS.Vertex<T>> shortestPathOfDAG(Graph<DFS.Vertex<BFS.Vertex<T>>> DFS_graph,
-                                           Graph<BFS.Vertex<T>> BFS_graph,
-                                           BFS.Vertex<T> s){
+    Graph<BFS.BFSVertex<T>> shortestPathOfDAG(Graph<DFS.DFSVertex<BFS.BFSVertex<T>>> DFS_graph,
+                                              Graph<BFS.BFSVertex<T>> BFS_graph,
+                                              BFS.BFSVertex<T> s){
         Objects.requireNonNull(s);
         Objects.requireNonNull(DFS_graph);
         Objects.requireNonNull(BFS_graph);
         var DFS_list = DFS.topologicalSort(DFS_graph);
         initializeSingleSource(BFS_graph, s);
         DFS_list.sort((d1,d2)->d2.finish -d1.finish);
-        var BFS_list = DFS_list.stream().map(DFS.Vertex::getContent).collect(Collectors.toList());
+        var BFS_list = DFS_list.stream().map(DFS.DFSVertex::getContent).collect(Collectors.toList());
         for(var u : BFS_list){
             for(var v : BFS_graph.getNeighborsAt(u)){
                 relax(u, v, BFS_graph);
@@ -66,12 +66,12 @@ public final class SSSP {
 
     // non-negative weight,
     // fibonacci heap, time complexity: O(V^2*lgV + V*E)
-    public static <T> void algorithmDijkstraWithFibonacciHeap(Graph<BFS.Vertex<T>> G, BFS.Vertex<T> s){
+    public static <T> void algorithmDijkstraWithFibonacciHeap(Graph<BFS.BFSVertex<T>> G, BFS.BFSVertex<T> s){
         Objects.requireNonNull(s);
         Objects.requireNonNull(G);
         initializeSingleSource(G, s);
         var vertices = G.getAllVertices();
-        FibonacciHeap<BFS.Vertex<T>> Q = new FibonacciHeap<>();
+        FibonacciHeap<BFS.BFSVertex<T>> Q = new FibonacciHeap<>();
         for (var vertex : vertices) Q.insert(vertex.distance, vertex);
         while (Q.length() > 0) {
             var u = Q.extractMin();
@@ -83,12 +83,12 @@ public final class SSSP {
         }
     }
     // min heap, time complexity: O(V*E*lgV)
-    public static <T> void algorithmDijkstraWithMinHeap(Graph<BFS.Vertex<T>> G, BFS.Vertex<T> s){
+    public static <T> void algorithmDijkstraWithMinHeap(Graph<BFS.BFSVertex<T>> G, BFS.BFSVertex<T> s){
         Objects.requireNonNull(s);
         Objects.requireNonNull(G);
         initializeSingleSource(G, s);
         var vertices = G.getAllVertices();
-        MinHeap<BFS.Vertex<T>> Q = new MinHeap<>(vertices, BFS.Vertex::getDistance);
+        MinHeap<BFS.BFSVertex<T>> Q = new MinHeap<>(vertices, BFS.BFSVertex::getDistance);
         while (Q.length() > 0) {
             var u = Q.extractMin();
             for (var v : G.getNeighborsAt(u)) {
