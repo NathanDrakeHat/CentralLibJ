@@ -14,9 +14,9 @@ public final class SSSP {
         Objects.requireNonNull(s);
         Objects.requireNonNull(graph);
         initializeSingleSource(graph, s);
-        int len = graph.getVerticesCount();
+        int vertices_count = graph.getVerticesCount();
         var edges = graph.getAllEdges();
-        for(int i = 1; i < len; i++){
+        for(int i = 1; i < vertices_count; i++){
             for(var edge : edges){
                 relax(edge.getFormerVertex(), edge.getLaterVertex(), graph);
             }
