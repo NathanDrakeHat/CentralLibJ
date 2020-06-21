@@ -80,7 +80,6 @@ public final class Graph<V>  {
     }
     private final Direction graph_direction;
     private final Map<V, Set<Edge<V>>> edge_map = new HashMap<>();
-
     private int size;
 
     public Graph(Collection<V> vertices, Direction is_directed){
