@@ -111,13 +111,13 @@ public final class Graph<V>  {
         }
     }
 
-    public Set<Edge<V>> getAllEdges(){
+    public Set<Edge<V>> heavilyGetAllEdges(){
         Set<Edge<V>> res = new HashSet<>();
         for(var edges : edge_map.values()){
             res.addAll(edges); }
         return res;
     }
-    public Set<V> getAllVertices(){ return new HashSet<>(edge_map.keySet()); }
+    public Set<V> heavilyGetAllVertices(){ return new HashSet<>(edge_map.keySet()); }
     public Set<Edge<V>> getEdgesAt(V vertex){
         return new HashSet<>(edge_map.get(vertex));
     }
