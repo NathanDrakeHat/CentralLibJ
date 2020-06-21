@@ -9,81 +9,87 @@ import static org.junit.jupiter.api.Assertions.*;
 class MinHeapTest {
 
     @Test
-    void decreaseKeyTest1() {
-        String[] strings = new String[155];
-        double[] doubles = new double[155];
-        int idx = 0;
-        for(double i = 0; i <= 308; i+=2) {
-            strings[idx] = String.valueOf(i);
-            doubles[idx] = i;
-            idx++;
+    void caseTest1() {
+        MinHeap<String> m_h = new MinHeap<>();
+        for(int i = 0; i < 1024; i++){
+            m_h.add(i,String.valueOf(i));
         }
-        List<String> l = Arrays.asList(strings);
-        MinHeap<String> h = new MinHeap<>(l, Double::valueOf);
-        idx = 0;
-        for(double i = 0; i <= 308; i+=4){
-             h.decreaseKey(String.valueOf(i), i-3);
-             doubles[idx] = i -3;
-             idx += 2;
-        }
-        DoubleAndString[] answer = new DoubleAndString[155];
-        idx = 0;
-        for(int i = 0 ; i <= 308; i+=2){
-            answer[idx] = new DoubleAndString(strings[idx],doubles[idx]);
-            idx++;
-        }
+        m_h.decreaseKey("1023",0);
+        assertEquals("0",m_h.extractMin());
+        assertEquals("1023",m_h.extractMin());
 
-        Arrays.sort(answer, Comparator.comparingDouble(DoubleAndString::getDouble));
-        idx=0;
-        for(int i = 0 ; i <= 308; i+=2){
-            var t = h.extractMin();
-            assertEquals(answer[idx].getString(),t);
-            idx++;
-        }
+        m_h.decreaseKey("456",9);
+        m_h.decreaseKey("654",7);
+        m_h.decreaseKey("999",8);
+
+        m_h.decreaseKey("512", -1);
+        assertEquals("512",m_h.extractMin());
+        assertEquals("1",m_h.extractMin());
+
+        m_h.decreaseKey("254",1);
+        m_h.decreaseKey("255",0);
+        assertEquals("255",m_h.extractMin());
+        assertEquals("254",m_h.extractMin());
+        assertEquals("2",m_h.extractMin());
+        assertEquals("3",m_h.extractMin());
+
+        m_h.decreaseKey("123",6);
+        m_h.decreaseKey("678",4);
+        assertEquals("4",m_h.extractMin());
+        assertEquals("678",m_h.extractMin());
+        assertEquals("5",m_h.extractMin());
+        assertEquals("6",m_h.extractMin());
+        assertEquals("123",m_h.extractMin());
+
+        assertEquals("7",m_h.extractMin());
+        assertEquals("654",m_h.extractMin());
+        assertEquals("8",m_h.extractMin());
+        assertEquals("999",m_h.extractMin());
+        assertEquals("9",m_h.extractMin());
+        assertEquals("456",m_h.extractMin());
     }
 
     @Test
-    void decreaseKeyTest2() {
-        String[] strings = new String[155];
-        double[] doubles = new double[155];
-        int idx = 0;
-        for(double i = 0; i <= 308; i+=2) {
-            strings[idx] = String.valueOf(i);
-            doubles[idx] = i;
-            idx++;
-        }
-        List<String> l = Arrays.asList(strings);
-        MinHeap<String> h = new MinHeap<>(l, Double::valueOf);
-        idx = 0;
-        for(double i = 0; i <= 308; i+=4){
-            h.decreaseKey(String.valueOf(i), i-3);
-            doubles[idx] = i -3;
-            idx += 2;
-        }
-        DoubleAndString[] answer = new DoubleAndString[155];
-        idx = 154;
-        for(int i = 308 ; i >= 0; i -= 2){
-            answer[idx] = new DoubleAndString(strings[idx],doubles[idx]);
-            idx--;
-        }
+    void caseTest2(){
+        List<String> l = new ArrayList<>();
 
-        Arrays.sort(answer, Comparator.comparingDouble(DoubleAndString::getDouble));
-        idx=0;
-        for(int i = 0 ; i <= 308; i+=2){
-            var t = h.extractMin();
-            assertEquals(answer[idx].getString(),t);
-            idx++;
+        for(int i = 0; i < 1024; i++){
+            l.add(String.valueOf(i));
         }
-    }
-    static class DoubleAndString{
-        double d;
-        String s;
-        public DoubleAndString(String s, double d){
-            this.s = s;
-            this.d = d;
-        }
-        public double getDouble() { return d; }
+        MinHeap<String> m_h = new MinHeap<>(l,Double::valueOf);
+        m_h.decreaseKey("1023",0);
+        assertEquals("0",m_h.extractMin());
+        assertEquals("1023",m_h.extractMin());
 
-        public String getString() { return s; }
+        m_h.decreaseKey("456",9);
+        m_h.decreaseKey("654",7);
+        m_h.decreaseKey("999",8);
+
+        m_h.decreaseKey("512", -1);
+        assertEquals("512",m_h.extractMin());
+        assertEquals("1",m_h.extractMin());
+
+        m_h.decreaseKey("254",1);
+        m_h.decreaseKey("255",0);
+        assertEquals("255",m_h.extractMin());
+        assertEquals("254",m_h.extractMin());
+        assertEquals("2",m_h.extractMin());
+        assertEquals("3",m_h.extractMin());
+
+        m_h.decreaseKey("123",6);
+        m_h.decreaseKey("678",4);
+        assertEquals("4",m_h.extractMin());
+        assertEquals("678",m_h.extractMin());
+        assertEquals("5",m_h.extractMin());
+        assertEquals("6",m_h.extractMin());
+        assertEquals("123",m_h.extractMin());
+
+        assertEquals("7",m_h.extractMin());
+        assertEquals("654",m_h.extractMin());
+        assertEquals("8",m_h.extractMin());
+        assertEquals("999",m_h.extractMin());
+        assertEquals("9",m_h.extractMin());
+        assertEquals("456",m_h.extractMin());
     }
+
 }
