@@ -1,7 +1,7 @@
 package tools;
 
 import java.util.*;
-import java.util.function.Function;
+import java.util.function.ToDoubleFunction;
 
 // key must be a number
 public class MinHeap<V> {
@@ -18,7 +18,7 @@ public class MinHeap<V> {
     private int heap_size = 0;
 
     public MinHeap(){}
-    public MinHeap(Collection<V> c, Function<V, Double> getKey){
+    public MinHeap(Collection<V> c, ToDoubleFunction<V> getKey){
         Objects.requireNonNull(c);
         Objects.requireNonNull(getKey);
         heap_size = 0;
@@ -26,7 +26,7 @@ public class MinHeap<V> {
         for(var i : c){
             Objects.requireNonNull(i);
             heap_size++;
-            var n = new KeyValuePair<>(getKey.apply(i),i);
+            var n = new KeyValuePair<>(getKey.applyAsDouble(i),i);
             array.add(n);
             value_node_map.put(n.getValue(),new NodeAndIndex(n,idx++));
         }
