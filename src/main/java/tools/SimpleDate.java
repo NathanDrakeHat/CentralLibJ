@@ -10,4 +10,8 @@ public final class SimpleDate {
         this.month = m;
         this.day = d;
     }
+
+    public int getYear() { return year; }
+    public int getMonth() { return month; }
+    public int getDay() { return day; }
 }

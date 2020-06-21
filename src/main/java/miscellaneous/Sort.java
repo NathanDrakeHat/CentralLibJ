@@ -1,6 +1,9 @@
 package miscellaneous;
 
 import tools.SimpleDate;
+
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Random;
 
 public final class Sort {
@@ -164,47 +167,10 @@ public final class Sort {
     }
 
     public static void radixSort(SimpleDate[] a){
-        for(int i=0; i < a.length; i++){
-            int min_day = a[i].day;
-            var min_date = a[i];
-            for(int j=i+1; j < a.length; j++){
-                if(a[j].day <= min_day){
-                    min_day = a[j].day;
-                    min_date = a[j];
-                }
-            }
-            var temp = min_date;
-            min_date = a[i];
-            a[i] = temp;
-        }
-
-        for(int i=0; i < a.length; i++){
-            int min_month = a[i].month;
-            var min_date = a[i];
-            for(int j=i+1; j < a.length; j++){
-                if(a[j].month <= min_month){
-                    min_month = a[j].month;
-                    min_date = a[j];
-                }
-            }
-            var temp = min_date;
-            min_date = a[i];
-            a[i] = temp;
-        }
-
-        for(int i=0; i < a.length; i++){
-            int min_year = a[i].year;
-            var min_date = a[i];
-            for(int j=i+1; j < a.length; j++){
-                if(a[j].year <= min_year){
-                    min_year = a[j].year;
-                    min_date = a[j];
-                }
-            }
-            var temp = min_date;
-            min_date = a[i];
-            a[i] = temp;
-        }
+        //sort from smaller bit to bigger bit
+        Arrays.sort(a, Comparator.comparing(SimpleDate::getDay));
+        Arrays.sort(a, Comparator.comparing(SimpleDate::getMonth));
+        Arrays.sort(a, Comparator.comparing(SimpleDate::getYear));
     }
 
     private static class SingleLinkedNode<V>  {
