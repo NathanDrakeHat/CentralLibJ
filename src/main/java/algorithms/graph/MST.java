@@ -48,12 +48,12 @@ public final class MST {
         public String toString(){ return string; }
         
     }
-    public static <T> Set<Graph.Edge<KruskalVertex<T>>> algorithmOfKruskal(Graph<KruskalVertex<T>> graph){
+    public static <T> Set<LinkedGraph.Edge<KruskalVertex<T>>> algorithmOfKruskal(LinkedGraph<KruskalVertex<T>> graph){
         Objects.requireNonNull(graph);
-        Set<Graph.Edge<KruskalVertex<T>>> res = new HashSet<>();
+        Set<LinkedGraph.Edge<KruskalVertex<T>>> res = new HashSet<>();
         var edges_set = graph.heavilyGetAllEdges();
         var edges_list = new ArrayList<>(edges_set);
-        edges_list.sort(Comparator.comparingDouble(Graph.Edge::getWeight));
+        edges_list.sort(Comparator.comparingDouble(LinkedGraph.Edge::getWeight));
         for(var edge : edges_list){
             var v1 = edge.getFormerVertex();
             var v2 = edge.getLaterVertex();
@@ -96,7 +96,7 @@ public final class MST {
         @Override
         public String toString() { return string.concat(String.format(" %f",key)); }
     }
-    public static <T> void algorithmOfPrimWithFibonacciHeap(Graph<PrimVertex<T>> graph, PrimVertex<T> r){
+    public static <T> void algorithmOfPrimWithFibonacciHeap(LinkedGraph<PrimVertex<T>> graph, PrimVertex<T> r){
         Objects.requireNonNull(r);
         Objects.requireNonNull(graph);
         FibonacciHeap<PrimVertex<T>> Q = new FibonacciHeap<>();
@@ -122,7 +122,7 @@ public final class MST {
             }
         }
     }
-    public static <T> void algorithmOfPrimWithMinHeap(Graph<PrimVertex<T>> graph, PrimVertex<T> r){
+    public static <T> void algorithmOfPrimWithMinHeap(LinkedGraph<PrimVertex<T>> graph, PrimVertex<T> r){
         Objects.requireNonNull(r);
         Objects.requireNonNull(graph);
         var vertices = graph.heavilyGetAllVertices();

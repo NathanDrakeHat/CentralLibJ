@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 // single source shortest path
 public final class SSSP {
     // general case algorithm: negative weight, cyclic
-    public static <T> boolean algorithmBellmanFord(Graph<BFS.BFSVertex<T>> graph, BFS.BFSVertex<T> s){
+    public static <T> boolean algorithmBellmanFord(LinkedGraph<BFS.BFSVertex<T>> graph, BFS.BFSVertex<T> s){
         Objects.requireNonNull(s);
         Objects.requireNonNull(graph);
         initializeSingleSource(graph, s);
@@ -27,7 +27,7 @@ public final class SSSP {
         }
         return true;
     }
-    private static <T> void initializeSingleSource(Graph<BFS.BFSVertex<T>> G, BFS.BFSVertex<T> s){
+    private static <T> void initializeSingleSource(LinkedGraph<BFS.BFSVertex<T>> G, BFS.BFSVertex<T> s){
         var vertices = G.heavilyGetAllVertices();
         for(var v : vertices){
             v.distance = Double.POSITIVE_INFINITY;
@@ -36,7 +36,7 @@ public final class SSSP {
         }
         s.distance = 0;
     }
-    private static <T> void relax(Graph.Edge<BFS.BFSVertex<T>> edge){
+    private static <T> void relax(LinkedGraph.Edge<BFS.BFSVertex<T>> edge){
         var weight = edge.getWeight();
         var u = edge.getFormerVertex();
         var v = edge.getLaterVertex();
@@ -49,9 +49,9 @@ public final class SSSP {
 
     // shortest paths of directed acyclic graph
     public static <T>
-    Graph<BFS.BFSVertex<T>> shortestPathOfDAG(Graph<DFS.DFSVertex<BFS.BFSVertex<T>>> DFS_graph,
-                                              Graph<BFS.BFSVertex<T>> BFS_graph,
-                                              BFS.BFSVertex<T> s){
+    LinkedGraph<BFS.BFSVertex<T>> shortestPathOfDAG(LinkedGraph<DFS.DFSVertex<BFS.BFSVertex<T>>> DFS_graph,
+                                                    LinkedGraph<BFS.BFSVertex<T>> BFS_graph,
+                                                    BFS.BFSVertex<T> s){
         Objects.requireNonNull(s);
         Objects.requireNonNull(DFS_graph);
         Objects.requireNonNull(BFS_graph);
@@ -70,7 +70,7 @@ public final class SSSP {
 
     // non-negative weight,
     // fibonacci heap, time complexity: O(V^2*lgV + V*E)
-    public static <T> void algorithmDijkstraWithFibonacciHeap(Graph<BFS.BFSVertex<T>> G, BFS.BFSVertex<T> s){
+    public static <T> void algorithmDijkstraWithFibonacciHeap(LinkedGraph<BFS.BFSVertex<T>> G, BFS.BFSVertex<T> s){
         Objects.requireNonNull(s);
         Objects.requireNonNull(G);
         initializeSingleSource(G, s);
@@ -89,7 +89,7 @@ public final class SSSP {
         }
     }
     // min heap, time complexity: O(V*E*lgV)
-    public static <T> void algorithmDijkstraWithMinHeap(Graph<BFS.BFSVertex<T>> G, BFS.BFSVertex<T> s){
+    public static <T> void algorithmDijkstraWithMinHeap(LinkedGraph<BFS.BFSVertex<T>> G, BFS.BFSVertex<T> s){
         Objects.requireNonNull(s);
         Objects.requireNonNull(G);
         initializeSingleSource(G, s);

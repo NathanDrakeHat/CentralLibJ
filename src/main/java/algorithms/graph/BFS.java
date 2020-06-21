@@ -39,7 +39,7 @@ public final class BFS {
         public String toString() { return string; }
     }
 
-    public static <T> void breathFirstSearch(Graph<BFSVertex<T>> G, BFSVertex<T> s) {
+    public static <T> void breathFirstSearch(LinkedGraph<BFSVertex<T>> G, BFSVertex<T> s) {
         Objects.requireNonNull(s);
         var vs = G.heavilyGetAllVertices();
         for (var v : vs) {

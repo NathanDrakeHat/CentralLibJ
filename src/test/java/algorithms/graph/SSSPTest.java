@@ -28,11 +28,11 @@ class SSSPTest {
         assertTrue(b);
         assertEquals(List.of("z", "t", "x", "y","s"),res);
     }
-    static Graph<BFS.BFSVertex<String>> buildBellmanFordCase(){
+    static LinkedGraph<BFS.BFSVertex<String>> buildBellmanFordCase(){
         String[] names = "s,t,x,y,z".split(",");
         List<BFS.BFSVertex<String>> vertices = new ArrayList<>();
         for(var n : names) vertices.add(new BFS.BFSVertex<>(n));
-        var res = new Graph<>(vertices,Graph.Direction.DIRECTED);
+        var res = new LinkedGraph<>(vertices, LinkedGraph.Direction.DIRECTED);
         int[] index1 =        new int[]{0,0,1,1, 1, 2, 3,3,4,4};
         int[] index2 =        new int[]{1,3,2,3, 4, 1, 2,4,0,2};
         double[] weights = new double[]{6,7,5,8,-4,-2,-3,9,2,7};
@@ -66,7 +66,7 @@ class SSSPTest {
         String[] names = "r,s,t,x,y,z".split(",");
         List<BFS.BFSVertex<String>> BFS_vertex = new ArrayList<>();
         for (String name : names) { BFS_vertex.add(new BFS.BFSVertex<>(name)); }
-        var BFS_G = new Graph<>(BFS_vertex,Graph.Direction.DIRECTED);
+        var BFS_G = new LinkedGraph<>(BFS_vertex, LinkedGraph.Direction.DIRECTED);
         int[] index1 =        new int[]{0,0,1,1,2,2,2, 3,3, 4};
         int[] index2 =        new int[]{1,2,2,3,3,4,5, 4,5, 5};
         double[] weights = new double[]{5,3,2,6,7,4,2,-1,1,-2};
@@ -74,7 +74,7 @@ class SSSPTest {
             BFS_G.setNeighbor(BFS_vertex.get(index1[i]),BFS_vertex.get(index2[i]),weights[i]);
         }
         var DFS_vertices = BFS_vertex.stream().map(DFS.DFSVertex::new).collect(Collectors.toList());
-        var DFS_G = new Graph<>(DFS_vertices, Graph.Direction.DIRECTED);
+        var DFS_G = new LinkedGraph<>(DFS_vertices, LinkedGraph.Direction.DIRECTED);
         int len = DFS_vertices.size();
         for(int i = 0; i < len - 1; i++){
             DFS_G.setNeighbor(DFS_vertices.get(i), DFS_vertices.get(i+1));
@@ -85,8 +85,8 @@ class SSSPTest {
         return t;
     }
     static class Result{
-        public Graph<BFS.BFSVertex<String>> BFS_G;
-        public Graph<DFS.DFSVertex<BFS.BFSVertex<String>>> DFS_G;
+        public LinkedGraph<BFS.BFSVertex<String>> BFS_G;
+        public LinkedGraph<DFS.DFSVertex<BFS.BFSVertex<String>>> DFS_G;
     }
 
     @Test
@@ -128,11 +128,11 @@ class SSSPTest {
         assertEquals(vertices.get(3),vertices.get(4).getParent());
         assertEquals(7,vertices.get(4).getDistance());
     }
-    static Graph<BFS.BFSVertex<String>> buildDijkstraCase(){
+    static LinkedGraph<BFS.BFSVertex<String>> buildDijkstraCase(){
         String[] names = "s,t,x,y,z".split(",");
         List<BFS.BFSVertex<String>> vertices = new ArrayList<>();
         for(var n : names) vertices.add(new BFS.BFSVertex<>(n));
-        var graph = new Graph<>(vertices, Graph.Direction.DIRECTED);
+        var graph = new LinkedGraph<>(vertices, LinkedGraph.Direction.DIRECTED);
         int[] indices1 =      new int[]{0, 0,1,1,2,3,3,3,4,4};
         int[] indices2 =      new int[]{1, 3,2,3,4,1,2,4,0,2};
         double[] weights = new double[]{10,5,1,2,4,3,9,2,7,6};

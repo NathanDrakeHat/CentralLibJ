@@ -4,7 +4,7 @@ package algorithms.graph;
 import java.util.*;
 
 
-public final class Graph<V>  {
+public final class LinkedGraph<V>  {
     public static final class Edge<T> {
         private final T former_vertex;
         private final T later_vertex;
@@ -82,7 +82,7 @@ public final class Graph<V>  {
     private final Map<V, Set<Edge<V>>> edge_map = new HashMap<>();
     private int size;
 
-    public Graph(Collection<V> vertices, Direction is_directed){
+    public LinkedGraph(Collection<V> vertices, Direction is_directed){
         Objects.requireNonNull(is_directed);
         Objects.requireNonNull(vertices);
         size = 0;

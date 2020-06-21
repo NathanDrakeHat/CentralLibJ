@@ -10,13 +10,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class DFSTest {
     static String names = "uvwxyz";
-    static Graph<DFS.DFSVertex<String>> makeGraph(){
+    static LinkedGraph<DFS.DFSVertex<String>> makeGraph(){
         var vs = new ArrayList<DFS.DFSVertex<String>>(6);
         
         for(int i = 0; i < 6; i++){
             vs.add(i, new DFS.DFSVertex<>(String.valueOf(names.charAt(i))));
         }
-        var G = new Graph<>(vs, Graph.Direction.DIRECTED);
+        var G = new LinkedGraph<>(vs, LinkedGraph.Direction.DIRECTED);
         G.setNeighbor(vs.get(0), vs.get(1));
         G.setNeighbor(vs.get(0), vs.get(3));
 
@@ -34,13 +34,13 @@ class DFSTest {
         return G;
     }
     static int[][] res = new int[][] {{1, 2, 9, 4, 3, 10}, {8, 7, 12, 5, 6, 11}};
-    static Graph<DFS.DFSVertex<String>> makeTopographicalDemo(){
+    static LinkedGraph<DFS.DFSVertex<String>> makeTopographicalDemo(){
 //            DFS.Vertex[] A = new DFS.Vertex[9];
             var A = new ArrayList<DFS.DFSVertex<String>>(9);
             String t = "undershorts,pants,belt,shirt,tie,jacket,socks,shoes,watch";
             var names = t.split(",");
             for(int i = 0; i < 9; i++) { A.add(i, new DFS.DFSVertex<>(names[i])); }
-            Graph<DFS.DFSVertex<String>> G = new Graph<>(A, Graph.Direction.DIRECTED);
+            LinkedGraph<DFS.DFSVertex<String>> G = new LinkedGraph<>(A, LinkedGraph.Direction.DIRECTED);
             G.setNeighbor(A.get(0), A.get(1));
             G.setNeighbor(A.get(0), A.get(6));
 
@@ -129,7 +129,7 @@ class DFSTest {
         assertTrue(flag);
     }
 
-    boolean recursiveTopologicalTest(DFS.DFSVertex<String> target, DFS.DFSVertex<String> current, Graph<DFS.DFSVertex<String>> G){
+    boolean recursiveTopologicalTest(DFS.DFSVertex<String> target, DFS.DFSVertex<String> current, LinkedGraph<DFS.DFSVertex<String>> G){
         if(current.equals(target)) return false;
         var edges = G.getEdgesAt(current);
         if(edges.isEmpty()) return true;
@@ -159,12 +159,12 @@ class DFSTest {
         assertFalse(flag);
     }
 
-    static Graph<DFS.DFSVertex<String>> makeStronglyConnectedComponentsDemo(){
+    static LinkedGraph<DFS.DFSVertex<String>> makeStronglyConnectedComponentsDemo(){
         String t = "a,b,c,d,e,f,g,h";
         var names = t.split(",");
         var A = new ArrayList<DFS.DFSVertex<String>>(names.length);
         for(int i = 0; i < names.length; i++) { A.add(i,new DFS.DFSVertex<>(names[i])); }
-        Graph<DFS.DFSVertex<String>> G = new Graph<>(A, Graph.Direction.DIRECTED);
+        LinkedGraph<DFS.DFSVertex<String>> G = new LinkedGraph<>(A, LinkedGraph.Direction.DIRECTED);
         G.setNeighbor(A.get(0), A.get(1));
 
         G.setNeighbor(A.get(1), A.get(2));
