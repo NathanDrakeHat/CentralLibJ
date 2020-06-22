@@ -1,11 +1,9 @@
 *.iml
 /.idea
-/.idea/*
 *.bat
 src/main/java/Main.java
 *temp*
 /target
-/target/*
 src/main/resources/
 *.txt
 src/backup/
