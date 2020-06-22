@@ -4,7 +4,8 @@ import tools.SimpleDate;
 
 import java.util.Arrays;
 import java.util.Comparator;
-import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
+
 
 public final class Sort {
     public static void mergeSort(int[] array){
@@ -115,8 +116,7 @@ public final class Sort {
     }
 
     private static int randPartition(int[] a, int start, int end){ // base case (end - start)
-        var rand = new Random();
-        int pivot_idx = rand.nextInt(end - start) + start;
+        int pivot_idx = ThreadLocalRandom.current().nextInt(start,end);
         int pivot = a[pivot_idx];
 
         int temp = a[end - 1];

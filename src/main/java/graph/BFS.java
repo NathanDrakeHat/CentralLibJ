@@ -41,7 +41,7 @@ public final class BFS {
 
     public static <T> void breathFirstSearch(LinkedGraph<BFSVertex<T>> G, BFSVertex<T> s) {
         Objects.requireNonNull(s);
-        var vs = G.heavilyGetAllVertices();
+        var vs = G.GetAllVertices();
         for (var v : vs) {
             if (!v.equals(s)) {
                 v.color = COLOR.WHITE;

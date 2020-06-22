@@ -15,7 +15,7 @@ public final class SSSP {
         Objects.requireNonNull(graph);
         initializeSingleSource(graph, s);
         int vertices_count = graph.getVerticesCount();
-        var edges = graph.heavilyGetAllEdges();
+        var edges = graph.GetAllEdges();
         for(int i = 1; i < vertices_count; i++){
             for(var edge : edges){
                 relax(edge);
@@ -28,7 +28,7 @@ public final class SSSP {
         return true;
     }
     private static <T> void initializeSingleSource(LinkedGraph<BFS.BFSVertex<T>> G, BFS.BFSVertex<T> s){
-        var vertices = G.heavilyGetAllVertices();
+        var vertices = G.GetAllVertices();
         for(var v : vertices){
             v.distance = Double.POSITIVE_INFINITY;
             v.parent = null;
@@ -74,7 +74,7 @@ public final class SSSP {
         Objects.requireNonNull(s);
         Objects.requireNonNull(G);
         initializeSingleSource(G, s);
-        var vertices = G.heavilyGetAllVertices();
+        var vertices = G.GetAllVertices();
         FibonacciHeap<BFS.BFSVertex<T>> Q = new FibonacciHeap<>();
         for (var vertex : vertices) Q.insert(vertex.distance, vertex);
         while (Q.length() > 0) {
@@ -93,7 +93,7 @@ public final class SSSP {
         Objects.requireNonNull(s);
         Objects.requireNonNull(G);
         initializeSingleSource(G, s);
-        var vertices = G.heavilyGetAllVertices();
+        var vertices = G.GetAllVertices();
         MinHeap<BFS.BFSVertex<T>> Q = new MinHeap<>(vertices, BFS.BFSVertex::getDistance);
         while (Q.length() > 0) {
             var u = Q.extractMin();

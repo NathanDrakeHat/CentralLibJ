@@ -51,7 +51,7 @@ public final class MST {
     public static <T> Set<LinkedGraph.Edge<KruskalVertex<T>>> algorithmOfKruskal(LinkedGraph<KruskalVertex<T>> graph){
         Objects.requireNonNull(graph);
         Set<LinkedGraph.Edge<KruskalVertex<T>>> res = new HashSet<>();
-        var edges_set = graph.heavilyGetAllEdges();
+        var edges_set = graph.GetAllEdges();
         var edges_list = new ArrayList<>(edges_set);
         edges_list.sort(Comparator.comparingDouble(LinkedGraph.Edge::getWeight));
         for(var edge : edges_list){
@@ -100,7 +100,7 @@ public final class MST {
         Objects.requireNonNull(r);
         Objects.requireNonNull(graph);
         FibonacciHeap<PrimVertex<T>> Q = new FibonacciHeap<>();
-        var vertices = graph.heavilyGetAllVertices();
+        var vertices = graph.GetAllVertices();
         for (var u : vertices) {
             if (!u.equals(r)) u.key = Double.POSITIVE_INFINITY;
             else {
@@ -125,7 +125,7 @@ public final class MST {
     public static <T> void algorithmOfPrimWithMinHeap(LinkedGraph<PrimVertex<T>> graph, PrimVertex<T> r){
         Objects.requireNonNull(r);
         Objects.requireNonNull(graph);
-        var vertices = graph.heavilyGetAllVertices();
+        var vertices = graph.GetAllVertices();
         for (var u : vertices) {
             if (!u.equals(r)) u.key = Double.POSITIVE_INFINITY;
             else {

@@ -42,7 +42,7 @@ public final class DFS {
     }
 
     public static <T> void depthFirstSearch(LinkedGraph<DFSVertex<T>> G) {
-        var vertices = G.heavilyGetAllVertices();
+        var vertices = G.GetAllVertices();
         for (var v : vertices) {
             v.color = COLOR.WHITE;
             v.parent = null;
@@ -74,7 +74,7 @@ public final class DFS {
 
     public static <T> List<DFSVertex<T>> topologicalSort(LinkedGraph<DFSVertex<T>> G){
         depthFirstSearch(G);
-        List<DFSVertex<T>> l = new ArrayList<>(G.heavilyGetAllVertices());
+        List<DFSVertex<T>> l = new ArrayList<>(G.GetAllVertices());
         l.sort((o1, o2) -> o2.finish - o1.finish); // descend order
         return l;
     }
@@ -85,7 +85,7 @@ public final class DFS {
         depthFirstSearchOrderly(G_T, l);
     }
     private static <T> void depthFirstSearchOrderly(LinkedGraph<DFSVertex<T>> G, List<DFSVertex<T>> order){
-        var vertices = G.heavilyGetAllVertices();
+        var vertices = G.GetAllVertices();
         for (var v : vertices) {
             v.color = COLOR.WHITE;
             v.parent = null;
@@ -96,8 +96,8 @@ public final class DFS {
         }
     }
     private static <T> LinkedGraph<DFSVertex<T>> transposeGraph(LinkedGraph<DFSVertex<T>> graph){
-        var new_graph = new LinkedGraph<>(graph.heavilyGetAllVertices(), LinkedGraph.Direction.DIRECTED);
-        var vertices = graph.heavilyGetAllVertices();
+        var new_graph = new LinkedGraph<>(graph.GetAllVertices(), LinkedGraph.Direction.DIRECTED);
+        var vertices = graph.GetAllVertices();
         for(var v : vertices){
             var edges = graph.getEdgesAt(v);
             for(var edge : edges){
