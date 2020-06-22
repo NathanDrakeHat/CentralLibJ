@@ -31,13 +31,12 @@ class APSPTest {
         assertArrayEquals(answer,res);
     }
     double[][] buildSlowAllPairsShortestPathsGraph(){
-        var weight = new double[][]{
+        return new double[][]{
                 {0,Double.POSITIVE_INFINITY,Double.POSITIVE_INFINITY,2,Double.POSITIVE_INFINITY},
                 {3,0,4,Double.POSITIVE_INFINITY,Double.POSITIVE_INFINITY},
                 {8,Double.POSITIVE_INFINITY,0,-5,Double.POSITIVE_INFINITY},
                 {Double.POSITIVE_INFINITY,1,Double.POSITIVE_INFINITY,0,6},
                 {-4,7,Double.POSITIVE_INFINITY,Double.POSITIVE_INFINITY,0}
         };
-        return weight;
     }
 }

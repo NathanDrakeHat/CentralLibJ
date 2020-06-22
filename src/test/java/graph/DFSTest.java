@@ -33,9 +33,7 @@ class DFSTest {
 
         return G;
     }
-    static int[][] res = new int[][] {{1, 2, 9, 4, 3, 10}, {8, 7, 12, 5, 6, 11}};
     static LinkedGraph<DFS.DFSVertex<String>> makeTopographicalDemo(){
-//            DFS.Vertex[] A = new DFS.Vertex[9];
             var A = new ArrayList<DFS.DFSVertex<String>>(9);
             String t = "undershorts,pants,belt,shirt,tie,jacket,socks,shoes,watch";
             var names = t.split(",");
@@ -65,7 +63,6 @@ class DFSTest {
     void depthFirstSearchTest() {
         var G = makeGraph();
         DFS.depthFirstSearch(G);
-        int idx = 0;
         var vertices = G.GetAllVertices();
         List<DFS.DFSVertex<String>> l = new ArrayList<>(vertices);
         l.sort(Comparator.comparing(DFS.DFSVertex::getContent));
