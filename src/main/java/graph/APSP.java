@@ -2,7 +2,7 @@ package graph;
 
 // all pair shortest path
 public class APSP {
-    private static <V> double[][] extendedShortestPath(double[][] L_origin, double[][] W){
+    private static double[][] extendedShortestPath(double[][] L_origin, double[][] W){
         var n = W.length;
         var L_next = new double[n][n];
         for(int i = 0; i < n; i++){
@@ -15,7 +15,7 @@ public class APSP {
         }
         return L_next;
     }
-    public static <V> double[][] slowAllPairsShortestPaths(double[][] W){
+    public static double[][] slowAllPairsShortestPaths(double[][] W){
         var n = W.length;
         var L = W;
         for(int m = 2; m <= n-1; m++){
@@ -25,7 +25,7 @@ public class APSP {
         return L;
     }
 
-    private static <V> double[][] squareMatrixMultiply(double[][] A, double[][] B){
+    private static double[][] squareMatrixMultiply(double[][] A, double[][] B){
         var n = A.length;
         double[][] C = new double[n][n];
         for(int i = 0; i < n; i++){
@@ -38,7 +38,7 @@ public class APSP {
         }
         return C;
     }
-    public static <V> double[][] fasterAllPairsShortestPaths(double[][] W){
+    public static double[][] fasterAllPairsShortestPaths(double[][] W){
         var n = W.length;
         var L = W;
         int m = 1;
