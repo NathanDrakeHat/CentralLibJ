@@ -91,6 +91,7 @@ public class APShortestPath {
     }
 
     // O(V^2*lgV + V*E)
+    // sparse graph
     public static <T> double[][] algorithmJohnson(Graph<BFS.BFSVertex<T>> graph) throws NegativeCyclesException {
         Map<BFS.BFSVertex<T>, Double> h = new HashMap<>();
         var n = graph.getVerticesCount();
