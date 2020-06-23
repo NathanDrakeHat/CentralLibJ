@@ -19,8 +19,8 @@ class BFSTest {
             }
             return vs;
         }
-        public static LinkedGraph<BFS.BFSVertex<Character>> makeGraph(List<BFS.BFSVertex<Character>> vs){
-            var G = new LinkedGraph<>(vs, LinkedGraph.Direction.NON_DIRECTED);
+        public static Graph<BFS.BFSVertex<Character>> makeGraph(List<BFS.BFSVertex<Character>> vs){
+            var G = new Graph<>(vs, Graph.Direction.NON_DIRECTED);
             G.setNeighbor(vs.get(0), vs.get(1));
             G.setNeighbor(vs.get(0), vs.get(4));
 

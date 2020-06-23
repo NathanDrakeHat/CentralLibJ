@@ -50,10 +50,10 @@ public final class MST {
     }
     public static <T> Set<Graph.Edge<KruskalVertex<T>>> algorithmOfKruskal(Graph<KruskalVertex<T>> graph){
         Objects.requireNonNull(graph);
-        Set<LinkedGraph.Edge<KruskalVertex<T>>> res = new HashSet<>();
+        Set<Graph.Edge<KruskalVertex<T>>> res = new HashSet<>();
         var edges_set = graph.GetAllEdges();
         var edges_list = new ArrayList<>(edges_set);
-        edges_list.sort(Comparator.comparingDouble(LinkedGraph.Edge::getWeight));
+        edges_list.sort(Comparator.comparingDouble(Graph.Edge::getWeight));
         for(var edge : edges_list){
             var v1 = edge.getFormerVertex();
             var v2 = edge.getLaterVertex();

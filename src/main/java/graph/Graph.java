@@ -1,26 +1,18 @@
 package graph;
 
-import java.util.Objects;
-import java.util.Set;
 
-public interface Graph<V> {
-    int getVerticesCount();
+import java.util.*;
 
-    void setNeighbor(V vertex, V neighbor);
 
-    void setNeighbor(V vertex, V neighbor, double w);
-
-    Set<Edge<V>> GetAllEdges();
-
-    Set<V> GetAllVertices();
-
-    Set<Edge<V>> getEdgesAt(V vertex);
-
+public final class Graph<V>{
+    private final Direction graph_direction;
+    private final Map<V, Set<Edge<V>>> edge_map = new HashMap<>();
+    private int size;
     enum Direction{
         DIRECTED,NON_DIRECTED
     }
 
-    final class Edge<T> {
+    static final class Edge<T> {
         private final T former_vertex;
         private final T later_vertex;
         private final Direction edge_direction;
@@ -90,4 +82,45 @@ public interface Graph<V> {
         @Override
         public int hashCode(){ return hash_code; }
     }
+
+    public Graph(Collection<V> vertices, Direction is_directed){
+        Objects.requireNonNull(is_directed);
+        Objects.requireNonNull(vertices);
+        size = 0;
+        for(var v : vertices) {
+            Objects.requireNonNull(v);
+            this.edge_map.put(v, new HashSet<>());
+            size++;
+        }
+        this.graph_direction = is_directed;
+    }
+
+    public int getVerticesCount() { return size; }
+
+    public void setNeighbor(V vertex, V neighbor){ setNeighbor(vertex, neighbor, 1); }
+    public void setNeighbor(V vertex, V neighbor, double w){
+        var edge_t = new Edge<>(vertex, neighbor, w, graph_direction);
+        if(graph_direction == Direction.DIRECTED) {
+            var edges_set = edge_map.get(vertex);
+            edges_set.add(edge_t);
+        }else{
+            var edges_set = edge_map.get(vertex);
+            edges_set.add(edge_t);
+
+            edges_set = edge_map.get(neighbor);
+            edges_set.add(edge_t);
+        }
+    }
+
+    public Set<Edge<V>> GetAllEdges(){
+        Set<Edge<V>> res = new HashSet<>();
+        for(var edges : edge_map.values()){
+            res.addAll(edges); }
+        return res;
+    }
+    public Set<V> GetAllVertices(){ return new HashSet<>(edge_map.keySet()); }
+    public Set<Edge<V>> getEdgesAt(V vertex){
+        return new HashSet<>(edge_map.get(vertex));
+    }
+
 }

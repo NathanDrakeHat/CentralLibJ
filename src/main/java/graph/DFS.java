@@ -96,7 +96,7 @@ public final class DFS {
         }
     }
     private static <T> Graph<DFSVertex<T>> transposeGraph(Graph<DFSVertex<T>> graph){
-        var new_graph = new LinkedGraph<>(graph.GetAllVertices(), LinkedGraph.Direction.DIRECTED);
+        var new_graph = new Graph<>(graph.GetAllVertices(), Graph.Direction.DIRECTED);
         var vertices = graph.GetAllVertices();
         for(var v : vertices){
             var edges = graph.getEdgesAt(v);
