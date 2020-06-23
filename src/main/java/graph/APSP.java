@@ -47,4 +47,19 @@ public class APSP {
         }
         return L;
     }
+
+    public static double[][] algorithmFloydWarshall(double[][] W){
+        var n = W.length;
+        var D_origin = W;
+        for(int k = 0; k < n; k++){
+            var D_current = new double[n][n];
+            for(int i = 0; i < n; i++){
+                for(int j = 0; j < n; j++){
+                    D_current[i][j] = Math.min(D_origin[i][j], D_origin[i][k]+D_origin[k][j]);
+                }
+            }
+            D_origin = D_current;
+        }
+        return D_origin;
+    }
 }
