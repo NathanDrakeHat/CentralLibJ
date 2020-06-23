@@ -91,30 +91,28 @@ public class APShortestPath {
     }
 
     // O(V^2*lgV + V*E)
-    public static <T>
-    double[][] algorithmJohnson(Graph<BFS.BFSVertex<T>> graph,
-                                BFS.BFSVertex<T> s) throws NegativeCyclesException {
+    public static <T> double[][] algorithmJohnson(Graph<BFS.BFSVertex<T>> graph) throws NegativeCyclesException {
         Map<BFS.BFSVertex<T>, Double> h = new HashMap<>();
         var n = graph.getVerticesCount();
-        var vertices = graph.getAllVertices();
-        vertices.add(s);
-        var edges = graph.getAllEdges();
-        var new_graph = buildGraph(s,vertices,edges);
+        var vertices_new = graph.getAllVertices();
+        var s = new BFS.BFSVertex<T>();
+        vertices_new.add(s);
+        var new_graph = buildGraph(graph,vertices_new,s);
         if(!SSShortestPath.algorithmBellmanFord(new_graph, s))
             throw new NegativeCyclesException();
         else{
-            for(var vertex : vertices){
-                h.put(vertex,vertex.distance);
-            }
-            for(var edge : edges){
-                edge.weight += edge.getFormerVertex().distance - edge.getLaterVertex().distance; }
+            var edges_new = new_graph.getAllEdges();
+            for(var vertex : vertices_new){
+                h.put(vertex,vertex.distance); }
+            for(var edge : edges_new){
+                edge.weight = edge.weight + edge.getFormerVertex().distance - edge.getLaterVertex().distance; }
             var D = new double[n][n];
             int idx_u = 0;
-            for(var u : vertices){
+            for(var u : vertices_new){
                 if(u != s){
                     int idx_v = 0;
-                    SSShortestPath.algorithmDijkstra(graph,s, SSShortestPath.HeapType.FIBONACCI);
-                    for(var v : vertices){
+                    SSShortestPath.algorithmDijkstra(graph,u, SSShortestPath.HeapType.FIBONACCI);
+                    for(var v : vertices_new){
                         if(v != s){
                             D[idx_u][idx_v] = v.distance + h.get(v) - h.get(u);
                             idx_v++;
@@ -126,17 +124,13 @@ public class APShortestPath {
             return D;
         }
     }
-    private static <T> Graph<BFS.BFSVertex<T>> buildGraph(BFS.BFSVertex<T> s,
-                                                          List<BFS.BFSVertex<T>> vertices,
-                                                          List<Graph.Edge<BFS.BFSVertex<T>>> edges){
-        var new_graph = new Graph<>(vertices, Graph.Direction.DIRECTED);
-
-        for(var edge : edges)
-            new_graph.setNeighbor(edge.getFormerVertex(),edge.getLaterVertex(),edge.getWeight());
+    private static <T> Graph<BFS.BFSVertex<T>> buildGraph(Graph<BFS.BFSVertex<T>> graph, List<BFS.BFSVertex<T>> vertices,
+                                                          BFS.BFSVertex<T> s){
+        var new_graph = new Graph<>(graph);
+        new_graph.addNewVertex(s);
         for(var vertex : vertices){
             if(vertex != s) {
-                new_graph.setNeighbor(s, vertex, 0);
-                edges.add(new Graph.Edge<>(s,vertex,0, Graph.Direction.DIRECTED));
+                new_graph.setNeighbor(s,vertex);
             }
         }
         return new_graph;

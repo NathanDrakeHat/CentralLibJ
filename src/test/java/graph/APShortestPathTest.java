@@ -86,9 +86,17 @@ class APShortestPathTest {
     }
 
     @Test
-    void algorithmJohnson(){
+    void algorithmJohnsonTest(){
         try{
-            APShortestPath.algorithmJohnson(build(), new BFS.BFSVertex<>("0"));
+            var res = APShortestPath.algorithmJohnson(build());
+            var answer = new double[][]{
+                    {0.0, 1.0, -3.0, 2.0, -4.0},
+                    {3.0, 0.0, -4.0, 1.0, -1.0},
+                    {7.0, 4.0, 0.0, 5.0, 3.0},
+                    {2.0, -1.0, -5.0, 0.0, -2.0},
+                    {8.0, 5.0, 1.0, 6.0, 0.0},
+            };
+            assertArrayEquals(answer,res);
         }catch (APShortestPath.NegativeCyclesException e){
             fail();
         }
@@ -108,6 +116,7 @@ class APShortestPathTest {
 
         res.setNeighbor(vertices.get(2),vertices.get(1),4);
 
+        res.setNeighbor(vertices.get(3),vertices.get(0),2);
         res.setNeighbor(vertices.get(3),vertices.get(2),-5);
 
         res.setNeighbor(vertices.get(4),vertices.get(3),6);

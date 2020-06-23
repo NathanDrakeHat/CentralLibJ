@@ -13,10 +13,15 @@ public final class BFS {
         private final String string;
         private final int hash_code;
 
-        BFSVertex(V name){
+        public BFSVertex(V name){
             Objects.requireNonNull(name);
             this.content = name;
             string = String.format("BFS.Vertex: (%s)",content.toString());
+            hash_code = string.hashCode();
+        }
+        BFSVertex(){
+            content = null;
+            string = "BFS.Vertex: ()";
             hash_code = string.hashCode();
         }
 
@@ -30,7 +35,10 @@ public final class BFS {
         public boolean equals(Object other_vertex){
             if(other_vertex == this) return true;
             else if(!(other_vertex instanceof BFSVertex)) return false;
-            else return content.equals(((BFSVertex<?>) other_vertex).content);
+            else{
+                if(content == null) return ((BFSVertex<?>) other_vertex).content==null;
+                return content.equals(((BFSVertex<?>) other_vertex).content);
+            }
         }
 
         @Override public int hashCode(){ return hash_code; }
