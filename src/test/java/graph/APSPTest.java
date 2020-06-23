@@ -62,4 +62,22 @@ class APSPTest {
         };
         assertArrayEquals(answer,res);
     }
+
+    @Test
+    void transitiveClosureTest(){
+        var res = APSP.transitiveClosure(new double[][]{
+                {0,                       Double.POSITIVE_INFINITY,Double.POSITIVE_INFINITY,1},
+                {Double.POSITIVE_INFINITY,0                       ,1                        ,Double.POSITIVE_INFINITY},
+                {Double.POSITIVE_INFINITY,1                       ,0                       ,1},
+                {Double.POSITIVE_INFINITY,1                       ,Double.POSITIVE_INFINITY,0}
+        });
+
+        var answer = new boolean[][]{
+                {true,true,true,true},
+                {false,true,true,true},
+                {false,true,true,true},
+                {false,true,true,true}
+        };
+        assertArrayEquals(answer, res);
+    }
 }

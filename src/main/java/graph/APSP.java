@@ -63,4 +63,24 @@ public class APSP {
         }
         return D_origin;
     }
+
+    public static boolean[][] transitiveClosure(double[][] W){
+        var n = W.length;
+        var T = new boolean[n][n];
+        for(int i = 0; i < n; i++){
+            for(int j = 0; j < n; j++){
+                T[i][j] = (i == j) || (W[i][j] != Double.POSITIVE_INFINITY);
+            }
+        }
+        for(int k = 0; k < n; k++){
+            var T_k = new boolean[n][n];
+            for(int i = 0; i < n; i++) {
+                for (int j = 0; j < n; j++) {
+                    T_k[i][j] = T[i][j] || (T[i][k] && T[k][j]);
+                }
+            }
+            T = T_k;
+        }
+        return T;
+    }
 }
