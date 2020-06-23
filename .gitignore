@@ -8,3 +8,4 @@ src/main/resources/
 *.txt
 src/backup/
 push.bat
+commit.bat
