@@ -8,7 +8,7 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 // single source shortest path
-public final class SSSP {
+public final class SSShortestPath {
     // general case algorithm: negative weight, cyclic
     public static <T> boolean algorithmBellmanFord(Graph<BFS.BFSVertex<T>> graph, BFS.BFSVertex<T> s){
         Objects.requireNonNull(s);

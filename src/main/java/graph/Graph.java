@@ -6,7 +6,8 @@ import java.util.*;
 
 public final class Graph<V>{
     private final Direction graph_direction;
-    private final Map<V, Set<Edge<V>>> edge_map = new HashMap<>();
+    private final List<V> vertices = new ArrayList<>();
+    private final Map<V, List<Edge<V>>> edge_map = new HashMap<>();
     private int size;
     enum Direction{
         DIRECTED,NON_DIRECTED
@@ -16,9 +17,8 @@ public final class Graph<V>{
         private final T former_vertex;
         private final T later_vertex;
         private final Direction edge_direction;
-        private final double weight;
-        private final String string;
-        private final int hash_code;
+        double weight;
+
 
         Edge(T former, T later, double weight, Direction is_directed){
             Objects.requireNonNull(former);
@@ -28,21 +28,6 @@ public final class Graph<V>{
             former_vertex = former;
             later_vertex = later;
             this.edge_direction = is_directed;
-            if(edge_direction == Graph.Direction.DIRECTED)
-                string =  String.format("[Edge(%s >>> %s)], weight:%f", former_vertex, later_vertex,weight);
-            else
-                string = String.format("[Edge(%s <-> %s)], weight:%f", former_vertex, later_vertex,weight);
-
-            if(edge_direction == Graph.Direction.DIRECTED)
-                hash_code = Objects.hash(former_vertex, later_vertex,weight, true);
-            else{
-                int t1 = Objects.hashCode(former_vertex);
-                int t2 = Objects.hashCode(later_vertex);
-                if(t1 <= t2)
-                    hash_code = Objects.hash(former_vertex,later_vertex,weight,false);
-                else
-                    hash_code = Objects.hash(later_vertex,former_vertex,weight,false);
-            }
         }
 
         @Override
@@ -79,20 +64,37 @@ public final class Graph<V>{
         public Direction getEdgeDirection() { return edge_direction; }
 
         @Override
-        public String toString(){ return string; }
+        public String toString(){
+            if(edge_direction == Graph.Direction.DIRECTED)
+                return String.format("[Edge(%s >>> %s)], weight:%f", former_vertex, later_vertex,weight);
+            else
+                return String.format("[Edge(%s <-> %s)], weight:%f", former_vertex, later_vertex,weight);
+        }
 
         @Override
-        public int hashCode(){ return hash_code; }
+        public int hashCode(){
+            if(edge_direction == Graph.Direction.DIRECTED)
+                return Objects.hash(former_vertex, later_vertex,weight, true);
+            else{
+                int t1 = Objects.hashCode(former_vertex);
+                int t2 = Objects.hashCode(later_vertex);
+                if(t1 <= t2)
+                    return Objects.hash(former_vertex,later_vertex,weight,false);
+                else
+                    return Objects.hash(later_vertex,former_vertex,weight,false);
+            }
+        }
     }
 
-    public Graph(Collection<V> vertices, Direction is_directed){
+    public Graph(List<V> vertices, Direction is_directed){
         Objects.requireNonNull(is_directed);
         Objects.requireNonNull(vertices);
         size = 0;
-        for(var v : vertices) {
-            Objects.requireNonNull(v);
-            this.edge_map.put(v, new HashSet<>());
+        for(var vertex : vertices) {
+            Objects.requireNonNull(vertex);
+            this.edge_map.put(vertex, new ArrayList<>());
             size++;
+            this.vertices.add(vertex);
         }
         this.graph_direction = is_directed;
     }
@@ -114,15 +116,15 @@ public final class Graph<V>{
         }
     }
 
-    public Set<Edge<V>> getAllEdges(){
-        Set<Edge<V>> res = new HashSet<>();
+    public List<Edge<V>> getAllEdges(){
+        List<Edge<V>> res = new ArrayList<>();
         for(var edges : edge_map.values()){
             res.addAll(edges); }
         return res;
     }
-    public Set<V> getAllVertices(){ return new HashSet<>(edge_map.keySet()); }
-    public Set<Edge<V>> getEdgesAt(V vertex){
-        return new HashSet<>(edge_map.get(vertex));
+    public List<V> getAllVertices(){ return new ArrayList<>(vertices); }
+    public List<Edge<V>> getEdgesAt(V vertex){
+        return new ArrayList<>(edge_map.get(vertex));
     }
 
 }

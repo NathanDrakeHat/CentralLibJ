@@ -9,12 +9,12 @@ import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class SSSPTest {
+class SSShortestPathTest {
 
     @Test
     void algorithmBellmanFord() {
         var G = buildBellmanFordCase();
-        var b = SSSP.algorithmBellmanFord(G, new BFS.BFSVertex<>("s"));
+        var b = SSShortestPath.algorithmBellmanFord(G, new BFS.BFSVertex<>("s"));
         BFS.BFSVertex<String> target = new BFS.BFSVertex<>("z");
         var vertices = G.getAllVertices();
         for(var v : vertices){
@@ -45,7 +45,7 @@ class SSSPTest {
     @Test
     void shortestPathOfDAG(){
         var two_graph = buildShortestPathOfDAGForBFS();
-        var res = SSSP.shortestPathOfDAG(two_graph.DFS_G,two_graph.BFS_G,new BFS.BFSVertex<>("s"));
+        var res = SSShortestPath.shortestPathOfDAG(two_graph.DFS_G,two_graph.BFS_G,new BFS.BFSVertex<>("s"));
         var vertices = res.getAllVertices();
         var l = vertices.stream().sorted(Comparator.comparing(BFS.BFSVertex::getContent)).collect(Collectors.toList());
         assertNull(l.get(0).getParent());
@@ -92,7 +92,7 @@ class SSSPTest {
     @Test
     void algorithmDijkstraTestWithFibonacciHeap(){
         var g = buildDijkstraCase();
-        SSSP.algorithmDijkstra(g, new BFS.BFSVertex<>("s"), SSSP.HeapType.MIN_HEAP);
+        SSShortestPath.algorithmDijkstra(g, new BFS.BFSVertex<>("s"), SSShortestPath.HeapType.MIN_HEAP);
         var vertices = g.getAllVertices().stream().sorted(Comparator.comparing(BFS.BFSVertex::getContent)).collect(Collectors.toList());
         assertNull(vertices.get(0).getParent());
 
@@ -112,7 +112,7 @@ class SSSPTest {
     @Test
     void algorithmDijkstraTestWithMinHeap(){
         var g = buildDijkstraCase();
-        SSSP.algorithmDijkstra(g, new BFS.BFSVertex<>("s"), SSSP.HeapType.FIBONACCI);
+        SSShortestPath.algorithmDijkstra(g, new BFS.BFSVertex<>("s"), SSShortestPath.HeapType.FIBONACCI);
         var vertices = g.getAllVertices().stream().sorted(Comparator.comparing(BFS.BFSVertex::getContent)).collect(Collectors.toList());
         assertNull(vertices.get(0).getParent());
 

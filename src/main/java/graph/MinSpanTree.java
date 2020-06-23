@@ -7,7 +7,7 @@ import tools.MinHeap;
 import java.util.*;
 
 // minimum spanning tree
-public final class MST {
+public final class MinSpanTree {
     public static class KruskalVertex<V> implements DisjointSet<KruskalVertex<V>> {
         private final V content;
         private int rank = 0;

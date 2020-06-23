@@ -1,9 +1,13 @@
 package graph;
 
-import java.util.Collection;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 
 // all pair shortest path
-public class APSP {
+public class APShortestPath {
     private static double[][] extendedShortestPath(double[][] L_origin, double[][] W){
         var n = W.length;
         var L_next = new double[n][n];
@@ -88,26 +92,43 @@ public class APSP {
 
     // O(V^2*lgV + V*E)
     public static <T>
-    double[][] algorithmJohnson(Graph<BFS.BFSVertex<T>> graph, BFS.BFSVertex<T> s) throws NegativeCyclesException {
+    double[][] algorithmJohnson(Graph<BFS.BFSVertex<T>> graph,
+                                BFS.BFSVertex<T> s) throws NegativeCyclesException {
+        Map<BFS.BFSVertex<T>, Double> h = new HashMap<>();
+        var n = graph.getVerticesCount();
         var vertices = graph.getAllVertices();
         vertices.add(s);
         var edges = graph.getAllEdges();
-        var new_graph = buildGraph(graph,s,vertices,edges);
-        if(!SSSP.algorithmBellmanFord(new_graph, s))
+        var new_graph = buildGraph(s,vertices,edges);
+        if(!SSShortestPath.algorithmBellmanFord(new_graph, s))
             throw new NegativeCyclesException();
         else{
             for(var vertex : vertices){
-
+                h.put(vertex,vertex.distance);
             }
-
-
-            return null;
+            for(var edge : edges){
+                edge.weight += edge.getFormerVertex().distance - edge.getLaterVertex().distance; }
+            var D = new double[n][n];
+            int idx_u = 0;
+            for(var u : vertices){
+                if(u != s){
+                    int idx_v = 0;
+                    SSShortestPath.algorithmDijkstra(graph,s, SSShortestPath.HeapType.FIBONACCI);
+                    for(var v : vertices){
+                        if(v != s){
+                            D[idx_u][idx_v] = v.distance + h.get(v) - h.get(u);
+                            idx_v++;
+                        }
+                    }
+                    idx_u++;
+                }
+            }
+            return D;
         }
     }
-    private static <T> Graph<BFS.BFSVertex<T>> buildGraph(Graph<BFS.BFSVertex<T>> graph,
-                                                          BFS.BFSVertex<T> s,
-                                                          Collection<BFS.BFSVertex<T>> vertices,
-                                                          Collection<Graph.Edge<BFS.BFSVertex<T>>> edges){
+    private static <T> Graph<BFS.BFSVertex<T>> buildGraph(BFS.BFSVertex<T> s,
+                                                          List<BFS.BFSVertex<T>> vertices,
+                                                          List<Graph.Edge<BFS.BFSVertex<T>>> edges){
         var new_graph = new Graph<>(vertices, Graph.Direction.DIRECTED);
 
         for(var edge : edges)
@@ -120,6 +141,7 @@ public class APSP {
         }
         return new_graph;
     }
+
 
     public static class NegativeCyclesException extends Exception{
 
