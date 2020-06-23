@@ -76,6 +76,8 @@ public final class Graph<V>{
 
         public double getWeight() { return weight; }
 
+        public Direction getEdgeDirection() { return edge_direction; }
+
         @Override
         public String toString(){ return string; }
 
@@ -112,13 +114,13 @@ public final class Graph<V>{
         }
     }
 
-    public Set<Edge<V>> GetAllEdges(){
+    public Set<Edge<V>> getAllEdges(){
         Set<Edge<V>> res = new HashSet<>();
         for(var edges : edge_map.values()){
             res.addAll(edges); }
         return res;
     }
-    public Set<V> GetAllVertices(){ return new HashSet<>(edge_map.keySet()); }
+    public Set<V> getAllVertices(){ return new HashSet<>(edge_map.keySet()); }
     public Set<Edge<V>> getEdgesAt(V vertex){
         return new HashSet<>(edge_map.get(vertex));
     }

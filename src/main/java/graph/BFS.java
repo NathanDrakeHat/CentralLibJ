@@ -41,7 +41,7 @@ public final class BFS {
 
     public static <T> void breathFirstSearch(Graph<BFSVertex<T>> G, BFSVertex<T> s) {
         Objects.requireNonNull(s);
-        var vs = G.GetAllVertices();
+        var vs = G.getAllVertices();
         for (var v : vs) {
             if (!v.equals(s)) {
                 v.color = COLOR.WHITE;

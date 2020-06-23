@@ -16,7 +16,7 @@ class SSSPTest {
         var G = buildBellmanFordCase();
         var b = SSSP.algorithmBellmanFord(G, new BFS.BFSVertex<>("s"));
         BFS.BFSVertex<String> target = new BFS.BFSVertex<>("z");
-        var vertices = G.GetAllVertices();
+        var vertices = G.getAllVertices();
         for(var v : vertices){
             if(v.equals(target)) { target = v; } }
         assertEquals(-2,target.getDistance());
@@ -46,7 +46,7 @@ class SSSPTest {
     void shortestPathOfDAG(){
         var two_graph = buildShortestPathOfDAGForBFS();
         var res = SSSP.shortestPathOfDAG(two_graph.DFS_G,two_graph.BFS_G,new BFS.BFSVertex<>("s"));
-        var vertices = res.GetAllVertices();
+        var vertices = res.getAllVertices();
         var l = vertices.stream().sorted(Comparator.comparing(BFS.BFSVertex::getContent)).collect(Collectors.toList());
         assertNull(l.get(0).getParent());
         assertNull(l.get(1).getParent());
@@ -92,8 +92,8 @@ class SSSPTest {
     @Test
     void algorithmDijkstraTestWithFibonacciHeap(){
         var g = buildDijkstraCase();
-        SSSP.algorithmDijkstraWithMinHeap(g, new BFS.BFSVertex<>("s"));
-        var vertices = g.GetAllVertices().stream().sorted(Comparator.comparing(BFS.BFSVertex::getContent)).collect(Collectors.toList());
+        SSSP.algorithmDijkstra(g, new BFS.BFSVertex<>("s"), SSSP.HeapType.MIN_HEAP);
+        var vertices = g.getAllVertices().stream().sorted(Comparator.comparing(BFS.BFSVertex::getContent)).collect(Collectors.toList());
         assertNull(vertices.get(0).getParent());
 
         assertEquals(vertices.get(3),vertices.get(1).getParent());
@@ -112,8 +112,8 @@ class SSSPTest {
     @Test
     void algorithmDijkstraTestWithMinHeap(){
         var g = buildDijkstraCase();
-        SSSP.algorithmDijkstraWithFibonacciHeap(g, new BFS.BFSVertex<>("s"));
-        var vertices = g.GetAllVertices().stream().sorted(Comparator.comparing(BFS.BFSVertex::getContent)).collect(Collectors.toList());
+        SSSP.algorithmDijkstra(g, new BFS.BFSVertex<>("s"), SSSP.HeapType.FIBONACCI);
+        var vertices = g.getAllVertices().stream().sorted(Comparator.comparing(BFS.BFSVertex::getContent)).collect(Collectors.toList());
         assertNull(vertices.get(0).getParent());
 
         assertEquals(vertices.get(3),vertices.get(1).getParent());

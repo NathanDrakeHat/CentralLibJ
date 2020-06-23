@@ -1,5 +1,7 @@
 package graph;
 
+import java.util.Collection;
+
 // all pair shortest path
 public class APSP {
     private static double[][] extendedShortestPath(double[][] L_origin, double[][] W){
@@ -82,5 +84,48 @@ public class APSP {
             T = T_k;
         }
         return T;
+    }
+
+    // O(V^2*lgV + V*E)
+    public static <T>
+    double[][] algorithmJohnson(Graph<BFS.BFSVertex<T>> graph, BFS.BFSVertex<T> s) throws NegativeCyclesException {
+        var vertices = graph.getAllVertices();
+        vertices.add(s);
+        var edges = graph.getAllEdges();
+        var new_graph = buildGraph(graph,s,vertices,edges);
+        if(!SSSP.algorithmBellmanFord(new_graph, s))
+            throw new NegativeCyclesException();
+        else{
+            for(var vertex : vertices){
+
+            }
+
+
+            return null;
+        }
+    }
+    private static <T> Graph<BFS.BFSVertex<T>> buildGraph(Graph<BFS.BFSVertex<T>> graph,
+                                                          BFS.BFSVertex<T> s,
+                                                          Collection<BFS.BFSVertex<T>> vertices,
+                                                          Collection<Graph.Edge<BFS.BFSVertex<T>>> edges){
+        var new_graph = new Graph<>(vertices, Graph.Direction.DIRECTED);
+
+        for(var edge : edges)
+            new_graph.setNeighbor(edge.getFormerVertex(),edge.getLaterVertex(),edge.getWeight());
+        for(var vertex : vertices){
+            if(vertex != s) {
+                new_graph.setNeighbor(s, vertex, 0);
+                edges.add(new Graph.Edge<>(s,vertex,0, Graph.Direction.DIRECTED));
+            }
+        }
+        return new_graph;
+    }
+
+    public static class NegativeCyclesException extends Exception{
+
+        public NegativeCyclesException(){}
+        public NegativeCyclesException(String s){
+            super(s);
+        }
     }
 }

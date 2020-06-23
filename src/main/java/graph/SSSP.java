@@ -15,7 +15,7 @@ public final class SSSP {
         Objects.requireNonNull(graph);
         initializeSingleSource(graph, s);
         int vertices_count = graph.getVerticesCount();
-        var edges = graph.GetAllEdges();
+        var edges = graph.getAllEdges();
         for(int i = 1; i < vertices_count; i++){
             for(var edge : edges){
                 relax(edge);
@@ -28,7 +28,7 @@ public final class SSSP {
         return true;
     }
     private static <T> void initializeSingleSource(Graph<BFS.BFSVertex<T>> G, BFS.BFSVertex<T> s){
-        var vertices = G.GetAllVertices();
+        var vertices = G.getAllVertices();
         for(var v : vertices){
             v.distance = Double.POSITIVE_INFINITY;
             v.parent = null;
@@ -68,13 +68,24 @@ public final class SSSP {
         return BFS_graph;
     }
 
+
     // non-negative weight,
-    // fibonacci heap, time complexity: O(V^2*lgV + V*E)
-    public static <T> void algorithmDijkstraWithFibonacciHeap(Graph<BFS.BFSVertex<T>> G, BFS.BFSVertex<T> s){
+    public enum HeapType{
+        FIBONACCI, MIN_HEAP
+    }
+    public static <T> void algorithmDijkstra(Graph<BFS.BFSVertex<T>> G, BFS.BFSVertex<T> s, HeapType type){
         Objects.requireNonNull(s);
         Objects.requireNonNull(G);
+        Objects.requireNonNull(type);
+        if(type == HeapType.FIBONACCI)
+            algorithmDijkstraWithFibonacciHeap(G, s);
+        else
+            algorithmDijkstraWithMinHeap(G,s);
+    }
+    // fibonacci heap, time complexity: O(V^2*lgV + V*E)
+    private static <T> void algorithmDijkstraWithFibonacciHeap(Graph<BFS.BFSVertex<T>> G, BFS.BFSVertex<T> s){
         initializeSingleSource(G, s);
-        var vertices = G.GetAllVertices();
+        var vertices = G.getAllVertices();
         FibonacciHeap<BFS.BFSVertex<T>> Q = new FibonacciHeap<>();
         for (var vertex : vertices) Q.insert(vertex.distance, vertex);
         while (Q.length() > 0) {
@@ -89,11 +100,9 @@ public final class SSSP {
         }
     }
     // min heap, time complexity: O(V*E*lgV)
-    public static <T> void algorithmDijkstraWithMinHeap(Graph<BFS.BFSVertex<T>> G, BFS.BFSVertex<T> s){
-        Objects.requireNonNull(s);
-        Objects.requireNonNull(G);
+    private static <T> void algorithmDijkstraWithMinHeap(Graph<BFS.BFSVertex<T>> G, BFS.BFSVertex<T> s){
         initializeSingleSource(G, s);
-        var vertices = G.GetAllVertices();
+        var vertices = G.getAllVertices();
         MinHeap<BFS.BFSVertex<T>> Q = new MinHeap<>(vertices, BFS.BFSVertex::getDistance);
         while (Q.length() > 0) {
             var u = Q.extractMin();
