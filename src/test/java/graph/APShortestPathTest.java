@@ -88,7 +88,7 @@ class APShortestPathTest {
     @Test
     void algorithmJohnsonTest(){
         try{
-            var res = APShortestPath.algorithmJohnson(build());
+            var res = APShortestPath.algorithmJohnson(build(), SSShortestPath.HeapType.FIBONACCI);
             var answer = new double[][]{
                     {0.0, 1.0, -3.0, 2.0, -4.0},
                     {3.0, 0.0, -4.0, 1.0, -1.0},
@@ -96,6 +96,9 @@ class APShortestPathTest {
                     {2.0, -1.0, -5.0, 0.0, -2.0},
                     {8.0, 5.0, 1.0, 6.0, 0.0},
             };
+            assertArrayEquals(answer,res);
+
+            res = APShortestPath.algorithmJohnson(build(), SSShortestPath.HeapType.MIN_HEAP);
             assertArrayEquals(answer,res);
         }catch (APShortestPath.NegativeCyclesException e){
             fail();

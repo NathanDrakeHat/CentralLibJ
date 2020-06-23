@@ -4,6 +4,7 @@ package graph;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 
 // all pair shortest path
@@ -92,7 +93,9 @@ public class APShortestPath {
 
     // O(V^2*lgV + V*E)
     // sparse graph
-    public static <T> double[][] algorithmJohnson(Graph<BFS.BFSVertex<T>> graph) throws NegativeCyclesException {
+    public static <T> double[][] algorithmJohnson(Graph<BFS.BFSVertex<T>> graph, SSShortestPath.HeapType type) throws NegativeCyclesException {
+        Objects.requireNonNull(graph);
+        Objects.requireNonNull(type);
         Map<BFS.BFSVertex<T>, Double> h = new HashMap<>();
         var n = graph.getVerticesCount();
         var vertices_new = graph.getAllVertices();
@@ -112,7 +115,7 @@ public class APShortestPath {
             for(var u : vertices_new){
                 if(u != s){
                     int idx_v = 0;
-                    SSShortestPath.algorithmDijkstra(graph,u, SSShortestPath.HeapType.FIBONACCI);
+                    SSShortestPath.algorithmDijkstra(graph,u, type);
                     for(var v : vertices_new){
                         if(v != s){
                             D[idx_u][idx_v] = v.distance + h.get(v) - h.get(u);
