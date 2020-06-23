@@ -48,6 +48,7 @@ public class APSP {
         return L;
     }
 
+    // no negative-weight cycles
     public static double[][] algorithmFloydWarshall(double[][] W){
         var n = W.length;
         var D_origin = W;
