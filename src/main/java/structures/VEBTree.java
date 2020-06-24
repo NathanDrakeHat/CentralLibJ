@@ -1,6 +1,7 @@
 package structures;
 
 import java.util.NoSuchElementException;
+import java.util.Objects;
 
 public final class VEBTree {
     //keys are not duplicate and confined in a range
@@ -65,28 +66,27 @@ public final class VEBTree {
         }
     }
     public VEBTree safeInsert(int x){
-//        System.out.println(String.format("insert: %d", x));
-        if(x < 0 || x >= u) throw new IllegalArgumentException("Input out of range.");
+        Objects.checkIndex(x, u);
         if(!hasMember(x))
             insert(this, x);
         return this;
     }
     public VEBTree uncheckInsert(int x){
         // duplicate insert will invoke bug
-        if(x < 0 || x >= u) throw new IllegalArgumentException("Input out of range.");
+        Objects.checkIndex(x, u);
         insert(this, x);
         return this;
     }
 
     public VEBTree safeDelete(int x){
-        if(x < 0 || x >= u) throw new IllegalArgumentException("Input out of range.");
+        Objects.checkIndex(x, u);
         if(hasMember(x)) // can't delete multi-time, can't delete none
             delete(this, x);
         return this;
     }
     public VEBTree uncheckDelete(int x){
         //duplicate delete or delete items not in tree will invoke bug
-        if(x < 0 || x >= u) throw new IllegalArgumentException("Input out of range.");
+        Objects.checkIndex(x, u);
         delete(this, x);
         return this;
     }

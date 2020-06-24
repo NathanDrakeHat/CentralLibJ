@@ -96,10 +96,12 @@ class APShortestPathTest {
                     {2.0, -1.0, -5.0, 0.0, -2.0},
                     {8.0, 5.0, 1.0, 6.0, 0.0},
             };
-            assertArrayEquals(answer,res);
+            assertTrue(res.isPresent());
+            assertArrayEquals(answer,res.get());
 
             res = APShortestPath.algorithmJohnson(build(), SSShortestPath.HeapType.MIN_HEAP);
-            assertArrayEquals(answer,res);
+            assertTrue(res.isPresent());
+            assertArrayEquals(answer,res.get());
         }catch (APShortestPath.NegativeCyclesException e){
             fail();
         }

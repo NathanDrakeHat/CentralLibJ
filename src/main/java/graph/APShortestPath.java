@@ -1,10 +1,7 @@
 package graph;
 
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 
 // all pair shortest path
@@ -97,7 +94,7 @@ public class APShortestPath {
     // sparse graph
     // Fibonacci heap: O(V^2*lgV + V*E)
     // min heap: O(V*E*lgV)
-    public static <T> double[][] algorithmJohnson(Graph<BFS.BFSVertex<T>> graph, SSShortestPath.HeapType type) throws NegativeCyclesException {
+    public static <T> Optional<double[][]> algorithmJohnson(Graph<BFS.BFSVertex<T>> graph, SSShortestPath.HeapType type) throws NegativeCyclesException {
         Objects.requireNonNull(graph);
         Objects.requireNonNull(type);
         Map<BFS.BFSVertex<T>, Double> h = new HashMap<>();
@@ -107,7 +104,7 @@ public class APShortestPath {
         vertices_new.add(s);
         var new_graph = buildGraph(graph,vertices_new,s);
         if(!SSShortestPath.algorithmBellmanFord(new_graph, s))
-            throw new NegativeCyclesException();
+            return Optional.empty();
         else{
             var edges_new = new_graph.getAllEdges();
             for(var vertex : vertices_new){
@@ -129,7 +126,7 @@ public class APShortestPath {
                     idx_u++;
                 }
             }
-            return D;
+            return Optional.of(D);
         }
     }
     private static <T> Graph<BFS.BFSVertex<T>> buildGraph(Graph<BFS.BFSVertex<T>> graph, List<BFS.BFSVertex<T>> vertices,

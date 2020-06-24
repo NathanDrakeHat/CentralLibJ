@@ -25,9 +25,6 @@ public final class IthSmallest {
     }
     // select ith smallest element in array
     private static int randomSelect(int[] a, int start, int end, int ith){
-        if(end - start < ith){
-            throw new IndexOutOfBoundsException("procedure:randomSelect, Fourth arg out of bound.");
-        }
         if((start - end) == 1){
             return a[start];
         }

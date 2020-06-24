@@ -168,9 +168,8 @@ public final class FibonacciHeap<V> {
     public FibonacciHeap<V> union(FibonacciHeap<V> f1, FibonacciHeap<V> f2){
         var res = new FibonacciHeap<V>();
         res.root_list = f1.root_list;
-        if(f1.root_list == null || f2.root_list == null){
-            throw new IllegalArgumentException("Can't union null ");
-        }
+        Objects.requireNonNull(f1.root_list);
+        Objects.requireNonNull(f2.root_list);
         var f1_right = f1.root_list.right; // concatenate two root list
         var f2_left = f2.root_list.left;
         f1.root_list.right = f2.root_list;
@@ -207,7 +206,7 @@ public final class FibonacciHeap<V> {
         // move x to root list
         // set parent mark true if parent mark is false
         // else successively move true mark parents to root list
-        if(x == null) throw new IllegalArgumentException("Null arg.");
+        Objects.requireNonNull(x);
         if(new_key > x.getKey())
             throw new IllegalArgumentException("New key should smaller than old key.");
         else{
@@ -225,16 +224,15 @@ public final class FibonacciHeap<V> {
         }
     }
     private void cut(Node<V> a, Node<V> b){
-        if(a == null && b == null) throw new IllegalArgumentException("Two arg is null");
-        else if(a == null) throw new IllegalArgumentException("First arg is null");
-        else if(b == null ) throw new IllegalArgumentException("Second arg is null.");
+        Objects.requireNonNull(a);
+        Objects.requireNonNull(b);
         removeNodeFromList(a);
         b.degree--;
         addNodeToList(a, rootList());
         a.mark = false;
     }
     private void cascadingCut(Node<V> y){
-        if(y == null) throw new IllegalArgumentException("Null arg.");
+        Objects.requireNonNull(y);
         var z = y.getParent();
         if(z != null){
             if(!y.mark) y.mark = true;
@@ -246,7 +244,7 @@ public final class FibonacciHeap<V> {
     }
 
     private void delete(Node<V> x){
-        if(x == null) throw new IllegalArgumentException("Can not delete null.");
+        Objects.requireNonNull(x);
         decreaseKey(x, minKey() - 1);
         extractMin();
     }
@@ -257,9 +255,8 @@ public final class FibonacciHeap<V> {
     private int upperBound(){ return (int)(Math.log(number)/Math.log(2)); }
 
     private void addNodeToList(Node<V> x, Node<V> list){
-        if(x == null && list == null) throw new IllegalArgumentException("Two arg is null");
-        else if(x == null) throw new IllegalArgumentException("First arg is null");
-        else if(list == null ) throw new IllegalArgumentException("Second arg is null.");
+        Objects.requireNonNull(x);
+        Objects.requireNonNull(list);
 
         x.parent = list.parent;
         var list_left = list.left;
@@ -269,7 +266,7 @@ public final class FibonacciHeap<V> {
         x.left = list_left;
     }
     private void removeNodeFromList(Node<V> z){
-        if(z == null) throw new IllegalArgumentException("Receive a null arg.");
+        Objects.requireNonNull(z);
         var z_right = z.right;
         var z_left = z.left;
         if(z.parent != null){
