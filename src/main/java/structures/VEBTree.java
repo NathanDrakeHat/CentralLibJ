@@ -2,17 +2,17 @@ package structures;
 
 import java.util.NoSuchElementException;
 import java.util.Objects;
+import java.util.Optional;
 
 public final class VEBTree {
     //keys are not duplicate and confined in a range
-    private int u = 0; //universe size
+    private int u; //universe size
     private VEBTree summary = null;
     private VEBTree[] cluster = null;
     private final int NONE = -1;
     private int min = NONE; // hidden in cluster
     private int max = NONE;
 
-    private VEBTree(){ }
     private VEBTree(double u){
         this.u = (int) u;
         if(u != 2){
@@ -38,7 +38,6 @@ public final class VEBTree {
     }
 
     private void emptyInsert(VEBTree V, int x){
-//        System.out.println(String.format("empty insert %d", x));
         V.min = x;
         V.max = x;
     }
@@ -118,6 +117,13 @@ public final class VEBTree {
         }
     }
 
+    public Optional<Integer> tryGetMaximum(){
+        try{
+            return Optional.of(forceGetMaximum());
+        }catch (NoSuchElementException e){
+            return Optional.empty();
+        }
+    }
     public Integer forceGetMaximum(){
         var res =  maximum(this);
         if(res != NONE) return res;
@@ -127,6 +133,13 @@ public final class VEBTree {
         return V.max;
     }
 
+    public Optional<Integer> tryGetMinimum(){
+        try{
+            return Optional.of(forceGetMinimum());
+        }catch (NoSuchElementException e){
+            return Optional.empty();
+        }
+    }
     public Integer forceGetMinimum(){
         var res =  minimum(this);
         if(res != NONE) return res;
@@ -141,6 +154,13 @@ public final class VEBTree {
         else return hasMember(V.cluster[V.high(x)], V.low((x)));
     }
 
+    public Optional<Integer> tryGetSuccessor(int x){
+        try{
+            return Optional.of(forceGetSuccessor(x));
+        }catch (NoSuchElementException e){
+            return Optional.empty();
+        }
+    }
     public Integer forceGetSuccessor(int x) {
         var res =  successor(this, x);
         if(res != NONE) return res;
@@ -166,6 +186,13 @@ public final class VEBTree {
         }
     }
 
+    public Optional<Integer> tryGetPredecessor(int x){
+        try{
+            return Optional.of(forceGetPredecessor(x));
+        }catch (NoSuchElementException e){
+            return Optional.empty();
+        }
+    }
     public Integer forceGetPredecessor(int x){
         var res =  predecessor(this, x);
         if(res != NONE) return res;

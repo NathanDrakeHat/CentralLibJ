@@ -50,6 +50,11 @@ class RedBlackTreeTest{
     @Test
     public void FunctionsTest(){
         var t = new RedBlackTree<Integer, String>();
+        assertTrue(t.tryGetMaxKey().isEmpty());
+        assertTrue(t.tryGetMinKey().isEmpty());
+        assertTrue(t.tryGetValueOfMaxKey().isEmpty());
+        assertTrue(t.tryGetValueOfMinKey().isEmpty());
+        assertTrue(t.trySearch(1).isEmpty());
         List<Integer> l1 = new ArrayList<>();
         List<Integer> l2 = new ArrayList<>();
         for(int i = 0; i < 16; i++){
