@@ -80,7 +80,7 @@ public final class Graph<V>{
     }
     private final Direction graph_direction;
     private final List<V> vertices = new ArrayList<>();
-    private final Map<V, List<Edge<V>>> edge_map = new HashMap<>();
+    private final Map<V, List<Edge<V>>> edges_map = new HashMap<>();
     private int size;
 
     public Graph(List<V> vertices, Direction is_directed){
@@ -89,56 +89,55 @@ public final class Graph<V>{
         size = 0;
         for(var vertex : vertices) {
             Objects.requireNonNull(vertex);
-            this.edge_map.put(vertex, new ArrayList<>());
+            this.edges_map.put(vertex, new ArrayList<>());
             this.vertices.add(vertex);
             size++;
         }
         this.graph_direction = is_directed;
     }
     public Graph(Graph<V> other_graph){
+        Objects.requireNonNull(other_graph);
         size = other_graph.vertices.size();
         this.graph_direction = other_graph.graph_direction;
-        this.edge_map.putAll(other_graph.edge_map);
+        this.edges_map.putAll(other_graph.edges_map);
         this.vertices.addAll(other_graph.vertices);
     }
 
     public void setNeighbor(V vertex, V neighbor){ setNeighbor(vertex, neighbor, 1); }
     public void setNeighbor(V vertex, V neighbor, double w){
+        Objects.requireNonNull(vertex);
+        Objects.requireNonNull(neighbor);
         var edge_t = new Edge<>(vertex, neighbor, w, graph_direction);
         if(graph_direction == Direction.DIRECTED) {
-            var edges_set = edge_map.computeIfAbsent(vertex, (K)->{
-                size++;
-                return new ArrayList<>();
-            });
-            edges_set.add(edge_t);
+            var edges_list = edges_map.get(vertex);
+            edges_list.add(edge_t);
         }else{
-            var edges_set = edge_map.computeIfAbsent(vertex, (K)->new ArrayList<>());
-            edges_set.add(edge_t);
+            var edges_list = edges_map.get(vertex);
+            edges_list.add(edge_t);
 
-            edges_set = edge_map.computeIfAbsent(neighbor, (K)->new ArrayList<>());
-            edges_set.add(edge_t);
+            edges_list = edges_map.get(neighbor);
+            edges_list.add(edge_t);
         }
     }
     public void addNewVertex(V vertex){
         Objects.requireNonNull(vertex);
-        if(vertices.contains(vertex) || edge_map.containsKey(vertex)){
+        if(vertices.contains(vertex) || edges_map.containsKey(vertex)){
             throw new IllegalArgumentException("repeated vertex");
         }
         size++;
         vertices.add(vertex);
-        edge_map.put(vertex, new ArrayList<>());
+        edges_map.put(vertex, new ArrayList<>());
     }
 
     public int getVerticesCount() { return size; }
     public List<Edge<V>> getAllEdges(){
         List<Edge<V>> res = new ArrayList<>();
-        for(var edges : edge_map.values()){
-            res.addAll(edges); }
+        for(var vertex : vertices){
+            res.addAll(edges_map.get(vertex));
+        }
         return res;
     }
     public List<V> getAllVertices(){ return new ArrayList<>(vertices); }
-    public List<Edge<V>> getEdgesAt(V vertex){
-        return new ArrayList<>(edge_map.get(vertex));
-    }
+    public List<Edge<V>> getEdgesAt(V vertex){ return new ArrayList<>(edges_map.get(vertex)); }
 
 }
