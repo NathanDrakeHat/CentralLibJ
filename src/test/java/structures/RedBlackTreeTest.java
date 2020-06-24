@@ -58,12 +58,12 @@ class RedBlackTreeTest{
         }
         assertEquals(t.getHeight(),4);
         assertEquals(t.getCount(), 16);
-        assertEquals(t.getMinKey(), 0);
-        assertEquals(t.getMaxKey(),15);
-        assertEquals(t.getValueOfMaxKey(), "15");
-        assertEquals(t.getValueOfMinKey(), "0");
+        assertEquals(t.forceGetMinKey(), 0);
+        assertEquals(t.forceGetMaxKey(),15);
+        assertEquals(t.forceGetValueOfMaxKey(), "15");
+        assertEquals(t.forceGetValueOfMinKey(), "0");
         t.inOrderForEach((i, s)->l2.add(i));
         assertEquals(l1, l2);
-        assertEquals(t.search(5), "5");
+        assertEquals(t.forceSearch(5), "5");
     }
 }

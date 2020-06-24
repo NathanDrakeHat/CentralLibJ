@@ -105,7 +105,7 @@ public final class SSShortestPath {
         var vertices = G.getAllVertices();
         MinHeap<BFS.BFSVertex<T>> Q = new MinHeap<>(vertices, BFS.BFSVertex::getDistance);
         while (Q.length() > 0) {
-            var u = Q.extractMin();
+            var u = Q.forceExtractMin();
             var u_edges = G.getEdgesAt(u);
             for (var edge : u_edges) {
                 var v = edge.getAnotherSide(u);

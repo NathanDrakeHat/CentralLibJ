@@ -3,6 +3,7 @@ package structures;
 import java.util.Comparator;
 import java.util.NoSuchElementException;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.function.BiConsumer;
 
 
@@ -93,28 +94,59 @@ public final class RedBlackTree<K, V> {
         this.k_comparator = k_comparator;
     }
 
-    public V getValueOfMinKey(){
+    public Optional<V> tryGetValueOfMinKey(){
+        try{
+            return Optional.of(forceGetValueOfMinKey());
+        }catch (NoSuchElementException e){
+            return Optional.empty();
+        }
+    }
+    public V forceGetValueOfMinKey(){
         if(getRoot() != null && getSentinel() != getRoot()) {
             return getMinimum(getRoot()).getValue();
         }else{
             throw new NoSuchElementException("null tree");
         }
     }
-    public K getMinKey(){
+
+    public Optional<K> tryGetMinKey(){
+        try{
+            return Optional.of(forceGetMinKey());
+        }catch (NoSuchElementException e){
+            return Optional.empty();
+        }
+    }
+    public K forceGetMinKey(){
         if(getRoot() != null && getSentinel() != getRoot()) {
             return getMinimum(getRoot()).getKey();
         }else{
             throw new NoSuchElementException("null tree");
         }
     }
-    public V getValueOfMaxKey(){
+
+    public Optional<V> tryGetValueOfMaxKey(){
+        try{
+            return Optional.of(forceGetValueOfMaxKey());
+        }catch (NoSuchElementException e){
+            return Optional.empty();
+        }
+    }
+    public V forceGetValueOfMaxKey(){
         if(getRoot() != null && getRoot() != getSentinel()) {
             return getMaximum(getRoot()).getValue();
         }else{
             throw new NoSuchElementException("null tree");
         }
     }
-    public K getMaxKey(){
+
+    public Optional<K> tryGetMaxKey(){
+        try{
+            return Optional.of(forceGetMaxKey());
+        }catch (NoSuchElementException e){
+            return Optional.empty();
+        }
+    }
+    public K forceGetMaxKey(){
         if(getRoot() != null && getRoot() != getSentinel()) {
             return getMaximum(getRoot()).getKey();
         }else{
@@ -355,7 +387,14 @@ public final class RedBlackTree<K, V> {
         }
     }
 
-    public V search(K key){
+    public Optional<V> trySearch(K key){
+        try{
+            return Optional.of(forceSearch(key));
+        }catch (NoSuchElementException e){
+            return Optional.empty();
+        }
+    }
+    public V forceSearch(K key){
         if(getRoot() == null || getRoot() == getSentinel()){
             throw new NoSuchElementException();
         }

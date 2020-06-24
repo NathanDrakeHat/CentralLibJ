@@ -118,7 +118,7 @@ public final class VEBTree {
         }
     }
 
-    public Integer maximum(){
+    public Integer forceGetMaximum(){
         var res =  maximum(this);
         if(res != NONE) return res;
         else throw new NoSuchElementException();
@@ -127,7 +127,7 @@ public final class VEBTree {
         return V.max;
     }
 
-    public Integer minimum(){
+    public Integer forceGetMinimum(){
         var res =  minimum(this);
         if(res != NONE) return res;
         else throw new NoSuchElementException();
@@ -141,7 +141,7 @@ public final class VEBTree {
         else return hasMember(V.cluster[V.high(x)], V.low((x)));
     }
 
-    public Integer successor(int x) {
+    public Integer forceGetSuccessor(int x) {
         var res =  successor(this, x);
         if(res != NONE) return res;
         else throw new NoSuchElementException();
@@ -166,7 +166,7 @@ public final class VEBTree {
         }
     }
 
-    public Integer predecessor(int x){
+    public Integer forceGetPredecessor(int x){
         var res =  predecessor(this, x);
         if(res != NONE) return res;
         else throw new NoSuchElementException();

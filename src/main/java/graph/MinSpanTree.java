@@ -135,7 +135,7 @@ public final class MinSpanTree {
         }
         MinHeap<PrimVertex<T>> Q = new MinHeap<>(vertices, PrimVertex::getKey);
         while (Q.length() > 0) {
-            var u = Q.extractMin();
+            var u = Q.forceExtractMin();
             var u_edges = graph.getEdgesAt(u);
             for (var edge : u_edges) {
                 var v = edge.getAnotherSide(u);
