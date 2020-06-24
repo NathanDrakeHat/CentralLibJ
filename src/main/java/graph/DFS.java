@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+// depth first search
 public final class DFS {
-    // depth first search
     enum COLOR{ WHITE, GRAY, BLACK}
     public static class DFSVertex<V>  {
         DFSVertex<V> parent;

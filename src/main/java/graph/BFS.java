@@ -2,8 +2,8 @@ package graph;
 
 import java.util.*;
 
+// breath first search
 public final class BFS {
-    // breath first search
     enum COLOR{ WHITE, GRAY, BLACK}
     public static class BFSVertex<V>{
         BFSVertex<V> parent;

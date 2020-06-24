@@ -94,7 +94,7 @@ public class APShortestPath {
     // sparse graph
     // Fibonacci heap: O(V^2*lgV + V*E)
     // min heap: O(V*E*lgV)
-    public static <T> Optional<double[][]> algorithmJohnson(Graph<BFS.BFSVertex<T>> graph, SSShortestPath.HeapType type) throws NegativeCyclesException {
+    public static <T> Optional<double[][]> algorithmJohnson(Graph<BFS.BFSVertex<T>> graph, SSShortestPath.HeapType type) {
         Objects.requireNonNull(graph);
         Objects.requireNonNull(type);
         Map<BFS.BFSVertex<T>, Double> h = new HashMap<>();
@@ -139,14 +139,5 @@ public class APShortestPath {
             }
         }
         return new_graph;
-    }
-
-
-    public static class NegativeCyclesException extends Exception{
-
-        public NegativeCyclesException(){}
-        public NegativeCyclesException(String s){
-            super(s);
-        }
     }
 }
