@@ -44,7 +44,5 @@ public final class IthSmallest {
         } // remove left of pivot(include pivot)
     }
 
-    public static int randomSelect(int[] a, int ith){
-        return randomSelect(a, 0, a.length, ith);
-    }
+    public static int randomSelect(int[] a, int ith){ return randomSelect(a,0,a.length,ith); }
 }
