@@ -70,10 +70,7 @@ public final class CutRod {
             q = 0;
         }
 
-        for(int i = 1; i < rod_len; i++){
-            if(i - 1 >= 10){
-                break;
-            }
+        for(int i = 1; (i < rod_len) && (i - 1 < 10); i++){
             if(q < p[i - 1] + recursiveCutRod(p, rod_len-i).getPrice()){
                 q = p[i - 1] + recursiveCutRod(p, rod_len-i).getPrice();
                 res.insert(i);
@@ -104,10 +101,7 @@ public final class CutRod {
             q = 0;
         }
 
-        for(int i = 1; i < rod_len; i++){
-            if( i - 1 >= 10){
-                break;
-            }
+        for(int i = 1; (i < rod_len) && (i - 1 < 10); i++){
             if(q < p[i - 1] + topDownCutRod(p, rod_len - i, memory).getPrice()){
                 q = p[i - 1] + topDownCutRod(p, rod_len - i, memory).getPrice();
                 res.insert(i);
@@ -127,10 +121,7 @@ public final class CutRod {
             int max_price = 0;
             CutResult res = new CutResult();
             if(i - 1 < 10) { max_price = p[i - 1]; } // not cut
-            for(int j = 1; j < i; j++){ // cut
-                if( j - 1 >= 10){
-                    break;
-                }
+            for(int j = 1; (j < i) && (j - 1 < 10); j++){ // cut
                 if(max_price < p[j - 1] + cache[i - j - 1].getPrice()){
                     max_price = p[j - 1] + cache[i - j - 1].getPrice();
                     res.insert(j);

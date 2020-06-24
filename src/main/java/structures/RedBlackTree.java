@@ -480,7 +480,7 @@ public final class RedBlackTree<K, V> {
         }else{
             var target = current.getParent();
             var target_right = current;
-            while(target != getSentinel() && target.getRight() == target_right){
+            while((target != getSentinel()) && target.getRight() == target_right){
                 target_right = target;
                 target = target.getParent();
             }
@@ -488,16 +488,15 @@ public final class RedBlackTree<K, V> {
         }
     }
     private ColorNode<K,V> getPredecessor(ColorNode<K,V> current){
-        if(current.getLeft() != null){
+        if(current.getLeft() != getSentinel()){
             return getMaximum(current.getLeft());
         }else{
             var target = current.getParent();
             var target_left = current;
-            while(target != null){
-                if(target.getLeft() == target_left) {
-                    target_left = target;
-                    target = target.getParent();
-                }else break;
+            while((target != getSentinel()) && (target.getLeft() == target_left)){
+                target_left = target;
+                target = target.getParent();
+
             }
             return target;
         }

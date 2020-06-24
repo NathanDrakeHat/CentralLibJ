@@ -87,24 +87,21 @@ class APShortestPathTest {
 
     @Test
     void algorithmJohnsonTest(){
-        try{
-            var res = APShortestPath.algorithmJohnson(build(), SSShortestPath.HeapType.FIBONACCI);
-            var answer = new double[][]{
-                    {0.0, 1.0, -3.0, 2.0, -4.0},
-                    {3.0, 0.0, -4.0, 1.0, -1.0},
-                    {7.0, 4.0, 0.0, 5.0, 3.0},
-                    {2.0, -1.0, -5.0, 0.0, -2.0},
-                    {8.0, 5.0, 1.0, 6.0, 0.0},
-            };
-            assertTrue(res.isPresent());
-            assertArrayEquals(answer,res.get());
+        var res = APShortestPath.algorithmJohnson(build(), SSShortestPath.HeapType.FIBONACCI);
+        var answer = new double[][]{
+                {0.0, 1.0, -3.0, 2.0, -4.0},
+                {3.0, 0.0, -4.0, 1.0, -1.0},
+                {7.0, 4.0, 0.0, 5.0, 3.0},
+                {2.0, -1.0, -5.0, 0.0, -2.0},
+                {8.0, 5.0, 1.0, 6.0, 0.0},
+        };
+        assertTrue(res.isPresent());
+        assertArrayEquals(answer,res.get());
 
-            res = APShortestPath.algorithmJohnson(build(), SSShortestPath.HeapType.MIN_HEAP);
-            assertTrue(res.isPresent());
-            assertArrayEquals(answer,res.get());
-        }catch (APShortestPath.NegativeCyclesException e){
-            fail();
-        }
+        res = APShortestPath.algorithmJohnson(build(), SSShortestPath.HeapType.MIN_HEAP);
+        assertTrue(res.isPresent());
+        assertArrayEquals(answer,res.get());
+
     }
     static Graph<BFS.BFSVertex<String>> build(){
         String[] names = "1,2,3,4,5".split(",");
