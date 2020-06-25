@@ -4,7 +4,7 @@ package graph;
 import java.util.*;
 
 
-public final class Graph<V>{
+public final class LinkedGraph<V>{
     enum Direction{
         DIRECTED,NON_DIRECTED
     }
@@ -13,7 +13,6 @@ public final class Graph<V>{
         private final T later_vertex;
         private final Direction edge_direction;
         double weight;
-
 
         Edge(T former, T later, double weight, Direction is_directed){
             Objects.requireNonNull(former);
@@ -32,7 +31,7 @@ public final class Graph<V>{
             if (edge_direction != ((Edge<?>) other_edge).edge_direction) return false;
             if(weight != ((Edge<?>) other_edge).weight) return false;
 
-            if (edge_direction == Graph.Direction.DIRECTED) {
+            if (edge_direction == LinkedGraph.Direction.DIRECTED) {
                 return former_vertex.equals(((Edge<?>) other_edge).former_vertex) &&
                         later_vertex.equals(((Edge<?>) other_edge).later_vertex);
             } else {
@@ -58,7 +57,7 @@ public final class Graph<V>{
 
         @Override
         public String toString(){
-            if(edge_direction == Graph.Direction.DIRECTED)
+            if(edge_direction == LinkedGraph.Direction.DIRECTED)
                 return String.format("[Edge(%s >>> %s)], weight:%f", former_vertex, later_vertex,weight);
             else
                 return String.format("[Edge(%s <-> %s)], weight:%f", former_vertex, later_vertex,weight);
@@ -66,7 +65,7 @@ public final class Graph<V>{
 
         @Override
         public int hashCode(){
-            if(edge_direction == Graph.Direction.DIRECTED)
+            if(edge_direction == LinkedGraph.Direction.DIRECTED)
                 return Objects.hash(former_vertex, later_vertex,weight, true);
             else{
                 int t1 = Objects.hashCode(former_vertex);
@@ -83,7 +82,7 @@ public final class Graph<V>{
     private final Map<V, List<Edge<V>>> edges_map = new HashMap<>();
     private int size;
 
-    public Graph(List<V> vertices, Direction is_directed){
+    public LinkedGraph(List<V> vertices, Direction is_directed){
         Objects.requireNonNull(is_directed);
         Objects.requireNonNull(vertices);
         size = 0;
@@ -95,7 +94,7 @@ public final class Graph<V>{
         }
         this.graph_direction = is_directed;
     }
-    public Graph(Graph<V> other_graph){
+    public LinkedGraph(LinkedGraph<V> other_graph){
         Objects.requireNonNull(other_graph);
         size = other_graph.vertices.size();
         this.graph_direction = other_graph.graph_direction;

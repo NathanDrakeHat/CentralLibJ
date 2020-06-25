@@ -103,12 +103,12 @@ class APShortestPathTest {
         assertArrayEquals(answer,res.get());
 
     }
-    static Graph<BFS.BFSVertex<String>> build(){
+    static LinkedGraph<BFS.BFSVertex<String>> build(){
         String[] names = "1,2,3,4,5".split(",");
         List<BFS.BFSVertex<String>> vertices = new ArrayList<>();
         for(var name : names)
             vertices.add(new BFS.BFSVertex<>(name));
-        var res = new Graph<>(vertices, Graph.Direction.DIRECTED);
+        var res = new LinkedGraph<>(vertices, LinkedGraph.Direction.DIRECTED);
         res.setNeighbor(vertices.get(0),vertices.get(1),3);
         res.setNeighbor(vertices.get(0),vertices.get(2),8);
         res.setNeighbor(vertices.get(0),vertices.get(4),-4);

@@ -41,7 +41,7 @@ public final class DFS {
         public String toString(){ return string; }
     }
 
-    public static <T> void depthFirstSearch(Graph<DFSVertex<T>> G) {
+    public static <T> void depthFirstSearch(LinkedGraph<DFSVertex<T>> G) {
         var vertices = G.getAllVertices();
         for (var v : vertices) {
             v.color = COLOR.WHITE;
@@ -54,7 +54,7 @@ public final class DFS {
             }
         }
     }
-    private static <T > int DFSVisit(Graph<DFSVertex<T>> G, DFSVertex<T> u, int time){
+    private static <T > int DFSVisit(LinkedGraph<DFSVertex<T>> G, DFSVertex<T> u, int time){
         time++;
         u.discover = time;
         u.color = COLOR.GRAY;
@@ -72,19 +72,19 @@ public final class DFS {
         return time;
     }
 
-    public static <T> List<DFSVertex<T>> topologicalSort(Graph<DFSVertex<T>> G){
+    public static <T> List<DFSVertex<T>> topologicalSort(LinkedGraph<DFSVertex<T>> G){
         depthFirstSearch(G);
         List<DFSVertex<T>> l = new ArrayList<>(G.getAllVertices());
         l.sort((o1, o2) -> o2.finish - o1.finish); // descend order
         return l;
     }
 
-    public static <T> void stronglyConnectedComponents(Graph<DFSVertex<T>> G){
+    public static <T> void stronglyConnectedComponents(LinkedGraph<DFSVertex<T>> G){
         var l = topologicalSort(G);
         var G_T = transposeGraph(G);
         depthFirstSearchOrderly(G_T, l);
     }
-    private static <T> void depthFirstSearchOrderly(Graph<DFSVertex<T>> G, List<DFSVertex<T>> order){
+    private static <T> void depthFirstSearchOrderly(LinkedGraph<DFSVertex<T>> G, List<DFSVertex<T>> order){
         var vertices = G.getAllVertices();
         for (var v : vertices) {
             v.color = COLOR.WHITE;
@@ -95,8 +95,8 @@ public final class DFS {
             if(v.color == COLOR.WHITE){ time = DFSVisit(G, v, time); }
         }
     }
-    private static <T> Graph<DFSVertex<T>> transposeGraph(Graph<DFSVertex<T>> graph){
-        var new_graph = new Graph<>(graph.getAllVertices(), Graph.Direction.DIRECTED);
+    private static <T> LinkedGraph<DFSVertex<T>> transposeGraph(LinkedGraph<DFSVertex<T>> graph){
+        var new_graph = new LinkedGraph<>(graph.getAllVertices(), LinkedGraph.Direction.DIRECTED);
         var vertices = graph.getAllVertices();
         for(var v : vertices){
             var edges = graph.getEdgesAt(v);

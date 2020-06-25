@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 // single source shortest path
 public final class SSShortestPath {
     // general case algorithm: negative weight, cyclic
-    public static <T> boolean algorithmBellmanFord(Graph<BFS.BFSVertex<T>> graph, BFS.BFSVertex<T> s){
+    public static <T> boolean algorithmBellmanFord(LinkedGraph<BFS.BFSVertex<T>> graph, BFS.BFSVertex<T> s){
         Objects.requireNonNull(s);
         Objects.requireNonNull(graph);
         initializeSingleSource(graph, s);
@@ -27,7 +27,7 @@ public final class SSShortestPath {
         }
         return true;
     }
-    private static <T> void initializeSingleSource(Graph<BFS.BFSVertex<T>> G, BFS.BFSVertex<T> s){
+    private static <T> void initializeSingleSource(LinkedGraph<BFS.BFSVertex<T>> G, BFS.BFSVertex<T> s){
         var vertices = G.getAllVertices();
         for(var v : vertices){
             v.distance = Double.POSITIVE_INFINITY;
@@ -36,7 +36,7 @@ public final class SSShortestPath {
         }
         s.distance = 0;
     }
-    private static <T> void relax(Graph.Edge<BFS.BFSVertex<T>> edge){
+    private static <T> void relax(LinkedGraph.Edge<BFS.BFSVertex<T>> edge){
         var weight = edge.getWeight();
         var u = edge.getFormerVertex();
         var v = edge.getLaterVertex();
@@ -49,23 +49,23 @@ public final class SSShortestPath {
 
     // shortest paths of directed acyclic graph
     public static <T>
-    Graph<BFS.BFSVertex<T>> shortestPathOfDAG(Graph<DFS.DFSVertex<BFS.BFSVertex<T>>> DFS_graph,
-                                                    Graph<BFS.BFSVertex<T>> BFS_graph,
+    LinkedGraph<BFS.BFSVertex<T>> shortestPathOfDAG(LinkedGraph<DFS.DFSVertex<BFS.BFSVertex<T>>> DFS_Linked_graph,
+                                                    LinkedGraph<BFS.BFSVertex<T>> BFS_Linked_graph,
                                                     BFS.BFSVertex<T> s){
         Objects.requireNonNull(s);
-        Objects.requireNonNull(DFS_graph);
-        Objects.requireNonNull(BFS_graph);
-        var DFS_list = DFS.topologicalSort(DFS_graph);
-        initializeSingleSource(BFS_graph, s);
+        Objects.requireNonNull(DFS_Linked_graph);
+        Objects.requireNonNull(BFS_Linked_graph);
+        var DFS_list = DFS.topologicalSort(DFS_Linked_graph);
+        initializeSingleSource(BFS_Linked_graph, s);
         DFS_list.sort((d1,d2)->d2.finish -d1.finish);
         var BFS_list = DFS_list.stream().map(DFS.DFSVertex::getContent).collect(Collectors.toList());
         for(var u : BFS_list){
-            var u_edges = BFS_graph.getEdgesAt(u);
+            var u_edges = BFS_Linked_graph.getEdgesAt(u);
             for(var edge : u_edges){
                 relax(edge);
             }
         }
-        return BFS_graph;
+        return BFS_Linked_graph;
     }
 
 
@@ -73,7 +73,7 @@ public final class SSShortestPath {
     public enum HeapType{
         FIBONACCI, MIN_HEAP
     }
-    public static <T> void algorithmDijkstra(Graph<BFS.BFSVertex<T>> G, BFS.BFSVertex<T> s, HeapType type){
+    public static <T> void algorithmDijkstra(LinkedGraph<BFS.BFSVertex<T>> G, BFS.BFSVertex<T> s, HeapType type){
         Objects.requireNonNull(s);
         Objects.requireNonNull(G);
         Objects.requireNonNull(type);
@@ -83,7 +83,7 @@ public final class SSShortestPath {
             algorithmDijkstraWithMinHeap(G,s);
     }
     // fibonacci heap, time complexity: O(V^2*lgV + V*E)
-    private static <T> void algorithmDijkstraWithFibonacciHeap(Graph<BFS.BFSVertex<T>> G, BFS.BFSVertex<T> s){
+    private static <T> void algorithmDijkstraWithFibonacciHeap(LinkedGraph<BFS.BFSVertex<T>> G, BFS.BFSVertex<T> s){
         initializeSingleSource(G, s);
         var vertices = G.getAllVertices();
         FibonacciHeap<BFS.BFSVertex<T>> Q = new FibonacciHeap<>();
@@ -100,7 +100,7 @@ public final class SSShortestPath {
         }
     }
     // min heap, time complexity: O(V*E*lgV)
-    private static <T> void algorithmDijkstraWithMinHeap(Graph<BFS.BFSVertex<T>> G, BFS.BFSVertex<T> s){
+    private static <T> void algorithmDijkstraWithMinHeap(LinkedGraph<BFS.BFSVertex<T>> G, BFS.BFSVertex<T> s){
         initializeSingleSource(G, s);
         var vertices = G.getAllVertices();
         MinHeap<BFS.BFSVertex<T>> Q = new MinHeap<>(vertices, BFS.BFSVertex::getDistance);
