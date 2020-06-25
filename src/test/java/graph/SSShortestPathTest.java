@@ -1,7 +1,8 @@
 package graph;
 
 import org.junit.jupiter.api.Test;
-
+import static graph.BFS.*;
+import static graph.DFS.*;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -14,8 +15,8 @@ class SSShortestPathTest {
     @Test
     void algorithmBellmanFord() {
         var G = buildBellmanFordCase();
-        var b = SSShortestPath.algorithmBellmanFord(G, new BFS.BFSVertex<>("s"));
-        BFS.BFSVertex<String> target = new BFS.BFSVertex<>("z");
+        var b = SSShortestPath.algorithmBellmanFord(G, new BFSVertex<>("s"));
+        BFSVertex<String> target = new BFSVertex<>("z");
         var vertices = G.getAllVertices();
         for(var v : vertices){
             if(v.equals(target)) { target = v; } }
@@ -28,10 +29,10 @@ class SSShortestPathTest {
         assertTrue(b);
         assertEquals(List.of("z", "t", "x", "y","s"),res);
     }
-    static LinkedGraph<BFS.BFSVertex<String>> buildBellmanFordCase(){
+    static LinkedGraph<BFSVertex<String>> buildBellmanFordCase(){
         String[] names = "s,t,x,y,z".split(",");
-        List<BFS.BFSVertex<String>> vertices = new ArrayList<>();
-        for(var n : names) vertices.add(new BFS.BFSVertex<>(n));
+        List<BFSVertex<String>> vertices = new ArrayList<>();
+        for(var n : names) vertices.add(new BFSVertex<>(n));
         var res = new LinkedGraph<>(vertices, LinkedGraph.Direction.DIRECTED);
         int[] index1 =        new int[]{0,0,1,1, 1, 2, 3,3,4,4};
         int[] index2 =        new int[]{1,3,2,3, 4, 1, 2,4,0,2};
@@ -45,9 +46,9 @@ class SSShortestPathTest {
     @Test
     void shortestPathOfDAG(){
         var two_graph = buildShortestPathOfDAGForBFS();
-        var res = SSShortestPath.shortestPathOfDAG(two_graph.DFS_G,two_graph.BFS_G,new BFS.BFSVertex<>("s"));
+        var res = SSShortestPath.shortestPathOfDAG(two_graph.DFS_G,two_graph.BFS_G,new BFSVertex<>("s"));
         var vertices = res.getAllVertices();
-        var l = vertices.stream().sorted(Comparator.comparing(BFS.BFSVertex::getContent)).collect(Collectors.toList());
+        var l = vertices.stream().sorted(Comparator.comparing(BFSVertex::getContent)).collect(Collectors.toList());
         assertNull(l.get(0).getParent());
         assertNull(l.get(1).getParent());
         assertEquals(l.get(1),l.get(2).getParent());
@@ -64,8 +65,8 @@ class SSShortestPathTest {
     }
     static Result buildShortestPathOfDAGForBFS(){
         String[] names = "r,s,t,x,y,z".split(",");
-        List<BFS.BFSVertex<String>> BFS_vertex = new ArrayList<>();
-        for (String name : names) { BFS_vertex.add(new BFS.BFSVertex<>(name)); }
+        List<BFSVertex<String>> BFS_vertex = new ArrayList<>();
+        for (String name : names) { BFS_vertex.add(new BFSVertex<>(name)); }
         var BFS_G = new LinkedGraph<>(BFS_vertex, LinkedGraph.Direction.DIRECTED);
         int[] index1 =        new int[]{0,0,1,1,2,2,2, 3,3, 4};
         int[] index2 =        new int[]{1,2,2,3,3,4,5, 4,5, 5};
@@ -73,7 +74,7 @@ class SSShortestPathTest {
         for(int i = 0; i < index1.length; i++){
             BFS_G.setNeighbor(BFS_vertex.get(index1[i]),BFS_vertex.get(index2[i]),weights[i]);
         }
-        var DFS_vertices = BFS_vertex.stream().map(DFS.DFSVertex::new).collect(Collectors.toList());
+        var DFS_vertices = BFS_vertex.stream().map(DFSVertex::new).collect(Collectors.toList());
         var DFS_G = new LinkedGraph<>(DFS_vertices, LinkedGraph.Direction.DIRECTED);
         int len = DFS_vertices.size();
         for(int i = 0; i < len - 1; i++){
@@ -85,15 +86,15 @@ class SSShortestPathTest {
         return t;
     }
     static class Result{
-        public LinkedGraph<BFS.BFSVertex<String>> BFS_G;
-        public LinkedGraph<DFS.DFSVertex<BFS.BFSVertex<String>>> DFS_G;
+        public LinkedGraph<BFSVertex<String>> BFS_G;
+        public LinkedGraph<DFSVertex<BFSVertex<String>>> DFS_G;
     }
 
     @Test
     void algorithmDijkstraTestWithFibonacciHeap(){
         var g = buildDijkstraCase();
-        SSShortestPath.algorithmDijkstra(g, new BFS.BFSVertex<>("s"), SSShortestPath.HeapType.MIN_HEAP);
-        var vertices = g.getAllVertices().stream().sorted(Comparator.comparing(BFS.BFSVertex::getContent)).collect(Collectors.toList());
+        SSShortestPath.algorithmDijkstra(g, new BFSVertex<>("s"), SSShortestPath.HeapType.MIN_HEAP);
+        var vertices = g.getAllVertices().stream().sorted(Comparator.comparing(BFSVertex::getContent)).collect(Collectors.toList());
         assertNull(vertices.get(0).getParent());
 
         assertEquals(vertices.get(3),vertices.get(1).getParent());
@@ -112,8 +113,8 @@ class SSShortestPathTest {
     @Test
     void algorithmDijkstraTestWithMinHeap(){
         var g = buildDijkstraCase();
-        SSShortestPath.algorithmDijkstra(g, new BFS.BFSVertex<>("s"), SSShortestPath.HeapType.FIBONACCI);
-        var vertices = g.getAllVertices().stream().sorted(Comparator.comparing(BFS.BFSVertex::getContent)).collect(Collectors.toList());
+        SSShortestPath.algorithmDijkstra(g, new BFSVertex<>("s"), SSShortestPath.HeapType.FIBONACCI);
+        var vertices = g.getAllVertices().stream().sorted(Comparator.comparing(BFSVertex::getContent)).collect(Collectors.toList());
         assertNull(vertices.get(0).getParent());
 
         assertEquals(vertices.get(3),vertices.get(1).getParent());
@@ -128,10 +129,10 @@ class SSShortestPathTest {
         assertEquals(vertices.get(3),vertices.get(4).getParent());
         assertEquals(7,vertices.get(4).getDistance());
     }
-    static LinkedGraph<BFS.BFSVertex<String>> buildDijkstraCase(){
+    static LinkedGraph<BFSVertex<String>> buildDijkstraCase(){
         String[] names = "s,t,x,y,z".split(",");
-        List<BFS.BFSVertex<String>> vertices = new ArrayList<>();
-        for(var n : names) vertices.add(new BFS.BFSVertex<>(n));
+        List<BFSVertex<String>> vertices = new ArrayList<>();
+        for(var n : names) vertices.add(new BFSVertex<>(n));
         var graph = new LinkedGraph<>(vertices, LinkedGraph.Direction.DIRECTED);
         int[] indices1 =      new int[]{0, 0,1,1,2,3,3,3,4,4};
         int[] indices2 =      new int[]{1, 3,2,3,4,1,2,4,0,2};

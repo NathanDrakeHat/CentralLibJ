@@ -1,10 +1,9 @@
 package graph;
 
 import org.junit.jupiter.api.Test;
-
 import java.util.ArrayList;
 import java.util.List;
-
+import static graph.BFS.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 class APShortestPathTest {
@@ -103,11 +102,11 @@ class APShortestPathTest {
         assertArrayEquals(answer,res.get());
 
     }
-    static LinkedGraph<BFS.BFSVertex<String>> build(){
+    static LinkedGraph<BFSVertex<String>> build(){
         String[] names = "1,2,3,4,5".split(",");
-        List<BFS.BFSVertex<String>> vertices = new ArrayList<>();
+        List<BFSVertex<String>> vertices = new ArrayList<>();
         for(var name : names)
-            vertices.add(new BFS.BFSVertex<>(name));
+            vertices.add(new BFSVertex<>(name));
         var res = new LinkedGraph<>(vertices, LinkedGraph.Direction.DIRECTED);
         res.setNeighbor(vertices.get(0),vertices.get(1),3);
         res.setNeighbor(vertices.get(0),vertices.get(2),8);

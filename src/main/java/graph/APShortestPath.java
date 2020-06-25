@@ -2,6 +2,7 @@ package graph;
 
 
 import java.util.*;
+import graph.BFS.*;
 
 
 // all pair shortest path
@@ -94,13 +95,13 @@ public class APShortestPath {
     // sparse graph
     // Fibonacci heap: O(V^2*lgV + V*E)
     // min heap: O(V*E*lgV)
-    public static <T> Optional<double[][]> algorithmJohnson(LinkedGraph<BFS.BFSVertex<T>> graph, SSShortestPath.HeapType type) {
+    public static <T> Optional<double[][]> algorithmJohnson(LinkedGraph<BFSVertex<T>> graph, SSShortestPath.HeapType type) {
         Objects.requireNonNull(graph);
         Objects.requireNonNull(type);
-        Map<BFS.BFSVertex<T>, Double> h = new HashMap<>();
+        Map<BFSVertex<T>, Double> h = new HashMap<>();
         var n = graph.getVerticesCount();
         var vertices_new = graph.getAllVertices();
-        var s = new BFS.BFSVertex<T>();
+        var s = new BFSVertex<T>();
         vertices_new.add(s);
         var new_graph = buildGraph(graph,vertices_new,s);
         if(!SSShortestPath.algorithmBellmanFord(new_graph, s))
@@ -129,8 +130,8 @@ public class APShortestPath {
             return Optional.of(D);
         }
     }
-    private static <T> LinkedGraph<BFS.BFSVertex<T>> buildGraph(LinkedGraph<BFS.BFSVertex<T>> graph, List<BFS.BFSVertex<T>> vertices,
-                                                                BFS.BFSVertex<T> s){
+    private static <T> LinkedGraph<BFSVertex<T>> buildGraph(LinkedGraph<BFSVertex<T>> graph, List<BFSVertex<T>> vertices,
+                                                                BFSVertex<T> s){
         var new_graph = new LinkedGraph<>(graph);
         new_graph.addNewVertex(s);
         for(var vertex : vertices){
