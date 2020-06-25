@@ -72,6 +72,7 @@ public class APShortestPath {
         return D_origin;
     }
 
+
     public static boolean[][] transitiveClosure(double[][] W){
         var n = W.length;
         var T = new boolean[n][n];
