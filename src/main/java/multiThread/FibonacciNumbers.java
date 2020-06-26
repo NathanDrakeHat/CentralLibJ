@@ -1,14 +1,11 @@
 package multiThread;
 
-import java.util.function.IntConsumer;
-
 public class FibonacciNumbers {
     public static class Fib extends Thread{
         private int n;
         private int res;
-        public Fib(int n){
-            this.n = n;
-        }
+
+        public Fib(int n){ this.n = n; }
 
         @Override
         public void run(){
@@ -30,13 +27,5 @@ public class FibonacciNumbers {
         }
 
         public int getRes() { return res; }
-    }
-    public static class AddToArray implements IntConsumer{
-        private int[] a;
-        public AddToArray(int[] a){ this.a = a; }
-        @Override
-        public void accept(int i){
-            a[0] = i;
-        }
     }
 }
