@@ -1,7 +1,7 @@
 package multiThread;
 
-public class FibonacciNumbers {
-    public static class Fib extends Thread{
+public final class FibonacciNumbers {
+    public static final class Fib extends Thread{
         private int n;
         private int res;
 
