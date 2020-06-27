@@ -64,28 +64,22 @@ public final class Sort {
             int group_start = 0;
             double[] cache1 = new double[sub_group_size];
             double[] cache2 = new double[sub_group_size];
-            //-------------------------------------------------------------
-            System.out.println(String.format("group size:%d",group_size));
-            //-------------------------------------------------------------
             for(int j = 0; j < group_iter_times; j++){
-                mergeWithCache(array, group_start, sub_group_size,group_size,cache1,cache2);
+                mergeRegularly(array, group_start, sub_group_size,group_size,cache1,cache2);
                 group_start += group_size;
-                //-------------------------------------------------------------
-                System.out.println(Arrays.toString(array));
-                //-------------------------------------------------------------
             }
             int current_rest_len = array.length - group_iter_times*group_size;
             if(current_rest_len > last_rest_len){
-                mergeRestPart(array,array.length-current_rest_len,
+                mergeRest(array,array.length-current_rest_len,
                         current_rest_len-last_rest_len,last_rest_len);
                 last_rest_len = current_rest_len;
             }
             group_size *= 2;
-            sub_group_size /= 2;
+            sub_group_size *= 2;
         }
-        if(not_exp_of_2){ mergeRestPart(array, 0, sub_group_size, array.length - sub_group_size); }
+        if(not_exp_of_2){ mergeRest(array, 0, sub_group_size, array.length - sub_group_size); }
     }
-    private static void mergeRestPart(double[] array, int former_start, int former_len, int later_len){
+    private static void mergeRest(double[] array, int former_start, int former_len, int later_len){
         var cache1 = new double[former_len];
         var cache2 = new double[later_len];
         System.arraycopy(array, former_start, cache1, 0,former_len);
@@ -107,7 +101,7 @@ public final class Sort {
                     array, former_start+cache2_idx+cache1_idx,
                     later_len-cache2_idx); }
     }
-    private static void mergeWithCache(double[] array, int former_start, int len, int group_size, double[] cache1, double[] cache2){
+    private static void mergeRegularly(double[] array, int former_start, int len, int group_size, double[] cache1, double[] cache2){
         System.arraycopy(array, former_start, cache1, 0,len);
         System.arraycopy(array, former_start+len, cache2, 0,len);
         int cache1_idx = 0;
@@ -180,9 +174,7 @@ public final class Sort {
         a[i] = pivot;
         return i; //pivot index
     }
-    public static void quickSort(double[] a){
-        quickSort(a, 0, a.length);
-    }
+    public static void quickSort(double[] a){ quickSort(a, 0, a.length); }
     private static void quickSort(double[] a, int start, int end){
         if((end - start) > 1){
             int middle = partition(a, start, end);
@@ -211,9 +203,7 @@ public final class Sort {
         a[i] = pivot;
         return i; //pivot value position
     }
-    public static void randQuickSort(double[] a){
-        randQuickSort(a, 0, a.length);
-    }
+    public static void randQuickSort(double[] a){ randQuickSort(a, 0, a.length); }
     private static void randQuickSort(double[] a, int start, int end){
         if((end - start) > 1){
             int middle = randPartition(a, start, end);

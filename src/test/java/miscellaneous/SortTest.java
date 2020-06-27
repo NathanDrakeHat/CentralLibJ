@@ -15,6 +15,24 @@ class SortTest {
     static int[] test5 = new int[] {-30, -57, -55, -26, 26, -34, -8, -22, 31, -19, -49, -32, 2, 22, -8, 31, 31, -55, -16};
     static int[] test6 = new int[] {10, -5, 10, 4, 2, 6, 10, 10, 4, -9, -6, -7, 10, -7, 5, -6, 8, 8, -5, -8};
 
+    static double[] iterate_merge_sort_test1 = new double[]{76.0, -12.0, 59.0, 77.0, 81.0, -58.0, -95.0, 40.0, -63.0,
+            93.0, 66.0, 66.0, 91.0, -51.0, -53.0, -60.0, 12.0, 11.0, 79.0, 70.0, -17.0, -15.0, -13.0, -37.0, 63.0,
+            -37.0, 92.0, -6.0, -21.0};
+    static double[] iterate_merge_sort_test2 = new double[]{-76.0, -27.0, -71.0, -15.0, -67.0, -93.0, -77.0, -57.0, -79.0, 65.0,
+            -41.0, 51.0, 56.0, -73.0, -3.0, 48.0, 7.0};
+
+    static double[] iterate_merge_sort_test3 = new double[]{79.0, -36.0, 57.0, 59.0, -5.0, 42.0, 72.0, 72.0, 72.0, -28.0, 66.0, -17.0,
+            -55.0, 84.0, -62.0, -9.0, -12.0, 58.0, 73.0, 51.0, 30.0, -31.0, 51.0, -16.0, 88.0, 20.0, 86.0,
+            -89.0, 10.0, 45.0, -23.0, -17.0};
+    static double[] iterate_merge_sort_test4 = new double[]{-38.0, 51.0, 82.0, -8.0, -9.0, 25.0, 39.0, 71.0, -71.0, -60.0,
+            90.0, -45.0, -30.0, 22.0, -4.0, -34.0, 60.0, -79.0, -53.0, 33.0, 10.0, -48.0, -24.0,
+            58.0, -75.0, -74.0, 46.0, -15.0, 67.0, 25.0, 56.0, -66.0, -98.0, -23.0, 4.0, 29.0, 92.0,
+            -32.0, -11.0, -5.0, -45.0, 77.0, -6.0, -1.0, -20.0, -92.0, -10.0, 34.0, 62.0, -94.0, -83.0,
+            39.0, -2.0, -61.0, -91.0, 94.0, -79.0, -9.0, -69.0, 82.0, -5.0, 42.0, -3.0, 12.0, 16.0, 68.0,
+            81.0, 5.0, -24.0, 4.0, 79.0, -33.0, 56.0, -42.0, 52.0, -59.0, 56.0, -59.0, -62.0, -71.0, 34.0,
+            4.0, -89.0, -71.0, 74.0, -65.0, -69.0, -24.0, 57.0};
+
+
     static double[] bucket_test3 = new double[] {0.885, 0.6497, 0.6566, 0.1263, 0.2799, 0.8863, 0.013, 0.8973,
                 0.4261, 0.454, 0.7068, 0.5867, 0.1529, 0.8356, 0.7301, 0.1111, 0.8368};
     static  double[] bucket_test1 = new double[] {0.536, 0.3182, 0.7075, 0.8828, 0.3912, 0.7055, 0.1893, 0.9803,
@@ -92,6 +110,38 @@ class SortTest {
     @Test
     void iterateMergeSortTest3(){
         var d = test3;
+        var t = Arrays.copyOf(d,d.length);
+        Sort.iterateMergeSort(t);
+        assertTrue(isSorted(t));
+    }
+
+    @Test
+    void iterateMergeSortTest4(){
+        var d = iterate_merge_sort_test1;
+        var t = Arrays.copyOf(d,d.length);
+        Sort.iterateMergeSort(t);
+        assertTrue(isSorted(t));
+    }
+
+    @Test
+    void iterateMergeSortTest5(){
+        var d = iterate_merge_sort_test2;
+        var t = Arrays.copyOf(d,d.length);
+        Sort.iterateMergeSort(t);
+        assertTrue(isSorted(t));
+    }
+
+    @Test
+    void iterateMergeSortTest6(){
+        var d = iterate_merge_sort_test3;
+        var t = Arrays.copyOf(d,d.length);
+        Sort.iterateMergeSort(t);
+        assertTrue(isSorted(t));
+    }
+
+    @Test
+    void iterateMergeSortTest7(){
+        var d = iterate_merge_sort_test4;
         var t = Arrays.copyOf(d,d.length);
         Sort.iterateMergeSort(t);
         assertTrue(isSorted(t));
