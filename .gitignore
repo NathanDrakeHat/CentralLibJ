@@ -8,6 +8,6 @@ src/main/java/Main/
 src/main/resources/
 *.txt
 src/backup/
-pushhub.bat
+pushub.bat
 push.bat
 commit.bat

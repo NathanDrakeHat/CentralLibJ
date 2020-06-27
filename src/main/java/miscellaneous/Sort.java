@@ -3,6 +3,7 @@ package miscellaneous;
 import tools.SimpleDate;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.Objects;
 import java.util.concurrent.ThreadLocalRandom;
 
 
@@ -53,6 +54,8 @@ public final class Sort {
     }
 
     public static void iterateMergeSort(double[] array){
+        Objects.requireNonNull(array);
+        if(array.length <= 1) return;
         int exp_times = (int) Math.floor(Math.log(array.length)/Math.log(2));
         int group_size = 2;
         int sub_group_size = group_size / 2;
