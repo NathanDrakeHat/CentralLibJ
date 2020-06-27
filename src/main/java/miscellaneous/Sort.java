@@ -65,21 +65,21 @@ public final class Sort {
             double[] cache1 = new double[sub_group_size];
             double[] cache2 = new double[sub_group_size];
             for(int j = 0; j < group_iter_times; j++){
-                mergeRegularly(array, group_start, sub_group_size,group_size,cache1,cache2);
+                mergeRegularPart(array, group_start, sub_group_size,group_size,cache1,cache2);
                 group_start += group_size;
             }
             int current_rest_len = array.length - group_iter_times*group_size;
             if(current_rest_len > last_rest_len){
-                mergeRest(array,array.length-current_rest_len,
+                mergeRestPart(array,array.length-current_rest_len,
                         current_rest_len-last_rest_len,last_rest_len);
                 last_rest_len = current_rest_len;
             }
             group_size *= 2;
             sub_group_size *= 2;
         }
-        if(not_exp_of_2){ mergeRest(array, 0, sub_group_size, array.length - sub_group_size); }
+        if(not_exp_of_2){ mergeRestPart(array, 0, sub_group_size, array.length - sub_group_size); }
     }
-    private static void mergeRest(double[] array, int former_start, int former_len, int later_len){
+    private static void mergeRestPart(double[] array, int former_start, int former_len, int later_len){
         var cache1 = new double[former_len];
         var cache2 = new double[later_len];
         System.arraycopy(array, former_start, cache1, 0,former_len);
@@ -101,7 +101,9 @@ public final class Sort {
                     array, former_start+cache2_idx+cache1_idx,
                     later_len-cache2_idx); }
     }
-    private static void mergeRegularly(double[] array, int former_start, int len, int group_size, double[] cache1, double[] cache2){
+    private static void mergeRegularPart(double[] array, int former_start,
+                                         int len, int group_size,
+                                         double[] cache1, double[] cache2){
         System.arraycopy(array, former_start, cache1, 0,len);
         System.arraycopy(array, former_start+len, cache2, 0,len);
         int cache1_idx = 0;
@@ -121,9 +123,6 @@ public final class Sort {
                     array, former_start+cache2_idx+cache1_idx,
                     len-cache2_idx); }
     }
-    // 2 : [0,1)[1,2)  [2,3)[3,4)  [4,5)[5,6)  [6,7)[7,8) [8,9)[9,10)
-    // 4 : [0,2)[2,4)  [4,6)[6,8) | [8,10)
-    // 8 : [0,4)[4,8) | [8,10)
 
     private static void maxHeapify(double[] arr, int idx, int heap_size){
         int l = 2 * (idx + 1);
@@ -212,7 +211,7 @@ public final class Sort {
         }
     }
 
-    //int data only
+    //int data only, mean distribution
     public static void countingSort(int[] a){
         int[] b = new int[a.length];
         int min = a[0], max = a[0];
@@ -240,22 +239,7 @@ public final class Sort {
         Arrays.sort(a, Comparator.comparing(SimpleDate::getYear));
     }
 
-    private static class SingleLinkedNode<V>  {
-        private V val ;
-        private SingleLinkedNode<V> parent;
-
-        public SingleLinkedNode(){}
-        public SingleLinkedNode(V val){
-            this.val = val;
-            this.parent = null;
-        }
-
-        public SingleLinkedNode<V> getParent(){ return this.parent;}
-        public void setParent(SingleLinkedNode<V> p) { this.parent = p; }
-
-        public V getContent(){ return this.val; }
-        public void setContent(V val) { this.val = val; }
-    }
+    // mean distribution
     public static void bucketSort(double[] a){
         @SuppressWarnings("unchecked")
         SingleLinkedNode<Double>[] b = (SingleLinkedNode<Double>[])new SingleLinkedNode[a.length];
@@ -304,5 +288,20 @@ public final class Sort {
             }
         }
     }
+    private static class SingleLinkedNode<V>  {
+        private V val ;
+        private SingleLinkedNode<V> parent;
 
+        public SingleLinkedNode(){}
+        public SingleLinkedNode(V val){
+            this.val = val;
+            this.parent = null;
+        }
+
+        public SingleLinkedNode<V> getParent(){ return this.parent;}
+        public void setParent(SingleLinkedNode<V> p) { this.parent = p; }
+
+        public V getContent(){ return this.val; }
+        public void setContent(V val) { this.val = val; }
+    }
 }
