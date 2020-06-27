@@ -11,19 +11,19 @@ public final class Sort {
     private static void mergeSort(double[] array, int start, int end){
         if ((end - start) > 1) {
             int middle = (start + end) / 2;
-            mergeSort(array, start, middle); // divide
+            mergeSort(array, start, middle);
             mergeSort(array, middle, end);
-            int len1 = middle - start , len2 =  end - middle ;  // merge
+            int len1 = middle - start , len2 =  end - middle ;
             var left = new double[len1] ;
-            var right = new double[len2] ;  // copy to left and right
+            var right = new double[len2] ;
             System.arraycopy(array, start , left, 0, len1);
             System.arraycopy(array, middle , right, 0, len2);
 
             boolean left_end = false;
             boolean right_end = false;
             int l_idx = 0, r_idx = 0;
-            int t = 0;  //relay the following i
-            for (int i = 0; i < (end - start); i++) { // select the smallest from left and right
+            int t = 0;
+            for (int i = 0; i < (end - start); i++) {
                 if (left[l_idx] < right[r_idx]) {
                     array[start + i] = left[l_idx++];
                     if (l_idx == len1) {
@@ -44,63 +44,46 @@ public final class Sort {
                 for(; t < (end-start);t++){
                     array[start + t] = right[r_idx++];
                 }
-            }else if(right_end){  //right end
+            }else if(right_end){
                 for(; t < (end-start);t++){
                     array[start + t] = left[l_idx++];
                 }
             }
-        }// else end, because only one element
+        }
     }
 
     public static void iterateMergeSort(double[] array){
-        int expand_iter_times = (int) Math.floor(Math.log(array.length)/Math.log(2));
+        int exp_times = (int) Math.floor(Math.log(array.length)/Math.log(2));
         int group_size = 2;
         int sub_group_size = group_size / 2;
         int last_rest_len = 0;
-        if(Math.pow(2, expand_iter_times) != array.length){
-            last_rest_len = 1; }
-        // overall 2*k part:
-        for(int i = 0; i < expand_iter_times; i++){
+        boolean not_exp_of_2 = (Math.pow(2, exp_times) != array.length);
+        if(not_exp_of_2){ last_rest_len = array.length % 2 == 0? 2 : 1; }
+        for(int i = 0; i < exp_times; i++){
             int group_iter_times = array.length/group_size;
             int group_start = 0;
             double[] cache1 = new double[sub_group_size];
             double[] cache2 = new double[sub_group_size];
-            // 2*k part:
+            //-------------------------------------------------------------
+            System.out.println(String.format("group size:%d",group_size));
+            //-------------------------------------------------------------
             for(int j = 0; j < group_iter_times; j++){
-//                System.arraycopy(array,group_start,cache1,0,sub_group_size);
-//                System.arraycopy(array,group_start+sub_group_size,cache2,0,sub_group_size);
-//                int cache1_idx = 0;
-//                int cache2_idx = 0;
-//                for(int k = group_start;(k<group_size)&&(cache1_idx<sub_group_size)&&(cache2_idx<sub_group_size); k++){
-//                    if(cache1[cache1_idx] <= cache2[cache2_idx]){
-//                        array[k] = cache1[cache1_idx++]; }
-//                    else {
-//                        array[k]  =cache2[cache2_idx++]; }
-//                }
-//                if(cache1_idx != sub_group_size){
-//                    System.arraycopy(cache1, cache1_idx,
-//                            array, group_start+cache2_idx+cache1_idx,
-//                            sub_group_size-cache1_idx); }
-//                else if(cache2_idx != sub_group_size){
-//                    System.arraycopy(cache2, cache2_idx,
-//                            array, group_start+cache2_idx+cache1_idx,
-//                            sub_group_size-cache2_idx); }
                 mergeWithCache(array, group_start, sub_group_size,group_size,cache1,cache2);
                 group_start += group_size;
+                //-------------------------------------------------------------
+                System.out.println(Arrays.toString(array));
+                //-------------------------------------------------------------
             }
-            // rest part:
             int current_rest_len = array.length - group_iter_times*group_size;
             if(current_rest_len > last_rest_len){
                 mergeRestPart(array,array.length-current_rest_len,
                         current_rest_len-last_rest_len,last_rest_len);
                 last_rest_len = current_rest_len;
             }
-
             group_size *= 2;
             sub_group_size /= 2;
         }
-        // final rest part:
-        mergeRestPart(array, 0, group_size, array.length - group_size);
+        if(not_exp_of_2){ mergeRestPart(array, 0, sub_group_size, array.length - sub_group_size); }
     }
     private static void mergeRestPart(double[] array, int former_start, int former_len, int later_len){
         var cache1 = new double[former_len];
@@ -109,7 +92,7 @@ public final class Sort {
         System.arraycopy(array, former_start+former_len, cache2, 0,later_len);
         int cache1_idx = 0;
         int cache2_idx = 0;
-        for(int i = former_start; (i<former_len+later_len)&&(cache1_idx<former_len)&&(cache2_idx<later_len); i++){
+        for(int i = former_start; (i<former_start+former_len+later_len)&&(cache1_idx<former_len)&&(cache2_idx<later_len); i++){
             if(cache1[cache1_idx] <= cache2[cache2_idx]){
                 array[i] = cache1[cache1_idx++]; }
             else {
@@ -129,7 +112,7 @@ public final class Sort {
         System.arraycopy(array, former_start+len, cache2, 0,len);
         int cache1_idx = 0;
         int cache2_idx = 0;
-        for(int i = former_start; (i<group_size)&&(cache1_idx<len)&&(cache2_idx<len); i++){
+        for(int i = former_start; (i<former_start+group_size)&&(cache1_idx<len)&&(cache2_idx<len); i++){
             if(cache1[cache1_idx] <= cache2[cache2_idx]){
                 array[i] = cache1[cache1_idx++]; }
             else {
