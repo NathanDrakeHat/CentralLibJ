@@ -5,10 +5,12 @@ import java.util.Objects;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.Executors;
 import java.util.function.Function;
+import java.util.function.IntFunction;
 
 public final class ParalleledFor{
     private static final int cores = Runtime.getRuntime().availableProcessors();
-    public static void forParallel(int start, int end, ForGetRunnable for_get_runnable){
+
+    public static void forParallel(int start, int end, IntFunction<Runnable> for_get_runnable){
         Objects.requireNonNull(for_get_runnable);
         var pool = Executors.newFixedThreadPool(cores);
         CountDownLatch count_down_latch = new CountDownLatch(end-start);
@@ -22,7 +24,7 @@ public final class ParalleledFor{
             }
         };
         for(int i = start; i < end; i++){
-            pool.submit(add_count_down.apply(for_get_runnable.getRunnable(i)));
+            pool.submit(add_count_down.apply(for_get_runnable.apply(i)));
         }
         try {
             count_down_latch.await();
