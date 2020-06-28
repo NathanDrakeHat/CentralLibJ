@@ -336,7 +336,7 @@ public final class RedBlackTree<K, V> {
                 if(sibling.getLeft().isBlack() && sibling.getRight().isBlack()){ // case2: sibling children is black
                     sibling.setRed();
                     fix_up = fix_up.getParent();
-                    continue; // may break while condition
+                    continue;
                 }else if(sibling.getRight().isBlack()){ // case3: sibling left red, right black. convert case4
                     sibling.getLeft().setBlack();
                     sibling.setRed();
