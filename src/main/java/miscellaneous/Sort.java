@@ -22,7 +22,7 @@ public final class Sort {
             System.arraycopy(array, middle , right_cache, 0, right_len);
             int right_idx = 0;
             int left_idx = 0;
-            for(int i = start; (i < end) && (right_idx < right_len) && (left_idx < left_len); i++){
+            for(int i = start; (i<end)&&(right_idx<right_len)&&(left_idx<left_len); i++){
                 if(left_cache[left_idx] <= right_cache[right_idx]){
                     array[i] = left_cache[left_idx++]; }
                 else{
@@ -173,6 +173,7 @@ public final class Sort {
         }
     }
 
+    public static void randQuickSort(double[] a){ randQuickSort(a, 0, a.length); }
     private static int randPartition(double[] a, int start, int end){
         int pivot_idx = ThreadLocalRandom.current().nextInt(start,end);
         var pivot = a[pivot_idx];
@@ -193,7 +194,6 @@ public final class Sort {
         a[i] = pivot;
         return i;
     }
-    public static void randQuickSort(double[] a){ randQuickSort(a, 0, a.length); }
     private static void randQuickSort(double[] a, int start, int end){
         if((end - start) > 1){
             int middle = randPartition(a, start, end);
