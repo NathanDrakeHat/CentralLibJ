@@ -47,7 +47,8 @@ public final class Sort {
         int sub_group_size = group_size / 2;
         int last_rest_len = 0;
         boolean not_exp_of_2 = (Math.pow(2, exp_times) != array.length);
-        if(not_exp_of_2){ last_rest_len = array.length % 2 == 0? 2 : 1; }
+        if(not_exp_of_2){
+            last_rest_len = array.length % 2 == 0? 2 : 1; }
         for(int i = 0; i < exp_times; i++){
             int group_iter_times = array.length/group_size;
             int group_start = 0;
@@ -66,7 +67,8 @@ public final class Sort {
             group_size *= 2;
             sub_group_size *= 2;
         }
-        if(not_exp_of_2){ mergeRestPart(array, 0, sub_group_size, array.length - sub_group_size); }
+        if(not_exp_of_2){
+            mergeRestPart(array, 0, sub_group_size, array.length - sub_group_size); }
     }
     private static void mergeRestPart(double[] array, int former_start, int former_len, int later_len){
         var cache1 = new double[former_len];
