@@ -8,8 +8,8 @@ import java.util.function.Function;
 
 public final class ParalleledFor{
     private static final int cores = Runtime.getRuntime().availableProcessors();
-    public static void forParallel(int start, int end, ForGetRunnable for_runnable){
-        Objects.requireNonNull(for_runnable);
+    public static void forParallel(int start, int end, ForGetRunnable for_get_runnable){
+        Objects.requireNonNull(for_get_runnable);
         var pool = Executors.newFixedThreadPool(cores);
         CountDownLatch count_down_latch = new CountDownLatch(end-start);
         var add_count_down = new Function<Runnable,Runnable>(){
@@ -22,14 +22,14 @@ public final class ParalleledFor{
             }
         };
         for(int i = start; i < end; i++){
-            pool.submit(add_count_down.apply(for_runnable.getRunnable(i)));
+            pool.submit(add_count_down.apply(for_get_runnable.getRunnable(i)));
         }
         try {
             count_down_latch.await();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        pool.shutdownNow();
+        pool.shutdown();
     }
 
     public static double[] matrixVector(double[][] A, double[] x){

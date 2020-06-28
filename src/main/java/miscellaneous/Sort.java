@@ -118,7 +118,7 @@ public final class Sort {
                     sub_group_size-cache2_idx); }
     }
 
-    public static void parrallelIterativeMergeSort(double[] array){
+    public static void parallelIterativeMergeSort(double[] array){
         Objects.requireNonNull(array);
         if(array.length <= 1) return;
         int exp_times = (int) Math.floor(Math.log(array.length)/Math.log(2));
@@ -130,18 +130,11 @@ public final class Sort {
             last_rest_len = array.length % 2 == 0? 2 : 1; }
         for(int i = 0; i < exp_times; i++){
             int group_iter_times = array.length/group_size;
-//            int group_start = 0;
-            double[] cache1 = new double[sub_group_size];
-            double[] cache2 = new double[sub_group_size];
-//            for(int j = 0; j < group_iter_times; j++){
-//                mergeRegularPart(array, group_start, sub_group_size,group_size,cache1,cache2);
-//                group_start += group_size;
-//            }
             int final_group_size = group_size;
             int final_sub_group_size = sub_group_size;
             forParallel(0,group_iter_times,(j)->()->{
                 int group_start = j* final_group_size;
-                mergeRegularPart(array,group_start, final_sub_group_size,final_group_size,cache1,cache2);
+                parallelMergeRegularPart(array,group_start, final_sub_group_size,final_group_size);
             });
             int current_rest_len = array.length - group_iter_times*group_size;
             if(current_rest_len > last_rest_len){
@@ -154,6 +147,30 @@ public final class Sort {
         }
         if(not_exp_of_2){
             mergeRestPart(array, 0, sub_group_size, array.length - sub_group_size); }
+    }
+    private static void parallelMergeRegularPart(double[] array, int former_start,
+                                         int sub_group_size, int group_size){
+        var cache1 = new double[sub_group_size];
+        var cache2 = new double[sub_group_size];
+        System.arraycopy(array, former_start, cache1, 0,sub_group_size);
+        System.arraycopy(array, former_start+sub_group_size, cache2, 0,sub_group_size);
+        int cache1_idx = 0;
+        int cache2_idx = 0;
+        int for_len = former_start+group_size;
+        for(int i = former_start; (i<for_len)&&(cache1_idx<sub_group_size)&&(cache2_idx<sub_group_size); i++){
+            if(cache1[cache1_idx] <= cache2[cache2_idx]){
+                array[i] = cache1[cache1_idx++]; }
+            else {
+                array[i]  =cache2[cache2_idx++]; }
+        }
+        if(cache1_idx != sub_group_size){
+            System.arraycopy(cache1, cache1_idx,
+                    array, former_start+cache2_idx+cache1_idx,
+                    sub_group_size-cache1_idx); }
+        else if(cache2_idx != sub_group_size){
+            System.arraycopy(cache2, cache2_idx,
+                    array, former_start+cache2_idx+cache1_idx,
+                    sub_group_size-cache2_idx); }
     }
 
     private static void maxHeapify(double[] arr, int idx, int heap_size){

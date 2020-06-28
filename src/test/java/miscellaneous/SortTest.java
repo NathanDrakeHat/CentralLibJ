@@ -151,7 +151,7 @@ class SortTest {
     void ParallelIterativeMergeSortTest1(){
         var d = test1;
         var t = Arrays.copyOf(d,d.length);
-        Sort.parrallelIterativeMergeSort(t);
+        Sort.parallelIterativeMergeSort(t);
         assertTrue(isSorted(t));
     }
 
@@ -159,7 +159,7 @@ class SortTest {
     void ParallelIterativeMergeSortTest2(){
         var d = test2;
         var t = Arrays.copyOf(d,d.length);
-        Sort.parrallelIterativeMergeSort(t);
+        Sort.parallelIterativeMergeSort(t);
         assertTrue(isSorted(t));
     }
 
@@ -167,7 +167,7 @@ class SortTest {
     void ParallelIterativeMergeSortTest3(){
         var d = test3;
         var t = Arrays.copyOf(d,d.length);
-        Sort.parrallelIterativeMergeSort(t);
+        Sort.parallelIterativeMergeSort(t);
         assertTrue(isSorted(t));
     }
 
@@ -175,7 +175,7 @@ class SortTest {
     void ParallelIterativeMergeSortTest4(){
         var d = iterate_merge_sort_test1;
         var t = Arrays.copyOf(d,d.length);
-        Sort.parrallelIterativeMergeSort(t);
+        Sort.parallelIterativeMergeSort(t);
         assertTrue(isSorted(t));
     }
 
@@ -183,7 +183,7 @@ class SortTest {
     void ParallelIterativeMergeSortTest5(){
         var d = iterate_merge_sort_test2;
         var t = Arrays.copyOf(d,d.length);
-        Sort.parrallelIterativeMergeSort(t);
+        Sort.parallelIterativeMergeSort(t);
         assertTrue(isSorted(t));
     }
 
@@ -191,7 +191,7 @@ class SortTest {
     void ParallelIterativeMergeSortTest6(){
         var d = iterate_merge_sort_test3;
         var t = Arrays.copyOf(d,d.length);
-        Sort.parrallelIterativeMergeSort(t);
+        Sort.parallelIterativeMergeSort(t);
         assertTrue(isSorted(t));
     }
 
@@ -199,7 +199,7 @@ class SortTest {
     void ParallelIterativeMergeSortTest7(){
         var d = iterate_merge_sort_test4;
         var t = Arrays.copyOf(d,d.length);
-        Sort.parrallelIterativeMergeSort(t);
+        Sort.parallelIterativeMergeSort(t);
         assertTrue(isSorted(t));
     }
 
