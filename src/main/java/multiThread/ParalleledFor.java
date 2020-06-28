@@ -5,6 +5,7 @@ public class ParalleledFor extends Thread{
     private final int limit;
     private final int current;
     private final ForRunnable runnable;
+
     private ParalleledFor(int start, int limit, ForRunnable runnable){
         this.current = start;
         this.limit = limit;
