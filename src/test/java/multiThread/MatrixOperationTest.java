@@ -1,11 +1,7 @@
 package multiThread;
 
 import org.junit.jupiter.api.Test;
-
-import java.util.Arrays;
-
 import static multiThread.MatrixOperation.*;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class MatrixOperationTest {
