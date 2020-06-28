@@ -14,42 +14,28 @@ public final class Sort {
             int middle = (start + end) / 2;
             mergeSort(array, start, middle);
             mergeSort(array, middle, end);
-            int len1 = middle - start , len2 =  end - middle ;
-            var left = new double[len1] ;
-            var right = new double[len2] ;
-            System.arraycopy(array, start , left, 0, len1);
-            System.arraycopy(array, middle , right, 0, len2);
-
-            boolean left_end = false;
-            boolean right_end = false;
-            int l_idx = 0, r_idx = 0;
-            int t = 0;
-            for (int i = 0; i < (end - start); i++) {
-                if (left[l_idx] < right[r_idx]) {
-                    array[start + i] = left[l_idx++];
-                    if (l_idx == len1) {
-                        left_end = true;
-                        t = i+1;
-                        break;
-                    }
-                }else {
-                    array[start + i] = right[r_idx++];
-                    if (r_idx == len2) {
-                        right_end = true;
-                        t = i+1;
-                        break;
-                    }
-                }
+            int left_len = middle - start;
+            int right_len =  end - middle ;
+            var left_cache = new double[left_len] ;
+            var right_cache = new double[right_len] ;
+            System.arraycopy(array, start , left_cache, 0, left_len);
+            System.arraycopy(array, middle , right_cache, 0, right_len);
+            int right_idx = 0;
+            int left_idx = 0;
+            for(int i = start; (i < end) && (right_idx < right_len) && (left_idx < left_len); i++){
+                if(left_cache[left_idx] <= right_cache[right_idx]){
+                    array[i] = left_cache[left_idx++]; }
+                else{
+                    array[i] = right_cache[right_idx++]; }
             }
-            if (left_end) {
-                for(; t < (end-start);t++){
-                    array[start + t] = right[r_idx++];
-                }
-            }else if(right_end){
-                for(; t < (end-start);t++){
-                    array[start + t] = left[l_idx++];
-                }
-            }
+            if(left_idx < left_len){
+                System.arraycopy(left_cache,left_idx,
+                        array,start+left_idx+right_idx,
+                        left_len-left_idx);}
+            else if(right_idx < right_len){
+                System.arraycopy(right_cache,right_idx,
+                        array,start+left_idx+right_idx,
+                        right_len-right_idx);}
         }
     }
 
@@ -164,10 +150,10 @@ public final class Sort {
         }
     }
 
-    private static int partition(double[] a, int start, int end){ // base case (end -start)
+    private static int partition(double[] a, int start, int end){
         var pivot = a[end - 1];
         int i = start - 1;
-        for(int j = start; j < end - 1; j++){ // larger than pivot in [i+1, j-1]
+        for(int j = start; j < end - 1; j++){
             if(a[j] <= pivot){
                 var t = a[j];
                 a[j] = a[++i];
@@ -176,7 +162,7 @@ public final class Sort {
         }
         a[end - 1] = a[++i];
         a[i] = pivot;
-        return i; //pivot index
+        return i;
     }
     public static void quickSort(double[] a){ quickSort(a, 0, a.length); }
     private static void quickSort(double[] a, int start, int end){
@@ -187,7 +173,7 @@ public final class Sort {
         }
     }
 
-    private static int randPartition(double[] a, int start, int end){ // base case (end - start)
+    private static int randPartition(double[] a, int start, int end){
         int pivot_idx = ThreadLocalRandom.current().nextInt(start,end);
         var pivot = a[pivot_idx];
 
@@ -196,7 +182,7 @@ public final class Sort {
         a[pivot_idx] = temp;
 
         int i = start - 1;
-        for(int j = start; j < end - 1; j++){ // larger than pivot in [i+1, j-1]
+        for(int j = start; j < end - 1; j++){
             if(a[j] <= pivot){
                 var t = a[j];
                 a[j] = a[++i];
@@ -205,7 +191,7 @@ public final class Sort {
         }
         a[end - 1] = a[++i];
         a[i] = pivot;
-        return i; //pivot value position
+        return i;
     }
     public static void randQuickSort(double[] a){ randQuickSort(a, 0, a.length); }
     private static void randQuickSort(double[] a, int start, int end){
@@ -228,7 +214,7 @@ public final class Sort {
         int[] c = new int[range];
         for (int value : a) {
             c[(value - min)]++;
-        } //uniform
+        }
         for(int i = 1; i < range; i++) { c[i] = c[i] + c[i - 1]; }
         for(int i = a.length - 1; i >=0; i--){
             b[c[(a[i] - min)] - 1] = a[i];
@@ -237,8 +223,8 @@ public final class Sort {
         System.arraycopy(b, 0, a,0,b.length);
     }
 
+    //sort from smaller bit to bigger bit
     public static void radixSort(SimpleDate[] a){
-        //sort from smaller bit to bigger bit
         Arrays.sort(a, Comparator.comparing(SimpleDate::getDay));
         Arrays.sort(a, Comparator.comparing(SimpleDate::getMonth));
         Arrays.sort(a, Comparator.comparing(SimpleDate::getYear));
@@ -248,8 +234,8 @@ public final class Sort {
     public static void bucketSort(double[] a){
         @SuppressWarnings("unchecked")
         SingleLinkedNode<Double>[] b = (SingleLinkedNode<Double>[])new SingleLinkedNode[a.length];
-        for(int i=0; i < b.length; i++){ b[i] = new SingleLinkedNode<>(); } // initialization
-        for (double v : a) { //build bucket
+        for(int i=0; i < b.length; i++){ b[i] = new SingleLinkedNode<>(); }
+        for (double v : a) {
             SingleLinkedNode<Double> handle = b[(int) (a.length * v)];
             while (handle.getParent() != null) {
                 handle = handle.getParent();
@@ -257,12 +243,11 @@ public final class Sort {
             SingleLinkedNode<Double> t = new SingleLinkedNode<>(v);
             handle.setParent(t);
         }
-        //sort
         for(int i=0; i < a.length; i++){
             var handle = b[i].getParent();
-            if(handle == null) { continue; } // zero elem
+            if(handle == null) { continue; }
             var itr = handle.getParent();
-            if (itr == null) { continue; } // one elem already sorted
+            if (itr == null) { continue; }
             while(itr != null) {
                 double min_value = handle.getContent();
                 var min_node = handle;
@@ -280,12 +265,11 @@ public final class Sort {
                 itr = handle.getParent();
             }
         }
-        //get result
         int idx = 0;
         for (var node : b) {
             if (node.getParent() == null) {
                 continue;
-            } // zero elem continue
+            }
             var handle = node.getParent();
             while (handle != null) {
                 a[idx++] = handle.getContent();
