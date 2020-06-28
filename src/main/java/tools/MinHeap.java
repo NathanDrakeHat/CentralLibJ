@@ -5,16 +5,16 @@ import java.util.function.ToDoubleFunction;
 
 // key must be a number
 public class MinHeap<V> {
-    private class NodeAndIndex{
+    private class PairAndIndex {
         KeyValuePair<Double,V> node;
         int index;
-        NodeAndIndex(KeyValuePair<Double,V> node, int index){
+        PairAndIndex(KeyValuePair<Double,V> node, int index){
             this.node = node;
             this.index = index;
         }
     }
     private final List<KeyValuePair<Double,V>> array = new ArrayList<>();
-    private final Map<V, NodeAndIndex> value_node_map = new HashMap<>();
+    private final Map<V, PairAndIndex> value_node_map = new HashMap<>();
     private int heap_size = 0;
 
     public MinHeap(){}
@@ -28,7 +28,7 @@ public class MinHeap<V> {
             heap_size++;
             var n = new KeyValuePair<>(getKey.applyAsDouble(i),i);
             array.add(n);
-            value_node_map.put(n.getValue(),new NodeAndIndex(n,idx++));
+            value_node_map.put(n.getValue(),new PairAndIndex(n,idx++));
         }
         buildMinHeap();
     }
@@ -52,7 +52,7 @@ public class MinHeap<V> {
             fix(store);
         }
     }
-    private void fix(NodeAndIndex store){
+    private void fix(PairAndIndex store){
         boolean min_property_broken = true;
         int parent_idx = (store.index+1)/2-1;
         while (min_property_broken && parent_idx >= 0){
@@ -66,14 +66,14 @@ public class MinHeap<V> {
             heap_size++;
             var n = new KeyValuePair<>(key,value);
             array.add(n);
-            var v_n = new NodeAndIndex(n,heap_size-1);
+            var v_n = new PairAndIndex(n,heap_size-1);
             value_node_map.put(value,v_n);
             fix(v_n);
         }else{
             heap_size++;
             var n = new KeyValuePair<>(key,value);
             array.set(heap_size-1,n);
-            var v_n = new NodeAndIndex(n,heap_size-1);
+            var v_n = new PairAndIndex(n,heap_size-1);
             value_node_map.put(value,v_n);
             fix(v_n);
         }

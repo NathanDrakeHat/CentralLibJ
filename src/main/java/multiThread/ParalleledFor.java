@@ -1,46 +1,55 @@
 package multiThread;
 
 
-import java.util.Arrays;
 import java.util.Objects;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class ParalleledFor extends Thread{
-    private final int limit;
-    private final int current;
-    private final ForRunnable runnable;
+public final class ParalleledFor{
+    private static final int cores = Runtime.getRuntime().availableProcessors();
 
-    private ParalleledFor(int start, int limit, ForRunnable runnable){
-        this.current = start;
-        this.limit = limit;
-        this.runnable = runnable;
-    }
+    private static final class ParalleledForThread extends Thread{
+        private final int limit;
+        private final AtomicInteger current;
+        private final ForRunnable runnable;
+        private final CountDownLatch thread_count;
 
-    @Override
-    public void run(){
-        if(current < limit - 1) {
-            var next_thread = new ParalleledFor(current + 1, limit, runnable);
-            next_thread.start();
-            this.runnable.run(current);
-            try{
-                next_thread.join();
-            }catch (InterruptedException e){
-                e.printStackTrace();
-            }
-        }else{
-            this.runnable.run(current);
+        private ParalleledForThread(AtomicInteger index, int limit, ForRunnable runnable, CountDownLatch thread_count){
+            this.current = index;
+            this.limit = limit;
+            this.runnable = runnable;
+            this.thread_count = thread_count;
         }
 
+        @Override
+        public void run(){
+            int index = current.getAndIncrement();
+            while(index < limit){
+                this.runnable.run(index);
+                index = current.getAndIncrement();
+            }
+            thread_count.countDown();
+        }
     }
 
     public static void forParallel(int start, int end, ForRunnable runnable){
         Objects.requireNonNull(runnable);
-        var task = new ParalleledFor(start,end,runnable);
-        task.start();
+        AtomicInteger index = new AtomicInteger(start);
+        ExecutorService pool = Executors.newFixedThreadPool(cores);
+        CountDownLatch thread_count = new CountDownLatch(cores);
+        for(int i = 0; i < cores; i++){
+            var thread = new ParalleledForThread(index,end,runnable,thread_count);
+            pool.submit(thread);
+        }
         try{
-            task.join();
+            thread_count.await();
         }catch (InterruptedException e){
             e.printStackTrace();
         }
+        pool.shutdown();
     }
 
     public static double[] matrixVector(double[][] A, double[] x){

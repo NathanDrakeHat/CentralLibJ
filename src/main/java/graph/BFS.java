@@ -48,6 +48,7 @@ public final class BFS {
     }
 
     public static <T> void breathFirstSearch(LinkedGraph<BFSVertex<T>> G, BFSVertex<T> s) {
+        Objects.requireNonNull(G);
         Objects.requireNonNull(s);
         var vs = G.getAllVertices();
         for (var v : vs) {
@@ -79,6 +80,8 @@ public final class BFS {
     }
 
     public static <T> List<T> getPath(BFSVertex<T> s, BFSVertex<T> v){
+        Objects.requireNonNull(s);
+        Objects.requireNonNull(v);
         List<T> t = new ArrayList<>();
         traverse(s, v, t);
         int idx = 0;

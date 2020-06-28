@@ -7,22 +7,10 @@ import graph.BFS.*;
 
 // all pair shortest path
 public class APShortestPath {
-    private static double[][] squareMatrixMultiply(double[][] A, double[][] B){
-        var n = A.length;
-        double[][] C = new double[n][n];
-        for(int i = 0; i < n; i++){
-            for(int j = 0; j < n; j++){
-                C[i][j] = 0;
-                for(int k = 0; k < n; k++){
-                    C[i][j] += A[i][k] + B[k][j];
-                }
-            }
-        }
-        return C;
-    }
 
     // O(V^4)
     public static double[][] slowAllPairsShortestPaths(double[][] W){
+        Objects.requireNonNull(W);
         var n = W.length;
         var L = W;
         for(int m = 2; m <= n-1; m++){
@@ -47,6 +35,7 @@ public class APShortestPath {
 
     // O(V^3*lgV)
     public static double[][] fasterAllPairsShortestPaths(double[][] W){
+        Objects.requireNonNull(W);
         var n = W.length;
         var L = W;
         int m = 1;
@@ -58,6 +47,7 @@ public class APShortestPath {
 
     // no negative-weight cycles
     public static double[][] algorithmFloydWarshall(double[][] W){
+        Objects.requireNonNull(W);
         var n = W.length;
         var D_origin = W;
         for(int k = 0; k < n; k++){
@@ -74,6 +64,7 @@ public class APShortestPath {
 
 
     public static boolean[][] transitiveClosure(double[][] W){
+        Objects.requireNonNull(W);
         var n = W.length;
         var T = new boolean[n][n];
         for(int i = 0; i < n; i++){

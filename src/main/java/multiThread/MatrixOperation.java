@@ -16,13 +16,12 @@ public class MatrixOperation {
         int r = A.length;
         int c = B[0].length;
         var res = new double[r][c];
-        forParallel(0, r, (i)->{
-            forParallel(0,c,(j)->{
-                for(int k = 0; k < count; k++){
-                    res[i][j] += A[i][k]*B[k][j];
-                }
-            });
-        });
+        forParallel(0, r,
+                (i)-> forParallel(0, c,(j)->{
+                    for(int k = 0; k < count; k++){
+                        res[i][j] += A[i][k]*B[k][j];
+                    }
+                }));
         return res;
     }
 }

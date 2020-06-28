@@ -42,6 +42,7 @@ public final class DFS {
     }
 
     public static <T> void depthFirstSearch(LinkedGraph<DFSVertex<T>> G) {
+        Objects.requireNonNull(G);
         var vertices = G.getAllVertices();
         for (var v : vertices) {
             v.color = COLOR.WHITE;
@@ -73,6 +74,7 @@ public final class DFS {
     }
 
     public static <T> List<DFSVertex<T>> topologicalSort(LinkedGraph<DFSVertex<T>> G){
+        Objects.requireNonNull(G);
         depthFirstSearch(G);
         List<DFSVertex<T>> l = new ArrayList<>(G.getAllVertices());
         l.sort((o1, o2) -> o2.finish - o1.finish); // descend order
@@ -80,6 +82,7 @@ public final class DFS {
     }
 
     public static <T> void stronglyConnectedComponents(LinkedGraph<DFSVertex<T>> G){
+        Objects.requireNonNull(G);
         var l = topologicalSort(G);
         var G_T = transposeGraph(G);
         depthFirstSearchOrderly(G_T, l);
