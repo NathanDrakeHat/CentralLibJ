@@ -1,10 +1,10 @@
 package multiThread;
 
 import org.junit.jupiter.api.Test;
-import static multiThread.ParallelFor.*;
+import static multiThread.ParalleledFor.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-class ParallelForTest {
+class ParalleledForTest {
     @Test
     void matrixVectorTest(){
         double[][] A = new double[][]{{1,4,7},

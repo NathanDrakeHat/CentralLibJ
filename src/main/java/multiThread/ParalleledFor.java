@@ -1,11 +1,11 @@
 package multiThread;
 
 
-public class ParallelFor extends Thread{
+public class ParalleledFor extends Thread{
     private final int limit;
     private final int current;
     private final ForRunnable runnable;
-    private ParallelFor(int start, int limit, ForRunnable runnable){
+    private ParalleledFor(int start, int limit, ForRunnable runnable){
         this.current = start;
         this.limit = limit;
         this.runnable = runnable;
@@ -14,14 +14,14 @@ public class ParallelFor extends Thread{
     @Override
     public void run(){
         if(current < limit - 1) {
-            var next_thread = new ParallelFor(current + 1, limit, runnable);
+            var next_thread = new ParalleledFor(current + 1, limit, runnable);
             next_thread.start();
         }
         this.runnable.run(current);
     }
 
     public static void forParallel(int start, int end, ForRunnable runnable){
-        var task = new ParallelFor(start,end,runnable);
+        var task = new ParalleledFor(start,end,runnable);
         task.start();
     }
 
