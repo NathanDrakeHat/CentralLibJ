@@ -1,19 +1,35 @@
 package multiThread;
 
 
-import java.util.Arrays;
 import java.util.Objects;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.Executors;
+import java.util.function.Function;
 
 public final class ParalleledFor{
-
-    public static void forParallel(int start, int end, ForRunnable runnable){
-        Objects.requireNonNull(runnable);
-        int[] range = new int[end - start];
-        int idx = 0;
+    private static final int cores = Runtime.getRuntime().availableProcessors();
+    public static void forParallel(int start, int end, ForGetRunnable for_runnable){
+        Objects.requireNonNull(for_runnable);
+        var pool = Executors.newFixedThreadPool(cores);
+        CountDownLatch count_down_latch = new CountDownLatch(end-start);
+        var add_count_down = new Function<Runnable,Runnable>(){
+            @Override
+            public Runnable apply(Runnable runnable){
+                return ()->{
+                    runnable.run();
+                    count_down_latch.countDown();
+                };
+            }
+        };
         for(int i = start; i < end; i++){
-            range[idx++] = i;
+            pool.submit(add_count_down.apply(for_runnable.getRunnable(i)));
         }
-        Arrays.stream(range).parallel().forEach(runnable::run);
+        try {
+            count_down_latch.await();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        pool.shutdownNow();
     }
 
     public static double[] matrixVector(double[][] A, double[] x){
@@ -23,8 +39,8 @@ public final class ParalleledFor{
             throw new IllegalArgumentException("dimension not match,");
         }
         double[] y = new double[A.length];
-        forParallel(0,A.length,(index)->y[index] = 0);
-        forParallel(0,A.length,(i)->{
+        forParallel(0,A.length,(i)-> ()->y[i] = 0);
+        forParallel(0,A.length,(i)-> ()->{
             for(int j = 0; j < A.length; j++){
                 y[i] = y[i] + A[i][j]*x[j];
             }

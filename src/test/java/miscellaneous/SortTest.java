@@ -147,67 +147,61 @@ class SortTest {
         assertTrue(isSorted(t));
     }
 
-//    @Test
-//    void parallelIterateMergeSortTest1(){
-//        var d = test1;
-//        var t = Arrays.copyOf(d,d.length);
-//        Sort.parallelIterateMergeSort(t);
-//        assertTrue(isSorted(t));
-//    }
-//
-//    @Test
-//    void parallelIterateMergeSortTest2(){
-//        var d = test2;
-//        var t = Arrays.copyOf(d,d.length);
-//        System.out.println(t.length);
-//        System.out.println(Arrays.toString(t));
-//        Sort.parallelIterateMergeSort(t);
-//        System.out.println(Arrays.toString(t));
-//        assertTrue(isSorted(t));
-//    }
-//
-//    @Test
-//    void parallelIterateMergeSortTest3(){
-//        var d = test3;
-//        var t = Arrays.copyOf(d,d.length);
-//        Sort.parallelIterateMergeSort(t);
-//        assertTrue(isSorted(t));
-//    }
-//
-//    @Test
-//    void parallelIterateMergeSortTest4(){
-//        var d = iterate_merge_sort_test1;
-//        var t = Arrays.copyOf(d,d.length);
-//        Sort.parallelIterateMergeSort(t);
-//        assertTrue(isSorted(t));
-//    }
-//
-//    @Test
-//    void parallelIterateMergeSortTest5(){
-//        var d = iterate_merge_sort_test2;
-//        var t = Arrays.copyOf(d,d.length);
-//        Sort.parallelIterateMergeSort(t);
-//        assertTrue(isSorted(t));
-//    }
-//
-//    @Test
-//    void parallelIterateMergeSortTest6(){
-//        var d = iterate_merge_sort_test3;
-//        var t = Arrays.copyOf(d,d.length);
-//        Sort.parallelIterateMergeSort(t);
-//        assertTrue(isSorted(t));
-//    }
-//
-//    @Test
-//    void parallelIterateMergeSortTest7(){
-//        var d = iterate_merge_sort_test4;
-//        var t = Arrays.copyOf(d,d.length);
-//        System.out.println(t.length);
-//        System.out.println(Arrays.toString(t));
-//        Sort.parallelIterateMergeSort(t);
-//        assertTrue(isSorted(t));
-//    }
+    @Test
+    void ParallelIterativeMergeSortTest1(){
+        var d = test1;
+        var t = Arrays.copyOf(d,d.length);
+        Sort.parrallelIterativeMergeSort(t);
+        assertTrue(isSorted(t));
+    }
 
+    @Test
+    void ParallelIterativeMergeSortTest2(){
+        var d = test2;
+        var t = Arrays.copyOf(d,d.length);
+        Sort.parrallelIterativeMergeSort(t);
+        assertTrue(isSorted(t));
+    }
+
+    @Test
+    void ParallelIterativeMergeSortTest3(){
+        var d = test3;
+        var t = Arrays.copyOf(d,d.length);
+        Sort.parrallelIterativeMergeSort(t);
+        assertTrue(isSorted(t));
+    }
+
+    @Test
+    void ParallelIterativeMergeSortTest4(){
+        var d = iterate_merge_sort_test1;
+        var t = Arrays.copyOf(d,d.length);
+        Sort.parrallelIterativeMergeSort(t);
+        assertTrue(isSorted(t));
+    }
+
+    @Test
+    void ParallelIterativeMergeSortTest5(){
+        var d = iterate_merge_sort_test2;
+        var t = Arrays.copyOf(d,d.length);
+        Sort.parrallelIterativeMergeSort(t);
+        assertTrue(isSorted(t));
+    }
+
+    @Test
+    void ParallelIterativeMergeSortTest6(){
+        var d = iterate_merge_sort_test3;
+        var t = Arrays.copyOf(d,d.length);
+        Sort.parrallelIterativeMergeSort(t);
+        assertTrue(isSorted(t));
+    }
+
+    @Test
+    void ParallelIterativeMergeSortTest7(){
+        var d = iterate_merge_sort_test4;
+        var t = Arrays.copyOf(d,d.length);
+        Sort.parrallelIterativeMergeSort(t);
+        assertTrue(isSorted(t));
+    }
 
     @Test
     void mergeSortTest1() {

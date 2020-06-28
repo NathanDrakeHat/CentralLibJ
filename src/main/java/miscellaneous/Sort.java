@@ -118,6 +118,44 @@ public final class Sort {
                     sub_group_size-cache2_idx); }
     }
 
+    public static void parrallelIterativeMergeSort(double[] array){
+        Objects.requireNonNull(array);
+        if(array.length <= 1) return;
+        int exp_times = (int) Math.floor(Math.log(array.length)/Math.log(2));
+        int group_size = 2;
+        int sub_group_size = group_size / 2;
+        int last_rest_len = 0;
+        boolean not_exp_of_2 = (Math.pow(2, exp_times) != array.length);
+        if(not_exp_of_2){
+            last_rest_len = array.length % 2 == 0? 2 : 1; }
+        for(int i = 0; i < exp_times; i++){
+            int group_iter_times = array.length/group_size;
+//            int group_start = 0;
+            double[] cache1 = new double[sub_group_size];
+            double[] cache2 = new double[sub_group_size];
+//            for(int j = 0; j < group_iter_times; j++){
+//                mergeRegularPart(array, group_start, sub_group_size,group_size,cache1,cache2);
+//                group_start += group_size;
+//            }
+            int final_group_size = group_size;
+            int final_sub_group_size = sub_group_size;
+            forParallel(0,group_iter_times,(j)->()->{
+                int group_start = j* final_group_size;
+                mergeRegularPart(array,group_start, final_sub_group_size,final_group_size,cache1,cache2);
+            });
+            int current_rest_len = array.length - group_iter_times*group_size;
+            if(current_rest_len > last_rest_len){
+                mergeRestPart(array,array.length-current_rest_len,
+                        current_rest_len-last_rest_len,last_rest_len);
+                last_rest_len = current_rest_len;
+            }
+            group_size *= 2;
+            sub_group_size *= 2;
+        }
+        if(not_exp_of_2){
+            mergeRestPart(array, 0, sub_group_size, array.length - sub_group_size); }
+    }
+
     private static void maxHeapify(double[] arr, int idx, int heap_size){
         int l = 2 * (idx + 1);
         int l_idx = l - 1;
