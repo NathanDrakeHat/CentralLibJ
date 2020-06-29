@@ -4,118 +4,82 @@ import tools.SimpleDate;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Objects;
+import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadLocalRandom;
 import static multiThread.ParalleledFor.*;
 
 
 public final class Sort {
-    public static void mergeSort(double[] array){ mergeSort(array, 0, array.length); }
-    private static void mergeSort(double[] array, int start, int end){
+    public static void recursiveMergeSort(double[] array){ recursiveMergeSort(array, 0, array.length); }
+    private static void recursiveMergeSort(double[] array, int start, int end){
         if ((end - start) > 1) {
             int middle = (start + end) / 2;
-            mergeSort(array, start, middle);
-            mergeSort(array, middle, end);
+            recursiveMergeSort(array, start, middle);
+            recursiveMergeSort(array, middle, end);
             int left_len = middle - start;
             int right_len =  end - middle ;
             var left_cache = new double[left_len] ;
             var right_cache = new double[right_len] ;
-            System.arraycopy(array, start , left_cache, 0, left_len);
-            System.arraycopy(array, middle , right_cache, 0, right_len);
-            int right_idx = 0;
-            int left_idx = 0;
-            for(int i = start; (i<end)&&(right_idx<right_len)&&(left_idx<left_len); i++){
-                if(left_cache[left_idx] <= right_cache[right_idx]){
-                    array[i] = left_cache[left_idx++]; }
-                else{
-                    array[i] = right_cache[right_idx++]; }
-            }
-            if(left_idx < left_len){
-                System.arraycopy(left_cache,left_idx,
-                        array,start+left_idx+right_idx,
-                        left_len-left_idx);}
-            else if(right_idx < right_len){
-                System.arraycopy(right_cache,right_idx,
-                        array,start+left_idx+right_idx,
-                        right_len-right_idx);}
+            merge(array,start,left_cache,right_cache);
         }
     }
 
-    public static void iterateMergeSort(double[] array){
+    private static void merge(double[] array, int start, double[] cache1, double[] cache2){
+        int right_idx = 0;
+        int left_idx = 0;
+        System.arraycopy(array,start,cache1,0,cache1.length);
+        System.arraycopy(array,start+cache1.length,cache2,0,cache2.length);
+        for(int i=start;(i<start+cache1.length+cache2.length)&&(right_idx<cache2.length)&&(left_idx<cache1.length);i++){
+            if(cache1[left_idx] <= cache2[right_idx]){
+                array[i] = cache1[left_idx++];
+            }
+            else{
+                array[i] = cache2[right_idx++];
+            }
+        }
+        if(left_idx < cache1.length){
+            System.arraycopy(cache1,left_idx,
+                    array,start+left_idx+right_idx,
+                    cache1.length-left_idx);
+        }
+        else if(right_idx < cache2.length){
+            System.arraycopy(cache2,right_idx,
+                    array,start+left_idx+right_idx,
+                    cache2.length-right_idx);
+        }
+    }
+
+    public static void iterativeMergeSort(double[] array){
         Objects.requireNonNull(array);
         if(array.length <= 1) return;
         int exp_times = (int) Math.floor(Math.log(array.length)/Math.log(2));
         int group_size = 2;
-        int sub_group_size = group_size / 2;
         int last_rest_len = 0;
         boolean not_exp_of_2 = (Math.pow(2, exp_times) != array.length);
         if(not_exp_of_2){
-            last_rest_len = array.length % 2 == 0? 2 : 1; }
+            last_rest_len = array.length % 2 == 0? 2 : 1;
+        }
         for(int i = 0; i < exp_times; i++){
             int group_iter_times = array.length/group_size;
-            int group_start = 0;
-            double[] cache1 = new double[sub_group_size];
-            double[] cache2 = new double[sub_group_size];
+            double[] cache1 = new double[group_size/2];
+            double[] cache2 = new double[group_size/2];
             for(int j = 0; j < group_iter_times; j++){
-                mergeRegularPart(array, group_start, sub_group_size,group_size,cache1,cache2);
-                group_start += group_size;
+                merge(array,j*group_size,cache1,cache2);
             }
             int current_rest_len = array.length - group_iter_times*group_size;
             if(current_rest_len > last_rest_len){
-                mergeRestPart(array,array.length-current_rest_len,
-                        current_rest_len-last_rest_len,last_rest_len);
+                var rest_cache1 = new double[current_rest_len - last_rest_len];
+                var rest_cache2 = new double[last_rest_len];
+                merge(array,array.length - current_rest_len, rest_cache1, rest_cache2);
                 last_rest_len = current_rest_len;
             }
             group_size *= 2;
-            sub_group_size *= 2;
         }
         if(not_exp_of_2){
-            mergeRestPart(array, 0, sub_group_size, array.length - sub_group_size); }
-    }
-    private static void mergeRestPart(double[] array, int former_start, int former_len, int later_len){
-        var cache1 = new double[former_len];
-        var cache2 = new double[later_len];
-        System.arraycopy(array, former_start, cache1, 0,former_len);
-        System.arraycopy(array, former_start+former_len, cache2, 0,later_len);
-        int cache1_idx = 0;
-        int cache2_idx = 0;
-        int for_len = former_start+former_len+later_len;
-        for(int i = former_start; (i<for_len)&&(cache1_idx<former_len)&&(cache2_idx<later_len); i++){
-            if(cache1[cache1_idx] <= cache2[cache2_idx]){
-                array[i] = cache1[cache1_idx++]; }
-            else {
-                array[i]  =cache2[cache2_idx++]; }
+            var rest_cache1 = new double[group_size/2];
+            var rest_cache2 = new double[array.length - group_size/2];
+            merge(array,0, rest_cache1, rest_cache2);
         }
-        if(cache1_idx != former_len){
-            System.arraycopy(cache1, cache1_idx,
-                    array, former_start+cache2_idx+cache1_idx,
-                    former_len-cache1_idx); }
-        else if(cache2_idx != later_len){
-            System.arraycopy(cache2, cache2_idx,
-                    array, former_start+cache2_idx+cache1_idx,
-                    later_len-cache2_idx); }
-    }
-    private static void mergeRegularPart(double[] array, int former_start,
-                                         int sub_group_size, int group_size,
-                                         double[] cache1, double[] cache2){
-        System.arraycopy(array, former_start, cache1, 0,sub_group_size);
-        System.arraycopy(array, former_start+sub_group_size, cache2, 0,sub_group_size);
-        int cache1_idx = 0;
-        int cache2_idx = 0;
-        int for_len = former_start+group_size;
-        for(int i = former_start; (i<for_len)&&(cache1_idx<sub_group_size)&&(cache2_idx<sub_group_size); i++){
-            if(cache1[cache1_idx] <= cache2[cache2_idx]){
-                array[i] = cache1[cache1_idx++]; }
-            else {
-                array[i]  =cache2[cache2_idx++]; }
-        }
-        if(cache1_idx != sub_group_size){
-            System.arraycopy(cache1, cache1_idx,
-                    array, former_start+cache2_idx+cache1_idx,
-                    sub_group_size-cache1_idx); }
-        else if(cache2_idx != sub_group_size){
-            System.arraycopy(cache2, cache2_idx,
-                    array, former_start+cache2_idx+cache1_idx,
-                    sub_group_size-cache2_idx); }
     }
 
     public static void parallelIterativeMergeSort(double[] array){
@@ -123,55 +87,40 @@ public final class Sort {
         if(array.length <= 1) return;
         int exp_times = (int) Math.floor(Math.log(array.length)/Math.log(2));
         int group_size = 2;
-        int sub_group_size = group_size / 2;
         int last_rest_len = 0;
         boolean not_exp_of_2 = (Math.pow(2, exp_times) != array.length);
         if(not_exp_of_2){
-            last_rest_len = array.length % 2 == 0? 2 : 1; }
+            last_rest_len = array.length % 2 == 0? 2 : 1;
+        }
+        var pool = Executors.newFixedThreadPool(4);
         for(int i = 0; i < exp_times; i++){
             int group_iter_times = array.length/group_size;
             int final_group_size = group_size;
-            int final_sub_group_size = sub_group_size;
-            forParallel(0,group_iter_times,(j)->()->{
+            forParallel(pool,0,group_iter_times,(j)->()->{
                 int group_start = j* final_group_size;
-                parallelMergeRegularPart(array,group_start, final_sub_group_size,final_group_size);
+                var cache1 = new double[final_group_size/2];
+                var cache2 = new double[final_group_size/2];
+                System.arraycopy(array,group_start,cache1,0,final_group_size/2);
+                System.arraycopy(array,group_start,cache2,0,final_group_size/2);
+                merge(array,group_start,cache1,cache2);
             });
             int current_rest_len = array.length - group_iter_times*group_size;
             if(current_rest_len > last_rest_len){
-                mergeRestPart(array,array.length-current_rest_len,
-                        current_rest_len-last_rest_len,last_rest_len);
+                var rest_cache1 = new double[current_rest_len - last_rest_len];
+                var rest_cache2 = new double[last_rest_len];
+                merge(array,array.length-current_rest_len,rest_cache1,rest_cache2);
                 last_rest_len = current_rest_len;
             }
             group_size *= 2;
-            sub_group_size *= 2;
         }
+        pool.shutdown();
         if(not_exp_of_2){
-            mergeRestPart(array, 0, sub_group_size, array.length - sub_group_size); }
-    }
-    private static void parallelMergeRegularPart(double[] array, int former_start,
-                                         int sub_group_size, int group_size){
-        var cache1 = new double[sub_group_size];
-        var cache2 = new double[sub_group_size];
-        System.arraycopy(array, former_start, cache1, 0,sub_group_size);
-        System.arraycopy(array, former_start+sub_group_size, cache2, 0,sub_group_size);
-        int cache1_idx = 0;
-        int cache2_idx = 0;
-        int for_len = former_start+group_size;
-        for(int i = former_start; (i<for_len)&&(cache1_idx<sub_group_size)&&(cache2_idx<sub_group_size); i++){
-            if(cache1[cache1_idx] <= cache2[cache2_idx]){
-                array[i] = cache1[cache1_idx++]; }
-            else {
-                array[i]  =cache2[cache2_idx++]; }
+            var rest_cache1 = new double[group_size/2];
+            var rest_cache2 = new double[array.length - group_size/2];
+            merge(array,0,rest_cache1,rest_cache2);
         }
-        if(cache1_idx != sub_group_size){
-            System.arraycopy(cache1, cache1_idx,
-                    array, former_start+cache2_idx+cache1_idx,
-                    sub_group_size-cache1_idx); }
-        else if(cache2_idx != sub_group_size){
-            System.arraycopy(cache2, cache2_idx,
-                    array, former_start+cache2_idx+cache1_idx,
-                    sub_group_size-cache2_idx); }
     }
+
 
     private static void maxHeapify(double[] arr, int idx, int heap_size){
         int l = 2 * (idx + 1);
@@ -231,8 +180,8 @@ public final class Sort {
         }
     }
 
-    public static void randQuickSort(double[] a){ randQuickSort(a, 0, a.length); }
-    private static int randPartition(double[] a, int start, int end){
+    public static void randomQuickSort(double[] a){ randomQuickSort(a, 0, a.length); }
+    private static int randomPartition(double[] a, int start, int end){
         int pivot_idx = ThreadLocalRandom.current().nextInt(start,end);
         var pivot = a[pivot_idx];
 
@@ -252,11 +201,11 @@ public final class Sort {
         a[i] = pivot;
         return i;
     }
-    private static void randQuickSort(double[] a, int start, int end){
+    private static void randomQuickSort(double[] a, int start, int end){
         if((end - start) > 1){
-            int middle = randPartition(a, start, end);
-            randQuickSort(a, start, middle);
-            randQuickSort(a, middle, end);
+            int middle = randomPartition(a, start, end);
+            randomQuickSort(a, start, middle);
+            randomQuickSort(a, middle, end);
         }
     }
 

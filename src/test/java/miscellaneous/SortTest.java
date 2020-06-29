@@ -92,58 +92,58 @@ class SortTest {
     }
 
     @Test
-    void iterateMergeSortTest1(){
+    void iterativeMergeSortTest1(){
         var d = test1;
         var t = Arrays.copyOf(d,d.length);
-        Sort.iterateMergeSort(t);
+        Sort.iterativeMergeSort(t);
         assertTrue(isSorted(t));
     }
 
     @Test
-    void iterateMergeSortTest2(){
+    void iterativeMergeSortTest2(){
         var d = test2;
         var t = Arrays.copyOf(d,d.length);
-        Sort.iterateMergeSort(t);
+        Sort.iterativeMergeSort(t);
         assertTrue(isSorted(t));
     }
 
     @Test
-    void iterateMergeSortTest3(){
+    void iterativeMergeSortTest3(){
         var d = test3;
         var t = Arrays.copyOf(d,d.length);
-        Sort.iterateMergeSort(t);
+        Sort.iterativeMergeSort(t);
         assertTrue(isSorted(t));
     }
 
     @Test
-    void iterateMergeSortTest4(){
+    void iterativeMergeSortTest4(){
         var d = iterate_merge_sort_test1;
         var t = Arrays.copyOf(d,d.length);
-        Sort.iterateMergeSort(t);
+        Sort.iterativeMergeSort(t);
         assertTrue(isSorted(t));
     }
 
     @Test
-    void iterateMergeSortTest5(){
+    void iterativeMergeSortTest5(){
         var d = iterate_merge_sort_test2;
         var t = Arrays.copyOf(d,d.length);
-        Sort.iterateMergeSort(t);
+        Sort.iterativeMergeSort(t);
         assertTrue(isSorted(t));
     }
 
     @Test
-    void iterateMergeSortTest6(){
+    void iterativeMergeSortTest6(){
         var d = iterate_merge_sort_test3;
         var t = Arrays.copyOf(d,d.length);
-        Sort.iterateMergeSort(t);
+        Sort.iterativeMergeSort(t);
         assertTrue(isSorted(t));
     }
 
     @Test
-    void iterateMergeSortTest7(){
+    void iterativeMergeSortTest7(){
         var d = iterate_merge_sort_test4;
         var t = Arrays.copyOf(d,d.length);
-        Sort.iterateMergeSort(t);
+        Sort.iterativeMergeSort(t);
         assertTrue(isSorted(t));
     }
 
@@ -204,26 +204,26 @@ class SortTest {
     }
 
     @Test
-    void mergeSortTest1() {
+    void recursiveMergeSortTest1() {
         var d = test1;
         var t = Arrays.copyOf(d,d.length);
-        Sort.mergeSort(t);
+        Sort.recursiveMergeSort(t);
         assertTrue(isSorted(t));
     }
 
     @Test
-    void mergeSortTest2() {
+    void recursiveMergeSortTest2() {
         var d = test2;
         var t = Arrays.copyOf(d,d.length);
-        Sort.mergeSort(t);
+        Sort.recursiveMergeSort(t);
         assertTrue(isSorted(t));
     }
 
     @Test
-    void mergeSortTest3() {
+    void recursiveMergeSortTest3() {
         var d = test3;
         var t = Arrays.copyOf(d,d.length);
-        Sort.mergeSort(t);
+        Sort.recursiveMergeSort(t);
         assertTrue(isSorted(t));
     }
 
@@ -279,7 +279,7 @@ class SortTest {
     void randQuickSort1() {
         var d = test1;
         var t = Arrays.copyOf(d,d.length);
-        Sort.randQuickSort(t);
+        Sort.randomQuickSort(t);
         assertTrue(isSorted(t));
     }
 
@@ -287,7 +287,7 @@ class SortTest {
     void randQuickSort2() {
         var d = test2;
         var t = Arrays.copyOf(d,d.length);
-        Sort.randQuickSort(t);
+        Sort.randomQuickSort(t);
         assertTrue(isSorted(t));
     }
 
@@ -295,7 +295,7 @@ class SortTest {
     void randQuickSort3() {
         var d = test3;
         var t = Arrays.copyOf(d,d.length);
-        Sort.randQuickSort(t);
+        Sort.randomQuickSort(t);
         assertTrue(isSorted(t));
     }
 
