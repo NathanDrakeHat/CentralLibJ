@@ -25,20 +25,4 @@ public final class ParalleledFor{
         }
     }
 
-    public static double[] matrixVector(double[][] A, double[] x){
-        Objects.requireNonNull(A);
-        Objects.requireNonNull(x);
-        if(x.length != A.length){
-            throw new IllegalArgumentException("dimension not match,");
-        }
-        double[] y = new double[A.length];
-        var pool = Executors.newFixedThreadPool(4);
-        forParallel(pool,0,A.length,(i)-> ()->y[i] = 0);
-        forParallel(pool,0,A.length,(i)-> ()->{
-            for(int j = 0; j < A.length; j++){
-                y[i] = y[i] + A[i][j]*x[j];
-            }
-        });
-        return y;
-    }
 }
