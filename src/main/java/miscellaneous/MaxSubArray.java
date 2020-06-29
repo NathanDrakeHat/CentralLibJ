@@ -18,7 +18,7 @@ public final class MaxSubArray {
             int middle = (start + end) / 2;
             Interval left_sub = divideAndConquer(array, start, middle);
             Interval right_sub = divideAndConquer(array, middle, end);
-            int max_left_sum = array[middle-1], max_right_sum = array[middle]; // for max_middle_sum
+            int max_left_sum = array[middle-1], max_right_sum = array[middle];
             int left_p = middle-1, right_p = middle;
             int acc_sum = max_left_sum;
             for(int i = left_p - 1; i >= start; i--){
@@ -67,7 +67,7 @@ public final class MaxSubArray {
         return new Interval(start, end, array[start]);
     }
     public static Interval onlineMaxSub(int[] array, int len){
-        int a = 0, b = 1, acc_sum = 0; // a and b indicate the acc_sum [a,b)
+        int a = 0, b = 1, acc_sum = 0;
         int start = 0, end = 1;
         acc_sum = array[0];
         int max_sum = 0;
@@ -79,7 +79,7 @@ public final class MaxSubArray {
                 start = a;
                 max_sum = acc_sum;
             }
-            if(acc_sum < 0){ // throw if left sum is negative
+            if(acc_sum < 0){
                 a = i + 1;
                 b = i + 2;
                 acc_sum = 0;

@@ -3,13 +3,10 @@ package dynamicProgramming;
 public final class LongestCommonSequence { // longest common sequence problem, biological problem
 
     public static char[] solve(char[] x, char[] y){
-        return solve(x, y, false);
-    }
-    private static char[] solve(char[] x, char[] y, boolean print){
         int m = x.length;
         int n = y.length;
-        char[][] b = new char[m][n]; // result
-        int[][] c = new int[m+1][n+1]; // length
+        char[][] b = new char[m][n];
+        int[][] c = new int[m+1][n+1];
         for(int i = 1; i <= m; i++){
             c[i][0] = 0;
         }
@@ -20,7 +17,7 @@ public final class LongestCommonSequence { // longest common sequence problem, b
             for(int j = 1; j <= n; j++){
                 if(x[i - 1] == y[j - 1]){
                     c[i][j] = c[i - 1][j - 1] + 1;
-                    b[i - 1][j - 1] = '\\'; //left-up
+                    b[i - 1][j - 1] = '\\';
                 }else if(c[i - 1][j] >= c[i][j - 1]){
                     c[i][j] = c[i - 1][j];
                     b[i - 1][j - 1] = '|'; // up
@@ -30,9 +27,6 @@ public final class LongestCommonSequence { // longest common sequence problem, b
                 }
             }
         }
-        if(print) {
-            printLCS(b, x, x.length, y.length);
-        }
 
         int count = getCount(b, x.length, y.length, 0);
         char[] res = new char[count];
@@ -40,20 +34,7 @@ public final class LongestCommonSequence { // longest common sequence problem, b
         return res;
 
     }
-
-    private static void printLCS(char[][] b, char[] x, int i, int j){
-        if(i == 0 | j == 0){
-            return;
-        }
-        if(b[i - 1][j - 1] == '\\'){
-            printLCS(b, x, i - 1, j - 1);
-            System.out.printf("%c ", x[i - 1]);
-        }else if(b[i - 1][j - 1] == '|'){
-            printLCS(b, x, i - 1, j);
-        }else{ // b[i][j] == '-'
-            printLCS(b, x, i, j - 1);
-        }
-    }
+    
     private static int getCount(char[][] b, int i, int j, int count){
         if(i == 0 | j == 0){
             return count;

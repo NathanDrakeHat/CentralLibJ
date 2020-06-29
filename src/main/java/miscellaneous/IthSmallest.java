@@ -38,7 +38,7 @@ public final class IthSmallest {
         }
         else{
             return randomSelect(a, pivot_idx + 1, end, ith - left_total - 1);
-        } // remove left of pivot(include pivot)
+        }
     }
 
     public static int randomSelect(int[] a, int ith){ return randomSelect(a,0,a.length,ith); }

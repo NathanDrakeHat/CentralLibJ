@@ -10,20 +10,6 @@ import static multiThread.ParalleledFor.*;
 
 
 public final class Sort {
-    public static void recursiveMergeSort(double[] array){ recursiveMergeSort(array, 0, array.length); }
-    private static void recursiveMergeSort(double[] array, int start, int end){
-        if ((end - start) > 1) {
-            int middle = (start + end) / 2;
-            recursiveMergeSort(array, start, middle);
-            recursiveMergeSort(array, middle, end);
-            int left_len = middle - start;
-            int right_len =  end - middle ;
-            var left_cache = new double[left_len] ;
-            var right_cache = new double[right_len] ;
-            merge(array,start,left_cache,right_cache);
-        }
-    }
-
     private static void merge(double[] array, int start, double[] cache1, double[] cache2){
         int right_idx = 0;
         int left_idx = 0;
@@ -48,7 +34,19 @@ public final class Sort {
                     cache2.length-right_idx);
         }
     }
-
+    public static void recursiveMergeSort(double[] array){ recursiveMergeSort(array, 0, array.length); }
+    private static void recursiveMergeSort(double[] array, int start, int end){
+        if ((end - start) > 1) {
+            int middle = (start + end) / 2;
+            recursiveMergeSort(array, start, middle);
+            recursiveMergeSort(array, middle, end);
+            int left_len = middle - start;
+            int right_len =  end - middle ;
+            var left_cache = new double[left_len] ;
+            var right_cache = new double[right_len] ;
+            merge(array,start,left_cache,right_cache);
+        }
+    }
     public static void iterativeMergeSort(double[] array){
         Objects.requireNonNull(array);
         if(array.length <= 1) return;
@@ -81,7 +79,6 @@ public final class Sort {
             merge(array,0, rest_cache1, rest_cache2);
         }
     }
-
     public static void parallelIterativeMergeSort(double[] array){
         Objects.requireNonNull(array);
         if(array.length <= 1) return;
@@ -120,7 +117,6 @@ public final class Sort {
             merge(array,0,rest_cache1,rest_cache2);
         }
     }
-
 
     private static void maxHeapify(double[] arr, int idx, int heap_size){
         int l = 2 * (idx + 1);
