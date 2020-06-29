@@ -37,7 +37,7 @@ public final class MaxSubArray {
                 }
             }
             int middle_sum = max_left_sum + max_right_sum;
-            int max_middle_sum = 0, middle_low = 0, middle_high = 0;
+            int max_middle_sum, middle_low, middle_high;
             if(middle_sum >= max_left_sum && middle_sum >= max_right_sum){
                 middle_low = left_p;
                 middle_high = right_p + 1;
@@ -67,7 +67,7 @@ public final class MaxSubArray {
         return new Interval(start, end, array[start]);
     }
     public static Interval onlineMaxSub(int[] array, int len){
-        int a = 0, b = 1, acc_sum = 0;
+        int a = 0, b, acc_sum;
         int start = 0, end = 1;
         acc_sum = array[0];
         int max_sum = 0;
@@ -81,7 +81,6 @@ public final class MaxSubArray {
             }
             if(acc_sum < 0){
                 a = i + 1;
-                b = i + 2;
                 acc_sum = 0;
             }
         }

@@ -2,7 +2,7 @@ package multiThread;
 
 public final class FibonacciNumbers {
     public static final class Fib extends Thread{
-        private int n;
+        private final int n;
         private int res;
 
         public Fib(int n){ this.n = n; }

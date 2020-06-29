@@ -4,9 +4,7 @@ import tools.SimpleDate;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Objects;
-import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadLocalRandom;
-import static multiThread.ParalleledFor.*;
 
 
 public final class Sort {
@@ -47,6 +45,7 @@ public final class Sort {
             merge(array,start,left_cache,right_cache);
         }
     }
+
     public static void iterativeMergeSort(double[] array){
         Objects.requireNonNull(array);
         if(array.length <= 1) return;
@@ -77,44 +76,6 @@ public final class Sort {
             var rest_cache1 = new double[group_size/2];
             var rest_cache2 = new double[array.length - group_size/2];
             merge(array,0, rest_cache1, rest_cache2);
-        }
-    }
-    public static void parallelIterativeMergeSort(double[] array){
-        Objects.requireNonNull(array);
-        if(array.length <= 1) return;
-        int exp_times = (int) Math.floor(Math.log(array.length)/Math.log(2));
-        int group_size = 2;
-        int last_rest_len = 0;
-        boolean not_exp_of_2 = (Math.pow(2, exp_times) != array.length);
-        if(not_exp_of_2){
-            last_rest_len = array.length % 2 == 0? 2 : 1;
-        }
-        var pool = Executors.newFixedThreadPool(4);
-        for(int i = 0; i < exp_times; i++){
-            int group_iter_times = array.length/group_size;
-            int final_group_size = group_size;
-            forParallel(pool,0,group_iter_times,(j)->()->{
-                int group_start = j* final_group_size;
-                var cache1 = new double[final_group_size/2];
-                var cache2 = new double[final_group_size/2];
-                System.arraycopy(array,group_start,cache1,0,final_group_size/2);
-                System.arraycopy(array,group_start,cache2,0,final_group_size/2);
-                merge(array,group_start,cache1,cache2);
-            });
-            int current_rest_len = array.length - group_iter_times*group_size;
-            if(current_rest_len > last_rest_len){
-                var rest_cache1 = new double[current_rest_len - last_rest_len];
-                var rest_cache2 = new double[last_rest_len];
-                merge(array,array.length-current_rest_len,rest_cache1,rest_cache2);
-                last_rest_len = current_rest_len;
-            }
-            group_size *= 2;
-        }
-        pool.shutdown();
-        if(not_exp_of_2){
-            var rest_cache1 = new double[group_size/2];
-            var rest_cache2 = new double[array.length - group_size/2];
-            merge(array,0,rest_cache1,rest_cache2);
         }
     }
 
