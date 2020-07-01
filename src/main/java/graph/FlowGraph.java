@@ -43,15 +43,12 @@ public class FlowGraph<V> {
         public int hashCode(){ return Objects.hash(former_vertex, later_vertex, capacity); }
     }
     private final Map<V, List<FlowEdge<V>>> edges_map = new HashMap<>();
-    private int size;
 
     public FlowGraph(List<V> vertices){
         Objects.requireNonNull(vertices);
-        size = 0;
         for(var vertex : vertices) {
             Objects.requireNonNull(vertex);
             this.edges_map.put(vertex, new ArrayList<>());
-            size++;
         }
     }
 
@@ -63,6 +60,4 @@ public class FlowGraph<V> {
     }
 
     public List<FlowEdge<V>> getFlowEdges(V vertex){ return new ArrayList<>(edges_map.get(vertex)); }
-
-    public int getVerticesCount() { return size; }
 }

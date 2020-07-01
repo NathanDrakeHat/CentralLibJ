@@ -1,9 +1,8 @@
 package miscellaneous;
 
 import tools.SimpleDate;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.Objects;
+
+import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 
 
@@ -22,14 +21,10 @@ public final class Sort {
             }
         }
         if(left_idx < cache1.length){
-            System.arraycopy(cache1,left_idx,
-                    array,start+left_idx+right_idx,
-                    cache1.length-left_idx);
+            System.arraycopy(cache1,left_idx, array,start+left_idx+right_idx,cache1.length-left_idx);
         }
         else if(right_idx < cache2.length){
-            System.arraycopy(cache2,right_idx,
-                    array,start+left_idx+right_idx,
-                    cache2.length-right_idx);
+            System.arraycopy(cache2,right_idx, array,start+left_idx+right_idx, cache2.length-right_idx);
         }
     }
     public static void recursiveMergeSort(double[] array){ recursiveMergeSort(array, 0, array.length); }
@@ -196,49 +191,21 @@ public final class Sort {
 
     // mean distribution
     public static void bucketSort(double[] a){
-        @SuppressWarnings("unchecked")
-        SingleLinkedNode<Double>[] b = (SingleLinkedNode<Double>[])new SingleLinkedNode[a.length];
-        for(int i=0; i < b.length; i++){ b[i] = new SingleLinkedNode<>(); }
-        for (double v : a) {
-            SingleLinkedNode<Double> handle = b[(int) (a.length * v)];
-            while (handle.getParent() != null) {
-                handle = handle.getParent();
-            }
-            SingleLinkedNode<Double> t = new SingleLinkedNode<>(v);
-            handle.setParent(t);
+        List<List<Double>> b = new ArrayList<>();
+        int n = a.length;
+        for(int i = 0; i < n; i++){
+            b.add(new ArrayList<>());
         }
-        for(int i=0; i < a.length; i++){
-            var handle = b[i].getParent();
-            if(handle == null) { continue; }
-            var itr = handle.getParent();
-            if (itr == null) { continue; }
-            while(itr != null) {
-                double min_value = handle.getContent();
-                var min_node = handle;
-                while (itr != null) {
-                    if (itr.getContent() <= min_value) {
-                        min_value = itr.getContent();
-                        min_node = itr;
-                    }
-                    itr = itr.getParent();
-                }
-                double t = min_node.getContent();
-                min_node.setContent(handle.getContent());
-                handle.setContent(t);
-                handle = handle.getParent();
-                itr = handle.getParent();
-            }
+        for(var i : a){
+            b.get((int)Math.floor(n * i)).add(i);
         }
-        int idx = 0;
-        for (var node : b) {
-            if (node.getParent() == null) {
-                continue;
-            }
-            var handle = node.getParent();
-            while (handle != null) {
-                a[idx++] = handle.getContent();
-                handle = handle.getParent();
-            }
+        List<Double> res_list = new ArrayList<>();
+        for(var list : b){
+            Collections.sort(list);
+            res_list.addAll(list);
+        }
+        for(int i = 0; i < n; i++){
+            a[i] = res_list.get(i);
         }
     }
     private static class SingleLinkedNode<V>  {
