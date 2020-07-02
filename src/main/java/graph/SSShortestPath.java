@@ -71,14 +71,14 @@ public final class SSShortestPath {
 
 
     // non-negative weight,
-    public enum HeapType{
+    public enum Heap {
         FIBONACCI, MIN_HEAP
     }
-    public static <T> void algorithmDijkstra(LinkedGraph<BFSVertex<T>> G, BFSVertex<T> s, HeapType type){
+    public static <T> void algorithmDijkstra(LinkedGraph<BFSVertex<T>> G, BFSVertex<T> s, Heap type){
         Objects.requireNonNull(s);
         Objects.requireNonNull(G);
         Objects.requireNonNull(type);
-        if(type == HeapType.FIBONACCI)
+        if(type == Heap.FIBONACCI)
             algorithmDijkstraWithFibonacciHeap(G, s);
         else
             algorithmDijkstraWithMinHeap(G,s);

@@ -87,7 +87,7 @@ public class APShortestPath {
     // sparse graph
     // Fibonacci heap: O(V^2*lgV + V*E)
     // min heap: O(V*E*lgV)
-    public static <T> Optional<double[][]> algorithmJohnson(LinkedGraph<BFSVertex<T>> graph, SSShortestPath.HeapType type) {
+    public static <T> Optional<double[][]> algorithmJohnson(LinkedGraph<BFSVertex<T>> graph, SSShortestPath.Heap type) {
         Objects.requireNonNull(graph);
         Objects.requireNonNull(type);
         Map<BFSVertex<T>, Double> h = new HashMap<>();
