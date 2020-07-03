@@ -154,7 +154,7 @@ public final class RedBlackTree<K, V> {
         }
     }
 
-    private ColorNode<K,V> getSentinel() { return sentinel; }
+    public ColorNode<K,V> getSentinel() { return sentinel; }
     private void setRoot(ColorNode<K,V> r) {
         Objects.requireNonNull(r);
         root = r;
