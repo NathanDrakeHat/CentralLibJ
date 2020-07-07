@@ -33,8 +33,8 @@ public final class BFS {
 
         @Override
         public boolean equals(Object other_vertex){
-            if(other_vertex == this) return true;
-            else if(!(other_vertex instanceof BFSVertex)) return false;
+            if(!(other_vertex instanceof BFSVertex)) return false;
+            else if(other_vertex == this) return true;
             else{
                 if(content == null) return ((BFSVertex<?>) other_vertex).content==null;
                 return content.equals(((BFSVertex<?>) other_vertex).content);

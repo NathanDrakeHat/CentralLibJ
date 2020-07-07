@@ -29,8 +29,8 @@ public final class DFS {
 
         @Override
         public boolean equals(Object other_vertex){
-            if(other_vertex == this)return true;
-            else if(!(other_vertex instanceof DFSVertex)) return false;
+            if(!(other_vertex instanceof DFSVertex)) return false;
+            else if(other_vertex == this)return true;
             else return content.equals(((DFSVertex<?>) other_vertex).content);
         }
 

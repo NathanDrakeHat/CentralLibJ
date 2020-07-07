@@ -26,8 +26,8 @@ public final class LinkedGraph<V>{
 
         @Override
         public boolean equals(Object other_edge) {
-            if (other_edge == this) return true;
             if (!(other_edge instanceof Edge)) return false;
+            if (other_edge == this) return true;
             if (edge_direction != ((Edge<?>) other_edge).edge_direction) return false;
             if(weight != ((Edge<?>) other_edge).weight) return false;
 
