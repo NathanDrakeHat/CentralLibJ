@@ -25,76 +25,76 @@ class IthSmallestTest {
 
     @Test
     void randomSelectCase1() {
-        var res = IthSmallest.randomSelect(Data.test1, 1);
+        var res = IthSmallest.randomSelect(Data.test1, 0);
         Arrays.sort(Data.test1);
         assertEquals(Data.test1[0], res);
 
-        res = IthSmallest.randomSelect(Data.test2, 2);
+        res = IthSmallest.randomSelect(Data.test2, 1);
         Arrays.sort(Data.test2);
         assertEquals(Data.test2[1], res);
 
-        res = IthSmallest.randomSelect(Data.test3, 3);
+        res = IthSmallest.randomSelect(Data.test3, 2);
         Arrays.sort(Data.test3);
         assertEquals(Data.test3[2], res);
 
-        res = IthSmallest.randomSelect(Data.test4, 4);
+        res = IthSmallest.randomSelect(Data.test4, 3);
         Arrays.sort(Data.test4);
         assertEquals(Data.test4[3], res);
     }
 
     @Test
     void randomSelectCase2() {
-        var res = IthSmallest.randomSelect(Data.test2, 5);
+        var res = IthSmallest.randomSelect(Data.test2, 4);
         Arrays.sort(Data.test2);
         assertEquals(Data.test2[4], res);
 
-        res = IthSmallest.randomSelect(Data.test2, 6);
+        res = IthSmallest.randomSelect(Data.test2, 5);
         Arrays.sort(Data.test2);
         assertEquals(Data.test2[5], res);
 
-        res = IthSmallest.randomSelect(Data.test3, 7);
+        res = IthSmallest.randomSelect(Data.test3, 6);
         Arrays.sort(Data.test3);
         assertEquals(Data.test3[6], res);
 
-        res = IthSmallest.randomSelect(Data.test4, 8);
+        res = IthSmallest.randomSelect(Data.test4, 7);
         Arrays.sort(Data.test4);
         assertEquals(Data.test4[7], res);
     }
 
     @Test
     void randomSelectCase3() {
-        var res = IthSmallest.randomSelect(Data.test3, 9);
+        var res = IthSmallest.randomSelect(Data.test3, 8);
         Arrays.sort(Data.test3);
         assertEquals(Data.test3[8], res);
 
-        res = IthSmallest.randomSelect(Data.test2, 10);
+        res = IthSmallest.randomSelect(Data.test2, 9);
         Arrays.sort(Data.test2);
         assertEquals(Data.test2[9], res);
 
-        res = IthSmallest.randomSelect(Data.test3, 11);
+        res = IthSmallest.randomSelect(Data.test3, 10);
         Arrays.sort(Data.test3);
         assertEquals(Data.test3[10], res);
 
-        res = IthSmallest.randomSelect(Data.test4, 12);
+        res = IthSmallest.randomSelect(Data.test4, 11);
         Arrays.sort(Data.test4);
         assertEquals(Data.test4[11], res);
     }
 
     @Test
     void randomSelectCase4() {
-        var res = IthSmallest.randomSelect(Data.test4, 13);
+        var res = IthSmallest.randomSelect(Data.test4, 12);
         Arrays.sort(Data.test4);
         assertEquals(Data.test4[12], res);
 
-        res = IthSmallest.randomSelect(Data.test2, 14);
+        res = IthSmallest.randomSelect(Data.test2, 13);
         Arrays.sort(Data.test2);
         assertEquals(Data.test2[13], res);
 
-        res = IthSmallest.randomSelect(Data.test3, 15);
+        res = IthSmallest.randomSelect(Data.test3, 14);
         Arrays.sort(Data.test3);
         assertEquals(Data.test3[14], res);
 
-        res = IthSmallest.randomSelect(Data.test4, 16);
+        res = IthSmallest.randomSelect(Data.test4, 15);
         Arrays.sort(Data.test4);
         assertEquals(Data.test4[15], res);
     }

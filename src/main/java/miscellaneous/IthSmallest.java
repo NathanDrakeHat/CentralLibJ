@@ -21,7 +21,7 @@ public final class IthSmallest {
         }
         a[end - 1] = a[++i];
         a[i] = pivot;
-        return i; //pivot value position
+        return i; //pivot idx
     }
     // select ith smallest element in array
     private static int randomSelect(int[] a, int start, int end, int ith){
@@ -30,7 +30,7 @@ public final class IthSmallest {
         }
         int pivot_idx = randPartition(a, start, end);
         int left_total = pivot_idx - start;
-        if(ith == left_total + 1){
+        if(ith == left_total){
             return a[pivot_idx];
         }
         else if(ith < left_total + 1){
