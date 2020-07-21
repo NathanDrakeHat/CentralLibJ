@@ -1,14 +1,17 @@
 package structures;
 
 import org.junit.jupiter.api.*;
+
 import static org.junit.jupiter.api.Assertions.*;
 
-class ProtoVEBTreeTest {
+class ProtoVEBTreeTest
+{
 
     public ProtoVEBTree T;
 
     @BeforeEach
-    void setUp(){
+    void setUp()
+    {
         T = new ProtoVEBTree(2);
         T.insert(1);
         T.insert(3);
@@ -19,23 +22,44 @@ class ProtoVEBTreeTest {
     }
 
     @AfterEach
-    void clean() { T = null; }
+    void clean()
+    {
+        T = null;
+    }
 
     @Test
-    void hasMemberTest() { assertTrue(T.hasMember(3)); }
+    void hasMemberTest()
+    {
+        assertTrue(T.hasMember(3));
+    }
 
     @Test
-    void predecessorTest(){ assertEquals(1,T.predecessor(3)); }
+    void predecessorTest()
+    {
+        assertEquals(1, T.predecessor(3));
+    }
 
     @Test
-    void successorTest(){ assertEquals(5,T.successor(3)); }
+    void successorTest()
+    {
+        assertEquals(5, T.successor(3));
+    }
 
     @Test
-    void maximumTest(){ assertEquals(15,T.maximum()); }
+    void maximumTest()
+    {
+        assertEquals(15, T.maximum());
+    }
 
     @Test
-    void minimumTest(){ assertEquals(1,T.minimum()); }
+    void minimumTest()
+    {
+        assertEquals(1, T.minimum());
+    }
 
     @Test
-    void exceptionTest(){ assertThrows(NullPointerException.class, () -> T.successor(15)); }
+    void exceptionTest()
+    {
+        assertThrows(NullPointerException.class, () -> T.successor(15));
+    }
 }
