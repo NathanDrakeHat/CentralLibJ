@@ -7,11 +7,9 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class FibonacciHeapTest
-{
+class FibonacciHeapTest {
 
-    private static FibonacciHeap<Double> buildExample()
-    {
+    private static FibonacciHeap<Double> buildExample() {
         var H = new FibonacciHeap<Double>();
         H.insert(3, 3.0);
         var m = H.rootList();
@@ -36,18 +34,15 @@ class FibonacciHeapTest
         return H;
     }
 
-    private static List<Double> bcl(FibonacciHeap.Node<Double> t)
-    {
+    private static List<Double> bcl(FibonacciHeap.Node<Double> t) {
         List<Double> res = new ArrayList<>();
         var p = t;
-        do
-        {
+        do {
             res.add(p.getKey());
             p = p.getRight();
         } while (p != t);
         p = t;
-        do
-        {
+        do {
             res.add(p.getKey());
             p = p.getLeft();
         } while (p != t);
@@ -55,8 +50,7 @@ class FibonacciHeapTest
     }
 
     @Test
-    void example1()
-    {
+    void example1() {
         var H = buildExample();
         var o = H.extractMin();
         assertEquals(o, 3.0);

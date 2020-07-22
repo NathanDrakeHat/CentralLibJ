@@ -2,17 +2,14 @@ package stringMatching;
 
 import java.util.*;
 
-public class StringAutomata
-{
-    private static class TransitionEntry
-    {
+public class StringAutomata {
+    private static class TransitionEntry {
         private final int integer;
         private final char character;
         private final int hash;
         private final String string;
 
-        public TransitionEntry(int i, char c)
-        {
+        public TransitionEntry(int i, char c) {
             integer = i;
             character = c;
             hash = Objects.hash(integer, character);
@@ -20,43 +17,34 @@ public class StringAutomata
         }
 
         @Override
-        public boolean equals(Object other)
-        {
-            if (other instanceof TransitionEntry)
-            {
+        public boolean equals(Object other) {
+            if (other instanceof TransitionEntry) {
                 return (integer == ((TransitionEntry) other).integer) &&
                         (character == ((TransitionEntry) other).character);
             }
-            else
-            {
+            else {
                 return false;
             }
         }
 
         @Override
-        public int hashCode()
-        {
+        public int hashCode() {
             return hash;
         }
 
         @Override
-        public String toString()
-        {
+        public String toString() {
             return string;
         }
     }
 
-    public static Map<TransitionEntry, Integer> computeTransitionPattern(String pattern, char[] char_set)
-    {
+    public static Map<TransitionEntry, Integer> computeTransitionPattern(String pattern, char[] char_set) {
         int m = pattern.length();
         Map<TransitionEntry, Integer> map = new HashMap<>();
-        for (int q = 0; q <= m; q++)
-        {
-            for (var a : char_set)
-            {
+        for (int q = 0; q <= m; q++) {
+            for (var a : char_set) {
                 int k = Math.min(m + 1, q + 2);
-                do
-                {
+                do {
                     k--;
                 } while (!(pattern.substring(0, q).concat(String.valueOf(a)).endsWith(pattern.substring(0, k))));
                 map.put(new TransitionEntry(q, a), k);
@@ -65,16 +53,13 @@ public class StringAutomata
         return map;
     }
 
-    public static List<Integer> finiteAutomationMatcher(String T, Map<TransitionEntry, Integer> delta, int m)
-    {
+    public static List<Integer> finiteAutomationMatcher(String T, Map<TransitionEntry, Integer> delta, int m) {
         List<Integer> res = new ArrayList<>();
         int n = T.length();
         int q = 0;
-        for (int i = 0; i < n; i++)
-        {
+        for (int i = 0; i < n; i++) {
             q = delta.get(new TransitionEntry(q, T.charAt(i)));
-            if (q == m)
-            {
+            if (q == m) {
                 res.add(i - m);
             }
         }

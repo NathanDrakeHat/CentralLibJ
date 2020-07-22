@@ -8,8 +8,7 @@ import tools.SimpleDate;
 import static org.junit.jupiter.api.Assertions.*;
 
 
-class SortTest
-{
+class SortTest {
     static double[] test1 = new double[]{-2, 4, 2, -4, -9, 6, -4, 7, -3, -8, 2, -8, 0, 10, -9, -4, -3, -6, -8, 2};
     static double[] test2 = new double[]{-37, -8, 40, 5, -25, 15, -13, 12, 8, 44, 18, -6, -33, -37,
             -39, -24, -14, 15, 40, 27, -15, 46, -16, -2, 4};
@@ -45,23 +44,18 @@ class SortTest
     static int[] months = new int[]{6, 9, 1, 7, 10, 11, 7, 4, 2, 7, 8, 9, 6, 3, 1, 6, 3, 4, 2, 5};
     static int[] days = new int[]{11, 10, 11, 24, 2, 3, 8, 5, 16, 3, 9, 19, 23, 22, 1, 11, 17, 29, 15, 11};
 
-    static SimpleDate[] buildDate()
-    {
+    static SimpleDate[] buildDate() {
         SimpleDate[] res = new SimpleDate[20];
-        for (int i = 0; i < 20; i++)
-        {
+        for (int i = 0; i < 20; i++) {
             res[i] = new SimpleDate(years[i], months[i], days[i]);
         }
         return res;
     }
 
-    static boolean isSorted(int[] t)
-    {
+    static boolean isSorted(int[] t) {
         boolean is_sorted = true;
-        for (int i = 1; i < t.length; i++)
-        {
-            if (t[i - 1] > t[i])
-            {
+        for (int i = 1; i < t.length; i++) {
+            if (t[i - 1] > t[i]) {
                 is_sorted = false;
                 break;
             }
@@ -69,13 +63,10 @@ class SortTest
         return is_sorted;
     }
 
-    static boolean isSorted(double[] t)
-    {
+    static boolean isSorted(double[] t) {
         boolean is_sorted = true;
-        for (int i = 1; i < t.length; i++)
-        {
-            if (t[i - 1] > t[i])
-            {
+        for (int i = 1; i < t.length; i++) {
+            if (t[i - 1] > t[i]) {
                 is_sorted = false;
                 break;
             }
@@ -83,23 +74,18 @@ class SortTest
         return is_sorted;
     }
 
-    static boolean isSorted(SimpleDate[] d)
-    {
+    static boolean isSorted(SimpleDate[] d) {
         boolean is_sorted = true;
-        for (int i = 1; i < d.length; i++)
-        {
-            if (d[i - 1].year > d[i].year)
-            {
+        for (int i = 1; i < d.length; i++) {
+            if (d[i - 1].year > d[i].year) {
                 is_sorted = false;
                 break;
             }
-            else if ((d[i - 1].year == d[i].year) && (d[i - 1].month > d[i].month))
-            {
+            else if ((d[i - 1].year == d[i].year) && (d[i - 1].month > d[i].month)) {
                 is_sorted = false;
                 break;
             }
-            else if ((d[i - 1].year == d[i].year) && (d[i - 1].month == d[i].month) && (d[i - 1].day > d[i].day))
-            {
+            else if ((d[i - 1].year == d[i].year) && (d[i - 1].month == d[i].month) && (d[i - 1].day > d[i].day)) {
                 is_sorted = false;
                 break;
             }
@@ -108,8 +94,7 @@ class SortTest
     }
 
     @Test
-    void iterativeMergeSortTest1()
-    {
+    void iterativeMergeSortTest1() {
         var d = test1;
         var t = Arrays.copyOf(d, d.length);
         Sort.iterativeMergeSort(t);
@@ -117,8 +102,7 @@ class SortTest
     }
 
     @Test
-    void iterativeMergeSortTest2()
-    {
+    void iterativeMergeSortTest2() {
         var d = test2;
         var t = Arrays.copyOf(d, d.length);
         Sort.iterativeMergeSort(t);
@@ -126,8 +110,7 @@ class SortTest
     }
 
     @Test
-    void iterativeMergeSortTest3()
-    {
+    void iterativeMergeSortTest3() {
         var d = test3;
         var t = Arrays.copyOf(d, d.length);
         Sort.iterativeMergeSort(t);
@@ -135,8 +118,7 @@ class SortTest
     }
 
     @Test
-    void iterativeMergeSortTest4()
-    {
+    void iterativeMergeSortTest4() {
         var d = iterate_merge_sort_test1;
         var t = Arrays.copyOf(d, d.length);
         Sort.iterativeMergeSort(t);
@@ -144,8 +126,7 @@ class SortTest
     }
 
     @Test
-    void iterativeMergeSortTest5()
-    {
+    void iterativeMergeSortTest5() {
         var d = iterate_merge_sort_test2;
         var t = Arrays.copyOf(d, d.length);
         Sort.iterativeMergeSort(t);
@@ -153,8 +134,7 @@ class SortTest
     }
 
     @Test
-    void iterativeMergeSortTest6()
-    {
+    void iterativeMergeSortTest6() {
         var d = iterate_merge_sort_test3;
         var t = Arrays.copyOf(d, d.length);
         Sort.iterativeMergeSort(t);
@@ -162,8 +142,7 @@ class SortTest
     }
 
     @Test
-    void iterativeMergeSortTest7()
-    {
+    void iterativeMergeSortTest7() {
         var d = iterate_merge_sort_test4;
         var t = Arrays.copyOf(d, d.length);
         Sort.iterativeMergeSort(t);
@@ -171,8 +150,7 @@ class SortTest
     }
 
     @Test
-    void recursiveMergeSortTest1()
-    {
+    void recursiveMergeSortTest1() {
         var d = test1;
         var t = Arrays.copyOf(d, d.length);
         Sort.recursiveMergeSort(t);
@@ -180,8 +158,7 @@ class SortTest
     }
 
     @Test
-    void recursiveMergeSortTest2()
-    {
+    void recursiveMergeSortTest2() {
         var d = test2;
         var t = Arrays.copyOf(d, d.length);
         Sort.recursiveMergeSort(t);
@@ -189,8 +166,7 @@ class SortTest
     }
 
     @Test
-    void recursiveMergeSortTest3()
-    {
+    void recursiveMergeSortTest3() {
         var d = test3;
         var t = Arrays.copyOf(d, d.length);
         Sort.recursiveMergeSort(t);
@@ -198,8 +174,7 @@ class SortTest
     }
 
     @Test
-    void heapSort1()
-    {
+    void heapSort1() {
         var d = test1;
         var t = Arrays.copyOf(d, d.length);
         Sort.heapSort(t);
@@ -207,8 +182,7 @@ class SortTest
     }
 
     @Test
-    void heapSort2()
-    {
+    void heapSort2() {
         var d = test2;
         var t = Arrays.copyOf(d, d.length);
         Sort.heapSort(t);
@@ -216,8 +190,7 @@ class SortTest
     }
 
     @Test
-    void heapSort3()
-    {
+    void heapSort3() {
         var d = test3;
         var t = Arrays.copyOf(d, d.length);
         Sort.heapSort(t);
@@ -225,8 +198,7 @@ class SortTest
     }
 
     @Test
-    void quickSort1()
-    {
+    void quickSort1() {
         var d = test1;
         var t = Arrays.copyOf(d, d.length);
         Sort.quickSort(t);
@@ -234,8 +206,7 @@ class SortTest
     }
 
     @Test
-    void quickSort2()
-    {
+    void quickSort2() {
         var d = test2;
         var t = Arrays.copyOf(d, d.length);
         Sort.quickSort(t);
@@ -243,8 +214,7 @@ class SortTest
     }
 
     @Test
-    void quickSort3()
-    {
+    void quickSort3() {
         var d = test3;
         var t = Arrays.copyOf(d, d.length);
         Sort.quickSort(t);
@@ -252,8 +222,7 @@ class SortTest
     }
 
     @Test
-    void randQuickSort1()
-    {
+    void randQuickSort1() {
         var d = test1;
         var t = Arrays.copyOf(d, d.length);
         Sort.randomQuickSort(t);
@@ -261,8 +230,7 @@ class SortTest
     }
 
     @Test
-    void randQuickSort2()
-    {
+    void randQuickSort2() {
         var d = test2;
         var t = Arrays.copyOf(d, d.length);
         Sort.randomQuickSort(t);
@@ -270,8 +238,7 @@ class SortTest
     }
 
     @Test
-    void randQuickSort3()
-    {
+    void randQuickSort3() {
         var d = test3;
         var t = Arrays.copyOf(d, d.length);
         Sort.randomQuickSort(t);
@@ -280,8 +247,7 @@ class SortTest
 
 
     @Test
-    void countingSort1()
-    {
+    void countingSort1() {
         var d = test4;
         var t = Arrays.copyOf(d, d.length);
         Sort.countingSort(t);
@@ -289,8 +255,7 @@ class SortTest
     }
 
     @Test
-    void countingSort2()
-    {
+    void countingSort2() {
         var d = test5;
         var t = Arrays.copyOf(d, d.length);
         Sort.countingSort(t);
@@ -298,8 +263,7 @@ class SortTest
     }
 
     @Test
-    void countingSort3()
-    {
+    void countingSort3() {
         var d = test6;
         var t = Arrays.copyOf(d, d.length);
         Sort.countingSort(t);
@@ -307,16 +271,14 @@ class SortTest
     }
 
     @Test
-    void radixSort1()
-    {
+    void radixSort1() {
         SimpleDate[] t = buildDate();
         Sort.radixSort(t);
         assertTrue(isSorted(t));
     }
 
     @Test
-    void bucketSort1()
-    {
+    void bucketSort1() {
         var d = bucket_test1;
         var t = Arrays.copyOf(d, d.length);
         Sort.bucketSort(t);
@@ -324,8 +286,7 @@ class SortTest
     }
 
     @Test
-    void bucketSort2()
-    {
+    void bucketSort2() {
         var d = bucket_test2;
         var t = Arrays.copyOf(d, d.length);
         Sort.bucketSort(t);
@@ -333,8 +294,7 @@ class SortTest
     }
 
     @Test
-    void bucketSort3()
-    {
+    void bucketSort3() {
         var d = bucket_test3;
         var t = Arrays.copyOf(d, d.length);
         Sort.bucketSort(t);

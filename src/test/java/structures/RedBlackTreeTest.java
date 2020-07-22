@@ -7,12 +7,10 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class RedBlackTreeTest
-{
+class RedBlackTreeTest {
 
     @Test
-    public void insertFixUpTest()
-    {
+    public void insertFixUpTest() {
         var RBtree = new RedBlackTree<Integer, Integer>();
         RBtree.insert(11, 0);
         RBtree.insert(2, 0);
@@ -36,16 +34,13 @@ class RedBlackTreeTest
     }
 
     @Test
-    public void balanceTest()
-    {
+    public void balanceTest() {
         RedBlackTree<Integer, Integer> t = new RedBlackTree<>();
-        for (int i = 0; i < 2047; i++)
-        {
+        for (int i = 0; i < 2047; i++) {
             t.insert(i, i);
         }
         assertEquals(t.getHeight(), 10);
-        for (int i = 0; i < 1025; i++)
-        {
+        for (int i = 0; i < 1025; i++) {
             t.delete(i);
         }
         System.out.println(t.getHeight());
@@ -53,8 +48,7 @@ class RedBlackTreeTest
     }
 
     @Test
-    public void FunctionsTest()
-    {
+    public void FunctionsTest() {
         var t = new RedBlackTree<Integer, String>();
         assertTrue(t.tryGetMaxKey().isEmpty());
         assertTrue(t.tryGetMinKey().isEmpty());
@@ -63,8 +57,7 @@ class RedBlackTreeTest
         assertTrue(t.trySearch(1).isEmpty());
         List<Integer> l1 = new ArrayList<>();
         List<Integer> l2 = new ArrayList<>();
-        for (int i = 0; i < 16; i++)
-        {
+        for (int i = 0; i < 16; i++) {
             t.insert(i, String.valueOf(i));
             l1.add(i);
         }

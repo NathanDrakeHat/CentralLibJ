@@ -6,15 +6,12 @@ import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class MinHeapTest
-{
+class MinHeapTest {
 
     @Test
-    void caseTest1()
-    {
+    void caseTest1() {
         MinHeap<String> m_h = new MinHeap<>();
-        for (int i = 0; i < 1024; i++)
-        {
+        for (int i = 0; i < 1024; i++) {
             m_h.add(i, String.valueOf(i));
         }
         m_h.decreaseKey("1023", 0);
@@ -53,12 +50,10 @@ class MinHeapTest
     }
 
     @Test
-    void caseTest2()
-    {
+    void caseTest2() {
         List<String> l = new ArrayList<>();
 
-        for (int i = 0; i < 1024; i++)
-        {
+        for (int i = 0; i < 1024; i++) {
             l.add(String.valueOf(i));
         }
         MinHeap<String> m_h = new MinHeap<>(l, Double::valueOf);
