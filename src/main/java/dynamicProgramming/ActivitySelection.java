@@ -43,7 +43,6 @@ public final class ActivitySelection {
         }
     }
 
-
     public static Node recursiveActivitySelector(int[] s, int[] f) {
         return new Node(0).setNext(recursiveActivitySelector(s, f, 0));
     }

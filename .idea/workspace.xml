@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="7b6a5739-ed2a-44c7-be8e-206f00fc6909" name="Default Changelist" comment="" />
+    <list default="true" id="7b6a5739-ed2a-44c7-be8e-206f00fc6909" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dynamicProgramming/ActivitySelection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dynamicProgramming/ActivitySelection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/graph/APShortestPath.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/graph/APShortestPath.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -11,13 +19,20 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Class" />
         <option value="JUnit5 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="C:\Users\Nathan\AppData\Local\JetBrains\Toolbox\apps\IDEA-C\ch-0\202.6397.94\plugins\maven\lib\maven3" />
+      </MavenGeneralSettings>
+    </option>
   </component>
   <component name="ProjectId" id="1ctXuAyU5DtrAEgbK2goW4FbZOJ" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -39,7 +54,7 @@
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Java" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="ExtractSuperBase.RECENT_KEYS">
@@ -69,7 +84,7 @@
       <recent name="Main" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.All in IntroductionToAlgorithm">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main.Main" />
       <module name="IntroductionToAlgorithm" />
@@ -147,14 +162,15 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.All in IntroductionToAlgorithm" />
         <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.All in IntroductionToAlgorithm" />
         <item itemvalue="JUnit.StringAutomataTest.finiteAutomationMatcherTest" />
         <item itemvalue="JUnit.FibTest.getFibonacciSequence" />
         <item itemvalue="JUnit.SortTest" />
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -302,10 +318,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="213" y="19" key="Maven.ArtifactSearchDialog/0.0.1366.728@0.0.1366.728" timestamp="1593162278184" />
-    <state x="59" y="7" width="1183" height="711" key="SettingsEditor" timestamp="1595336172322">
+    <state x="59" y="7" width="1183" height="711" key="SettingsEditor" timestamp="1596112391889">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="59" y="7" width="1183" height="711" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1595336172322" />
+    <state x="59" y="7" width="1183" height="711" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1596112391889" />
     <state width="498" height="446" key="SwitcherDM" timestamp="1591754451128">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -334,7 +350,7 @@
   <component name="XDebuggerManager">
     <pin-to-top-manager>
       <pinned-members>
-        <PinnedItemInfo typeName="java.util.HashMap$Node" fieldName="value" />
+        <PinnedItemInfo />
       </pinned-members>
     </pin-to-top-manager>
     <watches-manager>
