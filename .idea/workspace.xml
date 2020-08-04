@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7b6a5739-ed2a-44c7-be8e-206f00fc6909" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/structures/RedBlackTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/structures/RedBlackTree.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/structures/RedBlackTreeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/structures/RedBlackTreeTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/structures/FibonacciHeap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/structures/FibonacciHeap.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -195,7 +194,14 @@
       <option name="project" value="LOCAL" />
       <updated>1596553269231</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="set root package private">
+      <created>1596553830389</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1596553830389</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -204,7 +210,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="reformat" />
     <MESSAGE value="remove getRoot() and getSentinel()" />
-    <option name="LAST_COMMIT_MESSAGE" value="remove getRoot() and getSentinel()" />
+    <MESSAGE value="set root package private" />
+    <option name="LAST_COMMIT_MESSAGE" value="set root package private" />
   </component>
   <component name="WindowStateProjectService">
     <state x="275" y="16" key="#Custom_Plugin_Repositories" timestamp="1592750462502">
@@ -279,10 +286,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="800" y="95" key="#xdebugger.evaluate/0.0.1366.728@0.0.1366.728" timestamp="1592388360367" />
-    <state x="228" y="0" key="CommitChangelistDialog2" timestamp="1596553268231">
+    <state x="228" y="0" key="CommitChangelistDialog2" timestamp="1596553829422">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="228" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1596553268231" />
+    <state x="228" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1596553829422" />
     <state x="470" y="140" width="630" height="518" key="FileChooserDialogImpl" timestamp="1596520000125">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -323,6 +330,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="213" y="19" key="Maven.ArtifactSearchDialog/0.0.1366.728@0.0.1366.728" timestamp="1593162278184" />
+    <state x="361" y="65" key="RollbackChangesDialog" timestamp="1596554201181">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="361" y="65" key="RollbackChangesDialog/0.0.1366.728@0.0.1366.728" timestamp="1596554201181" />
     <state x="59" y="7" width="1183" height="711" key="SettingsEditor" timestamp="1596520363769">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

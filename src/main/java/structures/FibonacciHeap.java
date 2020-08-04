@@ -6,13 +6,6 @@ import java.util.*;
 // dynamic minimum priority queue
 // key must be a number
 public final class FibonacciHeap<V> {
-    private Node<V> root_list = null;
-    private int number = 0; // number of nodes
-
-    void setNumber(int n) {
-        this.number = n;
-    }
-
     static class Node<T> implements Comparable<Node<T>> {
         private double key;
         private T value;
@@ -121,6 +114,12 @@ public final class FibonacciHeap<V> {
         void setDegree(int d) {
             this.degree = d;
         }
+    }
+    private Node<V> root_list = null;
+    private int number = 0; // number of nodes
+
+    void setNumber(int n) {
+        this.number = n;
     }
 
     private final Map<V, Node<V>> value_Node_map = new HashMap<>();
