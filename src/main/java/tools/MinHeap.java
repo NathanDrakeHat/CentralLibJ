@@ -5,17 +5,25 @@ import java.util.function.ToDoubleFunction;
 
 // key must be a number
 public class MinHeap<V> {
+    private class Node{
+        double key;
+        V value;
+        Node(double key, V value){
+            this.key = key;
+            this.value = value;
+        }
+    }
     private class PairAndIndex {
-        KeyValuePair<Double, V> node;
+        Node node;
         int index;
 
-        PairAndIndex(KeyValuePair<Double, V> node, int index) {
+        PairAndIndex(Node node, int index) {
             this.node = node;
             this.index = index;
         }
     }
 
-    private final List<KeyValuePair<Double, V>> array = new ArrayList<>();
+    private final List<Node> array = new ArrayList<>();
     private final Map<V, PairAndIndex> value_node_map = new HashMap<>();
     private int heap_size = 0;
 
@@ -30,9 +38,9 @@ public class MinHeap<V> {
         for (var i : c) {
             Objects.requireNonNull(i);
             heap_size++;
-            var n = new KeyValuePair<>(getKey.applyAsDouble(i), i);
+            var n = new Node(getKey.applyAsDouble(i), i);
             array.add(n);
-            value_node_map.put(n.getValue(), new PairAndIndex(n, idx++));
+            value_node_map.put(n.value, new PairAndIndex(n, idx++));
         }
         buildMinHeap();
     }
@@ -46,17 +54,17 @@ public class MinHeap<V> {
         array.set(heap_size - 1, null);
         heap_size--;
         minHeapify(0, heap_size);
-        value_node_map.remove(res.getValue());
-        return res.getValue();
+        value_node_map.remove(res.value);
+        return res.value;
     }
 
     public void decreaseKey(V value, double new_key) {
         var store = value_node_map.get(value);
-        if (store.node.getKey() < new_key) {
+        if (store.node.key < new_key) {
             throw new IllegalArgumentException();
         }
         else {
-            store.node.setKey(new_key);
+            store.node.key = new_key;
             fix(store);
         }
     }
@@ -73,7 +81,7 @@ public class MinHeap<V> {
     public void add(double key, V value) {
         if (heap_size == array.size()) {
             heap_size++;
-            var n = new KeyValuePair<>(key, value);
+            var n = new Node(key, value);
             array.add(n);
             var v_n = new PairAndIndex(n, heap_size - 1);
             value_node_map.put(value, v_n);
@@ -81,7 +89,7 @@ public class MinHeap<V> {
         }
         else {
             heap_size++;
-            var n = new KeyValuePair<>(key, value);
+            var n = new Node(key, value);
             array.set(heap_size - 1, n);
             var v_n = new PairAndIndex(n, heap_size - 1);
             value_node_map.put(value, v_n);
@@ -103,18 +111,18 @@ public class MinHeap<V> {
         int r = 2 * (idx + 1) + 1;
         int r_idx = r - 1;
         int min_idx = idx;
-        if ((l_idx < heap_size) && (array.get(l_idx).getKey() < array.get(min_idx).getKey())) {
+        if ((l_idx < heap_size) && (array.get(l_idx).key < array.get(min_idx).key)) {
             min_idx = l_idx;
         }
-        if ((r_idx < heap_size) && (array.get(r_idx).getKey() < array.get(min_idx).getKey())) {
+        if ((r_idx < heap_size) && (array.get(r_idx).key < array.get(min_idx).key)) {
             min_idx = r_idx;
         }
         if (min_idx != idx) {
             var t = array.get(min_idx);
             array.set(min_idx, array.get(idx));
-            value_node_map.get(array.get(idx).getValue()).index = min_idx;
+            value_node_map.get(array.get(idx).value).index = min_idx;
             array.set(idx, t);
-            value_node_map.get(t.getValue()).index = idx;
+            value_node_map.get(t.value).index = idx;
             minHeapify(min_idx, heap_size);
             return true;
         }

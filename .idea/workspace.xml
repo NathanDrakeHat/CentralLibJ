@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7b6a5739-ed2a-44c7-be8e-206f00fc6909" name="Default Changelist" comment="" />
+    <list default="true" id="7b6a5739-ed2a-44c7-be8e-206f00fc6909" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/structures/RedBlackTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/structures/RedBlackTree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tools/KeyValuePair.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tools/MinHeap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tools/MinHeap.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -45,7 +50,7 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../CodeSample" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../Program Files/jprofiler9/bin/jprofiler.exe" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -101,32 +106,31 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="FibTest.getFibonacciSequence" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="MinHeapTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="IntroductionToAlgorithm" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="multiThread.*" />
+          <option name="PATTERN" value="tools.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="multiThread" />
-      <option name="MAIN_CLASS_NAME" value="multiThread.FibTest" />
-      <option name="METHOD_NAME" value="getFibonacciSequence" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="PACKAGE_NAME" value="tools" />
+      <option name="MAIN_CLASS_NAME" value="tools.MinHeapTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SortTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="RedBlackTreeTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="IntroductionToAlgorithm" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="miscellaneous.*" />
+          <option name="PATTERN" value="structures.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="miscellaneous" />
-      <option name="MAIN_CLASS_NAME" value="miscellaneous.SortTest" />
+      <option name="PACKAGE_NAME" value="structures" />
+      <option name="MAIN_CLASS_NAME" value="structures.RedBlackTreeTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -151,17 +155,17 @@
     <list>
       <item itemvalue="Application.Main" />
       <item itemvalue="JUnit.All in IntroductionToAlgorithm" />
-      <item itemvalue="JUnit.FibTest.getFibonacciSequence" />
-      <item itemvalue="JUnit.SortTest" />
       <item itemvalue="JUnit.StringAutomataTest.finiteAutomationMatcherTest" />
+      <item itemvalue="JUnit.RedBlackTreeTest" />
+      <item itemvalue="JUnit.MinHeapTest" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.RedBlackTreeTest" />
+        <item itemvalue="JUnit.MinHeapTest" />
         <item itemvalue="JUnit.All in IntroductionToAlgorithm" />
         <item itemvalue="JUnit.StringAutomataTest.finiteAutomationMatcherTest" />
-        <item itemvalue="JUnit.FibTest.getFibonacciSequence" />
-        <item itemvalue="JUnit.SortTest" />
       </list>
     </recent_temporary>
   </component>
@@ -221,10 +225,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="413" y="119" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1591445911423" />
-    <state x="144" y="57" width="1092" height="671" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1593345337348">
+    <state x="136" y="32" width="1092" height="696" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1596472030262">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="144" y="57" width="1092" height="671" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1593345337348" />
+    <state x="136" y="32" width="1092" height="696" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1596472030262" />
     <state x="92" y="92" width="1182" height="544" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog" timestamp="1593358747896">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -241,10 +245,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="512" y="69" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1592364290698" />
-    <state x="412" y="163" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1593345282426">
+    <state x="445" y="129" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1596472008898">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="412" y="163" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1366.728@0.0.1366.728" timestamp="1593345282426" />
+    <state x="445" y="129" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1366.728@0.0.1366.728" timestamp="1596472008898" />
     <state x="488" y="289" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1592750574315">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -273,50 +277,50 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="241" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1595336280196" />
-    <state x="674" y="143" key="FileChooserDialogImpl" timestamp="1593751799060">
+    <state x="470" y="140" width="630" height="518" key="FileChooserDialogImpl" timestamp="1596520000125">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="674" y="143" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1593751799060" />
-    <state width="1323" height="288" key="GridCell.Tab.0.bottom" timestamp="1594961878889">
+    <state x="470" y="140" width="630" height="518" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1596520000125" />
+    <state width="1323" height="179" key="GridCell.Tab.0.bottom" timestamp="1596520833815">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="288" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1594961878889" />
-    <state width="1323" height="288" key="GridCell.Tab.0.center" timestamp="1594961878889">
+    <state width="1323" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1596520833815" />
+    <state width="1323" height="179" key="GridCell.Tab.0.center" timestamp="1596520833815">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="288" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1594961878889" />
-    <state width="1323" height="288" key="GridCell.Tab.0.left" timestamp="1594961878889">
+    <state width="1323" height="179" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1596520833815" />
+    <state width="1323" height="179" key="GridCell.Tab.0.left" timestamp="1596520833815">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="288" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1594961878889" />
-    <state width="1323" height="288" key="GridCell.Tab.0.right" timestamp="1594961878889">
+    <state width="1323" height="179" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1596520833815" />
+    <state width="1323" height="179" key="GridCell.Tab.0.right" timestamp="1596520833815">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="288" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1594961878889" />
-    <state width="1323" height="288" key="GridCell.Tab.1.bottom" timestamp="1594961878889">
+    <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1596520833815" />
+    <state width="1323" height="223" key="GridCell.Tab.1.bottom" timestamp="1596518328341">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="288" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1594961878889" />
-    <state width="1323" height="288" key="GridCell.Tab.1.center" timestamp="1594961878889">
+    <state width="1323" height="223" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1596518328341" />
+    <state width="1323" height="223" key="GridCell.Tab.1.center" timestamp="1596518328341">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="288" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1594961878889" />
-    <state width="1323" height="288" key="GridCell.Tab.1.left" timestamp="1594961878889">
+    <state width="1323" height="223" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1596518328341" />
+    <state width="1323" height="223" key="GridCell.Tab.1.left" timestamp="1596518328341">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="288" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1594961878889" />
-    <state width="1323" height="288" key="GridCell.Tab.1.right" timestamp="1594961878889">
+    <state width="1323" height="223" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1596518328341" />
+    <state width="1323" height="223" key="GridCell.Tab.1.right" timestamp="1596518328341">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="288" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1594961878889" />
+    <state width="1323" height="223" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1596518328341" />
     <state x="213" y="19" key="Maven.ArtifactSearchDialog" timestamp="1593162278184">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="213" y="19" key="Maven.ArtifactSearchDialog/0.0.1366.728@0.0.1366.728" timestamp="1593162278184" />
-    <state x="59" y="7" width="1183" height="711" key="SettingsEditor" timestamp="1596112391889">
+    <state x="59" y="7" width="1183" height="711" key="SettingsEditor" timestamp="1596520363769">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="59" y="7" width="1183" height="711" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1596112391889" />
+    <state x="59" y="7" width="1183" height="711" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1596520363769" />
     <state width="498" height="446" key="SwitcherDM" timestamp="1591754451128">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -346,6 +350,7 @@
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo />
+        <PinnedItemInfo parentTag="Main.Main$LeakClass" memberName="bInt" />
       </pinned-members>
     </pin-to-top-manager>
     <watches-manager>
