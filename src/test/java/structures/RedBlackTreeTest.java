@@ -21,7 +21,7 @@ class RedBlackTreeTest {
         RBtree.insert(5, 0);
         RBtree.insert(8, 0);
         RBtree.insert(4, 0);
-        var root = RBtree.getRoot();
+        var root = RBtree.root;
         assertEquals(root.getKey(), 7); // 7
         assertEquals(root.getLeft().getKey(), 2); // 2
         assertEquals(root.getRight().getKey(), 11); // 11

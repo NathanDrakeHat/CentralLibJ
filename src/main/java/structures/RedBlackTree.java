@@ -131,7 +131,7 @@ public final class RedBlackTree<K, V> {
 
     private enum COLOR {RED, BLACK}
 
-    private ColorNode<K, V> root = null;
+    ColorNode<K, V> root = null;
     private final Comparator<K> k_comparator;
     private final ColorNode<K, V> sentinel = new ColorNode<>(COLOR.BLACK);// sentinel: denote leaf and parent of root
 
@@ -212,7 +212,6 @@ public final class RedBlackTree<K, V> {
             throw new NoSuchElementException("null tree");
         }
     }
-    
 
     private void resetRoot(ColorNode<K, V> r) {
         root = r;

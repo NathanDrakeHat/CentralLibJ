@@ -5,10 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7b6a5739-ed2a-44c7-be8e-206f00fc6909" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/structures/RedBlackTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/structures/RedBlackTree.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tools/KeyValuePair.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tools/MinHeap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tools/MinHeap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/structures/RedBlackTreeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/structures/RedBlackTreeTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -190,7 +188,14 @@
       <option name="project" value="LOCAL" />
       <updated>1595336281160</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="remove getRoot() and getSentinel()">
+      <created>1596553269231</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1596553269231</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -198,7 +203,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="reformat" />
-    <option name="LAST_COMMIT_MESSAGE" value="reformat" />
+    <MESSAGE value="remove getRoot() and getSentinel()" />
+    <option name="LAST_COMMIT_MESSAGE" value="remove getRoot() and getSentinel()" />
   </component>
   <component name="WindowStateProjectService">
     <state x="275" y="16" key="#Custom_Plugin_Repositories" timestamp="1592750462502">
@@ -273,10 +279,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="800" y="95" key="#xdebugger.evaluate/0.0.1366.728@0.0.1366.728" timestamp="1592388360367" />
-    <state x="241" y="0" key="CommitChangelistDialog2" timestamp="1595336280196">
+    <state x="228" y="0" key="CommitChangelistDialog2" timestamp="1596553268231">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="241" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1595336280196" />
+    <state x="228" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1596553268231" />
     <state x="470" y="140" width="630" height="518" key="FileChooserDialogImpl" timestamp="1596520000125">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
