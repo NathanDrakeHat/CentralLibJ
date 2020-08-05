@@ -123,6 +123,7 @@ public final class FibonacciHeap<V> {
     }
 
     private void insert(Node<V> x) {
+        number++;
         value_Node_map.put(x.getValue(), x);
         if (root_list == null) {
             root_list = x;
@@ -133,7 +134,6 @@ public final class FibonacciHeap<V> {
                 root_list = x;
             }
         }
-        number++;
     }
 
     public void insert(double key, V val) {

@@ -20,7 +20,6 @@ class MinSpanTreeTest {
         }
         assertEquals(37, i);
     }
-
     static LinkedGraph<KruskalVertex<String>> buildKruskalExample() {
         String n = "a,b,c,d,e,f,g,h,i";
         String[] names = n.split(",");
@@ -43,8 +42,13 @@ class MinSpanTreeTest {
 
 
     @Test
-    public void algorithmOfPrimTestWithFibonacciHeap() {
+    public void algorithmOfPrimTest() {
         var graph = buildPrimExample();
+        runFibonacciHeap(graph);
+        graph = buildPrimExample();
+        runMinHeap(graph);
+    }
+    static void runFibonacciHeap(LinkedGraph<MinSpanTree.PrimVertex<String>> graph){
         algorithmOfPrimWithFibonacciHeap(graph, targetPrim_a);
         var vertices = graph.getAllVertices();
         Set<Set<String>> res = new HashSet<>();
@@ -58,10 +62,7 @@ class MinSpanTreeTest {
         }
         assertTrue(res.equals(buildPrimAnswer1()) || res.equals(buildPrimAnswer2()));
     }
-
-    @Test
-    public void algorithmOfPrimTestWithMinHeap() {
-        var graph = buildPrimExample();
+    static void runMinHeap(LinkedGraph<MinSpanTree.PrimVertex<String>> graph){
         algorithmOfPrimWithMinHeap(graph, targetPrim_a);
         var vertices = graph.getAllVertices();
         Set<Set<String>> res = new HashSet<>();
@@ -75,9 +76,7 @@ class MinSpanTreeTest {
         }
         assertTrue(res.equals(buildPrimAnswer1()) || res.equals(buildPrimAnswer2()));
     }
-
     static PrimVertex<String> targetPrim_a;
-
     static LinkedGraph<PrimVertex<String>> buildPrimExample() {
         String n = "a,b,c,d,e,f,g,h,i";
         String[] names = n.split(",");
@@ -97,7 +96,6 @@ class MinSpanTreeTest {
         targetPrim_a = vertices.get(0);
         return res;
     }
-
     static Set<Set<String>> buildPrimAnswer1() {
         String n = "a,b,c,d,e,f,g,h,i";
         String[] names = n.split(",");
@@ -113,7 +111,6 @@ class MinSpanTreeTest {
         }
         return res;
     }
-
     static Set<Set<String>> buildPrimAnswer2() {
         String n = "a,b,c,d,e,f,g,h,i";
         String[] names = n.split(",");
