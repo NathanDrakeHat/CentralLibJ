@@ -9,7 +9,7 @@ public final class LinkedGraph<V> {
         DIRECTED, NON_DIRECTED
     }
 
-    static final class Edge<T> {
+    public static final class Edge<T> {
         private final T former_vertex;
         private final T later_vertex;
         private final Direction edge_direction;
@@ -87,6 +87,8 @@ public final class LinkedGraph<V> {
     }
 
     public void setNeighbor(V vertex, V neighbor) {
+        Objects.requireNonNull(vertex);
+        Objects.requireNonNull(neighbor);
         setNeighbor(vertex, neighbor, 1);
     }
 

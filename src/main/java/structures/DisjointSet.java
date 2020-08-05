@@ -12,7 +12,7 @@ public interface DisjointSet<V> {
         link(findSet(a), findSet(b));
     }
 
-    static <T extends DisjointSet<T>> void link(T x, T y) {
+    private static <T extends DisjointSet<T>> void link(T x, T y) {
         if (x.getRank() > y.getRank()) {
             y.setParent(x);
         }

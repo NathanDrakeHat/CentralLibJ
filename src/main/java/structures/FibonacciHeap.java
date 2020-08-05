@@ -21,15 +21,15 @@ public final class FibonacciHeap<V> {
             this.value = val;
         }
 
-        public Node<T> getLeft() {
+        Node<T> getLeft() {
             return left;
         }
 
-        public Node<T> getRight() {
+        Node<T> getRight() {
             return right;
         }
 
-        public double getKey() {
+        double getKey() {
             return key;
         }
 
@@ -37,7 +37,7 @@ public final class FibonacciHeap<V> {
             this.key = key;
         }
 
-        public T getValue() {
+        T getValue() {
             return value;
         }
 
@@ -45,7 +45,7 @@ public final class FibonacciHeap<V> {
             this.value = val;
         }
 
-        public Node<T> getParent() {
+        Node<T> getParent() {
             return parent;
         }
 
@@ -60,7 +60,7 @@ public final class FibonacciHeap<V> {
             }
         }
 
-        public Node<T> getChildList() {
+        Node<T> getChildList() {
             return childList;
         }
 
@@ -141,6 +141,7 @@ public final class FibonacciHeap<V> {
     }
 
     public V extractMin() {
+        if(number <= 0) throw new IllegalStateException();
         var z = rootList();
         if (z != null) {
             var child_list = z.getChildList(); // add root_list's children list to root list
@@ -220,7 +221,9 @@ public final class FibonacciHeap<V> {
         }
     }
 
-    public FibonacciHeap<V> union(FibonacciHeap<V> f1, FibonacciHeap<V> f2) {
+    public static<V> FibonacciHeap<V> union(FibonacciHeap<V> f1, FibonacciHeap<V> f2) {
+        Objects.requireNonNull(f1);
+        Objects.requireNonNull(f2);
         var res = new FibonacciHeap<V>();
         res.root_list = f1.root_list;
         Objects.requireNonNull(f1.root_list);
@@ -240,6 +243,7 @@ public final class FibonacciHeap<V> {
     }
 
     public void decreaseKey(V val, double new_key) {
+        Objects.requireNonNull(val);
         var x = value_Node_map.get(val);
         if (new_key > x.getKey()) {
             throw new IllegalArgumentException("New key should smaller than old key.");
