@@ -12,34 +12,16 @@ public final class MinSpanTree {
         private final V content;
         private int rank = 0;
         private KruskalVertex<V> parent = this;
-        private final String string;
-        private final int hash_code;
 
         public KruskalVertex(V n) {
             Objects.requireNonNull(n);
             content = n;
-            string = String.format("KruskalVertex: %s", content.toString());
-            hash_code = string.hashCode();
         }
 
         public V getContent() {
             return content;
         }
 
-        @Override
-        public boolean equals(Object other_vertex) {
-            if (other_vertex instanceof KruskalVertex) {
-                return content.equals(((KruskalVertex<?>) other_vertex).content);
-            }
-            else {
-                return false;
-            }
-        }
-
-        @Override
-        public int hashCode() {
-            return hash_code;
-        }
 
         @Override
         public int getRank() {
@@ -63,7 +45,7 @@ public final class MinSpanTree {
 
         @Override
         public String toString() {
-            return string;
+            return String.format("KruskalVertex: %s", content.toString());
         }
 
     }
@@ -89,14 +71,10 @@ public final class MinSpanTree {
         private final V content;
         PrimVertex<V> parent;
         private double key = 0;
-        private final String string;
-        private final int hash_code;
 
         public PrimVertex(V name) {
             Objects.requireNonNull(name);
             this.content = name;
-            string = String.format("PrimVertex: (%s)", content.toString());
-            hash_code = string.hashCode();
         }
 
         public V getContent() {
@@ -108,26 +86,8 @@ public final class MinSpanTree {
         }
 
         @Override
-        public int hashCode() {
-            return hash_code;
-        }
-
-        @Override
-        public boolean equals(Object other) {
-            if (this == other) {
-                return true;
-            }
-            else if (!(other instanceof PrimVertex)) {
-                return false;
-            }
-            else {
-                return content.equals(((PrimVertex<?>) other).content);
-            }
-        }
-
-        @Override
         public String toString() {
-            return string.concat(String.format(" %f", key));
+            return String.format("PrimVertex: (%s)", content.toString());
         }
     }
 
@@ -137,7 +97,7 @@ public final class MinSpanTree {
         FibonacciHeap<PrimVertex<T>> Q = new FibonacciHeap<>();
         var vertices = graph.getAllVertices();
         for (var u : vertices) {
-            if (!u.equals(r)) {
+            if (u != r) {
                 u.key = Double.POSITIVE_INFINITY;
             }
             else {
@@ -165,7 +125,7 @@ public final class MinSpanTree {
         Objects.requireNonNull(graph);
         var vertices = graph.getAllVertices();
         for (var u : vertices) {
-            if (!u.equals(r)) {
+            if (u != r) {
                 u.key = Double.POSITIVE_INFINITY;
             }
             else {

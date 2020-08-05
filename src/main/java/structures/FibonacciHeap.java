@@ -75,21 +75,6 @@ public final class FibonacciHeap<V> {
             }
         }
 
-        @Override
-        public int hashCode() {
-            return Objects.hash(key, value);
-        }
-
-        @Override
-        @SuppressWarnings("unchecked")
-        public boolean equals(Object other) {
-            if (other instanceof Node) {
-                return (key == ((Node<T>) other).key) && (value.equals(((Node<T>) other).value));
-            }
-            else {
-                return false;
-            }
-        }
 
         Node(double key) {
             this.key = key;

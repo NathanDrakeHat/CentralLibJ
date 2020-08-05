@@ -14,14 +14,10 @@ public final class DFS {
         int discover; //d
         int finish; // f
         private final V content;
-        private final String string;
-        private final int hash_code;
 
         public DFSVertex(V name) {
             Objects.requireNonNull(name);
             this.content = name;
-            string = String.format("DFS.Vertex: (%s)", content.toString());
-            hash_code = string.hashCode();
         }
 
         public V getContent() {
@@ -33,26 +29,8 @@ public final class DFS {
         }
 
         @Override
-        public boolean equals(Object other_vertex) {
-            if (!(other_vertex instanceof DFSVertex)) {
-                return false;
-            }
-            else if (other_vertex == this) {
-                return true;
-            }
-            else {
-                return content.equals(((DFSVertex<?>) other_vertex).content);
-            }
-        }
-
-        @Override
-        public int hashCode() {
-            return hash_code;
-        }
-
-        @Override
         public String toString() {
-            return string;
+            return String.format("DFS.Vertex: (%s)", content.toString());
         }
     }
 

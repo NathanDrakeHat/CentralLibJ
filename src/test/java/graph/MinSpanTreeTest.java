@@ -14,7 +14,6 @@ class MinSpanTreeTest {
     public void algorithmOfKruskalTest() {
         var G = buildKruskalExample();
         var t = algorithmOfKruskal(G);
-        assertTrue(t.equals(buildKruskalAnswer1()) || t.equals(buildKruskalAnswer2()));
         int i = 0;
         for (var e : t) {
             i += e.getWeight();
@@ -41,56 +40,19 @@ class MinSpanTreeTest {
         return res;
     }
 
-    static Set<Edge<KruskalVertex<String>>> buildKruskalAnswer1() {
-        String n = "a,b,c,d,e,f,g,h,i";
-        String[] names = n.split(",");
-        int len = names.length;
-        var vertices = new ArrayList<KruskalVertex<String>>(len);
-        for (int i = 0; i < len; i++) {
-            vertices.add(i, new KruskalVertex<>(names[i]));
-        }
-        int[] indexes1 = new int[]{0, 1, 2, 3, 4, 5, 6, 7, 1, 2, 8, 8, 2, 3};
-        int[] indexes2 = new int[]{1, 2, 3, 4, 5, 6, 7, 0, 7, 8, 7, 6, 5, 5};
-        double[] weights = new double[]{4, 8, 7, 9, 10, 2, 1, 8, 11, 2, 7, 6, 4, 14};
-        Set<Edge<KruskalVertex<String>>> res = new HashSet<>();
-        int[] answers = new int[]{0, 2, 3, 5, 6, 7, 9, 12};
-        for (var i : answers) {
-            res.add(new Edge<>(vertices.get(indexes1[i]), vertices.get(indexes2[i]), weights[i], Direction.NON_DIRECTED));
-        }
-        return res;
-    }
-
-    static Set<Edge<KruskalVertex<String>>> buildKruskalAnswer2() {
-        String n = "a,b,c,d,e,f,g,h,i";
-        String[] names = n.split(",");
-        int len = names.length;
-        var vertices = new ArrayList<KruskalVertex<String>>(len);
-        for (int i = 0; i < len; i++) {
-            vertices.add(i, new KruskalVertex<>(names[i]));
-        }
-        int[] indexes1 = new int[]{0, 1, 2, 3, 4, 5, 6, 7, 1, 2, 8, 8, 2, 3};
-        int[] indexes2 = new int[]{1, 2, 3, 4, 5, 6, 7, 0, 7, 8, 7, 6, 5, 5};
-        double[] weights = new double[]{4, 8, 7, 9, 10, 2, 1, 8, 11, 2, 7, 6, 4, 14};
-        Set<Edge<KruskalVertex<String>>> res = new HashSet<>();
-        int[] answers = new int[]{0, 1, 2, 3, 5, 6, 9, 12};
-        for (var i : answers) {
-            res.add(new Edge<>(vertices.get(indexes1[i]), vertices.get(indexes2[i]), weights[i], Direction.NON_DIRECTED));
-        }
-        return res;
-    }
 
 
     @Test
     public void algorithmOfPrimTestWithFibonacciHeap() {
         var graph = buildPrimExample();
-        algorithmOfPrimWithFibonacciHeap(graph, new PrimVertex<>("a"));
+        algorithmOfPrimWithFibonacciHeap(graph, targetPrim_a);
         var vertices = graph.getAllVertices();
-        Set<Set<PrimVertex<String>>> res = new HashSet<>();
+        Set<Set<String>> res = new HashSet<>();
         for (var vertex : vertices) {
             if (vertex.parent != null) {
-                Set<PrimVertex<String>> t = new HashSet<>();
-                t.add(vertex);
-                t.add(vertex.parent);
+                Set<String> t = new HashSet<>();
+                t.add(vertex.getContent());
+                t.add(vertex.parent.getContent());
                 res.add(t);
             }
         }
@@ -100,19 +62,21 @@ class MinSpanTreeTest {
     @Test
     public void algorithmOfPrimTestWithMinHeap() {
         var graph = buildPrimExample();
-        algorithmOfPrimWithMinHeap(graph, new PrimVertex<>("a"));
+        algorithmOfPrimWithMinHeap(graph, targetPrim_a);
         var vertices = graph.getAllVertices();
-        Set<Set<PrimVertex<String>>> res = new HashSet<>();
+        Set<Set<String>> res = new HashSet<>();
         for (var vertex : vertices) {
             if (vertex.parent != null) {
-                Set<PrimVertex<String>> t = new HashSet<>();
-                t.add(vertex);
-                t.add(vertex.parent);
+                Set<String> t = new HashSet<>();
+                t.add(vertex.getContent());
+                t.add(vertex.parent.getContent());
                 res.add(t);
             }
         }
         assertTrue(res.equals(buildPrimAnswer1()) || res.equals(buildPrimAnswer2()));
     }
+
+    static PrimVertex<String> targetPrim_a;
 
     static LinkedGraph<PrimVertex<String>> buildPrimExample() {
         String n = "a,b,c,d,e,f,g,h,i";
@@ -130,46 +94,37 @@ class MinSpanTreeTest {
         for (int i = 0; i < len_; i++) {
             res.setNeighbor(vertices.get(indices1[i]), vertices.get(indices2[i]), weights[i]);
         }
+        targetPrim_a = vertices.get(0);
         return res;
     }
 
-    static Set<Set<PrimVertex<String>>> buildPrimAnswer1() {
+    static Set<Set<String>> buildPrimAnswer1() {
         String n = "a,b,c,d,e,f,g,h,i";
         String[] names = n.split(",");
-        int len = names.length;
-        var vertices = new ArrayList<PrimVertex<String>>(len);
-        for (int i = 0; i < len; i++) {
-            vertices.add(i, new PrimVertex<>(names[i]));
-        }
         int[] indexes1 = new int[]{0, 1, 2, 3, 4, 5, 6, 7, 1, 2, 8, 8, 2, 3};
         int[] indexes2 = new int[]{1, 2, 3, 4, 5, 6, 7, 0, 7, 8, 7, 6, 5, 5};
-        Set<Set<PrimVertex<String>>> res = new HashSet<>();
+        Set<Set<String>> res = new HashSet<>();
         int[] answers = new int[]{0, 1, 2, 3, 5, 6, 9, 12};
         for (int answer : answers) {
-            Set<PrimVertex<String>> t = new HashSet<>();
-            t.add(vertices.get(indexes1[answer]));
-            t.add(vertices.get(indexes2[answer]));
+            Set<String> t = new HashSet<>();
+            t.add(names[indexes1[answer]]);
+            t.add(names[indexes2[answer]]);
             res.add(t);
         }
         return res;
     }
 
-    static Set<Set<PrimVertex<String>>> buildPrimAnswer2() {
+    static Set<Set<String>> buildPrimAnswer2() {
         String n = "a,b,c,d,e,f,g,h,i";
         String[] names = n.split(",");
-        int len = names.length;
-        var vertices = new ArrayList<PrimVertex<String>>(len);
-        for (int i = 0; i < len; i++) {
-            vertices.add(i, new PrimVertex<>(names[i]));
-        }
         int[] indexes1 = new int[]{0, 1, 2, 3, 4, 5, 6, 7, 1, 2, 8, 8, 2, 3};
         int[] indexes2 = new int[]{1, 2, 3, 4, 5, 6, 7, 0, 7, 8, 7, 6, 5, 5};
-        Set<Set<PrimVertex<String>>> res = new HashSet<>();
+        Set<Set<String>> res = new HashSet<>();
         int[] answers = new int[]{0, 7, 2, 3, 5, 6, 9, 12};
         for (int answer : answers) {
-            Set<PrimVertex<String>> t = new HashSet<>();
-            t.add(vertices.get(indexes1[answer]));
-            t.add(vertices.get(indexes2[answer]));
+            Set<String> t = new HashSet<>();
+            t.add(names[indexes1[answer]]);
+            t.add(names[indexes2[answer]]);
             res.add(t);
         }
         return res;

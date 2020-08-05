@@ -17,8 +17,8 @@ class SSShortestPathTest {
     @Test
     void algorithmBellmanFord() {
         var G = buildBellmanFordCase();
-        var b = SSShortestPath.algorithmBellmanFord(G, new BFSVertex<>("s"));
-        BFSVertex<String> target = new BFSVertex<>("z");
+        var b = SSShortestPath.algorithmBellmanFord(G, targetBellmanFordCase_s);
+        BFSVertex<String> target = targetBellmanFordCase_z;
         var vertices = G.getAllVertices();
         for (var v : vertices) {
             if (v.equals(target)) {
@@ -35,6 +35,9 @@ class SSShortestPathTest {
         assertEquals(List.of("z", "t", "x", "y", "s"), res);
     }
 
+    static BFSVertex<String> targetBellmanFordCase_s;
+    static BFSVertex<String> targetBellmanFordCase_z;
+
     static LinkedGraph<BFSVertex<String>> buildBellmanFordCase() {
         String[] names = "s,t,x,y,z".split(",");
         List<BFSVertex<String>> vertices = new ArrayList<>();
@@ -48,13 +51,15 @@ class SSShortestPathTest {
         for (int i = 0; i < index1.length; i++) {
             res.setNeighbor(vertices.get(index1[i]), vertices.get(index2[i]), weights[i]);
         }
+        targetBellmanFordCase_s = vertices.get(0);
+        targetBellmanFordCase_z = vertices.get(4);
         return res;
     }
 
     @Test
     void shortestPathOfDAG() {
         var two_graph = buildShortestPathOfDAGForBFS();
-        var res = SSShortestPath.shortestPathOfDAG(two_graph.DFS_G, two_graph.BFS_G, new BFSVertex<>("s"));
+        var res = SSShortestPath.shortestPathOfDAG(two_graph.DFS_G, two_graph.BFS_G, targetShortestPathOfDAGForBFS);
         var vertices = res.getAllVertices();
         var l = vertices.stream().sorted(Comparator.comparing(BFSVertex::getContent)).collect(Collectors.toList());
         assertNull(l.get(0).getParent());
@@ -71,6 +76,8 @@ class SSShortestPathTest {
         assertEquals(l.get(4), l.get(5).getParent());
         assertEquals(3, l.get(5).getDistance());
     }
+
+    static BFSVertex<String> targetShortestPathOfDAGForBFS;
 
     static Result buildShortestPathOfDAGForBFS() {
         String[] names = "r,s,t,x,y,z".split(",");
@@ -94,6 +101,7 @@ class SSShortestPathTest {
         var t = new Result();
         t.BFS_G = BFS_G;
         t.DFS_G = DFS_G;
+        targetShortestPathOfDAGForBFS = BFS_vertex.get(1);
         return t;
     }
 
@@ -105,7 +113,7 @@ class SSShortestPathTest {
     @Test
     void algorithmDijkstraTestWithFibonacciHeap() {
         var g = buildDijkstraCase();
-        SSShortestPath.algorithmDijkstra(g, new BFSVertex<>("s"), SSShortestPath.Heap.MIN_HEAP);
+        SSShortestPath.algorithmDijkstra(g, targetDijkstraCase, SSShortestPath.Heap.MIN_HEAP);
         var vertices = g.getAllVertices().stream().sorted(Comparator.comparing(BFSVertex::getContent)).collect(Collectors.toList());
         assertNull(vertices.get(0).getParent());
 
@@ -125,7 +133,7 @@ class SSShortestPathTest {
     @Test
     void algorithmDijkstraTestWithMinHeap() {
         var g = buildDijkstraCase();
-        SSShortestPath.algorithmDijkstra(g, new BFSVertex<>("s"), SSShortestPath.Heap.FIBONACCI);
+        SSShortestPath.algorithmDijkstra(g, targetDijkstraCase, SSShortestPath.Heap.FIBONACCI);
         var vertices = g.getAllVertices().stream().sorted(Comparator.comparing(BFSVertex::getContent)).collect(Collectors.toList());
         assertNull(vertices.get(0).getParent());
 
@@ -142,6 +150,8 @@ class SSShortestPathTest {
         assertEquals(7, vertices.get(4).getDistance());
     }
 
+    static BFSVertex<String> targetDijkstraCase;
+
     static LinkedGraph<BFSVertex<String>> buildDijkstraCase() {
         String[] names = "s,t,x,y,z".split(",");
         List<BFSVertex<String>> vertices = new ArrayList<>();
@@ -155,6 +165,7 @@ class SSShortestPathTest {
         for (int i = 0; i < indices1.length; i++) {
             graph.setNeighbor(vertices.get(indices1[i]), vertices.get(indices2[i]), weights[i]);
         }
+        targetDijkstraCase = vertices.get(0);
         return graph;
     }
 }

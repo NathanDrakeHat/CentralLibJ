@@ -8,7 +8,7 @@ import java.util.function.BiConsumer;
 
 
 public final class RedBlackTree<K, V> {
-    public static class ColorNode<P, Q> implements Comparable<ColorNode<P, Q>> {
+    static class ColorNode<P, Q> implements Comparable<ColorNode<P, Q>> {
         private P key;
         private Q value;
         private COLOR color;

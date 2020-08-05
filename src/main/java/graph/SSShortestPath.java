@@ -37,11 +37,10 @@ public final class SSShortestPath {
         for (var v : vertices) {
             v.distance = Double.POSITIVE_INFINITY;
             v.parent = null;
-            if (s.equals(v)) {
-                s = v;
+            if (s == v) {
+                s.distance = 0;
             }
         }
-        s.distance = 0;
     }
 
     private static <T> void relax(LinkedGraph.Edge<BFSVertex<T>> edge) {

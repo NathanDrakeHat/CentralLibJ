@@ -11,20 +11,14 @@ public final class BFS {
         private COLOR color;
         double distance; // d
         private final V content;
-        private final String string;
-        private final int hash_code;
 
         public BFSVertex(V name) {
             Objects.requireNonNull(name);
             this.content = name;
-            string = String.format("BFS.Vertex: (%s)", content.toString());
-            hash_code = string.hashCode();
         }
 
         BFSVertex() {
             content = null;
-            string = "BFS.Vertex: ()";
-            hash_code = string.hashCode();
         }
 
         public V getContent() {
@@ -40,29 +34,8 @@ public final class BFS {
         }
 
         @Override
-        public boolean equals(Object other_vertex) {
-            if (!(other_vertex instanceof BFSVertex)) {
-                return false;
-            }
-            else if (other_vertex == this) {
-                return true;
-            }
-            else {
-                if (content == null) {
-                    return ((BFSVertex<?>) other_vertex).content == null;
-                }
-                return content.equals(((BFSVertex<?>) other_vertex).content);
-            }
-        }
-
-        @Override
-        public int hashCode() {
-            return hash_code;
-        }
-
-        @Override
         public String toString() {
-            return string;
+            return String.format("BFS.Vertex: (%s)", content != null? content.toString() : "()");
         }
     }
 
