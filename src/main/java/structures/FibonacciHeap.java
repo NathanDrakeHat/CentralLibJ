@@ -114,6 +114,11 @@ public final class FibonacciHeap<V> {
         void setDegree(int d) {
             this.degree = d;
         }
+
+        @Override
+        public String toString(){
+            return String.format("key: %f",key);
+        }
     }
     private Node<V> root_list = null;
     private int number = 0; // number of nodes
@@ -190,7 +195,7 @@ public final class FibonacciHeap<V> {
         if (w == null) {
             return;
         }
-        var dict = new HashSet<Node<V>>(32);
+        var dict = new HashSet<Node<V>>();
         do { // for w in root list start
             var x = w; // x current node
             var next = x.right;
@@ -211,7 +216,6 @@ public final class FibonacciHeap<V> {
             dict.add(w);
             w = next;
         } while (!dict.contains(w));
-        dict.clear();
         root_list = null;
         for (int i = 0; i <= upperBound(); i++) {
             var t = A.get(i);
@@ -274,7 +278,6 @@ public final class FibonacciHeap<V> {
         // move x to root list
         // set parent mark true if parent mark is false
         // else successively move true mark parents to root list
-        Objects.requireNonNull(x);
         if (new_key > x.getKey()) {
             throw new IllegalArgumentException("New key should smaller than old key.");
         }
@@ -294,8 +297,6 @@ public final class FibonacciHeap<V> {
     }
 
     private void cut(Node<V> a, Node<V> b) {
-        Objects.requireNonNull(a);
-        Objects.requireNonNull(b);
         removeNodeFromList(a);
         b.degree--;
         addNodeToList(a, rootList());
@@ -303,7 +304,6 @@ public final class FibonacciHeap<V> {
     }
 
     private void cascadingCut(Node<V> y) {
-        Objects.requireNonNull(y);
         var z = y.getParent();
         if (z != null) {
             if (!y.mark) {
@@ -317,7 +317,6 @@ public final class FibonacciHeap<V> {
     }
 
     private void delete(Node<V> x) {
-        Objects.requireNonNull(x);
         decreaseKey(x, minKey() - 1);
         extractMin();
     }
@@ -338,10 +337,7 @@ public final class FibonacciHeap<V> {
         return (int) (Math.log(number) / Math.log(2));
     }
 
-    private void addNodeToList(Node<V> x, Node<V> list) {
-        Objects.requireNonNull(x);
-        Objects.requireNonNull(list);
-
+    private static <T> void addNodeToList(Node<T> x, Node<T> list) {
         x.parent = list.parent;
         var list_left = list.left;
         list.left = x;
@@ -350,8 +346,7 @@ public final class FibonacciHeap<V> {
         x.left = list_left;
     }
 
-    private void removeNodeFromList(Node<V> z) {
-        Objects.requireNonNull(z);
+    private static <T> void removeNodeFromList(Node<T> z) {
         var z_right = z.right;
         var z_left = z.left;
         if (z.parent != null) {
@@ -376,7 +371,7 @@ public final class FibonacciHeap<V> {
         z.parent = null;
     }
 
-    private void linkTo(Node<V> l, Node<V> m) { // larger, minor
+    private static <T> void linkTo(Node<T> l, Node<T> m) { // larger, minor
         removeNodeFromList(l);
         m.degree++;
         if (m.getChildList() == null) {
@@ -388,13 +383,4 @@ public final class FibonacciHeap<V> {
         l.mark = false;
     }
 
-    @Override
-    public String toString() {
-        if (root_list != null) {
-            return String.format("Min key: %f, value: %s", root_list.getKey(), root_list.getValue().toString());
-        }
-        else {
-            return "Null Heap";
-        }
-    }
 }
