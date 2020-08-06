@@ -8,29 +8,22 @@ public class MinHeap<V> {
     private class Node{
         double key;
         V value;
-        Node(double key, V value){
+        int index;
+        Node(double key, V value, int index){
             this.key = key;
             this.value = value;
-        }
-    }
-    private class PairAndIndex {
-        Node node;
-        int index;
-
-        PairAndIndex(Node node, int index) {
-            this.node = node;
             this.index = index;
         }
     }
 
     private final List<Node> array = new ArrayList<>();
-    private final Map<V, PairAndIndex> value_node_map = new HashMap<>();
+    private final Map<V, Node> value_node_map = new HashMap<>();
     private int heap_size = 0;
 
     public MinHeap() {
     }
 
-    public MinHeap(Collection<V> c, ToDoubleFunction<V> getKey) {
+    public MinHeap(Iterable<V> c, ToDoubleFunction<V> getKey) {
         Objects.requireNonNull(c);
         Objects.requireNonNull(getKey);
         heap_size = 0;
@@ -38,9 +31,9 @@ public class MinHeap<V> {
         for (var i : c) {
             Objects.requireNonNull(i);
             heap_size++;
-            var n = new Node(getKey.applyAsDouble(i), i);
+            var n = new Node(getKey.applyAsDouble(i), i, idx++);
             array.add(n);
-            value_node_map.put(n.value, new PairAndIndex(n, idx++));
+            value_node_map.put(n.value, n);
         }
         buildMinHeap();
     }
@@ -59,19 +52,19 @@ public class MinHeap<V> {
     }
 
     public void decreaseKey(V value, double new_key) {
-        var store = value_node_map.get(value);
-        if (store.node.key < new_key) {
+        var node = value_node_map.get(value);
+        if (node.key < new_key) {
             throw new IllegalArgumentException();
         }
         else {
-            store.node.key = new_key;
-            fix(store);
+            node.key = new_key;
+            fix(node);
         }
     }
 
-    private void fix(PairAndIndex store) {
+    private void fix(Node node) {
         boolean min_property_broken = true;
-        int parent_idx = (store.index + 1) / 2 - 1;
+        int parent_idx = (node.index + 1) / 2 - 1;
         while (min_property_broken && parent_idx >= 0) {
             min_property_broken = minHeapify(parent_idx, heap_size);
             parent_idx = (parent_idx + 1) / 2 - 1;
@@ -81,19 +74,17 @@ public class MinHeap<V> {
     public void add(double key, V value) {
         if (heap_size == array.size()) {
             heap_size++;
-            var n = new Node(key, value);
+            var n = new Node(key, value, heap_size - 1);
             array.add(n);
-            var v_n = new PairAndIndex(n, heap_size - 1);
-            value_node_map.put(value, v_n);
-            fix(v_n);
+            value_node_map.put(value, n);
+            fix(n);
         }
         else {
             heap_size++;
-            var n = new Node(key, value);
+            var n = new Node(key, value, heap_size - 1);
             array.set(heap_size - 1, n);
-            var v_n = new PairAndIndex(n, heap_size - 1);
-            value_node_map.put(value, v_n);
-            fix(v_n);
+            value_node_map.put(value, n);
+            fix(n);
         }
     }
 
