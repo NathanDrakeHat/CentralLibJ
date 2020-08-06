@@ -92,4 +92,29 @@ class MinHeapTest {
         assertEquals("456", m_h.forceExtractMin());
     }
 
+    @Test
+    public void TestCase3()
+    {
+        var mH = new MinHeap<String>();
+        for (int i = 0; i < 512; i++)
+        {
+            mH.add(i, String.valueOf(i));
+        }
+
+        for (int i = 10; i >= 0; i--)
+        {
+            mH.forceExtractMin();
+        }
+
+        for (int i = 10; i >= 0; i--)
+        {
+            mH.add(i, String.valueOf(i));
+        }
+
+        for (int i = 0; i <= 10; i++)
+        {
+            assertEquals(String.valueOf(i),mH.forceExtractMin());
+        }
+    }
+
 }

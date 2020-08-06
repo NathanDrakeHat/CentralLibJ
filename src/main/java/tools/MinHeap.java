@@ -46,7 +46,7 @@ public class MinHeap<V> {
         array.set(0, array.get(heap_size - 1));
         array.remove(heap_size - 1);
         heap_size--;
-        minHeapify(0, heap_size);
+        minHeapify(0);
         value_node_map.remove(res.value);
         return res.value;
     }
@@ -66,26 +66,17 @@ public class MinHeap<V> {
         boolean min_property_broken = true;
         int parent_idx = (node.index + 1) / 2 - 1;
         while (min_property_broken && parent_idx >= 0) {
-            min_property_broken = minHeapify(parent_idx, heap_size);
+            min_property_broken = minHeapify(parent_idx);
             parent_idx = (parent_idx + 1) / 2 - 1;
         }
     }
 
     public void add(double key, V value) {
-        if (heap_size == array.size()) {
-            heap_size++;
-            var n = new Node(key, value, heap_size - 1);
-            array.add(n);
-            value_node_map.put(value, n);
-            fix(n);
-        }
-        else {
-            heap_size++;
-            var n = new Node(key, value, heap_size - 1);
-            array.set(heap_size - 1, n);
-            value_node_map.put(value, n);
-            fix(n);
-        }
+        heap_size++;
+        var n = new Node(key, value, heap_size - 1);
+        array.add(n);
+        value_node_map.put(value, n);
+        fix(n);
     }
 
     public boolean contains(V value) {
@@ -96,7 +87,7 @@ public class MinHeap<V> {
         return heap_size;
     }
 
-    private boolean minHeapify(int idx, int heap_size) {
+    private boolean minHeapify(int idx) {
         int l = 2 * (idx + 1);
         int l_idx = l - 1;
         int r = 2 * (idx + 1) + 1;
@@ -114,7 +105,7 @@ public class MinHeap<V> {
             value_node_map.get(array.get(idx).value).index = min_idx;
             array.set(idx, t);
             value_node_map.get(t.value).index = idx;
-            minHeapify(min_idx, heap_size);
+            minHeapify(min_idx);
             return true;
         }
         return false;
@@ -122,7 +113,7 @@ public class MinHeap<V> {
 
     private void buildMinHeap() {
         for (int i = heap_size / 2 - 1; i >= 0; i--) {
-            minHeapify(i, heap_size);
+            minHeapify(i);
         }
     }
 }
