@@ -6,7 +6,7 @@ import java.util.*;
 // dynamic minimum priority queue
 // key must be a number
 public final class FibonacciHeap<V> {
-    static class Node<T> implements Comparable<Node<T>> {
+    static class Node<T> {
         private double key;
         private T value;
         private Node<T> parent = null;
@@ -41,16 +41,8 @@ public final class FibonacciHeap<V> {
             return value;
         }
 
-        private void setValue(T val) {
-            this.value = val;
-        }
-
         Node<T> getParent() {
             return parent;
-        }
-
-        private void setParent(Node<T> p) {
-            parent = p;
         }
 
         void setChildList(Node<T> x) {
@@ -62,17 +54,6 @@ public final class FibonacciHeap<V> {
 
         Node<T> getChildList() {
             return childList;
-        }
-
-        @Override
-        public int compareTo(Node<T> other) {
-            var t = (int) (key - other.key);
-            if (t == 0) {
-                return value.equals(other.value) ? 0 : value.hashCode() - other.value.hashCode();
-            }
-            else {
-                return t;
-            }
         }
 
 
@@ -130,7 +111,7 @@ public final class FibonacciHeap<V> {
         }
         else {
             addNodeToList(x, root_list); // add x to root list
-            if (x.compareTo(root_list) < 0) {
+            if (x.key < root_list.key) {
                 root_list = x;
             }
         }
@@ -188,7 +169,7 @@ public final class FibonacciHeap<V> {
             int d = x.degree;
             while (A.get(d) != null) {
                 var y = A.get(d); // y stored node
-                if (x.compareTo(y) > 0) { // exchange pointer
+                if (x.key > y.key) { // exchange pointer
                     var t = x;
                     x = y;
                     y = t;
@@ -213,7 +194,7 @@ public final class FibonacciHeap<V> {
                 }
                 else {
                     addNodeToList(t, root_list);
-                    if (t.compareTo(root_list) < 0) {
+                    if (t.key < root_list.key) {
                         root_list = t;
                     }
                 }
@@ -235,7 +216,7 @@ public final class FibonacciHeap<V> {
         f1_right.left = f2_left;
         f2_left.right = f1_right;
 
-        if (f2.root_list.compareTo(f1.root_list) < 0) {
+        if (f2.root_list.key < f1.root_list.key) {
             res.root_list = f2.root_list;
         }
         res.number = f1.number + f2.number;

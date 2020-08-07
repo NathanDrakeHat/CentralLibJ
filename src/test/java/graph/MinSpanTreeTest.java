@@ -3,7 +3,7 @@ package graph;
 import org.junit.jupiter.api.Test;
 
 import static graph.MinSpanTree.*;
-import static graph.LinkedGraph.*;
+import graph.LinkedGraph.*;
 
 import java.util.*;
 
@@ -20,7 +20,7 @@ class MinSpanTreeTest {
         }
         assertEquals(37, i);
     }
-    static LinkedGraph<KruskalVertex<String>> buildKruskalExample() {
+    LinkedGraph<KruskalVertex<String>> buildKruskalExample() {
         String n = "a,b,c,d,e,f,g,h,i";
         String[] names = n.split(",");
         int len = names.length;
@@ -43,13 +43,22 @@ class MinSpanTreeTest {
 
     @Test
     public void algorithmOfPrimTest() {
-        var graph = buildPrimExample();
-        runFibonacciHeap(graph);
-        graph = buildPrimExample();
-        runMinHeap(graph);
+        var t = buildPrimExample();
+        runFibonacciHeap(t.graph,t.target);
+        t = buildPrimExample();
+        runMinHeap(t.graph,t.target);
+
     }
-    static void runFibonacciHeap(LinkedGraph<MinSpanTree.PrimVertex<String>> graph){
-        algorithmOfPrimWithFibonacciHeap(graph, targetPrim_a);
+    static class GraphAndTarget{
+        LinkedGraph<MinSpanTree.PrimVertex<String>> graph;
+        PrimVertex<String> target;
+        public GraphAndTarget(LinkedGraph<MinSpanTree.PrimVertex<String>> graph, PrimVertex<String> target){
+            this.graph = graph;
+            this.target = target;
+        }
+    }
+    void runFibonacciHeap(LinkedGraph<MinSpanTree.PrimVertex<String>> graph,PrimVertex<String> target){
+        algorithmOfPrimWithFibonacciHeap(graph, target);
         var vertices = graph.getAllVertices();
         Set<Set<String>> res = new HashSet<>();
         for (var vertex : vertices) {
@@ -62,8 +71,8 @@ class MinSpanTreeTest {
         }
         assertTrue(res.equals(buildPrimAnswer1()) || res.equals(buildPrimAnswer2()));
     }
-    static void runMinHeap(LinkedGraph<MinSpanTree.PrimVertex<String>> graph){
-        algorithmOfPrimWithMinHeap(graph, targetPrim_a);
+    void runMinHeap(LinkedGraph<MinSpanTree.PrimVertex<String>> graph,PrimVertex<String> target){
+        algorithmOfPrimWithMinHeap(graph, target);
         var vertices = graph.getAllVertices();
         Set<Set<String>> res = new HashSet<>();
         for (var vertex : vertices) {
@@ -76,8 +85,7 @@ class MinSpanTreeTest {
         }
         assertTrue(res.equals(buildPrimAnswer1()) || res.equals(buildPrimAnswer2()));
     }
-    static PrimVertex<String> targetPrim_a;
-    static LinkedGraph<PrimVertex<String>> buildPrimExample() {
+    GraphAndTarget buildPrimExample() {
         String n = "a,b,c,d,e,f,g,h,i";
         String[] names = n.split(",");
         int len = names.length;
@@ -93,10 +101,10 @@ class MinSpanTreeTest {
         for (int i = 0; i < len_; i++) {
             res.setNeighbor(vertices.get(indices1[i]), vertices.get(indices2[i]), weights[i]);
         }
-        targetPrim_a = vertices.get(0);
-        return res;
+
+        return new GraphAndTarget(res,vertices.get(0));
     }
-    static Set<Set<String>> buildPrimAnswer1() {
+    Set<Set<String>> buildPrimAnswer1() {
         String n = "a,b,c,d,e,f,g,h,i";
         String[] names = n.split(",");
         int[] indexes1 = new int[]{0, 1, 2, 3, 4, 5, 6, 7, 1, 2, 8, 8, 2, 3};
@@ -111,7 +119,7 @@ class MinSpanTreeTest {
         }
         return res;
     }
-    static Set<Set<String>> buildPrimAnswer2() {
+    Set<Set<String>> buildPrimAnswer2() {
         String n = "a,b,c,d,e,f,g,h,i";
         String[] names = n.split(",");
         int[] indexes1 = new int[]{0, 1, 2, 3, 4, 5, 6, 7, 1, 2, 8, 8, 2, 3};
