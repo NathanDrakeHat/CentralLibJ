@@ -3,6 +3,7 @@ package structures;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -11,7 +12,7 @@ class RedBlackTreeTest {
 
     @Test
     public void insertFixUpTest() {
-        var RBtree = new RedBlackTree<Integer, Integer>();
+        var RBtree = new RedBlackTree<Integer, Integer>(Comparator.comparingInt(o -> o));
         RBtree.insert(11, 0);
         RBtree.insert(2, 0);
         RBtree.insert(14, 0);
@@ -35,7 +36,7 @@ class RedBlackTreeTest {
 
     @Test
     public void balanceTest() {
-        RedBlackTree<Integer, Integer> t = new RedBlackTree<>();
+        RedBlackTree<Integer, Integer> t = new RedBlackTree<>(Comparator.comparingInt(o -> o));
         for (int i = 0; i < 2047; i++) {
             t.insert(i, i);
         }
@@ -49,7 +50,7 @@ class RedBlackTreeTest {
 
     @Test
     public void FunctionsTest() {
-        var t = new RedBlackTree<Integer, String>();
+        var t = new RedBlackTree<Integer, String>(Comparator.comparingInt(o -> o));
         assertTrue(t.tryGetMaxKey().isEmpty());
         assertTrue(t.tryGetMinKey().isEmpty());
         assertTrue(t.tryGetValueOfMaxKey().isEmpty());

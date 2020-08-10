@@ -8,35 +8,23 @@ import java.util.function.BiConsumer;
 
 
 public final class RedBlackTree<K, V> {
-    static class ColorNode<P, Q> implements Comparable<ColorNode<P, Q>> {
+    static class ColorNode<P, Q> {
         private P key;
         private Q value;
         private COLOR color;
         public ColorNode<P, Q> parent;
         public ColorNode<P, Q> left;
         public ColorNode<P, Q> right;
-        private final Comparator<P> p_comparator;
 
         private ColorNode(COLOR color) {
             this.color = color;
-            p_comparator = null;
         }
 
         private ColorNode(P key, Q val, Comparator<P> p_comparator) {
             Objects.requireNonNull(key);
-            if (key instanceof Comparable) {
-                color = COLOR.RED;
-                this.key = key;
-                this.value = val;
-                this.p_comparator = p_comparator;
-            }
-            else {
-                color = COLOR.RED;
-                this.key = key;
-                this.value = val;
-                Objects.requireNonNull(p_comparator);
-                this.p_comparator = p_comparator;
-            }
+            color = COLOR.RED;
+            this.key = key;
+            this.value = val;
         }
 
         public boolean isRed() {
@@ -94,39 +82,6 @@ public final class RedBlackTree<K, V> {
         private void setRight(ColorNode<P, Q> right) {
             this.right = right;
         }
-
-        @Override
-        @SuppressWarnings("unchecked")
-        public int compareTo(ColorNode other) {
-            if (p_comparator != null) {
-                var t = p_comparator.compare(key, (P) other.key);
-                return (t == 0) ? (value.equals(other.value) ? 0 : value.hashCode() - other.value.hashCode()) : t;
-            }
-            else if (key instanceof Comparable) {
-                if (!this.key.getClass().equals(other.key.getClass())) {
-                    throw new IllegalArgumentException("type match error");
-                }
-                var t = ((Comparable<P>) key).compareTo((P) other.key);
-                return (t == 0) ? (value.equals(other.value) ? 0 : value.hashCode() - other.value.hashCode()) : t;
-            }
-            else {
-                throw new AssertionError();
-            }
-        }
-
-        // It must be same
-        @SuppressWarnings("unchecked")
-        public int compareKey(P key) {
-            if (p_comparator != null) {
-                return p_comparator.compare(this.getKey(), key);
-            }
-            else if (getKey() instanceof Comparable) {
-                return ((Comparable<P>) getKey()).compareTo(key);
-            }
-            else {
-                throw new AssertionError();
-            }
-        }
     }
 
     private enum COLOR {RED, BLACK}
@@ -136,9 +91,6 @@ public final class RedBlackTree<K, V> {
     private final ColorNode<K, V> sentinel = new ColorNode<>(COLOR.BLACK);// sentinel: denote leaf and parent of root
 
 
-    public RedBlackTree() {
-        k_comparator = null;
-    }
 
     public RedBlackTree(Comparator<K> k_comparator) {
         Objects.requireNonNull(k_comparator);
@@ -294,7 +246,7 @@ public final class RedBlackTree<K, V> {
             var ptr = root;
             while (ptr != sentinel) {
                 store = ptr;
-                if (n.compareTo(ptr) < 0) {
+                if (k_comparator.compare(n.key, ptr.key) < 0) {
                     ptr = ptr.getLeft();
                 }
                 else {
@@ -302,7 +254,7 @@ public final class RedBlackTree<K, V> {
                 }
             }
             n.setParent(store);
-            if (n.compareTo(store) < 0) {
+            if (k_comparator.compare(n.key, store.key) < 0) {
                 store.setLeft(n);
             }
             else {
@@ -485,13 +437,13 @@ public final class RedBlackTree<K, V> {
     }
 
     private ColorNode<K, V> search(ColorNode<K, V> n, K key) {
-        if (n.compareKey(key) == 0) {
+        if (k_comparator.compare(n.key, key) == 0) {
             return n;
         }
-        else if (n.compareKey(key) > 0 && n.getLeft() != sentinel) {
+        else if (k_comparator.compare(n.key, key) > 0 && n.getLeft() != sentinel) {
             return search(n.getLeft(), key);
         }
-        else if (n.compareKey(key) < 0 && n.getRight() != sentinel) {
+        else if (k_comparator.compare(n.key, key) < 0 && n.getRight() != sentinel) {
             return search(n.getRight(), key);
         }
         throw new NoSuchElementException();
