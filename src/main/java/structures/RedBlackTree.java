@@ -84,7 +84,7 @@ public final class RedBlackTree<K, V> {
         }
     }
 
-    private enum COLOR {RED, BLACK}
+    enum COLOR {RED, BLACK}
 
     ColorNode<K, V> root = null;
     private final Comparator<K> k_comparator;
