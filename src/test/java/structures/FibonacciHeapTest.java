@@ -75,7 +75,7 @@ class FibonacciHeapTest {
         m.right.right.childList = t;
         t.parent = m.right.right;
         m.right.right.degree = 2;
-        
+
         addChild(t,46);
         H.count = 15;
         return H;

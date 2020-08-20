@@ -114,6 +114,7 @@ public final class FibonacciHeap<K,V> {
                 var y = A.get(d); // y stored node
                 if (keyComparator.compare(x.key, y.key) > 0) { // exchange pointer
                     var t = x;
+                    //noinspection SuspiciousNameCombination
                     x = y;
                     y = t;
                 }
