@@ -19,7 +19,7 @@ public final class RedBlackTree<K, V>{
             this.color = color;
         }
 
-        ColorNode(P key, Q val, Comparator<P> p_comparator) {
+        ColorNode(P key, Q val) {
             Objects.requireNonNull(key);
             color = COLOR.RED;
             this.key = key;
@@ -156,7 +156,7 @@ public final class RedBlackTree<K, V>{
 
     public void insert(K key, V val) {
         Objects.requireNonNull(key);
-        insert(new ColorNode<>(key, val, k_comparator));
+        insert(new ColorNode<>(key, val));
     }
 
     private void insert(ColorNode<K, V> n) {
@@ -455,6 +455,7 @@ public final class RedBlackTree<K, V>{
         }
     }
 
+    @SuppressWarnings("unused")
     private ColorNode<K, V> getPredecessor(ColorNode<K, V> current) {
         if (current.left != sentinel) {
             return getMaximum(current.left);
