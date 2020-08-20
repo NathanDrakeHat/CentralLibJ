@@ -4,7 +4,6 @@ package graph;
 import java.util.*;
 import graph.BFS.*;
 
-
 // all pair shortest path
 public class APShortestPath {
 

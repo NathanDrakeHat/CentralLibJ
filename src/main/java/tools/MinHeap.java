@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.function.ToDoubleFunction;
 
 // key must be a number
-public class MinHeap<V> {
+public final class MinHeap<V> {
     private class Node{
         double key;
         V value;
@@ -38,7 +38,7 @@ public class MinHeap<V> {
         buildMinHeap();
     }
 
-    public V forceExtractMin() {
+    public V extractMin() {
         if (heap_size == 0) {
             throw new NoSuchElementException();
         }

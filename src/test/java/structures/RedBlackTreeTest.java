@@ -23,15 +23,15 @@ class RedBlackTreeTest {
         RBtree.insert(8, 0);
         RBtree.insert(4, 0);
         var root = RBtree.root;
-        assertEquals(root.getKey(), 7); // 7
-        assertEquals(root.getLeft().getKey(), 2); // 2
-        assertEquals(root.getRight().getKey(), 11); // 11
-        assertEquals(root.getLeft().getLeft().getKey(), 1); // 1
-        assertEquals(root.getLeft().getRight().getKey(), 5); // 5
-        assertEquals(root.getLeft().getRight().getLeft().getKey(), 4); // 4
-        assertEquals(root.getRight().getLeft().getKey(), 8); // 8
-        assertEquals(root.getRight().getRight().getKey(), 14); // 14
-        assertEquals(root.getRight().getRight().getRight().getKey(), 15); // 15
+        assertEquals(root.key, 7); // 7
+        assertEquals(root.left.key, 2); // 2
+        assertEquals(root.right.key, 11); // 11
+        assertEquals(root.left.left.key, 1); // 1
+        assertEquals(root.left.right.key, 5); // 5
+        assertEquals(root.left.right.left.key, 4); // 4
+        assertEquals(root.right.left.key, 8); // 8
+        assertEquals(root.right.right.key, 14); // 14
+        assertEquals(root.right.right.right.key, 15); // 15
     }
 
     @Test
@@ -50,11 +50,6 @@ class RedBlackTreeTest {
     @Test
     public void FunctionsTest() {
         var t = new RedBlackTree<Integer, String>(Comparator.comparingInt(o -> o));
-        assertTrue(t.tryGetMaxKey().isEmpty());
-        assertTrue(t.tryGetMinKey().isEmpty());
-        assertTrue(t.tryGetValueOfMaxKey().isEmpty());
-        assertTrue(t.tryGetValueOfMinKey().isEmpty());
-        assertTrue(t.trySearch(1).isEmpty());
         List<Integer> l1 = new ArrayList<>();
         List<Integer> l2 = new ArrayList<>();
         for (int i = 0; i < 16; i++) {
@@ -63,12 +58,24 @@ class RedBlackTreeTest {
         }
         assertEquals(t.getHeight(), 4);
         assertEquals(t.getCount(), 16);
-        assertEquals(t.forceGetMinKey(), 0);
-        assertEquals(t.forceGetMaxKey(), 15);
-        assertEquals(t.forceGetValueOfMaxKey(), "15");
-        assertEquals(t.forceGetValueOfMinKey(), "0");
+        assertEquals(t.getMinKey(), 0);
+        assertEquals(t.getMaxKey(), 15);
+        assertEquals(t.getValueOfMaxKey(), "15");
+        assertEquals(t.getValueOfMinKey(), "0");
         t.inOrderForEach((i, s) -> l2.add(i));
         assertEquals(l1, l2);
-        assertEquals(t.forceSearch(5), "5");
+        assertEquals(t.search(5), "5");
     }
+
+//    @Test
+//    public void performanceTest(){
+//        long t1 = System.nanoTime();
+//        var t = new RedBlackTree<Integer, Integer>(Comparator.comparingInt(a -> a));
+//        for (int i = 0; i < 16777215; i++) t.insert(i, i);
+//        System.out.println(t.getHeight());
+//        for (int i = 0; i < 8388609; i++) t.delete(i);
+//        System.out.println(t.getHeight());
+//        long t2 = System.nanoTime();
+//        System.out.println((t2-t1)/Math.pow(10,9));
+//    }
 }

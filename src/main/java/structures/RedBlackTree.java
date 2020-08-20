@@ -3,162 +3,89 @@ package structures;
 import java.util.Comparator;
 import java.util.NoSuchElementException;
 import java.util.Objects;
-import java.util.Optional;
 import java.util.function.BiConsumer;
 
 
 public final class RedBlackTree<K, V>{
-    static class ColorNode<P, Q> {
-        private P key;
-        private Q value;
-        private COLOR color;
-        public ColorNode<P, Q> parent;
-        public ColorNode<P, Q> left;
-        public ColorNode<P, Q> right;
+    static final class ColorNode<P, Q> {
+        P key;
+        Q value;
+        COLOR color;
+        ColorNode<P, Q> parent;
+        ColorNode<P, Q> left;
+        ColorNode<P, Q> right;
 
-        private ColorNode(COLOR color) {
+        ColorNode(COLOR color) {
             this.color = color;
         }
 
-        private ColorNode(P key, Q val, Comparator<P> p_comparator) {
+        ColorNode(P key, Q val, Comparator<P> p_comparator) {
             Objects.requireNonNull(key);
             color = COLOR.RED;
             this.key = key;
             this.value = val;
         }
 
-        public boolean isRed() {
+        boolean isRed() {
             return color == COLOR.RED;
         }
 
-        public boolean isBlack() {
+        boolean isBlack() {
             return color == COLOR.BLACK;
         }
 
-        public COLOR getColor() {
-            return color;
-        }
-
-        private void setColor(COLOR color) {
-            this.color = color;
-        }
-
-        private void setRed() {
+        void setRed() {
             color = COLOR.RED;
         }
 
-        private void setBlack() {
+        void setBlack() {
             color = COLOR.BLACK;
-        }
-
-        public Q getValue() {
-            return value;
-        }
-
-        public P getKey() {
-            return key;
-        }
-
-        public ColorNode<P, Q> getParent() {
-            return parent;
-        }
-
-        private void setParent(ColorNode<P, Q> parent) {
-            this.parent = parent;
-        }
-
-        public ColorNode<P, Q> getLeft() {
-            return left;
-        }
-
-        private void setLeft(ColorNode<P, Q> left) {
-            this.left = left;
-        }
-
-        public ColorNode<P, Q> getRight() {
-            return right;
-        }
-
-        private void setRight(ColorNode<P, Q> right) {
-            this.right = right;
         }
     }
 
     enum COLOR {RED, BLACK}
 
-    ColorNode<K, V> root = null;
+    ColorNode<K, V> root;
     private final Comparator<K> k_comparator;
     private final ColorNode<K, V> sentinel = new ColorNode<>(COLOR.BLACK);// sentinel: denote leaf and parent of root
-
-
+    
 
     public RedBlackTree(Comparator<K> k_comparator) {
         Objects.requireNonNull(k_comparator);
         this.k_comparator = k_comparator;
+        root = sentinel;
     }
-
-    public Optional<V> tryGetValueOfMinKey() {
-        try {
-            return Optional.of(forceGetValueOfMinKey());
-        } catch (NoSuchElementException e) {
-            return Optional.empty();
-        }
-    }
-
-    public V forceGetValueOfMinKey() {
+    
+    public V getValueOfMinKey() {
         if (root != null && sentinel != root) {
-            return getMinimum(root).getValue();
+            return getMinimum(root).value;
         }
         else {
             throw new NoSuchElementException("null tree");
         }
     }
-
-    public Optional<K> tryGetMinKey() {
-        try {
-            return Optional.of(forceGetMinKey());
-        } catch (NoSuchElementException e) {
-            return Optional.empty();
-        }
-    }
-
-    public K forceGetMinKey() {
+    
+    public K getMinKey() {
         if (root != null && sentinel != root) {
-            return getMinimum(root).getKey();
+            return getMinimum(root).key;
         }
         else {
             throw new NoSuchElementException("null tree");
         }
     }
-
-    public Optional<V> tryGetValueOfMaxKey() {
-        try {
-            return Optional.of(forceGetValueOfMaxKey());
-        } catch (NoSuchElementException e) {
-            return Optional.empty();
-        }
-    }
-
-    public V forceGetValueOfMaxKey() {
+    
+    public V getValueOfMaxKey() {
         if (root != null && root != sentinel) {
-            return getMaximum(root).getValue();
+            return getMaximum(root).value;
         }
         else {
             throw new NoSuchElementException("null tree");
         }
     }
-
-    public Optional<K> tryGetMaxKey() {
-        try {
-            return Optional.of(forceGetMaxKey());
-        } catch (NoSuchElementException e) {
-            return Optional.empty();
-        }
-    }
-
-    public K forceGetMaxKey() {
+    
+    public K getMaxKey() {
         if (root != null && root != sentinel) {
-            return getMaximum(root).getKey();
+            return getMaximum(root).key;
         }
         else {
             throw new NoSuchElementException("null tree");
@@ -167,11 +94,11 @@ public final class RedBlackTree<K, V>{
 
     private void resetRoot(ColorNode<K, V> r) {
         root = r;
-        root.setParent(sentinel);
+        root.parent = sentinel;
     }
 
     public void inOrderForEach(BiConsumer<K, V> bc) { // inorder print
-        if (root == null || sentinel == root) {
+        if (sentinel == root) {
             return;
         }
         Objects.requireNonNull(bc);
@@ -180,9 +107,9 @@ public final class RedBlackTree<K, V>{
 
     private void inorderTreeWalk(ColorNode<K, V> n, BiConsumer<K, V> bc) {
         if (n != sentinel & n != null) {
-            inorderTreeWalk(n.getLeft(), bc);
-            bc.accept(n.getKey(), n.getValue());
-            inorderTreeWalk(n.getRight(), bc);
+            inorderTreeWalk(n.left, bc);
+            bc.accept(n.key, n.value);
+            inorderTreeWalk(n.right, bc);
         }
     }
 
@@ -194,14 +121,14 @@ public final class RedBlackTree<K, V>{
     }
 
     private int getCount(ColorNode<K, V> n) { //overload trick
-        if (n.getRight() != sentinel && n.getLeft() == sentinel) {
-            return getCount(n.getRight()) + 1;
+        if (n.right != sentinel && n.left == sentinel) {
+            return getCount(n.right) + 1;
         }
-        else if (n.getRight() == sentinel && n.getLeft() != sentinel) {
-            return getCount(n.getLeft()) + 1;
+        else if (n.right == sentinel && n.left != sentinel) {
+            return getCount(n.left) + 1;
         }
-        else if (n.getRight() != sentinel && n.getLeft() != sentinel) {
-            return getCount(n.getLeft()) + getCount(n.getRight()) + 1;
+        else if (n.right != sentinel) {
+            return getCount(n.left) + getCount(n.right) + 1;
         }
         else {
             return 1;
@@ -209,19 +136,19 @@ public final class RedBlackTree<K, V>{
     }
 
     public int getHeight() {
-        if (root == null || root == sentinel) {
+        if (root == sentinel) {
             return 0;
         }
         int height = 1;
-        int left_max = getHeight(root.getLeft(), height);
-        int right_max = getHeight(root.getRight(), height);
+        int left_max = getHeight(root.left, height);
+        int right_max = getHeight(root.right, height);
         return Math.max(left_max, right_max) - 1;
     }
 
     private int getHeight(ColorNode<K, V> n, int height) {
         if (n != sentinel) {
-            int left_max = getHeight(n.getLeft(), height + 1);
-            int right_max = getHeight(n.getRight(), height + 1);
+            int left_max = getHeight(n.left, height + 1);
+            int right_max = getHeight(n.right, height + 1);
             return Math.max(left_max, right_max);
         }
         return height;
@@ -236,10 +163,10 @@ public final class RedBlackTree<K, V>{
         if (n == sentinel) {
             return;
         }
-        if (root == null || root == sentinel) {
+        if (root == sentinel) {
             resetRoot(n);
-            root.setRight(sentinel);
-            root.setLeft(sentinel);
+            root.right = sentinel;
+            root.left = sentinel;
         }
         else {
             var store = sentinel;
@@ -247,62 +174,62 @@ public final class RedBlackTree<K, V>{
             while (ptr != sentinel) {
                 store = ptr;
                 if (k_comparator.compare(n.key, ptr.key) < 0) {
-                    ptr = ptr.getLeft();
+                    ptr = ptr.left;
                 }
                 else {
-                    ptr = ptr.getRight();
+                    ptr = ptr.right;
                 }
             }
-            n.setParent(store);
+            n.parent = store;
             if (k_comparator.compare(n.key, store.key) < 0) {
-                store.setLeft(n);
+                store.left = n;
             }
             else {
-                store.setRight(n);
+                store.right = n;
             }
-            n.setLeft(sentinel);
-            n.setRight(sentinel);
+            n.left = sentinel;
+            n.right = sentinel;
         }
         insertFixUp(n);
     }
 
     private void insertFixUp(ColorNode<K, V> ptr) {
-        while (ptr.getParent().isRed()) {
-            if (ptr.getParent() == ptr.getParent().getParent().getLeft()) {
-                var right = ptr.getParent().getParent().getRight();
+        while (ptr.parent.isRed()) {
+            if (ptr.parent == ptr.parent.parent.left) {
+                var right = ptr.parent.parent.right;
                 if (right.isRed()) { // case1: sibling is red
-                    ptr.getParent().setBlack();
+                    ptr.parent.setBlack();
                     right.setBlack();
-                    ptr.getParent().getParent().setRed();
-                    ptr = ptr.getParent().getParent();
+                    ptr.parent.parent.setRed();
+                    ptr = ptr.parent.parent;
                     continue;
                 }
-                else if (ptr == ptr.getParent().getRight()) { //case 2 convert to case 3
-                    ptr = ptr.getParent();
+                else if (ptr == ptr.parent.right) { //case 2 convert to case 3
+                    ptr = ptr.parent;
                     leftRotate(ptr);
                 }
-                ptr.getParent().setBlack(); // case3
-                ptr.getParent().getParent().setRed();
-                rightRotate(ptr.getParent().getParent()); // ptr.getParent will be black and then break
-                ptr = ptr.getParent();
+                ptr.parent.setBlack(); // case3
+                ptr.parent.parent.setRed();
+                rightRotate(ptr.parent.parent); // ptr.getParent will be black and then break
+                ptr = ptr.parent;
             }
             else {
-                var left = ptr.getParent().getParent().getLeft();
+                var left = ptr.parent.parent.left;
                 if (left.isRed()) {
-                    ptr.getParent().setBlack();
+                    ptr.parent.setBlack();
                     left.setBlack();
-                    ptr.getParent().getParent().setRed();
-                    ptr = ptr.getParent().getParent();
+                    ptr.parent.parent.setRed();
+                    ptr = ptr.parent.parent;
                     continue;
                 }
-                else if (ptr == ptr.getParent().getLeft()) {
-                    ptr = ptr.getParent();
+                else if (ptr == ptr.parent.left) {
+                    ptr = ptr.parent;
                     rightRotate(ptr);
                 }
-                ptr.getParent().setBlack();
-                ptr.getParent().getParent().setRed();
-                leftRotate(ptr.getParent().getParent());
-                ptr = ptr.getParent();
+                ptr.parent.setBlack();
+                ptr.parent.parent.setRed();
+                leftRotate(ptr.parent.parent);
+                ptr = ptr.parent;
             }
         }
         root.setBlack();
@@ -318,32 +245,32 @@ public final class RedBlackTree<K, V>{
             throw new NoSuchElementException("null tree");
         }
         var ptr = target;
-        var ptr_color = ptr.getColor();
+        var ptr_color = ptr.color;
         ColorNode<K, V> fix_up;
-        if (ptr.getLeft() == sentinel) {
-            fix_up = target.getRight();
+        if (ptr.left == sentinel) {
+            fix_up = target.right;
             transplant(target, fix_up);
         }
-        else if (ptr.getRight() == sentinel) {
-            fix_up = target.getLeft();
+        else if (ptr.right == sentinel) {
+            fix_up = target.left;
             transplant(target, fix_up);
         }
         else {
             ptr = getSuccessor(target);
-            ptr_color = ptr.getColor();
-            fix_up = ptr.getRight();
-            if (ptr.getParent() == target) {
-                fix_up.setParent(ptr); // in case of sentinel refer to target
+            ptr_color = ptr.color;
+            fix_up = ptr.right;
+            if (ptr.parent == target) {
+                fix_up.parent = ptr; // in case of sentinel refer to target
             }
             else {
-                transplant(ptr, ptr.getRight());
-                ptr.setRight(target.getRight());
-                target.getRight().setParent(ptr);
+                transplant(ptr, ptr.right);
+                ptr.right = target.right;
+                target.right.parent = ptr;
             }
             transplant(target, ptr);
-            ptr.setLeft(target.getLeft());
-            target.getLeft().setParent(ptr);
-            ptr.setColor(target.getColor());
+            ptr.left = target.left;
+            target.left.parent = ptr;
+            ptr.color = target.color;
         }
         if (ptr_color == COLOR.BLACK) { // delete black node may violate property of red-black tree
             deleteFixUp(fix_up);
@@ -353,53 +280,53 @@ public final class RedBlackTree<K, V>{
     private void deleteFixUp(ColorNode<K, V> fix_up) {
         while (fix_up != root && fix_up.isBlack()) {
             ColorNode<K, V> sibling;
-            if (fix_up == fix_up.getParent().getLeft()) {
-                sibling = fix_up.getParent().getRight();
+            if (fix_up == fix_up.parent.left) {
+                sibling = fix_up.parent.right;
                 if (sibling.isRed()) { // case1:sibling is black, convert to case 2, 3 or 4
                     sibling.setBlack(); // , which denote that sibling is black
-                    fix_up.getParent().setRed();
-                    leftRotate(fix_up.getParent());
-                    sibling = fix_up.getParent().getRight();
+                    fix_up.parent.setRed();
+                    leftRotate(fix_up.parent);
+                    sibling = fix_up.parent.right;
                 }
-                if (sibling.getLeft().isBlack() && sibling.getRight().isBlack()) { // case2: sibling children is black
+                if (sibling.left.isBlack() && sibling.right.isBlack()) { // case2: sibling children is black
                     sibling.setRed();
-                    fix_up = fix_up.getParent();
+                    fix_up = fix_up.parent;
                     continue;
                 }
-                else if (sibling.getRight().isBlack()) { // case3: sibling left red, right black. convert case4
-                    sibling.getLeft().setBlack();
+                else if (sibling.right.isBlack()) { // case3: sibling left red, right black. convert case4
+                    sibling.left.setBlack();
                     sibling.setRed();
                     rightRotate(sibling);
-                    sibling = fix_up.getParent().getRight();
+                    sibling = fix_up.parent.right;
                 }
-                sibling.setColor(fix_up.getParent().getColor()); // case4: sibling right red
-                fix_up.getParent().setBlack();
-                sibling.getRight().setBlack();
-                leftRotate(fix_up.getParent());
+                sibling.color = fix_up.parent.color; // case4: sibling right red
+                fix_up.parent.setBlack();
+                sibling.right.setBlack();
+                leftRotate(fix_up.parent);
             }
             else {
-                sibling = fix_up.getParent().getLeft();
+                sibling = fix_up.parent.left;
                 if (sibling.isRed()) {
                     sibling.setBlack();
-                    fix_up.getParent().setRed();
-                    rightRotate(fix_up.getParent());
-                    sibling = fix_up.getParent().getLeft();
+                    fix_up.parent.setRed();
+                    rightRotate(fix_up.parent);
+                    sibling = fix_up.parent.left;
                 }
-                if (sibling.getLeft().isBlack() && sibling.getRight().isBlack()) {
+                if (sibling.left.isBlack() && sibling.right.isBlack()) {
                     sibling.setRed();
-                    fix_up = fix_up.getParent();
+                    fix_up = fix_up.parent;
                     continue;
                 }
-                else if (sibling.getLeft().isBlack()) {
-                    sibling.getRight().setBlack();
+                else if (sibling.left.isBlack()) {
+                    sibling.right.setBlack();
                     sibling.setRed();
                     leftRotate(sibling);
-                    sibling = fix_up.getParent().getLeft();
+                    sibling = fix_up.parent.left;
                 }
-                sibling.setColor(fix_up.getParent().getColor());
-                fix_up.getParent().setBlack();
-                sibling.getLeft().setBlack();
-                rightRotate(fix_up.getParent());
+                sibling.color = fix_up.parent.color;
+                fix_up.parent.setBlack();
+                sibling.left.setBlack();
+                rightRotate(fix_up.parent);
             }
             fix_up = root;
         }
@@ -407,92 +334,84 @@ public final class RedBlackTree<K, V>{
     }
 
     private void transplant(ColorNode<K, V> a, ColorNode<K, V> b) {
-        if (a.getParent() == sentinel) {
+        if (a.parent == sentinel) {
             resetRoot(b);
         }
-        else if (a.getParent().getRight() == a) {
-            a.getParent().setRight(b);
-            b.setParent(a.getParent()); // permissible if b is sentinel
+        else if (a.parent.right == a) {
+            a.parent.right = b;
+            b.parent = a.parent; // permissible if b is sentinel
         }
         else {
-            a.getParent().setLeft(b);
-            b.setParent(a.getParent());
+            a.parent.left = b;
+            b.parent = a.parent;
         }
     }
-
-    public Optional<V> trySearch(K key) {
-        try {
-            return Optional.of(forceSearch(key));
-        } catch (NoSuchElementException e) {
-            return Optional.empty();
-        }
-    }
-
-    public V forceSearch(K key) {
-        if (root == null || root == sentinel) {
+    
+    public V search(K key) {
+        if (root == sentinel) {
             throw new NoSuchElementException();
         }
         Objects.requireNonNull(key);
-        return search(root, key).getValue();
+        return search(root, key).value;
     }
 
     private ColorNode<K, V> search(ColorNode<K, V> n, K key) {
         if (k_comparator.compare(n.key, key) == 0) {
             return n;
         }
-        else if (k_comparator.compare(n.key, key) > 0 && n.getLeft() != sentinel) {
-            return search(n.getLeft(), key);
+        else if (k_comparator.compare(n.key, key) > 0 && n.left != sentinel) {
+            return search(n.left, key);
         }
-        else if (k_comparator.compare(n.key, key) < 0 && n.getRight() != sentinel) {
-            return search(n.getRight(), key);
+        else if (k_comparator.compare(n.key, key) < 0 && n.right != sentinel) {
+            return search(n.right, key);
         }
         throw new NoSuchElementException();
     }
 
     private void leftRotate(ColorNode<K, V> left_node) {
-        var right_node = left_node.getRight();
+        var right_node = left_node.right;
         //exchange
-        left_node.setRight(right_node.getLeft());
-        if (right_node.getLeft() != sentinel) { // remember to double link
-            right_node.getLeft().setParent(left_node);
+        left_node.right = right_node.left;
+        if (right_node.left != sentinel) { // remember to double link
+            right_node.left.parent = left_node;
         }
         //exchange
-        right_node.setParent(left_node.getParent()); // double link right_node to left_node parent
-        if (left_node.getParent() == sentinel) {
+        right_node.parent = left_node.parent; // double link right_node to left_node parent
+        if (left_node.parent == sentinel) {
             resetRoot(right_node);
         }
-        else if (left_node.getParent().getLeft() == left_node) {
-            left_node.getParent().setLeft(right_node);
+        else if (left_node.parent.left == left_node) {
+            left_node.parent.left = right_node;
         }
         else {
-            left_node.getParent().setRight(right_node);
+            left_node.parent.right = right_node;
         }
         //exchange
-        right_node.setLeft(left_node);
-        left_node.setParent(right_node);
+        right_node.left = left_node;
+        left_node.parent = right_node;
     }
 
     private void rightRotate(ColorNode<K, V> right_node) { // mirror of leftRotate
-        var left_node = right_node.getLeft();
+        var left_node = right_node.left;
         //exchange
-        right_node.setLeft(left_node.getRight());
-        if (left_node.getRight() != sentinel) { // remember to double link
-            left_node.getRight().setParent(right_node);
+        right_node.left = left_node.right;
+        if (left_node.right != sentinel) { // remember to double link
+            left_node.right.parent = right_node;
         }
         //exchange
-        left_node.setParent(right_node.getParent()); // double link right_node to left_node parent
-        if (right_node.getParent() == sentinel) {
+        left_node.parent = right_node.parent; // double link right_node to left_node parent
+        if (right_node.parent == sentinel) {
             resetRoot(left_node);
         }
-        else if (right_node.getParent().getRight() == right_node) {
-            right_node.getParent().setRight(left_node);
+        else if (right_node.parent.right == right_node) {
+            right_node.parent.right = left_node;
         }
         else {
-            right_node.getParent().setLeft(left_node);
+            right_node.parent.left = left_node;
         }
         //exchange
-        left_node.setRight(right_node);
-        right_node.setParent(left_node);
+        left_node.right = right_node;
+        right_node.parent = left_node;
     }
 
     private ColorNode<K, V> getMinimum(ColorNode<K, V> current) {
@@ -500,7 +419,7 @@ public final class RedBlackTree<K, V>{
         var ptr = current;
         while (ptr != sentinel) {
             target = ptr;
-            ptr = ptr.getLeft();
+            ptr = ptr.left;
         }
         if (target == null) {
             throw new NoSuchElementException();
@@ -513,7 +432,7 @@ public final class RedBlackTree<K, V>{
         var ptr = current;
         while (ptr != sentinel) {
             target = ptr;
-            ptr = ptr.getRight();
+            ptr = ptr.right;
         }
         if (target == null) {
             throw new NoSuchElementException();
@@ -522,30 +441,30 @@ public final class RedBlackTree<K, V>{
     }
 
     private ColorNode<K, V> getSuccessor(ColorNode<K, V> current) {
-        if (current.getRight() != sentinel) {
-            return getMinimum(current.getRight());
+        if (current.right != sentinel) {
+            return getMinimum(current.right);
         }
         else {
-            var target = current.getParent();
+            var target = current.parent;
             var target_right = current;
-            while ((target != sentinel) && target.getRight() == target_right) {
+            while ((target != sentinel) && target.right == target_right) {
                 target_right = target;
-                target = target.getParent();
+                target = target.parent;
             }
             return target;
         }
     }
 
     private ColorNode<K, V> getPredecessor(ColorNode<K, V> current) {
-        if (current.getLeft() != sentinel) {
-            return getMaximum(current.getLeft());
+        if (current.left != sentinel) {
+            return getMaximum(current.left);
         }
         else {
-            var target = current.getParent();
+            var target = current.parent;
             var target_left = current;
-            while ((target != sentinel) && (target.getLeft() == target_left)) {
+            while ((target != sentinel) && (target.left == target_left)) {
                 target_left = target;
-                target = target.getParent();
+                target = target.parent;
 
             }
             return target;

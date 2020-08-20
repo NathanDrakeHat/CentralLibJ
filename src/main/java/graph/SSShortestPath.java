@@ -7,6 +7,7 @@ import tools.MinHeap;
 import static graph.BFS.*;
 import static graph.DFS.*;
 
+import java.util.Comparator;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
@@ -97,11 +98,11 @@ public final class SSShortestPath {
     private static <T> void algorithmDijkstraWithFibonacciHeap(LinkedGraph<BFSVertex<T>> G, BFSVertex<T> s) {
         initializeSingleSource(G, s);
         var vertices = G.getAllVertices();
-        FibonacciHeap<BFSVertex<T>> Q = new FibonacciHeap<>();
+        FibonacciHeap<Double,BFSVertex<T>> Q = new FibonacciHeap<>(Comparator.comparingDouble(a->a));
         for (var vertex : vertices) {
             Q.insert(vertex.distance, vertex);
         }
-        while (Q.length() > 0) {
+        while (Q.count() > 0) {
             var u = Q.extractMin();
             var u_edges = G.getEdgesAt(u);
             for (var edge : u_edges) {
@@ -121,7 +122,7 @@ public final class SSShortestPath {
         var vertices = G.getAllVertices();
         MinHeap<BFSVertex<T>> Q = new MinHeap<>(vertices, BFSVertex::getDistance);
         while (Q.length() > 0) {
-            var u = Q.forceExtractMin();
+            var u = Q.extractMin();
             var u_edges = G.getEdgesAt(u);
             for (var edge : u_edges) {
                 var v = edge.getAnotherSide(u);

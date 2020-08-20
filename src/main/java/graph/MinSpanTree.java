@@ -94,7 +94,7 @@ public final class MinSpanTree {
     public static <T> void algorithmOfPrimWithFibonacciHeap(LinkedGraph<PrimVertex<T>> graph, PrimVertex<T> r) {
         Objects.requireNonNull(r);
         Objects.requireNonNull(graph);
-        FibonacciHeap<PrimVertex<T>> Q = new FibonacciHeap<>();
+        FibonacciHeap<Double,PrimVertex<T>> Q = new FibonacciHeap<>(Comparator.comparingDouble(a->a));
         var vertices = graph.getAllVertices();
         for (var u : vertices) {
             if (u != r) {
@@ -106,7 +106,7 @@ public final class MinSpanTree {
             Q.insert(u.key, u);
             u.parent = null;
         }
-        while (Q.length() > 0) {
+        while (Q.count() > 0) {
             var u = Q.extractMin();
             var u_edges = graph.getEdgesAt(u);
             for (var edge : u_edges) {
@@ -135,7 +135,7 @@ public final class MinSpanTree {
         }
         MinHeap<PrimVertex<T>> Q = new MinHeap<>(vertices, PrimVertex::getKey);
         while (Q.length() > 0) {
-            var u = Q.forceExtractMin();
+            var u = Q.extractMin();
             var u_edges = graph.getEdgesAt(u);
             for (var edge : u_edges) {
                 var v = edge.getAnotherSide(u);
@@ -143,7 +143,6 @@ public final class MinSpanTree {
                     v.parent = u;
                     v.key = edge.getWeight();
                     Q.decreaseKey(v, v.key);
-                    int t = 1;
                 }
             }
         }
