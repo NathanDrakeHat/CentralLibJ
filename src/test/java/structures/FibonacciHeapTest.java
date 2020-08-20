@@ -42,21 +42,40 @@ class FibonacciHeapTest {
         H.insert(3, 3);
         var m = H.rootList;
         addChildren(m,17,24,23,7,21);
-        m.setChildList(buildNodeWithMark(18));
+
+        FibonacciHeap.Node<Integer,Integer> ptr;
+        ptr = buildNodeWithMark(18);
+        m.childList = ptr;
+        ptr.parent = m;
         m.degree = 2;
-        var m_child = m.getChildList();
+
+        var m_child = m.childList;
         m_child.degree = 1;
-        m_child.setChildList(buildNodeWithMark(39));
+        ptr = buildNodeWithMark(39);
+        m_child.childList = ptr;
+        ptr.parent = m_child;
+
         addChildren(m_child,52,38);
-        m_child.left.setChildList(buildNode(41));
+        ptr = buildNode(41);
+        m_child.left.childList = ptr;
+        ptr.parent = m_child.left;
         m_child.left.degree = 1;
-        m.right.setChildList(buildNode(30));
+
+        ptr = buildNode(30);
+        m.right.childList = ptr;
+        ptr.parent = m.right;
         m.right.degree = 1;
+
         FibonacciHeap.Node<Integer,Integer> t = buildNodeWithMark(26);
         t.degree = 1;
-        t.setChildList(buildNode(35));
-        m.right.right.setChildList(t);
+        ptr = buildNode(35);
+        t.childList = ptr;
+        ptr.parent = t;
+
+        m.right.right.childList = t;
+        t.parent = m.right.right;
         m.right.right.degree = 2;
+        
         addChild(t,46);
         H.count = 15;
         return H;
@@ -84,20 +103,20 @@ class FibonacciHeapTest {
         assertEquals(o, 3);
         //see <<introduction to  algorithm>> to find this test sample.
         assertEquals(List.of(7, 18, 38, 7, 38, 18), bcl(H.rootList));
-        assertEquals(List.of(39, 21, 39, 21), bcl(H.rootList.right.getChildList()));
-        assertEquals(List.of(52, 52), bcl(H.rootList.right.getChildList().left.getChildList()));
-        assertEquals(List.of(23, 17, 24, 23, 24, 17), bcl(H.rootList.getChildList()));
-        assertEquals(List.of(26, 46, 26, 46), bcl(H.rootList.getChildList().left.getChildList()));
-        assertEquals(List.of(30, 30), bcl(H.rootList.getChildList().left.left.getChildList()));
-        assertEquals(List.of(35, 35), bcl(H.rootList.getChildList().left.getChildList().getChildList()));
-        assertEquals(List.of(41, 41), bcl(H.rootList.right.right.getChildList()));
+        assertEquals(List.of(39, 21, 39, 21), bcl(H.rootList.right.childList));
+        assertEquals(List.of(52, 52), bcl(H.rootList.right.childList.left.childList));
+        assertEquals(List.of(23, 17, 24, 23, 24, 17), bcl(H.rootList.childList));
+        assertEquals(List.of(26, 46, 26, 46), bcl(H.rootList.childList.left.childList));
+        assertEquals(List.of(30, 30), bcl(H.rootList.childList.left.left.childList));
+        assertEquals(List.of(35, 35), bcl(H.rootList.childList.left.childList.childList));
+        assertEquals(List.of(41, 41), bcl(H.rootList.right.right.childList));
 
-        H.decreaseKey(H.rootList.getChildList().left.getChildList().left, 15);
-        H.decreaseKey(H.rootList.getChildList().left.getChildList().getChildList(), 5);
+        H.decreaseKey(H.rootList.childList.left.childList.left, 15);
+        H.decreaseKey(H.rootList.childList.left.childList.childList, 5);
 
         assertEquals(List.of(5, 26, 24, 7, 18, 38, 15, 5, 15, 38, 18, 7, 24, 26), bcl(H.rootList));
-        assertEquals(List.of(23, 17, 23, 17), bcl(H.rootList.right.right.right.getChildList()));
-        assertEquals(List.of(30, 30), bcl(H.rootList.right.right.right.getChildList().right.getChildList()));
-        assertEquals(List.of(39, 21, 39, 21), bcl(H.rootList.right.right.right.right.getChildList()));
+        assertEquals(List.of(23, 17, 23, 17), bcl(H.rootList.right.right.right.childList));
+        assertEquals(List.of(30, 30), bcl(H.rootList.right.right.right.childList.right.childList));
+        assertEquals(List.of(39, 21, 39, 21), bcl(H.rootList.right.right.right.right.childList));
     }
 }

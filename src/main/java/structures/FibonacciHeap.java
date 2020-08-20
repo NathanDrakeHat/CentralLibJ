@@ -10,7 +10,7 @@ public final class FibonacciHeap<K,V> {
         W key;
         T value;
         Node<W,T> parent = null;
-        private Node<W,T> childList = null; // int linked, circular list
+        Node<W,T> childList = null; // int linked, circular list
         Node<W,T> left;
         Node<W,T> right;
         int degree = 0; // number of children
@@ -22,17 +22,6 @@ public final class FibonacciHeap<K,V> {
             left = this;
             right = this;
         }
-
-        Node<W,T> getChildList(){return childList;}
-
-        void setChildList(Node<W,T> n){
-            childList = n;
-            if (n != null)
-            {
-                n.parent = this;
-            }
-        }
-
         @Override
         public String toString(){
             return String.format("key: %s",key.toString());
@@ -263,10 +252,11 @@ public final class FibonacciHeap<K,V> {
         if (z.parent != null) {
             if (z.parent.childList == z) {
                 if (z.right != z) {
-                    z.parent.setChildList(z.right);
+                    z.parent.childList = z.right;
+                    z.right.parent = z.parent;
                 }
                 else {
-                    z.parent.setChildList(null);
+                    z.parent.childList = null;
                     z.right = z;
                     z.left = z;
                     z.parent = null;
@@ -286,7 +276,8 @@ public final class FibonacciHeap<K,V> {
         removeNodeFromList(l);
         m.degree++;
         if (m.childList == null) {
-            m.setChildList(l);
+            m.childList = l;
+            l.parent = m;
         }
         else {
             addNodeToList(l, m.childList);
