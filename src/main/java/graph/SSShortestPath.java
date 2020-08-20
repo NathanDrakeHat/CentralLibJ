@@ -76,7 +76,7 @@ public final class SSShortestPath {
     }
 
 
-    // non-negative weight,
+    // non-negative weight
     public enum Heap {
         FIBONACCI, MIN_HEAP
     }
