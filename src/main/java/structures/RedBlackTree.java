@@ -7,7 +7,7 @@ import java.util.Optional;
 import java.util.function.BiConsumer;
 
 
-public final class RedBlackTree<K, V> {
+public final class RedBlackTree<K, V>{
     static class ColorNode<P, Q> {
         private P key;
         private Q value;

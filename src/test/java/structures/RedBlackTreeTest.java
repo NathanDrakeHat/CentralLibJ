@@ -37,15 +37,14 @@ class RedBlackTreeTest {
     @Test
     public void balanceTest() {
         RedBlackTree<Integer, Integer> t = new RedBlackTree<>(Comparator.comparingInt(o -> o));
-        for (int i = 0; i < 2047; i++) {
+        for (int i = 0; i < 16383; i++) {
             t.insert(i, i);
         }
-        assertEquals(t.getHeight(), 10);
-        for (int i = 0; i < 1025; i++) {
+        assertEquals(t.getHeight(), 13);
+        for (int i = 0; i < 8193; i++) {
             t.delete(i);
         }
-        System.out.println(t.getHeight());
-        assertEquals(t.getHeight(), 9);
+        assertEquals(t.getHeight(), 12);
     }
 
     @Test
