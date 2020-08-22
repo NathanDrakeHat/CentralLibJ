@@ -2,7 +2,8 @@
 *.bat
 src/main/java/Main.java
 *temp*
-/target
+/target/
+/out/
 src/main/resources/
 *.txt
 
