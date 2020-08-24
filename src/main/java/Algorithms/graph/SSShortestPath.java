@@ -129,7 +129,7 @@ public final class SSShortestPath {
                 var original = v.distance;
                 relax(edge);
                 if (v.distance < original) {
-                    Q.decreaseKey(v, v.distance);
+                    Q.update(v, v.distance);
                 }
             }
         }

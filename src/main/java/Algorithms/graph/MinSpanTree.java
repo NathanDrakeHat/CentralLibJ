@@ -142,7 +142,7 @@ public final class MinSpanTree {
                 if (Q.contains(v) && edge.getWeight() < v.key) {
                     v.parent = u;
                     v.key = edge.getWeight();
-                    Q.decreaseKey(v, v.key);
+                    Q.update(v, v.key);
                 }
             }
         }

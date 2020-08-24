@@ -51,18 +51,20 @@ public final class MinHeap<V> {
         return res.value;
     }
 
-    public void decreaseKey(V value, double new_key) {
+    public void update(V value, double new_key) {
         var node = value_node_map.get(value);
-        if (node.key < new_key) {
-            throw new IllegalArgumentException();
-        }
-        else {
+        if(node == null) throw new NoSuchElementException("No such value.");
+        if (new_key < node.key ) {
             node.key = new_key;
-            fix(node);
+            updateMin(node);
+        }
+        else if(new_key > node.key){
+            node.key = new_key;
+            minHeapify(node.index);
         }
     }
 
-    private void fix(Node node) {
+    private void updateMin(Node node) {
         boolean min_property_broken = true;
         int parent_idx = (node.index + 1) / 2 - 1;
         while (min_property_broken && parent_idx >= 0) {
@@ -76,7 +78,7 @@ public final class MinHeap<V> {
         var n = new Node(key, value, heap_size - 1);
         array.add(n);
         value_node_map.put(value, n);
-        fix(n);
+        updateMin(n);
     }
 
     public boolean contains(V value) {
