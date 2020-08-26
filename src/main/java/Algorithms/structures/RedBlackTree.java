@@ -1,24 +1,27 @@
 package Algorithms.structures;
 
 import Algorithms.tools.Pair;
+
 import java.util.*;
 import java.util.function.BiConsumer;
 
 
 public final class RedBlackTree<K, V> implements Iterable<Pair<K, V>> {
-    final class Node {
-        K key;
-        V value;
+
+
+    static final class Node<P, Q> {
+        P key;
+        Q value;
         COLOR color;
-        Node parent;
-        Node left;
-        Node right;
+        Node<P, Q> parent;
+        Node<P, Q> left;
+        Node<P, Q> right;
 
         Node(COLOR color) {
             this.color = color;
         }
 
-        Node(K key, V val) {
+        Node(P key, Q val) {
             Objects.requireNonNull(key);
             color = COLOR.RED;
             this.key = key;
@@ -43,8 +46,8 @@ public final class RedBlackTree<K, V> implements Iterable<Pair<K, V>> {
     }
 
     private final class StackIterator implements Iterator<Pair<K, V>> {
-        private Node ptr;
-        private final Deque<Node> stack = new LinkedList<>();
+        private Node<K, V> ptr;
+        private final Deque<Node<K, V>> stack = new LinkedList<>();
         private boolean poppedBefore = false;
         private boolean finish = false;
 
@@ -86,9 +89,9 @@ public final class RedBlackTree<K, V> implements Iterable<Pair<K, V>> {
 
     enum COLOR {RED, BLACK}
 
-    Node root;
+    Node<K, V> root;
     private final Comparator<K> k_comparator;
-    private final Node sentinel = new Node(COLOR.BLACK);// sentinel: denote leaf and parent of root
+    private final Node<K, V> sentinel = new Node<>(COLOR.BLACK);// sentinel: denote leaf and parent of root
 
 
     public RedBlackTree(Comparator<K> k_comparator) {
@@ -129,7 +132,7 @@ public final class RedBlackTree<K, V> implements Iterable<Pair<K, V>> {
         }
     }
 
-    private void resetRoot(Node r) {
+    private void resetRoot(Node<K, V> r) {
         root = r;
         root.parent = sentinel;
     }
@@ -142,7 +145,7 @@ public final class RedBlackTree<K, V> implements Iterable<Pair<K, V>> {
         inorderTreeWalk(root, bc);
     }
 
-    private void inorderTreeWalk(Node n, BiConsumer<K, V> bc) {
+    private void inorderTreeWalk(Node<K, V> n, BiConsumer<K, V> bc) {
         if (n != sentinel & n != null) {
             inorderTreeWalk(n.left, bc);
             bc.accept(n.key, n.value);
@@ -157,7 +160,7 @@ public final class RedBlackTree<K, V> implements Iterable<Pair<K, V>> {
         return getCount(root);
     }
 
-    private int getCount(Node n) { //overload trick
+    private int getCount(Node<K, V> n) { //overload trick
         if (n.right != sentinel && n.left == sentinel) {
             return getCount(n.right) + 1;
         } else if (n.right == sentinel && n.left != sentinel) {
@@ -179,7 +182,7 @@ public final class RedBlackTree<K, V> implements Iterable<Pair<K, V>> {
         return Math.max(left_max, right_max) - 1;
     }
 
-    private int getHeight(Node n, int height) {
+    private int getHeight(Node<K, V> n, int height) {
         if (n != sentinel) {
             int left_max = getHeight(n.left, height + 1);
             int right_max = getHeight(n.right, height + 1);
@@ -190,10 +193,10 @@ public final class RedBlackTree<K, V> implements Iterable<Pair<K, V>> {
 
     public void insert(K key, V val) {
         Objects.requireNonNull(key);
-        insert(new Node(key, val));
+        insert(new Node<>(key, val));
     }
 
-    private void insert(Node n) {
+    private void insert(Node<K, V> n) {
         if (n == sentinel) {
             return;
         }
@@ -224,7 +227,7 @@ public final class RedBlackTree<K, V> implements Iterable<Pair<K, V>> {
         insertFixUp(n);
     }
 
-    private void insertFixUp(Node ptr) {
+    private void insertFixUp(Node<K, V> ptr) {
         while (ptr.parent.isRed()) {
             if (ptr.parent == ptr.parent.parent.left) {
                 var right = ptr.parent.parent.right;
@@ -268,13 +271,13 @@ public final class RedBlackTree<K, V> implements Iterable<Pair<K, V>> {
         delete(search(root, key));
     }
 
-    private void delete(Node target) {
+    private void delete(Node<K, V> target) {
         if (target == null || target == sentinel) {
             throw new NoSuchElementException("null tree");
         }
         var ptr = target;
         var ptr_color = ptr.color;
-        Node fix_up;
+        Node<K, V> fix_up;
         if (ptr.left == sentinel) {
             fix_up = target.right;
             transplant(target, fix_up);
@@ -302,9 +305,9 @@ public final class RedBlackTree<K, V> implements Iterable<Pair<K, V>> {
         }
     }
 
-    private void deleteFixUp(Node fix_up) {
+    private void deleteFixUp(Node<K, V> fix_up) {
         while (fix_up != root && fix_up.isBlack()) {
-            Node sibling;
+            Node<K, V> sibling;
             if (fix_up == fix_up.parent.left) {
                 sibling = fix_up.parent.right;
                 if (sibling.isRed()) { // case1:sibling is black, convert to case 2, 3 or 4
@@ -355,7 +358,7 @@ public final class RedBlackTree<K, V> implements Iterable<Pair<K, V>> {
         fix_up.setBlack();
     }
 
-    private void transplant(Node a, Node b) {
+    private void transplant(Node<K, V> a, Node<K, V> b) {
         if (a.parent == sentinel) {
             resetRoot(b);
         } else if (a.parent.right == a) {
@@ -375,7 +378,7 @@ public final class RedBlackTree<K, V> implements Iterable<Pair<K, V>> {
         return search(root, key).value;
     }
 
-    private Node search(Node n, K key) {
+    private Node<K, V> search(Node<K, V> n, K key) {
         if (k_comparator.compare(n.key, key) == 0) {
             return n;
         } else if (k_comparator.compare(n.key, key) > 0 && n.left != sentinel) {
@@ -386,7 +389,7 @@ public final class RedBlackTree<K, V> implements Iterable<Pair<K, V>> {
         throw new NoSuchElementException();
     }
 
-    private void leftRotate(Node left_node) {
+    private void leftRotate(Node<K, V> left_node) {
         var right_node = left_node.right;
         //exchange
         left_node.right = right_node.left;
@@ -407,7 +410,7 @@ public final class RedBlackTree<K, V> implements Iterable<Pair<K, V>> {
         left_node.parent = right_node;
     }
 
-    private void rightRotate(Node right_node) { // mirror of leftRotate
+    private void rightRotate(Node<K, V> right_node) { // mirror of leftRotate
         var left_node = right_node.left;
         //exchange
         right_node.left = left_node.right;
@@ -428,8 +431,8 @@ public final class RedBlackTree<K, V> implements Iterable<Pair<K, V>> {
         right_node.parent = left_node;
     }
 
-    private Node getMinimum(Node current) {
-        Node target = null;
+    private Node<K, V> getMinimum(Node<K, V> current) {
+        Node<K, V> target = null;
         var ptr = current;
         while (ptr != sentinel) {
             target = ptr;
@@ -441,8 +444,8 @@ public final class RedBlackTree<K, V> implements Iterable<Pair<K, V>> {
         return target;
     }
 
-    private Node getMaximum(Node current) {
-        Node target = null;
+    private Node<K, V> getMaximum(Node<K, V> current) {
+        Node<K, V> target = null;
         var ptr = current;
         while (ptr != sentinel) {
             target = ptr;
@@ -454,7 +457,7 @@ public final class RedBlackTree<K, V> implements Iterable<Pair<K, V>> {
         return target;
     }
 
-    private Node getSuccessor(Node current) {
+    private Node<K, V> getSuccessor(Node<K, V> current) {
         if (current.right != sentinel) {
             return getMinimum(current.right);
         } else {
@@ -469,7 +472,7 @@ public final class RedBlackTree<K, V> implements Iterable<Pair<K, V>> {
     }
 
     @SuppressWarnings("unused")
-    private Node getPredecessor(Node current) {
+    private Node<K, V> getPredecessor(Node<K, V> current) {
         if (current.left != sentinel) {
             return getMaximum(current.left);
         } else {

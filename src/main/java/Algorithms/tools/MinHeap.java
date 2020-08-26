@@ -5,19 +5,19 @@ import java.util.function.ToDoubleFunction;
 
 // key must be a number
 public final class MinHeap<V> {
-    private class Node{
+    private static class Node<E>{
         double key;
-        V value;
+        E value;
         int index;
-        Node(double key, V value, int index){
+        Node(double key, E value, int index){
             this.key = key;
             this.value = value;
             this.index = index;
         }
     }
 
-    private final List<Node> array = new ArrayList<>();
-    private final Map<V, Node> value_node_map = new HashMap<>();
+    private final List<Node<V>> array = new ArrayList<>();
+    private final Map<V, Node<V>> value_node_map = new HashMap<>();
     private int heap_size = 0;
 
     public MinHeap() {
@@ -31,7 +31,7 @@ public final class MinHeap<V> {
         for (var i : c) {
             Objects.requireNonNull(i);
             heap_size++;
-            var n = new Node(getKey.applyAsDouble(i), i, idx++);
+            var n = new Node<>(getKey.applyAsDouble(i), i, idx++);
             array.add(n);
             value_node_map.put(n.value, n);
         }
@@ -64,7 +64,7 @@ public final class MinHeap<V> {
         }
     }
 
-    private void updateMin(Node node) {
+    private void updateMin(Node<V> node) {
         boolean min_property_broken = true;
         int parent_idx = (node.index + 1) / 2 - 1;
         while (min_property_broken && parent_idx >= 0) {
@@ -75,7 +75,7 @@ public final class MinHeap<V> {
 
     public void add(double key, V value) {
         heap_size++;
-        var n = new Node(key, value, heap_size - 1);
+        var n = new Node<>(key, value, heap_size - 1);
         array.add(n);
         value_node_map.put(value, n);
         updateMin(n);

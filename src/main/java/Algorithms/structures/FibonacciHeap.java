@@ -5,19 +5,18 @@ import java.util.*;
 
 // dynamic minimum priority queue
 // key must be a number
-@SuppressWarnings("unused")
 public final class FibonacciHeap<K,V> {
-    class Node {
-        K key;
-        V value;
-        Node parent = null;
-        Node childList = null; // int linked, circular list
-        Node left;
-        Node right;
+    static class Node<W,T> {
+        W key;
+        T value;
+        Node<W,T> parent = null;
+        Node<W,T> childList = null; // int linked, circular list
+        Node<W,T> left;
+        Node<W,T> right;
         int degree = 0; // number of children
         boolean mark = false; // whether the node had lost a child when it be made another node's child
 
-        Node(K key, V val) {
+        Node(W key, T val) {
             this.key = key;
             this.value = val;
             left = this;
@@ -29,9 +28,9 @@ public final class FibonacciHeap<K,V> {
         }
     }
 
-    Node rootList = null;
+    Node<K,V> rootList = null;
     int count = 0; // number of nodes
-    private final Map<V, Node> value_Node_map = new HashMap<>();
+    private final Map<V, Node<K,V>> value_Node_map = new HashMap<>();
     private final Comparator<K> keyComparator;
 
     public FibonacciHeap(Comparator<K> keyComparator){
@@ -47,7 +46,7 @@ public final class FibonacciHeap<K,V> {
         return rootList.value;
     }
 
-    private void insert(Node x) {
+    private void insert(Node<K,V> x) {
         count++;
         value_Node_map.put(x.value, x);
         if (rootList == null) {
@@ -62,7 +61,7 @@ public final class FibonacciHeap<K,V> {
     }
 
     public void insert(K key, V val) {
-        insert(new Node(key, val));
+        insert(new Node<>(key, val));
     }
 
     public V extractMin() {
@@ -97,7 +96,7 @@ public final class FibonacciHeap<K,V> {
     }
 
     private void consolidate() {
-        List<Node> A = new ArrayList<>();
+        List<Node<K,V>> A = new ArrayList<>();
         int len = upperBound() + 1;
         for (int i = 0; i < len; i++) {
             A.add(null);
@@ -106,7 +105,7 @@ public final class FibonacciHeap<K,V> {
         if (w == null) {
             return;
         }
-        var dict = new HashSet<Node>();
+        var dict = new HashSet<Node<K,V>>();
         do { // for w in root list start
             var x = w; // x current node
             var next = x.right;
@@ -189,7 +188,7 @@ public final class FibonacciHeap<K,V> {
         }
     }
 
-    void decreaseKey(Node x, K new_key) {
+    void decreaseKey(Node<K,V> x, K new_key) {
         // move x to root list
         // set parent mark true if parent mark is false
         // else successively move true mark parents to root list
@@ -204,14 +203,14 @@ public final class FibonacciHeap<K,V> {
         if (keyComparator.compare(x.key, minKey()) <= 0) rootList = x;
     }
 
-    private void cut(Node a, Node b) {
+    private void cut(Node<K,V> a, Node<K,V> b) {
         removeNodeFromList(a);
         b.degree--;
         addNodeToList(a, rootList);
         a.mark = false;
     }
 
-    private void cascadingCut(Node y) {
+    private void cascadingCut(Node<K,V> y) {
         var z = y.parent;
         if (z != null) {
             if (!y.mark) y.mark = true;
@@ -222,7 +221,7 @@ public final class FibonacciHeap<K,V> {
         }
     }
 
-    private void delete(Node x) {
+    private void delete(Node<K,V> x) {
         decreaseKey(x, minKey());
         extractMin();
     }
@@ -234,12 +233,12 @@ public final class FibonacciHeap<K,V> {
     public int count() {
         return count;
     }
-    
+
     private int upperBound() {
         return (int) (Math.log(count) / Math.log(2));
     }
 
-    private static <K,V> void addNodeToList(FibonacciHeap<K,V>.Node x, FibonacciHeap<K,V>.Node list) {
+    private static <W,T> void addNodeToList(Node<W,T> x, Node<W,T> list) {
         x.parent = list.parent;
         var list_left = list.left;
         list.left = x;
@@ -248,7 +247,7 @@ public final class FibonacciHeap<K,V> {
         x.left = list_left;
     }
 
-    private static <K,V> void removeNodeFromList(FibonacciHeap<K,V>.Node z) {
+    private static <W,T> void removeNodeFromList(Node<W,T> z) {
         var z_right = z.right;
         var z_left = z.left;
         if (z.parent != null) {
@@ -274,7 +273,7 @@ public final class FibonacciHeap<K,V> {
         z.parent = null;
     }
 
-    private static <K,V> void linkTo(FibonacciHeap<K,V>.Node l, FibonacciHeap<K,V>.Node m) { // larger, minor
+    private static <W,T> void linkTo(Node<W,T> l, Node<W,T> m) { // larger, minor
         removeNodeFromList(l);
         m.degree++;
         if (m.childList == null) {

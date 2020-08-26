@@ -10,18 +10,18 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class FibonacciHeapTest {
 
-    private static FibonacciHeap<Integer,Integer>.Node buildNode(Integer key, FibonacciHeap<Integer,Integer> h){
-        return h.new Node(key,key);
+    private static FibonacciHeap.Node<Integer,Integer> buildNode(Integer key){
+        return new FibonacciHeap.Node<>(key,key);
     }
-    private static FibonacciHeap<Integer,Integer>.Node buildNodeWithMark(Integer key, FibonacciHeap<Integer,Integer> h){
-        var res = h.new Node(key, key);
+    private static FibonacciHeap.Node<Integer,Integer> buildNodeWithMark(Integer key){
+        var res = new FibonacciHeap.Node<>(key, key);
         res.mark = true;
         return res;
     }
 
-    static void addChild(FibonacciHeap<Integer,Integer>.Node n, int t, FibonacciHeap<Integer,Integer> h)
+    static void addChild(FibonacciHeap.Node<Integer, Integer> n, int t)
     {
-        var x = h.new Node(t, t);
+        var x = new FibonacciHeap.Node<>(t, t);
         x.mark = false;
         var listLeft = n.left;
         n.left = x;
@@ -31,44 +31,44 @@ class FibonacciHeapTest {
         x.parent = n.parent;
     }
 
-    static void addChildren(FibonacciHeap<Integer,Integer>.Node n, FibonacciHeap<Integer,Integer> h, int... t)
+    static void addChildren(FibonacciHeap.Node<Integer, Integer> n, int... t)
     {
         for (var i : t)
-            addChild(n, i, h);
+            addChild(n, i);
     }
 
     private static FibonacciHeap<Integer,Integer> buildExample() {
         var H = new FibonacciHeap<Integer,Integer>(Comparator.comparingInt(a -> a));
         H.insert(3, 3);
         var m = H.rootList;
-        addChildren(m,H,17,24,23,7,21);
+        addChildren(m,17,24,23,7,21);
 
-        FibonacciHeap<Integer,Integer>.Node ptr;
-        ptr = buildNodeWithMark(18,H);
+        FibonacciHeap.Node<Integer,Integer> ptr;
+        ptr = buildNodeWithMark(18);
         m.childList = ptr;
         ptr.parent = m;
         m.degree = 2;
 
         var m_child = m.childList;
         m_child.degree = 1;
-        ptr = buildNodeWithMark(39,H);
+        ptr = buildNodeWithMark(39);
         m_child.childList = ptr;
         ptr.parent = m_child;
 
-        addChildren(m_child,H,52,38);
-        ptr = buildNode(41,H);
+        addChildren(m_child,52,38);
+        ptr = buildNode(41);
         m_child.left.childList = ptr;
         ptr.parent = m_child.left;
         m_child.left.degree = 1;
 
-        ptr = buildNode(30,H);
+        ptr = buildNode(30);
         m.right.childList = ptr;
         ptr.parent = m.right;
         m.right.degree = 1;
 
-        FibonacciHeap<Integer,Integer>.Node t = buildNodeWithMark(26,H);
+        FibonacciHeap.Node<Integer,Integer> t = buildNodeWithMark(26);
         t.degree = 1;
-        ptr = buildNode(35,H);
+        ptr = buildNode(35);
         t.childList = ptr;
         ptr.parent = t;
 
@@ -76,12 +76,12 @@ class FibonacciHeapTest {
         t.parent = m.right.right;
         m.right.right.degree = 2;
 
-        addChild(t,46,H);
+        addChild(t,46);
         H.count = 15;
         return H;
     }
 
-    private static List<Integer> bcl(FibonacciHeap<Integer,Integer>.Node t) {
+    private static List<Integer> bcl(FibonacciHeap.Node<Integer,Integer> t) {
         List<Integer> res = new ArrayList<>();
         var p = t;
         do {
