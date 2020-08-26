@@ -4,6 +4,7 @@ package Algorithms.structures;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
+@SuppressWarnings("unused")
 public class Bag<Item> implements Iterable<Item> {
     private class Node {
         private Item item;
