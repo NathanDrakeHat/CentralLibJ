@@ -2,7 +2,6 @@ package Algorithms.tools;
 
 import java.util.*;
 import java.util.function.ToDoubleFunction;
-import java.util.stream.Stream;
 
 // key must be a number
 public final class MinHeap<V> implements Iterable<Pair<Double,V>>{
