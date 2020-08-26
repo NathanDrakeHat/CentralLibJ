@@ -2,9 +2,15 @@ package Algorithms.tools;
 
 import java.util.*;
 import java.util.function.ToDoubleFunction;
+import java.util.stream.Stream;
 
 // key must be a number
-public final class MinHeap<V> {
+public final class MinHeap<V> implements Iterable<Pair<Double,V>>{
+    @Override
+    public Iterator<Pair<Double, V>> iterator() {
+        return array.stream().map((n)->new Pair<>(n.key,n.value)).iterator();
+    }
+
     private static class Node<E>{
         double key;
         E value;
