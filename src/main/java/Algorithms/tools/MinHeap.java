@@ -5,10 +5,6 @@ import java.util.function.ToDoubleFunction;
 
 // key must be a number
 public final class MinHeap<V> implements Iterable<Pair<Double,V>>{
-    @Override
-    public Iterator<Pair<Double, V>> iterator() {
-        return array.stream().map((n)->new Pair<>(n.key,n.value)).iterator();
-    }
 
     private static class Node<E>{
         double key;
@@ -122,5 +118,10 @@ public final class MinHeap<V> implements Iterable<Pair<Double,V>>{
         for (int i = heap_size / 2 - 1; i >= 0; i--) {
             minHeapify(i);
         }
+    }
+
+    @Override
+    public Iterator<Pair<Double, V>> iterator() {
+        return array.stream().map((n)->new Pair<>(n.key,n.value)).iterator();
     }
 }
