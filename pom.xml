@@ -32,8 +32,9 @@
                 <version>3.0.0-M5</version>
                 <configuration>
                     <includes>
-                        <include>**/*Test.java</include>
+                        <include>src/test/java/*Test.java</include>
                     </includes>
+                    <skipTests>true</skipTests>
                 </configuration>
             </plugin>
         </plugins>
