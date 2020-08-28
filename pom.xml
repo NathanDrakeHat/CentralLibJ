@@ -27,7 +27,7 @@
                     <includes>
                         <include>src/test/java/*Test.java</include>
                     </includes>
-                    <skipTests>true</skipTests>
+                    <skipTests>${skipTests}</skipTests>
                 </configuration>
             </plugin>
         </plugins>
@@ -37,6 +37,7 @@
         <maven.compiler.source>14</maven.compiler.source>
         <maven.compiler.target>14</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <skipTests>true</skipTests>
     </properties>
 
     <dependencies>
