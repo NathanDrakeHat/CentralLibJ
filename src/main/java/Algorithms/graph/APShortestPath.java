@@ -93,7 +93,7 @@ public class APShortestPath {
         Objects.requireNonNull(type);
         Map<BFSVertex<T>, Double> h = new HashMap<>();
         var n = graph.getVerticesCount();
-        var vertices_new = graph.getAllVertices();
+        var vertices_new = new ArrayList<>(graph.getAllVertices());
         var s = new BFSVertex<T>();
         vertices_new.add(s);
         var new_graph = buildGraph(graph, vertices_new, s);

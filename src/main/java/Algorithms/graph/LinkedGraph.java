@@ -9,6 +9,7 @@ public final class LinkedGraph<V> {
     private final List<V> vertices = new ArrayList<>();
     private final Map<V, List<Edge<V>>> edges_map = new HashMap<>();
     private int size;
+
     public LinkedGraph(List<V> vertices, Direction is_directed) {
         Objects.requireNonNull(is_directed);
         Objects.requireNonNull(vertices);
@@ -21,6 +22,7 @@ public final class LinkedGraph<V> {
         }
         this.graph_direction = is_directed;
     }
+
     public LinkedGraph(LinkedGraph<V> other_graph) {
         Objects.requireNonNull(other_graph);
         size = other_graph.vertices.size();
@@ -75,11 +77,11 @@ public final class LinkedGraph<V> {
     }
 
     public List<V> getAllVertices() {
-        return new ArrayList<>(vertices);
+        return Collections.unmodifiableList(vertices);
     }
 
     public List<Edge<V>> getEdgesAt(V vertex) {
-        return new ArrayList<>(edges_map.get(vertex));
+        return Collections.unmodifiableList(edges_map.get(vertex));
     }
 
     enum Direction {
