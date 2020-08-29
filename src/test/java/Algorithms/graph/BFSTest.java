@@ -6,9 +6,17 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class BFSTest {
+
+    @Test
+    void breathFirstSearch() {
+        var vs = Data.makeVertexes();
+        var t = Data.makeGraph(vs);
+        BFS.breathFirstSearch(t, vs.get(1));
+        assertEquals(List.of('s', 'w', 'x', 'y'), BFS.getPath(vs.get(1), vs.get(7)));
+    }
 
     public static class Data {
         public static String names = "rstuvwxy";
@@ -40,13 +48,5 @@ class BFSTest {
 
             return G;
         }
-    }
-
-    @Test
-    void breathFirstSearch() {
-        var vs = Data.makeVertexes();
-        var t = Data.makeGraph(vs);
-        BFS.breathFirstSearch(t, vs.get(1));
-        assertEquals(List.of('s', 'w', 'x', 'y'), BFS.getPath(vs.get(1), vs.get(7)));
     }
 }

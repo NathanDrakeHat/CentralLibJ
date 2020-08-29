@@ -4,12 +4,13 @@ package Algorithms.graph;
 import Algorithms.structures.FibonacciHeap;
 import Algorithms.tools.MinHeap;
 
-import static Algorithms.graph.BFS.*;
-import static Algorithms.graph.DFS.*;
-
 import java.util.Comparator;
 import java.util.Objects;
 import java.util.stream.Collectors;
+
+import static Algorithms.graph.BFS.BFSVertex;
+import static Algorithms.graph.DFS.DFSVertex;
+import static Algorithms.graph.DFS.topologicalSort;
 
 // single source shortest path
 public final class SSShortestPath {
@@ -76,12 +77,6 @@ public final class SSShortestPath {
         return BFS_Linked_graph;
     }
 
-
-    // non-negative weight
-    public enum Heap {
-        FIBONACCI, MIN_HEAP
-    }
-
     public static <T> void algorithmDijkstra(LinkedGraph<BFSVertex<T>> G, BFSVertex<T> s, Heap type) {
         Objects.requireNonNull(s);
         Objects.requireNonNull(G);
@@ -98,7 +93,7 @@ public final class SSShortestPath {
     private static <T> void algorithmDijkstraWithFibonacciHeap(LinkedGraph<BFSVertex<T>> G, BFSVertex<T> s) {
         initializeSingleSource(G, s);
         var vertices = G.getAllVertices();
-        FibonacciHeap<Double,BFSVertex<T>> Q = new FibonacciHeap<>(Comparator.comparingDouble(a->a));
+        FibonacciHeap<Double, BFSVertex<T>> Q = new FibonacciHeap<>(Comparator.comparingDouble(a -> a));
         for (var vertex : vertices) {
             Q.insert(vertex.distance, vertex);
         }
@@ -133,5 +128,10 @@ public final class SSShortestPath {
                 }
             }
         }
+    }
+
+    // non-negative weight
+    public enum Heap {
+        FIBONACCI, MIN_HEAP
     }
 }

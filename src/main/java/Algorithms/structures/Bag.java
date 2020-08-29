@@ -6,17 +6,8 @@ import java.util.NoSuchElementException;
 
 @SuppressWarnings("unused")
 public class Bag<Item> implements Iterable<Item> {
-    private class Node {
-        private Item item;
-        private Node next;
-
-        private Node() {
-        }
-    }
-
     private Node first = null;
     private int n = 0;
-
     public Bag() {
 
     }
@@ -41,6 +32,13 @@ public class Bag<Item> implements Iterable<Item> {
         return new LinkedIterator(this.first);
     }
 
+    private class Node {
+        private Item item;
+        private Node next;
+
+        private Node() {
+        }
+    }
 
     private class LinkedIterator implements Iterator<Item> {
         private Node current;
@@ -60,7 +58,8 @@ public class Bag<Item> implements Iterable<Item> {
         public Item next() {
             if (!this.hasNext()) {
                 throw new NoSuchElementException();
-            } else {
+            }
+            else {
                 Item item = this.current.item;
                 this.current = this.current.next;
                 return item;

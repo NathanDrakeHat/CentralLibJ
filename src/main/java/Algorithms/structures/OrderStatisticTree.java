@@ -4,75 +4,8 @@ import java.util.NoSuchElementException;
 import java.util.function.BiConsumer;
 
 public final class OrderStatisticTree { // get rank of node from left to right
-    private ColorSizeNode root = null;
     private final ColorSizeNode sentinel = new ColorSizeNode(0, Color.BLACK);
-
-    // sentinel: denote leaf and parent of root
-    static class ColorSizeNode {
-        private double key;
-        private Color color;
-        private ColorSizeNode parent;
-        private ColorSizeNode left;
-        private ColorSizeNode right;
-        private int size; // subtree size
-
-        ColorSizeNode(double key) {
-            this.key = key;
-            this.color = Color.RED;
-            int size = 1;
-        }
-
-        ColorSizeNode(double key, Color color) {
-            this.key = key;
-            this.color = color;
-        }
-
-
-        public int getSize() {
-            return this.size;
-        }
-
-        public boolean isRed() {
-            return this.color == Color.RED;
-        }
-
-        public boolean isBlack() {
-            return this.color == Color.BLACK;
-        }
-
-        public Color getColor() {
-            return this.color;
-        }
-
-        private void setRed() {
-            this.color = Color.RED;
-        }
-
-        private void setBlack() {
-            this.color = Color.BLACK;
-        }
-
-        public double getKey() {
-            return this.key;
-        }
-
-        public ColorSizeNode getParent() {
-            return this.parent;
-        }
-
-        public ColorSizeNode getLeft() {
-            return this.left;
-        }
-
-        public ColorSizeNode getRight() {
-            return this.right;
-        }
-    }
-
-    enum Color {
-        RED,
-        BLACK
-    }
+    private ColorSizeNode root = null;
 
     public double GetKeyFromRank(int rank) {
         ColorSizeNode n = rankSelect(rank);
@@ -524,6 +457,73 @@ public final class OrderStatisticTree { // get rank of node from left to right
             return Math.max(left_max, right_max);
         }
         return height;
+    }
+
+    enum Color {
+        RED,
+        BLACK
+    }
+
+    // sentinel: denote leaf and parent of root
+    static class ColorSizeNode {
+        private double key;
+        private Color color;
+        private ColorSizeNode parent;
+        private ColorSizeNode left;
+        private ColorSizeNode right;
+        private int size; // subtree size
+
+        ColorSizeNode(double key) {
+            this.key = key;
+            this.color = Color.RED;
+            int size = 1;
+        }
+
+        ColorSizeNode(double key, Color color) {
+            this.key = key;
+            this.color = color;
+        }
+
+
+        public int getSize() {
+            return this.size;
+        }
+
+        public boolean isRed() {
+            return this.color == Color.RED;
+        }
+
+        public boolean isBlack() {
+            return this.color == Color.BLACK;
+        }
+
+        public Color getColor() {
+            return this.color;
+        }
+
+        private void setRed() {
+            this.color = Color.RED;
+        }
+
+        private void setBlack() {
+            this.color = Color.BLACK;
+        }
+
+        public double getKey() {
+            return this.key;
+        }
+
+        public ColorSizeNode getParent() {
+            return this.parent;
+        }
+
+        public ColorSizeNode getLeft() {
+            return this.left;
+        }
+
+        public ColorSizeNode getRight() {
+            return this.right;
+        }
     }
 
 }

@@ -2,9 +2,16 @@ package Algorithms.dynamicProgramming;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class MatrixChainTest {
+
+    @Test
+    void matrixChainOrder() {
+        var t = MatrixChain.matrixChainOrder(Data.test);
+        assertEquals(Data.res, t.toString());
+        assertEquals(Data.answer, t.min_cost);
+    }
 
     static class Data {
         static final int[][] a1 = new int[30][35];
@@ -16,12 +23,5 @@ class MatrixChainTest {
         static int[][][] test = {a1, a2, a3, a4, a5, a6};
         static int answer = (35 * 15 * 5) + (30 * 35 * 5) + (5 * 10 * 20) + (5 * 20 * 25) + (30 * 5 * 25);
         static String res = "((1(23))((45)6))";
-    }
-
-    @Test
-    void matrixChainOrder() {
-        var t = MatrixChain.matrixChainOrder(Data.test);
-        assertEquals(Data.res, t.toString());
-        assertEquals(Data.answer, t.min_cost);
     }
 }

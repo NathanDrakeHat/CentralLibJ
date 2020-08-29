@@ -1,19 +1,6 @@
 package Algorithms.miscellaneous;
 
 public final class MaxSubArray {
-    // find max sum consequent sequence
-    public static class Interval {
-        public int start;
-        public int end;
-        public int max_sum;
-
-        public Interval(int s, int e, int m) {
-            this.start = s;
-            this.end = e;
-            this.max_sum = m;
-        }
-    }
-
     public static Interval divideAndConquer(int[] array, int start, int end) {
         if ((end - start) > 1) {
             int middle = (start + end) / 2;
@@ -89,5 +76,18 @@ public final class MaxSubArray {
             }
         }
         return new Interval(start, end, max_sum);
+    }
+
+    // find max sum consequent sequence
+    public static class Interval {
+        public int start;
+        public int end;
+        public int max_sum;
+
+        public Interval(int s, int e, int m) {
+            this.start = s;
+            this.end = e;
+            this.max_sum = m;
+        }
     }
 }

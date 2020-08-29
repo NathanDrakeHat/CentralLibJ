@@ -5,10 +5,34 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import static Algorithms.graph.BFS.*;
-import static org.junit.jupiter.api.Assertions.*;
+import static Algorithms.graph.BFS.BFSVertex;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class APShortestPathTest {
+
+    static LinkedGraph<BFSVertex<String>> build() {
+        String[] names = "1,2,3,4,5".split(",");
+        List<BFSVertex<String>> vertices = new ArrayList<>();
+        for (var name : names) {
+            vertices.add(new BFSVertex<>(name));
+        }
+        var res = new LinkedGraph<>(vertices, LinkedGraph.Direction.DIRECTED);
+        res.setNeighbor(vertices.get(0), vertices.get(1), 3);
+        res.setNeighbor(vertices.get(0), vertices.get(2), 8);
+        res.setNeighbor(vertices.get(0), vertices.get(4), -4);
+
+        res.setNeighbor(vertices.get(1), vertices.get(3), 1);
+        res.setNeighbor(vertices.get(1), vertices.get(4), 7);
+
+        res.setNeighbor(vertices.get(2), vertices.get(1), 4);
+
+        res.setNeighbor(vertices.get(3), vertices.get(0), 2);
+        res.setNeighbor(vertices.get(3), vertices.get(2), -5);
+
+        res.setNeighbor(vertices.get(4), vertices.get(3), 6);
+        return res;
+    }
 
     @Test
     void slowAllPairsShortestPaths() {
@@ -47,7 +71,6 @@ class APShortestPathTest {
         };
         assertArrayEquals(answer, res);
     }
-
 
     @Test
     void algorithmFloydWarshallTest() {
@@ -103,28 +126,5 @@ class APShortestPathTest {
         assertTrue(res.isPresent());
         assertArrayEquals(answer, res.get());
 
-    }
-
-    static LinkedGraph<BFSVertex<String>> build() {
-        String[] names = "1,2,3,4,5".split(",");
-        List<BFSVertex<String>> vertices = new ArrayList<>();
-        for (var name : names) {
-            vertices.add(new BFSVertex<>(name));
-        }
-        var res = new LinkedGraph<>(vertices, LinkedGraph.Direction.DIRECTED);
-        res.setNeighbor(vertices.get(0), vertices.get(1), 3);
-        res.setNeighbor(vertices.get(0), vertices.get(2), 8);
-        res.setNeighbor(vertices.get(0), vertices.get(4), -4);
-
-        res.setNeighbor(vertices.get(1), vertices.get(3), 1);
-        res.setNeighbor(vertices.get(1), vertices.get(4), 7);
-
-        res.setNeighbor(vertices.get(2), vertices.get(1), 4);
-
-        res.setNeighbor(vertices.get(3), vertices.get(0), 2);
-        res.setNeighbor(vertices.get(3), vertices.get(2), -5);
-
-        res.setNeighbor(vertices.get(4), vertices.get(3), 6);
-        return res;
     }
 }

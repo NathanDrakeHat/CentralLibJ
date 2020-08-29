@@ -5,16 +5,9 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class IthSmallestTest {
-
-    static class Data {
-        static int[] test1;
-        static int[] test2;
-        static int[] test3;
-        static int[] test4;
-    }
 
     @BeforeEach
     void build() {
@@ -98,5 +91,12 @@ class IthSmallestTest {
         res = IthSmallest.randomSelect(Data.test4, 15);
         Arrays.sort(Data.test4);
         assertEquals(Data.test4[15], res);
+    }
+
+    static class Data {
+        static int[] test1;
+        static int[] test2;
+        static int[] test3;
+        static int[] test4;
     }
 }

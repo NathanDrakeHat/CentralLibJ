@@ -1,8 +1,9 @@
 package Algorithms.graph;
 
 
+import Algorithms.graph.BFS.BFSVertex;
+
 import java.util.*;
-import Algorithms.graph.BFS.*;
 
 // all pair shortest path
 public class APShortestPath {

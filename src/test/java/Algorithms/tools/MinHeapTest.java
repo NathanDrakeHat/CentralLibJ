@@ -2,9 +2,10 @@ package Algorithms.tools;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class MinHeapTest {
 
@@ -93,27 +94,22 @@ class MinHeapTest {
     }
 
     @Test
-    public void TestCase3()
-    {
+    public void TestCase3() {
         var mH = new MinHeap<String>();
-        for (int i = 0; i < 512; i++)
-        {
+        for (int i = 0; i < 512; i++) {
             mH.add(i, String.valueOf(i));
         }
 
-        for (int i = 10; i >= 0; i--)
-        {
+        for (int i = 10; i >= 0; i--) {
             mH.extractMin();
         }
 
-        for (int i = 10; i >= 0; i--)
-        {
+        for (int i = 10; i >= 0; i--) {
             mH.add(i, String.valueOf(i));
         }
 
-        for (int i = 0; i <= 10; i++)
-        {
-            assertEquals(String.valueOf(i),mH.extractMin());
+        for (int i = 0; i <= 10; i++) {
+            assertEquals(String.valueOf(i), mH.extractMin());
         }
     }
 

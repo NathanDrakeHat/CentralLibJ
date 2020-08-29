@@ -2,8 +2,9 @@ package Algorithms.stringMatching;
 
 import org.junit.jupiter.api.Test;
 
-import static Algorithms.stringMatching.StringAutomata.*;
-import static org.junit.jupiter.api.Assertions.*;
+import static Algorithms.stringMatching.StringAutomata.computeTransitionPattern;
+import static Algorithms.stringMatching.StringAutomata.finiteAutomationMatcher;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class StringAutomataTest {
 

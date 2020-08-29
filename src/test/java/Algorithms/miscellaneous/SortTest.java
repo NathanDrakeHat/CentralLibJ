@@ -1,11 +1,11 @@
 package Algorithms.miscellaneous;
 
+import Algorithms.tools.SimpleDate;
+import org.junit.jupiter.api.Test;
+
 import java.util.Arrays;
 
-import org.junit.jupiter.api.Test;
-import Algorithms.tools.SimpleDate;
-
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 class SortTest {

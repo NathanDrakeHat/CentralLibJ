@@ -4,41 +4,6 @@ import java.util.*;
 
 // breath first search
 public final class BFS {
-    enum COLOR {WHITE, GRAY, BLACK}
-
-    public static class BFSVertex<V> {
-        BFSVertex<V> parent;
-        private COLOR color;
-        double distance; // d
-        private final V content;
-
-        public BFSVertex(V name) {
-            Objects.requireNonNull(name);
-            this.content = name;
-        }
-
-        BFSVertex() {
-            content = null;
-        }
-
-        public V getContent() {
-            return content;
-        }
-
-        public BFSVertex<V> getParent() {
-            return parent;
-        }
-
-        public double getDistance() {
-            return distance;
-        }
-
-        @Override
-        public String toString() {
-            return String.format("BFS.Vertex: (%s)", content != null? content.toString() : "()");
-        }
-    }
-
     public static <T> void breathFirstSearch(LinkedGraph<BFSVertex<T>> G, BFSVertex<T> s) {
         Objects.requireNonNull(G);
         Objects.requireNonNull(s);
@@ -91,6 +56,41 @@ public final class BFS {
         else if (v.parent != null) {
             traverse(s, v.parent, res);
             res.add(v.content);
+        }
+    }
+
+    enum COLOR {WHITE, GRAY, BLACK}
+
+    public static class BFSVertex<V> {
+        private final V content;
+        BFSVertex<V> parent;
+        double distance; // d
+        private COLOR color;
+
+        public BFSVertex(V name) {
+            Objects.requireNonNull(name);
+            this.content = name;
+        }
+
+        BFSVertex() {
+            content = null;
+        }
+
+        public V getContent() {
+            return content;
+        }
+
+        public BFSVertex<V> getParent() {
+            return parent;
+        }
+
+        public double getDistance() {
+            return distance;
+        }
+
+        @Override
+        public String toString() {
+            return String.format("BFS.Vertex: (%s)", content != null ? content.toString() : "()");
         }
     }
 }

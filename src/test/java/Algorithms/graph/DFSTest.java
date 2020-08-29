@@ -61,6 +61,38 @@ class DFSTest {
         return G;
     }
 
+    static LinkedGraph<DFS.DFSVertex<String>> makeStronglyConnectedComponentsDemo() {
+        String t = "a,b,c,d,e,f,g,h";
+        var names = t.split(",");
+        var A = new ArrayList<DFS.DFSVertex<String>>(names.length);
+        for (int i = 0; i < names.length; i++) {
+            A.add(i, new DFS.DFSVertex<>(names[i]));
+        }
+        LinkedGraph<DFS.DFSVertex<String>> G = new LinkedGraph<>(A, LinkedGraph.Direction.DIRECTED);
+        G.setNeighbor(A.get(0), A.get(1));
+
+        G.setNeighbor(A.get(1), A.get(2));
+        G.setNeighbor(A.get(1), A.get(4));
+        G.setNeighbor(A.get(1), A.get(5));
+
+        G.setNeighbor(A.get(2), A.get(3));
+        G.setNeighbor(A.get(2), A.get(6));
+
+        G.setNeighbor(A.get(3), A.get(2));
+        G.setNeighbor(A.get(3), A.get(7));
+
+        G.setNeighbor(A.get(4), A.get(0));
+        G.setNeighbor(A.get(4), A.get(5));
+
+        G.setNeighbor(A.get(5), A.get(6));
+
+        G.setNeighbor(A.get(6), A.get(5));
+        G.setNeighbor(A.get(6), A.get(7));
+
+        G.setNeighbor(A.get(7), A.get(7));
+
+        return G;
+    }
 
     @Test
     void depthFirstSearchTest() {
@@ -175,39 +207,6 @@ class DFSTest {
             }
         }
         assertFalse(flag);
-    }
-
-    static LinkedGraph<DFS.DFSVertex<String>> makeStronglyConnectedComponentsDemo() {
-        String t = "a,b,c,d,e,f,g,h";
-        var names = t.split(",");
-        var A = new ArrayList<DFS.DFSVertex<String>>(names.length);
-        for (int i = 0; i < names.length; i++) {
-            A.add(i, new DFS.DFSVertex<>(names[i]));
-        }
-        LinkedGraph<DFS.DFSVertex<String>> G = new LinkedGraph<>(A, LinkedGraph.Direction.DIRECTED);
-        G.setNeighbor(A.get(0), A.get(1));
-
-        G.setNeighbor(A.get(1), A.get(2));
-        G.setNeighbor(A.get(1), A.get(4));
-        G.setNeighbor(A.get(1), A.get(5));
-
-        G.setNeighbor(A.get(2), A.get(3));
-        G.setNeighbor(A.get(2), A.get(6));
-
-        G.setNeighbor(A.get(3), A.get(2));
-        G.setNeighbor(A.get(3), A.get(7));
-
-        G.setNeighbor(A.get(4), A.get(0));
-        G.setNeighbor(A.get(4), A.get(5));
-
-        G.setNeighbor(A.get(5), A.get(6));
-
-        G.setNeighbor(A.get(6), A.get(5));
-        G.setNeighbor(A.get(6), A.get(7));
-
-        G.setNeighbor(A.get(7), A.get(7));
-
-        return G;
     }
 
     @Test

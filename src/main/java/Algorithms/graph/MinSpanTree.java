@@ -8,48 +8,6 @@ import java.util.*;
 
 // minimum spanning tree
 public final class MinSpanTree {
-    public static class KruskalVertex<V> implements DisjointSet<KruskalVertex<V>> {
-        private final V content;
-        private int rank = 0;
-        private KruskalVertex<V> parent = this;
-
-        public KruskalVertex(V n) {
-            Objects.requireNonNull(n);
-            content = n;
-        }
-
-        public V getContent() {
-            return content;
-        }
-
-
-        @Override
-        public int getRank() {
-            return rank;
-        }
-
-        @Override
-        public void setRank(int rank) {
-            this.rank = rank;
-        }
-
-        @Override
-        public KruskalVertex<V> getParent() {
-            return parent;
-        }
-
-        @Override
-        public void setParent(KruskalVertex<V> r) {
-            this.parent = r;
-        }
-
-        @Override
-        public String toString() {
-            return String.format("KruskalVertex: %s", content.toString());
-        }
-
-    }
-
     public static <T> Set<LinkedGraph.Edge<KruskalVertex<T>>> algorithmOfKruskal(LinkedGraph<KruskalVertex<T>> graph) {
         Objects.requireNonNull(graph);
         Set<LinkedGraph.Edge<KruskalVertex<T>>> res = new HashSet<>();
@@ -67,34 +25,10 @@ public final class MinSpanTree {
         return res;
     }
 
-    public static class PrimVertex<V> {
-        private final V content;
-        PrimVertex<V> parent;
-        private double key = 0;
-
-        public PrimVertex(V name) {
-            Objects.requireNonNull(name);
-            this.content = name;
-        }
-
-        public V getContent() {
-            return content;
-        }
-
-        public double getKey() {
-            return key;
-        }
-
-        @Override
-        public String toString() {
-            return String.format("PrimVertex: (%s)", content.toString());
-        }
-    }
-
     public static <T> void algorithmOfPrimWithFibonacciHeap(LinkedGraph<PrimVertex<T>> graph, PrimVertex<T> r) {
         Objects.requireNonNull(r);
         Objects.requireNonNull(graph);
-        FibonacciHeap<Double,PrimVertex<T>> Q = new FibonacciHeap<>(Comparator.comparingDouble(a->a));
+        FibonacciHeap<Double, PrimVertex<T>> Q = new FibonacciHeap<>(Comparator.comparingDouble(a -> a));
         var vertices = graph.getAllVertices();
         for (var u : vertices) {
             if (u != r) {
@@ -145,6 +79,72 @@ public final class MinSpanTree {
                     Q.update(v, v.key);
                 }
             }
+        }
+    }
+
+    public static class KruskalVertex<V> implements DisjointSet<KruskalVertex<V>> {
+        private final V content;
+        private int rank = 0;
+        private KruskalVertex<V> parent = this;
+
+        public KruskalVertex(V n) {
+            Objects.requireNonNull(n);
+            content = n;
+        }
+
+        public V getContent() {
+            return content;
+        }
+
+
+        @Override
+        public int getRank() {
+            return rank;
+        }
+
+        @Override
+        public void setRank(int rank) {
+            this.rank = rank;
+        }
+
+        @Override
+        public KruskalVertex<V> getParent() {
+            return parent;
+        }
+
+        @Override
+        public void setParent(KruskalVertex<V> r) {
+            this.parent = r;
+        }
+
+        @Override
+        public String toString() {
+            return String.format("KruskalVertex: %s", content.toString());
+        }
+
+    }
+
+    public static class PrimVertex<V> {
+        private final V content;
+        PrimVertex<V> parent;
+        private double key = 0;
+
+        public PrimVertex(V name) {
+            Objects.requireNonNull(name);
+            this.content = name;
+        }
+
+        public V getContent() {
+            return content;
+        }
+
+        public double getKey() {
+            return key;
+        }
+
+        @Override
+        public String toString() {
+            return String.format("PrimVertex: (%s)", content.toString());
         }
     }
 }

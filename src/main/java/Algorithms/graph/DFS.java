@@ -6,34 +6,6 @@ import java.util.Objects;
 
 // depth first search
 public final class DFS {
-    enum COLOR {WHITE, GRAY, BLACK}
-
-    public static class DFSVertex<V> {
-        DFSVertex<V> parent;
-        private COLOR color;
-        int discover; //d
-        int finish; // f
-        private final V content;
-
-        public DFSVertex(V name) {
-            Objects.requireNonNull(name);
-            this.content = name;
-        }
-
-        public V getContent() {
-            return content;
-        }
-
-        public DFSVertex<V> getParent() {
-            return parent;
-        }
-
-        @Override
-        public String toString() {
-            return String.format("DFS.Vertex: (%s)", content.toString());
-        }
-    }
-
     public static <T> void depthFirstSearch(LinkedGraph<DFSVertex<T>> G) {
         Objects.requireNonNull(G);
         var vertices = G.getAllVertices();
@@ -107,5 +79,33 @@ public final class DFS {
             }
         }
         return new_graph;
+    }
+
+    enum COLOR {WHITE, GRAY, BLACK}
+
+    public static class DFSVertex<V> {
+        private final V content;
+        DFSVertex<V> parent;
+        int discover; //d
+        int finish; // f
+        private COLOR color;
+
+        public DFSVertex(V name) {
+            Objects.requireNonNull(name);
+            this.content = name;
+        }
+
+        public V getContent() {
+            return content;
+        }
+
+        public DFSVertex<V> getParent() {
+            return parent;
+        }
+
+        @Override
+        public String toString() {
+            return String.format("DFS.Vertex: (%s)", content.toString());
+        }
     }
 }

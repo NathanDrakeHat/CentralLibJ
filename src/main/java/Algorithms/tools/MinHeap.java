@@ -4,23 +4,11 @@ import java.util.*;
 import java.util.function.ToDoubleFunction;
 
 // key must be a number
-public final class MinHeap<V> implements Iterable<Pair<Double,V>>{
-
-    private static class Node<E>{
-        double key;
-        E value;
-        int index;
-        Node(double key, E value, int index){
-            this.key = key;
-            this.value = value;
-            this.index = index;
-        }
-    }
+public final class MinHeap<V> implements Iterable<Pair<Double, V>> {
 
     private final List<Node<V>> array = new ArrayList<>();
     private final Map<V, Node<V>> value_node_map = new HashMap<>();
     private int heap_size = 0;
-
     public MinHeap() {
     }
 
@@ -54,12 +42,14 @@ public final class MinHeap<V> implements Iterable<Pair<Double,V>>{
 
     public void update(V value, double new_key) {
         var node = value_node_map.get(value);
-        if(node == null) throw new NoSuchElementException("No such value.");
-        if (new_key < node.key ) {
+        if (node == null) {
+            throw new NoSuchElementException("No such value.");
+        }
+        if (new_key < node.key) {
             node.key = new_key;
             updateMin(node);
         }
-        else if(new_key > node.key){
+        else if (new_key > node.key) {
             node.key = new_key;
             minHeapify(node.index);
         }
@@ -122,6 +112,18 @@ public final class MinHeap<V> implements Iterable<Pair<Double,V>>{
 
     @Override
     public Iterator<Pair<Double, V>> iterator() {
-        return array.stream().map((n)->new Pair<>(n.key,n.value)).iterator();
+        return array.stream().map((n) -> new Pair<>(n.key, n.value)).iterator();
+    }
+
+    private static class Node<E> {
+        double key;
+        E value;
+        int index;
+
+        Node(double key, E value, int index) {
+            this.key = key;
+            this.value = value;
+            this.index = index;
+        }
     }
 }

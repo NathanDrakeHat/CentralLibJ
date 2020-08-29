@@ -3,6 +3,34 @@ package Algorithms.stringMatching;
 import java.util.*;
 
 public class StringAutomata {
+    public static Map<TransitionEntry, Integer> computeTransitionPattern(String pattern, char[] char_set) {
+        int m = pattern.length();
+        Map<TransitionEntry, Integer> map = new HashMap<>();
+        for (int q = 0; q <= m; q++) {
+            for (var a : char_set) {
+                int k = Math.min(m + 1, q + 2);
+                do {
+                    k--;
+                } while (!(pattern.substring(0, q).concat(String.valueOf(a)).endsWith(pattern.substring(0, k))));
+                map.put(new TransitionEntry(q, a), k);
+            }
+        }
+        return map;
+    }
+
+    public static List<Integer> finiteAutomationMatcher(String T, Map<TransitionEntry, Integer> delta, int m) {
+        List<Integer> res = new ArrayList<>();
+        int n = T.length();
+        int q = 0;
+        for (int i = 0; i < n; i++) {
+            q = delta.get(new TransitionEntry(q, T.charAt(i)));
+            if (q == m) {
+                res.add(i - m);
+            }
+        }
+        return res;
+    }
+
     private static class TransitionEntry {
         private final int integer;
         private final char character;
@@ -36,33 +64,5 @@ public class StringAutomata {
         public String toString() {
             return string;
         }
-    }
-
-    public static Map<TransitionEntry, Integer> computeTransitionPattern(String pattern, char[] char_set) {
-        int m = pattern.length();
-        Map<TransitionEntry, Integer> map = new HashMap<>();
-        for (int q = 0; q <= m; q++) {
-            for (var a : char_set) {
-                int k = Math.min(m + 1, q + 2);
-                do {
-                    k--;
-                } while (!(pattern.substring(0, q).concat(String.valueOf(a)).endsWith(pattern.substring(0, k))));
-                map.put(new TransitionEntry(q, a), k);
-            }
-        }
-        return map;
-    }
-
-    public static List<Integer> finiteAutomationMatcher(String T, Map<TransitionEntry, Integer> delta, int m) {
-        List<Integer> res = new ArrayList<>();
-        int n = T.length();
-        int q = 0;
-        for (int i = 0; i < n; i++) {
-            q = delta.get(new TransitionEntry(q, T.charAt(i)));
-            if (q == m) {
-                res.add(i - m);
-            }
-        }
-        return res;
     }
 }
