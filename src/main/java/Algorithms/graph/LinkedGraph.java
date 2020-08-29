@@ -76,10 +76,19 @@ public final class LinkedGraph<V> {
         return res;
     }
 
+    /**
+     *
+     * @return unmodifiable list
+     */
     public List<V> getAllVertices() {
         return Collections.unmodifiableList(vertices);
     }
 
+    /**
+     *
+     * @param vertex vertex
+     * @return unmodifiable list
+     */
     public List<Edge<V>> getEdgesAt(V vertex) {
         return Collections.unmodifiableList(edges_map.get(vertex));
     }
