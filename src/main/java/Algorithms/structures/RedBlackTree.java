@@ -1,6 +1,7 @@
 package Algorithms.structures;
 
 import Algorithms.tools.Pair;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
 import java.util.function.BiConsumer;
@@ -13,8 +14,7 @@ public final class RedBlackTree<K, V> implements Iterable<Pair<K, V>> {
     private final Node<K, V> sentinel = new Node<>(COLOR.BLACK);// sentinel: denote leaf and parent of root
     Node<K, V> root;
 
-    public RedBlackTree(Comparator<K> k_comparator) {
-        Objects.requireNonNull(k_comparator);
+    public RedBlackTree(@NotNull Comparator<K> k_comparator) {
         this.k_comparator = k_comparator;
         root = sentinel;
     }
@@ -60,11 +60,10 @@ public final class RedBlackTree<K, V> implements Iterable<Pair<K, V>> {
         root.parent = sentinel;
     }
 
-    public void inOrderForEach(BiConsumer<K, V> bc) { // inorder print
+    public void inOrderForEach(@NotNull BiConsumer<K, V> bc) { // inorder print
         if (sentinel == root) {
             return;
         }
-        Objects.requireNonNull(bc);
         inorderTreeWalk(root, bc);
     }
 
@@ -117,8 +116,7 @@ public final class RedBlackTree<K, V> implements Iterable<Pair<K, V>> {
         return height;
     }
 
-    public void insert(K key, V val) {
-        Objects.requireNonNull(key);
+    public void insert(@NotNull K key, V val) {
         insert(new Node<>(key, val));
     }
 
@@ -198,8 +196,7 @@ public final class RedBlackTree<K, V> implements Iterable<Pair<K, V>> {
         root.setBlack();
     }
 
-    public void delete(K key) {
-        Objects.requireNonNull(key);
+    public void delete(@NotNull K key) {
         delete(search(root, key));
     }
 
@@ -310,11 +307,10 @@ public final class RedBlackTree<K, V> implements Iterable<Pair<K, V>> {
         }
     }
 
-    public V search(K key) {
+    public V search(@NotNull K key) {
         if (root == sentinel) {
             throw new NoSuchElementException();
         }
-        Objects.requireNonNull(key);
         return search(root, key).value;
     }
 
@@ -455,7 +451,6 @@ public final class RedBlackTree<K, V> implements Iterable<Pair<K, V>> {
         }
 
         Node(P key, Q val) {
-            Objects.requireNonNull(key);
             color = COLOR.RED;
             this.key = key;
             this.value = val;

@@ -1,6 +1,8 @@
 package Algorithms.structures;
 
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
@@ -28,7 +30,7 @@ public class Bag<Item> implements Iterable<Item> {
         ++this.n;
     }
 
-    public Iterator<Item> iterator() {
+    public @NotNull Iterator<Item> iterator() {
         return new LinkedIterator(this.first);
     }
 

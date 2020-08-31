@@ -1,5 +1,7 @@
 package Algorithms.dynamicProgramming;
 
+import org.jetbrains.annotations.NotNull;
+
 public final class MatrixChain {
     // optimal matrix multiply complexity
     public static class MatrixChainResult {
@@ -45,7 +47,7 @@ public final class MatrixChain {
         }
     }
 
-    public static MatrixChainResult matrixChainOrder(int[][][] p) { // [start, end] [mid, end]
+    public static MatrixChainResult matrixChainOrder(@NotNull int[][][] p) { // [start, end] [mid, end]
         MatrixChainResult[][] m = new MatrixChainResult[p.length][p.length]; // memory
         for (int i = 0; i < p.length; i++) {
             m[i][i] = new MatrixChainResult();
@@ -56,15 +58,14 @@ public final class MatrixChain {
             for (int s = 0; s + l - 1 < p.length; s++) { // start
                 int e = s + l - 1; // end
 
+                m[s][e] = new MatrixChainResult();
                 if (l == 2) {
-                    m[s][e] = new MatrixChainResult();
                     m[s][e].min_cost = p[s].length * p[s][0].length * p[e][0].length;
                     m[s][e].res = new MatrixChainResult.PairNode();
                     m[s][e].res.left = m[s][s].res;
                     m[s][e].res.right = m[e][e].res;
                 }
                 else {
-                    m[s][e] = new MatrixChainResult();
                     m[s][e].min_cost = p[s].length * p[s][0].length * p[e][0].length + m[s][s].min_cost + m[s + 1][e].min_cost;
                     m[s][e].res = new MatrixChainResult.PairNode();
                     m[s][e].res.left = m[s][s].res;

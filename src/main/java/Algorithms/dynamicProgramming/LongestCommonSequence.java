@@ -1,8 +1,10 @@
 package Algorithms.dynamicProgramming;
 
+import org.jetbrains.annotations.NotNull;
+
 public final class LongestCommonSequence { // longest common sequence problem, biological problem
 
-    public static char[] solve(char[] x, char[] y) {
+    public static char[] solve(@NotNull char[] x, @NotNull char[] y) {
         int m = x.length;
         int n = y.length;
         char[][] b = new char[m][n];

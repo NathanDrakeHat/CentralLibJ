@@ -3,6 +3,7 @@ package Algorithms.graph;
 
 import Algorithms.structures.FibonacciHeap;
 import Algorithms.tools.MinHeap;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Comparator;
 import java.util.Objects;
@@ -15,9 +16,7 @@ import static Algorithms.graph.DFS.topologicalSort;
 // single source shortest path
 public final class SSShortestPath {
     // general case algorithm: negative weight, cyclic
-    public static <T> boolean algorithmBellmanFord(LinkedGraph<BFSVertex<T>> graph, BFSVertex<T> s) {
-        Objects.requireNonNull(s);
-        Objects.requireNonNull(graph);
+    public static <T> boolean algorithmBellmanFord(@NotNull LinkedGraph<BFSVertex<T>> graph, @NotNull BFSVertex<T> s) {
         initializeSingleSource(graph, s);
         int vertices_count = graph.getVerticesCount();
         var edges = graph.getAllEdges();
@@ -58,12 +57,9 @@ public final class SSShortestPath {
 
     // shortest paths of directed acyclic Algorithms.graph
     public static <T>
-    LinkedGraph<BFSVertex<T>> shortestPathOfDAG(LinkedGraph<DFSVertex<BFSVertex<T>>> DFS_Linked_graph,
-                                                LinkedGraph<BFSVertex<T>> BFS_Linked_graph,
-                                                BFSVertex<T> s) {
-        Objects.requireNonNull(s);
-        Objects.requireNonNull(DFS_Linked_graph);
-        Objects.requireNonNull(BFS_Linked_graph);
+    LinkedGraph<BFSVertex<T>> shortestPathOfDAG(@NotNull LinkedGraph<DFSVertex<BFSVertex<T>>> DFS_Linked_graph,
+                                                @NotNull LinkedGraph<BFSVertex<T>> BFS_Linked_graph,
+                                                @NotNull BFSVertex<T> s) {
         var DFS_list = topologicalSort(DFS_Linked_graph);
         initializeSingleSource(BFS_Linked_graph, s);
         DFS_list.sort((d1, d2) -> d2.finish - d1.finish);
@@ -77,10 +73,9 @@ public final class SSShortestPath {
         return BFS_Linked_graph;
     }
 
-    public static <T> void algorithmDijkstra(LinkedGraph<BFSVertex<T>> G, BFSVertex<T> s, Heap type) {
-        Objects.requireNonNull(s);
-        Objects.requireNonNull(G);
-        Objects.requireNonNull(type);
+    public static <T> void algorithmDijkstra(@NotNull LinkedGraph<BFSVertex<T>> G,
+                                             @NotNull BFSVertex<T> s,
+                                             @NotNull Heap type) {
         if (type == Heap.FIBONACCI) {
             algorithmDijkstraWithFibonacciHeap(G, s);
         }

@@ -1,10 +1,12 @@
 package Algorithms.dynamicProgramming;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 
 public final class ActivitySelection {
     // greedy algorithm
-    public static class Node {
+    static class Node {
         private final int val;
         private Node next;
 
@@ -43,11 +45,11 @@ public final class ActivitySelection {
         }
     }
 
-    public static Node recursiveActivitySelector(int[] s, int[] f) {
+    public static Node recursiveActivitySelector(@NotNull int[] s, @NotNull int[] f) {
         return new Node(0).setNext(recursiveActivitySelector(s, f, 0));
     }
 
-    public static Node recursiveActivitySelector(int[] s, int[] f, int k) {
+    public static Node recursiveActivitySelector(@NotNull int[] s, @NotNull int[] f, int k) {
         int m = k + 1;
         if (k >= s.length || m >= s.length) {
             return null;
@@ -58,7 +60,7 @@ public final class ActivitySelection {
         return new Node(m).setNext(recursiveActivitySelector(s, f, m));
     }
 
-    public static Node greedyActivitySelector(int[] s, int[] f) {
+    public static Node greedyActivitySelector(@NotNull int[] s, @NotNull int[] f) {
         int len = s.length;
         Node ptr = new Node(0);
         Node root = ptr;

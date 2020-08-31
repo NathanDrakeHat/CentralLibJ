@@ -1,6 +1,8 @@
 package Algorithms.graph;
 
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.*;
 
 
@@ -10,9 +12,7 @@ public final class LinkedGraph<V> {
     private final Map<V, List<Edge<V>>> edges_map = new HashMap<>();
     private int size;
 
-    public LinkedGraph(List<V> vertices, Direction is_directed) {
-        Objects.requireNonNull(is_directed);
-        Objects.requireNonNull(vertices);
+    public LinkedGraph(@NotNull List<V> vertices, @NotNull Direction is_directed) {
         size = 0;
         for (var vertex : vertices) {
             Objects.requireNonNull(vertex);
@@ -23,23 +23,18 @@ public final class LinkedGraph<V> {
         this.graph_direction = is_directed;
     }
 
-    public LinkedGraph(LinkedGraph<V> other_graph) {
-        Objects.requireNonNull(other_graph);
+    public LinkedGraph(@NotNull LinkedGraph<V> other_graph) {
         size = other_graph.vertices.size();
         this.graph_direction = other_graph.graph_direction;
         this.edges_map.putAll(other_graph.edges_map);
         this.vertices.addAll(other_graph.vertices);
     }
 
-    public void setNeighbor(V vertex, V neighbor) {
-        Objects.requireNonNull(vertex);
-        Objects.requireNonNull(neighbor);
+    public void setNeighbor(@NotNull V vertex, @NotNull V neighbor) {
         setNeighbor(vertex, neighbor, 1);
     }
 
-    public void setNeighbor(V vertex, V neighbor, double w) {
-        Objects.requireNonNull(vertex);
-        Objects.requireNonNull(neighbor);
+    public void setNeighbor(@NotNull V vertex, @NotNull V neighbor, double w) {
         var edge_t = new Edge<>(vertex, neighbor, w, graph_direction);
         if (graph_direction == Direction.DIRECTED) {
             var edges_list = edges_map.get(vertex);
@@ -54,8 +49,7 @@ public final class LinkedGraph<V> {
         }
     }
 
-    public void addNewVertex(V vertex) {
-        Objects.requireNonNull(vertex);
+    public void addNewVertex(@NotNull V vertex) {
         if (vertices.contains(vertex) || edges_map.containsKey(vertex)) {
             throw new IllegalArgumentException("repeated vertex");
         }
@@ -103,10 +97,7 @@ public final class LinkedGraph<V> {
         private final Direction edge_direction;
         double weight;
 
-        Edge(T former, T later, double weight, Direction is_directed) {
-            Objects.requireNonNull(former);
-            Objects.requireNonNull(later);
-            Objects.requireNonNull(is_directed);
+        Edge(@NotNull T former,@NotNull  T later, double weight, @NotNull Direction is_directed) {
             this.weight = weight;
             former_vertex = former;
             later_vertex = later;

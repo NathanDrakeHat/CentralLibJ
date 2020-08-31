@@ -3,13 +3,13 @@ package Algorithms.graph;
 import Algorithms.structures.DisjointSet;
 import Algorithms.structures.FibonacciHeap;
 import Algorithms.tools.MinHeap;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
 
 // minimum spanning tree
 public final class MinSpanTree {
-    public static <T> Set<LinkedGraph.Edge<KruskalVertex<T>>> algorithmOfKruskal(LinkedGraph<KruskalVertex<T>> graph) {
-        Objects.requireNonNull(graph);
+    public static <T> Set<LinkedGraph.Edge<KruskalVertex<T>>> algorithmOfKruskal(@NotNull LinkedGraph<KruskalVertex<T>> graph) {
         Set<LinkedGraph.Edge<KruskalVertex<T>>> res = new HashSet<>();
         var edges_set = graph.getAllEdges();
         var edges_list = new ArrayList<>(edges_set);
@@ -25,9 +25,8 @@ public final class MinSpanTree {
         return res;
     }
 
-    public static <T> void algorithmOfPrimWithFibonacciHeap(LinkedGraph<PrimVertex<T>> graph, PrimVertex<T> r) {
-        Objects.requireNonNull(r);
-        Objects.requireNonNull(graph);
+    public static <T> void algorithmOfPrimWithFibonacciHeap(@NotNull LinkedGraph<PrimVertex<T>> graph,
+                                                            @NotNull PrimVertex<T> r) {
         FibonacciHeap<Double, PrimVertex<T>> Q = new FibonacciHeap<>(Comparator.comparingDouble(a -> a));
         var vertices = graph.getAllVertices();
         for (var u : vertices) {
@@ -54,9 +53,8 @@ public final class MinSpanTree {
         }
     }
 
-    public static <T> void algorithmOfPrimWithMinHeap(LinkedGraph<PrimVertex<T>> graph, PrimVertex<T> r) {
-        Objects.requireNonNull(r);
-        Objects.requireNonNull(graph);
+    public static <T> void algorithmOfPrimWithMinHeap(@NotNull LinkedGraph<PrimVertex<T>> graph,
+                                                      @NotNull PrimVertex<T> r) {
         var vertices = graph.getAllVertices();
         for (var u : vertices) {
             if (u != r) {
@@ -83,16 +81,15 @@ public final class MinSpanTree {
     }
 
     public static class KruskalVertex<V> implements DisjointSet<KruskalVertex<V>> {
-        private final V content;
+        @NotNull private final V content;
         private int rank = 0;
         private KruskalVertex<V> parent = this;
 
-        public KruskalVertex(V n) {
-            Objects.requireNonNull(n);
+        public KruskalVertex(@NotNull V n) {
             content = n;
         }
 
-        public V getContent() {
+        public @NotNull V getContent() {
             return content;
         }
 
@@ -125,16 +122,15 @@ public final class MinSpanTree {
     }
 
     public static class PrimVertex<V> {
-        private final V content;
+        @NotNull private final V content;
         PrimVertex<V> parent;
         private double key = 0;
 
-        public PrimVertex(V name) {
-            Objects.requireNonNull(name);
+        public PrimVertex(@NotNull V name) {
             this.content = name;
         }
 
-        public V getContent() {
+        public @NotNull V getContent() {
             return content;
         }
 

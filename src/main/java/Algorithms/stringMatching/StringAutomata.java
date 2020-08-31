@@ -1,9 +1,12 @@
 package Algorithms.stringMatching;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.*;
 
 public class StringAutomata {
-    public static Map<TransitionEntry, Integer> computeTransitionPattern(String pattern, char[] char_set) {
+    public static @NotNull  Map<TransitionEntry, Integer> computeTransitionPattern(@NotNull String pattern,
+                                                                                   @NotNull char[] char_set) {
         int m = pattern.length();
         Map<TransitionEntry, Integer> map = new HashMap<>();
         for (int q = 0; q <= m; q++) {
@@ -18,7 +21,9 @@ public class StringAutomata {
         return map;
     }
 
-    public static List<Integer> finiteAutomationMatcher(String T, Map<TransitionEntry, Integer> delta, int m) {
+    public static List<Integer> finiteAutomationMatcher(@NotNull String T,
+                                                        @NotNull Map<TransitionEntry, Integer> delta,
+                                                        int m) {
         List<Integer> res = new ArrayList<>();
         int n = T.length();
         int q = 0;

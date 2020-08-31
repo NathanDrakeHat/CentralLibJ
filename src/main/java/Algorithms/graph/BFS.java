@@ -1,12 +1,12 @@
 package Algorithms.graph;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.*;
 
 // breath first search
 public final class BFS {
-    public static <T> void breathFirstSearch(LinkedGraph<BFSVertex<T>> G, BFSVertex<T> s) {
-        Objects.requireNonNull(G);
-        Objects.requireNonNull(s);
+    public static <T> void breathFirstSearch(@NotNull LinkedGraph<BFSVertex<T>> G,@NotNull  BFSVertex<T> s) {
         var vs = G.getAllVertices();
         for (var v : vs) {
             if (!v.equals(s)) {
@@ -36,9 +36,7 @@ public final class BFS {
         }
     }
 
-    public static <T> List<T> getPath(BFSVertex<T> s, BFSVertex<T> v) {
-        Objects.requireNonNull(s);
-        Objects.requireNonNull(v);
+    public static <T> List<T> getPath(@NotNull BFSVertex<T> s, @NotNull BFSVertex<T> v) {
         List<T> t = new ArrayList<>();
         traverse(s, v, t);
         int idx = 0;

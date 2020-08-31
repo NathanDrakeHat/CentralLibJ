@@ -1,7 +1,9 @@
 package Algorithms.dynamicProgramming;
 
+import org.jetbrains.annotations.NotNull;
+
 public final class CutRod {
-    public static class CutResult {
+    static class CutResult {
         public static class Node {
             public int value;
             private Node next;
@@ -71,7 +73,7 @@ public final class CutRod {
         }
     }
 
-    public static CutResult recursiveCutRod(int[] p, int rod_len) {
+    public static CutResult recursiveCutRod(@NotNull int[] p, int rod_len) {
         if (rod_len <= 0) {
             throw new IllegalArgumentException();
         }
@@ -102,7 +104,7 @@ public final class CutRod {
         return res;
     }
 
-    public static CutResult topDownCutRod(int[] p, int rod_len) {
+    public static CutResult topDownCutRod(@NotNull int[] p, int rod_len) {
         // recursive with memory
         if (rod_len <= 0) {
             throw new IllegalArgumentException();
@@ -142,7 +144,7 @@ public final class CutRod {
         return res;
     }
 
-    public static CutResult bottomUpCutRod(int[] p, int rod_len) {
+    public static CutResult bottomUpCutRod(@NotNull int[] p, int rod_len) {
         if (rod_len <= 0) {
             throw new IllegalArgumentException();
         }

@@ -1,13 +1,14 @@
 package Algorithms.graph;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
+
 
 // depth first search
 public final class DFS {
-    public static <T> void depthFirstSearch(LinkedGraph<DFSVertex<T>> G) {
-        Objects.requireNonNull(G);
+    public static <T> void depthFirstSearch(@NotNull LinkedGraph<DFSVertex<T>> G) {
         var vertices = G.getAllVertices();
         for (var v : vertices) {
             v.color = COLOR.WHITE;
@@ -39,16 +40,14 @@ public final class DFS {
         return time;
     }
 
-    public static <T> List<DFSVertex<T>> topologicalSort(LinkedGraph<DFSVertex<T>> G) {
-        Objects.requireNonNull(G);
+    public static <T> List<DFSVertex<T>> topologicalSort(@NotNull LinkedGraph<DFSVertex<T>> G) {
         depthFirstSearch(G);
         List<DFSVertex<T>> l = new ArrayList<>(G.getAllVertices());
         l.sort((o1, o2) -> o2.finish - o1.finish); // descend order
         return l;
     }
 
-    public static <T> void stronglyConnectedComponents(LinkedGraph<DFSVertex<T>> G) {
-        Objects.requireNonNull(G);
+    public static <T> void stronglyConnectedComponents(@NotNull LinkedGraph<DFSVertex<T>> G) {
         var l = topologicalSort(G);
         var G_T = transposeGraph(G);
         depthFirstSearchOrderly(G_T, l);
@@ -84,18 +83,18 @@ public final class DFS {
     enum COLOR {WHITE, GRAY, BLACK}
 
     public static class DFSVertex<V> {
-        private final V content;
+        @NotNull private final V content;
         DFSVertex<V> parent;
         int discover; //d
         int finish; // f
         private COLOR color;
 
-        public DFSVertex(V name) {
-            Objects.requireNonNull(name);
+        public DFSVertex(@NotNull V name) {
+//            Objects.requireNonNull(name);
             this.content = name;
         }
 
-        public V getContent() {
+        public @NotNull V getContent() {
             return content;
         }
 

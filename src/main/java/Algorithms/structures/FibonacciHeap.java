@@ -1,6 +1,8 @@
 package Algorithms.structures;
 
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.*;
 
 // dynamic minimum priority queue
@@ -10,14 +12,11 @@ public final class FibonacciHeap<K, V> {
     private final Comparator<K> keyComparator;
     Node<K, V> rootList = null;
     int count = 0; // number of nodes
-    public FibonacciHeap(Comparator<K> keyComparator) {
-        Objects.requireNonNull(keyComparator);
+    public FibonacciHeap(@NotNull Comparator<K> keyComparator) {
         this.keyComparator = keyComparator;
     }
 
-    public static <K, V> FibonacciHeap<K, V> union(FibonacciHeap<K, V> f1, FibonacciHeap<K, V> f2) {
-        Objects.requireNonNull(f1);
-        Objects.requireNonNull(f2);
+    public static <K, V> FibonacciHeap<K, V> union(@NotNull FibonacciHeap<K, V> f1, @NotNull FibonacciHeap<K, V> f2) {
         var res = new FibonacciHeap<K, V>(f1.keyComparator);
         res.rootList = f1.rootList;
         Objects.requireNonNull(f1.rootList);
@@ -194,8 +193,7 @@ public final class FibonacciHeap<K, V> {
         }
     }
 
-    public void decreaseKey(V val, K new_key) {
-        Objects.requireNonNull(val);
+    public void decreaseKey(@NotNull V val, K new_key) {
         var x = value_Node_map.get(val);
         if (keyComparator.compare(new_key, x.key) > 0) {
             throw new IllegalArgumentException("New key should smaller than old key.");

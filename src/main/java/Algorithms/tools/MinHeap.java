@@ -1,5 +1,7 @@
 package Algorithms.tools;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.*;
 import java.util.function.ToDoubleFunction;
 
@@ -12,9 +14,7 @@ public final class MinHeap<V> implements Iterable<Pair<Double, V>> {
     public MinHeap() {
     }
 
-    public MinHeap(Iterable<V> c, ToDoubleFunction<V> getKey) {
-        Objects.requireNonNull(c);
-        Objects.requireNonNull(getKey);
+    public MinHeap(@NotNull Iterable<V> c, @NotNull ToDoubleFunction<V> getKey) {
         heap_size = 0;
         int idx = 0;
         for (var i : c) {

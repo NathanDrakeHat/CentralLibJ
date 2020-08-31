@@ -2,6 +2,7 @@ package Algorithms.graph;
 
 
 import Algorithms.graph.BFS.BFSVertex;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
 
@@ -9,8 +10,7 @@ import java.util.*;
 public class APShortestPath {
 
     // O(V^4)
-    public static double[][] slowAllPairsShortestPaths(double[][] W) {
-        Objects.requireNonNull(W);
+    public static double[][] slowAllPairsShortestPaths(@NotNull double[][] W) {
         var n = W.length;
         var L = W;
         for (int m = 2; m <= n - 1; m++) {
@@ -35,8 +35,7 @@ public class APShortestPath {
     }
 
     // O(V^3*lgV)
-    public static double[][] fasterAllPairsShortestPaths(double[][] W) {
-        Objects.requireNonNull(W);
+    public static double[][] fasterAllPairsShortestPaths(@NotNull double[][] W) {
         var n = W.length;
         var L = W;
         int m = 1;
@@ -47,8 +46,7 @@ public class APShortestPath {
     }
 
     // no negative-weight cycles
-    public static double[][] algorithmFloydWarshall(double[][] W) {
-        Objects.requireNonNull(W);
+    public static double[][] algorithmFloydWarshall(@NotNull double[][] W) {
         var n = W.length;
         var D_origin = W;
         for (int k = 0; k < n; k++) {
@@ -64,8 +62,7 @@ public class APShortestPath {
     }
 
 
-    public static boolean[][] transitiveClosure(double[][] W) {
-        Objects.requireNonNull(W);
+    public static boolean[][] transitiveClosure(@NotNull double[][] W) {
         var n = W.length;
         var T = new boolean[n][n];
         for (int i = 0; i < n; i++) {
@@ -88,9 +85,8 @@ public class APShortestPath {
     // sparse Algorithms.graph
     // Fibonacci heap: O(V^2*lgV + V*E)
     // min heap: O(V*E*lgV)
-    public static <T> Optional<double[][]> algorithmJohnson(LinkedGraph<BFSVertex<T>> graph, SSShortestPath.Heap type) {
-        Objects.requireNonNull(graph);
-        Objects.requireNonNull(type);
+    public static <T> Optional<double[][]> algorithmJohnson(@NotNull LinkedGraph<BFSVertex<T>> graph,
+                                                            @NotNull SSShortestPath.Heap type) {
         Map<BFSVertex<T>, Double> h = new HashMap<>();
         var n = graph.getVerticesCount();
         var vertices_new = new ArrayList<>(graph.getAllVertices());
@@ -127,7 +123,8 @@ public class APShortestPath {
         }
     }
 
-    private static <T> LinkedGraph<BFSVertex<T>> buildGraph(LinkedGraph<BFSVertex<T>> graph, List<BFSVertex<T>> vertices,
+    private static <T> LinkedGraph<BFSVertex<T>> buildGraph(LinkedGraph<BFSVertex<T>> graph,
+                                                            List<BFSVertex<T>> vertices,
                                                             BFSVertex<T> s) {
         var new_graph = new LinkedGraph<>(graph);
         new_graph.addNewVertex(s);

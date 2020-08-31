@@ -1,5 +1,7 @@
 package Algorithms.miscellaneous;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.concurrent.ThreadLocalRandom;
 
 public final class IthSmallest {
@@ -42,7 +44,7 @@ public final class IthSmallest {
         }
     }
 
-    public static int randomSelect(int[] a, int ith) {
+    public static int randomSelect(@NotNull int[] a, int ith) {
         return randomSelect(a, 0, a.length, ith);
     }
 }
