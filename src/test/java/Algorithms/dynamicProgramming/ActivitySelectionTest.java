@@ -1,7 +1,6 @@
 package Algorithms.dynamicProgramming;
 
 import org.junit.jupiter.api.Test;
-
 import static Algorithms.dynamicProgramming.ActivitySelection.greedyActivitySelector;
 import static Algorithms.dynamicProgramming.ActivitySelection.recursiveActivitySelector;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
