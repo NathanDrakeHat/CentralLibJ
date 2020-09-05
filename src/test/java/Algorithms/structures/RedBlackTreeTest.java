@@ -56,6 +56,10 @@ class RedBlackTreeTest {
             t.insert(i, String.valueOf(i));
             l1.add(i);
         }
+        var ri = t.reverseIterator();
+        assertEquals(15,ri.next().first);
+
+        assertEquals(5+1-2,t.keyRangeSearch(2, 5).size());
         assertEquals(t.getHeight(), 4);
         assertEquals(t.getCount(), 16);
         assertEquals(t.getMinKey(), 0);

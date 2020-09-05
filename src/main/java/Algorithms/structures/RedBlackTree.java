@@ -10,17 +10,42 @@ import java.util.function.BiConsumer;
 public final class RedBlackTree<K, V> implements Iterable<Pair<K, V>> {
 
 
-    private final Comparator<K> k_comparator;
-    private final Node<K, V> sentinel = new Node<>(COLOR.BLACK);// sentinel: denote leaf and parent of root
-    Node<K, V> root;
+    @NotNull private final Comparator<K> k_comparator;
+    @NotNull private final Node<K, V> sentinel = new Node<>(COLOR.BLACK);// sentinel: denote leaf and parent of root
+    @NotNull Node<K, V> root;
 
     public RedBlackTree(@NotNull Comparator<K> k_comparator) {
         this.k_comparator = k_comparator;
         root = sentinel;
     }
 
+    public List<Pair<K,V>> keyRangeSearch(@NotNull K low, @NotNull K high){
+        List<Pair<K,V>> res = new ArrayList<>();
+        if (root == sentinel) return res;
+        keyRangeSearch(root, low, high, res);
+        return res;
+    }
+
+    public void keyRangeSearch(Node<K,V> n, @NotNull K low, @NotNull K high, List<Pair<K,V>> l){
+        if (n == sentinel) return;
+        if (k_comparator.compare(n.key, low) >= 0 && k_comparator.compare(n.key, high) <= 0)
+        {
+            l.add(new Pair<>(n.key,n.value));
+        }
+
+        if (k_comparator.compare(n.key, low) > 0)
+        {
+            keyRangeSearch(n.left, low, high, l);
+        }
+
+        if (k_comparator.compare(n.key, high) < 0)
+        {
+            keyRangeSearch(n.right, low, high, l);
+        }
+    }
+
     public V getValueOfMinKey() {
-        if (root != null && sentinel != root) {
+        if (sentinel != root) {
             return getMinimum(root).value;
         }
         else {
@@ -29,7 +54,7 @@ public final class RedBlackTree<K, V> implements Iterable<Pair<K, V>> {
     }
 
     public K getMinKey() {
-        if (root != null && sentinel != root) {
+        if (sentinel != root) {
             return getMinimum(root).key;
         }
         else {
@@ -38,7 +63,7 @@ public final class RedBlackTree<K, V> implements Iterable<Pair<K, V>> {
     }
 
     public V getValueOfMaxKey() {
-        if (root != null && root != sentinel) {
+        if (root != sentinel) {
             return getMaximum(root).value;
         }
         else {
@@ -47,7 +72,7 @@ public final class RedBlackTree<K, V> implements Iterable<Pair<K, V>> {
     }
 
     public K getMaxKey() {
-        if (root != null && root != sentinel) {
+        if (root != sentinel) {
             return getMaximum(root).key;
         }
         else {
@@ -436,6 +461,10 @@ public final class RedBlackTree<K, V> implements Iterable<Pair<K, V>> {
         return new StackIterator();
     }
 
+    public Iterator<Pair<K, V>> reverseIterator(){
+        return new ReverseStackIterator();
+    }
+
     enum COLOR {RED, BLACK}
 
     static final class Node<P, Q> {
@@ -450,7 +479,7 @@ public final class RedBlackTree<K, V> implements Iterable<Pair<K, V>> {
             this.color = color;
         }
 
-        Node(P key, Q val) {
+        Node(@NotNull P key, Q val) {
             color = COLOR.RED;
             this.key = key;
             this.value = val;
@@ -518,7 +547,56 @@ public final class RedBlackTree<K, V> implements Iterable<Pair<K, V>> {
                 }
             }
             finish = true;
-            throw new IllegalStateException("Iterate finish.");
+            throw new NoSuchElementException("Iterate finish.");
+        }
+    }
+
+    private final class ReverseStackIterator implements Iterator<Pair<K, V>> {
+        private final Deque<Node<K, V>> stack = new LinkedList<>();
+        private Node<K, V> ptr;
+        private boolean poppedBefore = false;
+        private boolean finish = false;
+
+        public ReverseStackIterator() {
+            ptr = root;
+            if (ptr == sentinel) {
+                finish = true;
+            }
+        }
+
+        @Override
+        public boolean hasNext() {
+            return !finish && ptr != null;
+        }
+
+        @Override
+        public Pair<K, V> next() {
+            while (ptr != null) {
+                if (ptr.right != sentinel && !poppedBefore) // if popped before, walk to right
+                {
+                    stack.push(ptr);
+                    ptr = ptr.right;
+                }
+                else {
+                    var t = ptr;
+                    if (ptr.left!= sentinel) {
+                        ptr = ptr.left;
+                        poppedBefore = false;
+                    }
+                    else {
+                        if (stack.size() != 0) {
+                            ptr = stack.pop();
+                            poppedBefore = true;
+                        }
+                        else {
+                            ptr = null;
+                        }
+                    }
+                    return new Pair<>(t.key, t.value);
+                }
+            }
+            finish = true;
+            throw new NoSuchElementException("Iterate finish.");
         }
     }
 }
