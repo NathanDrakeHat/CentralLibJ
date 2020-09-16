@@ -2,7 +2,7 @@
   <artifact type="jar" name="IntroductionToAlgorithm:jar">
     <output-path>$PROJECT_DIR$/out/artifacts/IntroductionToAlgorithm_jar</output-path>
     <root id="archive" name="IntroductionToAlgorithm.jar">
-      <element id="module-output" name="IntroductionToAlgorithm" />
+      <element id="module-output" name="AlgorithmsJava" />
     </root>
   </artifact>
 </component>
