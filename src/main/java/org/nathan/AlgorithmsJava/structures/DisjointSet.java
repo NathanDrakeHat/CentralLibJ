@@ -1,24 +1,32 @@
 package org.nathan.AlgorithmsJava.structures;
 
-public interface DisjointSet<V> {
-    static <T extends DisjointSet<T>> T findSet(T x) {
-        if (x != x.getParent()) {
+public interface DisjointSet<V>
+{
+    static <T extends DisjointSet<T>> T findSet(T x)
+    {
+        if (x != x.getParent())
+        {
             x.setParent(findSet(x.getParent()));
         }
         return x.getParent();
     }
 
-    static <T extends DisjointSet<T>> void union(T a, T b) {
+    static <T extends DisjointSet<T>> void union(T a, T b)
+    {
         link(findSet(a), findSet(b));
     }
 
-    private static <T extends DisjointSet<T>> void link(T x, T y) {
-        if (x.getRank() > y.getRank()) {
+    private static <T extends DisjointSet<T>> void link(T x, T y)
+    {
+        if (x.getRank() > y.getRank())
+        {
             y.setParent(x);
         }
-        else {
+        else
+        {
             x.setParent(y);
-            if (x.getRank() == y.getRank()) {
+            if (x.getRank() == y.getRank())
+            {
                 y.setRank(y.getRank() + 1);
             }
         }

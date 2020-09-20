@@ -1,9 +1,9 @@
 package org.nathan.AlgorithmsJava.graph;
 
 
+import org.jetbrains.annotations.NotNull;
 import org.nathan.AlgorithmsJava.structures.FibonacciHeap;
 import org.nathan.AlgorithmsJava.tools.MinHeap;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.Comparator;
 import java.util.stream.Collectors;
@@ -13,42 +13,53 @@ import static org.nathan.AlgorithmsJava.graph.DFS.DFSVertex;
 import static org.nathan.AlgorithmsJava.graph.DFS.topologicalSort;
 
 // single source shortest path
-public final class SSShortestPath {
+public final class SSShortestPath
+{
     // general case algorithm: negative weight, cyclic
-    public static <T> boolean algorithmBellmanFord(@NotNull LinkedGraph<BFSVertex<T>> graph, @NotNull BFSVertex<T> s) {
+    public static <T> boolean algorithmBellmanFord(@NotNull LinkedGraph<BFSVertex<T>> graph, @NotNull BFSVertex<T> s)
+    {
         initializeSingleSource(graph, s);
         int vertices_count = graph.getVerticesCount();
         var edges = graph.getAllEdges();
-        for (int i = 1; i < vertices_count; i++) {
-            for (var edge : edges) {
+        for (int i = 1; i < vertices_count; i++)
+        {
+            for (var edge : edges)
+            {
                 relax(edge);
             }
         }
-        for (var edge : edges) {
-            if (edge.getLaterVertex().distance > edge.getFormerVertex().distance + edge.getWeight()) {
+        for (var edge : edges)
+        {
+            if (edge.getLaterVertex().distance > edge.getFormerVertex().distance + edge.getWeight())
+            {
                 return false;
             }
         }
         return true;
     }
 
-    private static <T> void initializeSingleSource(LinkedGraph<BFSVertex<T>> G, BFSVertex<T> s) {
+    private static <T> void initializeSingleSource(LinkedGraph<BFSVertex<T>> G, BFSVertex<T> s)
+    {
         var vertices = G.getAllVertices();
-        for (var v : vertices) {
+        for (var v : vertices)
+        {
             v.distance = Double.POSITIVE_INFINITY;
             v.parent = null;
-            if (s == v) {
+            if (s == v)
+            {
                 s.distance = 0;
             }
         }
     }
 
-    private static <T> void relax(LinkedGraph.Edge<BFSVertex<T>> edge) {
+    private static <T> void relax(LinkedGraph.Edge<BFSVertex<T>> edge)
+    {
         var weight = edge.getWeight();
         var u = edge.getFormerVertex();
         var v = edge.getLaterVertex();
         var sum = u.distance + weight;
-        if (v.distance > sum) {
+        if (v.distance > sum)
+        {
             v.distance = sum;
             v.parent = u;
         }
@@ -58,14 +69,17 @@ public final class SSShortestPath {
     public static <T>
     LinkedGraph<BFSVertex<T>> shortestPathOfDAG(@NotNull LinkedGraph<DFSVertex<BFSVertex<T>>> DFS_Linked_graph,
                                                 @NotNull LinkedGraph<BFSVertex<T>> BFS_Linked_graph,
-                                                @NotNull BFSVertex<T> s) {
+                                                @NotNull BFSVertex<T> s)
+    {
         var DFS_list = topologicalSort(DFS_Linked_graph);
         initializeSingleSource(BFS_Linked_graph, s);
         DFS_list.sort((d1, d2) -> d2.finish - d1.finish);
         var BFS_list = DFS_list.stream().map(DFSVertex::getContent).collect(Collectors.toList());
-        for (var u : BFS_list) {
+        for (var u : BFS_list)
+        {
             var u_edges = BFS_Linked_graph.getEdgesAt(u);
-            for (var edge : u_edges) {
+            for (var edge : u_edges)
+            {
                 relax(edge);
             }
         }
@@ -74,31 +88,39 @@ public final class SSShortestPath {
 
     public static <T> void algorithmDijkstra(@NotNull LinkedGraph<BFSVertex<T>> G,
                                              @NotNull BFSVertex<T> s,
-                                             @NotNull Heap type) {
-        if (type == Heap.FIBONACCI) {
+                                             @NotNull Heap type)
+    {
+        if (type == Heap.FIBONACCI)
+        {
             algorithmDijkstraWithFibonacciHeap(G, s);
         }
-        else {
+        else
+        {
             algorithmDijkstraWithMinHeap(G, s);
         }
     }
 
     // fibonacci heap, time complexity: O(V^2*lgV + V*E)
-    private static <T> void algorithmDijkstraWithFibonacciHeap(LinkedGraph<BFSVertex<T>> G, BFSVertex<T> s) {
+    private static <T> void algorithmDijkstraWithFibonacciHeap(LinkedGraph<BFSVertex<T>> G, BFSVertex<T> s)
+    {
         initializeSingleSource(G, s);
         var vertices = G.getAllVertices();
         FibonacciHeap<Double, BFSVertex<T>> Q = new FibonacciHeap<>(Comparator.comparingDouble(a -> a));
-        for (var vertex : vertices) {
+        for (var vertex : vertices)
+        {
             Q.insert(vertex.distance, vertex);
         }
-        while (Q.count() > 0) {
+        while (Q.count() > 0)
+        {
             var u = Q.extractMin();
             var u_edges = G.getEdgesAt(u);
-            for (var edge : u_edges) {
+            for (var edge : u_edges)
+            {
                 var v = edge.getAnotherSide(u);
                 var original = v.distance;
                 relax(edge);
-                if (v.distance < original) {
+                if (v.distance < original)
+                {
                     Q.decreaseKey(v, v.distance);
                 }
             }
@@ -106,18 +128,22 @@ public final class SSShortestPath {
     }
 
     // min heap, time complexity: O(V*E*lgV)
-    private static <T> void algorithmDijkstraWithMinHeap(LinkedGraph<BFSVertex<T>> G, BFSVertex<T> s) {
+    private static <T> void algorithmDijkstraWithMinHeap(LinkedGraph<BFSVertex<T>> G, BFSVertex<T> s)
+    {
         initializeSingleSource(G, s);
         var vertices = G.getAllVertices();
         MinHeap<BFSVertex<T>> Q = new MinHeap<>(vertices, BFSVertex::getDistance);
-        while (Q.length() > 0) {
+        while (Q.length() > 0)
+        {
             var u = Q.extractMin();
             var u_edges = G.getEdgesAt(u);
-            for (var edge : u_edges) {
+            for (var edge : u_edges)
+            {
                 var v = edge.getAnotherSide(u);
                 var original = v.distance;
                 relax(edge);
-                if (v.distance < original) {
+                if (v.distance < original)
+                {
                     Q.update(v, v.distance);
                 }
             }
@@ -125,7 +151,8 @@ public final class SSShortestPath {
     }
 
     // non-negative weight
-    public enum Heap {
+    public enum Heap
+    {
         FIBONACCI, MIN_HEAP
     }
 }

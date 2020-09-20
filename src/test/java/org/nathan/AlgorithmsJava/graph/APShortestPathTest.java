@@ -5,16 +5,19 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.nathan.AlgorithmsJava.graph.BFS.BFSVertex;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.nathan.AlgorithmsJava.graph.BFS.BFSVertex;
 
-class APShortestPathTest {
+class APShortestPathTest
+{
 
-    static LinkedGraph<BFSVertex<String>> build() {
+    static LinkedGraph<BFSVertex<String>> build()
+    {
         String[] names = "1,2,3,4,5".split(",");
         List<BFSVertex<String>> vertices = new ArrayList<>();
-        for (var name : names) {
+        for (var name : names)
+        {
             vertices.add(new BFSVertex<>(name));
         }
         var res = new LinkedGraph<>(vertices, LinkedGraph.Direction.DIRECTED);
@@ -35,7 +38,8 @@ class APShortestPathTest {
     }
 
     @Test
-    void slowAllPairsShortestPaths() {
+    void slowAllPairsShortestPaths()
+    {
         var res = APShortestPath.slowAllPairsShortestPaths(new double[][]{
                 {0, Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY, 2, Double.POSITIVE_INFINITY},
                 {3, 0, 4, Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY},
@@ -54,7 +58,8 @@ class APShortestPathTest {
     }
 
     @Test
-    void fasterAllPairsShortestPaths() {
+    void fasterAllPairsShortestPaths()
+    {
         var res = APShortestPath.fasterAllPairsShortestPaths(new double[][]{
                 {0, Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY, 2, Double.POSITIVE_INFINITY},
                 {3, 0, 4, Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY},
@@ -73,7 +78,8 @@ class APShortestPathTest {
     }
 
     @Test
-    void algorithmFloydWarshallTest() {
+    void algorithmFloydWarshallTest()
+    {
         var res = APShortestPath.algorithmFloydWarshall(new double[][]{
                 {0, Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY, 2, Double.POSITIVE_INFINITY},
                 {3, 0, 4, Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY},
@@ -92,7 +98,8 @@ class APShortestPathTest {
     }
 
     @Test
-    void transitiveClosureTest() {
+    void transitiveClosureTest()
+    {
         var res = APShortestPath.transitiveClosure(new double[][]{
                 {0, Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY, 1},
                 {Double.POSITIVE_INFINITY, 0, 1, Double.POSITIVE_INFINITY},
@@ -110,7 +117,8 @@ class APShortestPathTest {
     }
 
     @Test
-    void algorithmJohnsonTest() {
+    void algorithmJohnsonTest()
+    {
         var res = APShortestPath.algorithmJohnson(build(), SSShortestPath.Heap.FIBONACCI);
         var answer = new double[][]{
                 {0.0, 1.0, -3.0, 2.0, -4.0},
