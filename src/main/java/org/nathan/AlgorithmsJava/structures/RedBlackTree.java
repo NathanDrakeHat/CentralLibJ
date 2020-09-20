@@ -1,13 +1,13 @@
 package org.nathan.AlgorithmsJava.structures;
 
-import org.nathan.AlgorithmsJava.tools.Pair;
+import org.nathan.AlgorithmsJava.tools.Tuple;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
 import java.util.function.BiConsumer;
 
 
-public final class RedBlackTree<K, V> implements Iterable<Pair<K, V>> {
+public final class RedBlackTree<K, V> implements Iterable<Tuple<K, V>> {
 
 
     @NotNull private final Comparator<K> k_comparator;
@@ -19,18 +19,18 @@ public final class RedBlackTree<K, V> implements Iterable<Pair<K, V>> {
         root = sentinel;
     }
 
-    public List<Pair<K,V>> keyRangeSearch(@NotNull K low, @NotNull K high){
-        List<Pair<K,V>> res = new ArrayList<>();
+    public List<Tuple<K,V>> keyRangeSearch(@NotNull K low, @NotNull K high){
+        List<Tuple<K,V>> res = new ArrayList<>();
         if (root == sentinel) return res;
         keyRangeSearch(root, low, high, res);
         return res;
     }
 
-    public void keyRangeSearch(Node<K,V> n, @NotNull K low, @NotNull K high, List<Pair<K,V>> l){
+    public void keyRangeSearch(Node<K,V> n, @NotNull K low, @NotNull K high, List<Tuple<K,V>> l){
         if (n == sentinel) return;
         if (k_comparator.compare(n.key, low) >= 0 && k_comparator.compare(n.key, high) <= 0)
         {
-            l.add(new Pair<>(n.key,n.value));
+            l.add(new Tuple<>(n.key,n.value));
         }
 
         if (k_comparator.compare(n.key, low) > 0)
@@ -457,11 +457,11 @@ public final class RedBlackTree<K, V> implements Iterable<Pair<K, V>> {
     }
 
     @Override
-    public Iterator<Pair<K, V>> iterator() {
+    public Iterator<Tuple<K, V>> iterator() {
         return new StackIterator();
     }
 
-    public Iterator<Pair<K, V>> reverseIterator(){
+    public Iterator<Tuple<K, V>> reverseIterator(){
         return new ReverseStackIterator();
     }
 
@@ -502,7 +502,7 @@ public final class RedBlackTree<K, V> implements Iterable<Pair<K, V>> {
         }
     }
 
-    private final class StackIterator implements Iterator<Pair<K, V>> {
+    private final class StackIterator implements Iterator<Tuple<K, V>> {
         private final Deque<Node<K, V>> stack = new LinkedList<>();
         private Node<K, V> ptr;
         private boolean poppedBefore = false;
@@ -521,7 +521,7 @@ public final class RedBlackTree<K, V> implements Iterable<Pair<K, V>> {
         }
 
         @Override
-        public Pair<K, V> next() {
+        public Tuple<K, V> next() {
             while (ptr != null) {
                 if (ptr.left != sentinel && !poppedBefore) // if popped before, walk to right
                 {
@@ -543,7 +543,7 @@ public final class RedBlackTree<K, V> implements Iterable<Pair<K, V>> {
                             ptr = null;
                         }
                     }
-                    return new Pair<>(t.key, t.value);
+                    return new Tuple<>(t.key, t.value);
                 }
             }
             finish = true;
@@ -551,7 +551,7 @@ public final class RedBlackTree<K, V> implements Iterable<Pair<K, V>> {
         }
     }
 
-    private final class ReverseStackIterator implements Iterator<Pair<K, V>> {
+    private final class ReverseStackIterator implements Iterator<Tuple<K, V>> {
         private final Deque<Node<K, V>> stack = new LinkedList<>();
         private Node<K, V> ptr;
         private boolean poppedBefore = false;
@@ -570,7 +570,7 @@ public final class RedBlackTree<K, V> implements Iterable<Pair<K, V>> {
         }
 
         @Override
-        public Pair<K, V> next() {
+        public Tuple<K, V> next() {
             while (ptr != null) {
                 if (ptr.right != sentinel && !poppedBefore) // if popped before, walk to right
                 {
@@ -592,7 +592,7 @@ public final class RedBlackTree<K, V> implements Iterable<Pair<K, V>> {
                             ptr = null;
                         }
                     }
-                    return new Pair<>(t.key, t.value);
+                    return new Tuple<>(t.key, t.value);
                 }
             }
             finish = true;

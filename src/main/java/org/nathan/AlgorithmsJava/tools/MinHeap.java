@@ -6,7 +6,7 @@ import java.util.*;
 import java.util.function.ToDoubleFunction;
 
 // key must be a number
-public final class MinHeap<V> implements Iterable<Pair<Double, V>> {
+public final class MinHeap<V> implements Iterable<Tuple<Double, V>> {
 
     private final List<Node<V>> array = new ArrayList<>();
     private final Map<V, Node<V>> value_node_map = new HashMap<>();
@@ -111,8 +111,8 @@ public final class MinHeap<V> implements Iterable<Pair<Double, V>> {
     }
 
     @Override
-    public Iterator<Pair<Double, V>> iterator() {
-        return array.stream().map((n) -> new Pair<>(n.key, n.value)).iterator();
+    public Iterator<Tuple<Double, V>> iterator() {
+        return array.stream().map((n) -> new Tuple<>(n.key, n.value)).iterator();
     }
 
     private static class Node<E> {
