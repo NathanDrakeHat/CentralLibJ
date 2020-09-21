@@ -4,7 +4,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
-public final class ActivitySelection
+final class ActivitySelection
 {
     // greedy algorithm
     static class Node

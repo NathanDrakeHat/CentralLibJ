@@ -2,7 +2,7 @@ package org.nathan.AlgorithmsJava.dynamicProgramming;
 
 import org.jetbrains.annotations.NotNull;
 
-public final class LongestCommonSequence
+final class LongestCommonSequence
 { // longest common sequence problem, biological problem
 
     public static char[] solve(@NotNull char[] x, @NotNull char[] y)

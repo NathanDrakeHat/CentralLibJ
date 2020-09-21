@@ -2,7 +2,7 @@ package org.nathan.AlgorithmsJava.dynamicProgramming;
 
 import org.jetbrains.annotations.NotNull;
 
-public final class MatrixChain
+final class MatrixChain
 {
     // optimal matrix multiply complexity
     public static class MatrixChainResult

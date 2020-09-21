@@ -1,6 +1,6 @@
 package org.nathan.AlgorithmsJava.dynamicProgramming;
 
-public final class OptimalBinarySearchTree
+final class OptimalBinarySearchTree
 {
     // class table arrangement
     public static double[] p = {0, 0.15, 0.10, 0.05, 0.10, 0.20};
