@@ -1,30 +1,22 @@
 package org.nathan.AlgorithmsJava.tools;
 
 import org.jetbrains.annotations.NotNull;
-
 import java.util.*;
 import java.util.function.ToDoubleFunction;
 
-// key must be a number
+// key must be number
 public final class MinHeap<V> implements Iterable<Tuple<Double, V>>
 {
 
     private final List<Node<V>> array = new ArrayList<>();
     private final Map<V, Node<V>> value_node_map = new HashMap<>();
-    private int heap_size = 0;
-
-    public MinHeap()
-    {
-    }
 
     public MinHeap(@NotNull Iterable<V> c, @NotNull ToDoubleFunction<V> getKey)
     {
-        heap_size = 0;
         int idx = 0;
         for (var i : c)
         {
             Objects.requireNonNull(i);
-            heap_size++;
             var n = new Node<>(getKey.applyAsDouble(i), i, idx++);
             array.add(n);
             value_node_map.put(n.value, n);
@@ -34,20 +26,19 @@ public final class MinHeap<V> implements Iterable<Tuple<Double, V>>
 
     public V extractMin()
     {
-        if (heap_size == 0)
+        if (array.size() == 0)
         {
             throw new NoSuchElementException();
         }
         var res = array.get(0);
-        array.set(0, array.get(heap_size - 1));
-        array.remove(heap_size - 1);
-        heap_size--;
+        array.set(0, array.get(array.size() - 1));
+        array.remove(array.size() - 1);
         minHeapify(0);
         value_node_map.remove(res.value);
         return res.value;
     }
 
-    public void update(V value, double new_key)
+    public void updateKey(V value, double new_key)
     {
         var node = value_node_map.get(value);
         if (node == null)
@@ -57,7 +48,7 @@ public final class MinHeap<V> implements Iterable<Tuple<Double, V>>
         if (new_key < node.key)
         {
             node.key = new_key;
-            updateMin(node);
+            updateMin(node.index);
         }
         else if (new_key > node.key)
         {
@@ -66,24 +57,15 @@ public final class MinHeap<V> implements Iterable<Tuple<Double, V>>
         }
     }
 
-    private void updateMin(Node<V> node)
+    private void updateMin(int idx)
     {
         boolean min_property_broken = true;
-        int parent_idx = (node.index + 1) / 2 - 1;
+        int parent_idx = (idx + 1) / 2 - 1;
         while (min_property_broken && parent_idx >= 0)
         {
             min_property_broken = minHeapify(parent_idx);
             parent_idx = (parent_idx + 1) / 2 - 1;
         }
-    }
-
-    public void add(double key, V value)
-    {
-        heap_size++;
-        var n = new Node<>(key, value, heap_size - 1);
-        array.add(n);
-        value_node_map.put(value, n);
-        updateMin(n);
     }
 
     public boolean contains(V value)
@@ -93,9 +75,14 @@ public final class MinHeap<V> implements Iterable<Tuple<Double, V>>
 
     public int length()
     {
-        return heap_size;
+        return array.size();
     }
 
+    /**
+     * basic operation
+     * @param idx index
+     * @return whether exchange
+     */
     private boolean minHeapify(int idx)
     {
         int l = 2 * (idx + 1);
@@ -103,11 +90,11 @@ public final class MinHeap<V> implements Iterable<Tuple<Double, V>>
         int r = 2 * (idx + 1) + 1;
         int r_idx = r - 1;
         int min_idx = idx;
-        if ((l_idx < heap_size) && (array.get(l_idx).key < array.get(min_idx).key))
+        if ((l_idx < array.size()) && (array.get(l_idx).key < array.get(min_idx).key))
         {
             min_idx = l_idx;
         }
-        if ((r_idx < heap_size) && (array.get(r_idx).key < array.get(min_idx).key))
+        if ((r_idx < array.size()) && (array.get(r_idx).key < array.get(min_idx).key))
         {
             min_idx = r_idx;
         }
@@ -115,9 +102,9 @@ public final class MinHeap<V> implements Iterable<Tuple<Double, V>>
         {
             var t = array.get(min_idx);
             array.set(min_idx, array.get(idx));
-            value_node_map.get(array.get(idx).value).index = min_idx;
+            array.get(min_idx).index = min_idx;
             array.set(idx, t);
-            value_node_map.get(t.value).index = idx;
+            t.index = idx;
             minHeapify(min_idx);
             return true;
         }
@@ -126,10 +113,14 @@ public final class MinHeap<V> implements Iterable<Tuple<Double, V>>
 
     private void buildMinHeap()
     {
-        for (int i = heap_size / 2 - 1; i >= 0; i--)
+        for (int i = array.size() / 2 - 1; i >= 0; i--)
         {
             minHeapify(i);
         }
+    }
+
+    public int heapSize(){
+        return array.size();
     }
 
     @Override

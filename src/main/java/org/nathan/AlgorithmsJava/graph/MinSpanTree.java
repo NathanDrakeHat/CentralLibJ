@@ -95,7 +95,7 @@ public final class MinSpanTree
                 {
                     v.parent = u;
                     v.key = edge.getWeight();
-                    Q.update(v, v.key);
+                    Q.updateKey(v, v.key);
                 }
             }
         }

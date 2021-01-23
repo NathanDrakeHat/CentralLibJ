@@ -144,7 +144,7 @@ public final class SSShortestPath
                 relax(edge);
                 if (v.distance < original)
                 {
-                    Q.update(v, v.distance);
+                    Q.updateKey(v, v.distance);
                 }
             }
         }
