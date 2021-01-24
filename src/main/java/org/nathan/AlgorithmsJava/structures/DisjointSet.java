@@ -1,17 +1,23 @@
 package org.nathan.AlgorithmsJava.structures;
 
-public interface DisjointSet<V>
+// generic type O: origin type
+public abstract class DisjointSet<O>
 {
-    static <T extends DisjointSet<T>> T findSet(T x)
+    private int rank = 0;
+    private DisjointSet<O> parent = this;
+
+    @SuppressWarnings("unchecked")
+    public static <T extends DisjointSet<T>> T findSet(T x)
     {
         if (x != x.getParent())
         {
-            x.setParent(findSet(x.getParent()));
+
+            x.setParent(findSet((T)x.getParent()));
         }
-        return x.getParent();
+        return (T)x.getParent();
     }
 
-    static <T extends DisjointSet<T>> void union(T a, T b)
+    public static <T extends DisjointSet<T>> void union(T a, T b)
     {
         link(findSet(a), findSet(b));
     }
@@ -32,11 +38,19 @@ public interface DisjointSet<V>
         }
     }
 
-    V getParent();
+    DisjointSet<O> getParent(){
+        return parent;
+    }
 
-    void setParent(V root);
+    void setParent(DisjointSet<O> root){
+        parent = root;
+    }
 
-    int getRank();
+    int getRank(){
+        return rank;
+    }
 
-    void setRank(int rank);
+    void setRank(int rank){
+        this.rank = rank;
+    }
 }

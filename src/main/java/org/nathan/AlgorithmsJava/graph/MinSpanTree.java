@@ -101,12 +101,9 @@ public final class MinSpanTree
         }
     }
 
-    public static class KruskalVertex<V> implements DisjointSet<KruskalVertex<V>>
-    {
+    public final static class KruskalVertex<V> extends DisjointSet<KruskalVertex<V>> {
         @NotNull
         private final V content;
-        private int rank = 0;
-        private KruskalVertex<V> parent = this;
 
         public KruskalVertex(@NotNull V n)
         {
@@ -116,31 +113,6 @@ public final class MinSpanTree
         public @NotNull V getContent()
         {
             return content;
-        }
-
-
-        @Override
-        public int getRank()
-        {
-            return rank;
-        }
-
-        @Override
-        public void setRank(int rank)
-        {
-            this.rank = rank;
-        }
-
-        @Override
-        public KruskalVertex<V> getParent()
-        {
-            return parent;
-        }
-
-        @Override
-        public void setParent(KruskalVertex<V> r)
-        {
-            this.parent = r;
         }
 
         @Override

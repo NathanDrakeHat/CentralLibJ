@@ -11,7 +11,7 @@ public class APShortestPath
 {
 
     // O(V^4)
-    public static double[][] slowAllPairsShortestPaths(@NotNull double[][] W)
+    public static double[][] slowAllPairsShortestPaths(double[][] W)
     {
         var n = W.length;
         var L = W;
@@ -42,7 +42,7 @@ public class APShortestPath
     }
 
     // O(V^3*lgV)
-    public static double[][] fasterAllPairsShortestPaths(@NotNull double[][] W)
+    public static double[][] fasterAllPairsShortestPaths(double[][] W)
     {
         var n = W.length;
         var L = W;
@@ -55,7 +55,7 @@ public class APShortestPath
     }
 
     // no negative-weight cycles
-    public static double[][] algorithmFloydWarshall(@NotNull double[][] W)
+    public static double[][] algorithmFloydWarshall(double[][] W)
     {
         var n = W.length;
         var D_origin = W;
@@ -75,7 +75,7 @@ public class APShortestPath
     }
 
 
-    public static boolean[][] transitiveClosure(@NotNull double[][] W)
+    public static boolean[][] transitiveClosure(double[][] W)
     {
         var n = W.length;
         var T = new boolean[n][n];
@@ -151,9 +151,9 @@ public class APShortestPath
         }
     }
 
-    private static <T> LinkedGraph<BFSVertex<T>> buildGraph(LinkedGraph<BFSVertex<T>> graph,
-                                                            List<BFSVertex<T>> vertices,
-                                                            BFSVertex<T> s)
+    private static <T> LinkedGraph<BFSVertex<T>> buildGraph(@NotNull LinkedGraph<BFSVertex<T>> graph,
+                                                            @NotNull List<BFSVertex<T>> vertices,
+                                                            @NotNull BFSVertex<T> s)
     {
         var new_graph = new LinkedGraph<>(graph);
         new_graph.addNewVertex(s);

@@ -56,7 +56,7 @@ public final class BFS
         return res;
     }
 
-    private static <T> void traverse(BFSVertex<T> s, BFSVertex<T> v, List<T> res)
+    private static <T> void traverse(@NotNull BFSVertex<T> s, @NotNull BFSVertex<T> v, @NotNull List<T> res)
     {
         if (v == s)
         {

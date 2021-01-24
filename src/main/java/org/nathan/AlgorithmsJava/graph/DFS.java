@@ -1,7 +1,6 @@
 package org.nathan.AlgorithmsJava.graph;
 
 import org.jetbrains.annotations.NotNull;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -111,7 +110,6 @@ public final class DFS
 
         public DFSVertex(@NotNull V name)
         {
-//            Objects.requireNonNull(name);
             this.content = name;
         }
 

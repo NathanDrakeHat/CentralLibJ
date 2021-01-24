@@ -4,8 +4,8 @@ import org.jetbrains.annotations.NotNull;
 import java.util.*;
 import java.util.function.ToDoubleFunction;
 
-// key must be number
-public final class MinHeap<V> implements Iterable<Tuple<Double, V>>
+
+public final class MinHeap<V>
 {
 
     private final List<Node<V>> array = new ArrayList<>();
@@ -38,7 +38,7 @@ public final class MinHeap<V> implements Iterable<Tuple<Double, V>>
         return res.value;
     }
 
-    public void updateKey(V value, double new_key)
+    public void updateKey(@NotNull V value, double new_key)
     {
         var node = value_node_map.get(value);
         if (node == null)
@@ -123,11 +123,6 @@ public final class MinHeap<V> implements Iterable<Tuple<Double, V>>
         return array.size();
     }
 
-    @Override
-    public Iterator<Tuple<Double, V>> iterator()
-    {
-        return array.stream().map((n) -> new Tuple<>(n.key, n.value)).iterator();
-    }
 
     private static class Node<E>
     {
