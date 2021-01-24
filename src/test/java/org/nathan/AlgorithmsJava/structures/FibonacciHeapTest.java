@@ -8,23 +8,19 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class FibonacciHeapTest
-{
+class FibonacciHeapTest {
 
-    private static FibonacciHeap.Node<Integer, Integer> buildNode(Integer key)
-    {
+    private static FibonacciHeap.Node<Integer, Integer> buildNode(Integer key) {
         return new FibonacciHeap.Node<>(key, key);
     }
 
-    private static FibonacciHeap.Node<Integer, Integer> buildNodeWithMark(Integer key)
-    {
+    private static FibonacciHeap.Node<Integer, Integer> buildNodeWithMark(Integer key) {
         var res = new FibonacciHeap.Node<>(key, key);
         res.mark = true;
         return res;
     }
 
-    static void addChild(FibonacciHeap.Node<Integer, Integer> n, int t)
-    {
+    static void addChild(FibonacciHeap.Node<Integer, Integer> n, int t) {
         var x = new FibonacciHeap.Node<>(t, t);
         x.mark = false;
         var listLeft = n.left;
@@ -35,16 +31,13 @@ class FibonacciHeapTest
         x.parent = n.parent;
     }
 
-    static void addChildren(FibonacciHeap.Node<Integer, Integer> n, int... t)
-    {
-        for (var i : t)
-        {
+    static void addChildren(FibonacciHeap.Node<Integer, Integer> n, int... t) {
+        for (var i : t) {
             addChild(n, i);
         }
     }
 
-    private static FibonacciHeap<Integer, Integer> buildExample()
-    {
+    private static FibonacciHeap<Integer, Integer> buildExample() {
         var H = new FibonacciHeap<Integer, Integer>(Comparator.comparingInt(a -> a));
         H.insert(3, 3);
         var m = H.rootList;
@@ -88,18 +81,15 @@ class FibonacciHeapTest
         return H;
     }
 
-    private static List<Integer> bcl(FibonacciHeap.Node<Integer, Integer> t)
-    {
+    private static List<Integer> bcl(FibonacciHeap.Node<Integer, Integer> t) {
         List<Integer> res = new ArrayList<>();
         var p = t;
-        do
-        {
+        do {
             res.add(p.key);
             p = p.right;
         } while (p != t);
         p = t;
-        do
-        {
+        do {
             res.add(p.key);
             p = p.left;
         } while (p != t);
@@ -107,8 +97,7 @@ class FibonacciHeapTest
     }
 
     @Test
-    void example1()
-    {
+    void example1() {
         var H = buildExample();
         var o = H.extractMin();
         assertEquals(o, 3);

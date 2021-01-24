@@ -4,19 +4,16 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class MatrixChainTest
-{
+class MatrixChainTest {
 
     @Test
-    void matrixChainOrder()
-    {
+    void matrixChainOrder() {
         var t = MatrixChain.matrixChainOrder(Data.test);
         assertEquals(Data.res, t.toString());
         assertEquals(Data.answer, t.min_cost);
     }
 
-    static class Data
-    {
+    static class Data {
         static final int[][] a1 = new int[30][35];
         static final int[][] a2 = new int[35][15];
         static final int[][] a3 = new int[15][5];

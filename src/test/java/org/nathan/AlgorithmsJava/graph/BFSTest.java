@@ -8,34 +8,28 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class BFSTest
-{
+class BFSTest {
 
     @Test
-    void breathFirstSearch()
-    {
+    void breathFirstSearch() {
         var vs = Data.makeVertexes();
         var t = Data.makeGraph(vs);
         BFS.breathFirstSearch(t, vs.get(1));
         assertEquals(List.of('s', 'w', 'x', 'y'), BFS.getPath(vs.get(1), vs.get(7)));
     }
 
-    public static class Data
-    {
+    public static class Data {
         public static String names = "rstuvwxy";
 
-        public static List<BFS.BFSVertex<Character>> makeVertexes()
-        {
+        public static List<BFS.BFSVertex<Character>> makeVertexes() {
             List<BFS.BFSVertex<Character>> vs = new ArrayList<>(8);
-            for (int i = 0; i < 8; i++)
-            {
+            for (int i = 0; i < 8; i++) {
                 vs.add(i, new BFS.BFSVertex<>(names.charAt(i)));
             }
             return vs;
         }
 
-        public static LinkedGraph<BFS.BFSVertex<Character>> makeGraph(List<BFS.BFSVertex<Character>> vs)
-        {
+        public static LinkedGraph<BFS.BFSVertex<Character>> makeGraph(List<BFS.BFSVertex<Character>> vs) {
             var G = new LinkedGraph<>(vs, LinkedGraph.Direction.NON_DIRECTED);
             G.setNeighbor(vs.get(0), vs.get(1));
             G.setNeighbor(vs.get(0), vs.get(4));

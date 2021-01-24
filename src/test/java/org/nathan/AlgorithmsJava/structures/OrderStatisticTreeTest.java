@@ -4,12 +4,10 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class OrderStatisticTreeTest
-{
+class OrderStatisticTreeTest {
 
     @Test
-    void testCase1()
-    {
+    void testCase1() {
         OrderStatisticTree RBtree = new OrderStatisticTree();
         RBtree.insertKey(11);
         RBtree.insertKey(2);

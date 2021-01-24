@@ -8,12 +8,10 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class RedBlackTreeTest
-{
+class RedBlackTreeTest {
 
     @Test
-    public void insertFixUpTest()
-    {
+    public void insertFixUpTest() {
         var RBtree = new RedBlackTree<Integer, Integer>(Comparator.comparingInt(o -> o));
         RBtree.insert(11, 0);
         RBtree.insert(2, 0);
@@ -37,29 +35,24 @@ class RedBlackTreeTest
     }
 
     @Test
-    public void balanceTest()
-    {
+    public void balanceTest() {
         RedBlackTree<Integer, Integer> t = new RedBlackTree<>(Comparator.comparingInt(o -> o));
-        for (int i = 0; i < 16383; i++)
-        {
+        for (int i = 0; i < 16383; i++) {
             t.insert(i, i);
         }
         assertEquals(t.getHeight(), 13);
-        for (int i = 0; i < 8193; i++)
-        {
+        for (int i = 0; i < 8193; i++) {
             t.delete(i);
         }
         assertEquals(t.getHeight(), 12);
     }
 
     @Test
-    public void FunctionsTest()
-    {
+    public void FunctionsTest() {
         var t = new RedBlackTree<Integer, String>(Comparator.comparingInt(o -> o));
         List<Integer> l1 = new ArrayList<>();
         List<Integer> l2 = new ArrayList<>();
-        for (int i = 0; i < 16; i++)
-        {
+        for (int i = 0; i < 16; i++) {
             t.insert(i, String.valueOf(i));
             l1.add(i);
         }

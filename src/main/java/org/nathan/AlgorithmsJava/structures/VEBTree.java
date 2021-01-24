@@ -4,8 +4,7 @@ import java.util.NoSuchElementException;
 import java.util.Objects;
 import java.util.Optional;
 
-public final class VEBTree
-{
+public final class VEBTree {
     private final int NONE = -1;
     //keys are not duplicate and confined in a range
     private int u; //universe size
@@ -14,104 +13,84 @@ public final class VEBTree
     private int min = NONE; // hidden in cluster
     private int max = NONE;
 
-    private VEBTree(double u)
-    {
+    private VEBTree(double u) {
         this.u = (int) u;
-        if (u != 2)
-        {
+        if (u != 2) {
             var c = Math.ceil(Math.pow(u, 1 / 2.0));
             summary = new VEBTree(c);
             cluster = new VEBTree[(int) c];
             var f = Math.floor(Math.pow(u, 1 / 2.0));
-            for (int i = 0; i < cluster.length; i++)
-            {
+            for (int i = 0; i < cluster.length; i++) {
                 cluster[i] = new VEBTree(f);
             }
         }
     }
 
-    public VEBTree(int k)
-    {
-        if (k < 1)
-        {
+    public VEBTree(int k) {
+        if (k < 1) {
             throw new IllegalArgumentException("input should >= 1.");
         }
         u = (int) Math.pow(2, k);
-        if (u != 2)
-        {
+        if (u != 2) {
             var c = Math.ceil(Math.pow(u, 1 / 2.0)); // return double
             summary = new VEBTree(c);
             cluster = new VEBTree[(int) c];
             var f = Math.floor(Math.pow(u, 1 / 2.0));
-            for (int i = 0; i < cluster.length; i++)
-            {
+            for (int i = 0; i < cluster.length; i++) {
                 cluster[i] = new VEBTree(f);
             }
         }
     }
 
-    private void emptyInsert(VEBTree V, int x)
-    {
+    private void emptyInsert(VEBTree V, int x) {
         V.min = x;
         V.max = x;
     }
 
-    private void insert(VEBTree V, int x)
-    {
+    private void insert(VEBTree V, int x) {
         // recursive strip x into cluster index and array index
-        if (V.min == NONE)
-        {
+        if (V.min == NONE) {
             emptyInsert(V, x);
         }
-        else
-        {
-            if (x < V.min)
-            {
+        else {
+            if (x < V.min) {
                 var t = x;
                 x = V.min;
                 V.min = t;
             }
-            if (V.u > 2)
-            {
-                if (minimum(V.cluster[V.high(x)]) == NONE)
-                {
+            if (V.u > 2) {
+                if (minimum(V.cluster[V.high(x)]) == NONE) {
                     //                System.out.println(String.format("enter summary, cluster index %d", V.high(x)));
                     insert(V.summary, V.high(x));
                     emptyInsert(V.cluster[V.high(x)], V.low(x));
                 }
-                else
-                {
+                else {
                     //                System.out.println(String.format("enter cluster %d, index %d", V.high(x), V.low(x)));
                     insert(V.cluster[V.high(x)], V.low(x));
                 }
             }
-            if (x > V.max)
-            {
+            if (x > V.max) {
                 V.max = x;
             }
         }
     }
 
-    public VEBTree safeInsert(int x)
-    {
+    public VEBTree safeInsert(int x) {
         Objects.checkIndex(x, u);
-        if (!hasMember(x))
-        {
+        if (!hasMember(x)) {
             insert(this, x);
         }
         return this;
     }
 
-    public VEBTree uncheckInsert(int x)
-    {
+    public VEBTree uncheckInsert(int x) {
         // duplicate insert will invoke bug
         Objects.checkIndex(x, u);
         insert(this, x);
         return this;
     }
 
-    public VEBTree safeDelete(int x)
-    {
+    public VEBTree safeDelete(int x) {
         Objects.checkIndex(x, u);
         if (hasMember(x)) // can't delete multi-time, can't delete none
         {
@@ -120,204 +99,154 @@ public final class VEBTree
         return this;
     }
 
-    public VEBTree uncheckDelete(int x)
-    {
+    public VEBTree uncheckDelete(int x) {
         //duplicate delete or delete items not in tree will invoke bug
         Objects.checkIndex(x, u);
         delete(this, x);
         return this;
     }
 
-    private void delete(VEBTree V, int x)
-    {
+    private void delete(VEBTree V, int x) {
         // worst case lg(lg u)
         // base case
-        if (V.min == V.max)
-        {
+        if (V.min == V.max) {
             V.min = NONE;
             V.max = NONE;
         }
-        else if (V.u == 2)
-        {
-            if (x == 0)
-            {
+        else if (V.u == 2) {
+            if (x == 0) {
                 V.min = 1;
             }
-            else
-            {
+            else {
                 V.min = 0;
             }
             V.max = V.min;
         }
-        else
-        {
-            if (x == V.min)
-            {
+        else {
+            if (x == V.min) {
                 var first_cluster = minimum(V.summary);
                 x = V.index(first_cluster, minimum(V.cluster[first_cluster]));
                 V.min = x; // second min to V.min
             }
             delete(V.cluster[V.high(x)], V.low(x));
-            if (minimum(V.cluster[V.high(x)]) == NONE)
-            {
+            if (minimum(V.cluster[V.high(x)]) == NONE) {
                 delete(V.summary, V.high(x));
-                if (x == V.max)
-                {
+                if (x == V.max) {
                     var summary_max = maximum(V.summary);
-                    if (summary_max == NONE)
-                    {
+                    if (summary_max == NONE) {
                         V.max = V.min;
                     }
-                    else
-                    {
+                    else {
                         V.max = V.index(summary_max, maximum(V.cluster[summary_max]));
                     }
                 }
             }
-            else if (x == V.max)
-            {
+            else if (x == V.max) {
                 V.max = V.index(V.high(x), maximum(V.cluster[V.high(x)]));
             }
         }
     }
 
-    public Optional<Integer> tryGetMaximum()
-    {
-        try
-        {
+    public Optional<Integer> tryGetMaximum() {
+        try {
             return Optional.of(forceGetMaximum());
-        }
-        catch (NoSuchElementException e)
-        {
+        } catch (NoSuchElementException e) {
             return Optional.empty();
         }
     }
 
-    public Integer forceGetMaximum()
-    {
+    public Integer forceGetMaximum() {
         var res = maximum(this);
-        if (res != NONE)
-        {
+        if (res != NONE) {
             return res;
         }
-        else
-        {
+        else {
             throw new NoSuchElementException();
         }
     }
 
-    private int maximum(VEBTree V)
-    {
+    private int maximum(VEBTree V) {
         return V.max;
     }
 
-    public Optional<Integer> tryGetMinimum()
-    {
-        try
-        {
+    public Optional<Integer> tryGetMinimum() {
+        try {
             return Optional.of(forceGetMinimum());
-        }
-        catch (NoSuchElementException e)
-        {
+        } catch (NoSuchElementException e) {
             return Optional.empty();
         }
     }
 
-    public Integer forceGetMinimum()
-    {
+    public Integer forceGetMinimum() {
         var res = minimum(this);
-        if (res != NONE)
-        {
+        if (res != NONE) {
             return res;
         }
-        else
-        {
+        else {
             throw new NoSuchElementException();
         }
     }
 
-    private int minimum(VEBTree V)
-    {
+    private int minimum(VEBTree V) {
         return V.min;
     }
 
-    public boolean hasMember(int x)
-    {
+    public boolean hasMember(int x) {
         return hasMember(this, x);
     }
 
-    private boolean hasMember(VEBTree V, int x)
-    {
-        if (x == V.min || x == V.max)
-        {
+    private boolean hasMember(VEBTree V, int x) {
+        if (x == V.min || x == V.max) {
             return true;
         }
-        else if (V.u == 2)
-        {
+        else if (V.u == 2) {
             return false;
         }
-        else
-        {
+        else {
             return hasMember(V.cluster[V.high(x)], V.low((x)));
         }
     }
 
-    public Optional<Integer> tryGetSuccessor(int x)
-    {
-        try
-        {
+    public Optional<Integer> tryGetSuccessor(int x) {
+        try {
             return Optional.of(forceGetSuccessor(x));
-        }
-        catch (NoSuchElementException e)
-        {
+        } catch (NoSuchElementException e) {
             return Optional.empty();
         }
     }
 
-    public Integer forceGetSuccessor(int x)
-    {
+    public Integer forceGetSuccessor(int x) {
         var res = successor(this, x);
-        if (res != NONE)
-        {
+        if (res != NONE) {
             return res;
         }
-        else
-        {
+        else {
             throw new NoSuchElementException();
         }
     }
 
-    private int successor(VEBTree V, int x)
-    {
+    private int successor(VEBTree V, int x) {
         // base
-        if (V.u == 2)
-        {
-            if (x == 0 && V.max == 1)
-            {
+        if (V.u == 2) {
+            if (x == 0 && V.max == 1) {
                 return 1; // have x and successor
             }
-            else
-            {
+            else {
                 return NONE;
             }
         }
-        else if (V.min != NONE && x < V.min)
-        {
+        else if (V.min != NONE && x < V.min) {
             return V.min; // dose not have x but have successor
         }
-        else
-        {// recursive
+        else {// recursive
             var max_low = maximum(V.cluster[V.high(x)]);
-            if (max_low != NONE && V.low(x) < max_low)
-            {
+            if (max_low != NONE && V.low(x) < max_low) {
                 var offset = successor(V.cluster[V.high(x)], V.low(x));
                 return V.index(V.high(x), offset);
             }
-            else
-            {
+            else {
                 var succ_cluster = successor(V.summary, V.high(x));
-                if (succ_cluster == NONE)
-                {
+                if (succ_cluster == NONE) {
                     return NONE;
                 }
                 var offset = minimum(V.cluster[succ_cluster]);
@@ -326,72 +255,53 @@ public final class VEBTree
         }
     }
 
-    public Optional<Integer> tryGetPredecessor(int x)
-    {
-        try
-        {
+    public Optional<Integer> tryGetPredecessor(int x) {
+        try {
             return Optional.of(forceGetPredecessor(x));
-        }
-        catch (NoSuchElementException e)
-        {
+        } catch (NoSuchElementException e) {
             return Optional.empty();
         }
     }
 
-    public Integer forceGetPredecessor(int x)
-    {
+    public Integer forceGetPredecessor(int x) {
         var res = predecessor(this, x);
-        if (res != NONE)
-        {
+        if (res != NONE) {
             return res;
         }
-        else
-        {
+        else {
             throw new NoSuchElementException();
         }
     }
 
-    private int predecessor(VEBTree V, int x)
-    {
-        if (V.u == 2)
-        {
-            if (x == 1 && V.min == 0)
-            {
+    private int predecessor(VEBTree V, int x) {
+        if (V.u == 2) {
+            if (x == 1 && V.min == 0) {
                 return 0;
             }
-            else
-            {
+            else {
                 return NONE;
             }
         }
-        else if (V.max != NONE && x > V.max)
-        {
+        else if (V.max != NONE && x > V.max) {
             return V.max;
         }
-        else
-        {
+        else {
             var min_low = minimum(V.cluster[V.high(x)]);
-            if (min_low != NONE && V.low(x) > min_low)
-            {//and
+            if (min_low != NONE && V.low(x) > min_low) {//and
                 var offset = predecessor(V.cluster[V.high(x)], V.low(x));
                 return V.index(V.high(x), offset);
             }
-            else
-            {
+            else {
                 var pred_cluster = predecessor(V.summary, V.high(x));
-                if (pred_cluster == NONE)
-                {
-                    if (V.min != NONE && x > V.min)
-                    {
+                if (pred_cluster == NONE) {
+                    if (V.min != NONE && x > V.min) {
                         return V.min;
                     }
-                    else
-                    {
+                    else {
                         return NONE;
                     }
                 }
-                else
-                {
+                else {
                     var offset = maximum(V.cluster[pred_cluster]);
                     return V.index(pred_cluster, offset);
                 }
@@ -399,28 +309,22 @@ public final class VEBTree
         }
     }
 
-    private int high(int x)
-    {
-        if (x < 0)
-        {
+    private int high(int x) {
+        if (x < 0) {
             throw new IllegalArgumentException();
         }
         return (int) (x / Math.floor(Math.pow(u, 1 / 2.0)));
     }
 
-    private int low(int x)
-    {
-        if (x < 0)
-        {
+    private int low(int x) {
+        if (x < 0) {
             throw new IllegalArgumentException();
         }
         return (int) (x % Math.floor(Math.pow(u, 1 / 2.0)));
     }
 
-    private int index(int h, int l)
-    {
-        if (h < 0 || l < 0)
-        {
+    private int index(int h, int l) {
+        if (h < 0 || l < 0) {
             throw new IllegalArgumentException();
         }
         return (int) (h * Math.floor(Math.pow(u, 1 / 2.0)) + l);

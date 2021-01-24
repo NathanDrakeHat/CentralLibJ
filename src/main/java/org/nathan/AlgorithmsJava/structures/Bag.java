@@ -7,28 +7,23 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 @SuppressWarnings("unused")
-public class Bag<Item> implements Iterable<Item>
-{
+public class Bag<Item> implements Iterable<Item> {
     private Node first = null;
     private int n = 0;
 
-    public Bag()
-    {
+    public Bag() {
 
     }
 
-    public boolean isEmpty()
-    {
+    public boolean isEmpty() {
         return this.first == null;
     }
 
-    public int size()
-    {
+    public int size() {
         return this.n;
     }
 
-    public void add(Item item)
-    {
+    public void add(Item item) {
         Node oldFirst = this.first;
         this.first = new Node();
         this.first.item = item;
@@ -36,48 +31,38 @@ public class Bag<Item> implements Iterable<Item>
         ++this.n;
     }
 
-    public @NotNull Iterator<Item> iterator()
-    {
+    public @NotNull Iterator<Item> iterator() {
         return new LinkedIterator(this.first);
     }
 
-    private class Node
-    {
+    private class Node {
         private Item item;
         private Node next;
 
-        private Node()
-        {
+        private Node() {
         }
     }
 
-    private class LinkedIterator implements Iterator<Item>
-    {
+    private class LinkedIterator implements Iterator<Item> {
         private Node current;
 
-        public LinkedIterator(Node first)
-        {
+        public LinkedIterator(Node first) {
             this.current = first;
         }
 
-        public boolean hasNext()
-        {
+        public boolean hasNext() {
             return this.current != null;
         }
 
-        public void remove()
-        {
+        public void remove() {
             throw new UnsupportedOperationException();
         }
 
-        public Item next()
-        {
-            if (!this.hasNext())
-            {
+        public Item next() {
+            if (!this.hasNext()) {
                 throw new NoSuchElementException();
             }
-            else
-            {
+            else {
                 Item item = this.current.item;
                 this.current = this.current.next;
                 return item;
