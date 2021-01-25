@@ -2,12 +2,10 @@ package org.nathan.AlgorithmsJava.tools;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.nathan.AlgorithmsJava.tools.TestUtils.*;
 import java.util.ArrayList;
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class MinHeapTest {
 
@@ -65,7 +63,13 @@ class MinHeapTest {
             List<Integer> res = new ArrayList<>();
             res.add(Integer.valueOf(m.extractMin()));
             for(int j = 0; j < res.size() - 1; j++){
-                assertTrue(res.get(j).compareTo(res.get(j+1)) < 0);
+                if(res.get(j).compareTo(res.get(j+1)) < 0){
+                    assertTrue(true);
+                }
+                else{
+                    System.out.println(res);
+                    fail();
+                }
             }
         }
     }
