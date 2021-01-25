@@ -1,9 +1,9 @@
-package org.nathan.AlgorithmsJava.dynamicProgramming;
+package org.nathan.AlgorithmsJava.DP;
 
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static org.nathan.AlgorithmsJava.dynamicProgramming.LongestCommonSequence.solve;
+import static org.nathan.AlgorithmsJava.DP.LongestCommonSequence.solve;
 
 class LongestCommonSequenceTest {
 

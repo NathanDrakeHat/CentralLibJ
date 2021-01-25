@@ -1,6 +1,5 @@
-package org.nathan.AlgorithmsJava.dynamicProgramming;
+package org.nathan.AlgorithmsJava.DP;
 
-import org.jetbrains.annotations.NotNull;
 
 final class CutRod {
     static class CutResult {

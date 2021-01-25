@@ -1,6 +1,4 @@
-package org.nathan.AlgorithmsJava.dynamicProgramming;
-
-import org.jetbrains.annotations.NotNull;
+package org.nathan.AlgorithmsJava.DP;
 
 final class MatrixChain {
     // optimal matrix multiply complexity

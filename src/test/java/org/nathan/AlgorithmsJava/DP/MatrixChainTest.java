@@ -1,4 +1,4 @@
-package org.nathan.AlgorithmsJava.dynamicProgramming;
+package org.nathan.AlgorithmsJava.DP;
 
 import org.junit.jupiter.api.Test;
 

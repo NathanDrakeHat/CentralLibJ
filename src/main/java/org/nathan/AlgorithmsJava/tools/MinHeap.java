@@ -11,11 +11,14 @@ public final class MinHeap<V> {
     private final List<Node<V>> array = new ArrayList<>();
     private final Map<V, Node<V>> value_node_map = new HashMap<>();
 
-    public MinHeap(@NotNull Iterable<V> c, @NotNull ToDoubleFunction<V> getKey) {
+    public MinHeap(){}
+
+    public MinHeap(@NotNull Iterable<V> values, @NotNull ToDoubleFunction<V> getKey) {
         int idx = 0;
-        for (var i : c) {
-            Objects.requireNonNull(i);
-            var n = new Node<>(getKey.applyAsDouble(i), i, idx++);
+        for (var value : values) {
+            Objects.requireNonNull(value);
+            var n = new Node<>(getKey.applyAsDouble(value), value, idx);
+            idx++;
             array.add(n);
             value_node_map.put(n.value, n);
         }
@@ -28,6 +31,7 @@ public final class MinHeap<V> {
         }
         var res = array.get(0);
         array.set(0, array.get(array.size() - 1));
+        array.get(0).index = 0;
         array.remove(array.size() - 1);
         minHeapify(0);
         value_node_map.remove(res.value);
@@ -41,7 +45,7 @@ public final class MinHeap<V> {
         }
         if (new_key < node.key) {
             node.key = new_key;
-            updateMin(node.index);
+            decreaseKey(node.index);
         }
         else if (new_key > node.key) {
             node.key = new_key;
@@ -49,13 +53,23 @@ public final class MinHeap<V> {
         }
     }
 
-    private void updateMin(int idx) {
-        boolean min_property_broken = true;
-        int parent_idx = (idx + 1) / 2 - 1;
-        while (min_property_broken && parent_idx >= 0) {
-            min_property_broken = minHeapify(parent_idx);
-            parent_idx = (parent_idx + 1) / 2 - 1;
+    private void decreaseKey(int idx) {
+        while (idx > 0 && array.get(parentIndex(idx)).key > array.get(idx).key){
+            int p_index = parentIndex(idx);
+            var t = array.get(idx);
+            array.set(idx,array.get(p_index));
+            array.get(idx).index = idx;
+            array.set(p_index, t);
+            t.index = p_index;
+            idx = p_index;
         }
+    }
+
+    public void Add(V value, double key){
+        Node<V> n = new Node<>(key,value,array.size());
+        array.add(n);
+        value_node_map.put(value, n);
+        decreaseKey(array.size()-1);
     }
 
     public boolean contains(V value) {
@@ -66,17 +80,9 @@ public final class MinHeap<V> {
         return array.size();
     }
 
-    /**
-     * basic operation
-     *
-     * @param idx index
-     * @return whether exchange
-     */
-    private boolean minHeapify(int idx) {
-        int l = 2 * (idx + 1);
-        int l_idx = l - 1;
-        int r = 2 * (idx + 1) + 1;
-        int r_idx = r - 1;
+    private void minHeapify(int idx) {
+        int l_idx = leftIndex(idx);
+        int r_idx = rightIndex(idx);
         int min_idx = idx;
         if ((l_idx < array.size()) && (array.get(l_idx).key < array.get(min_idx).key)) {
             min_idx = l_idx;
@@ -91,13 +97,11 @@ public final class MinHeap<V> {
             array.set(idx, t);
             t.index = idx;
             minHeapify(min_idx);
-            return true;
         }
-        return false;
     }
 
     private void buildMinHeap() {
-        for (int i = array.size() / 2 - 1; i >= 0; i--) {
+        for (int i = parentIndex(heapSize() - 1); i >= 0; i--) {
             minHeapify(i);
         }
     }
@@ -106,6 +110,17 @@ public final class MinHeap<V> {
         return array.size();
     }
 
+    private static int leftIndex(int idx){
+        return 2 * (idx + 1) - 1;
+    }
+
+    private static int rightIndex(int idx){
+        return 2 * (idx + 1);
+    }
+
+    private static int parentIndex(int idx){
+        return (idx + 1) / 2 - 1;
+    }
 
     private static class Node<E> {
         double key;
