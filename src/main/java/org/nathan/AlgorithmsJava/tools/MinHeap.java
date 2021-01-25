@@ -26,16 +26,30 @@ public final class MinHeap<V> {
     }
 
     public V extractMin() {
-        if (array.size() == 0) {
+        if (heapSize() == 0) {
             throw new NoSuchElementException();
         }
         var res = array.get(0);
-        array.set(0, array.get(array.size() - 1));
-        array.get(0).index = 0;
-        array.remove(array.size() - 1);
+        updateArray(0,array.get(heapSize()-1));
+        array.remove(heapSize() - 1);
         minHeapify(0);
         value_node_map.remove(res.value);
         return res.value;
+    }
+
+    public void Add(V value, double key){
+        Node<V> n = new Node<>(key,value,heapSize());
+        array.add(n);
+        value_node_map.put(value, n);
+        decreaseKey(heapSize()-1);
+    }
+
+    public boolean contains(V value) {
+        return value_node_map.containsKey(value);
+    }
+
+    public int length() {
+        return heapSize();
     }
 
     public void updateKey(@NotNull V value, double new_key) {
@@ -53,49 +67,39 @@ public final class MinHeap<V> {
         }
     }
 
+    public int heapSize() {
+        return array.size();
+    }
+
+    private void updateArray(int index, Node<V> node){
+        array.set(index, node);
+        node.index = index;
+    }
+
     private void decreaseKey(int idx) {
         while (idx > 0 && array.get(parentIndex(idx)).key > array.get(idx).key){
             int p_index = parentIndex(idx);
             var t = array.get(idx);
-            array.set(idx,array.get(p_index));
-            array.get(idx).index = idx;
-            array.set(p_index, t);
-            t.index = p_index;
+            updateArray(idx, array.get(p_index));
+            updateArray(p_index,t);
             idx = p_index;
         }
     }
-
-    public void Add(V value, double key){
-        Node<V> n = new Node<>(key,value,array.size());
-        array.add(n);
-        value_node_map.put(value, n);
-        decreaseKey(array.size()-1);
-    }
-
-    public boolean contains(V value) {
-        return value_node_map.containsKey(value);
-    }
-
-    public int length() {
-        return array.size();
-    }
-
+    
     private void minHeapify(int idx) {
         int l_idx = leftIndex(idx);
         int r_idx = rightIndex(idx);
         int min_idx = idx;
-        if ((l_idx < array.size()) && (array.get(l_idx).key < array.get(min_idx).key)) {
+        if ((l_idx < heapSize()) && (array.get(l_idx).key < array.get(min_idx).key)) {
             min_idx = l_idx;
         }
-        if ((r_idx < array.size()) && (array.get(r_idx).key < array.get(min_idx).key)) {
+        if ((r_idx < heapSize()) && (array.get(r_idx).key < array.get(min_idx).key)) {
             min_idx = r_idx;
         }
         if (min_idx != idx) {
             var t = array.get(min_idx);
-            array.set(min_idx, array.get(idx));
-            array.get(min_idx).index = min_idx;
-            array.set(idx, t);
-            t.index = idx;
+            updateArray(min_idx,array.get(idx));
+            updateArray(idx,t);
             minHeapify(min_idx);
         }
     }
@@ -104,10 +108,6 @@ public final class MinHeap<V> {
         for (int i = parentIndex(heapSize() - 1); i >= 0; i--) {
             minHeapify(i);
         }
-    }
-
-    public int heapSize() {
-        return array.size();
     }
 
     private static int leftIndex(int idx){
