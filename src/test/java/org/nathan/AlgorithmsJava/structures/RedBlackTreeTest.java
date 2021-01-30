@@ -37,18 +37,18 @@ class RedBlackTreeTest {
     @Test
     public void balanceTest() {
         RedBlackTree<Integer, Integer> t = new RedBlackTree<>(Comparator.comparingInt(o -> o));
-        for (int i = 0; i < 16383; i++) {
+        for (int i = 0; i < 127; i++) {
             t.insert(i, i);
         }
-        assertEquals(t.getHeight(), 13);
-        for (int i = 0; i < 8193; i++) {
+        assertEquals(6,t.getHeight());
+        for (int i = 0; i < 65; i++) {
             t.delete(i);
         }
-        assertEquals(t.getHeight(), 12);
+        assertEquals(5,t.getHeight());
     }
 
     @Test
-    public void FunctionsTest() {
+    public void functionsTest() {
         var t = new RedBlackTree<Integer, String>(Comparator.comparingInt(o -> o));
         List<Integer> l1 = new ArrayList<>();
         List<Integer> l2 = new ArrayList<>();
@@ -71,15 +71,4 @@ class RedBlackTreeTest {
         assertEquals(t.search(5), "5");
     }
 
-//    @Test
-//    public void performanceTest(){
-//        long t1 = System.nanoTime();
-//        var t = new RedBlackTree<Integer, Integer>(Comparator.comparingInt(a -> a));
-//        for (int i = 0; i < 16777215; i++) t.insert(i, i);
-//        System.out.println(t.getHeight());
-//        for (int i = 0; i < 8388609; i++) t.delete(i);
-//        System.out.println(t.getHeight());
-//        long t2 = System.nanoTime();
-//        System.out.println((t2-t1)/Math.pow(10,9));
-//    }
 }
