@@ -5,6 +5,12 @@ public abstract class DisjointSet<O> {
     private int rank = 0;
     private DisjointSet<O> parent = this;
 
+    /**
+     * find representative of a set
+     * @param x element
+     * @param <T> any
+     * @return set representative of the element
+     */
     public static <T> DisjointSet<T> findSet(DisjointSet<T> x) {
         if (x != x.getParent()) {
             x.setParent(findSet(x.getParent()));
@@ -28,19 +34,19 @@ public abstract class DisjointSet<O> {
         }
     }
 
-    DisjointSet<O> getParent() {
+    private DisjointSet<O> getParent() {
         return parent;
     }
 
-    void setParent(DisjointSet<O> root) {
+    private void setParent(DisjointSet<O> root) {
         parent = root;
     }
 
-    int getRank() {
+    private int getRank() {
         return rank;
     }
 
-    void setRank(int rank) {
+    private void setRank(int rank) {
         this.rank = rank;
     }
 }
