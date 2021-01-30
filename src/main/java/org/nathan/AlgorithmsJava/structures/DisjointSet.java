@@ -5,19 +5,18 @@ public abstract class DisjointSet<O> {
     private int rank = 0;
     private DisjointSet<O> parent = this;
 
-    @SuppressWarnings("unchecked")
-    public static <T extends DisjointSet<T>> T findSet(T x) {
+    public static <T> DisjointSet<T> findSet(DisjointSet<T> x) {
         if (x != x.getParent()) {
-            x.setParent(findSet((T) x.getParent()));
+            x.setParent(findSet(x.getParent()));
         }
-        return (T) x.getParent();
+        return x.getParent();
     }
 
-    public static <T extends DisjointSet<T>> void union(T a, T b) {
+    public static <T> void union(DisjointSet<T> a, DisjointSet<T> b) {
         link(findSet(a), findSet(b));
     }
 
-    private static <T extends DisjointSet<T>> void link(T x, T y) {
+    private static <T> void link(DisjointSet<T> x, DisjointSet<T> y) {
         if (x.getRank() > y.getRank()) {
             y.setParent(x);
         }
