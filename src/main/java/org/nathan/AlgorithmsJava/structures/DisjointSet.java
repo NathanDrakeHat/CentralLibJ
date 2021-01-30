@@ -1,28 +1,30 @@
 package org.nathan.AlgorithmsJava.structures;
 
-// generic type O: origin type
-public abstract class DisjointSet<O> {
+/**
+ * to use union() and findSet(),
+ * extends this class or initial it in a public field
+ */
+public class DisjointSet {
     private int rank = 0;
-    private DisjointSet<O> parent = this;
+    private DisjointSet parent = this;
 
     /**
-     * find representative of a set
+     *  find identifier of the set of an element
      * @param x element
-     * @param <T> any
-     * @return set representative of the element
+     * @return identifier
      */
-    public static <T> DisjointSet<T> findSet(DisjointSet<T> x) {
+    public static DisjointSet findSet(DisjointSet x) {
         if (x != x.getParent()) {
             x.setParent(findSet(x.getParent()));
         }
         return x.getParent();
     }
 
-    public static <T> void union(DisjointSet<T> a, DisjointSet<T> b) {
+    public static  void union(DisjointSet a, DisjointSet b) {
         link(findSet(a), findSet(b));
     }
 
-    private static <T> void link(DisjointSet<T> x, DisjointSet<T> y) {
+    private static  void link(DisjointSet x, DisjointSet y) {
         if (x.getRank() > y.getRank()) {
             y.setParent(x);
         }
@@ -34,11 +36,11 @@ public abstract class DisjointSet<O> {
         }
     }
 
-    private DisjointSet<O> getParent() {
+    private DisjointSet getParent() {
         return parent;
     }
 
-    private void setParent(DisjointSet<O> root) {
+    private void setParent(DisjointSet root) {
         parent = root;
     }
 

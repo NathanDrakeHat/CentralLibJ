@@ -4,7 +4,7 @@ import org.jetbrains.annotations.NotNull;
 import org.nathan.AlgorithmsJava.structures.DisjointSet;
 import org.nathan.AlgorithmsJava.structures.FibonacciHeap;
 import org.nathan.AlgorithmsJava.tools.MinHeap;
-
+import static org.nathan.AlgorithmsJava.structures.DisjointSet.*;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashSet;
@@ -20,9 +20,9 @@ public final class MinSpanTree {
         for (var edge : edges_list) {
             var v1 = edge.getFormerVertex();
             var v2 = edge.getLaterVertex();
-            if (DisjointSet.findSet(v1) != DisjointSet.findSet(v2)) {
+            if (findSet(v1) != findSet(v2)) {
                 res.add(edge);
-                DisjointSet.union(v1, v2);
+                union(v1, v2);
             }
         }
         return res;
@@ -83,7 +83,7 @@ public final class MinSpanTree {
         }
     }
 
-    public final static class KruskalVertex<V> extends DisjointSet<KruskalVertex<V>> {
+    public final static class KruskalVertex<V> extends DisjointSet {
         @NotNull
         private final V content;
 
@@ -91,6 +91,7 @@ public final class MinSpanTree {
             content = n;
         }
 
+        @SuppressWarnings("unused")
         public @NotNull V getContent() {
             return content;
         }
