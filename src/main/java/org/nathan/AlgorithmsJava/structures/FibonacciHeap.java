@@ -272,7 +272,7 @@ public final class FibonacciHeap<K, V> {
         W key;
         T value;
         Node<W, T> parent = null;
-        Node<W, T> childList = null; // int linked, circular list
+        Node<W, T> childList = null; // dual direction linked, circular list
         Node<W, T> left;
         Node<W, T> right;
         int degree = 0; // number of children

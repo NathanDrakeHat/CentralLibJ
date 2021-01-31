@@ -3,21 +3,30 @@ package org.nathan.AlgorithmsJava.tools;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
-import java.util.function.ToDoubleFunction;
+import java.util.function.Function;
 
 
-public final class MinHeap<V> {
+public final class MinHeap<K,V> {
 
-    private final List<Node<V>> array = new ArrayList<>();
-    private final Map<V, Node<V>> value_node_map = new HashMap<>();
+    private final List<Node<K,V>> array = new ArrayList<>();
+    private final Map<V, Node<K,V>> value_node_map = new HashMap<>();
+    private final DualToIntFunction<K,K> key_comparer;
 
-    public MinHeap(){}
+    public interface DualToIntFunction<Arg1,Arg2>{
+        int applyAsInt(Arg1 arg1, Arg2 arg2);
+    }
+    public MinHeap(@NotNull DualToIntFunction<K,K> comparer){
+        key_comparer = comparer;
+    }
 
-    public MinHeap(@NotNull Iterable<V> values, @NotNull ToDoubleFunction<V> getKey) {
+    public MinHeap(@NotNull Iterable<V> values,
+                   @NotNull Function<V,K> getKey,
+                   @NotNull DualToIntFunction<K,K> comparer) {
         int idx = 0;
+        key_comparer = comparer;
         for (var value : values) {
             Objects.requireNonNull(value);
-            var n = new Node<>(getKey.applyAsDouble(value), value, idx);
+            var n = new Node<>(getKey.apply(value), value, idx);
             idx++;
             array.add(n);
             value_node_map.put(n.value, n);
@@ -37,8 +46,8 @@ public final class MinHeap<V> {
         return res.value;
     }
 
-    public void Add(V value, double key){
-        Node<V> n = new Node<>(key,value,heapSize());
+    public void Add(V value, K key){
+        Node<K,V> n = new Node<>(key,value,heapSize());
         array.add(n);
         value_node_map.put(value, n);
         decreaseKey(heapSize()-1);
@@ -52,16 +61,16 @@ public final class MinHeap<V> {
         return heapSize();
     }
 
-    public void updateKey(@NotNull V value, double new_key) {
+    public void updateKey(@NotNull V value, K new_key) {
         var node = value_node_map.get(value);
         if (node == null) {
             throw new NoSuchElementException("No such value.");
         }
-        if (new_key < node.key) {
+        if (key_comparer.applyAsInt(new_key,node.key) < 0) {
             node.key = new_key;
             decreaseKey(node.index);
         }
-        else if (new_key > node.key) {
+        else if (key_comparer.applyAsInt(new_key, node.key)>0) {
             node.key = new_key;
             minHeapify(node.index);
         }
@@ -71,13 +80,14 @@ public final class MinHeap<V> {
         return array.size();
     }
 
-    private void updateArray(int index, Node<V> node){
+    private void updateArray(int index, Node<K,V> node){
         array.set(index, node);
         node.index = index;
     }
 
     private void decreaseKey(int idx) {
-        while (idx > 0 && array.get(parentIndex(idx)).key > array.get(idx).key){
+        while (idx > 0 &&
+                key_comparer.applyAsInt(array.get(parentIndex(idx)).key, array.get(idx).key) > 0){
             int p_index = parentIndex(idx);
             var t = array.get(idx);
             updateArray(idx, array.get(p_index));
@@ -90,10 +100,10 @@ public final class MinHeap<V> {
         int l_idx = leftIndex(idx);
         int r_idx = rightIndex(idx);
         int min_idx = idx;
-        if ((l_idx < heapSize()) && (array.get(l_idx).key < array.get(min_idx).key)) {
+        if ((l_idx < heapSize()) && key_comparer.applyAsInt(array.get(l_idx).key, array.get(min_idx).key)<0) {
             min_idx = l_idx;
         }
-        if ((r_idx < heapSize()) && (array.get(r_idx).key < array.get(min_idx).key)) {
+        if ((r_idx < heapSize()) && key_comparer.applyAsInt(array.get(r_idx).key, array.get(min_idx).key) < 0) {
             min_idx = r_idx;
         }
         if (min_idx != idx) {
@@ -122,12 +132,12 @@ public final class MinHeap<V> {
         return (idx + 1) / 2 - 1;
     }
 
-    private static class Node<E> {
-        double key;
-        E value;
+    private static class Node<IK, IV> {
+        IK key;
+        IV value;
         int index;
 
-        Node(double key, E value, int index) {
+        Node(IK key, IV value, int index) {
             this.key = key;
             this.value = value;
             this.index = index;

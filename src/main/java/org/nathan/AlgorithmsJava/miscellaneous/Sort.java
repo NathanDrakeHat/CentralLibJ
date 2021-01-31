@@ -212,14 +212,15 @@ public final class Sort {
     }
 
     // mean distribution
+    // input [0, 1)
     public static void bucketSort(double[] a) {
         List<List<Double>> b = new ArrayList<>();
         int n = a.length;
         for (int i = 0; i < n; i++) {
             b.add(new ArrayList<>());
         }
-        for (var i : a) {
-            b.get((int) Math.floor(n * i)).add(i);
+        for (var ai : a) {
+            b.get((int) Math.floor(n * ai)).add(ai);
         }
         List<Double> res_list = new ArrayList<>();
         for (var list : b) {

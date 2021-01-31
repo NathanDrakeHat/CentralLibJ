@@ -68,7 +68,7 @@ public final class MinSpanTree {
             }
             u.parent = null;
         }
-        MinHeap<PrimVertex<T>> Q = new MinHeap<>(vertices, PrimVertex::getKey);
+        MinHeap<Double,PrimVertex<T>> Q = new MinHeap<>(vertices, PrimVertex::getKey,Double::compare);
         while (Q.length() > 0) {
             var u = Q.extractMin();
             var u_edges = graph.getEdgesAt(u);

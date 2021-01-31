@@ -1,25 +1,32 @@
 package org.nathan.AlgorithmsJava.tools;
 
 public final class SimpleDate {
-    public int year;
-    public int month;
-    public int day;
+    public final int year;
+    public final int month;
+    public final int day;
+    public final String s;
 
     public SimpleDate(int y, int m, int d) {
         this.year = y;
         this.month = m;
         this.day = d;
+        s = String.format("[%d,%d,%d]",year,month,day);
     }
 
-    public int getYear() {
-        return year;
+    public int getDay() {
+        return day;
     }
 
     public int getMonth() {
         return month;
     }
 
-    public int getDay() {
-        return day;
+    public int getYear() {
+        return year;
+    }
+
+    @Override
+    public String toString(){
+        return s;
     }
 }

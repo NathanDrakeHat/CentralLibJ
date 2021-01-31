@@ -109,7 +109,7 @@ public final class SSShortestPath {
     private static <T> void algorithmDijkstraWithMinHeap(LinkedGraph<BFSVertex<T>> G, BFSVertex<T> s) {
         initializeSingleSource(G, s);
         var vertices = G.getAllVertices();
-        MinHeap<BFSVertex<T>> Q = new MinHeap<>(vertices, BFSVertex::getDistance);
+        MinHeap<Double,BFSVertex<T>> Q = new MinHeap<>(vertices, BFSVertex::getDistance,Double::compare);
         while (Q.length() > 0) {
             var u = Q.extractMin();
             var u_edges = G.getEdgesAt(u);
