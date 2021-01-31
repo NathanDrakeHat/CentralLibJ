@@ -19,13 +19,14 @@ class MinHeapTest {
     public static List<Integer> randomIntegerList(int low, int high, int len){
         List<Integer> l = new ArrayList<>();
         var rand = new Random();
-        for (int i = low; i < high; i++){
+        for (int i = 0; i < len; i++){
             l.add(rand.nextInt(high - low)+low);
         }
         Collections.shuffle(l);
         return l;
     }
 
+    @SuppressWarnings("unused")
     public static void serializeIntegerList(List<Integer> t) throws IOException {
         StringBuilder file_name = new StringBuilder("ListOfInteger");
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
