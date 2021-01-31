@@ -6,22 +6,22 @@ import java.util.*;
 import java.util.function.Function;
 
 
-public final class MinHeap<K,V> {
+public final class MinHeap<K, V> implements Iterable<Tuple<K, V>> {
+    private final List<Node<K, V>> array = new ArrayList<>();
+    private final Map<V, Node<K, V>> value_node_map = new HashMap<>();
+    private final DualToIntFunction<K, K> key_comparer;
 
-    private final List<Node<K,V>> array = new ArrayList<>();
-    private final Map<V, Node<K,V>> value_node_map = new HashMap<>();
-    private final DualToIntFunction<K,K> key_comparer;
-
-    public interface DualToIntFunction<Arg1,Arg2>{
+    public interface DualToIntFunction<Arg1, Arg2> {
         int applyAsInt(Arg1 arg1, Arg2 arg2);
     }
-    public MinHeap(@NotNull DualToIntFunction<K,K> comparer){
+
+    public MinHeap(@NotNull DualToIntFunction<K, K> comparer) {
         key_comparer = comparer;
     }
 
     public MinHeap(@NotNull Iterable<V> values,
-                   @NotNull Function<V,K> getKey,
-                   @NotNull DualToIntFunction<K,K> comparer) {
+                   @NotNull Function<V, K> getKey,
+                   @NotNull DualToIntFunction<K, K> comparer) {
         int idx = 0;
         key_comparer = comparer;
         for (var value : values) {
@@ -39,21 +39,21 @@ public final class MinHeap<K,V> {
             throw new NoSuchElementException();
         }
         var res = array.get(0);
-        updateArray(0,array.get(heapSize()-1));
+        updateArray(0, array.get(heapSize() - 1));
         array.remove(heapSize() - 1);
         minHeapify(0);
         value_node_map.remove(res.value);
         return res.value;
     }
 
-    public void Add(V value, K key){
-        Node<K,V> n = new Node<>(key,value,heapSize());
+    public void Add(@NotNull V value, @NotNull K key) {
+        Node<K, V> n = new Node<>(key, value, heapSize());
         array.add(n);
         value_node_map.put(value, n);
-        decreaseKey(heapSize()-1);
+        decreaseKey(heapSize() - 1);
     }
 
-    public boolean contains(V value) {
+    public boolean contains(@NotNull V value) {
         return value_node_map.containsKey(value);
     }
 
@@ -61,16 +61,16 @@ public final class MinHeap<K,V> {
         return heapSize();
     }
 
-    public void updateKey(@NotNull V value, K new_key) {
+    public void updateKey(@NotNull V value, @NotNull K new_key) {
         var node = value_node_map.get(value);
         if (node == null) {
             throw new NoSuchElementException("No such value.");
         }
-        if (key_comparer.applyAsInt(new_key,node.key) < 0) {
+        if (key_comparer.applyAsInt(new_key, node.key) < 0) {
             node.key = new_key;
             decreaseKey(node.index);
         }
-        else if (key_comparer.applyAsInt(new_key, node.key)>0) {
+        else if (key_comparer.applyAsInt(new_key, node.key) > 0) {
             node.key = new_key;
             minHeapify(node.index);
         }
@@ -80,27 +80,27 @@ public final class MinHeap<K,V> {
         return array.size();
     }
 
-    private void updateArray(int index, Node<K,V> node){
+    private void updateArray(int index, Node<K, V> node) {
         array.set(index, node);
         node.index = index;
     }
 
     private void decreaseKey(int idx) {
         while (idx > 0 &&
-                key_comparer.applyAsInt(array.get(parentIndex(idx)).key, array.get(idx).key) > 0){
+                key_comparer.applyAsInt(array.get(parentIndex(idx)).key, array.get(idx).key) > 0) {
             int p_index = parentIndex(idx);
             var t = array.get(idx);
             updateArray(idx, array.get(p_index));
-            updateArray(p_index,t);
+            updateArray(p_index, t);
             idx = p_index;
         }
     }
-    
+
     private void minHeapify(int idx) {
         int l_idx = leftIndex(idx);
         int r_idx = rightIndex(idx);
         int min_idx = idx;
-        if ((l_idx < heapSize()) && key_comparer.applyAsInt(array.get(l_idx).key, array.get(min_idx).key)<0) {
+        if ((l_idx < heapSize()) && key_comparer.applyAsInt(array.get(l_idx).key, array.get(min_idx).key) < 0) {
             min_idx = l_idx;
         }
         if ((r_idx < heapSize()) && key_comparer.applyAsInt(array.get(r_idx).key, array.get(min_idx).key) < 0) {
@@ -108,8 +108,8 @@ public final class MinHeap<K,V> {
         }
         if (min_idx != idx) {
             var t = array.get(min_idx);
-            updateArray(min_idx,array.get(idx));
-            updateArray(idx,t);
+            updateArray(min_idx, array.get(idx));
+            updateArray(idx, t);
             minHeapify(min_idx);
         }
     }
@@ -120,15 +120,15 @@ public final class MinHeap<K,V> {
         }
     }
 
-    private static int leftIndex(int idx){
+    private static int leftIndex(int idx) {
         return 2 * (idx + 1) - 1;
     }
 
-    private static int rightIndex(int idx){
+    private static int rightIndex(int idx) {
         return 2 * (idx + 1);
     }
 
-    private static int parentIndex(int idx){
+    private static int parentIndex(int idx) {
         return (idx + 1) / 2 - 1;
     }
 
@@ -142,5 +142,24 @@ public final class MinHeap<K,V> {
             this.value = value;
             this.index = index;
         }
+    }
+
+    private class MinHeapIterator implements Iterator<Tuple<K, V>> {
+        @Override
+        public boolean hasNext() {
+            return heapSize() > 0;
+        }
+
+        @Override
+        public Tuple<K, V> next() {
+            var key = array.get(0).key;
+            return new Tuple<>(key, extractMin());
+        }
+    }
+
+    @NotNull
+    @Override
+    public Iterator<Tuple<K, V>> iterator() {
+        return new MinHeapIterator();
     }
 }

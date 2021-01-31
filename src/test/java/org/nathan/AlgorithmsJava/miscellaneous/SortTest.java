@@ -31,7 +31,7 @@ class SortTest {
     }
 
     static void serializeArray(int[] t) throws IOException {
-        StringBuilder file_name = new StringBuilder("Integer");
+        StringBuilder file_name = new StringBuilder("IntegerArray");
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
         LocalDateTime now = LocalDateTime.now();
         file_name.append(dtf.format(now));
@@ -44,7 +44,7 @@ class SortTest {
     }
 
     static void serializeArray(double[] t) throws IOException {
-        StringBuilder file_name = new StringBuilder("Double");
+        StringBuilder file_name = new StringBuilder("DoubleArray");
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
         LocalDateTime now = LocalDateTime.now();
         file_name.append(dtf.format(now));
@@ -57,7 +57,7 @@ class SortTest {
     }
 
     static void serializeArray(SimpleDate[] t) throws IOException {
-        StringBuilder file_name = new StringBuilder("SimpleDate");
+        StringBuilder file_name = new StringBuilder("SimpleDateArray");
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
         LocalDateTime now = LocalDateTime.now();
         file_name.append(dtf.format(now));
@@ -71,7 +71,7 @@ class SortTest {
 
     @SuppressWarnings("unused")
     public static int[] loadIntegerArray(String file_name){
-        if(!file_name.startsWith("Integer")){
+        if(!file_name.startsWith("IntegerArray")){
             throw new IllegalArgumentException();
         }
         ObjectInputStream in = null;
@@ -98,7 +98,7 @@ class SortTest {
 
     @SuppressWarnings("unused")
     public static double[] loadDoubleArray(String file_name){
-        if(!file_name.startsWith("Double")){
+        if(!file_name.startsWith("DoubleArray")){
             throw new IllegalArgumentException();
         }
         ObjectInputStream in = null;
@@ -125,7 +125,7 @@ class SortTest {
 
     @SuppressWarnings("unused")
     public static SimpleDate[] loadSimpleDateArray(String file_name){
-        if(!file_name.startsWith("SimpleDate")){
+        if(!file_name.startsWith("SimpleDateArray")){
             throw new IllegalArgumentException();
         }
         ObjectInputStream in = null;
@@ -239,7 +239,7 @@ class SortTest {
         var rand = new Random();
         int len = rand.nextInt(100) + 50;
         int bound = rand.nextInt(5)+10;
-        for(int i = 0; i < 50; i++){
+        for(int i = 0; i < 10; i++){
             var origin = randomDoubleArray(-bound,bound,len);
             var t = Arrays.copyOf(origin,origin.length);
             Sort.iterativeMergeSort(t);
@@ -252,7 +252,7 @@ class SortTest {
         var rand = new Random();
         int len = rand.nextInt(100) + 50;
         int bound = rand.nextInt(5)+10;
-        for(int i = 0; i < 50; i++){
+        for(int i = 0; i < 10; i++){
             var origin = randomDoubleArray(-bound,bound,len);
             var t = Arrays.copyOf(origin,origin.length);
             Sort.recursiveMergeSort(t);
@@ -266,7 +266,7 @@ class SortTest {
         var rand = new Random();
         int len = rand.nextInt(100) + 50;
         int bound = rand.nextInt(5)+10;
-        for(int i = 0; i < 50; i++){
+        for(int i = 0; i < 10; i++){
             var origin = randomDoubleArray(-bound,bound,len);
             var t = Arrays.copyOf(origin,origin.length);
             Sort.heapSort(t);
@@ -279,7 +279,7 @@ class SortTest {
         var rand = new Random();
         int len = rand.nextInt(100) + 50;
         int bound = rand.nextInt(5)+10;
-        for(int i = 0; i < 50; i++){
+        for(int i = 0; i < 10; i++){
             var origin = randomDoubleArray(-bound,bound,len);
             var t = Arrays.copyOf(origin,origin.length);
             Sort.quickSort(t);
@@ -292,7 +292,7 @@ class SortTest {
         var rand = new Random();
         int len = rand.nextInt(100) + 50;
         int bound = rand.nextInt(5)+10;
-        for(int i = 0; i < 50; i++){
+        for(int i = 0; i < 10; i++){
             var origin = randomDoubleArray(-bound,bound,len);
             var t = Arrays.copyOf(origin,origin.length);
             Sort.randomQuickSort(t);
@@ -305,7 +305,7 @@ class SortTest {
         var rand = new Random();
         int len = rand.nextInt(100) + 50;
         int bound = rand.nextInt(5)+10;
-        for(int i = 0; i < 50; i++){
+        for(int i = 0; i < 10; i++){
             var origin = randomIntArray(-bound,bound,len);
             var t = Arrays.copyOf(origin,origin.length);
             Sort.countingSort(t);
@@ -315,17 +315,20 @@ class SortTest {
 
     @Test
     void radixSortTest() {
-        // TODO copy
-        SimpleDate[] t = buildDate();
+        SimpleDate[] origin = buildDate();
+        SimpleDate[] t = new SimpleDate[origin.length];
+        for(int i = 0; i < origin.length; i++){
+            t[i] = origin[i].newCopy();
+        }
         Sort.radixSort(t);
-        assertTrue(isSortedElseSave(t,t));
+        assertTrue(isSortedElseSave(t,origin));
     }
 
     @Test
     void bucketSortTest() {
         var rand = new Random();
         int len = rand.nextInt(100) + 50;
-        for(int i = 0; i < 50; i++){
+        for(int i = 0; i < 10; i++){
             var origin = randomDoubleArray(0,1,len);
             var t = Arrays.copyOf(origin,origin.length);
             Sort.bucketSort(t);

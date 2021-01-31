@@ -25,6 +25,10 @@ public final class SimpleDate {
         return year;
     }
 
+    public SimpleDate newCopy(){
+        return new SimpleDate(this.year,this.month,this.day);
+    }
+
     @Override
     public String toString(){
         return s;
