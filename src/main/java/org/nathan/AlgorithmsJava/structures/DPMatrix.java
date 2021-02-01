@@ -1,4 +1,4 @@
-package org.nathan.AlgorithmsJava.tools;
+package org.nathan.AlgorithmsJava.structures;
 
 
 public final class DPMatrix<V> {//matrix for dynamic programming problem

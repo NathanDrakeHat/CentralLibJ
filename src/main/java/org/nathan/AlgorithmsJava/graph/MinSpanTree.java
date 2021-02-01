@@ -3,7 +3,7 @@ package org.nathan.AlgorithmsJava.graph;
 import org.jetbrains.annotations.NotNull;
 import org.nathan.AlgorithmsJava.structures.DisjointSet;
 import org.nathan.AlgorithmsJava.structures.FibonacciHeap;
-import org.nathan.AlgorithmsJava.tools.MinHeap;
+import org.nathan.AlgorithmsJava.structures.MinHeap;
 import static org.nathan.AlgorithmsJava.structures.DisjointSet.*;
 import java.util.ArrayList;
 import java.util.Comparator;
