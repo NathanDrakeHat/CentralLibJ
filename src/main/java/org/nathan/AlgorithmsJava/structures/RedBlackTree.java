@@ -8,8 +8,6 @@ import java.util.function.BiConsumer;
 
 
 public final class RedBlackTree<K, V> implements Iterable<Tuple<K, V>> {
-
-
     @NotNull
     private final Comparator<K> k_comparator;
     @NotNull

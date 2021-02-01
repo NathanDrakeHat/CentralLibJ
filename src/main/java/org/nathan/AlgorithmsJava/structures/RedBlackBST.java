@@ -7,7 +7,8 @@ import java.util.NoSuchElementException;
 import java.util.Queue;
 
 // TODO read book
-public class RedBlackBST<Key extends Comparable<Key>,Value> {
+@SuppressWarnings("unused")
+public class RedBlackBST<Key extends Comparable<Key>, Value> {
     private static final boolean RED = true;
     private static final boolean BLACK = false;
     private RedBlackBST<Key, Value>.Node root;
@@ -18,7 +19,8 @@ public class RedBlackBST<Key extends Comparable<Key>,Value> {
     private boolean isRed(RedBlackBST<Key, Value>.Node x) {
         if (x == null) {
             return false;
-        } else {
+        }
+        else {
             return x.color;
         }
     }
@@ -28,23 +30,24 @@ public class RedBlackBST<Key extends Comparable<Key>,Value> {
     }
 
     public int size() {
-        return this.size(this.root);
+        return size(root);
     }
 
     public boolean isEmpty() {
-        return this.root == null;
+        return root == null;
     }
 
     public Value get(Key key) {
         if (key == null) {
             throw new IllegalArgumentException("argument to get() is null");
-        } else {
-            return get(this.root, key);
+        }
+        else {
+            return get(root, key);
         }
     }
 
     private Value get(RedBlackBST<Key, Value>.Node x, Key key) {
-        while(true) {
+        while (true) {
             if (x != null) {
                 int cmp = key.compareTo(x.key);
                 if (cmp < 0) {
@@ -65,61 +68,67 @@ public class RedBlackBST<Key extends Comparable<Key>,Value> {
     }
 
     public boolean contains(Key key) {
-        return this.get(key) != null;
+        return get(key) != null;
     }
 
     public void put(Key key, Value val) {
         if (key == null) {
             throw new IllegalArgumentException("first argument to put() is null");
-        } else if (val == null) {
-            this.delete(key);
-        } else {
-            this.root = this.put(this.root, key, val);
-            this.root.color = false;
+        }
+        else if (val == null) {
+            delete(key);
+        }
+        else {
+            root = put(root, key, val);
+            root.color = false;
         }
     }
 
     private RedBlackBST<Key, Value>.Node put(RedBlackBST<Key, Value>.Node h, Key key, Value val) {
         if (h == null) {
-            return new RedBlackBST<Key,Value>.Node(key, val, true, 1);
-        } else {
+            return new RedBlackBST<Key, Value>.Node(key, val, true, 1);
+        }
+        else {
             int cmp = key.compareTo(h.key);
             if (cmp < 0) {
-                h.left = this.put(h.left, key, val);
-            } else if (cmp > 0) {
-                h.right = this.put(h.right, key, val);
-            } else {
+                h.left = put(h.left, key, val);
+            }
+            else if (cmp > 0) {
+                h.right = put(h.right, key, val);
+            }
+            else {
                 h.val = val;
             }
 
-            if (this.isRed(h.right) && !this.isRed(h.left)) {
-                h = this.rotateLeft(h);
+            if (isRed(h.right) && !isRed(h.left)) {
+                h = rotateLeft(h);
             }
 
-            if (this.isRed(h.left) && this.isRed(h.left.left)) {
-                h = this.rotateRight(h);
+            if (isRed(h.left) && isRed(h.left.left)) {
+                h = rotateRight(h);
             }
 
-            if (this.isRed(h.left) && this.isRed(h.right)) {
-                this.flipColors(h);
+            if (isRed(h.left) && isRed(h.right)) {
+                flipColors(h);
             }
 
-            h.size = this.size(h.left) + this.size(h.right) + 1;
+            h.size = size(h.left) + size(h.right) + 1;
             return h;
         }
     }
 
     public void deleteMin() {
-        if (this.isEmpty()) {
+        if (isEmpty()) {
             throw new NoSuchElementException("BST underflow");
-        } else {
-            if (!this.isRed(this.root.left) && !this.isRed(this.root.right)) {
-                this.root.color = true;
+        }
+        else {
+            if (!isRed(root.left) && !isRed(root.right)) {
+                root.color = true;
             }
 
-            this.root = this.deleteMin(this.root);
-            if (!this.isEmpty()) {
-                this.root.color = false;
+            root = deleteMin(root);
+            if (!isEmpty()) {
+                root.color = false;
             }
 
         }
@@ -128,60 +137,64 @@ public class RedBlackBST<Key extends Comparable<Key>,Value> {
     private RedBlackBST<Key, Value>.Node deleteMin(RedBlackBST<Key, Value>.Node h) {
         if (h.left == null) {
             return null;
-        } else {
-            if (!this.isRed(h.left) && !this.isRed(h.left.left)) {
-                h = this.moveRedLeft(h);
+        }
+        else {
+            if (!isRed(h.left) && !isRed(h.left.left)) {
+                h = moveRedLeft(h);
             }
 
-            h.left = this.deleteMin(h.left);
-            return this.balance(h);
+            h.left = deleteMin(h.left);
+            return balance(h);
         }
     }
 
     public void deleteMax() {
-        if (this.isEmpty()) {
+        if (isEmpty()) {
             throw new NoSuchElementException("BST underflow");
-        } else {
-            if (!this.isRed(this.root.left) && !this.isRed(this.root.right)) {
-                this.root.color = true;
+        }
+        else {
+            if (!isRed(root.left) && !isRed(root.right)) {
+                root.color = true;
             }
 
-            this.root = this.deleteMax(this.root);
-            if (!this.isEmpty()) {
-                this.root.color = false;
+            root = deleteMax(root);
+            if (!isEmpty()) {
+                root.color = false;
             }
 
         }
     }
 
     private RedBlackBST<Key, Value>.Node deleteMax(RedBlackBST<Key, Value>.Node h) {
-        if (this.isRed(h.left)) {
-            h = this.rotateRight(h);
+        if (isRed(h.left)) {
+            h = rotateRight(h);
         }
 
         if (h.right == null) {
             return null;
-        } else {
-            if (!this.isRed(h.right) && !this.isRed(h.right.left)) {
-                h = this.moveRedRight(h);
+        }
+        else {
+            if (!isRed(h.right) && !isRed(h.right.left)) {
+                h = moveRedRight(h);
             }
 
-            h.right = this.deleteMax(h.right);
-            return this.balance(h);
+            h.right = deleteMax(h.right);
+            return balance(h);
         }
     }
 
     public void delete(Key key) {
         if (key == null) {
             throw new IllegalArgumentException("argument to delete() is null");
-        } else if (this.contains(key)) {
-            if (!this.isRed(this.root.left) && !this.isRed(this.root.right)) {
-                this.root.color = true;
+        }
+        else if (contains(key)) {
+            if (!isRed(root.left) && !isRed(root.right)) {
+                root.color = true;
             }
 
-            this.root = this.delete(this.root, key);
-            if (!this.isEmpty()) {
-                this.root.color = false;
+            root = delete(root, key);
+            if (!isEmpty()) {
+                root.color = false;
             }
 
         }
@@ -189,35 +202,37 @@ public class RedBlackBST<Key extends Comparable<Key>,Value> {
 
     private RedBlackBST<Key, Value>.Node delete(RedBlackBST<Key, Value>.Node h, Key key) {
         if (key.compareTo(h.key) < 0) {
-            if (!this.isRed(h.left) && !this.isRed(h.left.left)) {
-                h = this.moveRedLeft(h);
+            if (!isRed(h.left) && !isRed(h.left.left)) {
+                h = moveRedLeft(h);
             }
 
-            h.left = this.delete(h.left, key);
-        } else {
-            if (this.isRed(h.left)) {
-                h = this.rotateRight(h);
+            h.left = delete(h.left, key);
+        }
+        else {
+            if (isRed(h.left)) {
+                h = rotateRight(h);
             }
 
             if (key.compareTo(h.key) == 0 && h.right == null) {
                 return null;
             }
 
-            if (!this.isRed(h.right) && !this.isRed(h.right.left)) {
-                h = this.moveRedRight(h);
+            if (!isRed(h.right) && !isRed(h.right.left)) {
+                h = moveRedRight(h);
             }
 
             if (key.compareTo(h.key) == 0) {
-                RedBlackBST<Key, Value>.Node x = this.min(h.right);
+                RedBlackBST<Key, Value>.Node x = min(h.right);
                 h.key = x.key;
                 h.val = x.val;
-                h.right = this.deleteMin(h.right);
-            } else {
-                h.right = this.delete(h.right, key);
+                h.right = deleteMin(h.right);
+            }
+            else {
+                h.right = delete(h.right, key);
             }
         }
 
-        return this.balance(h);
+        return balance(h);
     }
 
     private RedBlackBST<Key, Value>.Node rotateRight(RedBlackBST<Key, Value>.Node h) {
@@ -227,7 +242,7 @@ public class RedBlackBST<Key extends Comparable<Key>,Value> {
         x.color = x.right.color;
         x.right.color = true;
         x.size = h.size;
-        h.size = this.size(h.left) + this.size(h.right) + 1;
+        h.size = size(h.left) + size(h.right) + 1;
         return x;
     }
 
@@ -238,7 +253,7 @@ public class RedBlackBST<Key extends Comparable<Key>,Value> {
         x.color = x.left.color;
         x.left.color = true;
         x.size = h.size;
-        h.size = this.size(h.left) + this.size(h.right) + 1;
+        h.size = size(h.left) + size(h.right) + 1;
         return x;
     }
 
@@ -249,45 +264,45 @@ public class RedBlackBST<Key extends Comparable<Key>,Value> {
     }
 
     private RedBlackBST<Key, Value>.Node moveRedLeft(RedBlackBST<Key, Value>.Node h) {
-        this.flipColors(h);
-        if (this.isRed(h.right.left)) {
-            h.right = this.rotateRight(h.right);
-            h = this.rotateLeft(h);
-            this.flipColors(h);
+        flipColors(h);
+        if (isRed(h.right.left)) {
+            h.right = rotateRight(h.right);
+            h = rotateLeft(h);
+            flipColors(h);
         }
 
         return h;
     }
 
     private RedBlackBST<Key, Value>.Node moveRedRight(RedBlackBST<Key, Value>.Node h) {
-        this.flipColors(h);
-        if (this.isRed(h.left.left)) {
-            h = this.rotateRight(h);
-            this.flipColors(h);
+        flipColors(h);
+        if (isRed(h.left.left)) {
+            h = rotateRight(h);
+            flipColors(h);
         }
 
         return h;
     }
 
     private RedBlackBST<Key, Value>.Node balance(RedBlackBST<Key, Value>.Node h) {
-        if (this.isRed(h.right)) {
-            h = this.rotateLeft(h);
+        if (isRed(h.right)) {
+            h = rotateLeft(h);
         }
 
-        if (this.isRed(h.left) && this.isRed(h.left.left)) {
-            h = this.rotateRight(h);
+        if (isRed(h.left) && isRed(h.left.left)) {
+            h = rotateRight(h);
         }
 
-        if (this.isRed(h.left) && this.isRed(h.right)) {
-            this.flipColors(h);
+        if (isRed(h.left) && isRed(h.right)) {
+            flipColors(h);
         }
 
-        h.size = this.size(h.left) + this.size(h.right) + 1;
+        h.size = size(h.left) + size(h.right) + 1;
         return h;
     }
 
     public int height() {
-        return height(this.root);
+        return height(root);
     }
 
     private int height(RedBlackBST<Key, Value>.Node x) {
@@ -295,37 +310,41 @@ public class RedBlackBST<Key extends Comparable<Key>,Value> {
     }
 
     public Key min() {
-        if (this.isEmpty()) {
+        if (isEmpty()) {
             throw new NoSuchElementException();
-        } else {
-            return this.min(this.root).key;
+        }
+        else {
+            return min(root).key;
         }
     }
 
     private RedBlackBST<Key, Value>.Node min(RedBlackBST<Key, Value>.Node x) {
-        return x.left == null ? x : this.min(x.left);
+        return x.left == null ? x : min(x.left);
     }
 
     public Key max() {
-        if (this.isEmpty()) {
+        if (isEmpty()) {
             throw new NoSuchElementException();
-        } else {
-            return this.max(this.root).key;
+        }
+        else {
+            return max(root).key;
         }
     }
 
     private RedBlackBST<Key, Value>.Node max(RedBlackBST<Key, Value>.Node x) {
-        return x.right == null ? x : this.max(x.right);
+        return x.right == null ? x : max(x.right);
     }
 
     public Key floor(@NotNull Key key) {
         if (isEmpty()) {
             throw new NoSuchElementException("calls floor() with empty symbol table");
-        } else {
-            RedBlackBST<Key, Value>.Node x = this.floor(this.root, key);
+        }
+        else {
+            RedBlackBST<Key, Value>.Node x = floor(root, key);
             if (x == null) {
                 throw new NoSuchElementException("argument to floor() is too small");
-            } else {
+            }
+            else {
                 return x.key;
             }
         }
@@ -334,14 +353,17 @@ public class RedBlackBST<Key extends Comparable<Key>,Value> {
     private RedBlackBST<Key, Value>.Node floor(RedBlackBST<Key, Value>.Node x, Key key) {
         if (x == null) {
             return null;
-        } else {
+        }
+        else {
             int cmp = key.compareTo(x.key);
             if (cmp == 0) {
                 return x;
-            } else if (cmp < 0) {
-                return this.floor(x.left, key);
-            } else {
-                RedBlackBST<Key, Value>.Node t = this.floor(x.right, key);
+            }
+            else if (cmp < 0) {
+                return floor(x.left, key);
+            }
+            else {
+                RedBlackBST<Key, Value>.Node t = floor(x.right, key);
                 return t != null ? t : x;
             }
         }
@@ -350,13 +372,16 @@ public class RedBlackBST<Key extends Comparable<Key>,Value> {
     public Key ceiling(Key key) {
         if (key == null) {
             throw new IllegalArgumentException("argument to ceiling() is null");
-        } else if (this.isEmpty()) {
+        }
+        else if (isEmpty()) {
             throw new NoSuchElementException("calls ceiling() with empty symbol table");
-        } else {
-            RedBlackBST<Key, Value>.Node x = this.ceiling(this.root, key);
+        }
+        else {
+            RedBlackBST<Key, Value>.Node x = ceiling(root, key);
             if (x == null) {
                 throw new NoSuchElementException("argument to ceiling() is too small");
-            } else {
+            }
+            else {
                 return x.key;
             }
         }
@@ -365,23 +390,27 @@ public class RedBlackBST<Key extends Comparable<Key>,Value> {
     private RedBlackBST<Key, Value>.Node ceiling(RedBlackBST<Key, Value>.Node x, Key key) {
         if (x == null) {
             return null;
-        } else {
+        }
+        else {
             int cmp = key.compareTo(x.key);
             if (cmp == 0) {
                 return x;
-            } else if (cmp > 0) {
-                return this.ceiling(x.right, key);
-            } else {
-                RedBlackBST<Key, Value>.Node t = this.ceiling(x.left, key);
+            }
+            else if (cmp > 0) {
+                return ceiling(x.right, key);
+            }
+            else {
+                RedBlackBST<Key, Value>.Node t = ceiling(x.left, key);
                 return t != null ? t : x;
             }
         }
     }
 
     public Key select(int rank) {
-        if (rank >= 0 && rank < this.size()) {
-            return this.select(this.root, rank);
-        } else {
+        if (rank >= 0 && rank < size()) {
+            return select(root, rank);
+        }
+        else {
             throw new IllegalArgumentException("argument to select() is invalid: " + rank);
         }
     }
@@ -389,12 +418,14 @@ public class RedBlackBST<Key extends Comparable<Key>,Value> {
     private Key select(RedBlackBST<Key, Value>.Node x, int rank) {
         if (x == null) {
             return null;
-        } else {
-            int leftSize = this.size(x.left);
+        }
+        else {
+            int leftSize = size(x.left);
             if (leftSize > rank) {
-                return this.select(x.left, rank);
-            } else {
-                return leftSize < rank ? this.select(x.right, rank - leftSize - 1) : x.key;
+                return select(x.left, rank);
+            }
+            else {
+                return leftSize < rank ? select(x.right, rank - leftSize - 1) : x.key;
             }
         }
     }
@@ -402,37 +433,42 @@ public class RedBlackBST<Key extends Comparable<Key>,Value> {
     public int rank(Key key) {
         if (key == null) {
             throw new IllegalArgumentException("argument to rank() is null");
-        } else {
-            return this.rank(key, this.root);
+        }
+        else {
+            return rank(key, root);
         }
     }
 
     private int rank(Key key, RedBlackBST<Key, Value>.Node x) {
         if (x == null) {
             return 0;
-        } else {
+        }
+        else {
             int cmp = key.compareTo(x.key);
             if (cmp < 0) {
-                return this.rank(key, x.left);
-            } else {
-                return cmp > 0 ? 1 + this.size(x.left) + this.rank(key, x.right) : this.size(x.left);
+                return rank(key, x.left);
+            }
+            else {
+                return cmp > 0 ? 1 + size(x.left) + rank(key, x.right) : size(x.left);
             }
         }
     }
 
     @SuppressWarnings("unchecked")
     public Iterable<Key> keys() {
-        return (Iterable<Key>)(isEmpty() ? new LinkedList<>() : this.keys(this.min(), this.max()));
+        return (Iterable<Key>) (isEmpty() ? new LinkedList<>() : keys(min(), max()));
     }
 
     public Iterable<Key> keys(Key lo, Key hi) {
         if (lo == null) {
             throw new IllegalArgumentException("first argument to keys() is null");
-        } else if (hi == null) {
+        }
+        else if (hi == null) {
             throw new IllegalArgumentException("second argument to keys() is null");
-        } else {
-            Queue<Key> queue = new LinkedList<Key>();
-            this.keys(this.root, queue, lo, hi);
+        }
+        else {
+            Queue<Key> queue = new LinkedList<>();
+            keys(root, queue, lo, hi);
             return queue;
         }
     }
@@ -442,7 +478,7 @@ public class RedBlackBST<Key extends Comparable<Key>,Value> {
             int cmplo = lo.compareTo(x.key);
             int cmphi = hi.compareTo(x.key);
             if (cmplo < 0) {
-                this.keys(x.left, queue, lo, hi);
+                keys(x.left, queue, lo, hi);
             }
 
             if (cmplo <= 0 && cmphi >= 0) {
@@ -450,7 +486,7 @@ public class RedBlackBST<Key extends Comparable<Key>,Value> {
             }
 
             if (cmphi > 0) {
-                this.keys(x.right, queue, lo, hi);
+                keys(x.right, queue, lo, hi);
             }
 
         }
@@ -459,12 +495,15 @@ public class RedBlackBST<Key extends Comparable<Key>,Value> {
     public int size(Key lo, Key hi) {
         if (lo == null) {
             throw new IllegalArgumentException("first argument to size() is null");
-        } else if (hi == null) {
+        }
+        else if (hi == null) {
             throw new IllegalArgumentException("second argument to size() is null");
-        } else if (lo.compareTo(hi) > 0) {
+        }
+        else if (lo.compareTo(hi) > 0) {
             return 0;
-        } else {
-            return this.contains(hi) ? this.rank(hi) - this.rank(lo) + 1 : this.rank(hi) - this.rank(lo);
+        }
+        else {
+            return contains(hi) ? rank(hi) - rank(lo) + 1 : rank(hi) - rank(lo);
         }
     }
 

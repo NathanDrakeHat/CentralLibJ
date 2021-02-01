@@ -22,12 +22,10 @@ public final class MinHeap<K, V> implements Iterable<Tuple<K, V>> {
     public MinHeap(@NotNull Iterable<V> values,
                    @NotNull Function<V, K> getKey,
                    @NotNull DualToIntFunction<K, K> comparer) {
-        int idx = 0;
         key_comparer = comparer;
         for (var value : values) {
             Objects.requireNonNull(value);
-            var n = new Node<>(getKey.apply(value), value, idx);
-            idx++;
+            var n = new Node<>(getKey.apply(value), value, array.size());
             array.add(n);
             value_node_map.put(n.value, n);
         }
@@ -39,7 +37,7 @@ public final class MinHeap<K, V> implements Iterable<Tuple<K, V>> {
             throw new NoSuchElementException();
         }
         var res = array.get(0);
-        updateArray(0, array.get(heapSize() - 1));
+        updateArrayAndNode(0, array.get(heapSize() - 1));
         array.remove(heapSize() - 1);
         minHeapify(0);
         value_node_map.remove(res.value);
@@ -80,7 +78,7 @@ public final class MinHeap<K, V> implements Iterable<Tuple<K, V>> {
         return array.size();
     }
 
-    private void updateArray(int index, Node<K, V> node) {
+    private void updateArrayAndNode(int index, Node<K, V> node) {
         array.set(index, node);
         node.index = index;
     }
@@ -90,8 +88,8 @@ public final class MinHeap<K, V> implements Iterable<Tuple<K, V>> {
                 key_comparer.applyAsInt(array.get(parentIndex(idx)).key, array.get(idx).key) > 0) {
             int p_index = parentIndex(idx);
             var t = array.get(idx);
-            updateArray(idx, array.get(p_index));
-            updateArray(p_index, t);
+            updateArrayAndNode(idx, array.get(p_index));
+            updateArrayAndNode(p_index, t);
             idx = p_index;
         }
     }
@@ -108,8 +106,8 @@ public final class MinHeap<K, V> implements Iterable<Tuple<K, V>> {
         }
         if (min_idx != idx) {
             var t = array.get(min_idx);
-            updateArray(min_idx, array.get(idx));
-            updateArray(idx, t);
+            updateArrayAndNode(min_idx, array.get(idx));
+            updateArrayAndNode(idx, t);
             minHeapify(min_idx);
         }
     }
