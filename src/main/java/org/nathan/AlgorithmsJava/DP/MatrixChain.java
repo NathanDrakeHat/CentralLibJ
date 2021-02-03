@@ -38,6 +38,7 @@ final class MatrixChain {
             }
         }
 
+        @Override
         public String toString() {
             var t = new StringBuilder();
             walk(res, t);

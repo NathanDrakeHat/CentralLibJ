@@ -22,7 +22,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="format" />
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="format">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/DP/MatrixChain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/DP/MatrixChain.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -70,7 +73,7 @@
       <recent name="org.nathan.AlgorithmsJava.structures" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="JUnit.All in AlgorithmsJava">
     <configuration name="Main$And" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main$And" />
       <module name="AlgorithmsJava" />
@@ -126,9 +129,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.All in AlgorithmsJava" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.Main$And" />
-        <item itemvalue="JUnit.All in AlgorithmsJava" />
         <item itemvalue="JUnit.MinHeapTest.randomBuildTest" />
         <item itemvalue="JUnit.MinHeapTest" />
       </list>
@@ -165,14 +168,10 @@
       <workItem from="1612323916930" duration="9000" />
       <workItem from="1612326508603" duration="1039000" />
       <workItem from="1612342693941" duration="9000" />
-      <workItem from="1612345328314" duration="596000" />
-    </task>
-    <task id="LOCAL-00013" summary="dynamic inner class">
-      <created>1598447617880</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1598447617880</updated>
+      <workItem from="1612345328314" duration="3540000" />
+      <workItem from="1612351559852" duration="310000" />
+      <workItem from="1612353414434" duration="2917000" />
+      <workItem from="1612356729862" duration="1029000" />
     </task>
     <task id="LOCAL-00014" summary="add">
       <created>1598448381722</created>
@@ -510,7 +509,14 @@
       <option name="project" value="LOCAL" />
       <updated>1612201201006</updated>
     </task>
-    <option name="localTasksCounter" value="62" />
+    <task id="LOCAL-00062" summary="change gitignore">
+      <created>1612346715395</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1612346715396</updated>
+    </task>
+    <option name="localTasksCounter" value="63" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -539,7 +545,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add surefire" />
     <MESSAGE value="skip test" />
     <MESSAGE value="unmodifiable protection replace new ArrayList" />
     <MESSAGE value="review" />
@@ -564,6 +569,7 @@
     <MESSAGE value="add test utils" />
     <MESSAGE value="add gson" />
     <MESSAGE value="format" />
-    <option name="LAST_COMMIT_MESSAGE" value="format" />
+    <MESSAGE value="change gitignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="change gitignore" />
   </component>
 </project>
