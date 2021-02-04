@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 
@@ -61,6 +62,28 @@ class MinHeapTest {
     // TODO updateKeyTest
     @Test
     void randomUpdateKeyTest() {
-
+        for (int i = 0; i < 10; i++) {
+            List<Integer> l = shuffledSequence(1, 63);
+            var rand = new Random();
+            MinHeap<Integer, String> heap = new MinHeap<>(
+                    l.stream().map(String::valueOf).collect(Collectors.toList()),
+                    s -> rand.nextInt(127 - 1) + 1,
+                    Integer::compareTo);
+            List<Integer> res = new ArrayList<>();
+            for(var elem : l){
+                heap.updateKey(String.valueOf(elem),elem);
+            }
+            while (heap.heapSize() > 0) {
+                res.add(Integer.valueOf(heap.extractMin()));
+            }
+            for (int j = 0; j < res.size() - 1; j++) {
+                if (res.get(j).compareTo(res.get(j + 1)) <= 0) {
+                    assertTrue(true);
+                }
+                else {
+                    fail();
+                }
+            }
+        }
     }
 }

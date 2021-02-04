@@ -7,9 +7,7 @@ import java.lang.reflect.Type;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Utils {
@@ -29,6 +27,15 @@ public class Utils {
             res[i] = rand.nextDouble() * (high - low) + low;
         }
         return res;
+    }
+
+    public static List<Integer> shuffledSequence(int low, int high){
+        List<Integer> l = new ArrayList<>();
+        for(int i = low; i < high; i++){
+            l.add(i);
+        }
+        Collections.shuffle(l);
+        return l;
     }
 
     public static List<Integer> randomIntegerList(int low, int high, int len) {

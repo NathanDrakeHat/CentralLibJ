@@ -20,12 +20,21 @@ public final class MinHeap<K, V> implements Iterable<Tuple<K, V>> {
         key_comparer = comparer;
     }
 
+    /**
+     * <B>note:values should be unique<B/>
+     * @param values values
+     * @param getKey key getter
+     * @param comparer key comparer
+     */
     public MinHeap(@NotNull Iterable<V> values,
                    @NotNull Function<V, K> getKey,
                    @NotNull DualToIntFunction<K, K> comparer) {
         key_comparer = comparer;
         for (var value : values) {
             Objects.requireNonNull(value);
+            if(value_node_map.containsKey(value)) {
+                throw new IllegalArgumentException("values should be unique");
+            }
             var n = new Node<>(getKey.apply(value), value, array.size());
             array.add(n);
             value_node_map.put(n.value, n);
@@ -46,6 +55,9 @@ public final class MinHeap<K, V> implements Iterable<Tuple<K, V>> {
     }
 
     public void Add(@NotNull V value, @NotNull K key) {
+        if(value_node_map.containsKey(value)) {
+            throw new IllegalArgumentException("value should be unique");
+        }
         Node<K, V> n = new Node<>(key, value, heapSize());
         array.add(n);
         value_node_map.put(value, n);

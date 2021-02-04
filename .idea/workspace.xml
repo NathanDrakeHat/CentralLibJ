@@ -22,12 +22,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="remove serialize failed cases">
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="add type utils">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/structures/RedBlackBST.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/structures/RedBlackBST.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/tools/Functions.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/tools/TestUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/tools/Utils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/AlgorithmsJava/miscellaneous/SortTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/AlgorithmsJava/miscellaneous/SortTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/tools/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/tools/Utils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/AlgorithmsJava/structures/MinHeapTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/AlgorithmsJava/structures/MinHeapTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -85,14 +82,7 @@
       <recent name="org.nathan.AlgorithmsJava.structures" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
-    <configuration name="Main$And" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Main$And" />
-      <module name="AlgorithmsJava" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.MinHeapTest">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="AlgorithmsJava" />
@@ -139,13 +129,29 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="MinHeapTest.randomUpdateKeyTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AlgorithmsJava" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.nathan.AlgorithmsJava.structures.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.nathan.AlgorithmsJava.structures" />
+      <option name="MAIN_CLASS_NAME" value="org.nathan.AlgorithmsJava.structures.MinHeapTest" />
+      <option name="METHOD_NAME" value="randomUpdateKeyTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.MinHeapTest" />
+        <item itemvalue="JUnit.MinHeapTest.randomUpdateKeyTest" />
         <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.All in AlgorithmsJava" />
         <item itemvalue="JUnit.MinHeapTest.randomBuildTest" />
-        <item itemvalue="JUnit.MinHeapTest" />
-        <item itemvalue="Application.Main$And" />
       </list>
     </recent_temporary>
   </component>
@@ -188,14 +194,7 @@
       <workItem from="1612365020597" duration="20000" />
       <workItem from="1612405927657" duration="670000" />
       <workItem from="1612407563916" duration="83000" />
-      <workItem from="1612429572244" duration="2933000" />
-    </task>
-    <task id="LOCAL-00016" summary="remove dynamic inner class">
-      <created>1598449425823</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1598449425823</updated>
+      <workItem from="1612429572244" duration="4415000" />
     </task>
     <task id="LOCAL-00017" summary="add">
       <created>1598449707265</created>
@@ -533,7 +532,14 @@
       <option name="project" value="LOCAL" />
       <updated>1612429733856</updated>
     </task>
-    <option name="localTasksCounter" value="65" />
+    <task id="LOCAL-00065" summary="add type utils">
+      <created>1612432751158</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1612432751158</updated>
+    </task>
+    <option name="localTasksCounter" value="66" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -562,7 +568,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="unmodifiable protection replace new ArrayList" />
     <MESSAGE value="review" />
     <MESSAGE value="finish todo" />
     <MESSAGE value="remove unused class" />
@@ -587,6 +592,7 @@
     <MESSAGE value="change gitignore" />
     <MESSAGE value="format" />
     <MESSAGE value="remove serialize failed cases" />
-    <option name="LAST_COMMIT_MESSAGE" value="remove serialize failed cases" />
+    <MESSAGE value="add type utils" />
+    <option name="LAST_COMMIT_MESSAGE" value="add type utils" />
   </component>
 </project>
