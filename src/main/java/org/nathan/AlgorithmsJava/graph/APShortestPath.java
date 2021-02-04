@@ -82,14 +82,14 @@ public class APShortestPath {
         return T;
     }
 
-    public interface AlgorithmDijkstra{
+    public interface AlgorithmDijkstra {
         <T> void apply(LinkedGraph<BFSVertex<T>> G, BFSVertex<T> s);
     }
 
     // sparse org.nathan.Algorithms.graph
     // Fibonacci heap: O(V^2*lgV + V*E)
     // min heap: O(V*E*lgV)
-    public static <T> Optional<double[][]> algorithmJohnson(@NotNull LinkedGraph<BFSVertex<T>> graph, AlgorithmDijkstra algorithmDijkstra) {
+    public static <T> Optional<double[][]> algorithmJohnson(@NotNull LinkedGraph<BFSVertex<T>> graph, AlgorithmDijkstra algoDijkstra) {
         Map<BFSVertex<T>, Double> h = new HashMap<>();
         var n = graph.getVerticesCount();
         var vertices_new = new ArrayList<>(graph.getAllVertices());
@@ -112,7 +112,7 @@ public class APShortestPath {
             for (var u : vertices_new) {
                 if (u != s) {
                     int idx_v = 0;
-                    algorithmDijkstra.apply(graph, u);
+                    algoDijkstra.apply(graph, u);
                     for (var v : vertices_new) {
                         if (v != s) {
                             D[idx_u][idx_v] = v.distance + h.get(v) - h.get(u);

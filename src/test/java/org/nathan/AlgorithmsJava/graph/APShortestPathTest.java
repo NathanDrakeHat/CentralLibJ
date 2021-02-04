@@ -111,7 +111,7 @@ class APShortestPathTest {
 
     @Test
     void algorithmJohnsonTest() {
-        var res = APShortestPath.algorithmJohnson(build(), SSShortestPath::algorithmDijkstraFibonacciHeap);
+        var res = APShortestPath.algorithmJohnson(build(), SSShortestPath::algoDijkstraFibonacciHeap);
         var answer = new double[][]{
                 {0.0, 1.0, -3.0, 2.0, -4.0},
                 {3.0, 0.0, -4.0, 1.0, -1.0},
@@ -122,7 +122,7 @@ class APShortestPathTest {
         assertTrue(res.isPresent());
         assertArrayEquals(answer, res.get());
 
-        res = APShortestPath.algorithmJohnson(build(),SSShortestPath::algorithmDijkstraFibonacciHeap);
+        res = APShortestPath.algorithmJohnson(build(),SSShortestPath::algoDijkstraFibonacciHeap);
         assertTrue(res.isPresent());
         assertArrayEquals(answer, res.get());
 

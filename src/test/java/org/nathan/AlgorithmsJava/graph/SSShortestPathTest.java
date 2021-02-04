@@ -124,7 +124,7 @@ class SSShortestPathTest {
     @Test
     void algorithmDijkstraTestWithFibonacciHeap() {
         var g = buildDijkstraCase();
-        SSShortestPath.algorithmDijkstraMinHeap(g, targetDijkstraCase);
+        SSShortestPath.algoDijkstraMinHeap(g, targetDijkstraCase);
         var vertices = g.getAllVertices().stream().sorted(Comparator.comparing(BFSVertex::getContent)).collect(Collectors.toList());
         assertNull(vertices.get(0).getParent());
 
@@ -144,7 +144,7 @@ class SSShortestPathTest {
     @Test
     void algorithmDijkstraTestWithMinHeap() {
         var g = buildDijkstraCase();
-        SSShortestPath.algorithmDijkstraFibonacciHeap(g, targetDijkstraCase);
+        SSShortestPath.algoDijkstraFibonacciHeap(g, targetDijkstraCase);
         var vertices = g.getAllVertices().stream().sorted(Comparator.comparing(BFSVertex::getContent)).collect(Collectors.toList());
         assertNull(vertices.get(0).getParent());
 
