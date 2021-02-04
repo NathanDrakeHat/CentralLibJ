@@ -22,9 +22,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="add type utils">
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="Min Heap add unique check">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/tools/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/tools/Utils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/structures/MinHeap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/structures/MinHeap.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/AlgorithmsJava/structures/MinHeapTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/AlgorithmsJava/structures/MinHeapTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -82,7 +82,7 @@
       <recent name="org.nathan.AlgorithmsJava.structures" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.MinHeapTest">
+  <component name="RunManager" selected="JUnit.MinHeapTest (1)">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="AlgorithmsJava" />
@@ -98,6 +98,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="MinHeapTest (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AlgorithmsJava" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="uniqueId" />
+      <uniqueIds>
+        <uniqueId value="[engine:junit-jupiter]/[class:org.nathan.AlgorithmsJava.structures.MinHeapTest]" />
+      </uniqueIds>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="MinHeapTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AlgorithmsJava" />
       <extension name="coverage">
@@ -109,22 +120,6 @@
       <option name="PACKAGE_NAME" value="org.nathan.AlgorithmsJava.structures" />
       <option name="MAIN_CLASS_NAME" value="org.nathan.AlgorithmsJava.structures.MinHeapTest" />
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MinHeapTest.randomBuildTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="AlgorithmsJava" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.nathan.AlgorithmsJava.structures.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.nathan.AlgorithmsJava.structures" />
-      <option name="MAIN_CLASS_NAME" value="org.nathan.AlgorithmsJava.structures.MinHeapTest" />
-      <option name="METHOD_NAME" value="randomBuildTest" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -147,11 +142,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.MinHeapTest (1)" />
+        <item itemvalue="JUnit.All in AlgorithmsJava" />
         <item itemvalue="JUnit.MinHeapTest" />
         <item itemvalue="JUnit.MinHeapTest.randomUpdateKeyTest" />
         <item itemvalue="Application.Main" />
-        <item itemvalue="JUnit.All in AlgorithmsJava" />
-        <item itemvalue="JUnit.MinHeapTest.randomBuildTest" />
       </list>
     </recent_temporary>
   </component>
@@ -194,14 +189,7 @@
       <workItem from="1612365020597" duration="20000" />
       <workItem from="1612405927657" duration="670000" />
       <workItem from="1612407563916" duration="83000" />
-      <workItem from="1612429572244" duration="4415000" />
-    </task>
-    <task id="LOCAL-00017" summary="add">
-      <created>1598449707265</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1598449707265</updated>
+      <workItem from="1612429572244" duration="4745000" />
     </task>
     <task id="LOCAL-00018" summary="review">
       <created>1598449719290</created>
@@ -539,7 +527,14 @@
       <option name="project" value="LOCAL" />
       <updated>1612432751158</updated>
     </task>
-    <option name="localTasksCounter" value="66" />
+    <task id="LOCAL-00066" summary="Min Heap add unique check">
+      <created>1612434621891</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1612434621891</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -568,7 +563,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="review" />
     <MESSAGE value="finish todo" />
     <MESSAGE value="remove unused class" />
     <MESSAGE value="layout" />
@@ -593,6 +587,7 @@
     <MESSAGE value="format" />
     <MESSAGE value="remove serialize failed cases" />
     <MESSAGE value="add type utils" />
-    <option name="LAST_COMMIT_MESSAGE" value="add type utils" />
+    <MESSAGE value="Min Heap add unique check" />
+    <option name="LAST_COMMIT_MESSAGE" value="Min Heap add unique check" />
   </component>
 </project>

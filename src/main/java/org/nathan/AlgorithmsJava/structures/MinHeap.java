@@ -20,12 +20,6 @@ public final class MinHeap<K, V> implements Iterable<Tuple<K, V>> {
         key_comparer = comparer;
     }
 
-    /**
-     * <B>note:values should be unique<B/>
-     * @param values values
-     * @param getKey key getter
-     * @param comparer key comparer
-     */
     public MinHeap(@NotNull Iterable<V> values,
                    @NotNull Function<V, K> getKey,
                    @NotNull DualToIntFunction<K, K> comparer) {

@@ -16,7 +16,7 @@ class MinHeapTest {
     @Test
     void randomBuildTest() {
         for (int i = 0; i < 10; i++) {
-            List<Integer> l = randomIntegerList(1, 256, 63);
+            List<Integer> l = shuffledSequence(1,  63);
             MinHeap<Integer, String> m = new MinHeap<>(
                     l.stream().map(String::valueOf).collect(Collectors.toList()),
                     Integer::valueOf,
@@ -39,7 +39,7 @@ class MinHeapTest {
     @Test
     void randomAddTest() {
         for (int i = 0; i < 10; i++) {
-            List<Integer> l = randomIntegerList(1, 256, 63);
+            List<Integer> l = shuffledSequence(1, 63);
             MinHeap<Integer, String> m = new MinHeap<>(Integer::compare);
             for (Integer integer : l) {
                 m.Add(String.valueOf(integer), integer);
