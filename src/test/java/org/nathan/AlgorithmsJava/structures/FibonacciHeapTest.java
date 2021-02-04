@@ -10,30 +10,22 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class FibonacciHeapTest {
 
-    private static FibonacciHeap.Node<Integer, Integer> buildNode(Integer key) {
-        return new FibonacciHeap.Node<>(key, key);
-    }
-
-    private static FibonacciHeap.Node<Integer, Integer> buildNodeWithMark(Integer key) {
+    private static FibonacciHeap.Node<Integer, Integer> buildNode(Integer key, boolean mark) {
         var res = new FibonacciHeap.Node<>(key, key);
-        res.mark = true;
+        res.mark = mark;
         return res;
-    }
-
-    static void addChild(FibonacciHeap.Node<Integer, Integer> n, int t) {
-        var x = new FibonacciHeap.Node<>(t, t);
-        x.mark = false;
-        var listLeft = n.left;
-        n.left = x;
-        x.right = n;
-        listLeft.right = x;
-        x.left = listLeft;
-        x.parent = n.parent;
     }
 
     static void addChildren(FibonacciHeap.Node<Integer, Integer> n, int... t) {
         for (var i : t) {
-            addChild(n, i);
+            var x = new FibonacciHeap.Node<>(i, i);
+            x.mark = false;
+            var listLeft = n.left;
+            n.left = x;
+            x.right = n;
+            listLeft.right = x;
+            x.left = listLeft;
+            x.parent = n.parent;
         }
     }
 
@@ -44,31 +36,31 @@ class FibonacciHeapTest {
         addChildren(m, 17, 24, 23, 7, 21);
 
         FibonacciHeap.Node<Integer, Integer> ptr;
-        ptr = buildNodeWithMark(18);
+        ptr = buildNode(18, true);
         m.childList = ptr;
         ptr.parent = m;
         m.degree = 2;
 
         var m_child = m.childList;
         m_child.degree = 1;
-        ptr = buildNodeWithMark(39);
+        ptr = buildNode(39, true);
         m_child.childList = ptr;
         ptr.parent = m_child;
 
         addChildren(m_child, 52, 38);
-        ptr = buildNode(41);
+        ptr = buildNode(41, false);
         m_child.left.childList = ptr;
         ptr.parent = m_child.left;
         m_child.left.degree = 1;
 
-        ptr = buildNode(30);
+        ptr = buildNode(30, false);
         m.right.childList = ptr;
         ptr.parent = m.right;
         m.right.degree = 1;
 
-        FibonacciHeap.Node<Integer, Integer> t = buildNodeWithMark(26);
+        FibonacciHeap.Node<Integer, Integer> t = buildNode(26, true);
         t.degree = 1;
-        ptr = buildNode(35);
+        ptr = buildNode(35, false);
         t.childList = ptr;
         ptr.parent = t;
 
@@ -76,7 +68,7 @@ class FibonacciHeapTest {
         t.parent = m.right.right;
         m.right.right.degree = 2;
 
-        addChild(t, 46);
+        addChildren(t, 46);
         H.count = 15;
         return H;
     }
