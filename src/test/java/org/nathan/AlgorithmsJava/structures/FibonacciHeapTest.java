@@ -97,7 +97,7 @@ class FibonacciHeapTest {
     }
 
     @Test
-    void example1() {
+    void case1() {
         var H = buildExample();
         var o = H.extractMin();
         assertEquals(o, 3);
