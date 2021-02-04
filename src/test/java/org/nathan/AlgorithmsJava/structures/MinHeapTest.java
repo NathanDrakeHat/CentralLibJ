@@ -13,12 +13,6 @@ import java.util.stream.Collectors;
 
 
 class MinHeapTest {
-    // TODO load all failed cases
-    @Test
-    void failedCasesTest() {
-
-    }
-
     @Test
     void randomBuildTest() {
         for (int i = 0; i < 10; i++) {
@@ -36,7 +30,6 @@ class MinHeapTest {
                     assertTrue(true);
                 }
                 else {
-                    // TODO serialize when fail
                     fail();
                 }
             }
@@ -60,7 +53,6 @@ class MinHeapTest {
                     assertTrue(true);
                 }
                 else {
-                    // TODO serialize when fail
                     fail();
                 }
             }

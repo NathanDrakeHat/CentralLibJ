@@ -3,8 +3,6 @@ package org.nathan.AlgorithmsJava.miscellaneous;
 import org.junit.jupiter.api.Test;
 import org.nathan.AlgorithmsJava.tools.SimpleDate;
 
-import java.io.*;
-
 import static org.nathan.AlgorithmsJava.tools.TestUtils.*;
 
 import java.util.Arrays;
@@ -30,77 +28,47 @@ class SortTest {
     }
 
 
-    static boolean isSortedElseSave(int[] res, int[] origin) {
+    static boolean isSorted(int[] res) {
         boolean is_sorted = true;
         for (int i = 1; i < res.length; i++) {
             if (res[i - 1] > res[i]) {
                 is_sorted = false;
-                try {
-                    serializeObjectTimeSuffix(origin, "Test:", TYPE_SUFFIX, res.getClass());
-                } catch (IOException ignore) {
-                    System.out.println(Arrays.toString(origin));
-                }
                 break;
             }
         }
         return is_sorted;
     }
 
-    static boolean isSortedElseSave(double[] res, double[] origin) {
+    static boolean isSorted(double[] res) {
         boolean is_sorted = true;
         for (int i = 1; i < res.length; i++) {
             if (res[i - 1] > res[i]) {
                 is_sorted = false;
-                try {
-                    serializeObjectTimeSuffix(origin, "Test:", TYPE_SUFFIX, res.getClass());
-                } catch (IOException ignore) {
-                    System.out.println(Arrays.toString(origin));
-                }
                 break;
             }
         }
         return is_sorted;
     }
 
-    static boolean isSortedElseSave(SimpleDate[] res, SimpleDate[] origin) {
+    static boolean isSorted(SimpleDate[] res) {
         boolean is_sorted = true;
         for (int i = 1; i < res.length; i++) {
             if (res[i - 1].year > res[i].year) {
                 is_sorted = false;
-                try {
-                    serializeObjectTimeSuffix(origin, "Test:", TYPE_SUFFIX, res.getClass());
-                } catch (IOException ignore) {
-                    System.out.println(Arrays.toString(origin));
-                }
                 break;
             }
             else if ((res[i - 1].year == res[i].year) && (res[i - 1].month > res[i].month)) {
                 is_sorted = false;
-                try {
-                    serializeObjectTimeSuffix(origin, "Test:", TYPE_SUFFIX, res.getClass());
-                } catch (IOException ignore) {
-                    System.out.println(Arrays.toString(origin));
-                }
                 break;
             }
             else if ((res[i - 1].year == res[i].year) && (res[i - 1].month == res[i].month) && (res[i - 1].day > res[i].day)) {
                 is_sorted = false;
-                try {
-                    serializeObjectTimeSuffix(origin, "Test:", TYPE_SUFFIX, res.getClass());
-                } catch (IOException ignore) {
-                    System.out.println(Arrays.toString(origin));
-                }
                 break;
             }
         }
         return is_sorted;
     }
 
-    // TODO failedCasesTest
-    @Test
-    void failedCasesTest() {
-
-    }
 
     @Test
     void iterativeMergeSortTest() {
@@ -111,7 +79,7 @@ class SortTest {
             var origin = randomDoubleArray(-bound, bound, len);
             var t = Arrays.copyOf(origin, origin.length);
             Sort.iterativeMergeSort(t);
-            assertTrue(isSortedElseSave(t, origin));
+            assertTrue(isSorted(t));
         }
     }
 
@@ -124,7 +92,7 @@ class SortTest {
             var origin = randomDoubleArray(-bound, bound, len);
             var t = Arrays.copyOf(origin, origin.length);
             Sort.recursiveMergeSort(t);
-            assertTrue(isSortedElseSave(t, origin));
+            assertTrue(isSorted(t));
         }
 
     }
@@ -138,7 +106,7 @@ class SortTest {
             var origin = randomDoubleArray(-bound, bound, len);
             var t = Arrays.copyOf(origin, origin.length);
             Sort.heapSort(t);
-            assertTrue(isSortedElseSave(t, origin));
+            assertTrue(isSorted(t));
         }
     }
 
@@ -151,7 +119,7 @@ class SortTest {
             var origin = randomDoubleArray(-bound, bound, len);
             var t = Arrays.copyOf(origin, origin.length);
             Sort.quickSort(t);
-            assertTrue(isSortedElseSave(t, origin));
+            assertTrue(isSorted(t));
         }
     }
 
@@ -164,7 +132,7 @@ class SortTest {
             var origin = randomDoubleArray(-bound, bound, len);
             var t = Arrays.copyOf(origin, origin.length);
             Sort.randomQuickSort(t);
-            assertTrue(isSortedElseSave(t, origin));
+            assertTrue(isSorted(t));
         }
     }
 
@@ -177,7 +145,7 @@ class SortTest {
             var origin = randomIntArray(-bound, bound, len);
             var t = Arrays.copyOf(origin, origin.length);
             Sort.countingSort(t);
-            assertTrue(isSortedElseSave(t, origin));
+            assertTrue(isSorted(t));
         }
     }
 
@@ -189,7 +157,7 @@ class SortTest {
             t[i] = origin[i].newCopy();
         }
         Sort.radixSort(t);
-        assertTrue(isSortedElseSave(t, origin));
+        assertTrue(isSorted(t));
     }
 
     @Test
@@ -200,7 +168,7 @@ class SortTest {
             var origin = randomDoubleArray(0, 1, len);
             var t = Arrays.copyOf(origin, origin.length);
             Sort.bucketSort(t);
-            assertTrue(isSortedElseSave(t, origin));
+            assertTrue(isSorted(t));
         }
     }
 

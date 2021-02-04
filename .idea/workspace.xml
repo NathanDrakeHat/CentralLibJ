@@ -24,12 +24,14 @@
   <component name="ChangeListManager">
     <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="format">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/DP/MatrixChain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/DP/MatrixChain.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CompilerWorkspaceConfiguration">
+    <option name="PARALLEL_COMPILATION" value="true" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -66,7 +68,7 @@
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.28315789" />
-    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
@@ -172,13 +174,10 @@
       <workItem from="1612351559852" duration="310000" />
       <workItem from="1612353414434" duration="2917000" />
       <workItem from="1612356729862" duration="1029000" />
-    </task>
-    <task id="LOCAL-00014" summary="add">
-      <created>1598448381722</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1598448381722</updated>
+      <workItem from="1612359989257" duration="168000" />
+      <workItem from="1612365020597" duration="20000" />
+      <workItem from="1612405927657" duration="670000" />
+      <workItem from="1612407563916" duration="83000" />
     </task>
     <task id="LOCAL-00015" summary="add">
       <created>1598449115931</created>
@@ -516,7 +515,14 @@
       <option name="project" value="LOCAL" />
       <updated>1612346715396</updated>
     </task>
-    <option name="localTasksCounter" value="63" />
+    <task id="LOCAL-00063" summary="format">
+      <created>1612360153366</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1612360153367</updated>
+    </task>
+    <option name="localTasksCounter" value="64" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -568,8 +574,8 @@
     <MESSAGE value="fix small problems, all test pass" />
     <MESSAGE value="add test utils" />
     <MESSAGE value="add gson" />
-    <MESSAGE value="format" />
     <MESSAGE value="change gitignore" />
-    <option name="LAST_COMMIT_MESSAGE" value="change gitignore" />
+    <MESSAGE value="format" />
+    <option name="LAST_COMMIT_MESSAGE" value="format" />
   </component>
 </project>
