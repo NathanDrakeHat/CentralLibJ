@@ -22,8 +22,13 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="format">
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="remove serialize failed cases">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/structures/RedBlackBST.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/structures/RedBlackBST.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/tools/Functions.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/tools/TestUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/tools/Utils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/AlgorithmsJava/miscellaneous/SortTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/AlgorithmsJava/miscellaneous/SortTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/AlgorithmsJava/structures/MinHeapTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/AlgorithmsJava/structures/MinHeapTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,14 +48,19 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/structures/FibonacciHeap.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MavenRunner">
     <option name="jreName" value="Adopt14HotSpot" />
-  </component>
-  <component name="ProblemsViewState">
-    <option name="selectedIndex" value="1" />
   </component>
   <component name="ProjectId" id="1frQbN17KMrYLWgoSMIuH1vYjss" />
   <component name="ProjectViewState">
@@ -65,17 +75,17 @@
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.28315789" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="settings.editor.selected.configurable" value="project.propCompiler" />
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="org.nathan.AlgorithmsJava.structures" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.All in AlgorithmsJava">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main$And" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main$And" />
       <module name="AlgorithmsJava" />
@@ -131,11 +141,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.All in AlgorithmsJava" />
         <item itemvalue="Application.Main" />
-        <item itemvalue="Application.Main$And" />
+        <item itemvalue="JUnit.All in AlgorithmsJava" />
         <item itemvalue="JUnit.MinHeapTest.randomBuildTest" />
         <item itemvalue="JUnit.MinHeapTest" />
+        <item itemvalue="Application.Main$And" />
       </list>
     </recent_temporary>
   </component>
@@ -178,13 +188,7 @@
       <workItem from="1612365020597" duration="20000" />
       <workItem from="1612405927657" duration="670000" />
       <workItem from="1612407563916" duration="83000" />
-    </task>
-    <task id="LOCAL-00015" summary="add">
-      <created>1598449115931</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1598449115931</updated>
+      <workItem from="1612429572244" duration="2933000" />
     </task>
     <task id="LOCAL-00016" summary="remove dynamic inner class">
       <created>1598449425823</created>
@@ -522,7 +526,14 @@
       <option name="project" value="LOCAL" />
       <updated>1612360153367</updated>
     </task>
-    <option name="localTasksCounter" value="64" />
+    <task id="LOCAL-00064" summary="remove serialize failed cases">
+      <created>1612429733856</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1612429733856</updated>
+    </task>
+    <option name="localTasksCounter" value="65" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -551,7 +562,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="skip test" />
     <MESSAGE value="unmodifiable protection replace new ArrayList" />
     <MESSAGE value="review" />
     <MESSAGE value="finish todo" />
@@ -576,6 +586,7 @@
     <MESSAGE value="add gson" />
     <MESSAGE value="change gitignore" />
     <MESSAGE value="format" />
-    <option name="LAST_COMMIT_MESSAGE" value="format" />
+    <MESSAGE value="remove serialize failed cases" />
+    <option name="LAST_COMMIT_MESSAGE" value="remove serialize failed cases" />
   </component>
 </project>

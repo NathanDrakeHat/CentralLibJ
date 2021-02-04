@@ -2,10 +2,9 @@ package org.nathan.AlgorithmsJava.structures;
 
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.nathan.AlgorithmsJava.tools.TestUtils.*;
+import static org.nathan.AlgorithmsJava.tools.Utils.*;
 
 import org.junit.jupiter.api.Test;
-import org.nathan.AlgorithmsJava.structures.MinHeap;
 
 import java.util.ArrayList;
 import java.util.List;

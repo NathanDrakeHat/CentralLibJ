@@ -1,5 +1,7 @@
 package org.nathan.AlgorithmsJava.tools;
 
+import com.google.gson.reflect.TypeToken;
+
 import java.io.*;
 import java.lang.reflect.Type;
 import java.time.LocalDateTime;
@@ -10,7 +12,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
 
-public class TestUtils {
+public class Utils {
     public static int[] randomIntArray(int low, int high, int len) {
         var rand = new Random();
         int[] res = new int[len];
@@ -79,4 +81,42 @@ public class TestUtils {
     }
 
     public static String TYPE_SUFFIX = ".txt";
+
+    /**
+     * usage: GenericClass<Type> v = newGenericArray(len);
+     * @param length len
+     * @param array array
+     * @param <E> any
+     * @return typed array
+     */
+    @SafeVarargs
+    public static <E> E[] newGenericArray(int length, E... array) {
+        return Arrays.copyOf(array, length);
+    }
+
+    /**
+     * TypeToken should be initialized as anonymous class (note the curly braces initialization):
+     * <pre>
+     *     var typeToken = new TypeToken<HashMap<List<String>, List<Integer>>>(){};
+     * </pre>
+     * readable type example:
+     * <pre>
+     *     java.utils.ArrayList<Integer> -> ArrayList<Integer>
+     * </pre>
+     * @param typeToken Gson class
+     * @param <T> any
+     * @return readable type name
+     */
+    public static <T> String getReadableTypeName(TypeToken<T> typeToken){
+        return processRawTypeName(typeToken.toString());
+    }
+
+    private static String processRawTypeName(String type_string){
+        var origin_types = Arrays.stream(type_string.split("[<>, ]")).filter(s->!s.equals("")).distinct().collect(Collectors.toList());
+        for(var origin_type : origin_types){
+            var split = origin_type.split("\\.");
+            type_string = type_string.replaceAll(origin_type, split[split.length - 1]);
+        }
+        return type_string;
+    }
 }

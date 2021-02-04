@@ -3,7 +3,7 @@ package org.nathan.AlgorithmsJava.miscellaneous;
 import org.junit.jupiter.api.Test;
 import org.nathan.AlgorithmsJava.tools.SimpleDate;
 
-import static org.nathan.AlgorithmsJava.tools.TestUtils.*;
+import static org.nathan.AlgorithmsJava.tools.Utils.*;
 
 import java.util.Arrays;
 import java.util.Random;

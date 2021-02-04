@@ -475,17 +475,17 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
 
     private void keys(RedBlackBST<Key, Value>.Node x, Queue<Key> queue, Key lo, Key hi) {
         if (x != null) {
-            int cmplo = lo.compareTo(x.key);
-            int cmphi = hi.compareTo(x.key);
-            if (cmplo < 0) {
+            int cmp_lo = lo.compareTo(x.key);
+            int cmp_hi = hi.compareTo(x.key);
+            if (cmp_lo < 0) {
                 keys(x.left, queue, lo, hi);
             }
 
-            if (cmplo <= 0 && cmphi >= 0) {
+            if (cmp_lo <= 0 && cmp_hi >= 0) {
                 queue.add(x.key);
             }
 
-            if (cmphi > 0) {
+            if (cmp_hi > 0) {
                 keys(x.right, queue, lo, hi);
             }
 
