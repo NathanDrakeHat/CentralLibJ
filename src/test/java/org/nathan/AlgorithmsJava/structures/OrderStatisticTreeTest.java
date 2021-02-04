@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class OrderStatisticTreeTest {
 
     @Test
-    void testCase1() {
+    void case1() {
         OrderStatisticTree RBtree = new OrderStatisticTree();
         RBtree.insertKey(11);
         RBtree.insertKey(2);

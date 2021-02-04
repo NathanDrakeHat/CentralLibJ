@@ -72,19 +72,9 @@ public final class SSShortestPath {
         return BFS_Linked_graph;
     }
 
-    public static <T> void algorithmDijkstra(@NotNull LinkedGraph<BFSVertex<T>> G,
-                                             @NotNull BFSVertex<T> s,
-                                             @NotNull Heap type) {
-        if (type == Heap.FIBONACCI) {
-            algorithmDijkstraWithFibonacciHeap(G, s);
-        }
-        else {
-            algorithmDijkstraWithMinHeap(G, s);
-        }
-    }
 
     // fibonacci heap, time complexity: O(V^2*lgV + V*E)
-    private static <T> void algorithmDijkstraWithFibonacciHeap(LinkedGraph<BFSVertex<T>> G, BFSVertex<T> s) {
+    public static <T> void algorithmDijkstraFibonacciHeap(LinkedGraph<BFSVertex<T>> G, BFSVertex<T> s) {
         initializeSingleSource(G, s);
         var vertices = G.getAllVertices();
         FibonacciHeap<Double, BFSVertex<T>> Q = new FibonacciHeap<>(Comparator.comparingDouble(a -> a));
@@ -106,7 +96,7 @@ public final class SSShortestPath {
     }
 
     // min heap, time complexity: O(V*E*lgV)
-    private static <T> void algorithmDijkstraWithMinHeap(LinkedGraph<BFSVertex<T>> G, BFSVertex<T> s) {
+    public static <T> void algorithmDijkstraMinHeap(LinkedGraph<BFSVertex<T>> G, BFSVertex<T> s) {
         initializeSingleSource(G, s);
         var vertices = G.getAllVertices();
         MinHeap<Double,BFSVertex<T>> Q = new MinHeap<>(vertices, BFSVertex::getDistance,Double::compare);
@@ -124,8 +114,4 @@ public final class SSShortestPath {
         }
     }
 
-    // non-negative weight
-    public enum Heap {
-        FIBONACCI, MIN_HEAP
-    }
 }

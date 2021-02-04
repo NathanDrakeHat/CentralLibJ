@@ -157,7 +157,7 @@ class DFSTest {
         boolean flag = true;
         for (int i = 1; i < l.size(); i++) {
             for (int j = 0; j < i; j++) {
-                flag = recursiveTopologicalTest(l.get(j), l.get(i), graph);
+                flag = recursiveTopologicalSorted(l.get(j), l.get(i), graph);
                 if (!flag) {
                     break;
                 }
@@ -169,7 +169,7 @@ class DFSTest {
         assertTrue(flag);
     }
 
-    boolean recursiveTopologicalTest(DFS.DFSVertex<String> target, DFS.DFSVertex<String> current, LinkedGraph<DFS.DFSVertex<String>> G) {
+    boolean recursiveTopologicalSorted(DFS.DFSVertex<String> target, DFS.DFSVertex<String> current, LinkedGraph<DFS.DFSVertex<String>> G) {
         if (current.equals(target)) {
             return false;
         }
@@ -181,7 +181,7 @@ class DFSTest {
             boolean t = true;
             for (var edge : edges) {
                 var i = edge.getAnotherSide(current);
-                t = recursiveTopologicalTest(target, i, G);
+                t = recursiveTopologicalSorted(target, i, G);
                 if (!t) {
                     break;
                 }
@@ -197,7 +197,7 @@ class DFSTest {
         List<DFS.DFSVertex<String>> t = new ArrayList<>(graph.getAllVertices());
         for (int i = 1; i < t.size(); i++) {
             for (int j = 0; j < i; j++) {
-                flag = recursiveTopologicalTest(t.get(j), t.get(i), graph);
+                flag = recursiveTopologicalSorted(t.get(j), t.get(i), graph);
                 if (!flag) {
                     break;
                 }
