@@ -46,6 +46,7 @@ final class MatrixChain {
         }
     }
 
+    // TODO input should be Tuple<Integer, Integer>[]
     public static MatrixChainResult matrixChainOrder(int[][][] p) { // [start, end] [mid, end]
         MatrixChainResult[][] m = new MatrixChainResult[p.length][p.length]; // memory
         for (int i = 0; i < p.length; i++) {

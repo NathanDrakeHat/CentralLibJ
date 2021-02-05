@@ -14,29 +14,6 @@ import java.util.stream.Collectors;
 
 class MinHeapTest {
     @Test
-    void randomBuildTest() {
-        for (int i = 0; i < 10; i++) {
-            List<Integer> l = shuffledSequence(1,  63);
-            MinHeap<Integer, String> m = new MinHeap<>(
-                    l.stream().map(String::valueOf).collect(Collectors.toList()),
-                    Integer::valueOf,
-                    Integer::compareTo);
-            List<Integer> res = new ArrayList<>();
-            while (m.heapSize() > 0) {
-                res.add(Integer.valueOf(m.extractMin()));
-            }
-            for (int j = 0; j < res.size() - 1; j++) {
-                if (res.get(j).compareTo(res.get(j + 1)) <= 0) {
-                    assertTrue(true);
-                }
-                else {
-                    fail();
-                }
-            }
-        }
-    }
-
-    @Test
     void randomAddTest() {
         for (int i = 0; i < 10; i++) {
             List<Integer> l = shuffledSequence(1, 63);

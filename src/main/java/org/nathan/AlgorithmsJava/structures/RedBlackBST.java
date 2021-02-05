@@ -6,7 +6,7 @@ import java.util.LinkedList;
 import java.util.NoSuchElementException;
 import java.util.Queue;
 
-// TODO read book
+// TODO read the book
 @SuppressWarnings("unused")
 public class RedBlackBST<Key extends Comparable<Key>, Value> {
     private static final boolean RED = true;

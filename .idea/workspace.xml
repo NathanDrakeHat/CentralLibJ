@@ -22,7 +22,13 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="rename" />
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="reformat">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/tools/IntegerRange.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/DP/MatrixChain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/DP/MatrixChain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/structures/RedBlackBST.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/structures/RedBlackBST.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/AlgorithmsJava/structures/MinHeapTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/AlgorithmsJava/structures/MinHeapTest.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -62,6 +68,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="add_unversioned_files" value="$PROJECT_DIR$/src/main/java/Main.java" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../Leetcode" />
@@ -191,20 +198,12 @@
       <workItem from="1612429572244" duration="6450000" />
       <workItem from="1612454536288" duration="1231000" />
       <workItem from="1612493947972" duration="2098000" />
-    </task>
-    <task id="LOCAL-00026" summary="review">
-      <created>1598614642582</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1598614642582</updated>
-    </task>
-    <task id="LOCAL-00027" summary="review">
-      <created>1598614649813</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1598614649813</updated>
+      <workItem from="1612512268844" duration="2115000" />
+      <workItem from="1612515092685" duration="5000000" />
+      <workItem from="1612520778504" duration="6000" />
+      <workItem from="1612521728851" duration="696000" />
+      <workItem from="1612523763529" duration="1000" />
+      <workItem from="1612523978169" duration="1158000" />
     </task>
     <task id="LOCAL-00028" summary="review">
       <created>1598614842473</created>
@@ -535,7 +534,21 @@
       <option name="project" value="LOCAL" />
       <updated>1612511362434</updated>
     </task>
-    <option name="localTasksCounter" value="75" />
+    <task id="LOCAL-00075" summary="reformat">
+      <created>1612512401951</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1612512401951</updated>
+    </task>
+    <task id="LOCAL-00076" summary="reformat">
+      <created>1612512700041</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1612512700041</updated>
+    </task>
+    <option name="localTasksCounter" value="77" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -564,7 +577,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="make dp private" />
     <MESSAGE value="pom fix" />
     <MESSAGE value="simplify MinHeap.java implementation, remove false implementation" />
     <MESSAGE value="DisjointSet.java far better implementation!" />
@@ -589,6 +601,7 @@
     <MESSAGE value="remove redundant functions" />
     <MESSAGE value="refactor" />
     <MESSAGE value="rename" />
-    <option name="LAST_COMMIT_MESSAGE" value="rename" />
+    <MESSAGE value="reformat" />
+    <option name="LAST_COMMIT_MESSAGE" value="reformat" />
   </component>
 </project>
