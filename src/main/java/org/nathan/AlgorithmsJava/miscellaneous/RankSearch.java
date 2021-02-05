@@ -3,7 +3,7 @@ package org.nathan.AlgorithmsJava.miscellaneous;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-public final class IthSmallest {
+public final class RankSearch {
     private static int randPartition(int[] a, int start, int end) { // base case (end -start)
         int pivot_idx = ThreadLocalRandom.current().nextInt(start, end);
         var pivot = a[pivot_idx];
@@ -26,7 +26,7 @@ public final class IthSmallest {
     }
 
     // select ith smallest element in array
-    private static int randomSelect(int[] a, int start, int end, int ith) {
+    private static int rankSearch(int[] a, int start, int end, int ith) {
         if ((start - end) == 1) {
             return a[start];
         }
@@ -36,14 +36,14 @@ public final class IthSmallest {
             return a[pivot_idx];
         }
         else if (ith < left_total + 1) {
-            return randomSelect(a, start, pivot_idx, ith);
+            return rankSearch(a, start, pivot_idx, ith);
         }
         else {
-            return randomSelect(a, pivot_idx + 1, end, ith - left_total - 1);
+            return rankSearch(a, pivot_idx + 1, end, ith - left_total - 1);
         }
     }
 
-    public static int randomSelect(int[] a, int ith) {
-        return randomSelect(a, 0, a.length, ith);
+    public static int rankSearch(int[] a, int ith) {
+        return rankSearch(a, 0, a.length, ith);
     }
 }

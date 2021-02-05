@@ -80,7 +80,7 @@ class SSShortestPathTest {
     }
 
     @Test
-    void algorithmBellmanFord() {
+    void BellmanFord() {
         var G = buildBellmanFordCase();
         var b = SSShortestPath.BellmanFord(G, targetBellmanFordCase_s);
         BFSVertex<String> target = targetBellmanFordCase_z;
@@ -122,7 +122,7 @@ class SSShortestPathTest {
     }
 
     @Test
-    void algorithmDijkstraTestWithFibonacciHeap() {
+    void DijkstraFibonacciHeapTest() {
         var g = buildDijkstraCase();
         SSShortestPath.DijkstraMinHeap(g, targetDijkstraCase);
         var vertices = g.getAllVertices().stream().sorted(Comparator.comparing(BFSVertex::getContent)).collect(Collectors.toList());
@@ -142,7 +142,7 @@ class SSShortestPathTest {
     }
 
     @Test
-    void algorithmDijkstraTestWithMinHeap() {
+    void DijkstraMinHeapTest() {
         var g = buildDijkstraCase();
         SSShortestPath.DijkstraFibonacciHeap(g, targetDijkstraCase);
         var vertices = g.getAllVertices().stream().sorted(Comparator.comparing(BFSVertex::getContent)).collect(Collectors.toList());

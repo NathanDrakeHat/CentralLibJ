@@ -23,11 +23,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="reformat">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/tools/IntegerRange.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/DP/MatrixChain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/DP/MatrixChain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/structures/RedBlackBST.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/structures/RedBlackBST.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/AlgorithmsJava/structures/MinHeapTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/AlgorithmsJava/structures/MinHeapTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/miscellaneous/IthSmallest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/miscellaneous/RankSearch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/AlgorithmsJava/graph/APShortestPathTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/AlgorithmsJava/graph/APShortestPathTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/AlgorithmsJava/graph/MinSpanTreeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/AlgorithmsJava/graph/MinSpanTreeTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/AlgorithmsJava/graph/SSShortestPathTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/AlgorithmsJava/graph/SSShortestPathTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/AlgorithmsJava/miscellaneous/IthSmallestTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/AlgorithmsJava/miscellaneous/RankSearchTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,7 +86,7 @@
       <recent name="org.nathan.AlgorithmsJava.structures" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="JUnit.All in AlgorithmsJava">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="AlgorithmsJava" />
@@ -148,8 +149,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.All in AlgorithmsJava" />
+        <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.SSShortestPathTest" />
         <item itemvalue="JUnit.DFSTest" />
         <item itemvalue="JUnit.FibonacciHeapTest" />
@@ -203,21 +204,10 @@
       <workItem from="1612520778504" duration="6000" />
       <workItem from="1612521728851" duration="696000" />
       <workItem from="1612523763529" duration="1000" />
-      <workItem from="1612523978169" duration="1158000" />
-    </task>
-    <task id="LOCAL-00028" summary="review">
-      <created>1598614842473</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1598614842473</updated>
-    </task>
-    <task id="LOCAL-00029" summary="skip test">
-      <created>1598615797480</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1598615797480</updated>
+      <workItem from="1612523978169" duration="1406000" />
+      <workItem from="1612527789473" duration="42000" />
+      <workItem from="1612527845109" duration="66000" />
+      <workItem from="1612535103651" duration="1144000" />
     </task>
     <task id="LOCAL-00030" summary="review">
       <created>1598665189875</created>
@@ -548,7 +538,21 @@
       <option name="project" value="LOCAL" />
       <updated>1612512700041</updated>
     </task>
-    <option name="localTasksCounter" value="77" />
+    <task id="LOCAL-00077" summary="add new utils">
+      <created>1612525155703</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1612525155703</updated>
+    </task>
+    <task id="LOCAL-00078" summary="reformat">
+      <created>1612525196340</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1612525196340</updated>
+    </task>
+    <option name="localTasksCounter" value="79" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -577,7 +581,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="pom fix" />
     <MESSAGE value="simplify MinHeap.java implementation, remove false implementation" />
     <MESSAGE value="DisjointSet.java far better implementation!" />
     <MESSAGE value="reformat all" />
@@ -601,6 +604,7 @@
     <MESSAGE value="remove redundant functions" />
     <MESSAGE value="refactor" />
     <MESSAGE value="rename" />
+    <MESSAGE value="add new utils" />
     <MESSAGE value="reformat" />
     <option name="LAST_COMMIT_MESSAGE" value="reformat" />
   </component>

@@ -13,7 +13,7 @@ import static org.nathan.AlgorithmsJava.graph.MinSpanTree.*;
 
 class MinSpanTreeTest {
     @Test
-    public void algorithmOfKruskalTest() {
+    public void KruskalTest() {
         var G = buildKruskalExample();
         var t = Kruskal(G);
         int i = 0;
@@ -44,7 +44,7 @@ class MinSpanTreeTest {
 
 
     @Test
-    public void algorithmOfPrimTest() {
+    public void PrimTest() {
         var t = buildPrimExample();
         runFibonacciHeap(t.graph, t.target);
         t = buildPrimExample();

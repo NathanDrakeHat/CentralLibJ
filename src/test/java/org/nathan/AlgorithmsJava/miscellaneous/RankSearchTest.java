@@ -7,7 +7,7 @@ import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class IthSmallestTest {
+class RankSearchTest {
 
     @BeforeEach
     void build() {
@@ -19,76 +19,76 @@ class IthSmallestTest {
 
     @Test
     void randomSelectCase1() {
-        var res = IthSmallest.randomSelect(Data.test1, 0);
+        var res = RankSearch.rankSearch(Data.test1, 0);
         Arrays.sort(Data.test1);
         assertEquals(Data.test1[0], res);
 
-        res = IthSmallest.randomSelect(Data.test2, 1);
+        res = RankSearch.rankSearch(Data.test2, 1);
         Arrays.sort(Data.test2);
         assertEquals(Data.test2[1], res);
 
-        res = IthSmallest.randomSelect(Data.test3, 2);
+        res = RankSearch.rankSearch(Data.test3, 2);
         Arrays.sort(Data.test3);
         assertEquals(Data.test3[2], res);
 
-        res = IthSmallest.randomSelect(Data.test4, 3);
+        res = RankSearch.rankSearch(Data.test4, 3);
         Arrays.sort(Data.test4);
         assertEquals(Data.test4[3], res);
     }
 
     @Test
     void randomSelectCase2() {
-        var res = IthSmallest.randomSelect(Data.test2, 4);
+        var res = RankSearch.rankSearch(Data.test2, 4);
         Arrays.sort(Data.test2);
         assertEquals(Data.test2[4], res);
 
-        res = IthSmallest.randomSelect(Data.test2, 5);
+        res = RankSearch.rankSearch(Data.test2, 5);
         Arrays.sort(Data.test2);
         assertEquals(Data.test2[5], res);
 
-        res = IthSmallest.randomSelect(Data.test3, 6);
+        res = RankSearch.rankSearch(Data.test3, 6);
         Arrays.sort(Data.test3);
         assertEquals(Data.test3[6], res);
 
-        res = IthSmallest.randomSelect(Data.test4, 7);
+        res = RankSearch.rankSearch(Data.test4, 7);
         Arrays.sort(Data.test4);
         assertEquals(Data.test4[7], res);
     }
 
     @Test
     void randomSelectCase3() {
-        var res = IthSmallest.randomSelect(Data.test3, 8);
+        var res = RankSearch.rankSearch(Data.test3, 8);
         Arrays.sort(Data.test3);
         assertEquals(Data.test3[8], res);
 
-        res = IthSmallest.randomSelect(Data.test2, 9);
+        res = RankSearch.rankSearch(Data.test2, 9);
         Arrays.sort(Data.test2);
         assertEquals(Data.test2[9], res);
 
-        res = IthSmallest.randomSelect(Data.test3, 10);
+        res = RankSearch.rankSearch(Data.test3, 10);
         Arrays.sort(Data.test3);
         assertEquals(Data.test3[10], res);
 
-        res = IthSmallest.randomSelect(Data.test4, 11);
+        res = RankSearch.rankSearch(Data.test4, 11);
         Arrays.sort(Data.test4);
         assertEquals(Data.test4[11], res);
     }
 
     @Test
     void randomSelectCase4() {
-        var res = IthSmallest.randomSelect(Data.test4, 12);
+        var res = RankSearch.rankSearch(Data.test4, 12);
         Arrays.sort(Data.test4);
         assertEquals(Data.test4[12], res);
 
-        res = IthSmallest.randomSelect(Data.test2, 13);
+        res = RankSearch.rankSearch(Data.test2, 13);
         Arrays.sort(Data.test2);
         assertEquals(Data.test2[13], res);
 
-        res = IthSmallest.randomSelect(Data.test3, 14);
+        res = RankSearch.rankSearch(Data.test3, 14);
         Arrays.sort(Data.test3);
         assertEquals(Data.test3[14], res);
 
-        res = IthSmallest.randomSelect(Data.test4, 15);
+        res = RankSearch.rankSearch(Data.test4, 15);
         Arrays.sort(Data.test4);
         assertEquals(Data.test4[15], res);
     }

@@ -73,7 +73,7 @@ class APShortestPathTest {
     }
 
     @Test
-    void algorithmFloydWarshallTest() {
+    void FloydWarshallTest() {
         var res = APShortestPath.FloydWarshall(new double[][]{
                 {0, Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY, 2, Double.POSITIVE_INFINITY},
                 {3, 0, 4, Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY},
@@ -110,7 +110,7 @@ class APShortestPathTest {
     }
 
     @Test
-    void algorithmJohnsonTest() {
+    void JohnsonTest() {
         var res = APShortestPath.Johnson(build(), SSShortestPath::DijkstraFibonacciHeap);
         var answer = new double[][]{
                 {0.0, 1.0, -3.0, 2.0, -4.0},
