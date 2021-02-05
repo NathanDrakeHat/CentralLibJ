@@ -12,7 +12,7 @@ import java.util.Set;
 
 // minimum spanning tree
 public final class MinSpanTree {
-    public static <T> Set<LinkedGraph.Edge<KruskalVertex<T>>> algorithmOfKruskal(@NotNull LinkedGraph<KruskalVertex<T>> graph) {
+    public static <T> Set<LinkedGraph.Edge<KruskalVertex<T>>> Kruskal(@NotNull LinkedGraph<KruskalVertex<T>> graph) {
         Set<LinkedGraph.Edge<KruskalVertex<T>>> res = new HashSet<>();
         var edges_set = graph.getAllEdges();
         var edges_list = new ArrayList<>(edges_set);
@@ -28,8 +28,8 @@ public final class MinSpanTree {
         return res;
     }
 
-    public static <T> void algorithmOfPrimWithFibonacciHeap(@NotNull LinkedGraph<PrimVertex<T>> graph,
-                                                            @NotNull PrimVertex<T> r) {
+    public static <T> void PrimFibonacciHeap(@NotNull LinkedGraph<PrimVertex<T>> graph,
+                                             @NotNull PrimVertex<T> r) {
         FibonacciHeap<Double, PrimVertex<T>> Q = new FibonacciHeap<>(Comparator.comparingDouble(a -> a));
         var vertices = graph.getAllVertices();
         for (var u : vertices) {
@@ -56,8 +56,8 @@ public final class MinSpanTree {
         }
     }
 
-    public static <T> void algorithmOfPrimWithMinHeap(@NotNull LinkedGraph<PrimVertex<T>> graph,
-                                                      @NotNull PrimVertex<T> r) {
+    public static <T> void PrimMinHeap(@NotNull LinkedGraph<PrimVertex<T>> graph,
+                                       @NotNull PrimVertex<T> r) {
         var vertices = graph.getAllVertices();
         for (var u : vertices) {
             if (u != r) {

@@ -1,4 +1,4 @@
-package org.nathan.AlgorithmsJava.tools;
+package org.nathan.AlgorithmsJava.tools.containers;
 
 public class Tuple<I1, I2> {
     public final I1 first;

@@ -74,7 +74,7 @@ class APShortestPathTest {
 
     @Test
     void algorithmFloydWarshallTest() {
-        var res = APShortestPath.algorithmFloydWarshall(new double[][]{
+        var res = APShortestPath.FloydWarshall(new double[][]{
                 {0, Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY, 2, Double.POSITIVE_INFINITY},
                 {3, 0, 4, Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY},
                 {8, Double.POSITIVE_INFINITY, 0, -5, Double.POSITIVE_INFINITY},
@@ -111,7 +111,7 @@ class APShortestPathTest {
 
     @Test
     void algorithmJohnsonTest() {
-        var res = APShortestPath.algorithmJohnson(build(), SSShortestPath::shortestPathDijkstraFibonacciHeap);
+        var res = APShortestPath.Johnson(build(), SSShortestPath::DijkstraFibonacciHeap);
         var answer = new double[][]{
                 {0.0, 1.0, -3.0, 2.0, -4.0},
                 {3.0, 0.0, -4.0, 1.0, -1.0},
@@ -122,7 +122,7 @@ class APShortestPathTest {
         assertTrue(res.isPresent());
         assertArrayEquals(answer, res.get());
 
-        res = APShortestPath.algorithmJohnson(build(),SSShortestPath::shortestPathDijkstraFibonacciHeap);
+        res = APShortestPath.Johnson(build(),SSShortestPath::DijkstraFibonacciHeap);
         assertTrue(res.isPresent());
         assertArrayEquals(answer, res.get());
 

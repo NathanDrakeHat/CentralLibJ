@@ -1,4 +1,4 @@
-package org.nathan.AlgorithmsJava.tools;
+package org.nathan.AlgorithmsJava.tools.containers;
 
 public class Quaternion<I1, I2, I3, I4> {
     public final I1 first;

@@ -15,7 +15,7 @@ class MinSpanTreeTest {
     @Test
     public void algorithmOfKruskalTest() {
         var G = buildKruskalExample();
-        var t = algorithmOfKruskal(G);
+        var t = Kruskal(G);
         int i = 0;
         for (var e : t) {
             i += e.getWeight();
@@ -53,7 +53,7 @@ class MinSpanTreeTest {
     }
 
     void runFibonacciHeap(LinkedGraph<MinSpanTree.PrimVertex<String>> graph, PrimVertex<String> target) {
-        algorithmOfPrimWithFibonacciHeap(graph, target);
+        PrimFibonacciHeap(graph, target);
         var vertices = graph.getAllVertices();
         Set<Set<String>> res = new HashSet<>();
         for (var vertex : vertices) {
@@ -68,7 +68,7 @@ class MinSpanTreeTest {
     }
 
     void runMinHeap(LinkedGraph<MinSpanTree.PrimVertex<String>> graph, PrimVertex<String> target) {
-        algorithmOfPrimWithMinHeap(graph, target);
+        PrimMinHeap(graph, target);
         var vertices = graph.getAllVertices();
         Set<Set<String>> res = new HashSet<>();
         for (var vertex : vertices) {

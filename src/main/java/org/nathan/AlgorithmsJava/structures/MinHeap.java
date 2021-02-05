@@ -1,7 +1,7 @@
 package org.nathan.AlgorithmsJava.structures;
 
 import org.jetbrains.annotations.NotNull;
-import org.nathan.AlgorithmsJava.tools.Tuple;
+import org.nathan.AlgorithmsJava.tools.containers.Tuple;
 
 import java.util.*;
 import java.util.function.Function;

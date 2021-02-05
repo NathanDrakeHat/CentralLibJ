@@ -1,4 +1,4 @@
-package org.nathan.AlgorithmsJava.tools;
+package org.nathan.AlgorithmsJava.tools.containers;
 
 public class Quintuple<T1, T2, T3, T4, T5> {
     public final T1 first;

@@ -46,7 +46,7 @@ public class APShortestPath {
     }
 
     // no negative-weight cycles
-    public static double[][] algorithmFloydWarshall(double[][] W) {
+    public static double[][] FloydWarshall(double[][] W) {
         var n = W.length;
         var D_origin = W;
         for (int k = 0; k < n; k++) {
@@ -89,14 +89,14 @@ public class APShortestPath {
     // sparse org.nathan.Algorithms.graph
     // Fibonacci heap: O(V^2*lgV + V*E)
     // min heap: O(V*E*lgV)
-    public static <T> Optional<double[][]> algorithmJohnson(@NotNull LinkedGraph<BFSVertex<T>> graph, ShortestPathDijkstra algoDijkstra) {
+    public static <T> Optional<double[][]> Johnson(@NotNull LinkedGraph<BFSVertex<T>> graph, ShortestPathDijkstra algoDijkstra) {
         Map<BFSVertex<T>, Double> h = new HashMap<>();
         var n = graph.getVerticesCount();
         var vertices_new = new ArrayList<>(graph.getAllVertices());
         var s = new BFSVertex<T>();
         vertices_new.add(s);
         var new_graph = buildGraph(graph, vertices_new, s);
-        if (!SSShortestPath.algorithmBellmanFord(new_graph, s)) {
+        if (!SSShortestPath.BellmanFord(new_graph, s)) {
             return Optional.empty();
         }
         else {
