@@ -22,13 +22,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="remove redundant functions">
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="refactor">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/graph/APShortestPath.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/graph/APShortestPath.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/graph/SSShortestPath.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/graph/SSShortestPath.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/AlgorithmsJava/graph/APShortestPathTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/AlgorithmsJava/graph/APShortestPathTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/AlgorithmsJava/graph/DFSTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/AlgorithmsJava/graph/DFSTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/AlgorithmsJava/graph/SSShortestPathTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/AlgorithmsJava/graph/SSShortestPathTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -199,21 +194,8 @@
       <workItem from="1612365020597" duration="20000" />
       <workItem from="1612405927657" duration="670000" />
       <workItem from="1612407563916" duration="83000" />
-      <workItem from="1612429572244" duration="6291000" />
-    </task>
-    <task id="LOCAL-00022" summary="review">
-      <created>1598602907667</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1598602907667</updated>
-    </task>
-    <task id="LOCAL-00023" summary="add surefire">
-      <created>1598611036377</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1598611036377</updated>
+      <workItem from="1612429572244" duration="6450000" />
+      <workItem from="1612454536288" duration="1231000" />
     </task>
     <task id="LOCAL-00024" summary="skip test">
       <created>1598613979653</created>
@@ -544,7 +526,21 @@
       <option name="project" value="LOCAL" />
       <updated>1612435740557</updated>
     </task>
-    <option name="localTasksCounter" value="71" />
+    <task id="LOCAL-00071" summary="refactor">
+      <created>1612436299425</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1612436299425</updated>
+    </task>
+    <task id="LOCAL-00072" summary="refactor">
+      <created>1612436395636</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1612436395636</updated>
+    </task>
+    <option name="localTasksCounter" value="73" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -573,7 +569,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="layout" />
     <MESSAGE value="add and rename tuple class" />
     <MESSAGE value="make dp private" />
     <MESSAGE value="pom fix" />
@@ -598,6 +593,7 @@
     <MESSAGE value="fix MinHeapTest.java test bugs" />
     <MESSAGE value="format" />
     <MESSAGE value="remove redundant functions" />
-    <option name="LAST_COMMIT_MESSAGE" value="remove redundant functions" />
+    <MESSAGE value="refactor" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor" />
   </component>
 </project>

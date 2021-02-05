@@ -74,7 +74,7 @@ public final class SSShortestPath {
 
 
     // fibonacci heap, time complexity: O(V^2*lgV + V*E)
-    public static <T> void algoDijkstraFibonacciHeap(LinkedGraph<BFSVertex<T>> G, BFSVertex<T> s) {
+    public static <T> void shortestPathDijkstraFibonacciHeap(LinkedGraph<BFSVertex<T>> G, BFSVertex<T> s) {
         initializeSingleSource(G, s);
         var vertices = G.getAllVertices();
         FibonacciHeap<Double, BFSVertex<T>> Q = new FibonacciHeap<>(Comparator.comparingDouble(a -> a));
@@ -96,10 +96,10 @@ public final class SSShortestPath {
     }
 
     // min heap, time complexity: O(V*E*lgV)
-    public static <T> void algoDijkstraMinHeap(LinkedGraph<BFSVertex<T>> G, BFSVertex<T> s) {
+    public static <T> void shortestPathDijkstraMinHeap(LinkedGraph<BFSVertex<T>> G, BFSVertex<T> s) {
         initializeSingleSource(G, s);
         var vertices = G.getAllVertices();
-        MinHeap<Double,BFSVertex<T>> Q = new MinHeap<>(vertices, BFSVertex::getDistance,Double::compare);
+        MinHeap<Double, BFSVertex<T>> Q = new MinHeap<>(vertices, BFSVertex::getDistance, Double::compare);
         while (Q.length() > 0) {
             var u = Q.extractMin();
             var u_edges = G.getEdgesAt(u);

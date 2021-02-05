@@ -82,14 +82,14 @@ public class APShortestPath {
         return T;
     }
 
-    public interface AlgorithmDijkstra {
+    public interface ShortestPathDijkstra {
         <T> void apply(LinkedGraph<BFSVertex<T>> G, BFSVertex<T> s);
     }
 
     // sparse org.nathan.Algorithms.graph
     // Fibonacci heap: O(V^2*lgV + V*E)
     // min heap: O(V*E*lgV)
-    public static <T> Optional<double[][]> algorithmJohnson(@NotNull LinkedGraph<BFSVertex<T>> graph, AlgorithmDijkstra algoDijkstra) {
+    public static <T> Optional<double[][]> algorithmJohnson(@NotNull LinkedGraph<BFSVertex<T>> graph, ShortestPathDijkstra algoDijkstra) {
         Map<BFSVertex<T>, Double> h = new HashMap<>();
         var n = graph.getVerticesCount();
         var vertices_new = new ArrayList<>(graph.getAllVertices());
