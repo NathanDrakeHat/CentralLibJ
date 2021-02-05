@@ -6,16 +6,16 @@ import java.util.concurrent.ThreadLocalRandom;
 public final class IthSmallest {
     private static int randPartition(int[] a, int start, int end) { // base case (end -start)
         int pivot_idx = ThreadLocalRandom.current().nextInt(start, end);
-        int pivot = a[pivot_idx];
+        var pivot = a[pivot_idx];
 
-        int temp = a[end - 1];
+        var temp = a[end - 1];
         a[end - 1] = pivot;
         a[pivot_idx] = temp;
 
         int i = start - 1;
         for (int j = start; j < end - 1; j++) {
             if (a[j] <= pivot) {
-                int t = a[j];
+                var t = a[j];
                 a[j] = a[++i];
                 a[i] = t;
             }
