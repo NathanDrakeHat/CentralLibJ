@@ -22,14 +22,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="reformat">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/miscellaneous/IthSmallest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/miscellaneous/RankSearch.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/AlgorithmsJava/graph/APShortestPathTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/AlgorithmsJava/graph/APShortestPathTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/AlgorithmsJava/graph/MinSpanTreeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/AlgorithmsJava/graph/MinSpanTreeTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/AlgorithmsJava/graph/SSShortestPathTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/AlgorithmsJava/graph/SSShortestPathTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/AlgorithmsJava/miscellaneous/IthSmallestTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/AlgorithmsJava/miscellaneous/RankSearchTest.java" afterDir="false" />
-    </list>
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="rename" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -207,14 +200,7 @@
       <workItem from="1612523978169" duration="1406000" />
       <workItem from="1612527789473" duration="42000" />
       <workItem from="1612527845109" duration="66000" />
-      <workItem from="1612535103651" duration="1144000" />
-    </task>
-    <task id="LOCAL-00030" summary="review">
-      <created>1598665189875</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1598665189875</updated>
+      <workItem from="1612535103651" duration="1173000" />
     </task>
     <task id="LOCAL-00031" summary="review">
       <created>1598665677907</created>
@@ -552,7 +538,14 @@
       <option name="project" value="LOCAL" />
       <updated>1612525196340</updated>
     </task>
-    <option name="localTasksCounter" value="79" />
+    <task id="LOCAL-00079" summary="rename">
+      <created>1612536261177</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1612536261178</updated>
+    </task>
+    <option name="localTasksCounter" value="80" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -603,9 +596,9 @@
     <MESSAGE value="format" />
     <MESSAGE value="remove redundant functions" />
     <MESSAGE value="refactor" />
-    <MESSAGE value="rename" />
     <MESSAGE value="add new utils" />
     <MESSAGE value="reformat" />
-    <option name="LAST_COMMIT_MESSAGE" value="reformat" />
+    <MESSAGE value="rename" />
+    <option name="LAST_COMMIT_MESSAGE" value="rename" />
   </component>
 </project>

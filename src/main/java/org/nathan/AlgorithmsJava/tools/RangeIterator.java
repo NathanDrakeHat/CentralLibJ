@@ -4,11 +4,11 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Iterator;
 
-public class IntegerRange implements Iterable<Integer> {
+public class RangeIterator implements Iterable<Integer> {
     private final int high;
     private int index;
 
-    public IntegerRange(int l, int h) {
+    public RangeIterator(int l, int h) {
         high = h;
         index = l;
     }
