@@ -22,21 +22,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="rename">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/graph/APShortestPath.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/graph/APShortestPath.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/graph/MinSpanTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/graph/MinSpanTree.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/graph/SSShortestPath.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/graph/SSShortestPath.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/structures/MinHeap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/structures/MinHeap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/structures/RedBlackTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/structures/RedBlackTree.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/tools/Quaternion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/tools/containers/Quaternion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/tools/Quintuple.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/tools/containers/Quintuple.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/tools/Triad.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/tools/containers/Triad.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/tools/Tuple.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/tools/containers/Tuple.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/AlgorithmsJava/graph/APShortestPathTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/AlgorithmsJava/graph/APShortestPathTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/AlgorithmsJava/graph/MinSpanTreeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/AlgorithmsJava/graph/MinSpanTreeTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/AlgorithmsJava/graph/SSShortestPathTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/AlgorithmsJava/graph/SSShortestPathTest.java" afterDir="false" />
-    </list>
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="rename" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -204,14 +190,7 @@
       <workItem from="1612407563916" duration="83000" />
       <workItem from="1612429572244" duration="6450000" />
       <workItem from="1612454536288" duration="1231000" />
-      <workItem from="1612493947972" duration="1941000" />
-    </task>
-    <task id="LOCAL-00025" summary="review">
-      <created>1598614486732</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1598614486732</updated>
+      <workItem from="1612493947972" duration="2098000" />
     </task>
     <task id="LOCAL-00026" summary="review">
       <created>1598614642582</created>
@@ -549,7 +528,14 @@
       <option name="project" value="LOCAL" />
       <updated>1612494049781</updated>
     </task>
-    <option name="localTasksCounter" value="74" />
+    <task id="LOCAL-00074" summary="rename">
+      <created>1612511362434</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1612511362434</updated>
+    </task>
+    <option name="localTasksCounter" value="75" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
