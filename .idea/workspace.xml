@@ -22,11 +22,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="add">
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="reformat">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/DP/MatrixChain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/DP/MatrixChain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/AlgorithmsJava/DP/MatrixChainTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/AlgorithmsJava/DP/MatrixChainTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/AlgorithmsJava/miscellaneous/SortTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/AlgorithmsJava/miscellaneous/SortTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/structures/RedBlackBST.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/structures/RedBlackBST.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -210,28 +208,7 @@
       <workItem from="1612527845109" duration="66000" />
       <workItem from="1612535103651" duration="1173000" />
       <workItem from="1612536692758" duration="54000" />
-      <workItem from="1612615261554" duration="1656000" />
-    </task>
-    <task id="LOCAL-00033" summary="review">
-      <created>1598669213742</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1598669213742</updated>
-    </task>
-    <task id="LOCAL-00034" summary="review">
-      <created>1598879863754</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1598879863754</updated>
-    </task>
-    <task id="LOCAL-00035" summary="review">
-      <created>1598881454078</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1598881454078</updated>
+      <workItem from="1612615261554" duration="4736000" />
     </task>
     <task id="LOCAL-00036" summary="review">
       <created>1598882623424</created>
@@ -555,7 +532,28 @@
       <option name="project" value="LOCAL" />
       <updated>1612616295532</updated>
     </task>
-    <option name="localTasksCounter" value="82" />
+    <task id="LOCAL-00082" summary="reformat">
+      <created>1612616942475</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1612616942475</updated>
+    </task>
+    <task id="LOCAL-00083" summary="reformat">
+      <created>1612617009288</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1612617009288</updated>
+    </task>
+    <task id="LOCAL-00084" summary="reformat">
+      <created>1612617110007</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1612617110007</updated>
+    </task>
+    <option name="localTasksCounter" value="85" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -606,9 +604,9 @@
     <MESSAGE value="remove redundant functions" />
     <MESSAGE value="refactor" />
     <MESSAGE value="add new utils" />
-    <MESSAGE value="reformat" />
     <MESSAGE value="rename" />
     <MESSAGE value="add" />
-    <option name="LAST_COMMIT_MESSAGE" value="add" />
+    <MESSAGE value="reformat" />
+    <option name="LAST_COMMIT_MESSAGE" value="reformat" />
   </component>
 </project>

@@ -10,12 +10,12 @@ import java.util.Queue;
 public class RedBlackBST<Key extends Comparable<Key>, Value> implements SymbolTable<Key,Value> {
     private static final boolean RED = true;
     private static final boolean BLACK = false;
-    private RedBlackBST<Key, Value>.Node root;
+    private Node<Key, Value> root;
 
     public RedBlackBST() {
     }
 
-    private boolean isRed(RedBlackBST<Key, Value>.Node x) {
+    private boolean isRed(Node<Key, Value> x) {
         if (x == null) {
             return false;
         }
@@ -28,7 +28,7 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> implements SymbolTa
         return size(root);
     }
 
-    private int size(RedBlackBST<Key, Value>.Node x) {
+    private int size(Node<Key, Value> x) {
         return x == null ? 0 : x.size;
     }
 
@@ -45,7 +45,7 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> implements SymbolTa
         }
     }
 
-    private Value get(RedBlackBST<Key, Value>.Node x, Key key) {
+    private Value get(Node<Key, Value> x, Key key) {
         while (true) {
             if (x != null) {
                 int cmp = key.compareTo(x.key);
@@ -83,9 +83,9 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> implements SymbolTa
         }
     }
 
-    private RedBlackBST<Key, Value>.Node put(RedBlackBST<Key, Value>.Node h, Key key, Value val) {
+    private Node<Key, Value> put(Node<Key, Value> h, Key key, Value val) {
         if (h == null) {
-            return new RedBlackBST<Key, Value>.Node(key, val, true, 1);
+            return new Node<>(key, val, true, 1);
         }
         else {
             int cmp = key.compareTo(h.key);
@@ -133,7 +133,7 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> implements SymbolTa
         }
     }
 
-    private RedBlackBST<Key, Value>.Node deleteMin(RedBlackBST<Key, Value>.Node h) {
+    private Node<Key, Value> deleteMin(Node<Key, Value> h) {
         if (h.left == null) {
             return null;
         }
@@ -164,7 +164,7 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> implements SymbolTa
         }
     }
 
-    private RedBlackBST<Key, Value>.Node deleteMax(RedBlackBST<Key, Value>.Node h) {
+    private Node<Key, Value> deleteMax(Node<Key, Value> h) {
         if (isRed(h.left)) {
             h = rotateRight(h);
         }
@@ -199,7 +199,7 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> implements SymbolTa
         }
     }
 
-    private RedBlackBST<Key, Value>.Node delete(RedBlackBST<Key, Value>.Node h, Key key) {
+    private Node<Key, Value> delete(Node<Key, Value> h, Key key) {
         if (key.compareTo(h.key) < 0) {
             if (!isRed(h.left) && !isRed(h.left.left)) {
                 h = moveRedLeft(h);
@@ -221,7 +221,7 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> implements SymbolTa
             }
 
             if (key.compareTo(h.key) == 0) {
-                RedBlackBST<Key, Value>.Node x = min(h.right);
+                Node<Key, Value> x = min(h.right);
                 h.key = x.key;
                 h.val = x.val;
                 h.right = deleteMin(h.right);
@@ -234,8 +234,8 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> implements SymbolTa
         return balance(h);
     }
 
-    private RedBlackBST<Key, Value>.Node rotateRight(RedBlackBST<Key, Value>.Node h) {
-        RedBlackBST<Key, Value>.Node x = h.left;
+    private Node<Key, Value> rotateRight(Node<Key, Value> h) {
+        Node<Key, Value> x = h.left;
         h.left = x.right;
         x.right = h;
         x.color = x.right.color;
@@ -245,8 +245,8 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> implements SymbolTa
         return x;
     }
 
-    private RedBlackBST<Key, Value>.Node rotateLeft(RedBlackBST<Key, Value>.Node h) {
-        RedBlackBST<Key, Value>.Node x = h.right;
+    private Node<Key, Value> rotateLeft(Node<Key, Value> h) {
+        Node<Key, Value> x = h.right;
         h.right = x.left;
         x.left = h;
         x.color = x.left.color;
@@ -256,13 +256,13 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> implements SymbolTa
         return x;
     }
 
-    private void flipColors(RedBlackBST<Key, Value>.Node h) {
+    private void flipColors(Node<Key, Value> h) {
         h.color = !h.color;
         h.left.color = !h.left.color;
         h.right.color = !h.right.color;
     }
 
-    private RedBlackBST<Key, Value>.Node moveRedLeft(RedBlackBST<Key, Value>.Node h) {
+    private Node<Key, Value> moveRedLeft(Node<Key, Value> h) {
         flipColors(h);
         if (isRed(h.right.left)) {
             h.right = rotateRight(h.right);
@@ -273,7 +273,7 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> implements SymbolTa
         return h;
     }
 
-    private RedBlackBST<Key, Value>.Node moveRedRight(RedBlackBST<Key, Value>.Node h) {
+    private Node<Key, Value> moveRedRight(Node<Key, Value> h) {
         flipColors(h);
         if (isRed(h.left.left)) {
             h = rotateRight(h);
@@ -283,7 +283,7 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> implements SymbolTa
         return h;
     }
 
-    private RedBlackBST<Key, Value>.Node balance(RedBlackBST<Key, Value>.Node h) {
+    private Node<Key, Value> balance(Node<Key, Value> h) {
         if (isRed(h.right)) {
             h = rotateLeft(h);
         }
@@ -304,7 +304,7 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> implements SymbolTa
         return height(root);
     }
 
-    private int height(RedBlackBST<Key, Value>.Node x) {
+    private int height(Node<Key, Value> x) {
         return x == null ? -1 : 1 + Math.max(height(x.left), height(x.right));
     }
 
@@ -317,7 +317,7 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> implements SymbolTa
         }
     }
 
-    private RedBlackBST<Key, Value>.Node min(RedBlackBST<Key, Value>.Node x) {
+    private Node<Key, Value> min(Node<Key, Value> x) {
         return x.left == null ? x : min(x.left);
     }
 
@@ -330,7 +330,7 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> implements SymbolTa
         }
     }
 
-    private RedBlackBST<Key, Value>.Node max(RedBlackBST<Key, Value>.Node x) {
+    private Node<Key, Value> max(Node<Key, Value> x) {
         return x.right == null ? x : max(x.right);
     }
 
@@ -339,7 +339,7 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> implements SymbolTa
             throw new NoSuchElementException("calls floor() with empty symbol table");
         }
         else {
-            RedBlackBST<Key, Value>.Node x = floor(root, key);
+            Node<Key, Value> x = floor(root, key);
             if (x == null) {
                 throw new NoSuchElementException("argument to floor() is too small");
             }
@@ -349,7 +349,7 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> implements SymbolTa
         }
     }
 
-    private RedBlackBST<Key, Value>.Node floor(RedBlackBST<Key, Value>.Node x, Key key) {
+    private Node<Key, Value> floor(Node<Key, Value> x, Key key) {
         if (x == null) {
             return null;
         }
@@ -362,7 +362,7 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> implements SymbolTa
                 return floor(x.left, key);
             }
             else {
-                RedBlackBST<Key, Value>.Node t = floor(x.right, key);
+                Node<Key, Value> t = floor(x.right, key);
                 return t != null ? t : x;
             }
         }
@@ -376,7 +376,7 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> implements SymbolTa
             throw new NoSuchElementException("calls ceiling() with empty symbol table");
         }
         else {
-            RedBlackBST<Key, Value>.Node x = ceiling(root, key);
+            Node<Key, Value> x = ceiling(root, key);
             if (x == null) {
                 throw new NoSuchElementException("argument to ceiling() is too small");
             }
@@ -386,7 +386,7 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> implements SymbolTa
         }
     }
 
-    private RedBlackBST<Key, Value>.Node ceiling(RedBlackBST<Key, Value>.Node x, Key key) {
+    private Node<Key, Value> ceiling(Node<Key, Value> x, Key key) {
         if (x == null) {
             return null;
         }
@@ -399,7 +399,7 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> implements SymbolTa
                 return ceiling(x.right, key);
             }
             else {
-                RedBlackBST<Key, Value>.Node t = ceiling(x.left, key);
+                Node<Key, Value> t = ceiling(x.left, key);
                 return t != null ? t : x;
             }
         }
@@ -414,7 +414,7 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> implements SymbolTa
         }
     }
 
-    private Key select(RedBlackBST<Key, Value>.Node x, int rank) {
+    private Key select(Node<Key, Value> x, int rank) {
         if (x == null) {
             return null;
         }
@@ -438,7 +438,7 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> implements SymbolTa
         }
     }
 
-    private int rank(Key key, RedBlackBST<Key, Value>.Node x) {
+    private int rank(Key key, Node<Key, Value> x) {
         if (x == null) {
             return 0;
         }
@@ -472,7 +472,7 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> implements SymbolTa
         }
     }
 
-    private void keys(RedBlackBST<Key, Value>.Node x, Queue<Key> queue, Key lo, Key hi) {
+    private void keys(Node<Key, Value> x, Queue<Key> queue, Key lo, Key hi) {
         if (x != null) {
             int cmp_lo = lo.compareTo(x.key);
             int cmp_hi = hi.compareTo(x.key);
@@ -505,16 +505,14 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> implements SymbolTa
             return contains(hi) ? rank(hi) - rank(lo) + 1 : rank(hi) - rank(lo);
         }
     }
-
-
-
-    private class Node {
-        private Key key;
-        private Value val;
-        private RedBlackBST<Key, Value>.Node left;
-        private RedBlackBST<Key, Value>.Node right;
-        private boolean color;
-        private int size;
+    
+    private static class Node<Key extends Comparable<Key>, Value> {
+        Key key;
+        Value val;
+        Node<Key, Value> left;
+        Node<Key, Value>  right;
+        boolean color;
+        int size;
 
         public Node(Key key, Value val, boolean color, int size) {
             this.key = key;
