@@ -22,11 +22,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="rename">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/structures/SymbolTable.java" afterDir="false" />
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="add">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/structures/RedBlackBST.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/structures/RedBlackBST.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/structures/RedBlackTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/structures/RedBlackTree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/DP/MatrixChain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/DP/MatrixChain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/AlgorithmsJava/DP/MatrixChainTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/AlgorithmsJava/DP/MatrixChainTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/AlgorithmsJava/miscellaneous/SortTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/AlgorithmsJava/miscellaneous/SortTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,47 +101,49 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DFSTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="MatrixChainTest.matrixChainOrder" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AlgorithmsJava" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.nathan.AlgorithmsJava.graph.*" />
+          <option name="PATTERN" value="org.nathan.AlgorithmsJava.DP.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="org.nathan.AlgorithmsJava.graph" />
-      <option name="MAIN_CLASS_NAME" value="org.nathan.AlgorithmsJava.graph.DFSTest" />
+      <option name="PACKAGE_NAME" value="org.nathan.AlgorithmsJava.DP" />
+      <option name="MAIN_CLASS_NAME" value="org.nathan.AlgorithmsJava.DP.MatrixChainTest" />
+      <option name="METHOD_NAME" value="matrixChainOrder" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SortTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AlgorithmsJava" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.nathan.AlgorithmsJava.miscellaneous.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.nathan.AlgorithmsJava.miscellaneous" />
+      <option name="MAIN_CLASS_NAME" value="org.nathan.AlgorithmsJava.miscellaneous.SortTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="FibonacciHeapTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SortTest.radixSortTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AlgorithmsJava" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.nathan.AlgorithmsJava.structures.*" />
+          <option name="PATTERN" value="org.nathan.AlgorithmsJava.miscellaneous.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="org.nathan.AlgorithmsJava.structures" />
-      <option name="MAIN_CLASS_NAME" value="org.nathan.AlgorithmsJava.structures.FibonacciHeapTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SSShortestPathTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="AlgorithmsJava" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.nathan.AlgorithmsJava.graph.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.nathan.AlgorithmsJava.graph" />
-      <option name="MAIN_CLASS_NAME" value="org.nathan.AlgorithmsJava.graph.SSShortestPathTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="PACKAGE_NAME" value="org.nathan.AlgorithmsJava.miscellaneous" />
+      <option name="MAIN_CLASS_NAME" value="org.nathan.AlgorithmsJava.miscellaneous.SortTest" />
+      <option name="METHOD_NAME" value="radixSortTest" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -149,10 +151,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.All in AlgorithmsJava" />
+        <item itemvalue="JUnit.SortTest" />
+        <item itemvalue="JUnit.SortTest.radixSortTest" />
+        <item itemvalue="JUnit.MatrixChainTest.matrixChainOrder" />
         <item itemvalue="Application.Main" />
-        <item itemvalue="JUnit.SSShortestPathTest" />
-        <item itemvalue="JUnit.DFSTest" />
-        <item itemvalue="JUnit.FibonacciHeapTest" />
       </list>
     </recent_temporary>
   </component>
@@ -208,14 +210,7 @@
       <workItem from="1612527845109" duration="66000" />
       <workItem from="1612535103651" duration="1173000" />
       <workItem from="1612536692758" duration="54000" />
-      <workItem from="1612615261554" duration="913000" />
-    </task>
-    <task id="LOCAL-00032" summary="unmodifiable protection replace new ArrayList">
-      <created>1598669111260</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1598669111260</updated>
+      <workItem from="1612615261554" duration="1656000" />
     </task>
     <task id="LOCAL-00033" summary="review">
       <created>1598669213742</created>
@@ -553,7 +548,14 @@
       <option name="project" value="LOCAL" />
       <updated>1612536725562</updated>
     </task>
-    <option name="localTasksCounter" value="81" />
+    <task id="LOCAL-00081" summary="add">
+      <created>1612616295531</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1612616295532</updated>
+    </task>
+    <option name="localTasksCounter" value="82" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -582,7 +584,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="simplify MinHeap.java implementation, remove false implementation" />
     <MESSAGE value="DisjointSet.java far better implementation!" />
     <MESSAGE value="reformat all" />
     <MESSAGE value="fix MinHeap.java bugs and add new methods" />
@@ -607,6 +608,7 @@
     <MESSAGE value="add new utils" />
     <MESSAGE value="reformat" />
     <MESSAGE value="rename" />
-    <option name="LAST_COMMIT_MESSAGE" value="rename" />
+    <MESSAGE value="add" />
+    <option name="LAST_COMMIT_MESSAGE" value="add" />
   </component>
 </project>

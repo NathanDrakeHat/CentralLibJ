@@ -1,5 +1,9 @@
 package org.nathan.AlgorithmsJava.DP;
 
+import org.nathan.AlgorithmsJava.tools.containers.Tuple;
+
+import java.util.List;
+
 final class MatrixChain {
     // optimal matrix multiply complexity
     public static class MatrixChainResult {
@@ -46,32 +50,31 @@ final class MatrixChain {
         }
     }
 
-    // TODO input should be Tuple<Integer, Integer>[]
-    public static MatrixChainResult matrixChainOrder(int[][][] p) { // [start, end] [mid, end]
-        MatrixChainResult[][] m = new MatrixChainResult[p.length][p.length]; // memory
-        for (int i = 0; i < p.length; i++) {
+    public static MatrixChainResult matrixChainOrder(List<Tuple<Integer,Integer>> p) { // [start, end] [mid, end]
+        MatrixChainResult[][] m = new MatrixChainResult[p.size()][p.size()]; // memory
+        for (int i = 0; i < p.size(); i++) {
             m[i][i] = new MatrixChainResult();
             m[i][i].min_cost = 0;
             m[i][i].res = new MatrixChainResult.PairNode(i);
         }
-        for (int l = 2; l <= p.length; l++) { // len
-            for (int s = 0; s + l - 1 < p.length; s++) { // start
+        for (int l = 2; l <= p.size(); l++) { // len
+            for (int s = 0; s + l - 1 < p.size(); s++) { // start
                 int e = s + l - 1; // end
 
                 m[s][e] = new MatrixChainResult();
                 if (l == 2) {
-                    m[s][e].min_cost = p[s].length * p[s][0].length * p[e][0].length;
+                    m[s][e].min_cost = p.get(s).first * p.get(s).second * p.get(e).second;
                     m[s][e].res = new MatrixChainResult.PairNode();
                     m[s][e].res.left = m[s][s].res;
                     m[s][e].res.right = m[e][e].res;
                 }
                 else {
-                    m[s][e].min_cost = p[s].length * p[s][0].length * p[e][0].length + m[s][s].min_cost + m[s + 1][e].min_cost;
+                    m[s][e].min_cost = p.get(s).first * p.get(s).second * p.get(e).second + m[s][s].min_cost + m[s + 1][e].min_cost;
                     m[s][e].res = new MatrixChainResult.PairNode();
                     m[s][e].res.left = m[s][s].res;
                     m[s][e].res.right = m[s + 1][e].res;
                     for (int i = 1; i < l - 1; i++) {
-                        int cost = m[s][s + i].min_cost + m[s + i + 1][e].min_cost + p[s].length * p[s + i + 1].length * p[e][0].length;
+                        int cost = m[s][s + i].min_cost + m[s + i + 1][e].min_cost + p.get(s).first* p.get(s + i + 1).first * p.get(e).second;
                         if (cost < m[s][e].min_cost) {
                             m[s][e].min_cost = cost;
                             m[s][e].res = new MatrixChainResult.PairNode();
@@ -82,6 +85,6 @@ final class MatrixChain {
                 }
             }
         }
-        return m[0][p.length - 1];
+        return m[0][p.size() - 1];
     }
 }

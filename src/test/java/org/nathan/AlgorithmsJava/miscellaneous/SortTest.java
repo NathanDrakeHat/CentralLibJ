@@ -1,11 +1,11 @@
 package org.nathan.AlgorithmsJava.miscellaneous;
 
 import org.junit.jupiter.api.Test;
+import org.nathan.AlgorithmsJava.tools.RangeIterator;
 import org.nathan.AlgorithmsJava.tools.SimpleDate;
 
 import static org.nathan.AlgorithmsJava.tools.Utils.*;
 
-import java.util.Arrays;
 import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -16,7 +16,7 @@ class SortTest {
 
     static SimpleDate[] buildDate() {
         var rand = new Random();
-        int len = rand.nextInt(100) + 50;
+        int len = rand.nextInt(20) + 20;
         SimpleDate[] res = new SimpleDate[len];
         int[] years = randomIntArray(2000, 2022, len);
         int[] months = randomIntArray(1, 13, len);
@@ -73,26 +73,24 @@ class SortTest {
     @Test
     void iterativeMergeSortTest() {
         var rand = new Random();
-        int len = rand.nextInt(100) + 50;
+        int len = rand.nextInt(10) + 20;
         int bound = rand.nextInt(5) + 10;
         for (int i = 0; i < 10; i++) {
             var origin = randomDoubleArray(-bound, bound, len);
-            var t = Arrays.copyOf(origin, origin.length);
-            Sort.iterativeMergeSort(t);
-            assertTrue(isSorted(t));
+            Sort.iterativeMergeSort(origin);
+            assertTrue(isSorted(origin));
         }
     }
 
     @Test
     void recursiveMergeSortTest() {
         var rand = new Random();
-        int len = rand.nextInt(100) + 50;
+        int len = rand.nextInt(10) + 20;
         int bound = rand.nextInt(5) + 10;
         for (int i = 0; i < 10; i++) {
             var origin = randomDoubleArray(-bound, bound, len);
-            var t = Arrays.copyOf(origin, origin.length);
-            Sort.recursiveMergeSort(t);
-            assertTrue(isSorted(t));
+            Sort.recursiveMergeSort(origin);
+            assertTrue(isSorted(origin));
         }
 
     }
@@ -100,75 +98,68 @@ class SortTest {
     @Test
     void heapSortTest() {
         var rand = new Random();
-        int len = rand.nextInt(100) + 50;
+        int len = rand.nextInt(10) + 20;
         int bound = rand.nextInt(5) + 10;
         for (int i = 0; i < 10; i++) {
             var origin = randomDoubleArray(-bound, bound, len);
-            var t = Arrays.copyOf(origin, origin.length);
-            Sort.heapSort(t);
-            assertTrue(isSorted(t));
+            Sort.heapSort(origin);
+            assertTrue(isSorted(origin));
         }
     }
 
     @Test
     void quickSortTest() {
         var rand = new Random();
-        int len = rand.nextInt(100) + 50;
+        int len = rand.nextInt(10) + 20;
         int bound = rand.nextInt(5) + 10;
         for (int i = 0; i < 10; i++) {
             var origin = randomDoubleArray(-bound, bound, len);
-            var t = Arrays.copyOf(origin, origin.length);
-            Sort.quickSort(t);
-            assertTrue(isSorted(t));
+            Sort.quickSort(origin);
+            assertTrue(isSorted(origin));
         }
     }
 
     @Test
     void randQuickSortTest() {
         var rand = new Random();
-        int len = rand.nextInt(100) + 50;
+        int len = rand.nextInt(10) + 20;
         int bound = rand.nextInt(5) + 10;
         for (int i = 0; i < 10; i++) {
             var origin = randomDoubleArray(-bound, bound, len);
-            var t = Arrays.copyOf(origin, origin.length);
-            Sort.randomQuickSort(t);
-            assertTrue(isSorted(t));
+            Sort.randomQuickSort(origin);
+            assertTrue(isSorted(origin));
         }
     }
 
     @Test
     void countingSortTest() {
         var rand = new Random();
-        int len = rand.nextInt(100) + 50;
+        int len = rand.nextInt(10) + 20;
         int bound = rand.nextInt(5) + 10;
         for (int i = 0; i < 10; i++) {
             var origin = randomIntArray(-bound, bound, len);
-            var t = Arrays.copyOf(origin, origin.length);
-            Sort.countingSort(t);
-            assertTrue(isSorted(t));
+            Sort.countingSort(origin);
+            assertTrue(isSorted(origin));
         }
     }
 
     @Test
     void radixSortTest() {
-        SimpleDate[] origin = buildDate();
-        SimpleDate[] t = new SimpleDate[origin.length];
-        for (int i = 0; i < origin.length; i++) {
-            t[i] = origin[i].newCopy();
+        for(var __ : new RangeIterator(0, 10)){
+            SimpleDate[] origin = buildDate();
+            Sort.radixSort(origin);
+            assertTrue(isSorted(origin));
         }
-        Sort.radixSort(t);
-        assertTrue(isSorted(t));
     }
 
     @Test
     void bucketSortTest() {
         var rand = new Random();
-        int len = rand.nextInt(100) + 50;
+        int len = rand.nextInt(10) + 20;
         for (int i = 0; i < 10; i++) {
             var origin = randomDoubleArray(0, 1, len);
-            var t = Arrays.copyOf(origin, origin.length);
-            Sort.bucketSort(t);
-            assertTrue(isSorted(t));
+            Sort.bucketSort(origin);
+            assertTrue(isSorted(origin));
         }
     }
 
