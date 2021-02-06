@@ -145,7 +145,7 @@ class SortTest {
 
     @Test
     void radixSortTest() {
-        for(var __ : new RangeIterator(0, 10)){
+        for(var ignored : new RangeIterator(0, 10)){
             SimpleDate[] origin = buildDate();
             Sort.radixSort(origin);
             assertTrue(isSorted(origin));
