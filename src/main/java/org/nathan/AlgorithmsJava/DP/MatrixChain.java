@@ -10,11 +10,11 @@ final class MatrixChain {
         public int min_cost;
         private PairNode res;
 
-        public static class PairNode {
+        static class PairNode {
             // arithmetic tree
-            public int a; // a * b
-            public PairNode left;
-            public PairNode right;
+            int a; // a * b
+            PairNode left;
+            PairNode right;
 
             PairNode() {
             }
