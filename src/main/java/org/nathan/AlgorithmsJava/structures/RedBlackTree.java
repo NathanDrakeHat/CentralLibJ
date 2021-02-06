@@ -11,7 +11,7 @@ public final class RedBlackTree<K, V> implements Iterable<Tuple<K, V>> {
     @NotNull
     private final Comparator<K> k_comparator;
     @NotNull
-    private final Node<K, V> sentinel = new Node<>(COLOR.BLACK);// sentinel: denote leaf and parent of root
+    private final Node<K, V> sentinel = new Node<>(BLACK);// sentinel: denote leaf and parent of root
     @NotNull Node<K, V> root;
 
     public RedBlackTree(@NotNull Comparator<K> k_comparator) {
@@ -181,13 +181,13 @@ public final class RedBlackTree<K, V> implements Iterable<Tuple<K, V>> {
     }
 
     private void insertFixUp(Node<K, V> ptr) {
-        while (ptr.parent.isRed()) {
+        while (ptr.parent.color == RED) {
             if (ptr.parent == ptr.parent.parent.left) {
                 var right = ptr.parent.parent.right;
-                if (right.isRed()) { // case1: sibling is red
-                    ptr.parent.setBlack();
-                    right.setBlack();
-                    ptr.parent.parent.setRed();
+                if (right.color == RED) { // case1: sibling is red
+                    ptr.parent.color = BLACK;
+                    right.color = BLACK;
+                    ptr.parent.parent.color = RED;
                     ptr = ptr.parent.parent;
                     continue;
                 }
@@ -195,17 +195,17 @@ public final class RedBlackTree<K, V> implements Iterable<Tuple<K, V>> {
                     ptr = ptr.parent;
                     leftRotate(ptr);
                 }
-                ptr.parent.setBlack(); // case3
-                ptr.parent.parent.setRed();
+                ptr.parent.color = BLACK; // case3
+                ptr.parent.parent.color = RED;
                 rightRotate(ptr.parent.parent); // ptr.getParent will be black and then break
                 ptr = ptr.parent;
             }
             else {
                 var left = ptr.parent.parent.left;
-                if (left.isRed()) {
-                    ptr.parent.setBlack();
-                    left.setBlack();
-                    ptr.parent.parent.setRed();
+                if (left.color == RED) {
+                    ptr.parent.color = BLACK;
+                    left.color = BLACK;
+                    ptr.parent.parent.color = RED;
                     ptr = ptr.parent.parent;
                     continue;
                 }
@@ -213,13 +213,13 @@ public final class RedBlackTree<K, V> implements Iterable<Tuple<K, V>> {
                     ptr = ptr.parent;
                     rightRotate(ptr);
                 }
-                ptr.parent.setBlack();
-                ptr.parent.parent.setRed();
+                ptr.parent.color = BLACK;
+                ptr.parent.parent.color = RED;
                 leftRotate(ptr.parent.parent);
                 ptr = ptr.parent;
             }
         }
-        root.setBlack();
+        root.color = BLACK;
     }
 
     public void delete(@NotNull K key) {
@@ -258,65 +258,65 @@ public final class RedBlackTree<K, V> implements Iterable<Tuple<K, V>> {
             target.left.parent = ptr;
             ptr.color = target.color;
         }
-        if (ptr_color == COLOR.BLACK) { // delete black node may violate property of red-black tree
+        if (ptr_color == BLACK) { // delete black node may violate property of red-black tree
             deleteFixUp(fix_up);
         }
     }
 
     private void deleteFixUp(Node<K, V> fix_up) {
-        while (fix_up != root && fix_up.isBlack()) {
+        while (fix_up != root && fix_up.color == BLACK) {
             Node<K, V> sibling;
             if (fix_up == fix_up.parent.left) {
                 sibling = fix_up.parent.right;
-                if (sibling.isRed()) { // case1:sibling is black, convert to case 2, 3 or 4
-                    sibling.setBlack(); // , which denote that sibling is black
-                    fix_up.parent.setRed();
+                if (sibling.color == RED) { // case1:sibling is black, convert to case 2, 3 or 4
+                    sibling.color = BLACK; // , which denote that sibling is black
+                    fix_up.parent.color = RED;
                     leftRotate(fix_up.parent);
                     sibling = fix_up.parent.right;
                 }
-                if (sibling.left.isBlack() && sibling.right.isBlack()) { // case2: sibling children is black
-                    sibling.setRed();
+                if (sibling.left.color == BLACK && sibling.right.color == BLACK) { // case2: sibling children is black
+                    sibling.color = RED;
                     fix_up = fix_up.parent;
                     continue;
                 }
-                else if (sibling.right.isBlack()) { // case3: sibling left red, right black. convert case4
-                    sibling.left.setBlack();
-                    sibling.setRed();
+                else if (sibling.right.color == BLACK) { // case3: sibling left red, right black. convert case4
+                    sibling.left.color = BLACK;
+                    sibling.color = RED;
                     rightRotate(sibling);
                     sibling = fix_up.parent.right;
                 }
                 sibling.color = fix_up.parent.color; // case4: sibling right red
-                fix_up.parent.setBlack();
-                sibling.right.setBlack();
+                fix_up.parent.color = BLACK;
+                sibling.right.color = BLACK;
                 leftRotate(fix_up.parent);
             }
             else {
                 sibling = fix_up.parent.left;
-                if (sibling.isRed()) {
-                    sibling.setBlack();
-                    fix_up.parent.setRed();
+                if (sibling.color == RED) {
+                    sibling.color = BLACK;
+                    fix_up.parent.color = RED;
                     rightRotate(fix_up.parent);
                     sibling = fix_up.parent.left;
                 }
-                if (sibling.left.isBlack() && sibling.right.isBlack()) {
-                    sibling.setRed();
+                if (sibling.left.color == BLACK && sibling.right.color == BLACK) {
+                    sibling.color = RED;
                     fix_up = fix_up.parent;
                     continue;
                 }
-                else if (sibling.left.isBlack()) {
-                    sibling.right.setBlack();
-                    sibling.setRed();
+                else if (sibling.left.color == BLACK) {
+                    sibling.right.color = BLACK;
+                    sibling.color = RED;
                     leftRotate(sibling);
                     sibling = fix_up.parent.left;
                 }
                 sibling.color = fix_up.parent.color;
-                fix_up.parent.setBlack();
-                sibling.left.setBlack();
+                fix_up.parent.color = BLACK;
+                sibling.left.color = BLACK;
                 rightRotate(fix_up.parent);
             }
             fix_up = root;
         }
-        fix_up.setBlack();
+        fix_up.color = BLACK;
     }
 
     private void transplant(Node<K, V> a, Node<K, V> b) {
@@ -466,42 +466,6 @@ public final class RedBlackTree<K, V> implements Iterable<Tuple<K, V>> {
         return new ReverseStackIterator();
     }
 
-    enum COLOR {RED, BLACK}
-
-    static final class Node<P, Q> {
-        P key;
-        Q value;
-        COLOR color;
-        Node<P, Q> parent;
-        Node<P, Q> left;
-        Node<P, Q> right;
-
-        Node(COLOR color) {
-            this.color = color;
-        }
-
-        Node(@NotNull P key, Q val) {
-            color = COLOR.RED;
-            this.key = key;
-            this.value = val;
-        }
-
-        boolean isRed() {
-            return color == COLOR.RED;
-        }
-
-        boolean isBlack() {
-            return color == COLOR.BLACK;
-        }
-
-        void setRed() {
-            color = COLOR.RED;
-        }
-
-        void setBlack() {
-            color = COLOR.BLACK;
-        }
-    }
 
     private final class StackIterator implements Iterator<Tuple<K, V>> {
         private final Deque<Node<K, V>> stack = new LinkedList<>();
@@ -598,6 +562,28 @@ public final class RedBlackTree<K, V> implements Iterable<Tuple<K, V>> {
             }
             finish = true;
             throw new NoSuchElementException("Iterate finish.");
+        }
+    }
+
+    private static final boolean RED = false;
+    private static final boolean BLACK = true;
+
+    static final class Node<P, Q> {
+        P key;
+        Q value;
+        boolean color;
+        Node<P, Q> parent;
+        Node<P, Q> left;
+        Node<P, Q> right;
+
+        Node(boolean color) {
+            this.color = color;
+        }
+
+        Node(@NotNull P key, Q val) {
+            color = RED;
+            this.key = key;
+            this.value = val;
         }
     }
 }

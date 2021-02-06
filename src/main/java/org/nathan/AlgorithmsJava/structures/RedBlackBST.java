@@ -6,9 +6,8 @@ import java.util.LinkedList;
 import java.util.NoSuchElementException;
 import java.util.Queue;
 
-// TODO read the book
 @SuppressWarnings("unused")
-public class RedBlackBST<Key extends Comparable<Key>, Value> {
+public class RedBlackBST<Key extends Comparable<Key>, Value> implements SymbolTable<Key,Value> {
     private static final boolean RED = true;
     private static final boolean BLACK = false;
     private RedBlackBST<Key, Value>.Node root;
@@ -25,12 +24,12 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
         }
     }
 
-    private int size(RedBlackBST<Key, Value>.Node x) {
-        return x == null ? 0 : x.size;
-    }
-
     public int size() {
         return size(root);
+    }
+
+    private int size(RedBlackBST<Key, Value>.Node x) {
+        return x == null ? 0 : x.size;
     }
 
     public boolean isEmpty() {
@@ -506,6 +505,8 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
             return contains(hi) ? rank(hi) - rank(lo) + 1 : rank(hi) - rank(lo);
         }
     }
+
+
 
     private class Node {
         private Key key;
