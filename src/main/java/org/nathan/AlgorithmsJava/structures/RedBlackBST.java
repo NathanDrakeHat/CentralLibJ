@@ -17,6 +17,7 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> implements SymbolTa
 
     private boolean isRed(Node<Key, Value> x) {
         if (x == null) {
+            // parent of root and leaves colors are black
             return false;
         }
         else {
@@ -250,7 +251,7 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> implements SymbolTa
         h.right = x.left;
         x.left = h;
         x.color = x.left.color;
-        x.left.color = true;
+        x.left.color = RED;
         x.size = h.size;
         h.size = size(h.left) + size(h.right) + 1;
         return x;
