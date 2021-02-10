@@ -23,7 +23,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="archive">
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/IntroductionToAlgorithm_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/IntroductionToAlgorithm_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/LICENSE" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +69,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="add_unversioned_files" value="$PROJECT_DIR$/src/main/java/Main.java" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Leetcode" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../LeetcodeJava" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -79,9 +83,9 @@
       <recent name="org.nathan.AlgorithmsJava.structures" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.StringAutomataTest">
+  <component name="RunManager" selected="JUnit.All in AlgorithmsJava">
     <configuration name="All in AlgorithmsJava" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="AlgorithmsJava" />
+      <module name="IntroductionToAlgorithmsInJava" />
       <option name="PACKAGE_NAME" value="" />
       <option name="TEST_OBJECT" value="package" />
       <method v="2">
@@ -89,7 +93,7 @@
       </method>
     </configuration>
     <configuration name="StringAutomataTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="AlgorithmsJava" />
+      <module name="IntroductionToAlgorithmsInJava" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="org.nathan.AlgorithmsJava.stringMatching.*" />
@@ -104,7 +108,7 @@
       </method>
     </configuration>
     <configuration name="StringAutomataTest.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="AlgorithmsJava" />
+      <module name="IntroductionToAlgorithmsInJava" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="org.nathan.AlgorithmsJava.stringMatching.*" />
@@ -171,9 +175,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.All in AlgorithmsJava" />
         <item itemvalue="JUnit.StringAutomataTest" />
         <item itemvalue="JUnit.StringAutomataTest.test" />
-        <item itemvalue="JUnit.All in AlgorithmsJava" />
         <item itemvalue="Maven.AlgorithmsJava [validate]" />
         <item itemvalue="Maven.AlgorithmsJava [test]" />
       </list>
@@ -238,13 +242,9 @@
       <workItem from="1612859530339" duration="1538000" />
       <workItem from="1612948706852" duration="23000" />
       <workItem from="1612958983621" duration="158000" />
-    </task>
-    <task id="LOCAL-00038" summary="remove unused class">
-      <created>1599364702108</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1599364702108</updated>
+      <workItem from="1612959899210" duration="316000" />
+      <workItem from="1612961066108" duration="290000" />
+      <workItem from="1612961557023" duration="439000" />
     </task>
     <task id="LOCAL-00039" summary="layout">
       <created>1600259381947</created>
@@ -582,7 +582,14 @@
       <option name="project" value="LOCAL" />
       <updated>1612857754603</updated>
     </task>
-    <option name="localTasksCounter" value="87" />
+    <task id="LOCAL-00087" summary="rename project">
+      <created>1612959933902</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1612959933902</updated>
+    </task>
+    <option name="localTasksCounter" value="88" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -611,7 +618,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="reformat all" />
     <MESSAGE value="fix MinHeap.java bugs and add new methods" />
     <MESSAGE value="clean" />
     <MESSAGE value="MinHeapTest.java print before fail()" />
@@ -636,6 +642,7 @@
     <MESSAGE value="add" />
     <MESSAGE value="reformat" />
     <MESSAGE value="archive" />
-    <option name="LAST_COMMIT_MESSAGE" value="archive" />
+    <MESSAGE value="rename project" />
+    <option name="LAST_COMMIT_MESSAGE" value="rename project" />
   </component>
 </project>
