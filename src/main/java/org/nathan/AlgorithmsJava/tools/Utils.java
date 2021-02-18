@@ -1,12 +1,9 @@
 package org.nathan.AlgorithmsJava.tools;
 
-import com.google.gson.reflect.TypeToken;
+import com.google.common.reflect.TypeToken;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.*;
-import java.lang.reflect.Type;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -29,73 +26,46 @@ public class Utils {
         return res;
     }
 
-    public static List<Integer> shuffledSequence(int low, int high){
+    public static List<Integer> shuffledSequence(int low, int high) {
         List<Integer> l = new ArrayList<>();
-        for(int i = low; i < high; i++){
+        for (int i = low; i < high; i++) {
             l.add(i);
         }
         Collections.shuffle(l);
         return l;
     }
 
-    public static List<Integer> randomIntegerList(int low, int high, int len) {
-        return Arrays.stream(randomIntArray(low, high, len)).boxed().collect(Collectors.toList());
+    @SuppressWarnings("unused")
+    public static void serializeToFile(Object object, String fullName) {
+        try (var file_out = new FileOutputStream(fullName);
+             var out = new ObjectOutputStream(file_out)) {
+            out.writeObject(object);
+            out.flush();
+        }
+        catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
-    public static <T> void serializeObjectTimeSuffix(T t, String prefix, String type_suffix, Type... types) throws IOException {
-        StringBuilder file_name = new StringBuilder(prefix);
-        file_name.append(types[0].getTypeName());
-        if (types.length > 1) {
-            file_name.append("<");
-            for (int i = 1; i < types.length - 1; i++) {
-                file_name.append(types[i].getTypeName());
-                file_name.append(",");
-            }
-            file_name.append(types[types.length - 1].getTypeName());
-            file_name.append(">");
+    @SuppressWarnings("unused")
+    public static Object deserializeFile(String fullName) {
+        try (var in = new ObjectInputStream(new FileInputStream(fullName))) {
+            return in.readObject();
         }
-        file_name.append("|");
-        DateTimeFormatter dtf = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
-        LocalDateTime now = LocalDateTime.now();
-        file_name.append(dtf.format(now));
-        file_name.append(type_suffix);
-        FileOutputStream file_out = new FileOutputStream(file_name.toString());
-        ObjectOutputStream out = new ObjectOutputStream(file_out);
-        out.writeObject(t);
-        out.flush();
-        out.close();
+        catch (IOException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
     }
-
-    public static Object loadObject(String file_name) {
-        ObjectInputStream in = null;
-        try {
-            in = new ObjectInputStream(new FileInputStream(file_name));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        Object res = null;
-        try {
-            //noinspection ConstantConditions
-            res = in.readObject();
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-        try {
-            in.close();
-        } catch (IOException ignore) {
-        }
-        return res;
-    }
-
-    public static String TYPE_SUFFIX = ".txt";
 
     /**
      * usage: GenericClass<Type> v = newGenericArray(len);
+     *
      * @param length len
-     * @param array array
-     * @param <E> any
+     * @param array  array
+     * @param <E>    any
      * @return typed array
      */
+    @SuppressWarnings("unused")
     @SafeVarargs
     public static <E> E[] newGenericArray(int length, E... array) {
         return Arrays.copyOf(array, length);
@@ -110,17 +80,20 @@ public class Utils {
      * <pre>
      *     java.utils.ArrayList<Integer> -> ArrayList<Integer>
      * </pre>
+     *
      * @param typeToken Gson class
-     * @param <T> any
+     * @param <T>       any
      * @return readable type name
      */
-    public static <T> String getReadableTypeName(TypeToken<T> typeToken){
+    @SuppressWarnings("UnstableApiUsage")
+    public static <T> String getReadableTypeName(@NotNull TypeToken<T> typeToken) {
         return processRawTypeName(typeToken.toString());
     }
 
-    private static String processRawTypeName(String type_string){
-        var origin_types = Arrays.stream(type_string.split("[<>, ]")).filter(s->!s.equals("")).distinct().collect(Collectors.toList());
-        for(var origin_type : origin_types){
+    private static String processRawTypeName(String type_string) {
+        var origin_types =
+                Arrays.stream(type_string.split("[<>, ]")).filter(s -> !s.equals("")).distinct().collect(Collectors.toList());
+        for (var origin_type : origin_types) {
             var split = origin_type.split("\\.");
             type_string = type_string.replaceAll(origin_type, split[split.length - 1]);
         }
