@@ -22,11 +22,21 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="improve Utils">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_collections4_4_4.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_lang3_3_11.xml" afterDir="false" />
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="modify pom">
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_code_findbugs_jsr305_3_0_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_errorprone_error_prone_annotations_2_3_4.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_guava_failureaccess_1_0_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_guava_guava_30_1_jre.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_guava_listenablefuture_9999_0_empty_to_avoid_conflict_with_guava.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_j2objc_j2objc_annotations_1_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_checkerframework_checker_qual_3_5_0.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/IntroductionToAlgorithmsInJava.iml" beforeDir="false" afterPath="$PROJECT_DIR$/IntroductionToAlgorithmsInJava.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/structures/MinHeap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/structures/MinHeap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/structures/RedBlackBST.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/structures/RedBlackBST.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/structures/RedBlackTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/structures/RedBlackTree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/AlgorithmsJava/structures/MinHeapTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/AlgorithmsJava/structures/MinHeapTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/AlgorithmsJava/structures/RedBlackTreeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/AlgorithmsJava/structures/RedBlackTreeTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,11 +92,43 @@
       <recent name="org.nathan.AlgorithmsJava.structures" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.All in AlgorithmsJava">
+  <component name="RunManager" selected="JUnit.RedBlackTreeTest.functionsTest">
     <configuration name="All in AlgorithmsJava" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="IntroductionToAlgorithmsInJava" />
       <option name="PACKAGE_NAME" value="" />
       <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MinHeapTest.modificationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="IntroductionToAlgorithmsInJava" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.nathan.AlgorithmsJava.structures.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.nathan.AlgorithmsJava.structures" />
+      <option name="MAIN_CLASS_NAME" value="org.nathan.AlgorithmsJava.structures.MinHeapTest" />
+      <option name="METHOD_NAME" value="modificationTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RedBlackTreeTest.functionsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="IntroductionToAlgorithmsInJava" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.nathan.AlgorithmsJava.structures.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.nathan.AlgorithmsJava.structures" />
+      <option name="MAIN_CLASS_NAME" value="org.nathan.AlgorithmsJava.structures.RedBlackTreeTest" />
+      <option name="METHOD_NAME" value="functionsTest" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -122,63 +164,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AlgorithmsJava [test]" type="MavenRunConfiguration" factoryName="Maven" temporary="true">
-      <MavenSettings>
-        <option name="myGeneralSettings" />
-        <option name="myRunnerSettings" />
-        <option name="myRunnerParameters">
-          <MavenRunnerParameters>
-            <option name="profiles">
-              <set />
-            </option>
-            <option name="goals">
-              <list>
-                <option value="test" />
-              </list>
-            </option>
-            <option name="pomFileName" value="pom.xml" />
-            <option name="profilesMap">
-              <map />
-            </option>
-            <option name="resolveToWorkspace" value="false" />
-            <option name="workingDirPath" value="$PROJECT_DIR$" />
-          </MavenRunnerParameters>
-        </option>
-      </MavenSettings>
-      <method v="2" />
-    </configuration>
-    <configuration name="AlgorithmsJava [validate]" type="MavenRunConfiguration" factoryName="Maven" temporary="true">
-      <MavenSettings>
-        <option name="myGeneralSettings" />
-        <option name="myRunnerSettings" />
-        <option name="myRunnerParameters">
-          <MavenRunnerParameters>
-            <option name="profiles">
-              <set />
-            </option>
-            <option name="goals">
-              <list>
-                <option value="validate" />
-              </list>
-            </option>
-            <option name="pomFileName" value="pom.xml" />
-            <option name="profilesMap">
-              <map />
-            </option>
-            <option name="resolveToWorkspace" value="false" />
-            <option name="workingDirPath" value="$PROJECT_DIR$" />
-          </MavenRunnerParameters>
-        </option>
-      </MavenSettings>
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.RedBlackTreeTest.functionsTest" />
         <item itemvalue="JUnit.All in AlgorithmsJava" />
+        <item itemvalue="JUnit.MinHeapTest.modificationTest" />
         <item itemvalue="JUnit.StringAutomataTest" />
         <item itemvalue="JUnit.StringAutomataTest.test" />
-        <item itemvalue="Maven.AlgorithmsJava [validate]" />
-        <item itemvalue="Maven.AlgorithmsJava [test]" />
       </list>
     </recent_temporary>
   </component>
@@ -249,21 +241,16 @@
       <workItem from="1613576386384" duration="465000" />
       <workItem from="1613627255152" duration="2092000" />
       <workItem from="1613630764838" duration="3000" />
-      <workItem from="1613634779903" duration="1168000" />
-    </task>
-    <task id="LOCAL-00041" summary="add and rename tuple class">
-      <created>1600569875490</created>
-      <option name="number" value="00041" />
-      <option name="presentableId" value="LOCAL-00041" />
-      <option name="project" value="LOCAL" />
-      <updated>1600569875490</updated>
-    </task>
-    <task id="LOCAL-00042" summary="reformat all">
-      <created>1600585351249</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1600585351249</updated>
+      <workItem from="1613634779903" duration="1235000" />
+      <workItem from="1614616370370" duration="36000" />
+      <workItem from="1614779030253" duration="353000" />
+      <workItem from="1614779482365" duration="1019000" />
+      <workItem from="1614951036976" duration="5000" />
+      <workItem from="1615027333349" duration="636000" />
+      <workItem from="1615032909913" duration="8000" />
+      <workItem from="1615207212276" duration="25000" />
+      <workItem from="1615210304350" duration="5000" />
+      <workItem from="1615287509388" duration="884000" />
     </task>
     <task id="LOCAL-00043" summary="make dp private">
       <created>1600688086906</created>
@@ -594,7 +581,21 @@
       <option name="project" value="LOCAL" />
       <updated>1613628482681</updated>
     </task>
-    <option name="localTasksCounter" value="90" />
+    <task id="LOCAL-00090" summary="modify pom">
+      <created>1613635986548</created>
+      <option name="number" value="00090" />
+      <option name="presentableId" value="LOCAL-00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1613635986548</updated>
+    </task>
+    <task id="LOCAL-00091" summary="modify pom">
+      <created>1613635990846</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1613635990846</updated>
+    </task>
+    <option name="localTasksCounter" value="92" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -623,7 +624,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="clean" />
     <MESSAGE value="MinHeapTest.java print before fail()" />
     <MESSAGE value="reduce test problems size" />
     <MESSAGE value="big step, remove DisjointSet.java type cast" />
@@ -648,6 +648,7 @@
     <MESSAGE value="rename project" />
     <MESSAGE value="reformat" />
     <MESSAGE value="improve Utils" />
-    <option name="LAST_COMMIT_MESSAGE" value="improve Utils" />
+    <MESSAGE value="modify pom" />
+    <option name="LAST_COMMIT_MESSAGE" value="modify pom" />
   </component>
 </project>

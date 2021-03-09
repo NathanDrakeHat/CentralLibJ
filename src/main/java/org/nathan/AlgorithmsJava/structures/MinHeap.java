@@ -11,6 +11,7 @@ public final class MinHeap<K, V> implements Iterable<Tuple<K, V>> {
     private final List<Node<K, V>> array = new ArrayList<>();
     private final Map<V, Node<K, V>> value_node_map = new HashMap<>();
     private final DualToIntFunction<K, K> key_comparer;
+    private boolean iterating = false;
 
     public interface DualToIntFunction<Arg1, Arg2> {
         int applyAsInt(Arg1 arg1, Arg2 arg2);
@@ -37,6 +38,7 @@ public final class MinHeap<K, V> implements Iterable<Tuple<K, V>> {
     }
 
     public V extractMin() {
+        modified();
         if (heapSize() == 0) {
             throw new NoSuchElementException();
         }
@@ -48,7 +50,8 @@ public final class MinHeap<K, V> implements Iterable<Tuple<K, V>> {
         return res.value;
     }
 
-    public void Add(@NotNull V value, @NotNull K key) {
+    public void add(@NotNull V value, @NotNull K key) {
+        modified();
         if(value_node_map.containsKey(value)) {
             throw new IllegalArgumentException("value should be unique");
         }
@@ -67,6 +70,7 @@ public final class MinHeap<K, V> implements Iterable<Tuple<K, V>> {
     }
 
     public void updateKey(@NotNull V value, @NotNull K new_key) {
+        modified();
         var node = value_node_map.get(value);
         if (node == null) {
             throw new NoSuchElementException("No such value.");
@@ -83,6 +87,10 @@ public final class MinHeap<K, V> implements Iterable<Tuple<K, V>> {
 
     public int heapSize() {
         return array.size();
+    }
+
+    private void modified(){
+        iterating = false;
     }
 
     private void updateArrayAndNode(int index, Node<K, V> node) {
@@ -150,8 +158,16 @@ public final class MinHeap<K, V> implements Iterable<Tuple<K, V>> {
     }
 
     private class MinHeapIterator implements Iterator<Tuple<K, V>> {
+
+        MinHeapIterator(){
+            iterating = true;
+        }
+
         @Override
         public boolean hasNext() {
+            if(!iterating){
+                throw new IllegalStateException("concurrent modification");
+            }
             return heapSize() > 0;
         }
 

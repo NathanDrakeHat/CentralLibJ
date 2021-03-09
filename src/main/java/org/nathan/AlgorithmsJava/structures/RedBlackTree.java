@@ -13,6 +13,7 @@ public final class RedBlackTree<K, V> implements Iterable<Tuple<K, V>> {
     @NotNull
     private final Node<K, V> sentinel = new Node<>(BLACK);// sentinel: denote leaf and parent of root
     @NotNull Node<K, V> root;
+    private boolean iterating = false;
 
     public RedBlackTree(@NotNull Comparator<K> k_comparator) {
         this.k_comparator = k_comparator;
@@ -143,6 +144,7 @@ public final class RedBlackTree<K, V> implements Iterable<Tuple<K, V>> {
     }
 
     public void insert(@NotNull K key, V val) {
+        modified();
         insert(new Node<>(key, val));
     }
 
@@ -223,6 +225,7 @@ public final class RedBlackTree<K, V> implements Iterable<Tuple<K, V>> {
     }
 
     public void delete(@NotNull K key) {
+        modified();
         delete(search(root, key));
     }
 
@@ -459,21 +462,26 @@ public final class RedBlackTree<K, V> implements Iterable<Tuple<K, V>> {
 
     @Override
     public Iterator<Tuple<K, V>> iterator() {
-        return new StackIterator();
+        return new BSTIterator();
     }
 
     public Iterator<Tuple<K, V>> reverseIterator() {
-        return new ReverseStackIterator();
+        return new ReverseBSTIterator();
+    }
+
+    private void modified(){
+        iterating = false;
     }
 
 
-    private final class StackIterator implements Iterator<Tuple<K, V>> {
+    private final class BSTIterator implements Iterator<Tuple<K, V>> {
         private final Deque<Node<K, V>> stack = new LinkedList<>();
         private Node<K, V> ptr;
         private boolean poppedBefore = false;
         private boolean finish = false;
 
-        public StackIterator() {
+        public BSTIterator() {
+            iterating = true;
             ptr = root;
             if (ptr == sentinel) {
                 finish = true;
@@ -482,6 +490,9 @@ public final class RedBlackTree<K, V> implements Iterable<Tuple<K, V>> {
 
         @Override
         public boolean hasNext() {
+            if(!iterating){
+                throw new IllegalStateException("concurrent modification");
+            }
             return !finish && ptr != null;
         }
 
@@ -516,13 +527,14 @@ public final class RedBlackTree<K, V> implements Iterable<Tuple<K, V>> {
         }
     }
 
-    private final class ReverseStackIterator implements Iterator<Tuple<K, V>> {
+    private final class ReverseBSTIterator implements Iterator<Tuple<K, V>> {
         private final Deque<Node<K, V>> stack = new LinkedList<>();
         private Node<K, V> ptr;
         private boolean poppedBefore = false;
         private boolean finish = false;
 
-        public ReverseStackIterator() {
+        public ReverseBSTIterator() {
+            iterating = true;
             ptr = root;
             if (ptr == sentinel) {
                 finish = true;
@@ -531,6 +543,9 @@ public final class RedBlackTree<K, V> implements Iterable<Tuple<K, V>> {
 
         @Override
         public boolean hasNext() {
+            if(!iterating){
+                throw new IllegalStateException("concurrent modification");
+            }
             return !finish && ptr != null;
         }
 

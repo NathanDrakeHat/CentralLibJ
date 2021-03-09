@@ -19,7 +19,7 @@ class MinHeapTest {
             List<Integer> l = shuffledSequence(1, 63);
             MinHeap<Integer, String> m = new MinHeap<>(Integer::compare);
             for (Integer integer : l) {
-                m.Add(String.valueOf(integer), integer);
+                m.add(String.valueOf(integer), integer);
             }
             List<Integer> res = new ArrayList<>();
             while (m.heapSize() > 0) {
@@ -61,5 +61,17 @@ class MinHeapTest {
                 }
             }
         }
+    }
+
+    @Test
+    void modificationTest(){
+        var m = new MinHeap<Integer, Integer>(Integer::compareTo);
+        m.add(1,1);
+        m.add(2,2);
+        assertThrows(IllegalStateException.class, ()->{
+            for(var i : m){
+                m.add(i.first+3,i.second+3);
+            }
+        });
     }
 }
