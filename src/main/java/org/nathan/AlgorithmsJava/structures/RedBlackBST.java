@@ -1,5 +1,5 @@
 package org.nathan.AlgorithmsJava.structures;
-// TODO how to avoid concurrent iterator
+
 import org.jetbrains.annotations.NotNull;
 
 import java.util.LinkedList;
