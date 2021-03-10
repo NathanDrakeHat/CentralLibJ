@@ -22,21 +22,60 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="modify pom">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_code_findbugs_jsr305_3_0_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_errorprone_error_prone_annotations_2_3_4.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_guava_failureaccess_1_0_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_guava_guava_30_1_jre.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_guava_listenablefuture_9999_0_empty_to_avoid_conflict_with_guava.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_j2objc_j2objc_annotations_1_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_checkerframework_checker_qual_3_5_0.xml" beforeDir="false" />
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="concurrent modification exception">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IntroductionToAlgorithmsInJava.iml" beforeDir="false" afterPath="$PROJECT_DIR$/IntroductionToAlgorithmsInJava.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/structures/MinHeap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/structures/MinHeap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/structures/RedBlackBST.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/structures/RedBlackBST.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/structures/RedBlackTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/structures/RedBlackTree.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/AlgorithmsJava/structures/MinHeapTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/AlgorithmsJava/structures/MinHeapTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/AlgorithmsJava/structures/RedBlackTreeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/AlgorithmsJava/structures/RedBlackTreeTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/DP/ActivitySelection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithms_java/dp/ActivitySelection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/DP/CutRod.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithms_java/dp/CutRod.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/DP/LongestCommonSequence.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithms_java/dp/LongestCommonSequence.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/DP/MatrixChain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithms_java/dp/MatrixChain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/DP/OptimalBTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithms_java/dp/OptimalBTree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/graph/APShortestPath.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithms_java/graph/APShortestPath.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/graph/BFS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithms_java/graph/BFS.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/graph/DFS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithms_java/graph/DFS.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/graph/LinkedGraph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithms_java/graph/LinkedGraph.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/graph/MinSpanTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithms_java/graph/MinSpanTree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/graph/SSShortestPath.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithms_java/graph/SSShortestPath.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/miscellaneous/MaxSubArray.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithms_java/miscellaneous/MaxSubArray.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/miscellaneous/RankSearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithms_java/miscellaneous/RankSearch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/miscellaneous/Sort.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithms_java/miscellaneous/Sort.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/stringMatching/StringAutomata.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithms_java/stringMatching/StringAutomata.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/structures/Bag.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithms_java/structures/Bag.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/structures/DPMatrix.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithms_java/structures/DPMatrix.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/structures/DisjointSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithms_java/structures/DisjointSet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/structures/FibonacciHeap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithms_java/structures/FibonacciHeap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/structures/MinHeap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithms_java/structures/MinHeap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/structures/OrderStatisticTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithms_java/structures/OrderStatisticTree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/structures/ProtoVEBTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithms_java/structures/ProtoVEBTree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/structures/RedBlackBST.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithms_java/structures/RedBlackBST.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/structures/RedBlackTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithms_java/structures/RedBlackTree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/structures/SymbolTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithms_java/structures/SymbolTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/structures/VEBTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithms_java/structures/VEBTree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/tools/RangeIterator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithms_java/tools/RangeIterator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/tools/SimpleDate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithms_java/tools/SimpleDate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/tools/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithms_java/tools/Utils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/tools/containers/Quaternion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithms_java/tools/containers/Quaternion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/tools/containers/Quintuple.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithms_java/tools/containers/Quintuple.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/tools/containers/Triad.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithms_java/tools/containers/Triad.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/tools/containers/Tuple.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithms_java/tools/containers/Tuple.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/AlgorithmsJava/DP/ActivitySelectionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithms_java/dp/ActivitySelectionTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/AlgorithmsJava/DP/CutRodTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithms_java/dp/CutRodTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/AlgorithmsJava/DP/LongestCommonSequenceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithms_java/dp/LongestCommonSequenceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/AlgorithmsJava/DP/MatrixChainTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithms_java/dp/MatrixChainTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/AlgorithmsJava/graph/APShortestPathTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithms_java/graph/APShortestPathTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/AlgorithmsJava/graph/BFSTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithms_java/graph/BFSTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/AlgorithmsJava/graph/DFSTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithms_java/graph/DFSTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/AlgorithmsJava/graph/MinSpanTreeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithms_java/graph/MinSpanTreeTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/AlgorithmsJava/graph/SSShortestPathTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithms_java/graph/SSShortestPathTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/AlgorithmsJava/miscellaneous/MaxSubArrayTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithms_java/miscellaneous/MaxSubArrayTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/AlgorithmsJava/miscellaneous/RankSearchTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithms_java/miscellaneous/RankSearchTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/AlgorithmsJava/miscellaneous/SortTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithms_java/miscellaneous/SortTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/AlgorithmsJava/stringMatching/StringAutomataTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithms_java/stringMatching/StringAutomataTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/AlgorithmsJava/structures/FibonacciHeapTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithms_java/structures/FibonacciHeapTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/AlgorithmsJava/structures/MinHeapTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithms_java/structures/MinHeapTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/AlgorithmsJava/structures/OrderStatisticTreeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithms_java/structures/OrderStatisticTreeTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/AlgorithmsJava/structures/ProtoVEBTreeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithms_java/structures/ProtoVEBTreeTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/AlgorithmsJava/structures/RedBlackTreeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithms_java/structures/RedBlackTreeTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/AlgorithmsJava/structures/VEBTreeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithms_java/structures/VEBTreeTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,7 +105,7 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/main/java/org/nathan/AlgorithmsJava/structures/FibonacciHeap.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/org/nathan/algorithms_java/structures/FibonacciHeap.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="1frQbN17KMrYLWgoSMIuH1vYjss" />
   <component name="ProjectViewState">
@@ -82,6 +121,7 @@
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.28315789" />
@@ -92,7 +132,24 @@
       <recent name="org.nathan.AlgorithmsJava.structures" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.RedBlackTreeTest.functionsTest">
+  <component name="RunManager" selected="JUnit.All in AlgorithmsJava">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="IntroductionToAlgorithmsInJava" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SizeOf" type="Application" factoryName="Application">
+      <option name="ALTERNATIVE_JRE_PATH" value="AdoptOpenJDK" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="IntroductionToAlgorithmsInJava" />
+      <option name="PROGRAM_PARAMETERS" value="-javaagent:ObjectSizeFetcherAgent.jar C" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="All in AlgorithmsJava" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="IntroductionToAlgorithmsInJava" />
       <option name="PACKAGE_NAME" value="" />
@@ -105,12 +162,12 @@
       <module name="IntroductionToAlgorithmsInJava" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.nathan.AlgorithmsJava.structures.*" />
+          <option name="PATTERN" value="org.nathan.algorithms_java.structures.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="org.nathan.AlgorithmsJava.structures" />
-      <option name="MAIN_CLASS_NAME" value="org.nathan.AlgorithmsJava.structures.MinHeapTest" />
+      <option name="PACKAGE_NAME" value="org.nathan.algorithms_java.structures" />
+      <option name="MAIN_CLASS_NAME" value="org.nathan.algorithms_java.structures.MinHeapTest" />
       <option name="METHOD_NAME" value="modificationTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
@@ -121,12 +178,12 @@
       <module name="IntroductionToAlgorithmsInJava" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.nathan.AlgorithmsJava.structures.*" />
+          <option name="PATTERN" value="org.nathan.algorithms_java.structures.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="org.nathan.AlgorithmsJava.structures" />
-      <option name="MAIN_CLASS_NAME" value="org.nathan.AlgorithmsJava.structures.RedBlackTreeTest" />
+      <option name="PACKAGE_NAME" value="org.nathan.algorithms_java.structures" />
+      <option name="MAIN_CLASS_NAME" value="org.nathan.algorithms_java.structures.RedBlackTreeTest" />
       <option name="METHOD_NAME" value="functionsTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
@@ -137,40 +194,32 @@
       <module name="IntroductionToAlgorithmsInJava" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.nathan.AlgorithmsJava.stringMatching.*" />
+          <option name="PATTERN" value="org.nathan.algorithms_java.stringMatching.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="org.nathan.AlgorithmsJava.stringMatching" />
-      <option name="MAIN_CLASS_NAME" value="org.nathan.AlgorithmsJava.stringMatching.StringAutomataTest" />
+      <option name="PACKAGE_NAME" value="org.nathan.algorithms_java.stringMatching" />
+      <option name="MAIN_CLASS_NAME" value="org.nathan.algorithms_java.stringMatching.StringAutomataTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="StringAutomataTest.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="IntroductionToAlgorithmsInJava" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.nathan.AlgorithmsJava.stringMatching.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.nathan.AlgorithmsJava.stringMatching" />
-      <option name="MAIN_CLASS_NAME" value="org.nathan.AlgorithmsJava.stringMatching.StringAutomataTest" />
-      <option name="METHOD_NAME" value="test" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+    <list>
+      <item itemvalue="Application.SizeOf" />
+      <item itemvalue="Application.Main" />
+      <item itemvalue="JUnit.All in AlgorithmsJava" />
+      <item itemvalue="JUnit.MinHeapTest.modificationTest" />
+      <item itemvalue="JUnit.RedBlackTreeTest.functionsTest" />
+      <item itemvalue="JUnit.StringAutomataTest" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.RedBlackTreeTest.functionsTest" />
         <item itemvalue="JUnit.All in AlgorithmsJava" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.RedBlackTreeTest.functionsTest" />
         <item itemvalue="JUnit.MinHeapTest.modificationTest" />
         <item itemvalue="JUnit.StringAutomataTest" />
-        <item itemvalue="JUnit.StringAutomataTest.test" />
       </list>
     </recent_temporary>
   </component>
@@ -250,21 +299,13 @@
       <workItem from="1615032909913" duration="8000" />
       <workItem from="1615207212276" duration="25000" />
       <workItem from="1615210304350" duration="5000" />
-      <workItem from="1615287509388" duration="884000" />
-    </task>
-    <task id="LOCAL-00043" summary="make dp private">
-      <created>1600688086906</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1600688086906</updated>
-    </task>
-    <task id="LOCAL-00044" summary="pom fix">
-      <created>1600691998425</created>
-      <option name="number" value="00044" />
-      <option name="presentableId" value="LOCAL-00044" />
-      <option name="project" value="LOCAL" />
-      <updated>1600691998425</updated>
+      <workItem from="1615287509388" duration="1034000" />
+      <workItem from="1615289081387" duration="372000" />
+      <workItem from="1615290107714" duration="93000" />
+      <workItem from="1615295771569" duration="471000" />
+      <workItem from="1615357828739" duration="1997000" />
+      <workItem from="1615377100762" duration="30000" />
+      <workItem from="1615377159900" duration="865000" />
     </task>
     <task id="LOCAL-00045" summary="simplify MinHeap.java implementation, remove false implementation">
       <created>1611393753515</created>
@@ -595,7 +636,21 @@
       <option name="project" value="LOCAL" />
       <updated>1613635990846</updated>
     </task>
-    <option name="localTasksCounter" value="92" />
+    <task id="LOCAL-00092" summary="concurrent modification exception">
+      <created>1615288448870</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1615288448870</updated>
+    </task>
+    <task id="LOCAL-00093" summary="concurrent modification exception">
+      <created>1615288476556</created>
+      <option name="number" value="00093" />
+      <option name="presentableId" value="LOCAL-00093" />
+      <option name="project" value="LOCAL" />
+      <updated>1615288476556</updated>
+    </task>
+    <option name="localTasksCounter" value="94" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -624,7 +679,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="MinHeapTest.java print before fail()" />
     <MESSAGE value="reduce test problems size" />
     <MESSAGE value="big step, remove DisjointSet.java type cast" />
     <MESSAGE value="set private, add exegesis" />
@@ -649,6 +703,7 @@
     <MESSAGE value="reformat" />
     <MESSAGE value="improve Utils" />
     <MESSAGE value="modify pom" />
-    <option name="LAST_COMMIT_MESSAGE" value="modify pom" />
+    <MESSAGE value="concurrent modification exception" />
+    <option name="LAST_COMMIT_MESSAGE" value="concurrent modification exception" />
   </component>
 </project>
