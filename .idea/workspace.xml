@@ -22,9 +22,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="add doc">
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="format">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJava/tools/Euler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJava/tools/Euler.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,7 +80,7 @@
       <recent name="org.nathan.AlgorithmsJava.structures" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="JUnit.All in AlgorithmsJava">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="AlgorithmsJava" />
@@ -153,8 +152,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.All in AlgorithmsJava" />
+        <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.RedBlackTreeTest.functionsTest" />
         <item itemvalue="JUnit.MinHeapTest.modificationTest" />
         <item itemvalue="JUnit.StringAutomataTest" />
@@ -255,14 +254,8 @@
       <workItem from="1616635863578" duration="2769000" />
       <workItem from="1616638668614" duration="878000" />
       <workItem from="1616672733795" duration="1617000" />
-      <workItem from="1616677434799" duration="3148000" />
-    </task>
-    <task id="LOCAL-00050" summary="MinHeapTest.java print before fail()">
-      <created>1611568256426</created>
-      <option name="number" value="00050" />
-      <option name="presentableId" value="LOCAL-00050" />
-      <option name="project" value="LOCAL" />
-      <updated>1611568256426</updated>
+      <workItem from="1616677434799" duration="3677000" />
+      <workItem from="1616682388793" duration="610000" />
     </task>
     <task id="LOCAL-00051" summary="reduce test problems size">
       <created>1612001980573</created>
@@ -600,7 +593,14 @@
       <option name="project" value="LOCAL" />
       <updated>1616642218526</updated>
     </task>
-    <option name="localTasksCounter" value="99" />
+    <task id="LOCAL-00099" summary="format">
+      <created>1616680598816</created>
+      <option name="number" value="00099" />
+      <option name="presentableId" value="LOCAL-00099" />
+      <option name="project" value="LOCAL" />
+      <updated>1616680598816</updated>
+    </task>
+    <option name="localTasksCounter" value="100" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -638,7 +638,6 @@
     <MESSAGE value="add type utils" />
     <MESSAGE value="Min Heap add unique check" />
     <MESSAGE value="fix MinHeapTest.java test bugs" />
-    <MESSAGE value="format" />
     <MESSAGE value="remove redundant functions" />
     <MESSAGE value="refactor" />
     <MESSAGE value="add new utils" />
@@ -654,6 +653,7 @@
     <MESSAGE value="add SieveOfAtkin" />
     <MESSAGE value="modify readme and rename project" />
     <MESSAGE value="add doc" />
-    <option name="LAST_COMMIT_MESSAGE" value="add doc" />
+    <MESSAGE value="format" />
+    <option name="LAST_COMMIT_MESSAGE" value="format" />
   </component>
 </project>
