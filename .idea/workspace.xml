@@ -22,7 +22,18 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="rename packages" />
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="rename packages">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJava/tools/Euler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_code_findbugs_jsr305_3_0_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_errorprone_error_prone_annotations_2_3_4.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_guava_failureaccess_1_0_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_guava_guava_30_1_jre.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_guava_listenablefuture_9999_0_empty_to_avoid_conflict_with_guava.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_j2objc_j2objc_annotations_1_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_checkerframework_checker_qual_3_5_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -34,8 +45,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -51,7 +62,7 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/main/java/org/nathan/algorithms_java/structures/FibonacciHeap.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJava/structures/FibonacciHeap.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="1frQbN17KMrYLWgoSMIuH1vYjss" />
   <component name="ProjectViewState">
@@ -68,7 +79,7 @@
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.28315789" />
     <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.runner" />
@@ -78,20 +89,10 @@
       <recent name="org.nathan.AlgorithmsJava.structures" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.All in AlgorithmsJava">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="IntroductionToAlgorithmsInJava" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SizeOf" type="Application" factoryName="Application">
-      <option name="ALTERNATIVE_JRE_PATH" value="AdoptOpenJDK" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
-      <option name="MAIN_CLASS_NAME" value="Main" />
-      <module name="IntroductionToAlgorithmsInJava" />
-      <option name="PROGRAM_PARAMETERS" value="-javaagent:ObjectSizeFetcherAgent.jar C" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -152,7 +153,6 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.SizeOf" />
       <item itemvalue="Application.Main" />
       <item itemvalue="JUnit.All in AlgorithmsJava" />
       <item itemvalue="JUnit.MinHeapTest.modificationTest" />
@@ -161,8 +161,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.All in AlgorithmsJava" />
         <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.All in AlgorithmsJava" />
         <item itemvalue="JUnit.RedBlackTreeTest.functionsTest" />
         <item itemvalue="JUnit.MinHeapTest.modificationTest" />
         <item itemvalue="JUnit.StringAutomataTest" />
@@ -252,13 +252,15 @@
       <workItem from="1615357828739" duration="1997000" />
       <workItem from="1615377100762" duration="30000" />
       <workItem from="1615377159900" duration="910000" />
-    </task>
-    <task id="LOCAL-00046" summary="DisjointSet.java far better implementation!">
-      <created>1611461436982</created>
-      <option name="number" value="00046" />
-      <option name="presentableId" value="LOCAL-00046" />
-      <option name="project" value="LOCAL" />
-      <updated>1611461436982</updated>
+      <workItem from="1615380357908" duration="111000" />
+      <workItem from="1615449710892" duration="7000" />
+      <workItem from="1615950241471" duration="577000" />
+      <workItem from="1616031143689" duration="43000" />
+      <workItem from="1616031257102" duration="185000" />
+      <workItem from="1616587340514" duration="1089000" />
+      <workItem from="1616593959947" duration="39000" />
+      <workItem from="1616634971399" duration="12000" />
+      <workItem from="1616635863578" duration="2467000" />
     </task>
     <task id="LOCAL-00047" summary="reformat all">
       <created>1611461740390</created>
@@ -596,7 +598,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615380326959</updated>
     </task>
-    <option name="localTasksCounter" value="95" />
+    <task id="LOCAL-00095" summary="rename packages">
+      <created>1615380402695</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1615380402695</updated>
+    </task>
+    <option name="localTasksCounter" value="96" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
