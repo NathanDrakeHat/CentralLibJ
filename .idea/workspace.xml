@@ -22,9 +22,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="add SieveOfAtkin">
-      <change beforePath="$PROJECT_DIR$/IntroductionToAlgorithmsInJava.iml" beforeDir="false" afterPath="$PROJECT_DIR$/AlgorithmsJava.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="modify readme and rename project">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJava/tools/Euler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJava/tools/Euler.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,7 +66,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="add_unversioned_files" value="$PROJECT_DIR$/src/main/java/Main.java" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../LeetcodeJava" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -253,13 +253,7 @@
       <workItem from="1616593959947" duration="39000" />
       <workItem from="1616634971399" duration="12000" />
       <workItem from="1616635863578" duration="2769000" />
-    </task>
-    <task id="LOCAL-00048" summary="fix MinHeap.java bugs and add new methods">
-      <created>1611565275846</created>
-      <option name="number" value="00048" />
-      <option name="presentableId" value="LOCAL-00048" />
-      <option name="project" value="LOCAL" />
-      <updated>1611565275846</updated>
+      <workItem from="1616638668614" duration="798000" />
     </task>
     <task id="LOCAL-00049" summary="clean">
       <created>1611566208306</created>
@@ -597,7 +591,14 @@
       <option name="project" value="LOCAL" />
       <updated>1616638469005</updated>
     </task>
-    <option name="localTasksCounter" value="97" />
+    <task id="LOCAL-00097" summary="modify readme and rename project">
+      <created>1616638705579</created>
+      <option name="number" value="00097" />
+      <option name="presentableId" value="LOCAL-00097" />
+      <option name="project" value="LOCAL" />
+      <updated>1616638705580</updated>
+    </task>
+    <option name="localTasksCounter" value="98" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -626,7 +627,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="set private, add exegesis" />
     <MESSAGE value="remove abstract and generic type, almost perfect implementation in DisjointSet.java" />
     <MESSAGE value="fix MinHeap bugs" />
     <MESSAGE value="fix small problems, all test pass" />
@@ -651,6 +651,7 @@
     <MESSAGE value="concurrent modification exception" />
     <MESSAGE value="rename packages" />
     <MESSAGE value="add SieveOfAtkin" />
-    <option name="LAST_COMMIT_MESSAGE" value="add SieveOfAtkin" />
+    <MESSAGE value="modify readme and rename project" />
+    <option name="LAST_COMMIT_MESSAGE" value="modify readme and rename project" />
   </component>
 </project>

@@ -8,8 +8,8 @@ import java.util.List;
  */
 public class Euler{
     /**
-     *
-     * @param limit upper limit
+     * Get prime numbers below limit
+     * @param limit int upper limit
      * @return list of primes below limit
      */
     public static List<Long> SieveOfAtkin(int limit){
