@@ -22,7 +22,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="modify readme and rename project">
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="add doc">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJava/tools/Euler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJava/tools/Euler.java" afterDir="false" />
     </list>
@@ -71,7 +71,7 @@
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.28315789" />
     <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.runner" />
@@ -253,14 +253,9 @@
       <workItem from="1616593959947" duration="39000" />
       <workItem from="1616634971399" duration="12000" />
       <workItem from="1616635863578" duration="2769000" />
-      <workItem from="1616638668614" duration="798000" />
-    </task>
-    <task id="LOCAL-00049" summary="clean">
-      <created>1611566208306</created>
-      <option name="number" value="00049" />
-      <option name="presentableId" value="LOCAL-00049" />
-      <option name="project" value="LOCAL" />
-      <updated>1611566208306</updated>
+      <workItem from="1616638668614" duration="878000" />
+      <workItem from="1616672733795" duration="1617000" />
+      <workItem from="1616677434799" duration="3148000" />
     </task>
     <task id="LOCAL-00050" summary="MinHeapTest.java print before fail()">
       <created>1611568256426</created>
@@ -598,7 +593,14 @@
       <option name="project" value="LOCAL" />
       <updated>1616638705580</updated>
     </task>
-    <option name="localTasksCounter" value="98" />
+    <task id="LOCAL-00098" summary="add doc">
+      <created>1616642218526</created>
+      <option name="number" value="00098" />
+      <option name="presentableId" value="LOCAL-00098" />
+      <option name="project" value="LOCAL" />
+      <updated>1616642218526</updated>
+    </task>
+    <option name="localTasksCounter" value="99" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -627,7 +629,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="remove abstract and generic type, almost perfect implementation in DisjointSet.java" />
     <MESSAGE value="fix MinHeap bugs" />
     <MESSAGE value="fix small problems, all test pass" />
     <MESSAGE value="add test utils" />
@@ -652,6 +653,7 @@
     <MESSAGE value="rename packages" />
     <MESSAGE value="add SieveOfAtkin" />
     <MESSAGE value="modify readme and rename project" />
-    <option name="LAST_COMMIT_MESSAGE" value="modify readme and rename project" />
+    <MESSAGE value="add doc" />
+    <option name="LAST_COMMIT_MESSAGE" value="add doc" />
   </component>
 </project>
