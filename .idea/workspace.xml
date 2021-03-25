@@ -22,17 +22,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="rename packages">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJava/tools/Euler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_code_findbugs_jsr305_3_0_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_errorprone_error_prone_annotations_2_3_4.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_guava_failureaccess_1_0_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_guava_guava_30_1_jre.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_guava_listenablefuture_9999_0_empty_to_avoid_conflict_with_guava.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_j2objc_j2objc_annotations_1_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_checkerframework_checker_qual_3_5_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="add SieveOfAtkin">
+      <change beforePath="$PROJECT_DIR$/IntroductionToAlgorithmsInJava.iml" beforeDir="false" afterPath="$PROJECT_DIR$/AlgorithmsJava.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,13 +84,13 @@
   <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
-      <module name="IntroductionToAlgorithmsInJava" />
+      <module name="AlgorithmsJava" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration name="All in AlgorithmsJava" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="IntroductionToAlgorithmsInJava" />
+      <module name="AlgorithmsJava" />
       <option name="PACKAGE_NAME" value="" />
       <option name="TEST_OBJECT" value="package" />
       <method v="2">
@@ -106,7 +98,7 @@
       </method>
     </configuration>
     <configuration name="MinHeapTest.modificationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="IntroductionToAlgorithmsInJava" />
+      <module name="AlgorithmsJava" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="org.nathan.algorithmsJava.structures.*" />
@@ -122,7 +114,7 @@
       </method>
     </configuration>
     <configuration name="RedBlackTreeTest.functionsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="IntroductionToAlgorithmsInJava" />
+      <module name="AlgorithmsJava" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="org.nathan.algorithmsJava.structures.*" />
@@ -138,7 +130,7 @@
       </method>
     </configuration>
     <configuration name="StringAutomataTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="IntroductionToAlgorithmsInJava" />
+      <module name="AlgorithmsJava" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="org.nathan.algorithmsJava.stringMatching.*" />
@@ -260,14 +252,7 @@
       <workItem from="1616587340514" duration="1089000" />
       <workItem from="1616593959947" duration="39000" />
       <workItem from="1616634971399" duration="12000" />
-      <workItem from="1616635863578" duration="2467000" />
-    </task>
-    <task id="LOCAL-00047" summary="reformat all">
-      <created>1611461740390</created>
-      <option name="number" value="00047" />
-      <option name="presentableId" value="LOCAL-00047" />
-      <option name="project" value="LOCAL" />
-      <updated>1611461740390</updated>
+      <workItem from="1616635863578" duration="2769000" />
     </task>
     <task id="LOCAL-00048" summary="fix MinHeap.java bugs and add new methods">
       <created>1611565275846</created>
@@ -605,7 +590,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615380402695</updated>
     </task>
-    <option name="localTasksCounter" value="96" />
+    <task id="LOCAL-00096" summary="add SieveOfAtkin">
+      <created>1616638469004</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1616638469005</updated>
+    </task>
+    <option name="localTasksCounter" value="97" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -634,7 +626,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="big step, remove DisjointSet.java type cast" />
     <MESSAGE value="set private, add exegesis" />
     <MESSAGE value="remove abstract and generic type, almost perfect implementation in DisjointSet.java" />
     <MESSAGE value="fix MinHeap bugs" />
@@ -659,6 +650,7 @@
     <MESSAGE value="modify pom" />
     <MESSAGE value="concurrent modification exception" />
     <MESSAGE value="rename packages" />
-    <option name="LAST_COMMIT_MESSAGE" value="rename packages" />
+    <MESSAGE value="add SieveOfAtkin" />
+    <option name="LAST_COMMIT_MESSAGE" value="add SieveOfAtkin" />
   </component>
 </project>
