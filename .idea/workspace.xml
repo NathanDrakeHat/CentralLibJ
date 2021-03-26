@@ -22,8 +22,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="format">
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="project structure">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJava/tools/Euler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJava/tools/Euler.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +81,7 @@
       <recent name="org.nathan.AlgorithmsJava.structures" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.All in AlgorithmsJava">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="AlgorithmsJava" />
@@ -152,8 +153,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.All in AlgorithmsJava" />
         <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.All in AlgorithmsJava" />
         <item itemvalue="JUnit.RedBlackTreeTest.functionsTest" />
         <item itemvalue="JUnit.MinHeapTest.modificationTest" />
         <item itemvalue="JUnit.StringAutomataTest" />
@@ -255,14 +256,10 @@
       <workItem from="1616638668614" duration="878000" />
       <workItem from="1616672733795" duration="1617000" />
       <workItem from="1616677434799" duration="3677000" />
-      <workItem from="1616682388793" duration="610000" />
-    </task>
-    <task id="LOCAL-00051" summary="reduce test problems size">
-      <created>1612001980573</created>
-      <option name="number" value="00051" />
-      <option name="presentableId" value="LOCAL-00051" />
-      <option name="project" value="LOCAL" />
-      <updated>1612001980573</updated>
+      <workItem from="1616682388793" duration="841000" />
+      <workItem from="1616721378144" duration="1611000" />
+      <workItem from="1616725206489" duration="3410000" />
+      <workItem from="1616742109294" duration="1283000" />
     </task>
     <task id="LOCAL-00052" summary="big step, remove DisjointSet.java type cast">
       <created>1612021011985</created>
@@ -600,7 +597,14 @@
       <option name="project" value="LOCAL" />
       <updated>1616680598816</updated>
     </task>
-    <option name="localTasksCounter" value="100" />
+    <task id="LOCAL-00100" summary="project structure">
+      <created>1616683021062</created>
+      <option name="number" value="00100" />
+      <option name="presentableId" value="LOCAL-00100" />
+      <option name="project" value="LOCAL" />
+      <updated>1616683021062</updated>
+    </task>
+    <option name="localTasksCounter" value="101" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -629,7 +633,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fix MinHeap bugs" />
     <MESSAGE value="fix small problems, all test pass" />
     <MESSAGE value="add test utils" />
     <MESSAGE value="add gson" />
@@ -654,6 +657,7 @@
     <MESSAGE value="modify readme and rename project" />
     <MESSAGE value="add doc" />
     <MESSAGE value="format" />
-    <option name="LAST_COMMIT_MESSAGE" value="format" />
+    <MESSAGE value="project structure" />
+    <option name="LAST_COMMIT_MESSAGE" value="project structure" />
   </component>
 </project>
