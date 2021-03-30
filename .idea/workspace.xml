@@ -22,8 +22,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="project structure">
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="getter">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJava/graph/SSShortestPath.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJava/graph/SSShortestPath.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -260,13 +261,7 @@
       <workItem from="1616725206489" duration="3410000" />
       <workItem from="1616742109294" duration="1684000" />
       <workItem from="1616899170914" duration="611000" />
-    </task>
-    <task id="LOCAL-00053" summary="set private, add exegesis">
-      <created>1612021589993</created>
-      <option name="number" value="00053" />
-      <option name="presentableId" value="LOCAL-00053" />
-      <option name="project" value="LOCAL" />
-      <updated>1612021589993</updated>
+      <workItem from="1617093259441" duration="1026000" />
     </task>
     <task id="LOCAL-00054" summary="remove abstract and generic type, almost perfect implementation in DisjointSet.java">
       <created>1612023845635</created>
@@ -604,7 +599,14 @@
       <option name="project" value="LOCAL" />
       <updated>1616743586547</updated>
     </task>
-    <option name="localTasksCounter" value="102" />
+    <task id="LOCAL-00102" summary="getter">
+      <created>1617093458290</created>
+      <option name="number" value="00102" />
+      <option name="presentableId" value="LOCAL-00102" />
+      <option name="project" value="LOCAL" />
+      <updated>1617093458290</updated>
+    </task>
+    <option name="localTasksCounter" value="103" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -633,7 +635,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add test utils" />
     <MESSAGE value="add gson" />
     <MESSAGE value="change gitignore" />
     <MESSAGE value="remove serialize failed cases" />
@@ -658,6 +659,7 @@
     <MESSAGE value="format" />
     <MESSAGE value="project structure" />
     <MESSAGE value="move Euler.java to new project" />
-    <option name="LAST_COMMIT_MESSAGE" value="move Euler.java to new project" />
+    <MESSAGE value="getter" />
+    <option name="LAST_COMMIT_MESSAGE" value="getter" />
   </component>
 </project>

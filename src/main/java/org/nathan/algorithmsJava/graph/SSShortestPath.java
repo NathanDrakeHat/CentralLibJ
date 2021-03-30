@@ -54,7 +54,7 @@ public final class SSShortestPath {
         }
     }
 
-    // shortest paths of directed acyclic org.nathan.Algorithms.graph
+    // shortest paths of directed acyclic graph
     public static <T>
     LinkedGraph<BFSVertex<T>> DAG(@NotNull LinkedGraph<DFSVertex<BFSVertex<T>>> DFS_Linked_graph,
                                   @NotNull LinkedGraph<BFSVertex<T>> BFS_Linked_graph,
