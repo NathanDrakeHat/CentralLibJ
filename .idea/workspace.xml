@@ -24,7 +24,6 @@
   <component name="ChangeListManager">
     <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="project structure">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJava/tools/Euler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJava/tools/Euler.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -259,14 +258,8 @@
       <workItem from="1616682388793" duration="841000" />
       <workItem from="1616721378144" duration="1611000" />
       <workItem from="1616725206489" duration="3410000" />
-      <workItem from="1616742109294" duration="1283000" />
-    </task>
-    <task id="LOCAL-00052" summary="big step, remove DisjointSet.java type cast">
-      <created>1612021011985</created>
-      <option name="number" value="00052" />
-      <option name="presentableId" value="LOCAL-00052" />
-      <option name="project" value="LOCAL" />
-      <updated>1612021011985</updated>
+      <workItem from="1616742109294" duration="1684000" />
+      <workItem from="1616899170914" duration="611000" />
     </task>
     <task id="LOCAL-00053" summary="set private, add exegesis">
       <created>1612021589993</created>
@@ -604,7 +597,14 @@
       <option name="project" value="LOCAL" />
       <updated>1616683021062</updated>
     </task>
-    <option name="localTasksCounter" value="101" />
+    <task id="LOCAL-00101" summary="move Euler.java to new project">
+      <created>1616743586546</created>
+      <option name="number" value="00101" />
+      <option name="presentableId" value="LOCAL-00101" />
+      <option name="project" value="LOCAL" />
+      <updated>1616743586547</updated>
+    </task>
+    <option name="localTasksCounter" value="102" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -633,7 +633,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fix small problems, all test pass" />
     <MESSAGE value="add test utils" />
     <MESSAGE value="add gson" />
     <MESSAGE value="change gitignore" />
@@ -658,6 +657,7 @@
     <MESSAGE value="add doc" />
     <MESSAGE value="format" />
     <MESSAGE value="project structure" />
-    <option name="LAST_COMMIT_MESSAGE" value="project structure" />
+    <MESSAGE value="move Euler.java to new project" />
+    <option name="LAST_COMMIT_MESSAGE" value="move Euler.java to new project" />
   </component>
 </project>

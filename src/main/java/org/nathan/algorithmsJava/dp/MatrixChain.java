@@ -7,7 +7,7 @@ import java.util.List;
 final class MatrixChain {
     // optimal matrix multiply complexity
     public static class MatrixChainResult {
-        public int min_cost;
+        int min_cost;
         private PairNode res;
 
         static class PairNode {
@@ -22,6 +22,10 @@ final class MatrixChain {
             PairNode(int a) {
                 this.a = a;
             }
+        }
+
+        public int getMinCost(){
+            return min_cost;
         }
 
         private void walk(PairNode p, StringBuilder res) {
