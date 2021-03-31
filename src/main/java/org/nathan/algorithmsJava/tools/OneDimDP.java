@@ -1,10 +1,13 @@
-package org.nathan.algorithmsJava.structures;
+package org.nathan.algorithmsJava.tools;
 
 
-public final class DPMatrix<V> {//matrix for dynamic programming problem
+public final class OneDimDP<V> {//matrix for dynamic programming problem
     private final Object[][] matrix;
 
-    public DPMatrix(int size) {
+    public final int Size;
+
+    public OneDimDP(int size) {
+        Size = size;
         matrix = new Object[size][];
         for (int i = 0; i < size; i++) {
             matrix[i] = new Object[size - i];
