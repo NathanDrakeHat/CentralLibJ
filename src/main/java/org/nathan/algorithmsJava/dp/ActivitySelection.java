@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 final class ActivitySelection {
     // greedy algorithm
-    static class Node {
+    public static class Node {
         private final int val;
         private Node next;
 
@@ -13,16 +13,16 @@ final class ActivitySelection {
             this.next = null;
         }
 
-        public Node getNext() {
+        Node getNext() {
             return this.next;
         }
 
-        public Node setNext(Node n) {
+        Node setNext(Node n) {
             this.next = n;
             return this;
         }
 
-        public Node setAndReturnNext(Node n) {
+        Node setAndReturnNext(Node n) {
             setNext(n);
             return getNext();
         }
@@ -58,6 +58,12 @@ final class ActivitySelection {
         return new Node(m).setNext(recursiveActivitySelector(s, f, m));
     }
 
+    /**
+     * select end earlier task
+     * @param s start
+     * @param f finish
+     * @return res
+     */
     public static Node greedyActivitySelector(int[] s, int[] f) {
         int len = s.length;
         Node ptr = new Node(0);

@@ -22,10 +22,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="fix comment">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJava/structures/DPMatrix.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJava/tools/DPMatrix.java" afterDir="false" />
-    </list>
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="OneDimDP" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -264,13 +261,7 @@
       <workItem from="1617093259441" duration="1047000" />
       <workItem from="1617107219616" duration="2166000" />
       <workItem from="1617191004202" duration="646000" />
-    </task>
-    <task id="LOCAL-00055" summary="fix MinHeap bugs">
-      <created>1612087534268</created>
-      <option name="number" value="00055" />
-      <option name="presentableId" value="LOCAL-00055" />
-      <option name="project" value="LOCAL" />
-      <updated>1612087534268</updated>
+      <workItem from="1617193872334" duration="102000" />
     </task>
     <task id="LOCAL-00056" summary="fix small problems, all test pass">
       <created>1612095411960</created>
@@ -608,7 +599,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617094597216</updated>
     </task>
-    <option name="localTasksCounter" value="104" />
+    <task id="LOCAL-00104" summary="OneDimDP">
+      <created>1617193929954</created>
+      <option name="number" value="00104" />
+      <option name="presentableId" value="LOCAL-00104" />
+      <option name="project" value="LOCAL" />
+      <updated>1617193929954</updated>
+    </task>
+    <option name="localTasksCounter" value="105" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -637,7 +635,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="change gitignore" />
     <MESSAGE value="remove serialize failed cases" />
     <MESSAGE value="add type utils" />
     <MESSAGE value="Min Heap add unique check" />
@@ -662,6 +659,7 @@
     <MESSAGE value="move Euler.java to new project" />
     <MESSAGE value="getter" />
     <MESSAGE value="fix comment" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix comment" />
+    <MESSAGE value="OneDimDP" />
+    <option name="LAST_COMMIT_MESSAGE" value="OneDimDP" />
   </component>
 </project>
