@@ -5,4 +5,5 @@ src/main/java/Main.java
 /out/
 *.txt
 out/
+*.ps1
 
