@@ -22,8 +22,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="comment and modifier">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="add ignore">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -74,7 +73,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.28315789" />
-    <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.runner" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
@@ -129,27 +128,14 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="StringAutomataTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="AlgorithmsJava" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.nathan.algorithmsJava.stringMatching.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.nathan.algorithmsJava.stringMatching" />
-      <option name="MAIN_CLASS_NAME" value="org.nathan.algorithmsJava.stringMatching.StringAutomataTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
+    <configuration name="push.ps1" type="PowerShellRunType" factoryName="PowerShell" temporary="true" scriptUrl="$PROJECT_DIR$/push.ps1" workingDirectory="C:\Users\Nathan\HOME">
+      <method v="2" />
     </configuration>
     <list>
       <item itemvalue="Application.Main" />
       <item itemvalue="JUnit.All in AlgorithmsJava" />
       <item itemvalue="JUnit.MinHeapTest.modificationTest" />
       <item itemvalue="JUnit.RedBlackTreeTest.functionsTest" />
-      <item itemvalue="JUnit.StringAutomataTest" />
     </list>
     <recent_temporary>
       <list>
@@ -157,7 +143,6 @@
         <item itemvalue="JUnit.All in AlgorithmsJava" />
         <item itemvalue="JUnit.RedBlackTreeTest.functionsTest" />
         <item itemvalue="JUnit.MinHeapTest.modificationTest" />
-        <item itemvalue="JUnit.StringAutomataTest" />
       </list>
     </recent_temporary>
   </component>
@@ -266,13 +251,7 @@
       <workItem from="1617191004202" duration="646000" />
       <workItem from="1617193872334" duration="102000" />
       <workItem from="1617198467644" duration="404000" />
-    </task>
-    <task id="LOCAL-00057" summary="fix small problems, all test pass">
-      <created>1612095462395</created>
-      <option name="number" value="00057" />
-      <option name="presentableId" value="LOCAL-00057" />
-      <option name="project" value="LOCAL" />
-      <updated>1612095462395</updated>
+      <workItem from="1617198893271" duration="97000" />
     </task>
     <task id="LOCAL-00058" summary="add test utils">
       <created>1612157085450</created>
@@ -610,7 +589,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617198749423</updated>
     </task>
-    <option name="localTasksCounter" value="106" />
+    <task id="LOCAL-00106" summary="add ignore">
+      <created>1617198930732</created>
+      <option name="number" value="00106" />
+      <option name="presentableId" value="LOCAL-00106" />
+      <option name="project" value="LOCAL" />
+      <updated>1617198930733</updated>
+    </task>
+    <option name="localTasksCounter" value="107" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -639,7 +625,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add type utils" />
     <MESSAGE value="Min Heap add unique check" />
     <MESSAGE value="fix MinHeapTest.java test bugs" />
     <MESSAGE value="remove redundant functions" />
@@ -664,6 +649,7 @@
     <MESSAGE value="fix comment" />
     <MESSAGE value="OneDimDP" />
     <MESSAGE value="comment and modifier" />
-    <option name="LAST_COMMIT_MESSAGE" value="comment and modifier" />
+    <MESSAGE value="add ignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="add ignore" />
   </component>
 </project>
