@@ -80,10 +80,21 @@
       <recent name="org.nathan.AlgorithmsJava.structures" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="Batch.push">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="AlgorithmsJava" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="push" type="BatchConfigurationType" factoryName="Batch" temporary="true">
+      <module name="AlgorithmsJava" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="WORKING_DIRECTORY" value="C:\Users\Nathan\IdeaProjects\AlgorithmsJava" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SCRIPT_NAME" value="push.bat" />
+      <option name="PARAMETERS" value="" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -128,17 +139,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="push.ps1" type="PowerShellRunType" factoryName="PowerShell" temporary="true" scriptUrl="$PROJECT_DIR$/push.ps1" workingDirectory="C:\Users\Nathan\HOME">
-      <method v="2" />
-    </configuration>
     <list>
       <item itemvalue="Application.Main" />
       <item itemvalue="JUnit.All in AlgorithmsJava" />
       <item itemvalue="JUnit.MinHeapTest.modificationTest" />
       <item itemvalue="JUnit.RedBlackTreeTest.functionsTest" />
+      <item itemvalue="Batch.push" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Batch.push" />
         <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.All in AlgorithmsJava" />
         <item itemvalue="JUnit.RedBlackTreeTest.functionsTest" />
