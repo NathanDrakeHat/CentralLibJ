@@ -14,10 +14,10 @@ public class DisjointSet {
      * @return identifier
      */
     public static DisjointSet findSet(DisjointSet x) {
-        if (x != x.getParent()) {
-            x.setParent(findSet(x.getParent()));
+        if (x != x.parent) {
+            x.parent = findSet(x.parent);
         }
-        return x.getParent();
+        return x.parent;
     }
 
     public static  void union(DisjointSet a, DisjointSet b) {
@@ -25,30 +25,14 @@ public class DisjointSet {
     }
 
     private static  void link(DisjointSet x, DisjointSet y) {
-        if (x.getRank() > y.getRank()) {
-            y.setParent(x);
+        if (x.rank > y.rank) {
+            y.parent = x;
         }
         else {
-            x.setParent(y);
-            if (x.getRank() == y.getRank()) {
-                y.setRank(y.getRank() + 1);
+            x.parent = y;
+            if (x.rank == y.rank) {
+                y.rank = y.rank + 1;
             }
         }
-    }
-
-    private DisjointSet getParent() {
-        return parent;
-    }
-
-    private void setParent(DisjointSet root) {
-        parent = root;
-    }
-
-    private int getRank() {
-        return rank;
-    }
-
-    private void setRank(int rank) {
-        this.rank = rank;
     }
 }

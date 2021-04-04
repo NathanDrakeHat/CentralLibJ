@@ -22,7 +22,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="add ignore">
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="modify ignore">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -80,7 +80,7 @@
       <recent name="org.nathan.AlgorithmsJava.structures" />
     </key>
   </component>
-  <component name="RunManager" selected="Batch.push">
+  <component name="RunManager" selected="JUnit.All in AlgorithmsJava">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="AlgorithmsJava" />
@@ -141,16 +141,16 @@
     </configuration>
     <list>
       <item itemvalue="Application.Main" />
+      <item itemvalue="Batch.push" />
       <item itemvalue="JUnit.All in AlgorithmsJava" />
       <item itemvalue="JUnit.MinHeapTest.modificationTest" />
       <item itemvalue="JUnit.RedBlackTreeTest.functionsTest" />
-      <item itemvalue="Batch.push" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.All in AlgorithmsJava" />
         <item itemvalue="Batch.push" />
         <item itemvalue="Application.Main" />
-        <item itemvalue="JUnit.All in AlgorithmsJava" />
         <item itemvalue="JUnit.RedBlackTreeTest.functionsTest" />
         <item itemvalue="JUnit.MinHeapTest.modificationTest" />
       </list>
@@ -262,20 +262,9 @@
       <workItem from="1617193872334" duration="102000" />
       <workItem from="1617198467644" duration="404000" />
       <workItem from="1617198893271" duration="97000" />
-    </task>
-    <task id="LOCAL-00058" summary="add test utils">
-      <created>1612157085450</created>
-      <option name="number" value="00058" />
-      <option name="presentableId" value="LOCAL-00058" />
-      <option name="project" value="LOCAL" />
-      <updated>1612157085450</updated>
-    </task>
-    <task id="LOCAL-00059" summary="format">
-      <created>1612166400591</created>
-      <option name="number" value="00059" />
-      <option name="presentableId" value="LOCAL-00059" />
-      <option name="project" value="LOCAL" />
-      <updated>1612166400591</updated>
+      <workItem from="1617199004412" duration="330000" />
+      <workItem from="1617243972212" duration="128000" />
+      <workItem from="1617498827341" duration="410000" />
     </task>
     <task id="LOCAL-00060" summary="add gson">
       <created>1612189717106</created>
@@ -606,7 +595,21 @@
       <option name="project" value="LOCAL" />
       <updated>1617198930733</updated>
     </task>
-    <option name="localTasksCounter" value="107" />
+    <task id="LOCAL-00107" summary="add ignore">
+      <created>1617199057722</created>
+      <option name="number" value="00107" />
+      <option name="presentableId" value="LOCAL-00107" />
+      <option name="project" value="LOCAL" />
+      <updated>1617199057723</updated>
+    </task>
+    <task id="LOCAL-00108" summary="modify ignore">
+      <created>1617199209551</created>
+      <option name="number" value="00108" />
+      <option name="presentableId" value="LOCAL-00108" />
+      <option name="project" value="LOCAL" />
+      <updated>1617199209551</updated>
+    </task>
+    <option name="localTasksCounter" value="109" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -635,7 +638,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Min Heap add unique check" />
     <MESSAGE value="fix MinHeapTest.java test bugs" />
     <MESSAGE value="remove redundant functions" />
     <MESSAGE value="refactor" />
@@ -660,6 +662,7 @@
     <MESSAGE value="OneDimDP" />
     <MESSAGE value="comment and modifier" />
     <MESSAGE value="add ignore" />
-    <option name="LAST_COMMIT_MESSAGE" value="add ignore" />
+    <MESSAGE value="modify ignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="modify ignore" />
   </component>
 </project>
