@@ -22,10 +22,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="remove getter setter in DisjointSet.java">
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="improve api">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJava/graph/MinSpanTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJava/graph/MinSpanTree.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJava/structures/DisjointSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJava/structures/DisjointSet.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +80,7 @@
       <recent name="org.nathan.AlgorithmsJava.structures" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.All in AlgorithmsJava">
+  <component name="RunManager" selected="JUnit.RankSearchTest.randomSelectCase1">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="AlgorithmsJava" />
@@ -109,17 +107,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MinHeapTest.modificationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="RankSearchTest.randomSelectCase1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AlgorithmsJava" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.nathan.algorithmsJava.tools.*" />
+          <option name="PATTERN" value="org.nathan.algorithmsJava.miscellaneous.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="org.nathan.algorithmsJava.structures" />
-      <option name="MAIN_CLASS_NAME" value="org.nathan.algorithmsJava.structures.MinHeapTest" />
-      <option name="METHOD_NAME" value="modificationTest" />
+      <option name="PACKAGE_NAME" value="org.nathan.algorithmsJava.miscellaneous" />
+      <option name="MAIN_CLASS_NAME" value="org.nathan.algorithmsJava.miscellaneous.RankSearchTest" />
+      <option name="METHOD_NAME" value="randomSelectCase1" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -145,16 +143,16 @@
       <item itemvalue="Application.Main" />
       <item itemvalue="Batch.push" />
       <item itemvalue="JUnit.All in AlgorithmsJava" />
-      <item itemvalue="JUnit.MinHeapTest.modificationTest" />
       <item itemvalue="JUnit.RedBlackTreeTest.functionsTest" />
+      <item itemvalue="JUnit.RankSearchTest.randomSelectCase1" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.RankSearchTest.randomSelectCase1" />
         <item itemvalue="JUnit.All in AlgorithmsJava" />
         <item itemvalue="Batch.push" />
         <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.RedBlackTreeTest.functionsTest" />
-        <item itemvalue="JUnit.MinHeapTest.modificationTest" />
       </list>
     </recent_temporary>
   </component>
@@ -268,14 +266,9 @@
       <workItem from="1617243972212" duration="128000" />
       <workItem from="1617498827341" duration="1744000" />
       <workItem from="1617503516889" duration="43000" />
-      <workItem from="1617503574028" duration="418000" />
-    </task>
-    <task id="LOCAL-00061" summary="format">
-      <created>1612201201005</created>
-      <option name="number" value="00061" />
-      <option name="presentableId" value="LOCAL-00061" />
-      <option name="project" value="LOCAL" />
-      <updated>1612201201006</updated>
+      <workItem from="1617503574028" duration="926000" />
+      <workItem from="1617504984710" duration="1239000" />
+      <workItem from="1617519641775" duration="860000" />
     </task>
     <task id="LOCAL-00062" summary="change gitignore">
       <created>1612346715395</created>
@@ -613,7 +606,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617499415032</updated>
     </task>
-    <option name="localTasksCounter" value="110" />
+    <task id="LOCAL-00110" summary="improve api">
+      <created>1617504257528</created>
+      <option name="number" value="00110" />
+      <option name="presentableId" value="LOCAL-00110" />
+      <option name="project" value="LOCAL" />
+      <updated>1617504257528</updated>
+    </task>
+    <option name="localTasksCounter" value="111" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -642,7 +642,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="remove redundant functions" />
     <MESSAGE value="refactor" />
     <MESSAGE value="add new utils" />
     <MESSAGE value="rename" />
@@ -667,6 +666,7 @@
     <MESSAGE value="add ignore" />
     <MESSAGE value="modify ignore" />
     <MESSAGE value="remove getter setter in DisjointSet.java" />
-    <option name="LAST_COMMIT_MESSAGE" value="remove getter setter in DisjointSet.java" />
+    <MESSAGE value="improve api" />
+    <option name="LAST_COMMIT_MESSAGE" value="improve api" />
   </component>
 </project>
