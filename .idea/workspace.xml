@@ -22,8 +22,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="modify ignore">
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="remove getter setter in DisjointSet.java">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJava/graph/MinSpanTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJava/graph/MinSpanTree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJava/structures/DisjointSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJava/structures/DisjointSet.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -264,14 +266,9 @@
       <workItem from="1617198893271" duration="97000" />
       <workItem from="1617199004412" duration="330000" />
       <workItem from="1617243972212" duration="128000" />
-      <workItem from="1617498827341" duration="410000" />
-    </task>
-    <task id="LOCAL-00060" summary="add gson">
-      <created>1612189717106</created>
-      <option name="number" value="00060" />
-      <option name="presentableId" value="LOCAL-00060" />
-      <option name="project" value="LOCAL" />
-      <updated>1612189717106</updated>
+      <workItem from="1617498827341" duration="1744000" />
+      <workItem from="1617503516889" duration="43000" />
+      <workItem from="1617503574028" duration="418000" />
     </task>
     <task id="LOCAL-00061" summary="format">
       <created>1612201201005</created>
@@ -609,7 +606,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617199209551</updated>
     </task>
-    <option name="localTasksCounter" value="109" />
+    <task id="LOCAL-00109" summary="remove getter setter in DisjointSet.java">
+      <created>1617499415032</created>
+      <option name="number" value="00109" />
+      <option name="presentableId" value="LOCAL-00109" />
+      <option name="project" value="LOCAL" />
+      <updated>1617499415032</updated>
+    </task>
+    <option name="localTasksCounter" value="110" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -638,7 +642,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fix MinHeapTest.java test bugs" />
     <MESSAGE value="remove redundant functions" />
     <MESSAGE value="refactor" />
     <MESSAGE value="add new utils" />
@@ -663,6 +666,7 @@
     <MESSAGE value="comment and modifier" />
     <MESSAGE value="add ignore" />
     <MESSAGE value="modify ignore" />
-    <option name="LAST_COMMIT_MESSAGE" value="modify ignore" />
+    <MESSAGE value="remove getter setter in DisjointSet.java" />
+    <option name="LAST_COMMIT_MESSAGE" value="remove getter setter in DisjointSet.java" />
   </component>
 </project>

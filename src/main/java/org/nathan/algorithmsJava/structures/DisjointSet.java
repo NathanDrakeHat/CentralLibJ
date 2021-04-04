@@ -13,15 +13,22 @@ public class DisjointSet {
      * @param x element
      * @return identifier
      */
-    public static DisjointSet findSet(DisjointSet x) {
+    private static DisjointSet findGroupId(DisjointSet x) {
         if (x != x.parent) {
-            x.parent = findSet(x.parent);
+            x.parent = findGroupId(x.parent);
         }
         return x.parent;
     }
 
-    public static  void union(DisjointSet a, DisjointSet b) {
-        link(findSet(a), findSet(b));
+    public DisjointSet findGroupId(){
+        if (this != this.parent) {
+            this.parent = findGroupId(this.parent);
+        }
+        return this.parent;
+    }
+
+    public void union(DisjointSet a) {
+        link(findGroupId(a), findGroupId());
     }
 
     private static  void link(DisjointSet x, DisjointSet y) {

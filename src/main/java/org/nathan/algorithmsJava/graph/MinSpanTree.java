@@ -4,7 +4,7 @@ import org.jetbrains.annotations.NotNull;
 import org.nathan.algorithmsJava.structures.DisjointSet;
 import org.nathan.algorithmsJava.structures.FibonacciHeap;
 import org.nathan.algorithmsJava.structures.MinHeap;
-import static org.nathan.algorithmsJava.structures.DisjointSet.*;
+
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashSet;
@@ -20,9 +20,9 @@ public final class MinSpanTree {
         for (var edge : edges_list) {
             var v1 = edge.getFormerVertex();
             var v2 = edge.getLaterVertex();
-            if (findSet(v1) != findSet(v2)) {
+            if (v1.findGroupId() != v2.findGroupId()) {
                 res.add(edge);
-                union(v1, v2);
+                v1.union(v2);
             }
         }
         return res;
