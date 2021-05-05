@@ -22,7 +22,12 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="improve api" />
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="improve api">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJava/tools/FunctionTimer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AlgorithmsJava.iml" beforeDir="false" afterPath="$PROJECT_DIR$/AlgorithmsJava.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -63,6 +68,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="add_unversioned_files" value="$PROJECT_DIR$/src/main/java/Main.java" />
+    <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -78,7 +84,7 @@
       <recent name="org.nathan.AlgorithmsJava.structures" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.RankSearchTest.randomSelectCase1">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="AlgorithmsJava" />
@@ -139,7 +145,6 @@
     </configuration>
     <list>
       <item itemvalue="Application.Main" />
-      <item itemvalue="Batch.push" />
       <item itemvalue="JUnit.All in AlgorithmsJava" />
       <item itemvalue="JUnit.RedBlackTreeTest.functionsTest" />
       <item itemvalue="JUnit.RankSearchTest.randomSelectCase1" />
@@ -148,7 +153,6 @@
       <list>
         <item itemvalue="JUnit.RankSearchTest.randomSelectCase1" />
         <item itemvalue="JUnit.All in AlgorithmsJava" />
-        <item itemvalue="Batch.push" />
         <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.RedBlackTreeTest.functionsTest" />
       </list>
@@ -267,14 +271,14 @@
       <workItem from="1617503574028" duration="926000" />
       <workItem from="1617504984710" duration="1239000" />
       <workItem from="1617519641775" duration="860000" />
-      <workItem from="1617524347922" duration="371000" />
-    </task>
-    <task id="LOCAL-00063" summary="format">
-      <created>1612360153366</created>
-      <option name="number" value="00063" />
-      <option name="presentableId" value="LOCAL-00063" />
-      <option name="project" value="LOCAL" />
-      <updated>1612360153367</updated>
+      <workItem from="1617524347922" duration="1791000" />
+      <workItem from="1617533013906" duration="42000" />
+      <workItem from="1618836580874" duration="298000" />
+      <workItem from="1618837327881" duration="21000" />
+      <workItem from="1619013577813" duration="1300000" />
+      <workItem from="1619428575117" duration="208000" />
+      <workItem from="1619444894607" duration="4000" />
+      <workItem from="1620218362128" duration="401000" />
     </task>
     <task id="LOCAL-00064" summary="remove serialize failed cases">
       <created>1612429733856</created>
@@ -612,7 +616,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617524601718</updated>
     </task>
-    <option name="localTasksCounter" value="112" />
+    <task id="LOCAL-00112" summary="improve api">
+      <created>1617524943775</created>
+      <option name="number" value="00112" />
+      <option name="presentableId" value="LOCAL-00112" />
+      <option name="project" value="LOCAL" />
+      <updated>1617524943775</updated>
+    </task>
+    <option name="localTasksCounter" value="113" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
