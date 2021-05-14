@@ -2,7 +2,7 @@ package org.nathan.algorithmsJava.structures;
 
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.nathan.algorithmsJava.tools.Utils.*;
+import static org.nathan.centralUtils.ArrayUtils.*;
 
 import org.junit.jupiter.api.Test;
 

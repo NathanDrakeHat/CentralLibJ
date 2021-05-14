@@ -1,7 +1,7 @@
 package org.nathan.algorithmsJava.structures;
 
 import org.jetbrains.annotations.NotNull;
-import org.nathan.algorithmsJava.tools.containers.Tuple;
+import org.nathan.centralUtils.containers.Tuple;
 
 import java.util.*;
 import java.util.function.BiConsumer;
@@ -461,7 +461,7 @@ public final class RedBlackTree<K, V> implements Iterable<Tuple<K, V>> {
     }
 
     @Override
-    public Iterator<Tuple<K, V>> iterator() {
+    public @NotNull Iterator<Tuple<K, V>> iterator() {
         return new BSTIterator();
     }
 

@@ -5,7 +5,6 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public final class RankSearch{
     private static int randPartition(int[] a, int start, int end){ // base case (end -start)
-        System.out.printf("%d,%d\n", start, end);
         int pivot_idx = ThreadLocalRandom.current().nextInt(start, end);
         var pivot = a[pivot_idx];
 

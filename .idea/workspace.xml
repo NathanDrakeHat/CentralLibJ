@@ -22,11 +22,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="improve api">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJava/tools/FunctionTimer.java" afterDir="false" />
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="add FunctionTimer">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AlgorithmsJava.iml" beforeDir="false" afterPath="$PROJECT_DIR$/AlgorithmsJava.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJava/miscellaneous/RankSearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJava/miscellaneous/RankSearch.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +82,7 @@
       <recent name="org.nathan.AlgorithmsJava.structures" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="JUnit.All in AlgorithmsJava">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="AlgorithmsJava" />
@@ -151,8 +149,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.RankSearchTest.randomSelectCase1" />
         <item itemvalue="JUnit.All in AlgorithmsJava" />
+        <item itemvalue="JUnit.RankSearchTest.randomSelectCase1" />
         <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.RedBlackTreeTest.functionsTest" />
       </list>
@@ -278,14 +276,10 @@
       <workItem from="1619013577813" duration="1300000" />
       <workItem from="1619428575117" duration="208000" />
       <workItem from="1619444894607" duration="4000" />
-      <workItem from="1620218362128" duration="401000" />
-    </task>
-    <task id="LOCAL-00064" summary="remove serialize failed cases">
-      <created>1612429733856</created>
-      <option name="number" value="00064" />
-      <option name="presentableId" value="LOCAL-00064" />
-      <option name="project" value="LOCAL" />
-      <updated>1612429733856</updated>
+      <workItem from="1620218362128" duration="1003000" />
+      <workItem from="1620734878943" duration="8000" />
+      <workItem from="1620876067867" duration="41000" />
+      <workItem from="1620876242644" duration="53000" />
     </task>
     <task id="LOCAL-00065" summary="add type utils">
       <created>1612432751158</created>
@@ -623,7 +617,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617524943775</updated>
     </task>
-    <option name="localTasksCounter" value="113" />
+    <task id="LOCAL-00113" summary="add FunctionTimer">
+      <created>1620218776322</created>
+      <option name="number" value="00113" />
+      <option name="presentableId" value="LOCAL-00113" />
+      <option name="project" value="LOCAL" />
+      <updated>1620218776322</updated>
+    </task>
+    <option name="localTasksCounter" value="114" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -652,7 +653,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="refactor" />
     <MESSAGE value="add new utils" />
     <MESSAGE value="rename" />
     <MESSAGE value="add" />
@@ -677,6 +677,7 @@
     <MESSAGE value="modify ignore" />
     <MESSAGE value="remove getter setter in DisjointSet.java" />
     <MESSAGE value="improve api" />
-    <option name="LAST_COMMIT_MESSAGE" value="improve api" />
+    <MESSAGE value="add FunctionTimer" />
+    <option name="LAST_COMMIT_MESSAGE" value="add FunctionTimer" />
   </component>
 </project>

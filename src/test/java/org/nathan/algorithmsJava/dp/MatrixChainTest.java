@@ -1,7 +1,7 @@
 package org.nathan.algorithmsJava.dp;
 
 import org.junit.jupiter.api.Test;
-import org.nathan.algorithmsJava.tools.containers.Tuple;
+import org.nathan.centralUtils.containers.Tuple;
 
 import java.util.List;
 
