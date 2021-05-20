@@ -14,7 +14,9 @@ public class ACMTest{
 
     @Test
     public void longFastMultiplyModTest(){
-        assertEquals(1, longFastMultiplyMod(3,7,20));
-        assertEquals(5, fastPowerMod(5,5,20));
+        assertEquals(1, longFastMultiplyMod1(3,7,20));
+        assertEquals(5, longFastMultiplyMod1(5,5,20));
+        assertEquals(1, longFastMultiplyMod2(3,7,20));
+        assertEquals(5, longFastMultiplyMod2(5,5,20));
     }
 }

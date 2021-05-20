@@ -22,11 +22,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="add central utils">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/nathan/acm/GlobalFunction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/nathan/acm/GlobalFunctionTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/acm/ACM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/acm/ACM.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/acm/ACMTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/acm/ACMTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,14 +77,21 @@
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.28315789" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="http.proxy" />
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="org.nathan.AlgorithmsJava.structures" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ACMTest.longFastMultiplyModTest">
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="AlgorithmsJava" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ACMTest.fastPowerModTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AlgorithmsJava" />
       <extension name="coverage">
@@ -125,22 +132,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RankSearchTest.randomSelectCase1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="AlgorithmsJava" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.nathan.algorithmsJava.miscellaneous.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.nathan.algorithmsJava.miscellaneous" />
-      <option name="MAIN_CLASS_NAME" value="org.nathan.algorithmsJava.miscellaneous.RankSearchTest" />
-      <option name="METHOD_NAME" value="randomSelectCase1" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="RedBlackTreeTest.functionsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AlgorithmsJava" />
       <extension name="coverage">
@@ -160,17 +151,17 @@
     <list>
       <item itemvalue="JUnit.All in AlgorithmsJava" />
       <item itemvalue="JUnit.RedBlackTreeTest.functionsTest" />
-      <item itemvalue="JUnit.RankSearchTest.randomSelectCase1" />
       <item itemvalue="JUnit.ACMTest.fastPowerModTest" />
       <item itemvalue="JUnit.ACMTest.longFastMultiplyModTest" />
+      <item itemvalue="Application.Main" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.ACMTest.longFastMultiplyModTest" />
         <item itemvalue="JUnit.ACMTest.fastPowerModTest" />
         <item itemvalue="JUnit.RedBlackTreeTest.functionsTest" />
         <item itemvalue="JUnit.All in AlgorithmsJava" />
-        <item itemvalue="JUnit.RankSearchTest.randomSelectCase1" />
       </list>
     </recent_temporary>
   </component>
@@ -303,21 +294,7 @@
       <workItem from="1621335430302" duration="1524000" />
       <workItem from="1621339083636" duration="1548000" />
       <workItem from="1621421408786" duration="300000" />
-      <workItem from="1621513457959" duration="1447000" />
-    </task>
-    <task id="LOCAL-00066" summary="Min Heap add unique check">
-      <created>1612434621891</created>
-      <option name="number" value="00066" />
-      <option name="presentableId" value="LOCAL-00066" />
-      <option name="project" value="LOCAL" />
-      <updated>1612434621891</updated>
-    </task>
-    <task id="LOCAL-00067" summary="fix MinHeapTest.java test bugs">
-      <created>1612434746224</created>
-      <option name="number" value="00067" />
-      <option name="presentableId" value="LOCAL-00067" />
-      <option name="project" value="LOCAL" />
-      <updated>1612434746224</updated>
+      <workItem from="1621513457959" duration="5797000" />
     </task>
     <task id="LOCAL-00068" summary="fix MinHeapTest.java test bugs">
       <created>1612434757894</created>
@@ -648,7 +625,21 @@
       <option name="project" value="LOCAL" />
       <updated>1620988606374</updated>
     </task>
-    <option name="localTasksCounter" value="115" />
+    <task id="LOCAL-00115" summary="add two acm func">
+      <created>1621514983235</created>
+      <option name="number" value="00115" />
+      <option name="presentableId" value="LOCAL-00115" />
+      <option name="project" value="LOCAL" />
+      <updated>1621514983235</updated>
+    </task>
+    <task id="LOCAL-00116" summary="save">
+      <created>1621515003907</created>
+      <option name="number" value="00116" />
+      <option name="presentableId" value="LOCAL-00116" />
+      <option name="project" value="LOCAL" />
+      <updated>1621515003907</updated>
+    </task>
+    <option name="localTasksCounter" value="117" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -677,8 +668,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="rename" />
-    <MESSAGE value="add" />
     <MESSAGE value="archive" />
     <MESSAGE value="rename project" />
     <MESSAGE value="reformat" />
@@ -702,6 +691,8 @@
     <MESSAGE value="improve api" />
     <MESSAGE value="add FunctionTimer" />
     <MESSAGE value="add central utils" />
-    <option name="LAST_COMMIT_MESSAGE" value="add central utils" />
+    <MESSAGE value="add two acm func" />
+    <MESSAGE value="save" />
+    <option name="LAST_COMMIT_MESSAGE" value="save" />
   </component>
 </project>
