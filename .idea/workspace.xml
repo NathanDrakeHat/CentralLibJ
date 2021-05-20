@@ -22,9 +22,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="add FunctionTimer">
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="add central utils">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/nathan/acm/GlobalFunction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/nathan/acm/GlobalFunctionTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJava/miscellaneous/RankSearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJava/miscellaneous/RankSearch.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,12 +69,12 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="add_unversioned_files" value="$PROJECT_DIR$/src/main/java/Main.java" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../LeetcodeJava" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.28315789" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
@@ -82,29 +84,43 @@
       <recent name="org.nathan.AlgorithmsJava.structures" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.All in AlgorithmsJava">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Main" />
-      <module name="AlgorithmsJava" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="push" type="BatchConfigurationType" factoryName="Batch" temporary="true">
-      <module name="AlgorithmsJava" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="WORKING_DIRECTORY" value="C:\Users\Nathan\IdeaProjects\AlgorithmsJava" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SCRIPT_NAME" value="push.bat" />
-      <option name="PARAMETERS" value="" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.GlobalFunctionTest.longFastMultiplyModTest">
     <configuration name="All in AlgorithmsJava" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AlgorithmsJava" />
       <option name="PACKAGE_NAME" value="" />
       <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GlobalFunctionTest.fastPowerModTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AlgorithmsJava" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.nathan.acm.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.nathan.acm" />
+      <option name="MAIN_CLASS_NAME" value="org.nathan.acm.GlobalFunctionTest" />
+      <option name="METHOD_NAME" value="fastPowerModTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GlobalFunctionTest.longFastMultiplyModTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AlgorithmsJava" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.nathan.acm.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.nathan.acm" />
+      <option name="MAIN_CLASS_NAME" value="org.nathan.acm.GlobalFunctionTest" />
+      <option name="METHOD_NAME" value="longFastMultiplyModTest" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -142,17 +158,19 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.Main" />
       <item itemvalue="JUnit.All in AlgorithmsJava" />
       <item itemvalue="JUnit.RedBlackTreeTest.functionsTest" />
       <item itemvalue="JUnit.RankSearchTest.randomSelectCase1" />
+      <item itemvalue="JUnit.GlobalFunctionTest.fastPowerModTest" />
+      <item itemvalue="JUnit.GlobalFunctionTest.longFastMultiplyModTest" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.GlobalFunctionTest.longFastMultiplyModTest" />
+        <item itemvalue="JUnit.GlobalFunctionTest.fastPowerModTest" />
+        <item itemvalue="JUnit.RedBlackTreeTest.functionsTest" />
         <item itemvalue="JUnit.All in AlgorithmsJava" />
         <item itemvalue="JUnit.RankSearchTest.randomSelectCase1" />
-        <item itemvalue="Application.Main" />
-        <item itemvalue="JUnit.RedBlackTreeTest.functionsTest" />
       </list>
     </recent_temporary>
   </component>
@@ -280,13 +298,12 @@
       <workItem from="1620734878943" duration="8000" />
       <workItem from="1620876067867" duration="41000" />
       <workItem from="1620876242644" duration="53000" />
-    </task>
-    <task id="LOCAL-00065" summary="add type utils">
-      <created>1612432751158</created>
-      <option name="number" value="00065" />
-      <option name="presentableId" value="LOCAL-00065" />
-      <option name="project" value="LOCAL" />
-      <updated>1612432751158</updated>
+      <workItem from="1620988322394" duration="319000" />
+      <workItem from="1620988726596" duration="278000" />
+      <workItem from="1621335430302" duration="1524000" />
+      <workItem from="1621339083636" duration="1548000" />
+      <workItem from="1621421408786" duration="300000" />
+      <workItem from="1621513457959" duration="1447000" />
     </task>
     <task id="LOCAL-00066" summary="Min Heap add unique check">
       <created>1612434621891</created>
@@ -624,7 +641,14 @@
       <option name="project" value="LOCAL" />
       <updated>1620218776322</updated>
     </task>
-    <option name="localTasksCounter" value="114" />
+    <task id="LOCAL-00114" summary="add central utils">
+      <created>1620988606374</created>
+      <option name="number" value="00114" />
+      <option name="presentableId" value="LOCAL-00114" />
+      <option name="project" value="LOCAL" />
+      <updated>1620988606374</updated>
+    </task>
+    <option name="localTasksCounter" value="115" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -653,7 +677,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add new utils" />
     <MESSAGE value="rename" />
     <MESSAGE value="add" />
     <MESSAGE value="archive" />
@@ -678,6 +701,7 @@
     <MESSAGE value="remove getter setter in DisjointSet.java" />
     <MESSAGE value="improve api" />
     <MESSAGE value="add FunctionTimer" />
-    <option name="LAST_COMMIT_MESSAGE" value="add FunctionTimer" />
+    <MESSAGE value="add central utils" />
+    <option name="LAST_COMMIT_MESSAGE" value="add central utils" />
   </component>
 </project>
