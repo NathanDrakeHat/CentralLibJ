@@ -1,6 +1,6 @@
 package org.nathan.acm;
 
-public class GlobalFunction{
+public class ACM{
 
     /**
      * a ^ b % m <br/>

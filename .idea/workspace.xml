@@ -84,16 +84,8 @@
       <recent name="org.nathan.AlgorithmsJava.structures" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.GlobalFunctionTest.longFastMultiplyModTest">
-    <configuration name="All in AlgorithmsJava" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="AlgorithmsJava" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="GlobalFunctionTest.fastPowerModTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.ACMTest.longFastMultiplyModTest">
+    <configuration name="ACMTest.fastPowerModTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AlgorithmsJava" />
       <extension name="coverage">
         <pattern>
@@ -102,14 +94,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="org.nathan.acm" />
-      <option name="MAIN_CLASS_NAME" value="org.nathan.acm.GlobalFunctionTest" />
+      <option name="MAIN_CLASS_NAME" value="org.nathan.acm.ACMTest" />
       <option name="METHOD_NAME" value="fastPowerModTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="GlobalFunctionTest.longFastMultiplyModTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ACMTest.longFastMultiplyModTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AlgorithmsJava" />
       <extension name="coverage">
         <pattern>
@@ -118,9 +110,17 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="org.nathan.acm" />
-      <option name="MAIN_CLASS_NAME" value="org.nathan.acm.GlobalFunctionTest" />
+      <option name="MAIN_CLASS_NAME" value="org.nathan.acm.ACMTest" />
       <option name="METHOD_NAME" value="longFastMultiplyModTest" />
       <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="All in AlgorithmsJava" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AlgorithmsJava" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -161,13 +161,13 @@
       <item itemvalue="JUnit.All in AlgorithmsJava" />
       <item itemvalue="JUnit.RedBlackTreeTest.functionsTest" />
       <item itemvalue="JUnit.RankSearchTest.randomSelectCase1" />
-      <item itemvalue="JUnit.GlobalFunctionTest.fastPowerModTest" />
-      <item itemvalue="JUnit.GlobalFunctionTest.longFastMultiplyModTest" />
+      <item itemvalue="JUnit.ACMTest.fastPowerModTest" />
+      <item itemvalue="JUnit.ACMTest.longFastMultiplyModTest" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.GlobalFunctionTest.longFastMultiplyModTest" />
-        <item itemvalue="JUnit.GlobalFunctionTest.fastPowerModTest" />
+        <item itemvalue="JUnit.ACMTest.longFastMultiplyModTest" />
+        <item itemvalue="JUnit.ACMTest.fastPowerModTest" />
         <item itemvalue="JUnit.RedBlackTreeTest.functionsTest" />
         <item itemvalue="JUnit.All in AlgorithmsJava" />
         <item itemvalue="JUnit.RankSearchTest.randomSelectCase1" />

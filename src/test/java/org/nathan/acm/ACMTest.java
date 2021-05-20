@@ -1,10 +1,10 @@
 package org.nathan.acm;
 
 import org.junit.jupiter.api.Test;
-import static org.nathan.acm.GlobalFunction.*;
+import static org.nathan.acm.ACM.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class GlobalFunctionTest{
+public class ACMTest{
 
     @Test
     public void fastPowerModTest(){
