@@ -18,9 +18,9 @@ public class ACM{
         int ans = 1 % m;
         while(b != 0) {
             if((b & 1) == 1){
-                ans = (int) ((long) a * ans % m);
+                ans =  (int)((long)a * ans % m);
             }
-            a = (int) ((long) a * a);
+            a = (int) ((long) a * a % m);
             b = b >>> 1;
         }
         return ans;
@@ -42,7 +42,7 @@ public class ACM{
             if((b & 1) == 1){
                 ans = (ans + a) % m;
             }
-            a *= 2;
+            a *= 2 % m;
             b = b >>> 1;
         }
         return ans;

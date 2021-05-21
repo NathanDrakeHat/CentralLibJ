@@ -22,11 +22,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="">
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="save binary operations">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/acm/ACM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/acm/ACM.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/acm/ACMTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/acm/ACMTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -149,11 +147,11 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Application.Main" />
       <item itemvalue="JUnit.All in AlgorithmsJava" />
       <item itemvalue="JUnit.RedBlackTreeTest.functionsTest" />
       <item itemvalue="JUnit.ACMTest.fastPowerModTest" />
       <item itemvalue="JUnit.ACMTest.longFastMultiplyModTest" />
-      <item itemvalue="Application.Main" />
     </list>
     <recent_temporary>
       <list>
@@ -294,14 +292,8 @@
       <workItem from="1621335430302" duration="1524000" />
       <workItem from="1621339083636" duration="1548000" />
       <workItem from="1621421408786" duration="300000" />
-      <workItem from="1621513457959" duration="5797000" />
-    </task>
-    <task id="LOCAL-00068" summary="fix MinHeapTest.java test bugs">
-      <created>1612434757894</created>
-      <option name="number" value="00068" />
-      <option name="presentableId" value="LOCAL-00068" />
-      <option name="project" value="LOCAL" />
-      <updated>1612434757894</updated>
+      <workItem from="1621513457959" duration="6017000" />
+      <workItem from="1621559648210" duration="685000" />
     </task>
     <task id="LOCAL-00069" summary="format">
       <created>1612434837188</created>
@@ -639,7 +631,14 @@
       <option name="project" value="LOCAL" />
       <updated>1621515003907</updated>
     </task>
-    <option name="localTasksCounter" value="117" />
+    <task id="LOCAL-00117" summary="save binary operations">
+      <created>1621519603940</created>
+      <option name="number" value="00117" />
+      <option name="presentableId" value="LOCAL-00117" />
+      <option name="project" value="LOCAL" />
+      <updated>1621519603941</updated>
+    </task>
+    <option name="localTasksCounter" value="118" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -668,7 +667,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="archive" />
     <MESSAGE value="rename project" />
     <MESSAGE value="reformat" />
     <MESSAGE value="improve Utils" />
@@ -693,6 +691,7 @@
     <MESSAGE value="add central utils" />
     <MESSAGE value="add two acm func" />
     <MESSAGE value="save" />
-    <option name="LAST_COMMIT_MESSAGE" value="save" />
+    <MESSAGE value="save binary operations" />
+    <option name="LAST_COMMIT_MESSAGE" value="save binary operations" />
   </component>
 </project>
