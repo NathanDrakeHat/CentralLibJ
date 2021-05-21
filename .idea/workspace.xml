@@ -22,7 +22,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="save binary operations">
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="add suppress warning">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/acm/ACM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/acm/ACM.java" afterDir="false" />
     </list>
@@ -67,7 +67,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="add_unversioned_files" value="$PROJECT_DIR$/src/main/java/Main.java" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../LeetcodeJava" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../CentralUtils" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -82,7 +82,7 @@
       <recent name="org.nathan.AlgorithmsJava.structures" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="JUnit.ACMTest.solveHamiltonTest">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="AlgorithmsJava" />
@@ -122,10 +122,18 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="All in AlgorithmsJava" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ACMTest.solveHamiltonTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AlgorithmsJava" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.nathan.acm.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.nathan.acm" />
+      <option name="MAIN_CLASS_NAME" value="org.nathan.acm.ACMTest" />
+      <option name="METHOD_NAME" value="solveHamiltonTest" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -148,18 +156,18 @@
     </configuration>
     <list>
       <item itemvalue="Application.Main" />
-      <item itemvalue="JUnit.All in AlgorithmsJava" />
       <item itemvalue="JUnit.RedBlackTreeTest.functionsTest" />
       <item itemvalue="JUnit.ACMTest.fastPowerModTest" />
       <item itemvalue="JUnit.ACMTest.longFastMultiplyModTest" />
+      <item itemvalue="JUnit.ACMTest.solveHamiltonTest" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ACMTest.solveHamiltonTest" />
         <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.ACMTest.longFastMultiplyModTest" />
         <item itemvalue="JUnit.ACMTest.fastPowerModTest" />
         <item itemvalue="JUnit.RedBlackTreeTest.functionsTest" />
-        <item itemvalue="JUnit.All in AlgorithmsJava" />
       </list>
     </recent_temporary>
   </component>
@@ -293,21 +301,11 @@
       <workItem from="1621339083636" duration="1548000" />
       <workItem from="1621421408786" duration="300000" />
       <workItem from="1621513457959" duration="6017000" />
-      <workItem from="1621559648210" duration="685000" />
-    </task>
-    <task id="LOCAL-00069" summary="format">
-      <created>1612434837188</created>
-      <option name="number" value="00069" />
-      <option name="presentableId" value="LOCAL-00069" />
-      <option name="project" value="LOCAL" />
-      <updated>1612434837188</updated>
-    </task>
-    <task id="LOCAL-00070" summary="remove redundant functions">
-      <created>1612435740557</created>
-      <option name="number" value="00070" />
-      <option name="presentableId" value="LOCAL-00070" />
-      <option name="project" value="LOCAL" />
-      <updated>1612435740557</updated>
+      <workItem from="1621559648210" duration="1467000" />
+      <workItem from="1621566586821" duration="503000" />
+      <workItem from="1621592700075" duration="1205000" />
+      <workItem from="1621605593159" duration="18000" />
+      <workItem from="1621606104060" duration="178000" />
     </task>
     <task id="LOCAL-00071" summary="refactor">
       <created>1612436299425</created>
@@ -638,7 +636,21 @@
       <option name="project" value="LOCAL" />
       <updated>1621519603941</updated>
     </task>
-    <option name="localTasksCounter" value="118" />
+    <task id="LOCAL-00118" summary="save">
+      <created>1621560461892</created>
+      <option name="number" value="00118" />
+      <option name="presentableId" value="LOCAL-00118" />
+      <option name="project" value="LOCAL" />
+      <updated>1621560461892</updated>
+    </task>
+    <task id="LOCAL-00119" summary="add suppress warning">
+      <created>1621560520838</created>
+      <option name="number" value="00119" />
+      <option name="presentableId" value="LOCAL-00119" />
+      <option name="project" value="LOCAL" />
+      <updated>1621560520838</updated>
+    </task>
+    <option name="localTasksCounter" value="120" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -667,7 +679,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="rename project" />
     <MESSAGE value="reformat" />
     <MESSAGE value="improve Utils" />
     <MESSAGE value="modify pom" />
@@ -690,8 +701,9 @@
     <MESSAGE value="add FunctionTimer" />
     <MESSAGE value="add central utils" />
     <MESSAGE value="add two acm func" />
-    <MESSAGE value="save" />
     <MESSAGE value="save binary operations" />
-    <option name="LAST_COMMIT_MESSAGE" value="save binary operations" />
+    <MESSAGE value="save" />
+    <MESSAGE value="add suppress warning" />
+    <option name="LAST_COMMIT_MESSAGE" value="add suppress warning" />
   </component>
 </project>

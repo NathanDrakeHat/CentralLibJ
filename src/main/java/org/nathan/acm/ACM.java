@@ -19,7 +19,7 @@ public class ACM{
         int ans = 1 % m;
         while(b != 0) {
             if((b & 1) == 1){
-                ans =  (int)((long)a * ans % m);
+                ans = (int) ((long) a * ans % m);
             }
             a = (int) ((long) a * a % m);
             b = b >>> 1;
@@ -76,38 +76,54 @@ public class ACM{
      * @param k   start from 0
      * @return byte
      */
-    public static int kthBinaryDigit(int num, int k){
+    public static int kthBinDigit(int num, int k){
         return num >>> k & 1;
     }
 
-    /**
-     * @param num num
-     * @param k   start from 0
-     * @return int
-     */
-    public static int lastKBinaryDigits(int num, int k){
+    public static int lastKBinDigits(int num, int k){
         return num & ((1 << k) - 1);
     }
 
-    /**
-     * @param num num
-     * @param k   start from 0
-     * @return int
-     */
-    public static int notKthBinaryDigits(int num, int k){
+    public static int notKthBinDigits(int num, int k){
         return num ^ (1 << k);
     }
 
-    /**
-     * @param num num
-     * @param k   start from 0
-     * @return int
-     */
-    public static int setKthBinaryDigitOne(int num, int k){
+    public static int setKthBinDigitOne(int num, int k){
         return num | (1 << k);
     }
 
-    public static int setKthBinaryDigitZero(int num, int k){
+    public static int setKthBinDigitZero(int num, int k){
         return num & (~(1 << k));
+    }
+
+    /**
+     * shortest undirected path
+     * @param n number of vertices
+     * @param weights undirected graph weights
+     * @return shortest path length
+     */
+    public static double solve_hamilton(int n, double[][] weights){
+        int len = weights.length;
+        double[][] path_vert_dist = new double[1 << len][len];
+        for(var r : path_vert_dist){
+            for(int i = 0; i < len; i++){
+                r[i] = Double.POSITIVE_INFINITY;
+            }
+        }
+        path_vert_dist[1][0] = 0;
+        for(int path = 1; path < (1 << n); path++){
+            for(int v_a = 0; v_a < n; v_a++){
+                if(kthBinDigit(path, v_a) == 1){
+                    for(int v_b = 0; v_b < n; v_b++){
+                        if(kthBinDigit(path, v_b) == 1){
+                            double dist = path_vert_dist[notKthBinDigits(path, v_a)][v_b] + weights[v_a][v_b];
+                            path_vert_dist[path][v_a] = Math.min(path_vert_dist[path][v_a], dist);
+                        }
+                    }
+                }
+            }
+        }
+
+        return path_vert_dist[(1 << n) - 1][4];
     }
 }

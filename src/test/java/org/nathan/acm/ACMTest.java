@@ -19,4 +19,43 @@ public class ACMTest{
         assertEquals(1, longFastMultiplyMod2(3,7,20));
         assertEquals(5, longFastMultiplyMod2(5,5,20));
     }
+
+    @Test
+    public void solveHamiltonTest(){
+        double[][] weights = new double[5][5];
+        for (var r : weights)
+        {
+            for (int i = 0; i < weights.length; i++)
+            {
+                r[i] = Double.POSITIVE_INFINITY;
+            }
+        }
+        for (int i = 0; i < 5; i++)
+        {
+            weights[i][i] = 0;
+        }
+
+        weights[0][1] = 2;
+        weights[1][0] = 2;
+
+        weights[1][2] = 2;
+        weights[2][1] = 2;
+
+        weights[2][3] = 2;
+        weights[3][2] = 2;
+
+        weights[3][4] = 2;
+        weights[4][3] = 2;
+
+        weights[0][4] = 9;
+        weights[4][0] = 9;
+
+        weights[0][3] = 7;
+        weights[3][0] = 7;
+
+        weights[0][2] = 5;
+        weights[2][0] = 5;
+
+        assertEquals(8, solve_hamilton(5, weights));
+    }
 }
