@@ -22,9 +22,17 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="add suppress warning">
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="add solveHamilton">
+      <change afterPath="$PROJECT_DIR$/../CentralUtils/CentralUtils.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_nathan_CentralUtils_1_0_SNAPSHOT.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/acm/ACM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/acm/ACM.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AlgorithmsJava.iml" beforeDir="false" afterPath="$PROJECT_DIR$/AlgorithmsJava.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/acm/ACMTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/acm/ACMTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CentralUtils/src/main/java/org/nathan/centralUtils/Actions.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CentralUtils/src/main/java/org/nathan/centralUtils/Actions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CentralUtils/src/main/java/org/nathan/centralUtils/IOUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CentralUtils/src/main/java/org/nathan/centralUtils/IOUtils.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +90,7 @@
       <recent name="org.nathan.AlgorithmsJava.structures" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ACMTest.solveHamiltonTest">
+  <component name="RunManager" selected="JUnit.ACMTest.fastPowerModTest">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="AlgorithmsJava" />
@@ -163,10 +171,10 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ACMTest.fastPowerModTest" />
         <item itemvalue="JUnit.ACMTest.solveHamiltonTest" />
         <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.ACMTest.longFastMultiplyModTest" />
-        <item itemvalue="JUnit.ACMTest.fastPowerModTest" />
         <item itemvalue="JUnit.RedBlackTreeTest.functionsTest" />
       </list>
     </recent_temporary>
@@ -305,14 +313,8 @@
       <workItem from="1621566586821" duration="503000" />
       <workItem from="1621592700075" duration="1205000" />
       <workItem from="1621605593159" duration="18000" />
-      <workItem from="1621606104060" duration="178000" />
-    </task>
-    <task id="LOCAL-00071" summary="refactor">
-      <created>1612436299425</created>
-      <option name="number" value="00071" />
-      <option name="presentableId" value="LOCAL-00071" />
-      <option name="project" value="LOCAL" />
-      <updated>1612436299425</updated>
+      <workItem from="1621606104060" duration="474000" />
+      <workItem from="1621649405576" duration="223000" />
     </task>
     <task id="LOCAL-00072" summary="refactor">
       <created>1612436395636</created>
@@ -650,7 +652,14 @@
       <option name="project" value="LOCAL" />
       <updated>1621560520838</updated>
     </task>
-    <option name="localTasksCounter" value="120" />
+    <task id="LOCAL-00120" summary="add solveHamilton">
+      <created>1621606523619</created>
+      <option name="number" value="00120" />
+      <option name="presentableId" value="LOCAL-00120" />
+      <option name="project" value="LOCAL" />
+      <updated>1621606523619</updated>
+    </task>
+    <option name="localTasksCounter" value="121" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -679,7 +688,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="reformat" />
     <MESSAGE value="improve Utils" />
     <MESSAGE value="modify pom" />
     <MESSAGE value="concurrent modification exception" />
@@ -704,6 +712,7 @@
     <MESSAGE value="save binary operations" />
     <MESSAGE value="save" />
     <MESSAGE value="add suppress warning" />
-    <option name="LAST_COMMIT_MESSAGE" value="add suppress warning" />
+    <MESSAGE value="add solveHamilton" />
+    <option name="LAST_COMMIT_MESSAGE" value="add solveHamilton" />
   </component>
 </project>

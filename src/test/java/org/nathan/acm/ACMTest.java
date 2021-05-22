@@ -1,6 +1,8 @@
 package org.nathan.acm;
 
 import org.junit.jupiter.api.Test;
+import org.nathan.centralUtils.Actions;
+
 import static org.nathan.acm.ACM.*;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -35,26 +37,18 @@ public class ACMTest{
             weights[i][i] = 0;
         }
 
-        weights[0][1] = 2;
-        weights[1][0] = 2;
+        Actions.TriConsumer<Integer, Integer, Double> putBiDirect = (Integer a, Integer b, Double val)->{
+            weights[a][b] = val;
+            weights[b][a] = val;
+        };
 
-        weights[1][2] = 2;
-        weights[2][1] = 2;
-
-        weights[2][3] = 2;
-        weights[3][2] = 2;
-
-        weights[3][4] = 2;
-        weights[4][3] = 2;
-
-        weights[0][4] = 9;
-        weights[4][0] = 9;
-
-        weights[0][3] = 7;
-        weights[3][0] = 7;
-
-        weights[0][2] = 5;
-        weights[2][0] = 5;
+        putBiDirect.accept(0, 1, 2.);
+        putBiDirect.accept(1, 2, 2.);
+        putBiDirect.accept(2, 3, 2.);
+        putBiDirect.accept(3, 4, 2.);
+        putBiDirect.accept(0, 4, 9.);
+        putBiDirect.accept(0, 3, 7.);
+        putBiDirect.accept(0, 2, 5.);
 
         assertEquals(8, solve_hamilton(5, weights));
     }
