@@ -1,6 +1,6 @@
 package org.nathan.algorithmsJava.dp;
 
-import org.nathan.centralUtils.containers.Tuple;
+import org.nathan.centralUtils.tuples.*;
 
 import java.util.List;
 
@@ -67,18 +67,18 @@ final class MatrixChain {
 
                 m[s][e] = new MatrixChainResult();
                 if (l == 2) {
-                    m[s][e].min_cost = p.get(s).first * p.get(s).second * p.get(e).second;
+                    m[s][e].min_cost = p.get(s).first() * p.get(s).second() * p.get(e).second();
                     m[s][e].res = new MatrixChainResult.PairNode();
                     m[s][e].res.left = m[s][s].res;
                     m[s][e].res.right = m[e][e].res;
                 }
                 else {
-                    m[s][e].min_cost = p.get(s).first * p.get(s).second * p.get(e).second + m[s][s].min_cost + m[s + 1][e].min_cost;
+                    m[s][e].min_cost = p.get(s).first() * p.get(s).second() * p.get(e).second() + m[s][s].min_cost + m[s + 1][e].min_cost;
                     m[s][e].res = new MatrixChainResult.PairNode();
                     m[s][e].res.left = m[s][s].res;
                     m[s][e].res.right = m[s + 1][e].res;
                     for (int i = 1; i < l - 1; i++) {
-                        int cost = m[s][s + i].min_cost + m[s + i + 1][e].min_cost + p.get(s).first* p.get(s + i + 1).first * p.get(e).second;
+                        int cost = m[s][s + i].min_cost + m[s + i + 1][e].min_cost + p.get(s).first() * p.get(s + i + 1).first() * p.get(e).second();
                         if (cost < m[s][e].min_cost) {
                             m[s][e].min_cost = cost;
                             m[s][e].res = new MatrixChainResult.PairNode();

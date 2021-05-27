@@ -22,11 +22,28 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="add lambda">
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="save">
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_api_5_7_0_RC1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_commons_1_7_0_RC1.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AlgorithmsJava.iml" beforeDir="false" afterPath="$PROJECT_DIR$/AlgorithmsJava.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/acm/ACM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/acm/ACM.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CentralUtils/CentralUtils.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CentralUtils/src/main/java/org/nathan/centralUtils/NumericUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CentralUtils/src/main/java/org/nathan/centralUtils/NumericUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJava/dp/MatrixChain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJava/dp/MatrixChain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJava/structures/MinHeap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJava/structures/MinHeap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJava/structures/RedBlackTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJava/structures/RedBlackTree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/acm/ACMTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/acm/ACMTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJava/dp/MatrixChainTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJava/dp/MatrixChainTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJava/miscellaneous/SortTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJava/miscellaneous/SortTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJava/structures/MinHeapTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJava/structures/MinHeapTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJava/structures/RedBlackTreeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJava/structures/RedBlackTreeTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CentralUtils/CentralUtils.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../CentralUtils/CentralUtils.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CentralUtils/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../CentralUtils/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CentralUtils/src/main/java/org/nathan/centralUtils/tuples/Quaternion.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CentralUtils/src/main/java/org/nathan/centralUtils/tuples/Quaternion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CentralUtils/src/main/java/org/nathan/centralUtils/tuples/Quintuple.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CentralUtils/src/main/java/org/nathan/centralUtils/tuples/Quintuple.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CentralUtils/src/main/java/org/nathan/centralUtils/tuples/Triad.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CentralUtils/src/main/java/org/nathan/centralUtils/tuples/Triad.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CentralUtils/src/main/java/org/nathan/centralUtils/tuples/Tuple.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CentralUtils/src/main/java/org/nathan/centralUtils/tuples/Tuple.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +101,7 @@
       <recent name="org.nathan.AlgorithmsJava.structures" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="JUnit.ACMTest.strangeSwitchTest">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="AlgorithmsJava" />
@@ -140,17 +157,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RedBlackTreeTest.functionsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ACMTest.strangeSwitchTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AlgorithmsJava" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.nathan.algorithmsJava.tools.*" />
+          <option name="PATTERN" value="org.nathan.acm.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="org.nathan.algorithmsJava.structures" />
-      <option name="MAIN_CLASS_NAME" value="org.nathan.algorithmsJava.structures.RedBlackTreeTest" />
-      <option name="METHOD_NAME" value="functionsTest" />
+      <option name="PACKAGE_NAME" value="org.nathan.acm" />
+      <option name="MAIN_CLASS_NAME" value="org.nathan.acm.ACMTest" />
+      <option name="METHOD_NAME" value="strangeSwitchTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -158,18 +175,18 @@
     </configuration>
     <list>
       <item itemvalue="Application.Main" />
-      <item itemvalue="JUnit.RedBlackTreeTest.functionsTest" />
       <item itemvalue="JUnit.ACMTest.fastPowerModTest" />
       <item itemvalue="JUnit.ACMTest.longFastMultiplyModTest" />
       <item itemvalue="JUnit.ACMTest.solveHamiltonTest" />
+      <item itemvalue="JUnit.ACMTest.strangeSwitchTest" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ACMTest.strangeSwitchTest" />
         <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.ACMTest.fastPowerModTest" />
         <item itemvalue="JUnit.ACMTest.solveHamiltonTest" />
         <item itemvalue="JUnit.ACMTest.longFastMultiplyModTest" />
-        <item itemvalue="JUnit.RedBlackTreeTest.functionsTest" />
       </list>
     </recent_temporary>
   </component>
@@ -314,13 +331,10 @@
       <workItem from="1621767452010" duration="208000" />
       <workItem from="1621768864510" duration="278000" />
       <workItem from="1621864333295" duration="42000" />
-    </task>
-    <task id="LOCAL-00074" summary="rename">
-      <created>1612511362434</created>
-      <option name="number" value="00074" />
-      <option name="presentableId" value="LOCAL-00074" />
-      <option name="project" value="LOCAL" />
-      <updated>1612511362434</updated>
+      <workItem from="1621865128297" duration="889000" />
+      <workItem from="1621915479706" duration="288000" />
+      <workItem from="1622116442802" duration="3552000" />
+      <workItem from="1622120044959" duration="2580000" />
     </task>
     <task id="LOCAL-00075" summary="reformat">
       <created>1612512401951</created>
@@ -658,7 +672,14 @@
       <option name="project" value="LOCAL" />
       <updated>1621649761374</updated>
     </task>
-    <option name="localTasksCounter" value="123" />
+    <task id="LOCAL-00123" summary="save">
+      <created>1621865370514</created>
+      <option name="number" value="00123" />
+      <option name="presentableId" value="LOCAL-00123" />
+      <option name="project" value="LOCAL" />
+      <updated>1621865370514</updated>
+    </task>
+    <option name="localTasksCounter" value="124" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -708,10 +729,10 @@
     <MESSAGE value="add central utils" />
     <MESSAGE value="add two acm func" />
     <MESSAGE value="save binary operations" />
-    <MESSAGE value="save" />
     <MESSAGE value="add suppress warning" />
     <MESSAGE value="add solveHamilton" />
     <MESSAGE value="add lambda" />
-    <option name="LAST_COMMIT_MESSAGE" value="add lambda" />
+    <MESSAGE value="save" />
+    <option name="LAST_COMMIT_MESSAGE" value="save" />
   </component>
 </project>

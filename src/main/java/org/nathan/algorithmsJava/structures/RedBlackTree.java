@@ -1,7 +1,7 @@
 package org.nathan.algorithmsJava.structures;
 
 import org.jetbrains.annotations.NotNull;
-import org.nathan.centralUtils.containers.Tuple;
+import org.nathan.centralUtils.tuples.Tuple;
 
 import java.util.*;
 import java.util.function.BiConsumer;

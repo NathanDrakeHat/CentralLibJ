@@ -58,7 +58,7 @@ class RedBlackTreeTest{
             l1.add(i);
         }
         var ri = t.reverseIterator();
-        assertEquals(15, ri.next().first);
+        assertEquals(15, ri.next().first());
 
         assertEquals(5 + 1 - 2, t.keyRangeSearch(2, 5).size());
         assertEquals(t.getHeight(), 4);
@@ -72,7 +72,7 @@ class RedBlackTreeTest{
         assertEquals(t.search(5), "5");
         assertThrows(IllegalStateException.class, ()->{
             for(var i : t){
-                t.insert(i.first, "i");
+                t.insert(i.first(), "i");
             }
         });
     }

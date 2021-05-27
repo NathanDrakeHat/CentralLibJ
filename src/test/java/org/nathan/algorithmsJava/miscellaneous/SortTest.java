@@ -1,8 +1,8 @@
 package org.nathan.algorithmsJava.miscellaneous;
 
 import org.junit.jupiter.api.Test;
-import org.nathan.centralUtils.RangeIterator;
-import static org.nathan.centralUtils.ArrayUtils.*;
+import org.nathan.centralUtils.classes.RangeIterator;
+import static org.nathan.centralUtils.utils.ArrayUtils.*;
 import org.nathan.algorithmsJava.tools.SimpleDate;
 
 import java.util.Random;

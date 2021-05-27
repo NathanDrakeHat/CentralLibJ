@@ -1,7 +1,7 @@
 package org.nathan.acm;
 
 import org.junit.jupiter.api.Test;
-import org.nathan.centralUtils.Actions;
+import org.nathan.centralUtils.utils.LambdaUtils;
 
 import static org.nathan.acm.ACM.*;
 import static org.junit.jupiter.api.Assertions.*;
@@ -37,7 +37,7 @@ public class ACMTest{
             weights[i][i] = 0;
         }
 
-        Actions.TriConsumer<Integer, Integer, Double> putBiDirect = (Integer a, Integer b, Double val)->{
+        LambdaUtils.TriConsumer<Integer, Integer, Double> putBiDirect = (Integer a, Integer b, Double val)->{
             weights[a][b] = val;
             weights[b][a] = val;
         };
@@ -51,5 +51,30 @@ public class ACMTest{
         putBiDirect.accept(0, 2, 5.);
 
         assertEquals(8, solve_hamilton(5, weights));
+    }
+
+    @Test
+    public void strangeSwitchTest(){
+        String[][] case1 = new String[][]{
+                new String[]{"x", "o", "x"},
+                new String[]{"o", "o", "o"},
+                new String[]{"x", "o", "x"}
+        };
+        assertEquals(1, strangeSwitch(case1));
+
+        String[][] case2 = new String[][]{
+                new String[]{"x", "x", "x"},
+                new String[]{"x", "x", "x"},
+                new String[]{"x", "x", "x"}
+        };
+        assertEquals(0, strangeSwitch(case2));
+
+        String[][] case3 = new String[][]{
+                new String[]{"x", "x", "o"},
+                new String[]{"x", "x", "o"},
+                new String[]{"o", "o", "x"}
+        };
+        assertEquals(2, strangeSwitch(case3));
+
     }
 }

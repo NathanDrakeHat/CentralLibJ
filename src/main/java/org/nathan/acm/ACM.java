@@ -1,5 +1,9 @@
 package org.nathan.acm;
 
+
+import java.util.List;
+
+
 @SuppressWarnings("unused")
 public class ACM{
 
@@ -96,7 +100,8 @@ public class ACM{
 
     /**
      * shortest undirected path
-     * @param n number of vertices
+     *
+     * @param n       number of vertices
      * @param weights undirected graph weights
      * @return shortest path length
      */
@@ -123,5 +128,101 @@ public class ACM{
         }
 
         return path_vert_dist[(1 << n) - 1][4];
+    }
+
+    public static int strangeSwitch(String[][] switches){
+        return recursiveSolveStrangeSwitch(switches, 0, 0, 0);
+    }
+
+    private static int recursiveSolveStrangeSwitch(String[][] switches, int r, int c, int push_count){
+        if(r >= switches.length){
+            for(var item : switches[switches.length - 1]){
+                if(!item.equals("x")){
+                    return -1;
+                }
+            }
+            return push_count;
+        }
+
+        int nc = c + 1;
+        int nr = r;
+        if(nc >= switches[0].length){
+            nc = 0;
+            nr += 1;
+        }
+
+        if(r == 0){
+            int left_min, right_min;
+            flipNeighbor(switches, r, c);
+            left_min = recursiveSolveStrangeSwitch(switches, nr, nc, push_count + 1);
+            flipNeighbor(switches, r, c);
+
+            right_min = recursiveSolveStrangeSwitch(switches, nr, nc, push_count);
+
+            if(left_min < 0 && right_min < 0){
+                return -1;
+            }
+            else if(left_min < 0){
+                return right_min;
+            }
+            else if(right_min < 0){
+                return left_min;
+            }
+            else{ return Math.min(left_min, right_min); }
+        }
+        else{
+            if(switches[r - 1][c].equals("o")){
+                flipNeighbor(switches, r, c);
+                int res = recursiveSolveStrangeSwitch(switches, nr, nc, push_count + 1);
+                flipNeighbor(switches, r, c);
+                return res;
+            }
+            else{
+                return recursiveSolveStrangeSwitch(switches, nr, nc, push_count);
+            }
+        }
+    }
+
+    private static void flipSingle(String[][] switches, int r, int c){
+        if(switches[r][c].equals("x")){
+            switches[r][c] = "o";
+        }
+        else if(switches[r][c].equals("o")){
+            switches[r][c] = "x";
+        }
+        else{ throw new RuntimeException("input format error."); }
+    }
+
+    private static void flipNeighbor(String[][] switches, int r, int c){
+        if((r - 1) >= 0 && (r - 1) < switches.length){
+            flipSingle(switches, r - 1, c);
+        }
+        if((c - 1) >= 0 && (c - 1) < switches[0].length){
+            flipSingle(switches, r, c - 1);
+        }
+
+        if((r + 1) >= 0 && (r + 1) < switches.length){
+            flipSingle(switches, r + 1, c);
+        }
+        if((c + 1) >= 0 && (c + 1) < switches[0].length){
+            flipSingle(switches, r, c + 1);
+        }
+        flipSingle(switches, r, c);
+    }
+
+    public static int laserBomb(int[][] targets){
+        throw new RuntimeException();
+    }
+
+    public static List<Integer> tallestCows(List<Integer> cows){
+        throw new RuntimeException();
+    }
+
+    public static <Num> Num extremum(List<Num> nums){
+        throw new RuntimeException();
+    }
+
+    public static int sumDiv(int a, int b){
+        throw new RuntimeException();
     }
 }
