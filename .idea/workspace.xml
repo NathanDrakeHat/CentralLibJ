@@ -22,9 +22,12 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="add laserBomb">
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="save">
+      <change afterPath="$PROJECT_DIR$/../CentralUtils/CentralUtils.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jetbrains_annotations_16_0_1.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/acm/ACM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/acm/ACM.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/acm/ACMTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/acm/ACMTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,6 +47,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
@@ -82,10 +86,10 @@
       <recent name="org.nathan.AlgorithmsJava.structures" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ACMTest">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.ACMTest.sumDivTest">
+    <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
-      <module name="AlgorithmsJava" />
+      <module name="CentralUtils" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -101,22 +105,6 @@
       <option name="PACKAGE_NAME" value="org.nathan.acm" />
       <option name="MAIN_CLASS_NAME" value="org.nathan.acm.ACMTest" />
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ACMTest.fastPowerModTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="AlgorithmsJava" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.nathan.acm.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.nathan.acm" />
-      <option name="MAIN_CLASS_NAME" value="org.nathan.acm.ACMTest" />
-      <option name="METHOD_NAME" value="fastPowerModTest" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -153,20 +141,36 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ACMTest.sumDivTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AlgorithmsJava" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.nathan.acm.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.nathan.acm" />
+      <option name="MAIN_CLASS_NAME" value="org.nathan.acm.ACMTest" />
+      <option name="METHOD_NAME" value="sumDivTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
-      <item itemvalue="Application.Main" />
-      <item itemvalue="JUnit.ACMTest.fastPowerModTest" />
+      <item itemvalue="Application.Main (1)" />
       <item itemvalue="JUnit.ACMTest.strangeSwitchTest" />
       <item itemvalue="JUnit.ACMTest.laserBombTest" />
       <item itemvalue="JUnit.ACMTest" />
+      <item itemvalue="JUnit.ACMTest.sumDivTest" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ACMTest.sumDivTest" />
+        <item itemvalue="Application.Main (1)" />
         <item itemvalue="JUnit.ACMTest" />
         <item itemvalue="JUnit.ACMTest.strangeSwitchTest" />
         <item itemvalue="JUnit.ACMTest.laserBombTest" />
-        <item itemvalue="Application.Main" />
-        <item itemvalue="JUnit.ACMTest.fastPowerModTest" />
       </list>
     </recent_temporary>
   </component>
@@ -318,14 +322,11 @@
       <workItem from="1622127559354" duration="596000" />
       <workItem from="1622185406996" duration="4398000" />
       <workItem from="1622191626020" duration="725000" />
-      <workItem from="1622192760319" duration="3447000" />
-    </task>
-    <task id="LOCAL-00077" summary="add new utils">
-      <created>1612525155703</created>
-      <option name="number" value="00077" />
-      <option name="presentableId" value="LOCAL-00077" />
-      <option name="project" value="LOCAL" />
-      <updated>1612525155703</updated>
+      <workItem from="1622192760319" duration="4472000" />
+      <workItem from="1622200620712" duration="16000" />
+      <workItem from="1622200707326" duration="473000" />
+      <workItem from="1622201328933" duration="2262000" />
+      <workItem from="1622203692795" duration="2619000" />
     </task>
     <task id="LOCAL-00078" summary="reformat">
       <created>1612525196340</created>
@@ -663,7 +664,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622191817332</updated>
     </task>
-    <option name="localTasksCounter" value="126" />
+    <task id="LOCAL-00126" summary="change recursive to partly iterative">
+      <created>1622199515603</created>
+      <option name="number" value="00126" />
+      <option name="presentableId" value="LOCAL-00126" />
+      <option name="project" value="LOCAL" />
+      <updated>1622199515603</updated>
+    </task>
+    <option name="localTasksCounter" value="127" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -692,7 +700,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="rename packages" />
     <MESSAGE value="add SieveOfAtkin" />
     <MESSAGE value="modify readme and rename project" />
     <MESSAGE value="add doc" />
@@ -717,7 +724,8 @@
     <MESSAGE value="save" />
     <MESSAGE value="fix junit pom, add method, set tuple record" />
     <MESSAGE value="add laserBomb" />
-    <option name="LAST_COMMIT_MESSAGE" value="add laserBomb" />
+    <MESSAGE value="change recursive to partly iterative" />
+    <option name="LAST_COMMIT_MESSAGE" value="change recursive to partly iterative" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -729,10 +737,5 @@
         </breakpoint>
       </default-breakpoints>
     </breakpoint-manager>
-    <watches-manager>
-      <configuration name="JUnit">
-        <watch expression="switches" language="JAVA" />
-      </configuration>
-    </watches-manager>
   </component>
 </project>

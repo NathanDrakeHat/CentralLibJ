@@ -5,39 +5,37 @@ import org.nathan.centralUtils.utils.LambdaUtils;
 
 import static org.nathan.acm.ACM.*;
 import static org.junit.jupiter.api.Assertions.*;
+import org.nathan.centralUtils.utils.NumericUtils;
 
 public class ACMTest{
 
     @Test
     public void fastPowerModTest(){
-        assertEquals(2, fastPowerMod(3,3,25));
-        assertEquals(3, fastPowerMod(4,3, 61));
+        assertEquals(2, fastPowerMod(3, 3, 25));
+        assertEquals(3, fastPowerMod(4, 3, 61));
     }
 
     @Test
     public void longFastMultiplyModTest(){
-        assertEquals(1, longFastMultiplyMod1(3,7,20));
-        assertEquals(5, longFastMultiplyMod1(5,5,20));
-        assertEquals(1, longFastMultiplyMod2(3,7,20));
-        assertEquals(5, longFastMultiplyMod2(5,5,20));
+        assertEquals(1, longFastMultiplyMod1(3, 7, 20));
+        assertEquals(5, longFastMultiplyMod1(5, 5, 20));
+        assertEquals(1, longFastMultiplyMod2(3, 7, 20));
+        assertEquals(5, longFastMultiplyMod2(5, 5, 20));
     }
 
     @Test
     public void solveHamiltonTest(){
         double[][] weights = new double[5][5];
-        for (var r : weights)
-        {
-            for (int i = 0; i < weights.length; i++)
-            {
+        for(var r : weights){
+            for(int i = 0; i < weights.length; i++){
                 r[i] = Double.POSITIVE_INFINITY;
             }
         }
-        for (int i = 0; i < 5; i++)
-        {
+        for(int i = 0; i < 5; i++){
             weights[i][i] = 0;
         }
 
-        LambdaUtils.TriConsumer<Integer, Integer, Double> putBiDirect = (Integer a, Integer b, Double val)->{
+        LambdaUtils.TriConsumer<Integer, Integer, Double> putBiDirect = (Integer a, Integer b, Double val) -> {
             weights[a][b] = val;
             weights[b][a] = val;
         };
@@ -80,16 +78,22 @@ public class ACMTest{
     @Test
     public void laserBombTest(){
         int[][] case1 = new int[][]{
-                new int[]{1,2,3,2,1},
-                new int[]{2,3,4,3,2},
-                new int[]{3,4,5,4,3},
-                new int[]{5,6,7,5,6},
-                new int[]{2,3,4,3,2}
+                new int[]{1, 2, 3, 2, 1},
+                new int[]{2, 3, 4, 3, 2},
+                new int[]{3, 4, 5, 4, 3},
+                new int[]{5, 6, 7, 5, 6},
+                new int[]{2, 3, 4, 3, 2}
         };
 
-        assertEquals(22,laserBomb(case1, 2));
+        assertEquals(22, laserBomb(case1, 2));
         assertEquals(7, laserBomb(case1, 1));
         assertEquals(85, laserBomb(case1, 5));
         assertEquals(85, laserBomb(case1, 6));
+    }
+
+    @Test
+    public void sumDivTest(){
+        //noinspection OptionalGetWithoutIsPresent
+        assertEquals((NumericUtils.getAllDivisors((int) Math.pow(6, 6)).stream().reduce(Integer::sum).get() % 9901), sumDiv(6, 6));
     }
 }

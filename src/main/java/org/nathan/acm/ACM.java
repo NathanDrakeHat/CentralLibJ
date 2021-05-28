@@ -3,10 +3,9 @@ package org.nathan.acm;
 
 import org.nathan.centralUtils.tuples.Tuple;
 import org.nathan.centralUtils.utils.ArrayUtils;
+import org.nathan.centralUtils.utils.NumericUtils;
 
-import java.util.ArrayDeque;
-import java.util.Deque;
-import java.util.List;
+import java.util.*;
 import java.util.function.BiFunction;
 
 
@@ -200,7 +199,7 @@ public class ACM{
             int res = push_count;
             for(var item : switches[switches.length - 1]){
                 if(!item.equals("x")){
-                    res =  -1;
+                    res = -1;
                     break;
                 }
             }
@@ -287,19 +286,24 @@ public class ACM{
         return max;
     }
 
-    public static <Num> Num extremum(List<Num> nums){
-        throw new RuntimeException();
-    }
-
     /**
-     * a^b%9001
+     * a^b%9901
      *
      * @param a a
      * @param b b
      * @return int
      */
     public static int sumDiv(int a, int b){
-        throw new RuntimeException();
+        var primesList = NumericUtils.getAllPrimeFactors(a);
+        int res = 1;
+        Map<Integer, Integer> primes = new HashMap<>();
+        for(var prime : primesList){
+            primes.put(prime, primes.getOrDefault(prime, 0) + 1);
+        }
+        for(var p_i : primes.entrySet()){
+            res *= geometricSequenceSum(p_i.getKey(), p_i.getValue() * b);
+        }
+        return res % 9901;
     }
 
     /**
@@ -307,15 +311,31 @@ public class ACM{
      *
      * @param p p
      * @param n n
-     * @param m m
      * @return int
      */
-    public static int geometricSequenceMod(int p, int n, int m){
-        if(n % 2 == 0){
-            throw new RuntimeException();
+    public static int geometricSequenceSum(int p, int n){
+        if(n == 0){
+            return 1;
+        }
+
+        if(n % 2 == 1){
+            return (int) ((1 + Math.pow(p, (double) (n + 1) / 2)) * geometricSequenceSum(p, (n - 1) / 2));
         }
         else{
-            throw new RuntimeException();
+            return (int) (((1 + Math.pow(p, (double) n / 2))) * geometricSequenceSum(p, n / 2 - 1) + Math.pow(p, n));
         }
     }
+
+    /**
+     * 严格单调性极值
+     *
+     * @param nums  num list
+     * @param <Num> comparable
+     * @return extremum
+     */
+    public static <Num extends Comparable<Num>> Num extremum(List<Num> nums){
+        throw new RuntimeException();
+    }
+
+
 }
