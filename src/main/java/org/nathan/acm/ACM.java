@@ -1,6 +1,8 @@
 package org.nathan.acm;
 
 
+import org.nathan.centralUtils.utils.ArrayUtils;
+
 import java.util.List;
 
 
@@ -106,6 +108,9 @@ public class ACM{
      * @return shortest path length
      */
     public static double solve_hamilton(int n, double[][] weights){
+        if(!ArrayUtils.isMatrix(weights)){
+            throw new IllegalArgumentException();
+        }
         int len = weights.length;
         double[][] path_vert_dist = new double[1 << len][len];
         for(var r : path_vert_dist){
@@ -131,6 +136,9 @@ public class ACM{
     }
 
     public static int strangeSwitch(String[][] switches){
+        if(!ArrayUtils.isMatrix(switches)){
+            throw new IllegalArgumentException();
+        }
         return recursiveSolveStrangeSwitch(switches, 0, 0, 0);
     }
 
@@ -210,12 +218,52 @@ public class ACM{
         flipSingle(switches, r, c);
     }
 
-    public static int laserBomb(int[][] targets){
-        throw new RuntimeException();
-    }
+    public static int laserBomb(int[][] targets, int radius){
+        if(!ArrayUtils.isMatrix(targets)){
+            throw new IllegalArgumentException();
+        }
 
-    public static List<Integer> tallestCows(List<Integer> cows){
-        throw new RuntimeException();
+        int[][] sums = new int[targets.length][targets.length];
+
+        for(int r = 0; r < targets.length; r++){
+            int rSum = 0;
+            for(int c = 0; c < targets.length; c++){
+                rSum += targets[r][c];
+                if(r >= 1){
+                    sums[r][c] = rSum + sums[r - 1][c];
+                }
+                else{
+                    sums[r][c] = rSum;
+                }
+            }
+        }
+
+        if(radius > targets.length){
+            return sums[sums.length - 1][sums.length - 1];
+        }
+
+        int max = 0;
+
+        for(int r = radius - 1; r < targets.length; r++){
+            for(int c = radius - 1; c < targets.length; c++){
+                int cost;
+                if(r - radius >= 0 && c - radius >= 0){
+                    cost = sums[r][c] - sums[r - radius][c] - sums[r][c - radius] + sums[r - radius][c - radius];
+                }
+                else if(r - radius >= 0){
+                    cost = sums[r][c] - sums[r - radius][c];
+                }
+                else if(c - radius >= 0){
+                    cost = sums[r][c] - sums[r][c - radius];
+                }
+                else {
+                    cost = sums[r][c];
+                }
+                max = Math.max(cost, max);
+            }
+        }
+
+        return max;
     }
 
     public static <Num> Num extremum(List<Num> nums){

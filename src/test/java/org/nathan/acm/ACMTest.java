@@ -75,6 +75,21 @@ public class ACMTest{
                 new String[]{"o", "o", "x"}
         };
         assertEquals(2, strangeSwitch(case3));
+    }
 
+    @Test
+    public void laserBombTest(){
+        int[][] case1 = new int[][]{
+                new int[]{1,2,3,2,1},
+                new int[]{2,3,4,3,2},
+                new int[]{3,4,5,4,3},
+                new int[]{5,6,7,5,6},
+                new int[]{2,3,4,3,2}
+        };
+
+        assertEquals(22,laserBomb(case1, 2));
+        assertEquals(7, laserBomb(case1, 1));
+        assertEquals(85, laserBomb(case1, 5));
+        assertEquals(85, laserBomb(case1, 6));
     }
 }
