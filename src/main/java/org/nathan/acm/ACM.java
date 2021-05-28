@@ -1,9 +1,13 @@
 package org.nathan.acm;
 
 
+import org.nathan.centralUtils.tuples.Tuple;
 import org.nathan.centralUtils.utils.ArrayUtils;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
 import java.util.List;
+import java.util.function.BiFunction;
 
 
 @SuppressWarnings("unused")
@@ -139,33 +143,36 @@ public class ACM{
         if(!ArrayUtils.isMatrix(switches)){
             throw new IllegalArgumentException();
         }
-        return recursiveSolveStrangeSwitch(switches, 0, 0, 0);
+
+        BiFunction<Integer, Integer, Tuple<Integer, Integer>> nextPos = (rIdx, cIdx) -> {
+            int nc = cIdx + 1;
+            int nr = rIdx;
+            if(nc >= switches.length){
+                nc = 0;
+                nr += 1;
+            }
+
+            return new Tuple<>(nr, nc);
+        };
+
+        Deque<Tuple<Integer, Integer>> pushes = new ArrayDeque<>(16);
+
+        return recursiveStrangeSwitch(switches, 0, 0, 0, nextPos, pushes);
     }
 
-    private static int recursiveSolveStrangeSwitch(String[][] switches, int r, int c, int push_count){
-        if(r >= switches.length){
-            for(var item : switches[switches.length - 1]){
-                if(!item.equals("x")){
-                    return -1;
-                }
-            }
-            return push_count;
-        }
-
-        int nc = c + 1;
-        int nr = r;
-        if(nc >= switches[0].length){
-            nc = 0;
-            nr += 1;
-        }
-
+    private static int recursiveStrangeSwitch(String[][] switches, int r, int c, int push_count,
+                                              BiFunction<Integer, Integer, Tuple<Integer, Integer>> nextPos,
+                                              Deque<Tuple<Integer, Integer>> pushes){
         if(r == 0){
-            int left_min, right_min;
+            var pos = nextPos.apply(r, c);
+            int nc = pos.second();
+            int nr = pos.first();
+
             flipNeighbor(switches, r, c);
-            left_min = recursiveSolveStrangeSwitch(switches, nr, nc, push_count + 1);
+            int left_min = recursiveStrangeSwitch(switches, nr, nc, push_count + 1, nextPos, pushes);
             flipNeighbor(switches, r, c);
 
-            right_min = recursiveSolveStrangeSwitch(switches, nr, nc, push_count);
+            int right_min = recursiveStrangeSwitch(switches, nr, nc, push_count, nextPos, pushes);
 
             if(left_min < 0 && right_min < 0){
                 return -1;
@@ -179,15 +186,29 @@ public class ACM{
             else{ return Math.min(left_min, right_min); }
         }
         else{
-            if(switches[r - 1][c].equals("o")){
-                flipNeighbor(switches, r, c);
-                int res = recursiveSolveStrangeSwitch(switches, nr, nc, push_count + 1);
-                flipNeighbor(switches, r, c);
-                return res;
+            while(!(r >= switches.length)) {
+                if(switches[r - 1][c].equals("o")){
+                    flipNeighbor(switches, r, c);
+                    pushes.offerLast(new Tuple<>(r, c));
+                    push_count += 1;
+                }
+                var tPos = nextPos.apply(r, c);
+                r = tPos.first();
+                c = tPos.second();
             }
-            else{
-                return recursiveSolveStrangeSwitch(switches, nr, nc, push_count);
+
+            int res = push_count;
+            for(var item : switches[switches.length - 1]){
+                if(!item.equals("x")){
+                    res =  -1;
+                    break;
+                }
             }
+            while(!pushes.isEmpty()) {
+                var tPos = pushes.removeLast();
+                flipNeighbor(switches, tPos.first(), tPos.second());
+            }
+            return res;
         }
     }
 
@@ -205,14 +226,14 @@ public class ACM{
         if((r - 1) >= 0 && (r - 1) < switches.length){
             flipSingle(switches, r - 1, c);
         }
-        if((c - 1) >= 0 && (c - 1) < switches[0].length){
+        if((c - 1) >= 0 && (c - 1) < switches.length){
             flipSingle(switches, r, c - 1);
         }
 
         if((r + 1) >= 0 && (r + 1) < switches.length){
             flipSingle(switches, r + 1, c);
         }
-        if((c + 1) >= 0 && (c + 1) < switches[0].length){
+        if((c + 1) >= 0 && (c + 1) < switches.length){
             flipSingle(switches, r, c + 1);
         }
         flipSingle(switches, r, c);
@@ -256,7 +277,7 @@ public class ACM{
                 else if(c - radius >= 0){
                     cost = sums[r][c] - sums[r][c - radius];
                 }
-                else {
+                else{
                     cost = sums[r][c];
                 }
                 max = Math.max(cost, max);
@@ -270,7 +291,31 @@ public class ACM{
         throw new RuntimeException();
     }
 
+    /**
+     * a^b%9001
+     *
+     * @param a a
+     * @param b b
+     * @return int
+     */
     public static int sumDiv(int a, int b){
         throw new RuntimeException();
+    }
+
+    /**
+     * (1 + p + p^2 + ... + p^n)%m
+     *
+     * @param p p
+     * @param n n
+     * @param m m
+     * @return int
+     */
+    public static int geometricSequenceMod(int p, int n, int m){
+        if(n % 2 == 0){
+            throw new RuntimeException();
+        }
+        else{
+            throw new RuntimeException();
+        }
     }
 }

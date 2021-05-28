@@ -22,12 +22,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="fix junit pom, add method, set tuple record">
-      <change afterPath="$PROJECT_DIR$/../CentralUtils/src/main/java/org/nathan/centralUtils/utils/InternalUtils.java" afterDir="false" />
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="add laserBomb">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/acm/ACM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/acm/ACM.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/acm/ACMTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/acm/ACMTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CentralUtils/src/main/java/org/nathan/centralUtils/utils/ArrayUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CentralUtils/src/main/java/org/nathan/centralUtils/utils/ArrayUtils.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,10 +82,25 @@
       <recent name="org.nathan.AlgorithmsJava.structures" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ACMTest.laserBombTest">
+  <component name="RunManager" selected="JUnit.ACMTest">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="AlgorithmsJava" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ACMTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AlgorithmsJava" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.nathan.acm.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.nathan.acm" />
+      <option name="MAIN_CLASS_NAME" value="org.nathan.acm.ACMTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -125,22 +137,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ACMTest.solveHamiltonTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="AlgorithmsJava" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.nathan.acm.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.nathan.acm" />
-      <option name="MAIN_CLASS_NAME" value="org.nathan.acm.ACMTest" />
-      <option name="METHOD_NAME" value="solveHamiltonTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="ACMTest.strangeSwitchTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AlgorithmsJava" />
       <extension name="coverage">
@@ -160,17 +156,17 @@
     <list>
       <item itemvalue="Application.Main" />
       <item itemvalue="JUnit.ACMTest.fastPowerModTest" />
-      <item itemvalue="JUnit.ACMTest.solveHamiltonTest" />
       <item itemvalue="JUnit.ACMTest.strangeSwitchTest" />
       <item itemvalue="JUnit.ACMTest.laserBombTest" />
+      <item itemvalue="JUnit.ACMTest" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.ACMTest.laserBombTest" />
+        <item itemvalue="JUnit.ACMTest" />
         <item itemvalue="JUnit.ACMTest.strangeSwitchTest" />
+        <item itemvalue="JUnit.ACMTest.laserBombTest" />
         <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.ACMTest.fastPowerModTest" />
-        <item itemvalue="JUnit.ACMTest.solveHamiltonTest" />
       </list>
     </recent_temporary>
   </component>
@@ -321,13 +317,8 @@
       <workItem from="1622120044959" duration="4469000" />
       <workItem from="1622127559354" duration="596000" />
       <workItem from="1622185406996" duration="4398000" />
-    </task>
-    <task id="LOCAL-00076" summary="reformat">
-      <created>1612512700041</created>
-      <option name="number" value="00076" />
-      <option name="presentableId" value="LOCAL-00076" />
-      <option name="project" value="LOCAL" />
-      <updated>1612512700041</updated>
+      <workItem from="1622191626020" duration="725000" />
+      <workItem from="1622192760319" duration="3447000" />
     </task>
     <task id="LOCAL-00077" summary="add new utils">
       <created>1612525155703</created>
@@ -665,7 +656,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622122853428</updated>
     </task>
-    <option name="localTasksCounter" value="125" />
+    <task id="LOCAL-00125" summary="add laserBomb">
+      <created>1622191817332</created>
+      <option name="number" value="00125" />
+      <option name="presentableId" value="LOCAL-00125" />
+      <option name="project" value="LOCAL" />
+      <updated>1622191817332</updated>
+    </task>
+    <option name="localTasksCounter" value="126" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -694,7 +692,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="concurrent modification exception" />
     <MESSAGE value="rename packages" />
     <MESSAGE value="add SieveOfAtkin" />
     <MESSAGE value="modify readme and rename project" />
@@ -719,6 +716,23 @@
     <MESSAGE value="add lambda" />
     <MESSAGE value="save" />
     <MESSAGE value="fix junit pom, add method, set tuple record" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix junit pom, add method, set tuple record" />
+    <MESSAGE value="add laserBomb" />
+    <option name="LAST_COMMIT_MESSAGE" value="add laserBomb" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <default-breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties>
+            <option name="NOTIFY_CAUGHT" value="false" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="JUnit">
+        <watch expression="switches" language="JAVA" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>
