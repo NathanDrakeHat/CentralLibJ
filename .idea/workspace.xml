@@ -22,9 +22,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="add test">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="save" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -82,10 +80,20 @@
       <recent name="org.nathan.AlgorithmsJava.structures" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ACMTest.sumDivTest">
-    <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Application.pushThis">
+    <configuration name="pushThis" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="AlgorithmsJava" />
+      <option name="PROGRAM_PARAMETERS" value="7890" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="pushUtils" type="Application" factoryName="Application" temporary="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="CentralUtils" />
+      <option name="PROGRAM_PARAMETERS" value="7890" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../CentralUtils" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -154,7 +162,8 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.Main (1)" />
+      <item itemvalue="Application.pushThis" />
+      <item itemvalue="Application.pushUtils" />
       <item itemvalue="JUnit.ACMTest.strangeSwitchTest" />
       <item itemvalue="JUnit.ACMTest.laserBombTest" />
       <item itemvalue="JUnit.ACMTest" />
@@ -163,7 +172,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.ACMTest.sumDivTest" />
-        <item itemvalue="Application.Main (1)" />
+        <item itemvalue="Application.pushUtils" />
         <item itemvalue="JUnit.ACMTest" />
         <item itemvalue="JUnit.ACMTest.strangeSwitchTest" />
         <item itemvalue="JUnit.ACMTest.laserBombTest" />
@@ -324,20 +333,7 @@
       <workItem from="1622201328933" duration="2262000" />
       <workItem from="1622203692795" duration="2992000" />
       <workItem from="1622207191922" duration="55000" />
-    </task>
-    <task id="LOCAL-00079" summary="rename">
-      <created>1612536261177</created>
-      <option name="number" value="00079" />
-      <option name="presentableId" value="LOCAL-00079" />
-      <option name="project" value="LOCAL" />
-      <updated>1612536261178</updated>
-    </task>
-    <task id="LOCAL-00080" summary="rename">
-      <created>1612536725562</created>
-      <option name="number" value="00080" />
-      <option name="presentableId" value="LOCAL-00080" />
-      <option name="project" value="LOCAL" />
-      <updated>1612536725562</updated>
+      <workItem from="1622207276392" duration="108000" />
     </task>
     <task id="LOCAL-00081" summary="add">
       <created>1612616295531</created>
@@ -668,7 +664,21 @@
       <option name="project" value="LOCAL" />
       <updated>1622206606495</updated>
     </task>
-    <option name="localTasksCounter" value="128" />
+    <task id="LOCAL-00128" summary="save">
+      <created>1622207310130</created>
+      <option name="number" value="00128" />
+      <option name="presentableId" value="LOCAL-00128" />
+      <option name="project" value="LOCAL" />
+      <updated>1622207310130</updated>
+    </task>
+    <task id="LOCAL-00129" summary="save">
+      <created>1622207314446</created>
+      <option name="number" value="00129" />
+      <option name="presentableId" value="LOCAL-00129" />
+      <option name="project" value="LOCAL" />
+      <updated>1622207314446</updated>
+    </task>
+    <option name="localTasksCounter" value="130" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -717,12 +727,12 @@
     <MESSAGE value="add suppress warning" />
     <MESSAGE value="add solveHamilton" />
     <MESSAGE value="add lambda" />
-    <MESSAGE value="save" />
     <MESSAGE value="fix junit pom, add method, set tuple record" />
     <MESSAGE value="add laserBomb" />
     <MESSAGE value="change recursive to partly iterative" />
     <MESSAGE value="add test" />
-    <option name="LAST_COMMIT_MESSAGE" value="add test" />
+    <MESSAGE value="save" />
+    <option name="LAST_COMMIT_MESSAGE" value="save" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
