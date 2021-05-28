@@ -22,12 +22,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="save">
-      <change afterPath="$PROJECT_DIR$/../CentralUtils/CentralUtils.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jetbrains_annotations_16_0_1.xml" beforeDir="false" />
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="add test">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/acm/ACM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/acm/ACM.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/acm/ACMTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/acm/ACMTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -326,14 +322,8 @@
       <workItem from="1622200620712" duration="16000" />
       <workItem from="1622200707326" duration="473000" />
       <workItem from="1622201328933" duration="2262000" />
-      <workItem from="1622203692795" duration="2619000" />
-    </task>
-    <task id="LOCAL-00078" summary="reformat">
-      <created>1612525196340</created>
-      <option name="number" value="00078" />
-      <option name="presentableId" value="LOCAL-00078" />
-      <option name="project" value="LOCAL" />
-      <updated>1612525196340</updated>
+      <workItem from="1622203692795" duration="2992000" />
+      <workItem from="1622207191922" duration="55000" />
     </task>
     <task id="LOCAL-00079" summary="rename">
       <created>1612536261177</created>
@@ -671,7 +661,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622199515603</updated>
     </task>
-    <option name="localTasksCounter" value="127" />
+    <task id="LOCAL-00127" summary="add test">
+      <created>1622206606495</created>
+      <option name="number" value="00127" />
+      <option name="presentableId" value="LOCAL-00127" />
+      <option name="project" value="LOCAL" />
+      <updated>1622206606495</updated>
+    </task>
+    <option name="localTasksCounter" value="128" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -700,7 +697,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add SieveOfAtkin" />
     <MESSAGE value="modify readme and rename project" />
     <MESSAGE value="add doc" />
     <MESSAGE value="format" />
@@ -725,7 +721,8 @@
     <MESSAGE value="fix junit pom, add method, set tuple record" />
     <MESSAGE value="add laserBomb" />
     <MESSAGE value="change recursive to partly iterative" />
-    <option name="LAST_COMMIT_MESSAGE" value="change recursive to partly iterative" />
+    <MESSAGE value="add test" />
+    <option name="LAST_COMMIT_MESSAGE" value="add test" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
