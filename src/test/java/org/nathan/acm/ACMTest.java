@@ -7,8 +7,6 @@ import static org.nathan.acm.ACM.*;
 import static org.junit.jupiter.api.Assertions.*;
 import org.nathan.centralUtils.utils.NumericUtils;
 
-import java.util.Arrays;
-import java.util.stream.Collectors;
 import static org.nathan.centralUtils.utils.ArrayUtils.*;
 
 public class ACMTest{
@@ -117,5 +115,4 @@ public class ACMTest{
         assertEquals(2, maxExtremum(t5));
         assertEquals(1, maxExtremum(t6));
     }
-
 }
