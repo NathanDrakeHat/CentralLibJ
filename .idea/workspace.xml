@@ -22,10 +22,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="move main">
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="add doc">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CentralUtils/src/main/java/org/nathan/centralUtils/utils/ArrayUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CentralUtils/src/main/java/org/nathan/centralUtils/utils/ArrayUtils.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,7 +85,7 @@
       <recent name="org.nathan.AlgorithmsJava.structures" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.pushThis">
+  <component name="RunManager" selected="Application.pushUtils">
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.nathan.Main" />
       <module name="AlgorithmsJava" />
@@ -349,14 +347,7 @@
       <workItem from="1622203692795" duration="2992000" />
       <workItem from="1622207191922" duration="55000" />
       <workItem from="1622207276392" duration="2129000" />
-      <workItem from="1622250740731" duration="7864000" />
-    </task>
-    <task id="LOCAL-00091" summary="modify pom">
-      <created>1613635990846</created>
-      <option name="number" value="00091" />
-      <option name="presentableId" value="LOCAL-00091" />
-      <option name="project" value="LOCAL" />
-      <updated>1613635990846</updated>
+      <workItem from="1622250740731" duration="8053000" />
     </task>
     <task id="LOCAL-00092" summary="concurrent modification exception">
       <created>1615288448870</created>
@@ -694,7 +685,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622258492280</updated>
     </task>
-    <option name="localTasksCounter" value="140" />
+    <task id="LOCAL-00140" summary="add doc">
+      <created>1622259475229</created>
+      <option name="number" value="00140" />
+      <option name="presentableId" value="LOCAL-00140" />
+      <option name="project" value="LOCAL" />
+      <updated>1622259475229</updated>
+    </task>
+    <option name="localTasksCounter" value="141" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -723,7 +721,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="getter" />
     <MESSAGE value="fix comment" />
     <MESSAGE value="OneDimDP" />
     <MESSAGE value="comment and modifier" />
@@ -748,7 +745,8 @@
     <MESSAGE value="add utils" />
     <MESSAGE value="refactor" />
     <MESSAGE value="move main" />
-    <option name="LAST_COMMIT_MESSAGE" value="move main" />
+    <MESSAGE value="add doc" />
+    <option name="LAST_COMMIT_MESSAGE" value="add doc" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
