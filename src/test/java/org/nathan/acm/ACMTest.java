@@ -9,6 +9,7 @@ import org.nathan.centralUtils.utils.NumericUtils;
 
 import java.util.Arrays;
 import java.util.stream.Collectors;
+import static org.nathan.centralUtils.utils.ArrayUtils.*;
 
 public class ACMTest{
 
@@ -102,18 +103,12 @@ public class ACMTest{
 
     @Test
     public void maxExtremumTest(){
-        int[] case1 = new int[]{1,2,3,2,1};
-        int[] case2 = new int[]{1,2,3,4};
-        int[] case3 = new int[]{4,3,2,1};
-        int[] case4 = new int[]{1,3,2,1,0};
-        int[] case5 = new int[]{1,2,3,2};
-        int[] case6 = new int[]{1,2,1,0};
-        var t1 = Arrays.stream(case1).boxed().collect(Collectors.toList());
-        var t2 = Arrays.stream(case2).boxed().collect(Collectors.toList());
-        var t3 = Arrays.stream(case3).boxed().collect(Collectors.toList());
-        var t4 = Arrays.stream(case4).boxed().collect(Collectors.toList());
-        var t5 = Arrays.stream(case5).boxed().collect(Collectors.toList());
-        var t6 = Arrays.stream(case6).boxed().collect(Collectors.toList());
+        var t1 = arrayToList(new int[]{1,2,3,2,1});
+        var t2 = arrayToList(new int[]{1,2,3,4});
+        var t3 = arrayToList(new int[]{4,3,2,1});
+        var t4 = arrayToList(new int[]{1,3,2,1,0});
+        var t5 = arrayToList(new int[]{1,2,3,2});
+        var t6 = arrayToList(new int[]{1,2,1,0});
 
         assertEquals(2, maxExtremum(t1));
         assertEquals(3, maxExtremum(t2));
@@ -121,7 +116,6 @@ public class ACMTest{
         assertEquals(1, maxExtremum(t4));
         assertEquals(2, maxExtremum(t5));
         assertEquals(1, maxExtremum(t6));
-
     }
 
 }

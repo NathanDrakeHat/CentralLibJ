@@ -22,10 +22,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="save">
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="add maxExtremum">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AlgorithmsJava.iml" beforeDir="false" afterPath="$PROJECT_DIR$/AlgorithmsJava.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/acm/ACM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/acm/ACM.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/acm/ACMTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/acm/ACMTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../CentralUtils/src/main/java/org/nathan/centralUtils/utils/ArrayUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CentralUtils/src/main/java/org/nathan/centralUtils/utils/ArrayUtils.java" afterDir="false" />
     </list>
@@ -178,8 +176,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.ACMTest.maxExtremumTest" />
-        <item itemvalue="JUnit.ACMTest.sumDivTest" />
         <item itemvalue="Application.pushUtils" />
+        <item itemvalue="JUnit.ACMTest.sumDivTest" />
         <item itemvalue="JUnit.ACMTest" />
         <item itemvalue="JUnit.ACMTest.strangeSwitchTest" />
       </list>
@@ -340,14 +338,7 @@
       <workItem from="1622203692795" duration="2992000" />
       <workItem from="1622207191922" duration="55000" />
       <workItem from="1622207276392" duration="2129000" />
-      <workItem from="1622250740731" duration="996000" />
-    </task>
-    <task id="LOCAL-00082" summary="reformat">
-      <created>1612616942475</created>
-      <option name="number" value="00082" />
-      <option name="presentableId" value="LOCAL-00082" />
-      <option name="project" value="LOCAL" />
-      <updated>1612616942475</updated>
+      <workItem from="1622250740731" duration="3988000" />
     </task>
     <task id="LOCAL-00083" summary="reformat">
       <created>1612617009288</created>
@@ -685,7 +676,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622207462554</updated>
     </task>
-    <option name="localTasksCounter" value="131" />
+    <task id="LOCAL-00131" summary="add maxExtremum">
+      <created>1622253199716</created>
+      <option name="number" value="00131" />
+      <option name="presentableId" value="LOCAL-00131" />
+      <option name="project" value="LOCAL" />
+      <updated>1622253199716</updated>
+    </task>
+    <option name="localTasksCounter" value="132" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -714,7 +712,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="modify readme and rename project" />
     <MESSAGE value="add doc" />
     <MESSAGE value="format" />
     <MESSAGE value="project structure" />
@@ -739,7 +736,8 @@
     <MESSAGE value="change recursive to partly iterative" />
     <MESSAGE value="add test" />
     <MESSAGE value="save" />
-    <option name="LAST_COMMIT_MESSAGE" value="save" />
+    <MESSAGE value="add maxExtremum" />
+    <option name="LAST_COMMIT_MESSAGE" value="add maxExtremum" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
