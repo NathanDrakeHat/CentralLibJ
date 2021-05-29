@@ -1,6 +1,9 @@
 package org.nathan.algorithmsJava.dp;
 
-final class LongestCommonSequence { // longest common sequence problem, biological problem
+/**
+ * longest common sequence problem, biological problem
+ */
+final class LongestCommonSequence {
 
     public static char[] solve(char[] x, char[] y) {
         int m = x.length;

@@ -1,5 +1,8 @@
 package org.nathan.algorithmsJava.dp;
 
+/**
+ * unfinished
+ */
 final class OptimalBTree {
     // class table arrangement
     public static double[] p = {0, 0.15, 0.10, 0.05, 0.10, 0.20};

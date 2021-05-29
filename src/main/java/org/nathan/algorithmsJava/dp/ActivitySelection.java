@@ -2,8 +2,10 @@ package org.nathan.algorithmsJava.dp;
 
 import java.util.ArrayList;
 
+/**
+ * greedy algorithm
+ */
 final class ActivitySelection {
-    // greedy algorithm
     public static class Node {
         private final int val;
         private Node next;

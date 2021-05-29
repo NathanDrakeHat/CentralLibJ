@@ -13,7 +13,7 @@ class MatrixChainTest {
     void matrixChainOrder() {
         var t = MatrixChain.matrixChainOrder(Data.test);
         assertEquals(Data.res, t.toString());
-        assertEquals(Data.answer, t.min_cost);
+        assertEquals(Data.answer, t.getMinCost());
     }
 
     static class Data {

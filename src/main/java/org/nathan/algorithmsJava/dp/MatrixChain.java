@@ -4,10 +4,12 @@ import org.nathan.centralUtils.tuples.*;
 
 import java.util.List;
 
+/**
+ * optimal matrix multiply complexity
+ */
 final class MatrixChain {
-    // optimal matrix multiply complexity
     public static class MatrixChainResult {
-        int min_cost;
+        private int min_cost;
         private PairNode res;
 
         static class PairNode {
