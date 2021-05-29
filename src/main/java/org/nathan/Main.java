@@ -1,11 +1,10 @@
 package org.nathan;
 
-import org.nathan.acm.ACM;
 import org.nathan.centralUtils.utils.IOUtils;
 
+import java.lang.reflect.Array;
 import java.util.*;
 
-import static org.nathan.centralUtils.utils.IOUtils.*;
 import static org.nathan.centralUtils.utils.ArrayUtils.*;
 
 
@@ -16,10 +15,4 @@ class Main{
             IOUtils.system(String.format("git_proxy \"git push\" %s", args[0]));
         }
     }
-
-    public static void main(String[] args){
-        gitPush(args);
-    }
-
-
 }
