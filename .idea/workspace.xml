@@ -22,9 +22,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="add utils">
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="refactor">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../CentralUtils/src/main/java/org/nathan/centralUtils/utils/ArrayUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CentralUtils/src/main/java/org/nathan/centralUtils/utils/ArrayUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CentralUtils/src/main/java/org/nathan/centralUtils/utils/InternalUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CentralUtils/src/main/java/org/nathan/centralUtils/MainUtils.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,7 +101,7 @@
       </method>
     </configuration>
     <configuration name="pushUtils" type="Application" factoryName="Application" temporary="true">
-      <option name="MAIN_CLASS_NAME" value="Main" />
+      <option name="MAIN_CLASS_NAME" value="org.nathan.centralUtils.Main" />
       <module name="CentralUtils" />
       <option name="PROGRAM_PARAMETERS" value="7890" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../CentralUtils" />
@@ -345,14 +346,7 @@
       <workItem from="1622203692795" duration="2992000" />
       <workItem from="1622207191922" duration="55000" />
       <workItem from="1622207276392" duration="2129000" />
-      <workItem from="1622250740731" duration="5975000" />
-    </task>
-    <task id="LOCAL-00086" summary="archive">
-      <created>1612857754602</created>
-      <option name="number" value="00086" />
-      <option name="presentableId" value="LOCAL-00086" />
-      <option name="project" value="LOCAL" />
-      <updated>1612857754603</updated>
+      <workItem from="1622250740731" duration="6368000" />
     </task>
     <task id="LOCAL-00087" summary="rename project">
       <created>1612959933902</created>
@@ -690,7 +684,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622255884929</updated>
     </task>
-    <option name="localTasksCounter" value="135" />
+    <task id="LOCAL-00135" summary="refactor">
+      <created>1622257877860</created>
+      <option name="number" value="00135" />
+      <option name="presentableId" value="LOCAL-00135" />
+      <option name="project" value="LOCAL" />
+      <updated>1622257877860</updated>
+    </task>
+    <option name="localTasksCounter" value="136" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -719,7 +720,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="project structure" />
     <MESSAGE value="move Euler.java to new project" />
     <MESSAGE value="getter" />
     <MESSAGE value="fix comment" />
@@ -744,7 +744,8 @@
     <MESSAGE value="add maxExtremum" />
     <MESSAGE value="add app" />
     <MESSAGE value="add utils" />
-    <option name="LAST_COMMIT_MESSAGE" value="add utils" />
+    <MESSAGE value="refactor" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
