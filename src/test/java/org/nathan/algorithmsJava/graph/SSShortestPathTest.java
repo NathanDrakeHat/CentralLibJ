@@ -1,7 +1,6 @@
 package org.nathan.algorithmsJava.graph;
 
 import org.junit.jupiter.api.Test;
-import org.nathan.centralUtils.tuples.Tuple;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -10,7 +9,6 @@ import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.nathan.algorithmsJava.graph.BFS.BFSVertex;
-import static org.nathan.algorithmsJava.graph.DFS.DFSVertex;
 
 class SSShortestPathTest {
 

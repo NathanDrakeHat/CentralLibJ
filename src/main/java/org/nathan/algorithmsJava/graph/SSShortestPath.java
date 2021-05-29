@@ -22,7 +22,7 @@ public final class SSShortestPath{
      * @param graph graph
      * @param s     start
      * @param <T>   id
-     * @return has shorte
+     * @return has shortest path
      */
     public static <T> boolean BellmanFord(@NotNull LinkedGraph<BFSVertex<T>> graph, @NotNull BFSVertex<T> s){
         initializeSingleSource(graph, s);
@@ -67,7 +67,7 @@ public final class SSShortestPath{
      * shortest paths of directed acyclic graph
      *
      * @param <T>              id
-     * @param BFS_Linked_graph linked graph with bfs vertex wraper
+     * @param BFS_Linked_graph linked graph with bfs vertex wrapper
      * @param s                start
      */
     public static <T> void ssDAG(@NotNull LinkedGraph<BFSVertex<T>> BFS_Linked_graph, @NotNull BFSVertex<T> s){
