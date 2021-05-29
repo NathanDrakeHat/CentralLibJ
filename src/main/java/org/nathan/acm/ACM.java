@@ -9,7 +9,9 @@ import java.util.*;
 import java.util.function.BiFunction;
 
 
-@SuppressWarnings("unused")
+/**
+ * 算法竞赛进阶指南, 李煜东
+ */
 public class ACM{
 
     /**
