@@ -7,6 +7,9 @@ import static org.nathan.acm.ACM.*;
 import static org.junit.jupiter.api.Assertions.*;
 import org.nathan.centralUtils.utils.NumericUtils;
 
+import java.util.Arrays;
+import java.util.stream.Collectors;
+
 public class ACMTest{
 
     @Test
@@ -96,4 +99,29 @@ public class ACMTest{
         //noinspection OptionalGetWithoutIsPresent
         assertEquals((NumericUtils.getAllDivisors((int) Math.pow(6, 6)).stream().reduce(Integer::sum).get() % 9901), sumDiv(6, 6));
     }
+
+    @Test
+    public void maxExtremumTest(){
+        int[] case1 = new int[]{1,2,3,2,1};
+        int[] case2 = new int[]{1,2,3,4};
+        int[] case3 = new int[]{4,3,2,1};
+        int[] case4 = new int[]{1,3,2,1,0};
+        int[] case5 = new int[]{1,2,3,2};
+        int[] case6 = new int[]{1,2,1,0};
+        var t1 = Arrays.stream(case1).boxed().collect(Collectors.toList());
+        var t2 = Arrays.stream(case2).boxed().collect(Collectors.toList());
+        var t3 = Arrays.stream(case3).boxed().collect(Collectors.toList());
+        var t4 = Arrays.stream(case4).boxed().collect(Collectors.toList());
+        var t5 = Arrays.stream(case5).boxed().collect(Collectors.toList());
+        var t6 = Arrays.stream(case6).boxed().collect(Collectors.toList());
+
+        assertEquals(2, maxExtremum(t1));
+        assertEquals(3, maxExtremum(t2));
+        assertEquals(0, maxExtremum(t3));
+        assertEquals(1, maxExtremum(t4));
+        assertEquals(2, maxExtremum(t5));
+        assertEquals(1, maxExtremum(t6));
+
+    }
+
 }

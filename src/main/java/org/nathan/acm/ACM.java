@@ -331,11 +331,37 @@ public class ACM{
      *
      * @param nums  num list
      * @param <Num> comparable
-     * @return extremum
+     * @return index
      */
-    public static <Num extends Comparable<Num>> Num extremum(List<Num> nums){
-        throw new RuntimeException();
+    public static <Num extends Comparable<Num>> int maxExtremum(List<Num> nums){
+        int r = nums.size();
+        int l = 0;
+        while(r - l >= 3) {
+            int mid = (r + l) / 2;
+            var l_m = nums.get(mid - 1);
+            var r_m = nums.get(mid + 1);
+            if(l_m.compareTo(r_m) < 0){
+                l = mid;
+            }
+            else if(l_m.compareTo(r_m) > 0){
+                r = mid + 1;
+            }
+            else{
+                l = mid;
+                r = mid + 1;
+            }
+        }
+
+        Num max = nums.get(l);
+        int max_idx = l;
+        for(int i = l + 1; i < r; i++){
+            var t =nums.get(i);
+            if(max.compareTo(t) < 0){
+                max = t;
+                max_idx = i;
+            }
+        }
+
+        return max_idx;
     }
-
-
 }

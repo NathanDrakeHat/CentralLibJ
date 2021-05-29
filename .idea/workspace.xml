@@ -22,7 +22,13 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="save" />
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="save">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AlgorithmsJava.iml" beforeDir="false" afterPath="$PROJECT_DIR$/AlgorithmsJava.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/acm/ACM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/acm/ACM.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/acm/ACMTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/acm/ACMTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CentralUtils/src/main/java/org/nathan/centralUtils/utils/ArrayUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CentralUtils/src/main/java/org/nathan/centralUtils/utils/ArrayUtils.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -70,9 +76,9 @@
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.28315789" />
+    <property name="project.structure.side.proportion" value="0.45428157" />
     <property name="settings.editor.selected.configurable" value="http.proxy" />
   </component>
   <component name="RecentsManager">
@@ -80,7 +86,7 @@
       <recent name="org.nathan.AlgorithmsJava.structures" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.pushThis">
+  <component name="RunManager" selected="JUnit.ACMTest.maxExtremumTest">
     <configuration name="pushThis" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="AlgorithmsJava" />
@@ -113,7 +119,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ACMTest.laserBombTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ACMTest.maxExtremumTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AlgorithmsJava" />
       <extension name="coverage">
         <pattern>
@@ -123,7 +129,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="org.nathan.acm" />
       <option name="MAIN_CLASS_NAME" value="org.nathan.acm.ACMTest" />
-      <option name="METHOD_NAME" value="laserBombTest" />
+      <option name="METHOD_NAME" value="maxExtremumTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -165,17 +171,17 @@
       <item itemvalue="Application.pushThis" />
       <item itemvalue="Application.pushUtils" />
       <item itemvalue="JUnit.ACMTest.strangeSwitchTest" />
-      <item itemvalue="JUnit.ACMTest.laserBombTest" />
       <item itemvalue="JUnit.ACMTest" />
       <item itemvalue="JUnit.ACMTest.sumDivTest" />
+      <item itemvalue="JUnit.ACMTest.maxExtremumTest" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ACMTest.maxExtremumTest" />
         <item itemvalue="JUnit.ACMTest.sumDivTest" />
         <item itemvalue="Application.pushUtils" />
         <item itemvalue="JUnit.ACMTest" />
         <item itemvalue="JUnit.ACMTest.strangeSwitchTest" />
-        <item itemvalue="JUnit.ACMTest.laserBombTest" />
       </list>
     </recent_temporary>
   </component>
@@ -333,14 +339,8 @@
       <workItem from="1622201328933" duration="2262000" />
       <workItem from="1622203692795" duration="2992000" />
       <workItem from="1622207191922" duration="55000" />
-      <workItem from="1622207276392" duration="108000" />
-    </task>
-    <task id="LOCAL-00081" summary="add">
-      <created>1612616295531</created>
-      <option name="number" value="00081" />
-      <option name="presentableId" value="LOCAL-00081" />
-      <option name="project" value="LOCAL" />
-      <updated>1612616295532</updated>
+      <workItem from="1622207276392" duration="2129000" />
+      <workItem from="1622250740731" duration="996000" />
     </task>
     <task id="LOCAL-00082" summary="reformat">
       <created>1612616942475</created>
@@ -678,7 +678,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622207314446</updated>
     </task>
-    <option name="localTasksCounter" value="130" />
+    <task id="LOCAL-00130" summary="save">
+      <created>1622207462554</created>
+      <option name="number" value="00130" />
+      <option name="presentableId" value="LOCAL-00130" />
+      <option name="project" value="LOCAL" />
+      <updated>1622207462554</updated>
+    </task>
+    <option name="localTasksCounter" value="131" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
