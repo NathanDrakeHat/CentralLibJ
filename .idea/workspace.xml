@@ -22,8 +22,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="fix typo, optimizer import">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="reformat">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -358,35 +357,7 @@
       <workItem from="1622207191922" duration="55000" />
       <workItem from="1622207276392" duration="2129000" />
       <workItem from="1622250740731" duration="10932000" />
-      <workItem from="1622275876773" duration="7571000" />
-    </task>
-    <task id="LOCAL-00098" summary="add doc">
-      <created>1616642218526</created>
-      <option name="number" value="00098" />
-      <option name="presentableId" value="LOCAL-00098" />
-      <option name="project" value="LOCAL" />
-      <updated>1616642218526</updated>
-    </task>
-    <task id="LOCAL-00099" summary="format">
-      <created>1616680598816</created>
-      <option name="number" value="00099" />
-      <option name="presentableId" value="LOCAL-00099" />
-      <option name="project" value="LOCAL" />
-      <updated>1616680598816</updated>
-    </task>
-    <task id="LOCAL-00100" summary="project structure">
-      <created>1616683021062</created>
-      <option name="number" value="00100" />
-      <option name="presentableId" value="LOCAL-00100" />
-      <option name="project" value="LOCAL" />
-      <updated>1616683021062</updated>
-    </task>
-    <task id="LOCAL-00101" summary="move Euler.java to new project">
-      <created>1616743586546</created>
-      <option name="number" value="00101" />
-      <option name="presentableId" value="LOCAL-00101" />
-      <option name="project" value="LOCAL" />
-      <updated>1616743586547</updated>
+      <workItem from="1622275876773" duration="8501000" />
     </task>
     <task id="LOCAL-00102" summary="getter">
       <created>1617093458290</created>
@@ -703,7 +674,35 @@
       <option name="project" value="LOCAL" />
       <updated>1622287839583</updated>
     </task>
-    <option name="localTasksCounter" value="147" />
+    <task id="LOCAL-00147" summary="add doc">
+      <created>1622288032748</created>
+      <option name="number" value="00147" />
+      <option name="presentableId" value="LOCAL-00147" />
+      <option name="project" value="LOCAL" />
+      <updated>1622288032748</updated>
+    </task>
+    <task id="LOCAL-00148" summary="add doc">
+      <created>1622288141973</created>
+      <option name="number" value="00148" />
+      <option name="presentableId" value="LOCAL-00148" />
+      <option name="project" value="LOCAL" />
+      <updated>1622288141973</updated>
+    </task>
+    <task id="LOCAL-00149" summary="reformat">
+      <created>1622288691538</created>
+      <option name="number" value="00149" />
+      <option name="presentableId" value="LOCAL-00149" />
+      <option name="project" value="LOCAL" />
+      <updated>1622288691538</updated>
+    </task>
+    <task id="LOCAL-00150" summary="reformat">
+      <created>1622288773165</created>
+      <option name="number" value="00150" />
+      <option name="presentableId" value="LOCAL-00150" />
+      <option name="project" value="LOCAL" />
+      <updated>1622288773165</updated>
+    </task>
+    <option name="localTasksCounter" value="151" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -732,7 +731,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="remove getter setter in DisjointSet.java" />
     <MESSAGE value="improve api" />
     <MESSAGE value="add FunctionTimer" />
     <MESSAGE value="add central utils" />
@@ -750,14 +748,15 @@
     <MESSAGE value="add app" />
     <MESSAGE value="add utils" />
     <MESSAGE value="move main" />
-    <MESSAGE value="add doc" />
     <MESSAGE value="rename" />
     <MESSAGE value="remove list to array, add more primitive methods" />
     <MESSAGE value="refactor" />
     <MESSAGE value="fix ssDag" />
     <MESSAGE value="add @NotNull" />
     <MESSAGE value="fix typo, optimizer import" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix typo, optimizer import" />
+    <MESSAGE value="add doc" />
+    <MESSAGE value="reformat" />
+    <option name="LAST_COMMIT_MESSAGE" value="reformat" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
