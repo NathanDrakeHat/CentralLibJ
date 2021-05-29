@@ -22,10 +22,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="add maxExtremum">
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="add utils">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/acm/ACMTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/acm/ACMTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CentralUtils/src/main/java/org/nathan/centralUtils/utils/ArrayUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CentralUtils/src/main/java/org/nathan/centralUtils/utils/ArrayUtils.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +82,14 @@
       <recent name="org.nathan.AlgorithmsJava.structures" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ACMTest.maxExtremumTest">
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="Main" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="AlgorithmsJava" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="pushThis" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="AlgorithmsJava" />
@@ -167,6 +172,7 @@
     </configuration>
     <list>
       <item itemvalue="Application.pushThis" />
+      <item itemvalue="Application.Main" />
       <item itemvalue="Application.pushUtils" />
       <item itemvalue="JUnit.ACMTest.strangeSwitchTest" />
       <item itemvalue="JUnit.ACMTest" />
@@ -175,8 +181,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.ACMTest.maxExtremumTest" />
         <item itemvalue="Application.pushUtils" />
+        <item itemvalue="JUnit.ACMTest.maxExtremumTest" />
         <item itemvalue="JUnit.ACMTest.sumDivTest" />
         <item itemvalue="JUnit.ACMTest" />
         <item itemvalue="JUnit.ACMTest.strangeSwitchTest" />
@@ -338,14 +344,7 @@
       <workItem from="1622203692795" duration="2992000" />
       <workItem from="1622207191922" duration="55000" />
       <workItem from="1622207276392" duration="2129000" />
-      <workItem from="1622250740731" duration="3988000" />
-    </task>
-    <task id="LOCAL-00083" summary="reformat">
-      <created>1612617009288</created>
-      <option name="number" value="00083" />
-      <option name="presentableId" value="LOCAL-00083" />
-      <option name="project" value="LOCAL" />
-      <updated>1612617009288</updated>
+      <workItem from="1622250740731" duration="4056000" />
     </task>
     <task id="LOCAL-00084" summary="reformat">
       <created>1612617110007</created>
@@ -683,7 +682,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622253199716</updated>
     </task>
-    <option name="localTasksCounter" value="132" />
+    <task id="LOCAL-00132" summary="add utils">
+      <created>1622255503400</created>
+      <option name="number" value="00132" />
+      <option name="presentableId" value="LOCAL-00132" />
+      <option name="project" value="LOCAL" />
+      <updated>1622255503400</updated>
+    </task>
+    <option name="localTasksCounter" value="133" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -712,7 +718,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add doc" />
     <MESSAGE value="format" />
     <MESSAGE value="project structure" />
     <MESSAGE value="move Euler.java to new project" />
@@ -737,7 +742,8 @@
     <MESSAGE value="add test" />
     <MESSAGE value="save" />
     <MESSAGE value="add maxExtremum" />
-    <option name="LAST_COMMIT_MESSAGE" value="add maxExtremum" />
+    <MESSAGE value="add utils" />
+    <option name="LAST_COMMIT_MESSAGE" value="add utils" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
