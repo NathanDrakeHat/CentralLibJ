@@ -1,6 +1,6 @@
-package org.nathan.algorithmsJava.tools;
+package org.nathan.algorithmsJava.miscellaneous;
 
-public final class SimpleDate {
+final class SimpleDate {
     public final int year;
     public final int month;
     public final int day;

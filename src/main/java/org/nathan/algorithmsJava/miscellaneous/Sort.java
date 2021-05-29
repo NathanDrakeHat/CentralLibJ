@@ -1,7 +1,5 @@
 package org.nathan.algorithmsJava.miscellaneous;
 
-import org.nathan.algorithmsJava.tools.SimpleDate;
-
 import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -177,7 +175,10 @@ public final class Sort {
         }
     }
 
-    //int data only, mean distribution
+    /**
+     * int data only, mean distribution
+     * @param a array
+     */
     public static void countingSort(int[] a) {
         int[] b = new int[a.length];
         int min = a[0], max = a[0];
@@ -204,15 +205,21 @@ public final class Sort {
         System.arraycopy(b, 0, a, 0, b.length);
     }
 
-    //sort from smaller bit to bigger bit
+    /**
+     * sort from smaller bit to bigger bit
+     * @param a array
+     */
     public static void radixSort(SimpleDate[] a) {
         Arrays.sort(a, Comparator.comparing(SimpleDate::getDay));
         Arrays.sort(a, Comparator.comparing(SimpleDate::getMonth));
         Arrays.sort(a, Comparator.comparing(SimpleDate::getYear));
     }
 
-    // mean distribution
-    // input [0, 1)
+    /**
+     * mean distribution
+     * input [0, 1)
+     * @param a array
+     */
     public static void bucketSort(double[] a) {
         List<List<Double>> b = new ArrayList<>();
         int n = a.length;

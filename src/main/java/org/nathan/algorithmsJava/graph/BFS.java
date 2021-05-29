@@ -4,7 +4,9 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
 
-// breath first search
+/**
+ * breath first search
+ */
 public final class BFS {
     public static <T> void breathFirstSearch(@NotNull LinkedGraph<BFSVertex<T>> G, @NotNull BFSVertex<T> s) {
         var vs = G.getAllVertices();

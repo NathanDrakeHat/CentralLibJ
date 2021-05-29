@@ -5,11 +5,19 @@ import org.jetbrains.annotations.NotNull;
 import org.nathan.algorithmsJava.graph.BFS.BFSVertex;
 
 import java.util.*;
+import java.util.function.BiConsumer;
+import java.util.function.BiFunction;
 
-// all pair shortest path
+/**
+ * all pair shortest path
+ */
 public class APShortestPath {
 
-    // O(V^4)
+    /**
+     * O(V^4)
+     * @param W weights
+     * @return all shortest path
+     */
     public static double[][] slowAllPairsShortestPaths(double[][] W) {
         var n = W.length;
         var L = W;
@@ -34,7 +42,11 @@ public class APShortestPath {
         return L_next;
     }
 
-    // O(V^3*lgV)
+    /**
+     * O(V^3*lgV)
+     * @param W weights
+     * @return all shortest path
+     */
     public static double[][] fasterAllPairsShortestPaths(double[][] W) {
         var n = W.length;
         var L = W;
@@ -45,7 +57,11 @@ public class APShortestPath {
         return L;
     }
 
-    // no negative-weight cycles
+    /**
+     * no negative-weight cycles
+     * @param W weights
+     * @return all shortest path
+     */
     public static double[][] FloydWarshall(double[][] W) {
         var n = W.length;
         var D_origin = W;
@@ -82,14 +98,17 @@ public class APShortestPath {
         return T;
     }
 
-    public interface ShortestPathDijkstra {
-        <T> void apply(LinkedGraph<BFSVertex<T>> G, BFSVertex<T> s);
-    }
 
-    // sparse org.nathan.Algorithms.graph
-    // Fibonacci heap: O(V^2*lgV + V*E)
-    // min heap: O(V*E*lgV)
-    public static <T> Optional<double[][]> Johnson(@NotNull LinkedGraph<BFSVertex<T>> graph, ShortestPathDijkstra algoDijkstra) {
+    /**
+     * sparse org.nathan.Algorithms.graph
+     * Fibonacci heap: O(V^2*lgV + V*E)
+     * min heap: O(V*E*lgV)
+     * @param graph graph
+     * @param algoDijkstra function
+     * @param <T> id
+     * @return all shortest path
+     */
+    public static <T> Optional<double[][]> Johnson(@NotNull LinkedGraph<BFSVertex<T>> graph, BiConsumer<LinkedGraph<BFSVertex<T>>, BFSVertex<T>> algoDijkstra) {
         Map<BFSVertex<T>, Double> h = new HashMap<>();
         var n = graph.getVerticesCount();
         var vertices_new = new ArrayList<>(graph.getAllVertices());
@@ -112,7 +131,7 @@ public class APShortestPath {
             for (var u : vertices_new) {
                 if (u != s) {
                     int idx_v = 0;
-                    algoDijkstra.apply(graph, u);
+                    algoDijkstra.accept(graph, u);
                     for (var v : vertices_new) {
                         if (v != s) {
                             D[idx_u][idx_v] = v.distance + h.get(v) - h.get(u);

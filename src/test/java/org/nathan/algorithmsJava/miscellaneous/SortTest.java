@@ -1,9 +1,8 @@
 package org.nathan.algorithmsJava.miscellaneous;
 
 import org.junit.jupiter.api.Test;
-import org.nathan.centralUtils.classes.RangeIterator;
+
 import static org.nathan.centralUtils.utils.ArrayUtils.*;
-import org.nathan.algorithmsJava.tools.SimpleDate;
 
 import java.util.Random;
 
@@ -144,7 +143,7 @@ class SortTest {
 
     @Test
     void radixSortTest() {
-        for(var ignored : new RangeIterator(0, 10)){
+        for(int i = 0; i < 10; i++){
             SimpleDate[] origin = buildDate();
             Sort.radixSort(origin);
             assertTrue(isSorted(origin));

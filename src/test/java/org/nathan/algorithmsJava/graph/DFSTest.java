@@ -100,7 +100,7 @@ class DFSTest {
         DFS.depthFirstSearch(G);
         var vertices = G.getAllVertices();
         List<DFS.DFSVertex<String>> l = new ArrayList<>(vertices);
-        l.sort(Comparator.comparing(DFS.DFSVertex::getContent));
+        l.sort(Comparator.comparing(DFS.DFSVertex::getId));
         assertEquals(1, l.get(0).discover);
         assertEquals(8, l.get(0).finish);
 

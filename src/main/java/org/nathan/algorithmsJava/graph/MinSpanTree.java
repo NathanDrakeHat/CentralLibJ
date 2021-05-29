@@ -10,7 +10,9 @@ import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Set;
 
-// minimum spanning tree
+/**
+ * minimum spanning tree
+ */
 public final class MinSpanTree {
     public static <T> Set<LinkedGraph.Edge<KruskalVertex<T>>> Kruskal(@NotNull LinkedGraph<KruskalVertex<T>> graph) {
         Set<LinkedGraph.Edge<KruskalVertex<T>>> res = new HashSet<>();
@@ -98,7 +100,7 @@ public final class MinSpanTree {
 
         @Override
         public String toString() {
-            return String.format("KruskalVertex: %s", content.toString());
+            return String.format("KruskalVertex: %s", content);
         }
 
     }
@@ -123,7 +125,7 @@ public final class MinSpanTree {
 
         @Override
         public String toString() {
-            return String.format("PrimVertex: (%s)", content.toString());
+            return String.format("PrimVertex: (%s)", content);
         }
     }
 }

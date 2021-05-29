@@ -7,7 +7,7 @@ import static org.nathan.acm.ACM.*;
 import static org.junit.jupiter.api.Assertions.*;
 import org.nathan.centralUtils.utils.NumericUtils;
 
-import static org.nathan.centralUtils.utils.ArrayUtils.*;
+import java.util.List;
 
 public class ACMTest{
 
@@ -101,12 +101,12 @@ public class ACMTest{
 
     @Test
     public void maxExtremumTest(){
-        var t1 = arrayToList(new int[]{1,2,3,2,1});
-        var t2 = arrayToList(new int[]{1,2,3,4});
-        var t3 = arrayToList(new int[]{4,3,2,1});
-        var t4 = arrayToList(new int[]{1,3,2,1,0});
-        var t5 = arrayToList(new int[]{1,2,3,2});
-        var t6 = arrayToList(new int[]{1,2,1,0});
+        var t1 = List.of(1,2,3,2,1);
+        var t2 = List.of(1,2,3,4);
+        var t3 = List.of(4,3,2,1);
+        var t4 = List.of(1,3,2,1,0);
+        var t5 = List.of(1,2,3,2);
+        var t6 = List.of(1,2,1,0);
 
         assertEquals(2, maxExtremum(t1));
         assertEquals(3, maxExtremum(t2));

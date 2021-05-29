@@ -6,14 +6,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-// depth first search
+/**
+ * depth first search
+ */
 public final class DFS {
     public static <T> void depthFirstSearch(@NotNull LinkedGraph<DFSVertex<T>> G) {
         var vertices = G.getAllVertices();
-        for (var v : vertices) {
+        vertices.parallelStream().forEach(v->{
             v.color = COLOR.WHITE;
             v.parent = null;
-        }
+        });
         int time = 0;
         for (var v : vertices) {
             if (v.color == COLOR.WHITE) {
@@ -84,18 +86,18 @@ public final class DFS {
 
     public static class DFSVertex<V> {
         @NotNull
-        private final V content;
+        private final V id;
         DFSVertex<V> parent;
         int discover; //d
         int finish; // f
         private COLOR color;
 
         public DFSVertex(@NotNull V name) {
-            this.content = name;
+            this.id = name;
         }
 
-        public @NotNull V getContent() {
-            return content;
+        public @NotNull V getId() {
+            return id;
         }
 
         public DFSVertex<V> getParent() {
@@ -104,7 +106,7 @@ public final class DFS {
 
         @Override
         public String toString() {
-            return String.format("DFS.Vertex: (%s)", content.toString());
+            return String.format("DFS.Vertex: (%s)", id);
         }
     }
 }
