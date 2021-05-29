@@ -70,8 +70,7 @@ public final class SSShortestPath{
      * @param BFS_Linked_graph linked graph with bfs vertex wraper
      * @param s                start
      */
-    public static <T> void ssDAG(@NotNull LinkedGraph<BFSVertex<T>> BFS_Linked_graph,
-               @NotNull BFSVertex<T> s){
+    public static <T> void ssDAG(@NotNull LinkedGraph<BFSVertex<T>> BFS_Linked_graph, @NotNull BFSVertex<T> s){
         var DFS_Linked_graph = new LinkedGraph<>(BFS_Linked_graph, DFSVertex::new);
         var DFS_list = topologicalSort(DFS_Linked_graph);
         initializeSingleSource(BFS_Linked_graph, s);
@@ -93,7 +92,7 @@ public final class SSShortestPath{
      * @param s   start
      * @param <T> id
      */
-    public static <T> void DijkstraFibonacciHeap(LinkedGraph<BFSVertex<T>> G, BFSVertex<T> s){
+    public static <T> void DijkstraFibonacciHeap(@NotNull LinkedGraph<BFSVertex<T>> G, @NotNull BFSVertex<T> s){
         initializeSingleSource(G, s);
         var vertices = G.getAllVertices();
         FibonacciHeap<Double, BFSVertex<T>> Q = new FibonacciHeap<>(Comparator.comparingDouble(a -> a));
@@ -121,7 +120,7 @@ public final class SSShortestPath{
      * @param s   start
      * @param <T> id
      */
-    public static <T> void DijkstraMinHeap(LinkedGraph<BFSVertex<T>> G, BFSVertex<T> s){
+    public static <T> void DijkstraMinHeap(@NotNull LinkedGraph<BFSVertex<T>> G, @NotNull BFSVertex<T> s){
         initializeSingleSource(G, s);
         var vertices = G.getAllVertices();
         MinHeap<Double, BFSVertex<T>> Q = new MinHeap<>(vertices, BFSVertex::getDistance, Double::compare);

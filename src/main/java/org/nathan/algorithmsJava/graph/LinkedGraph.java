@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 
 
 public final class LinkedGraph<V>{
+    @NotNull
     private final Direction graph_direction;
     private final List<V> vertices = new ArrayList<>();
     private final Map<V, List<Edge<V>>> edges_map = new HashMap<>();
@@ -78,7 +79,7 @@ public final class LinkedGraph<V>{
         return size;
     }
 
-    public List<Edge<V>> getAllEdges(){
+    public @NotNull List<Edge<V>> getAllEdges(){
         List<Edge<V>> res = new ArrayList<>();
         for(var vertex : vertices){
             res.addAll(edges_map.get(vertex));
@@ -89,7 +90,7 @@ public final class LinkedGraph<V>{
     /**
      * @return unmodifiable list
      */
-    public List<V> getAllVertices(){
+    public @NotNull List<V> getAllVertices(){
         return Collections.unmodifiableList(vertices);
     }
 
@@ -97,7 +98,7 @@ public final class LinkedGraph<V>{
      * @param vertex vertex
      * @return unmodifiable list
      */
-    public List<Edge<V>> getEdgesAt(V vertex){
+    public @NotNull List<Edge<V>> getEdgesAt(V vertex){
         return Collections.unmodifiableList(edges_map.get(vertex));
     }
 

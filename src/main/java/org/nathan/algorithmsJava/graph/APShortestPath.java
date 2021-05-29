@@ -108,7 +108,9 @@ public class APShortestPath {
      * @param <T> id
      * @return all shortest path
      */
-    public static <T> Optional<double[][]> Johnson(@NotNull LinkedGraph<BFSVertex<T>> graph, BiConsumer<LinkedGraph<BFSVertex<T>>, BFSVertex<T>> algoDijkstra) {
+    public static <T>
+    Optional<double[][]> Johnson(@NotNull LinkedGraph<BFSVertex<T>> graph,
+                                 @NotNull BiConsumer<LinkedGraph<BFSVertex<T>>, BFSVertex<T>> algoDijkstra) {
         Map<BFSVertex<T>, Double> h = new HashMap<>();
         var n = graph.getVerticesCount();
         var vertices_new = new ArrayList<>(graph.getAllVertices());

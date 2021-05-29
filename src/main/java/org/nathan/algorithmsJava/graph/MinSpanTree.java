@@ -14,7 +14,8 @@ import java.util.Set;
  * minimum spanning tree
  */
 public final class MinSpanTree {
-    public static <T> Set<LinkedGraph.Edge<KruskalVertex<T>>> Kruskal(@NotNull LinkedGraph<KruskalVertex<T>> graph) {
+    public static <T>
+    @NotNull Set<LinkedGraph.Edge<KruskalVertex<T>>> Kruskal(@NotNull LinkedGraph<KruskalVertex<T>> graph) {
         Set<LinkedGraph.Edge<KruskalVertex<T>>> res = new HashSet<>();
         var edges_set = graph.getAllEdges();
         var edges_list = new ArrayList<>(edges_set);

@@ -1,6 +1,7 @@
 package org.nathan.algorithmsJava.graph;
 
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -87,6 +88,7 @@ public final class DFS {
     public static class DFSVertex<V> {
         @NotNull
         private final V id;
+        @Nullable
         DFSVertex<V> parent;
         int discover; //d
         int finish; // f
@@ -100,7 +102,7 @@ public final class DFS {
             return id;
         }
 
-        public DFSVertex<V> getParent() {
+        public @Nullable DFSVertex<V> getParent() {
             return parent;
         }
 

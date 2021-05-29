@@ -1,6 +1,7 @@
 package org.nathan.algorithmsJava.graph;
 
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.*;
 
@@ -49,7 +50,7 @@ public final class BFS {
         return res;
     }
 
-    private static <T> void traverse(@NotNull BFSVertex<T> s, @NotNull BFSVertex<T> v, @NotNull List<T> res) {
+    private static <T> void traverse(BFSVertex<T> s, BFSVertex<T> v, List<T> res) {
         if (v == s) {
             res.add(s.content);
         }
@@ -63,12 +64,12 @@ public final class BFS {
 
     public static class BFSVertex<V> {
         private final V content;
+        @Nullable
         BFSVertex<V> parent;
         double distance; // d
         private COLOR color;
 
-        public BFSVertex(V name) {
-            Objects.requireNonNull(name);
+        public BFSVertex(@NotNull V name) {
             this.content = name;
         }
 
@@ -80,7 +81,7 @@ public final class BFS {
             return content;
         }
 
-        public BFSVertex<V> getParent() {
+        public @Nullable BFSVertex<V> getParent() {
             return parent;
         }
 
