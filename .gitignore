@@ -1,6 +1,5 @@
 *.bat
-src/main/java/Main.java
-*temp*
+\*temp*
 /target/
 /out/
 *.txt
