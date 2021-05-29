@@ -9,10 +9,17 @@ import static org.nathan.centralUtils.utils.ArrayUtils.*;
 
 
 class Main{
-    public static void gitPush(String[] args){
-        if(args.length == 1){
-            var i = Integer.valueOf(args[0]);
-            IOUtils.system(String.format("git_proxy \"git push\" %s", args[0]));
+    static class GitPush{
+        public static void gitPush(String[] args){
+            if(args.length == 1){
+                var i = Integer.valueOf(args[0]);
+                IOUtils.system(String.format("git_proxy \"git push\" %s", args[0]));
+            }
         }
+    }
+
+
+    public static void main(String[] args){
+
     }
 }
