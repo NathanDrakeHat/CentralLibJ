@@ -43,8 +43,12 @@ public final class LinkedGraph<V>{
             mapRecord.put(otherV, mapped);
         });
         other_graph.edges_map.forEach(((otherV, edges) -> edges_map.put(mapRecord.get(otherV),
-                edges.parallelStream().map(edge -> new Edge<>(mapRecord.get(edge.former_vertex),
-                        mapRecord.get(edge.later_vertex), edge.weight, edge.edge_direction)).collect(Collectors.toList()))));
+                edges.parallelStream().map(edge ->
+                        new Edge<>(mapRecord.get(edge.former_vertex),
+                                mapRecord.get(edge.later_vertex),
+                                edge.weight,
+                                edge.edge_direction))
+                        .collect(Collectors.toList()))));
     }
 
     public void setNeighbor(@NotNull V vertex, @NotNull V neighbor){
