@@ -13,24 +13,26 @@ import java.util.stream.Collectors;
  */
 public class LinkedGraph<V extends Vertex<?>>{
     private final boolean directed;
-    private final List<V> vertices = new ArrayList<>();
-    private final Map<V, List<GraphEdge<V>>> edges_map = new HashMap<>();
-    private int size;
+    private final List<V> vertices;
+    private final Map<V, List<GraphEdge<V>>> edges_map;
+
+    LinkedGraph(int size, boolean is_directed){
+        directed = is_directed;
+        vertices  = new ArrayList<>(size);
+        edges_map = new HashMap<>(size);
+    }
 
     public LinkedGraph(@NotNull List<V> vertices, boolean is_directed){
-        size = 0;
+        this(vertices.size(), is_directed);
         for(var vertex : vertices){
             Objects.requireNonNull(vertex);
             this.edges_map.put(vertex, new ArrayList<>());
             this.vertices.add(vertex);
-            size++;
         }
-        this.directed = is_directed;
     }
 
     public LinkedGraph(@NotNull LinkedGraph<V> other_graph){
-        size = other_graph.vertices.size();
-        this.directed = other_graph.directed;
+        this(other_graph.verticesCount(), other_graph.directed);
         this.edges_map.putAll(other_graph.edges_map);
         this.vertices.addAll(other_graph.vertices);
     }
@@ -42,9 +44,8 @@ public class LinkedGraph<V extends Vertex<?>>{
      * @param <OV> other vertex wrapper
      */
     public <OV extends Vertex<?>> LinkedGraph(@NotNull LinkedGraph<OV> other_graph, Function<OV, V> mapper){
-        size = other_graph.vertices.size();
-        directed = other_graph.directed;
-        Map<OV, V> mapRecord = new HashMap<>(size);
+        this(other_graph.verticesCount(), other_graph.directed);
+        Map<OV, V> mapRecord = new HashMap<>(verticesCount());
         other_graph.vertices.forEach(otherV -> {
             var mapped = mapper.apply(otherV);
             vertices.add(mapped);
@@ -85,13 +86,12 @@ public class LinkedGraph<V extends Vertex<?>>{
         if(vertices.contains(vertex) || edges_map.containsKey(vertex)){
             throw new IllegalArgumentException("repeated vertex");
         }
-        size++;
         vertices.add(vertex);
         edges_map.put(vertex, new ArrayList<>());
     }
 
-    public int getVerticesCount(){
-        return size;
+    public int verticesCount(){
+        return vertices.size();
     }
 
     public @NotNull List<GraphEdge<V>> getAllEdges(){

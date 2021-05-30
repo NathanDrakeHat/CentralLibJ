@@ -24,7 +24,7 @@ public final class SSShortestPath{
      */
     public static <T> boolean BellmanFord(@NotNull LinkedGraph<BFSVertex<T>> graph, @NotNull BFSVertex<T> s){
         initializeSingleSource(graph, s);
-        int vertices_count = graph.getVerticesCount();
+        int vertices_count = graph.verticesCount();
         var edges = graph.getAllEdges();
         for(int i = 1; i < vertices_count; i++){
             for(var edge : edges){

@@ -110,7 +110,7 @@ public class APShortestPath {
     Optional<double[][]> Johnson(@NotNull LinkedGraph<BFSVertex<T>> graph,
                                  @NotNull BiConsumer<LinkedGraph<BFSVertex<T>>, BFSVertex<T>> algoDijkstra) {
         Map<BFSVertex<T>, Double> h = new HashMap<>();
-        var n = graph.getVerticesCount();
+        var n = graph.verticesCount();
         var vertices_new = new ArrayList<>(graph.getAllVertices());
         var s = new BFSVertex<T>();
         vertices_new.add(s);
