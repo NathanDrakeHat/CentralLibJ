@@ -2,7 +2,6 @@ package org.nathan.algorithmsJava.graph;
 
 
 import org.jetbrains.annotations.NotNull;
-import org.nathan.algorithmsJava.graph.BFS.BFSVertex;
 
 import java.util.*;
 import java.util.function.BiConsumer;

@@ -52,7 +52,7 @@ class MinSpanTreeTest {
 
     }
 
-    void runFibonacciHeap(LinkedGraph<MinSpanTree.PrimVertex<String>> graph, PrimVertex<String> target) {
+    void runFibonacciHeap(LinkedGraph<PrimVertex<String>> graph, PrimVertex<String> target) {
         PrimFibonacciHeap(graph, target);
         var vertices = graph.getAllVertices();
         Set<Set<String>> res = new HashSet<>();
@@ -67,7 +67,7 @@ class MinSpanTreeTest {
         assertTrue(res.equals(buildPrimAnswer1()) || res.equals(buildPrimAnswer2()));
     }
 
-    void runMinHeap(LinkedGraph<MinSpanTree.PrimVertex<String>> graph, PrimVertex<String> target) {
+    void runMinHeap(LinkedGraph<PrimVertex<String>> graph, PrimVertex<String> target) {
         PrimMinHeap(graph, target);
         var vertices = graph.getAllVertices();
         Set<Set<String>> res = new HashSet<>();
@@ -135,10 +135,10 @@ class MinSpanTreeTest {
     }
 
     static class GraphAndTarget {
-        LinkedGraph<MinSpanTree.PrimVertex<String>> graph;
+        LinkedGraph<PrimVertex<String>> graph;
         PrimVertex<String> target;
 
-        public GraphAndTarget(LinkedGraph<MinSpanTree.PrimVertex<String>> graph, PrimVertex<String> target) {
+        public GraphAndTarget(LinkedGraph<PrimVertex<String>> graph, PrimVertex<String> target) {
             this.graph = graph;
             this.target = target;
         }

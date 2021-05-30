@@ -8,8 +8,6 @@ import org.nathan.algorithmsJava.structures.MinHeap;
 import java.util.Comparator;
 import java.util.stream.Collectors;
 
-import static org.nathan.algorithmsJava.graph.BFS.BFSVertex;
-import static org.nathan.algorithmsJava.graph.DFS.DFSVertex;
 import static org.nathan.algorithmsJava.graph.DFS.topologicalSort;
 
 /**

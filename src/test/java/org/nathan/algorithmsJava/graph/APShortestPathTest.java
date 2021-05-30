@@ -7,7 +7,6 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.nathan.algorithmsJava.graph.BFS.BFSVertex;
 
 class APShortestPathTest {
 

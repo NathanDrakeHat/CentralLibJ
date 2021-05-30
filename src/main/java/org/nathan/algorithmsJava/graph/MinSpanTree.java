@@ -1,7 +1,6 @@
 package org.nathan.algorithmsJava.graph;
 
 import org.jetbrains.annotations.NotNull;
-import org.nathan.algorithmsJava.structures.DisjointSet;
 import org.nathan.algorithmsJava.structures.FibonacciHeap;
 import org.nathan.algorithmsJava.structures.MinHeap;
 
@@ -86,47 +85,4 @@ public final class MinSpanTree {
         }
     }
 
-    public final static class KruskalVertex<V> extends DisjointSet {
-        @NotNull
-        private final V content;
-
-        public KruskalVertex(@NotNull V n) {
-            content = n;
-        }
-
-        @SuppressWarnings("unused")
-        public @NotNull V getContent() {
-            return content;
-        }
-
-        @Override
-        public String toString() {
-            return String.format("KruskalVertex: %s", content);
-        }
-
-    }
-
-    public static class PrimVertex<V> {
-        @NotNull
-        private final V content;
-        PrimVertex<V> parent;
-        private double key = 0;
-
-        public PrimVertex(@NotNull V name) {
-            this.content = name;
-        }
-
-        public @NotNull V getContent() {
-            return content;
-        }
-
-        public double getKey() {
-            return key;
-        }
-
-        @Override
-        public String toString() {
-            return String.format("PrimVertex: (%s)", content);
-        }
-    }
 }

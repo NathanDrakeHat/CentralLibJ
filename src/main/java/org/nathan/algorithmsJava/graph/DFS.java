@@ -1,7 +1,6 @@
 package org.nathan.algorithmsJava.graph;
 
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -85,30 +84,4 @@ public final class DFS {
 
     enum COLOR {WHITE, GRAY, BLACK}
 
-    public static class DFSVertex<V> {
-        @NotNull
-        private final V id;
-        @Nullable
-        DFSVertex<V> parent;
-        int discover; //d
-        int finish; // f
-        private COLOR color;
-
-        public DFSVertex(@NotNull V name) {
-            this.id = name;
-        }
-
-        public @NotNull V getId() {
-            return id;
-        }
-
-        public @Nullable DFSVertex<V> getParent() {
-            return parent;
-        }
-
-        @Override
-        public String toString() {
-            return String.format("DFS.Vertex: (%s)", id);
-        }
-    }
 }

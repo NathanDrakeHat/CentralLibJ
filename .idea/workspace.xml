@@ -22,8 +22,22 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="reformat">
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="refactor">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJava/graph/BFSVertex.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJava/graph/DFSVertex.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJava/graph/KruskalVertex.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJava/graph/PrimVertex.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJava/graph/APShortestPath.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJava/graph/APShortestPath.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJava/graph/BFS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJava/graph/BFS.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJava/graph/DFS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJava/graph/DFS.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJava/graph/MinSpanTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJava/graph/MinSpanTree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJava/graph/SSShortestPath.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJava/graph/SSShortestPath.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJava/graph/APShortestPathTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJava/graph/APShortestPathTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJava/graph/BFSTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJava/graph/BFSTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJava/graph/DFSTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJava/graph/DFSTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJava/graph/MinSpanTreeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJava/graph/MinSpanTreeTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJava/graph/SSShortestPathTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJava/graph/SSShortestPathTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,6 +115,15 @@
       <option name="MAIN_CLASS_NAME" value="org.nathan.Main" />
       <module name="AlgorithmsJava" />
       <option name="PROGRAM_PARAMETERS" value="7890" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="pushUtils" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="org.nathan.centralUtils.Main" />
+      <module name="CentralUtils" />
+      <option name="PROGRAM_PARAMETERS" value="7890" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../CentralUtils" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -184,6 +207,7 @@
     </configuration>
     <list>
       <item itemvalue="Application.pushThis" />
+      <item itemvalue="Application.pushUtils" />
       <item itemvalue="Application.Main" />
       <item itemvalue="JUnit.ACMTest" />
       <item itemvalue="JUnit.ACMTest.maxExtremumTest" />
@@ -358,20 +382,9 @@
       <workItem from="1622207276392" duration="2129000" />
       <workItem from="1622250740731" duration="10932000" />
       <workItem from="1622275876773" duration="8501000" />
-    </task>
-    <task id="LOCAL-00102" summary="getter">
-      <created>1617093458290</created>
-      <option name="number" value="00102" />
-      <option name="presentableId" value="LOCAL-00102" />
-      <option name="project" value="LOCAL" />
-      <updated>1617093458290</updated>
-    </task>
-    <task id="LOCAL-00103" summary="fix comment">
-      <created>1617094597216</created>
-      <option name="number" value="00103" />
-      <option name="presentableId" value="LOCAL-00103" />
-      <option name="project" value="LOCAL" />
-      <updated>1617094597216</updated>
+      <workItem from="1622288902740" duration="750000" />
+      <workItem from="1622294572484" duration="5000" />
+      <workItem from="1622339072674" duration="334000" />
     </task>
     <task id="LOCAL-00104" summary="OneDimDP">
       <created>1617193929954</created>
@@ -702,7 +715,21 @@
       <option name="project" value="LOCAL" />
       <updated>1622288773165</updated>
     </task>
-    <option name="localTasksCounter" value="151" />
+    <task id="LOCAL-00151" summary="add doc">
+      <created>1622289237338</created>
+      <option name="number" value="00151" />
+      <option name="presentableId" value="LOCAL-00151" />
+      <option name="project" value="LOCAL" />
+      <updated>1622289237338</updated>
+    </task>
+    <task id="LOCAL-00152" summary="refactor">
+      <created>1622289617304</created>
+      <option name="number" value="00152" />
+      <option name="presentableId" value="LOCAL-00152" />
+      <option name="project" value="LOCAL" />
+      <updated>1622289617304</updated>
+    </task>
+    <option name="localTasksCounter" value="153" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -750,13 +777,13 @@
     <MESSAGE value="move main" />
     <MESSAGE value="rename" />
     <MESSAGE value="remove list to array, add more primitive methods" />
-    <MESSAGE value="refactor" />
     <MESSAGE value="fix ssDag" />
     <MESSAGE value="add @NotNull" />
     <MESSAGE value="fix typo, optimizer import" />
-    <MESSAGE value="add doc" />
     <MESSAGE value="reformat" />
-    <option name="LAST_COMMIT_MESSAGE" value="reformat" />
+    <MESSAGE value="add doc" />
+    <MESSAGE value="refactor" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
