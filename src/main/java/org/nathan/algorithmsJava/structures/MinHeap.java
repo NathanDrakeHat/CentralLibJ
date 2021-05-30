@@ -7,7 +7,7 @@ import java.util.*;
 import java.util.function.Function;
 
 
-public final class MinHeap<K, V> implements Iterable<Tuple<K, V>> {
+public class MinHeap<K, V> implements Iterable<Tuple<K, V>> {
     private final List<Node<K, V>> array = new ArrayList<>();
     private final Map<V, Node<K, V>> value_node_map = new HashMap<>();
     private final DualToIntFunction<K, K> key_comparer;

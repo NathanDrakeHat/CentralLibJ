@@ -7,7 +7,7 @@ import java.util.*;
 
 // dynamic minimum priority queue
 // key must be a number
-public final class FibonacciHeap<K, V> {
+public class FibonacciHeap<K, V> {
     private final Map<V, Node<K, V>> value_Node_map = new HashMap<>();
     private final Comparator<K> keyComparator;
     Node<K, V> rootList = null;

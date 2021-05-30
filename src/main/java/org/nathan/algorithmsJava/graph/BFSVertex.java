@@ -3,23 +3,23 @@ package org.nathan.algorithmsJava.graph;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class BFSVertex<V>{
-    final V content;
+public class BFSVertex<V> implements Vertex<V>{
+    final V id;
     @Nullable
     BFSVertex<V> parent;
     double distance; // d
     BFS.COLOR color;
 
     public BFSVertex(@NotNull V name){
-        this.content = name;
+        this.id = name;
     }
 
     BFSVertex(){
-        content = null;
+        id = null;
     }
 
-    public V getContent(){
-        return content;
+    public V getId(){
+        return id;
     }
 
     public @Nullable BFSVertex<V> getParent(){
@@ -32,6 +32,6 @@ public class BFSVertex<V>{
 
     @Override
     public String toString(){
-        return String.format("BFS.Vertex: (%s)", content != null ? content.toString() : "()");
+        return String.format("BFS.Vertex: (%s)", id != null ? id.toString() : "()");
     }
 }

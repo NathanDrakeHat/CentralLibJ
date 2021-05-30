@@ -67,7 +67,7 @@ class SSShortestPathTest {
         assertEquals(-2, target.getDistance());
         List<String> res = new ArrayList<>();
         while (target != null) {
-            res.add(target.getContent());
+            res.add(target.getId());
             target = target.getParent();
         }
         assertTrue(b);
@@ -100,7 +100,7 @@ class SSShortestPathTest {
         var graph = buildShortestPathOfDAGForBFS();
         SSShortestPath.ssDAG(graph, targetShortestPathOfDAGForBFS);
         var vertices = graph.getAllVertices();
-        var l = vertices.stream().sorted(Comparator.comparing(BFSVertex::getContent)).collect(Collectors.toList());
+        var l = vertices.stream().sorted(Comparator.comparing(BFSVertex::getId)).collect(Collectors.toList());
         assertNull(l.get(0).getParent());
         assertNull(l.get(1).getParent());
         assertEquals(l.get(1), l.get(2).getParent());
@@ -120,7 +120,7 @@ class SSShortestPathTest {
     void DijkstraFibonacciHeapTest() {
         var g = buildDijkstraCase();
         SSShortestPath.DijkstraMinHeap(g, targetDijkstraCase);
-        var vertices = g.getAllVertices().stream().sorted(Comparator.comparing(BFSVertex::getContent)).collect(Collectors.toList());
+        var vertices = g.getAllVertices().stream().sorted(Comparator.comparing(BFSVertex::getId)).collect(Collectors.toList());
         assertNull(vertices.get(0).getParent());
 
         assertEquals(vertices.get(3), vertices.get(1).getParent());
@@ -140,7 +140,7 @@ class SSShortestPathTest {
     void DijkstraMinHeapTest() {
         var g = buildDijkstraCase();
         SSShortestPath.DijkstraFibonacciHeap(g, targetDijkstraCase);
-        var vertices = g.getAllVertices().stream().sorted(Comparator.comparing(BFSVertex::getContent)).collect(Collectors.toList());
+        var vertices = g.getAllVertices().stream().sorted(Comparator.comparing(BFSVertex::getId)).collect(Collectors.toList());
         assertNull(vertices.get(0).getParent());
 
         assertEquals(vertices.get(3), vertices.get(1).getParent());

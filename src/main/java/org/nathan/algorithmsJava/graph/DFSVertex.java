@@ -3,7 +3,7 @@ package org.nathan.algorithmsJava.graph;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class DFSVertex<V>{
+public class DFSVertex<V> implements Vertex<V>{
     @NotNull
     final V id;
     @Nullable

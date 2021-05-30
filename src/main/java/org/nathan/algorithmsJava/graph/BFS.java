@@ -51,11 +51,11 @@ public final class BFS {
 
     private static <T> void traverse(BFSVertex<T> s, BFSVertex<T> v, List<T> res) {
         if (v == s) {
-            res.add(s.content);
+            res.add(s.id);
         }
         else if (v.parent != null) {
             traverse(s, v.parent, res);
-            res.add(v.content);
+            res.add(v.id);
         }
     }
 

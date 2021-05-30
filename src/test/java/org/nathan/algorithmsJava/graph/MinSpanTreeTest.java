@@ -58,8 +58,8 @@ class MinSpanTreeTest {
         for (var vertex : vertices) {
             if (vertex.parent != null) {
                 Set<String> t = new HashSet<>();
-                t.add(vertex.getContent());
-                t.add(vertex.parent.getContent());
+                t.add(vertex.getId());
+                t.add(vertex.parent.getId());
                 res.add(t);
             }
         }
@@ -73,8 +73,8 @@ class MinSpanTreeTest {
         for (var vertex : vertices) {
             if (vertex.parent != null) {
                 Set<String> t = new HashSet<>();
-                t.add(vertex.getContent());
-                t.add(vertex.parent.getContent());
+                t.add(vertex.getId());
+                t.add(vertex.parent.getId());
                 res.add(t);
             }
         }

@@ -7,8 +7,11 @@ import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-
-public final class LinkedGraph<V>{
+/**
+ * static graph
+ * @param <V>
+ */
+public class LinkedGraph<V>{
     private final boolean directed;
     private final List<V> vertices = new ArrayList<>();
     private final Map<V, List<GraphEdge<V>>> edges_map = new HashMap<>();

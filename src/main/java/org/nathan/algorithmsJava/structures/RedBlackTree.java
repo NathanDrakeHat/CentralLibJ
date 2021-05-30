@@ -7,7 +7,7 @@ import java.util.*;
 import java.util.function.BiConsumer;
 
 
-public final class RedBlackTree<K, V> implements Iterable<Tuple<K, V>> {
+public class RedBlackTree<K, V> implements Iterable<Tuple<K, V>> {
     @NotNull
     private final Comparator<K> k_comparator;
     @NotNull
@@ -583,7 +583,7 @@ public final class RedBlackTree<K, V> implements Iterable<Tuple<K, V>> {
     private static final boolean RED = false;
     private static final boolean BLACK = true;
 
-    static final class Node<P, Q> {
+    static class Node<P, Q> {
         P key;
         Q value;
         boolean color;
