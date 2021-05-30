@@ -33,7 +33,7 @@ public final class MinSpanTree {
     public static <T> void PrimFibonacciHeap(@NotNull LinkedGraph<PrimVertex<T>> graph,
                                              @NotNull PrimVertex<T> r) {
         FibonacciHeap<Double, PrimVertex<T>> Q = new FibonacciHeap<>(Comparator.comparingDouble(a -> a));
-        var vertices = graph.getAllVertices();
+        var vertices = graph.allVertices();
         for (var u : vertices) {
             if (u != r) {
                 u.key = Double.POSITIVE_INFINITY;
@@ -46,7 +46,7 @@ public final class MinSpanTree {
         }
         while (Q.count() > 0) {
             var u = Q.extractMin();
-            var u_edges = graph.getEdgesAt(u);
+            var u_edges = graph.edgesAt(u);
             for (var edge : u_edges) {
                 var v = edge.another(u);
                 if (Q.contains(v) && edge.weight() < v.key) {
@@ -60,7 +60,7 @@ public final class MinSpanTree {
 
     public static <T> void PrimMinHeap(@NotNull LinkedGraph<PrimVertex<T>> graph,
                                        @NotNull PrimVertex<T> r) {
-        var vertices = graph.getAllVertices();
+        var vertices = graph.allVertices();
         for (var u : vertices) {
             if (u != r) {
                 u.key = Double.POSITIVE_INFINITY;
@@ -73,7 +73,7 @@ public final class MinSpanTree {
         MinHeap<Double,PrimVertex<T>> Q = new MinHeap<>(vertices, PrimVertex::getKey,Double::compare);
         while (Q.length() > 0) {
             var u = Q.extractMin();
-            var u_edges = graph.getEdgesAt(u);
+            var u_edges = graph.edgesAt(u);
             for (var edge : u_edges) {
                 var v = edge.another(u);
                 if (Q.contains(v) && edge.weight() < v.key) {

@@ -11,7 +11,7 @@ import java.util.List;
  */
 public final class DFS {
     public static <T> void depthFirstSearch(@NotNull LinkedGraph<DFSVertex<T>> G) {
-        var vertices = G.getAllVertices();
+        var vertices = G.allVertices();
         vertices.parallelStream().forEach(v->{
             v.color = COLOR.WHITE;
             v.parent = null;
@@ -28,7 +28,7 @@ public final class DFS {
         time++;
         u.discover = time;
         u.color = COLOR.GRAY;
-        var u_edges = G.getEdgesAt(u);
+        var u_edges = G.edgesAt(u);
         for (var edge : u_edges) {
             var v = edge.another(u);
             if (v.color == COLOR.WHITE) {
@@ -44,7 +44,7 @@ public final class DFS {
 
     public static <T> List<DFSVertex<T>> topologicalSort(@NotNull LinkedGraph<DFSVertex<T>> G) {
         depthFirstSearch(G);
-        List<DFSVertex<T>> l = new ArrayList<>(G.getAllVertices());
+        List<DFSVertex<T>> l = new ArrayList<>(G.allVertices());
         l.sort((o1, o2) -> o2.finish - o1.finish); // descend order
         return l;
     }
@@ -56,7 +56,7 @@ public final class DFS {
     }
 
     private static <T> void depthFirstSearchOrderly(LinkedGraph<DFSVertex<T>> G, List<DFSVertex<T>> order) {
-        var vertices = G.getAllVertices();
+        var vertices = G.allVertices();
         for (var v : vertices) {
             v.color = COLOR.WHITE;
             v.parent = null;
@@ -70,10 +70,10 @@ public final class DFS {
     }
 
     private static <T> LinkedGraph<DFSVertex<T>> transposeGraph(LinkedGraph<DFSVertex<T>> graph) {
-        var new_graph = new LinkedGraph<>(graph.getAllVertices(), true);
-        var vertices = graph.getAllVertices();
+        var new_graph = new LinkedGraph<>(graph.allVertices(), true);
+        var vertices = graph.allVertices();
         for (var v : vertices) {
-            var edges = graph.getEdgesAt(v);
+            var edges = graph.edgesAt(v);
             for (var edge : edges) {
                 var n = edge.another(v);
                 new_graph.setNeighbor(n, v);

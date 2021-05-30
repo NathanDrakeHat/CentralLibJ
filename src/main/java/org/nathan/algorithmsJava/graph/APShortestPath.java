@@ -111,7 +111,7 @@ public class APShortestPath {
                                  @NotNull BiConsumer<LinkedGraph<BFSVertex<T>>, BFSVertex<T>> algoDijkstra) {
         Map<BFSVertex<T>, Double> h = new HashMap<>();
         var n = graph.verticesCount();
-        var vertices_new = new ArrayList<>(graph.getAllVertices());
+        var vertices_new = new ArrayList<>(graph.allVertices());
         var s = new BFSVertex<T>();
         vertices_new.add(s);
         var new_graph = buildGraph(graph, vertices_new, s);

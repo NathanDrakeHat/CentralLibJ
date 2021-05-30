@@ -9,7 +9,7 @@ import java.util.*;
  */
 public final class BFS {
     public static <T> void breathFirstSearch(@NotNull LinkedGraph<BFSVertex<T>> G, @NotNull BFSVertex<T> s) {
-        var vs = G.getAllVertices();
+        var vs = G.allVertices();
         for (var v : vs) {
             if (!v.equals(s)) {
                 v.color = COLOR.WHITE;
@@ -24,7 +24,7 @@ public final class BFS {
         Q.add(s);
         while (!Q.isEmpty()) {
             var u = Q.remove();
-            var u_edges = G.getEdgesAt(u);
+            var u_edges = G.edgesAt(u);
             for (var edge : u_edges) {
                 var v = edge.another(u);
                 if (v.color == COLOR.WHITE) {

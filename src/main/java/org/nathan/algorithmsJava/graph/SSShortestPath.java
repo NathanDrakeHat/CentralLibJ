@@ -40,7 +40,7 @@ public final class SSShortestPath{
     }
 
     private static <T> void initializeSingleSource(LinkedGraph<BFSVertex<T>> G, BFSVertex<T> s){
-        var vertices = G.getAllVertices();
+        var vertices = G.allVertices();
         for(var v : vertices){
             v.distance = Double.POSITIVE_INFINITY;
             v.parent = null;
@@ -75,7 +75,7 @@ public final class SSShortestPath{
         DFS_list.sort((d1, d2) -> d2.finish - d1.finish);
         var BFS_list = DFS_list.stream().map(DFSVertex::getId).collect(Collectors.toList());
         for(var u : BFS_list){
-            var u_edges = BFS_Linked_graph.getEdgesAt(u);
+            var u_edges = BFS_Linked_graph.edgesAt(u);
             for(var edge : u_edges){
                 relax(edge);
             }
@@ -92,14 +92,14 @@ public final class SSShortestPath{
      */
     public static <T> void DijkstraFibonacciHeap(@NotNull LinkedGraph<BFSVertex<T>> G, @NotNull BFSVertex<T> s){
         initializeSingleSource(G, s);
-        var vertices = G.getAllVertices();
+        var vertices = G.allVertices();
         FibonacciHeap<Double, BFSVertex<T>> Q = new FibonacciHeap<>(Comparator.comparingDouble(a -> a));
         for(var vertex : vertices){
             Q.insert(vertex.distance, vertex);
         }
         while(Q.count() > 0) {
             var u = Q.extractMin();
-            var u_edges = G.getEdgesAt(u);
+            var u_edges = G.edgesAt(u);
             for(var edge : u_edges){
                 var v = edge.another(u);
                 var original = v.distance;
@@ -120,11 +120,11 @@ public final class SSShortestPath{
      */
     public static <T> void DijkstraMinHeap(@NotNull LinkedGraph<BFSVertex<T>> G, @NotNull BFSVertex<T> s){
         initializeSingleSource(G, s);
-        var vertices = G.getAllVertices();
+        var vertices = G.allVertices();
         MinHeap<Double, BFSVertex<T>> Q = new MinHeap<>(vertices, BFSVertex::getDistance, Double::compare);
         while(Q.length() > 0) {
             var u = Q.extractMin();
-            var u_edges = G.getEdgesAt(u);
+            var u_edges = G.edgesAt(u);
             for(var edge : u_edges){
                 var v = edge.another(u);
                 var original = v.distance;

@@ -58,7 +58,7 @@ class SSShortestPathTest {
         var G = buildBellmanFordCase();
         var b = SSShortestPath.BellmanFord(G, targetBellmanFordCase_s);
         BFSVertex<String> target = targetBellmanFordCase_z;
-        var vertices = G.getAllVertices();
+        var vertices = G.allVertices();
         for (var v : vertices) {
             if (v.equals(target)) {
                 target = v;
@@ -99,7 +99,7 @@ class SSShortestPathTest {
     void shortestPathOfDAGTest() {
         var graph = buildShortestPathOfDAGForBFS();
         SSShortestPath.ssDAG(graph, targetShortestPathOfDAGForBFS);
-        var vertices = graph.getAllVertices();
+        var vertices = graph.allVertices();
         var l = vertices.stream().sorted(Comparator.comparing(BFSVertex::getId)).collect(Collectors.toList());
         assertNull(l.get(0).getParent());
         assertNull(l.get(1).getParent());
@@ -120,7 +120,7 @@ class SSShortestPathTest {
     void DijkstraFibonacciHeapTest() {
         var g = buildDijkstraCase();
         SSShortestPath.DijkstraMinHeap(g, targetDijkstraCase);
-        var vertices = g.getAllVertices().stream().sorted(Comparator.comparing(BFSVertex::getId)).collect(Collectors.toList());
+        var vertices = g.allVertices().stream().sorted(Comparator.comparing(BFSVertex::getId)).collect(Collectors.toList());
         assertNull(vertices.get(0).getParent());
 
         assertEquals(vertices.get(3), vertices.get(1).getParent());
@@ -140,7 +140,7 @@ class SSShortestPathTest {
     void DijkstraMinHeapTest() {
         var g = buildDijkstraCase();
         SSShortestPath.DijkstraFibonacciHeap(g, targetDijkstraCase);
-        var vertices = g.getAllVertices().stream().sorted(Comparator.comparing(BFSVertex::getId)).collect(Collectors.toList());
+        var vertices = g.allVertices().stream().sorted(Comparator.comparing(BFSVertex::getId)).collect(Collectors.toList());
         assertNull(vertices.get(0).getParent());
 
         assertEquals(vertices.get(3), vertices.get(1).getParent());

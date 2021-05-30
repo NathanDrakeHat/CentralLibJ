@@ -98,7 +98,7 @@ class DFSTest {
     void depthFirstSearchTest() {
         var G = makeGraph();
         DFS.depthFirstSearch(G);
-        var vertices = G.getAllVertices();
+        var vertices = G.allVertices();
         List<DFSVertex<String>> l = new ArrayList<>(vertices);
         l.sort(Comparator.comparing(DFSVertex::getId));
         assertEquals(1, l.get(0).discover);
@@ -173,7 +173,7 @@ class DFSTest {
         if (current.equals(target)) {
             return false;
         }
-        var edges = G.getEdgesAt(current);
+        var edges = G.edgesAt(current);
         if (edges.isEmpty()) {
             return true;
         }
@@ -194,7 +194,7 @@ class DFSTest {
     void recursiveTopologicalTest() {
         var graph = makeTopographicalDemo();
         boolean flag = true;
-        List<DFSVertex<String>> t = new ArrayList<>(graph.getAllVertices());
+        List<DFSVertex<String>> t = new ArrayList<>(graph.allVertices());
         for (int i = 1; i < t.size(); i++) {
             for (int j = 0; j < i; j++) {
                 flag = recursiveTopologicalSorted(t.get(j), t.get(i), graph);
@@ -213,7 +213,7 @@ class DFSTest {
     void stronglyConnectedComponentsTest() {
         var G = makeStronglyConnectedComponentsDemo();
         DFS.stronglyConnectedComponents(G);
-        var vertices = G.getAllVertices();
+        var vertices = G.allVertices();
         List<DFSVertex<String>> vs = new ArrayList<>(vertices);
         assertTrue((getRoot(vs.get(0)) == getRoot(vs.get(1))) & (getRoot(vs.get(1)) == getRoot(vs.get(4))));
         assertSame(getRoot(vs.get(2)), getRoot(vs.get(3)));

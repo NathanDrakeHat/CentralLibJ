@@ -53,7 +53,7 @@ class MinSpanTreeTest {
 
     void runFibonacciHeap(LinkedGraph<PrimVertex<String>> graph, PrimVertex<String> target) {
         PrimFibonacciHeap(graph, target);
-        var vertices = graph.getAllVertices();
+        var vertices = graph.allVertices();
         Set<Set<String>> res = new HashSet<>();
         for (var vertex : vertices) {
             if (vertex.parent != null) {
@@ -68,7 +68,7 @@ class MinSpanTreeTest {
 
     void runMinHeap(LinkedGraph<PrimVertex<String>> graph, PrimVertex<String> target) {
         PrimMinHeap(graph, target);
-        var vertices = graph.getAllVertices();
+        var vertices = graph.allVertices();
         Set<Set<String>> res = new HashSet<>();
         for (var vertex : vertices) {
             if (vertex.parent != null) {

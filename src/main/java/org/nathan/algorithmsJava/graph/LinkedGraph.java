@@ -12,6 +12,8 @@ import java.util.stream.Collectors;
  * @param <V>
  */
 public class LinkedGraph<V extends Vertex<?>>{
+    private record IndexEdges<V extends Vertex<?>>(int index, List<ComplexEdge<V>> edges){}
+
     private final boolean directed;
     private final List<V> vertices;
     private final Map<V, List<ComplexEdge<V>>> edges_map;
@@ -105,7 +107,7 @@ public class LinkedGraph<V extends Vertex<?>>{
     /**
      * @return unmodifiable list
      */
-    public @NotNull List<V> getAllVertices(){
+    public @NotNull List<V> allVertices(){
         return Collections.unmodifiableList(vertices);
     }
 
@@ -113,8 +115,7 @@ public class LinkedGraph<V extends Vertex<?>>{
      * @param vertex vertex
      * @return unmodifiable list
      */
-    public @NotNull List<ComplexEdge<V>> getEdgesAt(V vertex){
+    public @NotNull List<ComplexEdge<V>> edgesAt(V vertex){
         return Collections.unmodifiableList(edges_map.get(vertex));
     }
-
 }
