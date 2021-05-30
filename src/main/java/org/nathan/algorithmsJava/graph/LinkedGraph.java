@@ -12,8 +12,6 @@ import java.util.stream.Collectors;
  * @param <V>
  */
 public class LinkedGraph<V extends Vertex<?>>{
-    private record IndexEdges<V extends Vertex<?>>(int index, List<ComplexEdge<V>> edges){}
-
     private final boolean directed;
     private final List<V> vertices;
     private final Map<V, List<ComplexEdge<V>>> edges_map;
