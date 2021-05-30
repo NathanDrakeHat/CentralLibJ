@@ -70,7 +70,7 @@ public final class DFS {
     }
 
     private static <T> LinkedGraph<DFSVertex<T>> transposeGraph(LinkedGraph<DFSVertex<T>> graph) {
-        var new_graph = new LinkedGraph<>(graph.getAllVertices(), LinkedGraph.Direction.DIRECTED);
+        var new_graph = new LinkedGraph<>(graph.getAllVertices(), true);
         var vertices = graph.getAllVertices();
         for (var v : vertices) {
             var edges = graph.getEdgesAt(v);

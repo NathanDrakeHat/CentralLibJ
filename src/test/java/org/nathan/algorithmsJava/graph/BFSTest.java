@@ -30,7 +30,7 @@ class BFSTest {
         }
 
         public static LinkedGraph<BFSVertex<Character>> makeGraph(List<BFSVertex<Character>> vs) {
-            var G = new LinkedGraph<>(vs, LinkedGraph.Direction.NON_DIRECTED);
+            var G = new LinkedGraph<>(vs, false);
             G.setNeighbor(vs.get(0), vs.get(1));
             G.setNeighbor(vs.get(0), vs.get(4));
 

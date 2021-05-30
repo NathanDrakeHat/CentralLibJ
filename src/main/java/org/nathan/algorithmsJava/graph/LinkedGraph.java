@@ -9,13 +9,12 @@ import java.util.stream.Collectors;
 
 
 public final class LinkedGraph<V>{
-    @NotNull
-    private final Direction graph_direction;
+    private final boolean directed;
     private final List<V> vertices = new ArrayList<>();
-    private final Map<V, List<Edge<V>>> edges_map = new HashMap<>();
+    private final Map<V, List<GraphEdge<V>>> edges_map = new HashMap<>();
     private int size;
 
-    public LinkedGraph(@NotNull List<V> vertices, @NotNull Direction is_directed){
+    public LinkedGraph(@NotNull List<V> vertices, boolean is_directed){
         size = 0;
         for(var vertex : vertices){
             Objects.requireNonNull(vertex);
@@ -23,19 +22,25 @@ public final class LinkedGraph<V>{
             this.vertices.add(vertex);
             size++;
         }
-        this.graph_direction = is_directed;
+        this.directed = is_directed;
     }
 
     public LinkedGraph(@NotNull LinkedGraph<V> other_graph){
         size = other_graph.vertices.size();
-        this.graph_direction = other_graph.graph_direction;
+        this.directed = other_graph.directed;
         this.edges_map.putAll(other_graph.edges_map);
         this.vertices.addAll(other_graph.vertices);
     }
 
+    /**
+     * change wrapper of vertex
+     * @param other_graph other graph
+     * @param mapper map function
+     * @param <OtherV> other vertex wrapper
+     */
     public <OtherV> LinkedGraph(@NotNull LinkedGraph<OtherV> other_graph, Function<OtherV, V> mapper){
         size = other_graph.vertices.size();
-        graph_direction = other_graph.graph_direction;
+        directed = other_graph.directed;
         Map<OtherV, V> mapRecord = new HashMap<>(size);
         other_graph.vertices.forEach(otherV -> {
             var mapped = mapper.apply(otherV);
@@ -46,11 +51,11 @@ public final class LinkedGraph<V>{
                 edges_map.put(
                         mapRecord.get(otherV),
                         edges.parallelStream().map(edge ->
-                                new Edge<>(
-                                        mapRecord.get(edge.former_vertex),
-                                        mapRecord.get(edge.later_vertex),
-                                        edge.weight,
-                                        edge.edge_direction))
+                                new GraphEdge<>(
+                                        mapRecord.get(edge.formerVertex()),
+                                        mapRecord.get(edge.laterVertex()),
+                                        edge.weight(),
+                                        edge.directed()))
                                 .collect(Collectors.toList()))));
     }
 
@@ -59,8 +64,8 @@ public final class LinkedGraph<V>{
     }
 
     public void setNeighbor(@NotNull V vertex, @NotNull V neighbor, double w){
-        var edge_t = new Edge<>(vertex, neighbor, w, graph_direction);
-        if(graph_direction == Direction.DIRECTED){
+        var edge_t = new GraphEdge<>(vertex, neighbor, w, directed);
+        if(directed){
             var edges_list = edges_map.get(vertex);
             edges_list.add(edge_t);
         }
@@ -86,8 +91,8 @@ public final class LinkedGraph<V>{
         return size;
     }
 
-    public @NotNull List<Edge<V>> getAllEdges(){
-        List<Edge<V>> res = new ArrayList<>();
+    public @NotNull List<GraphEdge<V>> getAllEdges(){
+        List<GraphEdge<V>> res = new ArrayList<>();
         for(var vertex : vertices){
             res.addAll(edges_map.get(vertex));
         }
@@ -105,62 +110,8 @@ public final class LinkedGraph<V>{
      * @param vertex vertex
      * @return unmodifiable list
      */
-    public @NotNull List<Edge<V>> getEdgesAt(V vertex){
+    public @NotNull List<GraphEdge<V>> getEdgesAt(V vertex){
         return Collections.unmodifiableList(edges_map.get(vertex));
     }
 
-    enum Direction{
-        DIRECTED, NON_DIRECTED
-    }
-
-    public static final class Edge<T>{
-        @NotNull
-        private final T former_vertex;
-        @NotNull
-        private final T later_vertex;
-        @NotNull
-        private final Direction edge_direction;
-        double weight;
-
-        Edge(@NotNull T former, @NotNull T later, double weight, @NotNull Direction is_directed){
-            this.weight = weight;
-            former_vertex = former;
-            later_vertex = later;
-            this.edge_direction = is_directed;
-        }
-
-        public T getFormerVertex(){
-            return former_vertex;
-        }
-
-        public T getLaterVertex(){
-            return later_vertex;
-        }
-
-        public T getAnotherSide(T vertex){
-            if(vertex.equals(former_vertex)){
-                return later_vertex;
-            }
-            else if(vertex.equals(later_vertex)){
-                return former_vertex;
-            }
-            else{
-                throw new IllegalArgumentException();
-            }
-        }
-
-        public double getWeight(){
-            return weight;
-        }
-
-        @Override
-        public String toString(){
-            if(edge_direction == LinkedGraph.Direction.DIRECTED){
-                return String.format("[Edge(%s >>> %s)], weight:%f", former_vertex, later_vertex, weight);
-            }
-            else{
-                return String.format("[Edge(%s <-> %s)], weight:%f", former_vertex, later_vertex, weight);
-            }
-        }
-    }
 }

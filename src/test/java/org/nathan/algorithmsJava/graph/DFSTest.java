@@ -17,7 +17,7 @@ class DFSTest {
         for (int i = 0; i < 6; i++) {
             vs.add(i, new DFSVertex<>(String.valueOf(names.charAt(i))));
         }
-        var G = new LinkedGraph<>(vs, LinkedGraph.Direction.DIRECTED);
+        var G = new LinkedGraph<>(vs, true);
         G.setNeighbor(vs.get(0), vs.get(1));
         G.setNeighbor(vs.get(0), vs.get(3));
 
@@ -42,7 +42,7 @@ class DFSTest {
         for (int i = 0; i < 9; i++) {
             A.add(i, new DFSVertex<>(names[i]));
         }
-        LinkedGraph<DFSVertex<String>> G = new LinkedGraph<>(A, LinkedGraph.Direction.DIRECTED);
+        LinkedGraph<DFSVertex<String>> G = new LinkedGraph<>(A, true);
         G.setNeighbor(A.get(0), A.get(1));
         G.setNeighbor(A.get(0), A.get(6));
 
@@ -68,7 +68,7 @@ class DFSTest {
         for (int i = 0; i < names.length; i++) {
             A.add(i, new DFSVertex<>(names[i]));
         }
-        LinkedGraph<DFSVertex<String>> G = new LinkedGraph<>(A, LinkedGraph.Direction.DIRECTED);
+        LinkedGraph<DFSVertex<String>> G = new LinkedGraph<>(A, true);
         G.setNeighbor(A.get(0), A.get(1));
 
         G.setNeighbor(A.get(1), A.get(2));

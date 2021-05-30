@@ -14,14 +14,14 @@ import java.util.Set;
  */
 public final class MinSpanTree {
     public static <T>
-    @NotNull Set<LinkedGraph.Edge<KruskalVertex<T>>> Kruskal(@NotNull LinkedGraph<KruskalVertex<T>> graph) {
-        Set<LinkedGraph.Edge<KruskalVertex<T>>> res = new HashSet<>();
+    @NotNull Set<GraphEdge<KruskalVertex<T>>> Kruskal(@NotNull LinkedGraph<KruskalVertex<T>> graph) {
+        Set<GraphEdge<KruskalVertex<T>>> res = new HashSet<>();
         var edges_set = graph.getAllEdges();
         var edges_list = new ArrayList<>(edges_set);
-        edges_list.sort(Comparator.comparingDouble(LinkedGraph.Edge::getWeight));
+        edges_list.sort(Comparator.comparingDouble(GraphEdge::getWeight));
         for (var edge : edges_list) {
-            var v1 = edge.getFormerVertex();
-            var v2 = edge.getLaterVertex();
+            var v1 = edge.formerVertex();
+            var v2 = edge.laterVertex();
             if (v1.findGroupId() != v2.findGroupId()) {
                 res.add(edge);
                 v1.union(v2);

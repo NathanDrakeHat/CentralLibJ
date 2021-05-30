@@ -124,7 +124,7 @@ public class APShortestPath {
                 h.put(vertex, vertex.distance);
             }
             for (var edge : edges_new) {
-                edge.weight = edge.weight + edge.getFormerVertex().distance - edge.getLaterVertex().distance;
+                edge.weight = edge.weight + edge.formerVertex().distance - edge.laterVertex().distance;
             }
             var D = new double[n][n];
             int idx_u = 0;

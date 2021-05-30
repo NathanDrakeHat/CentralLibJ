@@ -16,7 +16,7 @@ class APShortestPathTest {
         for (var name : names) {
             vertices.add(new BFSVertex<>(name));
         }
-        var res = new LinkedGraph<>(vertices, LinkedGraph.Direction.DIRECTED);
+        var res = new LinkedGraph<>(vertices, true);
         res.setNeighbor(vertices.get(0), vertices.get(1), 3);
         res.setNeighbor(vertices.get(0), vertices.get(2), 8);
         res.setNeighbor(vertices.get(0), vertices.get(4), -4);

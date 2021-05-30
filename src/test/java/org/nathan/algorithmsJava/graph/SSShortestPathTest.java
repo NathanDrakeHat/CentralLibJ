@@ -22,7 +22,7 @@ class SSShortestPathTest {
         for (var n : names) {
             vertices.add(new BFSVertex<>(n));
         }
-        var res = new LinkedGraph<>(vertices, LinkedGraph.Direction.DIRECTED);
+        var res = new LinkedGraph<>(vertices, true);
         int[] index1 = new int[]{0, 0, 1, 1, 1, 2, 3, 3, 4, 4};
         int[] index2 = new int[]{1, 3, 2, 3, 4, 1, 2, 4, 0, 2};
         double[] weights = new double[]{6, 7, 5, 8, -4, -2, -3, 9, 2, 7};
@@ -42,7 +42,7 @@ class SSShortestPathTest {
         for (var n : names) {
             vertices.add(new BFSVertex<>(n));
         }
-        var graph = new LinkedGraph<>(vertices, LinkedGraph.Direction.DIRECTED);
+        var graph = new LinkedGraph<>(vertices, true);
         int[] indices1 = new int[]{0, 0, 1, 1, 2, 3, 3, 3, 4, 4};
         int[] indices2 = new int[]{1, 3, 2, 3, 4, 1, 2, 4, 0, 2};
         double[] weights = new double[]{10, 5, 1, 2, 4, 3, 9, 2, 7, 6};
@@ -82,7 +82,7 @@ class SSShortestPathTest {
         }
 
 
-        var BFS_G = new LinkedGraph<>(BFS_vertex, LinkedGraph.Direction.DIRECTED);
+        var BFS_G = new LinkedGraph<>(BFS_vertex, true);
         int[] index1 = new int[]{0, 0, 1, 1, 2, 2, 2, 3, 3, 4};
         int[] index2 = new int[]{1, 2, 2, 3, 3, 4, 5, 4, 5, 5};
         double[] weights = new double[]{5, 3, 2, 6, 7, 4, 2, -1, 1, -2};

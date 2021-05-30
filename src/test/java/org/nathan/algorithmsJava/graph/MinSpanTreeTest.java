@@ -1,7 +1,6 @@
 package org.nathan.algorithmsJava.graph;
 
 import org.junit.jupiter.api.Test;
-import org.nathan.algorithmsJava.graph.LinkedGraph.Direction;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -31,7 +30,7 @@ class MinSpanTreeTest {
         for (int i = 0; i < len; i++) {
             vertices.add(i, new KruskalVertex<>(names[i]));
         }
-        LinkedGraph<KruskalVertex<String>> res = new LinkedGraph<>(vertices, Direction.NON_DIRECTED);
+        LinkedGraph<KruskalVertex<String>> res = new LinkedGraph<>(vertices, false);
         int[] indexes1 = new int[]{0, 1, 2, 3, 4, 5, 6, 7, 1, 2, 8, 8, 2, 3};
         int[] indexes2 = new int[]{1, 2, 3, 4, 5, 6, 7, 0, 7, 8, 7, 6, 5, 5};
         double[] weights = new double[]{4, 8, 7, 9, 10, 2, 1, 8, 11, 2, 7, 6, 4, 14};
@@ -90,7 +89,7 @@ class MinSpanTreeTest {
         for (int i = 0; i < len; i++) {
             vertices.add(i, new PrimVertex<>(names[i]));
         }
-        LinkedGraph<PrimVertex<String>> res = new LinkedGraph<>(vertices, Direction.NON_DIRECTED);
+        LinkedGraph<PrimVertex<String>> res = new LinkedGraph<>(vertices,false);
         int[] indices1 = new int[]{0, 1, 2, 3, 4, 5, 6, 7, 1, 2, 8, 8, 2, 3};
         int[] indices2 = new int[]{1, 2, 3, 4, 5, 6, 7, 0, 7, 8, 7, 6, 5, 5};
         double[] weights = new double[]{4, 8, 7, 9, 10, 2, 1, 8, 11, 2, 7, 6, 4, 14};

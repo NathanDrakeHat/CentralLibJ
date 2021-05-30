@@ -32,7 +32,7 @@ public final class SSShortestPath{
             }
         }
         for(var edge : edges){
-            if(edge.getLaterVertex().distance > edge.getFormerVertex().distance + edge.getWeight()){
+            if(edge.laterVertex().distance > edge.formerVertex().distance + edge.getWeight()){
                 return false;
             }
         }
@@ -50,10 +50,10 @@ public final class SSShortestPath{
         }
     }
 
-    private static <T> void relax(LinkedGraph.Edge<BFSVertex<T>> edge){
+    private static <T> void relax(GraphEdge<BFSVertex<T>> edge){
         var weight = edge.getWeight();
-        var u = edge.getFormerVertex();
-        var v = edge.getLaterVertex();
+        var u = edge.formerVertex();
+        var v = edge.laterVertex();
         var sum = u.distance + weight;
         if(v.distance > sum){
             v.distance = sum;

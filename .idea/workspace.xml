@@ -22,15 +22,12 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="refactor">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJava/graph/BFSVertex.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJava/graph/DFSVertex.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJava/graph/KruskalVertex.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJava/graph/PrimVertex.java" afterDir="false" />
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="move class to outer">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJava/graph/GraphEdge.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJava/graph/APShortestPath.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJava/graph/APShortestPath.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJava/graph/BFS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJava/graph/BFS.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJava/graph/DFS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJava/graph/DFS.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJava/graph/LinkedGraph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJava/graph/LinkedGraph.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJava/graph/MinSpanTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJava/graph/MinSpanTree.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJava/graph/SSShortestPath.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJava/graph/SSShortestPath.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJava/graph/APShortestPathTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJava/graph/APShortestPathTest.java" afterDir="false" />
@@ -384,14 +381,7 @@
       <workItem from="1622275876773" duration="8501000" />
       <workItem from="1622288902740" duration="750000" />
       <workItem from="1622294572484" duration="5000" />
-      <workItem from="1622339072674" duration="334000" />
-    </task>
-    <task id="LOCAL-00104" summary="OneDimDP">
-      <created>1617193929954</created>
-      <option name="number" value="00104" />
-      <option name="presentableId" value="LOCAL-00104" />
-      <option name="project" value="LOCAL" />
-      <updated>1617193929954</updated>
+      <workItem from="1622339072674" duration="1266000" />
     </task>
     <task id="LOCAL-00105" summary="comment and modifier">
       <created>1617198749422</created>
@@ -729,7 +719,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622289617304</updated>
     </task>
-    <option name="localTasksCounter" value="153" />
+    <task id="LOCAL-00153" summary="move class to outer">
+      <created>1622339596947</created>
+      <option name="number" value="00153" />
+      <option name="presentableId" value="LOCAL-00153" />
+      <option name="project" value="LOCAL" />
+      <updated>1622339596947</updated>
+    </task>
+    <option name="localTasksCounter" value="154" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -758,7 +755,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="improve api" />
     <MESSAGE value="add FunctionTimer" />
     <MESSAGE value="add central utils" />
     <MESSAGE value="add two acm func" />
@@ -783,7 +779,8 @@
     <MESSAGE value="reformat" />
     <MESSAGE value="add doc" />
     <MESSAGE value="refactor" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor" />
+    <MESSAGE value="move class to outer" />
+    <option name="LAST_COMMIT_MESSAGE" value="move class to outer" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
