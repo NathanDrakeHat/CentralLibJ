@@ -20,8 +20,8 @@ public final class MinSpanTree {
         var edges_list = new ArrayList<>(edges_set);
         edges_list.sort(Comparator.comparingDouble(GraphEdge::getWeight));
         for (var edge : edges_list) {
-            var v1 = edge.formerVertex();
-            var v2 = edge.laterVertex();
+            var v1 = edge.former();
+            var v2 = edge.later();
             if (v1.findGroupId() != v2.findGroupId()) {
                 res.add(edge);
                 v1.union(v2);
@@ -48,7 +48,7 @@ public final class MinSpanTree {
             var u = Q.extractMin();
             var u_edges = graph.getEdgesAt(u);
             for (var edge : u_edges) {
-                var v = edge.getAnotherSide(u);
+                var v = edge.another(u);
                 if (Q.contains(v) && edge.getWeight() < v.key) {
                     v.parent = u;
                     v.key = edge.getWeight();
@@ -75,7 +75,7 @@ public final class MinSpanTree {
             var u = Q.extractMin();
             var u_edges = graph.getEdgesAt(u);
             for (var edge : u_edges) {
-                var v = edge.getAnotherSide(u);
+                var v = edge.another(u);
                 if (Q.contains(v) && edge.getWeight() < v.key) {
                     v.parent = u;
                     v.key = edge.getWeight();

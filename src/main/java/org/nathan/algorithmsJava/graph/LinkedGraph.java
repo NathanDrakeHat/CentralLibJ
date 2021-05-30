@@ -56,8 +56,8 @@ public class LinkedGraph<V extends Vertex<?>>{
                         mapRecord.get(otherV),
                         edges.parallelStream().map(edge ->
                                 new GraphEdge<>(
-                                        mapRecord.get(edge.formerVertex()),
-                                        mapRecord.get(edge.laterVertex()),
+                                        mapRecord.get(edge.former()),
+                                        mapRecord.get(edge.later()),
                                         edge.weight(),
                                         edge.directed()))
                                 .collect(Collectors.toList()))));

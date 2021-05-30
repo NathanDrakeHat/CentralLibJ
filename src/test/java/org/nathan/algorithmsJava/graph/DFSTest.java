@@ -180,7 +180,7 @@ class DFSTest {
         else {
             boolean t = true;
             for (var edge : edges) {
-                var i = edge.getAnotherSide(current);
+                var i = edge.another(current);
                 t = recursiveTopologicalSorted(target, i, G);
                 if (!t) {
                     break;

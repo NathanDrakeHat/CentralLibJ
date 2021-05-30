@@ -155,7 +155,6 @@ public class ACM{
 
             return new Tuple<>(nr, nc);
         };
-
         Deque<Tuple<Integer, Integer>> pushes = new ArrayDeque<>(16);
 
         return recursiveStrangeSwitch(switches, 0, 0, 0, nextPos, pushes);

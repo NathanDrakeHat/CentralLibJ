@@ -26,7 +26,7 @@ public final class BFS {
             var u = Q.remove();
             var u_edges = G.getEdgesAt(u);
             for (var edge : u_edges) {
-                var v = edge.getAnotherSide(u);
+                var v = edge.another(u);
                 if (v.color == COLOR.WHITE) {
                     v.color = COLOR.GRAY;
                     v.distance = u.distance + 1;

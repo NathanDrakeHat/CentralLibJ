@@ -32,7 +32,7 @@ public final class SSShortestPath{
             }
         }
         for(var edge : edges){
-            if(edge.laterVertex().distance > edge.formerVertex().distance + edge.getWeight()){
+            if(edge.later().distance > edge.former().distance + edge.getWeight()){
                 return false;
             }
         }
@@ -52,8 +52,8 @@ public final class SSShortestPath{
 
     private static <T> void relax(GraphEdge<BFSVertex<T>> edge){
         var weight = edge.getWeight();
-        var u = edge.formerVertex();
-        var v = edge.laterVertex();
+        var u = edge.former();
+        var v = edge.later();
         var sum = u.distance + weight;
         if(v.distance > sum){
             v.distance = sum;
@@ -101,7 +101,7 @@ public final class SSShortestPath{
             var u = Q.extractMin();
             var u_edges = G.getEdgesAt(u);
             for(var edge : u_edges){
-                var v = edge.getAnotherSide(u);
+                var v = edge.another(u);
                 var original = v.distance;
                 relax(edge);
                 if(v.distance < original){
@@ -126,7 +126,7 @@ public final class SSShortestPath{
             var u = Q.extractMin();
             var u_edges = G.getEdgesAt(u);
             for(var edge : u_edges){
-                var v = edge.getAnotherSide(u);
+                var v = edge.another(u);
                 var original = v.distance;
                 relax(edge);
                 if(v.distance < original){

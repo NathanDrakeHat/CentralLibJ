@@ -2,26 +2,26 @@ package org.nathan.algorithmsJava.graph;
 
 import org.jetbrains.annotations.NotNull;
 
-public class GraphEdge<T extends Vertex<?>>{
+public class GraphEdge<V extends Vertex<?>>{
     @NotNull
-    private final T former_vertex;
+    private final V former_vertex;
     @NotNull
-    private final T later_vertex;
+    private final V later_vertex;
     private final boolean directed;
     double weight;
 
-    GraphEdge(@NotNull T former, @NotNull T later, double weight, boolean is_directed){
+    GraphEdge(@NotNull V former, @NotNull V later, double weight, boolean is_directed){
         this.weight = weight;
         former_vertex = former;
         later_vertex = later;
         this.directed = is_directed;
     }
 
-    public T formerVertex(){
+    public V former(){
         return former_vertex;
     }
 
-    public T laterVertex(){
+    public V later(){
         return later_vertex;
     }
 
@@ -33,7 +33,7 @@ public class GraphEdge<T extends Vertex<?>>{
         return this.weight;
     }
 
-    public T getAnotherSide(T vertex){
+    public V another(V vertex){
         if(vertex.equals(former_vertex)){
             return later_vertex;
         }

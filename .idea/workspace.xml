@@ -22,9 +22,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="add interface">
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="refactor">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJava/graph/LinkedGraph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJava/graph/LinkedGraph.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +75,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.45428157" />
-    <property name="settings.editor.selected.configurable" value="project.propCompiler" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
@@ -371,14 +370,7 @@
       <workItem from="1622275876773" duration="8501000" />
       <workItem from="1622288902740" duration="750000" />
       <workItem from="1622294572484" duration="5000" />
-      <workItem from="1622339072674" duration="2358000" />
-    </task>
-    <task id="LOCAL-00108" summary="modify ignore">
-      <created>1617199209551</created>
-      <option name="number" value="00108" />
-      <option name="presentableId" value="LOCAL-00108" />
-      <option name="project" value="LOCAL" />
-      <updated>1617199209551</updated>
+      <workItem from="1622339072674" duration="3632000" />
     </task>
     <task id="LOCAL-00109" summary="remove getter setter in DisjointSet.java">
       <created>1617499415032</created>
@@ -716,7 +708,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622341117386</updated>
     </task>
-    <option name="localTasksCounter" value="157" />
+    <task id="LOCAL-00157" summary="refactor">
+      <created>1622341766853</created>
+      <option name="number" value="00157" />
+      <option name="presentableId" value="LOCAL-00157" />
+      <option name="project" value="LOCAL" />
+      <updated>1622341766853</updated>
+    </task>
+    <option name="localTasksCounter" value="158" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -766,11 +765,11 @@
     <MESSAGE value="fix typo, optimizer import" />
     <MESSAGE value="reformat" />
     <MESSAGE value="add doc" />
-    <MESSAGE value="refactor" />
     <MESSAGE value="move class to outer" />
     <MESSAGE value="remove final for generic class" />
     <MESSAGE value="add interface" />
-    <option name="LAST_COMMIT_MESSAGE" value="add interface" />
+    <MESSAGE value="refactor" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

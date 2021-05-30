@@ -30,7 +30,7 @@ public final class DFS {
         u.color = COLOR.GRAY;
         var u_edges = G.getEdgesAt(u);
         for (var edge : u_edges) {
-            var v = edge.getAnotherSide(u);
+            var v = edge.another(u);
             if (v.color == COLOR.WHITE) {
                 v.parent = u;
                 time = DFSVisit(G, v, time);
@@ -75,7 +75,7 @@ public final class DFS {
         for (var v : vertices) {
             var edges = graph.getEdgesAt(v);
             for (var edge : edges) {
-                var n = edge.getAnotherSide(v);
+                var n = edge.another(v);
                 new_graph.setNeighbor(n, v);
             }
         }
