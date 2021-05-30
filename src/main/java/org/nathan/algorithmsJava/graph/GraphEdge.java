@@ -2,7 +2,7 @@ package org.nathan.algorithmsJava.graph;
 
 import org.jetbrains.annotations.NotNull;
 
-public class GraphEdge<T>{
+public class GraphEdge<T extends Vertex<?>>{
     @NotNull
     private final T former_vertex;
     @NotNull

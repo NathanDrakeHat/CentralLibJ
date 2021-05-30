@@ -102,7 +102,7 @@
       <recent name="org.nathan.algorithmsJava.graph" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ACMTest">
+  <component name="RunManager" selected="JUnit.org.nathan.algorithmsJava in AlgorithmsJava">
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.nathan.Main" />
       <module name="AlgorithmsJava" />
@@ -216,8 +216,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.ACMTest" />
         <item itemvalue="JUnit.org.nathan.algorithmsJava in AlgorithmsJava" />
+        <item itemvalue="JUnit.ACMTest" />
         <item itemvalue="JUnit.SSShortestPathTest.shortestPathOfDAGTest" />
         <item itemvalue="JUnit.DFSTest.topologicalSortTest" />
         <item itemvalue="JUnit.ACMTest.maxExtremumTest" />

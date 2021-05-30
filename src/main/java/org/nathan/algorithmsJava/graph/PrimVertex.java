@@ -2,7 +2,7 @@ package org.nathan.algorithmsJava.graph;
 
 import org.jetbrains.annotations.NotNull;
 
-public class PrimVertex<V>{
+public class PrimVertex<V> implements Vertex<V>{
     @NotNull
     private final V id;
     PrimVertex<V> parent;

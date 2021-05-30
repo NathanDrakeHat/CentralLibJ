@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
  * static graph
  * @param <V>
  */
-public class LinkedGraph<V>{
+public class LinkedGraph<V extends Vertex<?>>{
     private final boolean directed;
     private final List<V> vertices = new ArrayList<>();
     private final Map<V, List<GraphEdge<V>>> edges_map = new HashMap<>();
@@ -39,12 +39,12 @@ public class LinkedGraph<V>{
      * change wrapper of vertex
      * @param other_graph other graph
      * @param mapper map function
-     * @param <OtherV> other vertex wrapper
+     * @param <OV> other vertex wrapper
      */
-    public <OtherV> LinkedGraph(@NotNull LinkedGraph<OtherV> other_graph, Function<OtherV, V> mapper){
+    public <OV extends Vertex<?>> LinkedGraph(@NotNull LinkedGraph<OV> other_graph, Function<OV, V> mapper){
         size = other_graph.vertices.size();
         directed = other_graph.directed;
-        Map<OtherV, V> mapRecord = new HashMap<>(size);
+        Map<OV, V> mapRecord = new HashMap<>(size);
         other_graph.vertices.forEach(otherV -> {
             var mapped = mapper.apply(otherV);
             vertices.add(mapped);
