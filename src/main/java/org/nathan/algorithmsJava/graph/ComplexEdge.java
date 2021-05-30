@@ -2,7 +2,7 @@ package org.nathan.algorithmsJava.graph;
 
 import org.jetbrains.annotations.NotNull;
 
-public class GraphEdge<V extends Vertex<?>>{
+public class ComplexEdge<V extends Vertex<?>>{
     @NotNull
     private final V former_vertex;
     @NotNull
@@ -10,7 +10,7 @@ public class GraphEdge<V extends Vertex<?>>{
     private final boolean directed;
     double weight;
 
-    GraphEdge(@NotNull V former, @NotNull V later, double weight, boolean is_directed){
+    ComplexEdge(@NotNull V former, @NotNull V later, double weight, boolean is_directed){
         this.weight = weight;
         former_vertex = former;
         later_vertex = later;
@@ -43,10 +43,6 @@ public class GraphEdge<V extends Vertex<?>>{
         else{
             throw new IllegalArgumentException();
         }
-    }
-
-    public double getWeight(){
-        return weight;
     }
 
     @Override

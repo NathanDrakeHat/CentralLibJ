@@ -17,7 +17,7 @@ class MinSpanTreeTest {
         var t = Kruskal(G);
         int i = 0;
         for (var e : t) {
-            i += e.getWeight();
+            i += e.weight();
         }
         assertEquals(37, i);
     }

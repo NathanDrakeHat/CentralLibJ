@@ -14,11 +14,11 @@ import java.util.Set;
  */
 public final class MinSpanTree {
     public static <T>
-    @NotNull Set<GraphEdge<KruskalVertex<T>>> Kruskal(@NotNull LinkedGraph<KruskalVertex<T>> graph) {
-        Set<GraphEdge<KruskalVertex<T>>> res = new HashSet<>();
+    @NotNull Set<ComplexEdge<KruskalVertex<T>>> Kruskal(@NotNull LinkedGraph<KruskalVertex<T>> graph) {
+        Set<ComplexEdge<KruskalVertex<T>>> res = new HashSet<>();
         var edges_set = graph.getAllEdges();
         var edges_list = new ArrayList<>(edges_set);
-        edges_list.sort(Comparator.comparingDouble(GraphEdge::getWeight));
+        edges_list.sort(Comparator.comparingDouble(ComplexEdge::weight));
         for (var edge : edges_list) {
             var v1 = edge.former();
             var v2 = edge.later();
@@ -49,9 +49,9 @@ public final class MinSpanTree {
             var u_edges = graph.getEdgesAt(u);
             for (var edge : u_edges) {
                 var v = edge.another(u);
-                if (Q.contains(v) && edge.getWeight() < v.key) {
+                if (Q.contains(v) && edge.weight() < v.key) {
                     v.parent = u;
-                    v.key = edge.getWeight();
+                    v.key = edge.weight();
                     Q.decreaseKey(v, v.key);
                 }
             }
@@ -76,9 +76,9 @@ public final class MinSpanTree {
             var u_edges = graph.getEdgesAt(u);
             for (var edge : u_edges) {
                 var v = edge.another(u);
-                if (Q.contains(v) && edge.getWeight() < v.key) {
+                if (Q.contains(v) && edge.weight() < v.key) {
                     v.parent = u;
-                    v.key = edge.getWeight();
+                    v.key = edge.weight();
                     Q.updateKey(v, v.key);
                 }
             }

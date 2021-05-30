@@ -23,7 +23,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="refactor">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJava/graph/DirectedEdge.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJava/graph/Edge.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJava/graph/NonDirectedEdge.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJava/graph/WeightedEdge.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJava/graph/GraphEdge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJava/graph/ComplexEdge.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJava/graph/LinkedGraph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJava/graph/LinkedGraph.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJava/graph/MinSpanTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJava/graph/MinSpanTree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJava/graph/SSShortestPath.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJava/graph/SSShortestPath.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -371,13 +378,7 @@
       <workItem from="1622288902740" duration="750000" />
       <workItem from="1622294572484" duration="5000" />
       <workItem from="1622339072674" duration="3632000" />
-    </task>
-    <task id="LOCAL-00109" summary="remove getter setter in DisjointSet.java">
-      <created>1617499415032</created>
-      <option name="number" value="00109" />
-      <option name="presentableId" value="LOCAL-00109" />
-      <option name="project" value="LOCAL" />
-      <updated>1617499415032</updated>
+      <workItem from="1622363008483" duration="629000" />
     </task>
     <task id="LOCAL-00110" summary="improve api">
       <created>1617504257528</created>
@@ -715,7 +716,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622341766853</updated>
     </task>
-    <option name="localTasksCounter" value="158" />
+    <task id="LOCAL-00158" summary="refactor">
+      <created>1622363265803</created>
+      <option name="number" value="00158" />
+      <option name="presentableId" value="LOCAL-00158" />
+      <option name="project" value="LOCAL" />
+      <updated>1622363265803</updated>
+    </task>
+    <option name="localTasksCounter" value="159" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

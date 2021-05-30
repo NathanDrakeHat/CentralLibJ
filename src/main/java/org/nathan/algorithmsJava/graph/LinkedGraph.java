@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 public class LinkedGraph<V extends Vertex<?>>{
     private final boolean directed;
     private final List<V> vertices;
-    private final Map<V, List<GraphEdge<V>>> edges_map;
+    private final Map<V, List<ComplexEdge<V>>> edges_map;
 
     LinkedGraph(int size, boolean is_directed){
         directed = is_directed;
@@ -55,7 +55,7 @@ public class LinkedGraph<V extends Vertex<?>>{
                 edges_map.put(
                         mapRecord.get(otherV),
                         edges.parallelStream().map(edge ->
-                                new GraphEdge<>(
+                                new ComplexEdge<>(
                                         mapRecord.get(edge.former()),
                                         mapRecord.get(edge.later()),
                                         edge.weight(),
@@ -68,7 +68,7 @@ public class LinkedGraph<V extends Vertex<?>>{
     }
 
     public void setNeighbor(@NotNull V vertex, @NotNull V neighbor, double w){
-        var edge_t = new GraphEdge<>(vertex, neighbor, w, directed);
+        var edge_t = new ComplexEdge<>(vertex, neighbor, w, directed);
         if(directed){
             var edges_list = edges_map.get(vertex);
             edges_list.add(edge_t);
@@ -94,8 +94,8 @@ public class LinkedGraph<V extends Vertex<?>>{
         return vertices.size();
     }
 
-    public @NotNull List<GraphEdge<V>> getAllEdges(){
-        List<GraphEdge<V>> res = new ArrayList<>();
+    public @NotNull List<ComplexEdge<V>> getAllEdges(){
+        List<ComplexEdge<V>> res = new ArrayList<>();
         for(var vertex : vertices){
             res.addAll(edges_map.get(vertex));
         }
@@ -113,7 +113,7 @@ public class LinkedGraph<V extends Vertex<?>>{
      * @param vertex vertex
      * @return unmodifiable list
      */
-    public @NotNull List<GraphEdge<V>> getEdgesAt(V vertex){
+    public @NotNull List<ComplexEdge<V>> getEdgesAt(V vertex){
         return Collections.unmodifiableList(edges_map.get(vertex));
     }
 

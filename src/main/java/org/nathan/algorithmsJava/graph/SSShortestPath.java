@@ -32,7 +32,7 @@ public final class SSShortestPath{
             }
         }
         for(var edge : edges){
-            if(edge.later().distance > edge.former().distance + edge.getWeight()){
+            if(edge.later().distance > edge.former().distance + edge.weight()){
                 return false;
             }
         }
@@ -50,8 +50,8 @@ public final class SSShortestPath{
         }
     }
 
-    private static <T> void relax(GraphEdge<BFSVertex<T>> edge){
-        var weight = edge.getWeight();
+    private static <T> void relax(ComplexEdge<BFSVertex<T>> edge){
+        var weight = edge.weight();
         var u = edge.former();
         var v = edge.later();
         var sum = u.distance + weight;
