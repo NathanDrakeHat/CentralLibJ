@@ -3,14 +3,14 @@ package org.nathan.algorithmsJava.graph;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class BFSVertex<V> implements Vertex<V>{
-    final V id;
+public class BFSVertex<ID> implements Vertex<ID>{
+    final ID id;
     @Nullable
-    BFSVertex<V> parent;
+    BFSVertex<ID> parent;
     double distance; // d
     BFS.COLOR color;
 
-    public BFSVertex(@NotNull V name){
+    BFSVertex(@NotNull ID name){
         this.id = name;
     }
 
@@ -18,11 +18,15 @@ public class BFSVertex<V> implements Vertex<V>{
         id = null;
     }
 
-    public V getId(){
+    public static <S_ID> BFSVertex<S_ID> make(S_ID id){
+        return new BFSVertex<>(id);
+    }
+
+    public ID getId(){
         return id;
     }
 
-    public @Nullable BFSVertex<V> getParent(){
+    public @Nullable BFSVertex<ID> getParent(){
         return parent;
     }
 

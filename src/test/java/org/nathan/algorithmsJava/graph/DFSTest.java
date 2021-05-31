@@ -9,57 +9,9 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class DFSTest {
-    static String names = "uvwxyz";
 
-    static LinkedGraph<DFSVertex<String>> makeGraph() {
-        var vs = new ArrayList<DFSVertex<String>>(6);
 
-        for (int i = 0; i < 6; i++) {
-            vs.add(i, new DFSVertex<>(String.valueOf(names.charAt(i))));
-        }
-        var G = new LinkedGraph<>(vs, true);
-        G.setNeighbor(vs.get(0), vs.get(1));
-        G.setNeighbor(vs.get(0), vs.get(3));
 
-        G.setNeighbor(vs.get(1), vs.get(4));
-
-        G.setNeighbor(vs.get(2), vs.get(4));
-        G.setNeighbor(vs.get(2), vs.get(5));
-
-        G.setNeighbor(vs.get(3), vs.get(1));
-
-        G.setNeighbor(vs.get(4), vs.get(3));
-
-        G.setNeighbor(vs.get(5), vs.get(5));
-
-        return G;
-    }
-
-    static LinkedGraph<DFSVertex<String>> makeTopographicalDemo() {
-        var A = new ArrayList<DFSVertex<String>>(9);
-        String t = "undershorts,pants,belt,shirt,tie,jacket,socks,shoes,watch";
-        var names = t.split(",");
-        for (int i = 0; i < 9; i++) {
-            A.add(i, new DFSVertex<>(names[i]));
-        }
-        LinkedGraph<DFSVertex<String>> G = new LinkedGraph<>(A, true);
-        G.setNeighbor(A.get(0), A.get(1));
-        G.setNeighbor(A.get(0), A.get(6));
-
-        G.setNeighbor(A.get(1), A.get(2));
-        G.setNeighbor(A.get(1), A.get(6));
-
-        G.setNeighbor(A.get(2), A.get(5));
-
-        G.setNeighbor(A.get(3), A.get(2));
-        G.setNeighbor(A.get(3), A.get(4));
-
-        G.setNeighbor(A.get(4), A.get(5));
-
-        G.setNeighbor(A.get(6), A.get(7));
-
-        return G;
-    }
 
     static LinkedGraph<DFSVertex<String>> makeStronglyConnectedComponentsDemo() {
         String t = "a,b,c,d,e,f,g,h";
@@ -94,11 +46,36 @@ class DFSTest {
         return G;
     }
 
+    static LinkedGraph<DFSVertex<String>> makeGraph() {
+        String names = "uvwxyz";
+        var vs = new ArrayList<DFSVertex<String>>(6);
+
+        for (int i = 0; i < 6; i++) {
+            vs.add(i, new DFSVertex<>(String.valueOf(names.charAt(i))));
+        }
+        var G = new LinkedGraph<>(vs, true);
+        G.setNeighbor(vs.get(0), vs.get(1));
+        G.setNeighbor(vs.get(0), vs.get(3));
+
+        G.setNeighbor(vs.get(1), vs.get(4));
+
+        G.setNeighbor(vs.get(2), vs.get(4));
+        G.setNeighbor(vs.get(2), vs.get(5));
+
+        G.setNeighbor(vs.get(3), vs.get(1));
+
+        G.setNeighbor(vs.get(4), vs.get(3));
+
+        G.setNeighbor(vs.get(5), vs.get(5));
+
+        return G;
+    }
+
+    LinkedGraph<DFSVertex<String>> dfsGraph = makeGraph();
     @Test
     void depthFirstSearchTest() {
-        var G = makeGraph();
-        DFS.depthFirstSearch(G);
-        var vertices = G.allVertices();
+        DFS.depthFirstSearch(dfsGraph);
+        var vertices = dfsGraph.allVertices();
         List<DFSVertex<String>> l = new ArrayList<>(vertices);
         l.sort(Comparator.comparing(DFSVertex::getId));
         assertEquals(1, l.get(0).discover);
@@ -150,14 +127,42 @@ class DFSTest {
 
     }
 
+    static LinkedGraph<DFSVertex<String>> makeTopographicalDemo() {
+        var A = new ArrayList<DFSVertex<String>>(9);
+        String t = "undershorts,pants,belt,shirt,tie,jacket,socks,shoes,watch";
+        var names = t.split(",");
+        for (int i = 0; i < 9; i++) {
+            A.add(i, new DFSVertex<>(names[i]));
+        }
+        LinkedGraph<DFSVertex<String>> G = new LinkedGraph<>(A, true);
+        G.setNeighbor(A.get(0), A.get(1));
+        G.setNeighbor(A.get(0), A.get(6));
+
+        G.setNeighbor(A.get(1), A.get(2));
+        G.setNeighbor(A.get(1), A.get(6));
+
+        G.setNeighbor(A.get(2), A.get(5));
+
+        G.setNeighbor(A.get(3), A.get(2));
+        G.setNeighbor(A.get(3), A.get(4));
+
+        G.setNeighbor(A.get(4), A.get(5));
+
+        G.setNeighbor(A.get(6), A.get(7));
+
+        return G;
+    }
+
+
+    LinkedGraph<DFSVertex<String>> topologicalGraph = makeTopographicalDemo();
     @Test
     void topologicalSortTest() {
-        var graph = makeTopographicalDemo();
-        var l = DFS.topologicalSort(graph);
+
+        var l = DFS.topologicalSort(topologicalGraph);
         boolean flag = true;
         for (int i = 1; i < l.size(); i++) {
             for (int j = 0; j < i; j++) {
-                flag = recursiveTopologicalSorted(l.get(j), l.get(i), graph);
+                flag = topologicalSorted(l.get(j), l.get(i), topologicalGraph);
                 if (!flag) {
                     break;
                 }
@@ -169,7 +174,7 @@ class DFSTest {
         assertTrue(flag);
     }
 
-    boolean recursiveTopologicalSorted(DFSVertex<String> target, DFSVertex<String> current, LinkedGraph<DFSVertex<String>> G) {
+    boolean topologicalSorted(DFSVertex<String> target, DFSVertex<String> current, LinkedGraph<DFSVertex<String>> G) {
         if (current.equals(target)) {
             return false;
         }
@@ -181,7 +186,7 @@ class DFSTest {
             boolean t = true;
             for (var edge : edges) {
                 var i = edge.another(current);
-                t = recursiveTopologicalSorted(target, i, G);
+                t = topologicalSorted(target, i, G);
                 if (!t) {
                     break;
                 }
@@ -190,14 +195,16 @@ class DFSTest {
         }
     }
 
+    LinkedGraph<DFSVertex<String>> sortedTestGraph = makeTopographicalDemo();
+
     @Test
-    void recursiveTopologicalTest() {
-        var graph = makeTopographicalDemo();
+    void topologicalSortedTest() {
+
         boolean flag = true;
-        List<DFSVertex<String>> t = new ArrayList<>(graph.allVertices());
+        List<DFSVertex<String>> t = new ArrayList<>(sortedTestGraph.allVertices());
         for (int i = 1; i < t.size(); i++) {
             for (int j = 0; j < i; j++) {
-                flag = recursiveTopologicalSorted(t.get(j), t.get(i), graph);
+                flag = topologicalSorted(t.get(j), t.get(i), sortedTestGraph);
                 if (!flag) {
                     break;
                 }

@@ -30,8 +30,8 @@ public final class MinSpanTree {
         return res;
     }
 
-    public static <T> void PrimFibonacciHeap(@NotNull LinkedGraph<PrimVertex<T>> graph,
-                                             @NotNull PrimVertex<T> r) {
+    public static <T> void MSTPrimFibonacciHeap(@NotNull LinkedGraph<PrimVertex<T>> graph,
+                                                @NotNull PrimVertex<T> r) {
         FibonacciHeap<Double, PrimVertex<T>> Q = new FibonacciHeap<>(Comparator.comparingDouble(a -> a));
         var vertices = graph.allVertices();
         for (var u : vertices) {
@@ -58,8 +58,8 @@ public final class MinSpanTree {
         }
     }
 
-    public static <T> void PrimMinHeap(@NotNull LinkedGraph<PrimVertex<T>> graph,
-                                       @NotNull PrimVertex<T> r) {
+    public static <T> void MSTPrimMinHeap(@NotNull LinkedGraph<PrimVertex<T>> graph,
+                                          @NotNull PrimVertex<T> r) {
         var vertices = graph.allVertices();
         for (var u : vertices) {
             if (u != r) {

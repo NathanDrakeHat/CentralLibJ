@@ -1,5 +1,6 @@
 package org.nathan.algorithmsJava.structures;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -11,9 +12,10 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class RedBlackTreeTest{
 
-    @Test
-    public void insertFixUpTest(){
-        var RBtree = new RedBlackTree<Integer, Integer>(Comparator.comparingInt(o -> o));
+    RedBlackTree<Integer, Integer> RBtree;
+
+    {
+        RBtree = new RedBlackTree<>(Comparator.comparingInt(o -> o));
         RBtree.insert(11, 0);
         RBtree.insert(2, 0);
         RBtree.insert(14, 0);
@@ -23,6 +25,10 @@ class RedBlackTreeTest{
         RBtree.insert(5, 0);
         RBtree.insert(8, 0);
         RBtree.insert(4, 0);
+    }
+
+    @Test
+    public void insertFixUpTest(){
         var root = RBtree.root;
         assertEquals(root.key, 7); // 7
         assertEquals(root.left.key, 2); // 2

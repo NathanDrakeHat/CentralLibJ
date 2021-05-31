@@ -8,7 +8,7 @@ public class PrimVertex<V> implements Vertex<V>{
     PrimVertex<V> parent;
     double key = 0;
 
-    public PrimVertex(@NotNull V name){
+    PrimVertex(@NotNull V name){
         this.id = name;
     }
 

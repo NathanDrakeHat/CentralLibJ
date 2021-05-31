@@ -9,6 +9,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class RankSearchTest {
 
+    static class Data {
+        static int[] test1;
+        static int[] test2;
+        static int[] test3;
+        static int[] test4;
+    }
+
     @BeforeEach
     void build() {
         Data.test1 = new int[]{-2, 4, 2, -4, -9, 6, -4, 7, -3, -8, 2, -8, 0, 10, -9, -4, -3, -6, -8, 2};
@@ -91,12 +98,5 @@ class RankSearchTest {
         res = RankSearch.rankSearch(Data.test4, 15);
         Arrays.sort(Data.test4);
         assertEquals(Data.test4[15], res);
-    }
-
-    static class Data {
-        static int[] test1;
-        static int[] test2;
-        static int[] test3;
-        static int[] test4;
     }
 }

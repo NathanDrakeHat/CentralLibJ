@@ -7,7 +7,7 @@ public class KruskalVertex<V> extends DisjointSet implements Vertex<V>{
     @NotNull
     private final V id;
 
-    public KruskalVertex(@NotNull V n){
+    KruskalVertex(@NotNull V n){
         id = n;
     }
 

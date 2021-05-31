@@ -8,12 +8,12 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-class APShortestPathTest {
+class APShortestPathTest{
 
-    static LinkedGraph<BFSVertex<String>> build() {
+    static LinkedGraph<BFSVertex<String>> buildJohnsonTestCase(){
         String[] names = "1,2,3,4,5".split(",");
         List<BFSVertex<String>> vertices = new ArrayList<>();
-        for (var name : names) {
+        for(var name : names){
             vertices.add(new BFSVertex<>(name));
         }
         var res = new LinkedGraph<>(vertices, true);
@@ -33,8 +33,18 @@ class APShortestPathTest {
         return res;
     }
 
+
+    double[][] slowAllPairsSSAnswer = new double[][]{
+            {0, 3, 7, 2, 8},
+            {1, 0, 4, -1, 5},
+            {-3, -4, 0, -5, 1},
+            {2, 1, 5, 0, 6},
+            {-4, -1, 3, -2, 0}
+    };
+
+
     @Test
-    void slowAllPairsShortestPaths() {
+    void slowAllPairsShortestPaths(){
         var res = APShortestPath.slowAllPairsShortestPaths(new double[][]{
                 {0, Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY, 2, Double.POSITIVE_INFINITY},
                 {3, 0, 4, Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY},
@@ -42,18 +52,21 @@ class APShortestPathTest {
                 {Double.POSITIVE_INFINITY, 1, Double.POSITIVE_INFINITY, 0, 6},
                 {-4, 7, Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY, 0}
         });
-        var answer = new double[][]{
-                {0, 3, 7, 2, 8},
-                {1, 0, 4, -1, 5},
-                {-3, -4, 0, -5, 1},
-                {2, 1, 5, 0, 6},
-                {-4, -1, 3, -2, 0}
-        };
-        assertArrayEquals(answer, res);
+
+        assertArrayEquals(slowAllPairsSSAnswer, res);
     }
 
+
+    double[][] fastAllPairsSSAnswer = new double[][]{
+            {0, 3, 7, 2, 8},
+            {1, 0, 4, -1, 5},
+            {-3, -4, 0, -5, 1},
+            {2, 1, 5, 0, 6},
+            {-4, -1, 3, -2, 0}
+    };
+
     @Test
-    void fasterAllPairsShortestPaths() {
+    void fasterAllPairsShortestPaths(){
         var res = APShortestPath.fasterAllPairsShortestPaths(new double[][]{
                 {0, Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY, 2, Double.POSITIVE_INFINITY},
                 {3, 0, 4, Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY},
@@ -61,18 +74,20 @@ class APShortestPathTest {
                 {Double.POSITIVE_INFINITY, 1, Double.POSITIVE_INFINITY, 0, 6},
                 {-4, 7, Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY, 0}
         });
-        var answer = new double[][]{
-                {0, 3, 7, 2, 8},
-                {1, 0, 4, -1, 5},
-                {-3, -4, 0, -5, 1},
-                {2, 1, 5, 0, 6},
-                {-4, -1, 3, -2, 0}
-        };
-        assertArrayEquals(answer, res);
+        assertArrayEquals(fastAllPairsSSAnswer, res);
     }
 
+
+    double[][] FloydWarshallAnswer = new double[][]{
+            {0, 3, 7, 2, 8},
+            {1, 0, 4, -1, 5},
+            {-3, -4, 0, -5, 1},
+            {2, 1, 5, 0, 6},
+            {-4, -1, 3, -2, 0}
+    };
+
     @Test
-    void FloydWarshallTest() {
+    void FloydWarshallTest(){
         var res = APShortestPath.FloydWarshall(new double[][]{
                 {0, Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY, 2, Double.POSITIVE_INFINITY},
                 {3, 0, 4, Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY},
@@ -80,50 +95,49 @@ class APShortestPathTest {
                 {Double.POSITIVE_INFINITY, 1, Double.POSITIVE_INFINITY, 0, 6},
                 {-4, 7, Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY, 0}
         });
-        var answer = new double[][]{
-                {0, 3, 7, 2, 8},
-                {1, 0, 4, -1, 5},
-                {-3, -4, 0, -5, 1},
-                {2, 1, 5, 0, 6},
-                {-4, -1, 3, -2, 0}
-        };
-        assertArrayEquals(answer, res);
+
+        assertArrayEquals(FloydWarshallAnswer, res);
     }
 
+    boolean[][] transitiveClosureAnswer = new boolean[][]{
+            {true, true, true, true},
+            {false, true, true, true},
+            {false, true, true, true},
+            {false, true, true, true}
+    };
+
     @Test
-    void transitiveClosureTest() {
+    void transitiveClosureTest(){
         var res = APShortestPath.transitiveClosure(new double[][]{
                 {0, Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY, 1},
                 {Double.POSITIVE_INFINITY, 0, 1, Double.POSITIVE_INFINITY},
                 {Double.POSITIVE_INFINITY, 1, 0, 1},
                 {Double.POSITIVE_INFINITY, 1, Double.POSITIVE_INFINITY, 0}
         });
+        assertArrayEquals(transitiveClosureAnswer, res);
+    }
 
-        var answer = new boolean[][]{
-                {true, true, true, true},
-                {false, true, true, true},
-                {false, true, true, true},
-                {false, true, true, true}
-        };
-        assertArrayEquals(answer, res);
+    LinkedGraph<BFSVertex<String>> JohnsonFibTest = buildJohnsonTestCase();
+    LinkedGraph<BFSVertex<String>> JohnsonMinHeapTest = buildJohnsonTestCase();
+    double[][] JohnsonAnswer = new double[][]{
+            {0.0, 1.0, -3.0, 2.0, -4.0},
+            {3.0, 0.0, -4.0, 1.0, -1.0},
+            {7.0, 4.0, 0.0, 5.0, 3.0},
+            {2.0, -1.0, -5.0, 0.0, -2.0},
+            {8.0, 5.0, 1.0, 6.0, 0.0},
+    };
+
+    @Test
+    void JohnsonFibonacciHeapTest(){
+        var res = APShortestPath.Johnson(JohnsonFibTest, SSShortestPath::DijkstraFibonacciHeap);
+        assertTrue(res.isPresent());
+        assertArrayEquals(JohnsonAnswer, res.get());
     }
 
     @Test
-    void JohnsonTest() {
-        var res = APShortestPath.Johnson(build(), SSShortestPath::DijkstraFibonacciHeap);
-        var answer = new double[][]{
-                {0.0, 1.0, -3.0, 2.0, -4.0},
-                {3.0, 0.0, -4.0, 1.0, -1.0},
-                {7.0, 4.0, 0.0, 5.0, 3.0},
-                {2.0, -1.0, -5.0, 0.0, -2.0},
-                {8.0, 5.0, 1.0, 6.0, 0.0},
-        };
+    void JohnsonMinHeapTest(){
+        var res = APShortestPath.Johnson(JohnsonMinHeapTest, SSShortestPath::DijkstraMinHeap);
         assertTrue(res.isPresent());
-        assertArrayEquals(answer, res.get());
-
-        res = APShortestPath.Johnson(build(),SSShortestPath::DijkstraFibonacciHeap);
-        assertTrue(res.isPresent());
-        assertArrayEquals(answer, res.get());
-
+        assertArrayEquals(JohnsonAnswer, res.get());
     }
 }

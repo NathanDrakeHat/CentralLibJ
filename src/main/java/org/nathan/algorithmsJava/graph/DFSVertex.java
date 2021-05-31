@@ -12,7 +12,7 @@ public class DFSVertex<V> implements Vertex<V>{
     int finish; // f
     DFS.COLOR color;
 
-    public DFSVertex(@NotNull V name){
+    DFSVertex(@NotNull V name){
         this.id = name;
     }
 

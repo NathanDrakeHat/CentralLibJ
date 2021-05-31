@@ -10,22 +10,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 class SortTest {
-
-
-    static SimpleDate[] buildDate() {
-        var rand = new Random();
-        int len = rand.nextInt(20) + 20;
-        SimpleDate[] res = new SimpleDate[len];
-        int[] years = randomIntArray(2000, 2022, len);
-        int[] months = randomIntArray(1, 13, len);
-        int[] days = randomIntArray(1, 29, len);
-        for (int i = 0; i < len; i++) {
-            res[i] = new SimpleDate(years[i], months[i], days[i]);
-        }
-        return res;
-    }
-
-
     static boolean isSorted(int[] res) {
         boolean is_sorted = true;
         for (int i = 1; i < res.length; i++) {
@@ -141,10 +125,33 @@ class SortTest {
         }
     }
 
+    static SimpleDate[] buildDate() {
+        var rand = new Random();
+        int len = rand.nextInt(20) + 20;
+        SimpleDate[] res = new SimpleDate[len];
+        int[] years = randomIntArray(2000, 2022, len);
+        int[] months = randomIntArray(1, 13, len);
+        int[] days = randomIntArray(1, 29, len);
+        for (int i = 0; i < len; i++) {
+            res[i] = new SimpleDate(years[i], months[i], days[i]);
+        }
+        return res;
+    }
+
+    SimpleDate[][] radixSortData;
+    int radixSortTestCount = 10;
+
+    {
+        radixSortData = new SimpleDate[10][];
+        for(int i = 0 ; i < radixSortTestCount; i++){
+            radixSortData[i] = buildDate();
+        }
+    }
+
     @Test
     void radixSortTest() {
-        for(int i = 0; i < 10; i++){
-            SimpleDate[] origin = buildDate();
+        for(int i = 0; i < radixSortTestCount; i++){
+            SimpleDate[] origin = radixSortData[i];
             Sort.radixSort(origin);
             assertTrue(isSorted(origin));
         }

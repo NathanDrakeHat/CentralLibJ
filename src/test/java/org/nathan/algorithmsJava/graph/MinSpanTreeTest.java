@@ -11,16 +11,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.nathan.algorithmsJava.graph.MinSpanTree.*;
 
 class MinSpanTreeTest {
-    @Test
-    public void KruskalTest() {
-        var G = buildKruskalExample();
-        var t = Kruskal(G);
-        int i = 0;
-        for (var e : t) {
-            i += e.weight();
-        }
-        assertEquals(37, i);
-    }
 
     LinkedGraph<KruskalVertex<String>> buildKruskalExample() {
         String n = "a,b,c,d,e,f,g,h,i";
@@ -41,18 +31,30 @@ class MinSpanTreeTest {
         return res;
     }
 
+    LinkedGraph<KruskalVertex<String>> KruskalGraph = buildKruskalExample();
 
     @Test
-    public void PrimTest() {
-        var t = buildPrimExample();
-        runFibonacciHeap(t.graph, t.target);
-        t = buildPrimExample();
-        runMinHeap(t.graph, t.target);
-
+    public void KruskalTest() {
+        var t = Kruskal(KruskalGraph);
+        int i = 0;
+        for (var e : t) {
+            i += e.weight();
+        }
+        assertEquals(37, i);
     }
 
-    void runFibonacciHeap(LinkedGraph<PrimVertex<String>> graph, PrimVertex<String> target) {
-        PrimFibonacciHeap(graph, target);
+
+
+    Set<Set<String>> primAnswer1 = buildPrimAnswer1();
+    Set<Set<String>> primAnswer2 = buildPrimAnswer2();
+
+
+    GraphAndTarget primFibTarget = buildPrimExample();
+    @Test
+    public void MSTPrimFibTest() {
+        var graph = primFibTarget.graph;
+        var target = primFibTarget.target;
+        MSTPrimFibonacciHeap(graph, target);
         var vertices = graph.allVertices();
         Set<Set<String>> res = new HashSet<>();
         for (var vertex : vertices) {
@@ -63,11 +65,17 @@ class MinSpanTreeTest {
                 res.add(t);
             }
         }
-        assertTrue(res.equals(buildPrimAnswer1()) || res.equals(buildPrimAnswer2()));
+        assertTrue(res.equals(primAnswer1) || res.equals(primAnswer2));
     }
 
-    void runMinHeap(LinkedGraph<PrimVertex<String>> graph, PrimVertex<String> target) {
-        PrimMinHeap(graph, target);
+    GraphAndTarget primMinHeap = buildPrimExample();
+
+    @Test
+    public void MSTPrimMinHeapTest(){
+        var graph = primMinHeap.graph;
+        var target = primMinHeap.target;
+
+        MSTPrimMinHeap(graph, target);
         var vertices = graph.allVertices();
         Set<Set<String>> res = new HashSet<>();
         for (var vertex : vertices) {
@@ -78,7 +86,7 @@ class MinSpanTreeTest {
                 res.add(t);
             }
         }
-        assertTrue(res.equals(buildPrimAnswer1()) || res.equals(buildPrimAnswer2()));
+        assertTrue(res.equals(primAnswer1) || res.equals(primAnswer2));
     }
 
     GraphAndTarget buildPrimExample() {

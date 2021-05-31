@@ -88,27 +88,29 @@ class FibonacciHeapTest {
         return res;
     }
 
+
+    FibonacciHeap<Integer, Integer> fibHeap = buildExample();
     @Test
     void case1() {
-        var H = buildExample();
-        var o = H.extractMin();
+
+        var o = fibHeap.extractMin();
         assertEquals(o, 3);
         //see <<introduction to  algorithm>> to find this test sample.
-        assertEquals(List.of(7, 18, 38, 7, 38, 18), bcl(H.rootList));
-        assertEquals(List.of(39, 21, 39, 21), bcl(H.rootList.right.childList));
-        assertEquals(List.of(52, 52), bcl(H.rootList.right.childList.left.childList));
-        assertEquals(List.of(23, 17, 24, 23, 24, 17), bcl(H.rootList.childList));
-        assertEquals(List.of(26, 46, 26, 46), bcl(H.rootList.childList.left.childList));
-        assertEquals(List.of(30, 30), bcl(H.rootList.childList.left.left.childList));
-        assertEquals(List.of(35, 35), bcl(H.rootList.childList.left.childList.childList));
-        assertEquals(List.of(41, 41), bcl(H.rootList.right.right.childList));
+        assertEquals(List.of(7, 18, 38, 7, 38, 18), bcl(fibHeap.rootList));
+        assertEquals(List.of(39, 21, 39, 21), bcl(fibHeap.rootList.right.childList));
+        assertEquals(List.of(52, 52), bcl(fibHeap.rootList.right.childList.left.childList));
+        assertEquals(List.of(23, 17, 24, 23, 24, 17), bcl(fibHeap.rootList.childList));
+        assertEquals(List.of(26, 46, 26, 46), bcl(fibHeap.rootList.childList.left.childList));
+        assertEquals(List.of(30, 30), bcl(fibHeap.rootList.childList.left.left.childList));
+        assertEquals(List.of(35, 35), bcl(fibHeap.rootList.childList.left.childList.childList));
+        assertEquals(List.of(41, 41), bcl(fibHeap.rootList.right.right.childList));
 
-        H.decreaseKey(H.rootList.childList.left.childList.left, 15);
-        H.decreaseKey(H.rootList.childList.left.childList.childList, 5);
+        fibHeap.decreaseKey(fibHeap.rootList.childList.left.childList.left, 15);
+        fibHeap.decreaseKey(fibHeap.rootList.childList.left.childList.childList, 5);
 
-        assertEquals(List.of(5, 26, 24, 7, 18, 38, 15, 5, 15, 38, 18, 7, 24, 26), bcl(H.rootList));
-        assertEquals(List.of(23, 17, 23, 17), bcl(H.rootList.right.right.right.childList));
-        assertEquals(List.of(30, 30), bcl(H.rootList.right.right.right.childList.right.childList));
-        assertEquals(List.of(39, 21, 39, 21), bcl(H.rootList.right.right.right.right.childList));
+        assertEquals(List.of(5, 26, 24, 7, 18, 38, 15, 5, 15, 38, 18, 7, 24, 26), bcl(fibHeap.rootList));
+        assertEquals(List.of(23, 17, 23, 17), bcl(fibHeap.rootList.right.right.right.childList));
+        assertEquals(List.of(30, 30), bcl(fibHeap.rootList.right.right.right.childList.right.childList));
+        assertEquals(List.of(39, 21, 39, 21), bcl(fibHeap.rootList.right.right.right.right.childList));
     }
 }

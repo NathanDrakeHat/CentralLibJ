@@ -10,12 +10,18 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class BFSTest {
 
+
+    List<BFSVertex<Character>> vertices;
+    LinkedGraph<BFSVertex<Character>> graph;
+    public BFSTest(){
+        vertices = Data.makeVertexes();
+        graph = Data.makeGraph(vertices);
+    }
+
     @Test
     void breathFirstSearch() {
-        var vs = Data.makeVertexes();
-        var t = Data.makeGraph(vs);
-        BFS.breathFirstSearch(t, vs.get(1));
-        assertEquals(List.of('s', 'w', 'x', 'y'), BFS.getPath(vs.get(1), vs.get(7)));
+        BFS.breathFirstSearch(graph, vertices.get(1));
+        assertEquals(List.of('s', 'w', 'x', 'y'), BFS.getPath(vertices.get(1), vertices.get(7)));
     }
 
     public static class Data {
