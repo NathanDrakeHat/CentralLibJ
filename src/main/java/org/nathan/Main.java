@@ -20,8 +20,6 @@ class Main{
 
 
     public static void main(String[] args){
-        List<Integer> l = new ArrayList<>();
-        l.set(1,1);
-        System.out.println(l.get(1));
+        GitPush.gitPush(args);
     }
 }

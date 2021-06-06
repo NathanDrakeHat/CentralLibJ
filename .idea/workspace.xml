@@ -22,14 +22,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="better implementation">
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="move test build outer">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJava/graph/LinkedGraph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJava/graph/LinkedGraph.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJava/graph/BFSTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJava/graph/BFSTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJava/miscellaneous/SortTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJava/miscellaneous/SortTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJava/structures/MinHeapTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJava/structures/MinHeapTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJava/structures/RedBlackTreeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJava/structures/RedBlackTreeTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CentralUtils/src/main/java/org/nathan/centralUtils/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CentralUtils/src/main/java/org/nathan/centralUtils/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,7 +91,7 @@
       <recent name="org.nathan.algorithmsJava.graph" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.org.nathan.algorithmsJava in AlgorithmsJava">
+  <component name="RunManager" selected="Application.pushThis">
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.nathan.Main" />
       <module name="AlgorithmsJava" />
@@ -386,14 +382,7 @@
       <workItem from="1622789465846" duration="1494000" />
       <workItem from="1622796432705" duration="33000" />
       <workItem from="1622873888319" duration="6000" />
-      <workItem from="1622874904421" duration="15606000" />
-    </task>
-    <task id="LOCAL-00120" summary="add solveHamilton">
-      <created>1621606523619</created>
-      <option name="number" value="00120" />
-      <option name="presentableId" value="LOCAL-00120" />
-      <option name="project" value="LOCAL" />
-      <updated>1621606523619</updated>
+      <workItem from="1622874904421" duration="15920000" />
     </task>
     <task id="LOCAL-00121" summary="add lambda">
       <created>1621649755079</created>
@@ -731,7 +720,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622979543552</updated>
     </task>
-    <option name="localTasksCounter" value="169" />
+    <task id="LOCAL-00169" summary="move test build outer">
+      <created>1622981402753</created>
+      <option name="number" value="00169" />
+      <option name="presentableId" value="LOCAL-00169" />
+      <option name="project" value="LOCAL" />
+      <updated>1622981402753</updated>
+    </task>
+    <option name="localTasksCounter" value="170" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -779,13 +775,13 @@
     <MESSAGE value="remove final for generic class" />
     <MESSAGE value="refactor" />
     <MESSAGE value="add interface" />
-    <MESSAGE value="move test build outer" />
     <MESSAGE value="save" />
     <MESSAGE value="fix test bug" />
     <MESSAGE value="add" />
     <MESSAGE value="rename" />
     <MESSAGE value="better implementation" />
-    <option name="LAST_COMMIT_MESSAGE" value="better implementation" />
+    <MESSAGE value="move test build outer" />
+    <option name="LAST_COMMIT_MESSAGE" value="move test build outer" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
