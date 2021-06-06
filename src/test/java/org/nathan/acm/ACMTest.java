@@ -6,9 +6,13 @@ import org.nathan.centralUtils.utils.LambdaUtils;
 
 import static org.nathan.acm.ACM.*;
 import static org.junit.jupiter.api.Assertions.*;
+
 import org.nathan.centralUtils.utils.NumericUtils;
 
 import java.util.List;
+import java.util.Random;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class ACMTest{
 
@@ -97,17 +101,18 @@ public class ACMTest{
     @Test
     public void sumDivTest(){
         //noinspection OptionalGetWithoutIsPresent
-        assertEquals((NumericUtils.getAllDivisors((int) Math.pow(6, 6)).stream().reduce(Integer::sum).get() % 9901), sumDiv(6, 6));
+        assertEquals((NumericUtils.getAllDivisors((int) Math.pow(6, 6)).stream().reduce(Integer::sum).get() % 9901),
+                sumDiv(6, 6));
     }
 
     @Test
     public void maxExtremumTest(){
-        var t1 = List.of(1,2,3,2,1);
-        var t2 = List.of(1,2,3,4);
-        var t3 = List.of(4,3,2,1);
-        var t4 = List.of(1,3,2,1,0);
-        var t5 = List.of(1,2,3,2);
-        var t6 = List.of(1,2,1,0);
+        var t1 = List.of(1, 2, 3, 2, 1);
+        var t2 = List.of(1, 2, 3, 4);
+        var t3 = List.of(4, 3, 2, 1);
+        var t4 = List.of(1, 3, 2, 1, 0);
+        var t5 = List.of(1, 2, 3, 2);
+        var t6 = List.of(1, 2, 1, 0);
 
         assertEquals(2, maxExtremum(t1));
         assertEquals(3, maxExtremum(t2));
@@ -128,18 +133,41 @@ public class ACMTest{
             int[] sumTestCase = new int[testCase.length];
             System.arraycopy(testCase, 0, sumTestCase, 0, testCase.length);
             for(int j = 1; j < sumTestCase.length; j++){
-                sumTestCase[j] += sumTestCase[j-1];
+                sumTestCase[j] += sumTestCase[j - 1];
             }
             int dumbRes = -11;
-            for(int j = 0; j < sumTestCase.length -limit + 1; j++){
+            for(int j = 0; j < sumTestCase.length - limit + 1; j++){
                 for(int k = j + limit; k < sumTestCase.length; k++){
-                    int t = (int)Math.floor((sumTestCase[k] - sumTestCase[j])/(double)(k-j));
+                    int t = (int) Math.floor((sumTestCase[k] - sumTestCase[j]) / (double) (k - j));
                     if(t > dumbRes){
                         dumbRes = t;
                     }
                 }
             }
             assertEquals(dumbRes, res);
+        }
+    }
+
+    @Test
+    public void innovativeBusinessTest(){
+        int size = 20;
+        boolean[][] greater = new boolean[size][];
+        for(int i = 0; i < size; i++){
+            greater[i] = new boolean[size];
+        }
+        Random rand = new Random();
+        for(int i = 0; i < size - 1; i++){
+            for(int j = i + 1; j < size; j++){
+                var t = rand.nextBoolean();
+                greater[i][j] = t;
+                greater[j][i] = !t;
+            }
+        }
+        List<Integer> list = innovativeBusiness(greater);
+        for(int i = 0; i < list.size() - 1; i++){
+            if(greater[list.get(i)][list.get(i + 1)]){
+                fail();
+            }
         }
     }
 }
