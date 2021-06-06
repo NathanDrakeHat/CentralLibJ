@@ -4,17 +4,15 @@ import org.junit.jupiter.api.Test;
 import org.nathan.centralUtils.utils.ArrayUtils;
 import org.nathan.centralUtils.utils.LambdaUtils;
 
-import static org.nathan.acm.ACM.*;
+import static org.nathan.acm.ACM0x00.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.nathan.centralUtils.utils.NumericUtils;
 
 import java.util.List;
 import java.util.Random;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
-public class ACMTest{
+public class ACM0x00Test{
 
     @Test
     public void fastPowerModTest(){

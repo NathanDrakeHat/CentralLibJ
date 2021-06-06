@@ -14,7 +14,7 @@ import java.util.stream.IntStream;
 /**
  * 《算法竞赛进阶指南》, 李煜东
  */
-public class ACM{
+public class ACM0x00{
 
     /**
      * a ^ b % m <br/>
