@@ -366,7 +366,6 @@ public class ACM{
         return max_idx;
     }
 
-
     /**
      * binary search on (small) answer range
      * discrete max average[-10, 10]

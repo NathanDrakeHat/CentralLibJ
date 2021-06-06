@@ -119,18 +119,21 @@ public class ACMTest{
 
     @Test
     public void bestCowFencesTest(){
-        for(int i = 0; i < 10; i++){
+        // past 100000 iteration
+        for(int i = 0; i < 20; i++){
             int[] testCase = ArrayUtils.randomIntArray(-10, 11, 20);
             int limit = 5;
             var res = bestCowFences(testCase, limit);
 
-            for(int j = 1; j < testCase.length; j++){
-                testCase[j] += testCase[j-1];
+            int[] sumTestCase = new int[testCase.length];
+            System.arraycopy(testCase, 0, sumTestCase, 0, testCase.length);
+            for(int j = 1; j < sumTestCase.length; j++){
+                sumTestCase[j] += sumTestCase[j-1];
             }
             int dumbRes = -11;
-            for(int j = 0; j < testCase.length -limit + 1; j++){
-                for(int k = j + limit; k < testCase.length; k++){
-                    int t = (testCase[k] - testCase[j])/(k-j);
+            for(int j = 0; j < sumTestCase.length -limit + 1; j++){
+                for(int k = j + limit; k < sumTestCase.length; k++){
+                    int t = (int)Math.floor((sumTestCase[k] - sumTestCase[j])/(double)(k-j));
                     if(t > dumbRes){
                         dumbRes = t;
                     }
