@@ -20,6 +20,11 @@ class Main{
 
 
     public static void main(String[] args){
-        GitPush.gitPush(args);
+        if(args.length > 0){
+            GitPush.gitPush(args);
+        }
+        else {
+            int i;
+        }
     }
 }
