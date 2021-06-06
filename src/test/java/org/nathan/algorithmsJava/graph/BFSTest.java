@@ -13,7 +13,7 @@ class BFSTest {
 
     List<BFSVertex<Character>> vertices;
     LinkedGraph<BFSVertex<Character>> graph;
-    public BFSTest(){
+    {
         vertices = Data.makeVertexes();
         graph = Data.makeGraph(vertices);
     }

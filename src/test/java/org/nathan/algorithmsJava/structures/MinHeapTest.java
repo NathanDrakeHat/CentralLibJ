@@ -13,10 +13,18 @@ import java.util.stream.Collectors;
 
 
 class MinHeapTest{
+
+    List<List<Integer>> randomAddTestCase = new ArrayList<>();
+    {
+        for(int i = 0; i < iter; i++){
+            randomAddTestCase.add(shuffledSequence(1, 63));
+        }
+    }
+
     @Test
     void randomAddTest(){
-        for(int i = 0; i < 10; i++){
-            List<Integer> l = shuffledSequence(1, 63);
+        for(int i = 0; i < iter; i++){
+            List<Integer> l = randomAddTestCase.get(i);
             MinHeap<Integer, String> m = new MinHeap<>(Integer::compare);
             for(Integer integer : l){
                 m.add(String.valueOf(integer), integer);
@@ -36,10 +44,19 @@ class MinHeapTest{
         }
     }
 
+    static int iter = 10;
+    List<List<Integer>> randUpdateKeyCase = new ArrayList<>(iter);
+
+    {
+        for(int i = 0; i < iter; i++){
+            randUpdateKeyCase.add(shuffledSequence(1, 63));
+        }
+    }
+
     @Test
     void randomUpdateKeyTest(){
-        for(int i = 0; i < 10; i++){
-            List<Integer> l = shuffledSequence(1, 63);
+        for(int i = 0; i < iter; i++){
+            List<Integer> l = randUpdateKeyCase.get(i);
             var rand = new Random();
             MinHeap<Integer, String> heap = new MinHeap<>(
                     l.stream().map(String::valueOf).collect(Collectors.toList()),
@@ -53,10 +70,7 @@ class MinHeapTest{
                 res.add(Integer.valueOf(heap.extractMin()));
             }
             for(int j = 0; j < res.size() - 1; j++){
-                if(res.get(j).compareTo(res.get(j + 1)) <= 0){
-                    assertTrue(true);
-                }
-                else{
+                if(!(res.get(j).compareTo(res.get(j + 1)) <= 0)){
                     fail();
                 }
             }

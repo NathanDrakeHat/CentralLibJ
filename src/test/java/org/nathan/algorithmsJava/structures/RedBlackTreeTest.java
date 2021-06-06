@@ -53,31 +53,35 @@ class RedBlackTreeTest{
         assertEquals(5, t.getHeight());
     }
 
+    RedBlackTree<Integer, String> funcTestCase;
+    List<Integer> funcTestAnswer = new ArrayList<>();
+    {
+        funcTestCase = new RedBlackTree<>(Comparator.comparingInt(o -> o));
+
+        for(int i = 0; i < 16; i++){
+            funcTestCase.insert(i, String.valueOf(i));
+            funcTestAnswer.add(i);
+        }
+    }
     @Test
     public void functionsTest(){
-        var t = new RedBlackTree<Integer, String>(Comparator.comparingInt(o -> o));
-        List<Integer> l1 = new ArrayList<>();
         List<Integer> l2 = new ArrayList<>();
-        for(int i = 0; i < 16; i++){
-            t.insert(i, String.valueOf(i));
-            l1.add(i);
-        }
-        var ri = t.reverseIterator();
+        var ri = funcTestCase.reverseIterator();
         assertEquals(15, ri.next().first());
 
-        assertEquals(5 + 1 - 2, t.keyRangeSearch(2, 5).size());
-        assertEquals(t.getHeight(), 4);
-        assertEquals(t.getCount(), 16);
-        assertEquals(t.getMinKey(), 0);
-        assertEquals(t.getMaxKey(), 15);
-        assertEquals(t.getValueOfMaxKey(), "15");
-        assertEquals(t.getValueOfMinKey(), "0");
-        t.inOrderForEach((i, s) -> l2.add(i));
-        assertEquals(l1, l2);
-        assertEquals(t.search(5), "5");
+        assertEquals(5 + 1 - 2, funcTestCase.keyRangeSearch(2, 5).size());
+        assertEquals(funcTestCase.getHeight(), 4);
+        assertEquals(funcTestCase.getCount(), 16);
+        assertEquals(funcTestCase.getMinKey(), 0);
+        assertEquals(funcTestCase.getMaxKey(), 15);
+        assertEquals(funcTestCase.getValueOfMaxKey(), "15");
+        assertEquals(funcTestCase.getValueOfMinKey(), "0");
+        funcTestCase.inOrderForEach((i, s) -> l2.add(i));
+        assertEquals(funcTestAnswer, l2);
+        assertEquals(funcTestCase.search(5), "5");
         assertThrows(IllegalStateException.class, ()->{
-            for(var i : t){
-                t.insert(i.first(), "i");
+            for(var i : funcTestCase){
+                funcTestCase.insert(i.first(), "i");
             }
         });
     }
