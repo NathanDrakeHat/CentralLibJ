@@ -2,211 +2,220 @@ package org.nathan.algorithmsJava.miscellaneous;
 
 import org.junit.jupiter.api.Test;
 
-import static org.nathan.centralUtils.utils.ArrayUtils.*;
-
 import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.nathan.centralUtils.utils.ArrayUtils.randomDoubleArray;
+import static org.nathan.centralUtils.utils.ArrayUtils.randomIntArray;
 
 
-class SortTest {
-    static int iteration = 20;
+class SortTest{
+  static int iteration = 20;
 
-    static boolean isSorted(int[] res) {
-        boolean is_sorted = true;
-        for (int i = 1; i < res.length; i++) {
-            if (res[i - 1] > res[i]) {
-                is_sorted = false;
-                break;
-            }
-        }
-        return is_sorted;
+  static boolean isSorted(int[] res){
+    boolean is_sorted = true;
+    for(int i = 1; i < res.length; i++){
+      if(res[i - 1] > res[i]){
+        is_sorted = false;
+        break;
+      }
     }
+    return is_sorted;
+  }
 
-    static boolean isSorted(double[] res) {
-        boolean is_sorted = true;
-        for (int i = 1; i < res.length; i++) {
-            if (res[i - 1] > res[i]) {
-                is_sorted = false;
-                break;
-            }
-        }
-        return is_sorted;
+  static boolean isSorted(double[] res){
+    boolean is_sorted = true;
+    for(int i = 1; i < res.length; i++){
+      if(res[i - 1] > res[i]){
+        is_sorted = false;
+        break;
+      }
     }
+    return is_sorted;
+  }
 
-    static boolean isSorted(SimpleDate[] res) {
-        boolean is_sorted = true;
-        for (int i = 1; i < res.length; i++) {
-            if (res[i - 1].year > res[i].year) {
-                is_sorted = false;
-                break;
-            }
-            else if ((res[i - 1].year == res[i].year) && (res[i - 1].month > res[i].month)) {
-                is_sorted = false;
-                break;
-            }
-            else if ((res[i - 1].year == res[i].year) && (res[i - 1].month == res[i].month) && (res[i - 1].day > res[i].day)) {
-                is_sorted = false;
-                break;
-            }
-        }
-        return is_sorted;
+  static boolean isSorted(SimpleDate[] res){
+    boolean is_sorted = true;
+    for(int i = 1; i < res.length; i++){
+      if(res[i - 1].year > res[i].year){
+        is_sorted = false;
+        break;
+      }
+      else if((res[i - 1].year == res[i].year) && (res[i - 1].month > res[i].month)){
+        is_sorted = false;
+        break;
+      }
+      else if((res[i - 1].year == res[i].year) && (res[i - 1].month == res[i].month) && (res[i - 1].day > res[i].day)){
+        is_sorted = false;
+        break;
+      }
     }
+    return is_sorted;
+  }
 
 
-    double[][] iterMergeSortCase = new double[iteration][];
-    {
-        var rand = new Random();
-        for (int i = 0; i < iteration; i++) {
-            int len = rand.nextInt(10) + 20;
-            int bound = rand.nextInt(5) + 10;
-            iterMergeSortCase[i] = randomDoubleArray(-bound, bound, len);
-        }
+  double[][] iterMergeSortCase = new double[iteration][];
+
+  {
+    var rand = new Random();
+    for(int i = 0; i < iteration; i++){
+      int len = rand.nextInt(10) + 20;
+      int bound = rand.nextInt(5) + 10;
+      iterMergeSortCase[i] = randomDoubleArray(-bound, bound, len);
     }
+  }
 
-    @Test
-    void iterativeMergeSortTest() {
-        for (int i = 0; i < iteration; i++) {
-            Sort.iterativeMergeSort(iterMergeSortCase[i]);
-            assertTrue(isSorted(iterMergeSortCase[i]));
-        }
+  @Test
+  void iterativeMergeSortTest(){
+    for(int i = 0; i < iteration; i++){
+      Sort.iterativeMergeSort(iterMergeSortCase[i]);
+      assertTrue(isSorted(iterMergeSortCase[i]));
     }
+  }
 
-    double[][] recurMergeSortCase = new double[iteration][];
-    {
-        var rand = new Random();
-        for (int i = 0; i < iteration; i++) {
-            int len = rand.nextInt(10) + 20;
-            int bound = rand.nextInt(5) + 10;
-            recurMergeSortCase[i] = randomDoubleArray(-bound, bound, len);
-        }
+  double[][] recurMergeSortCase = new double[iteration][];
+
+  {
+    var rand = new Random();
+    for(int i = 0; i < iteration; i++){
+      int len = rand.nextInt(10) + 20;
+      int bound = rand.nextInt(5) + 10;
+      recurMergeSortCase[i] = randomDoubleArray(-bound, bound, len);
     }
+  }
 
-    @Test
-    void recursiveMergeSortTest() {
-        for (int i = 0; i < iteration; i++) {
-            Sort.recursiveMergeSort(recurMergeSortCase[i]);
-            assertTrue(isSorted(recurMergeSortCase[i]));
-        }
+  @Test
+  void recursiveMergeSortTest(){
+    for(int i = 0; i < iteration; i++){
+      Sort.recursiveMergeSort(recurMergeSortCase[i]);
+      assertTrue(isSorted(recurMergeSortCase[i]));
     }
+  }
 
-    double[][] heapSortCase = new double[iteration][];
-    {
-        var rand = new Random();
+  double[][] heapSortCase = new double[iteration][];
 
-        for (int i = 0; i < iteration; i++) {
-            int len = rand.nextInt(10) + 20;
-            int bound = rand.nextInt(5) + 10;
-            heapSortCase[i] = randomDoubleArray(-bound, bound, len);
-        }
+  {
+    var rand = new Random();
+
+    for(int i = 0; i < iteration; i++){
+      int len = rand.nextInt(10) + 20;
+      int bound = rand.nextInt(5) + 10;
+      heapSortCase[i] = randomDoubleArray(-bound, bound, len);
     }
+  }
 
-    @Test
-    void heapSortTest() {
-        for (int i = 0; i < iteration; i++) {
-            Sort.heapSort(heapSortCase[i]);
-            assertTrue(isSorted(heapSortCase[i]));
-        }
+  @Test
+  void heapSortTest(){
+    for(int i = 0; i < iteration; i++){
+      Sort.heapSort(heapSortCase[i]);
+      assertTrue(isSorted(heapSortCase[i]));
     }
+  }
 
-    double[][] quickSortCase = new double[iteration][];
-    {
-        var rand = new Random();
+  double[][] quickSortCase = new double[iteration][];
 
-        for (int i = 0; i < iteration; i++) {
-            int len = rand.nextInt(10) + 20;
-            int bound = rand.nextInt(5) + 10;
-            quickSortCase[i] = randomDoubleArray(-bound, bound, len);
-        }
+  {
+    var rand = new Random();
+
+    for(int i = 0; i < iteration; i++){
+      int len = rand.nextInt(10) + 20;
+      int bound = rand.nextInt(5) + 10;
+      quickSortCase[i] = randomDoubleArray(-bound, bound, len);
     }
+  }
 
-    @Test
-    void quickSortTest() {
-        for (int i = 0; i < iteration; i++) {
-            Sort.quickSort(quickSortCase[i]);
-            assertTrue(isSorted(quickSortCase[i]));
-        }
+  @Test
+  void quickSortTest(){
+    for(int i = 0; i < iteration; i++){
+      Sort.quickSort(quickSortCase[i]);
+      assertTrue(isSorted(quickSortCase[i]));
     }
+  }
 
-    double[][] randQuickSortCase = new double[iteration][];
-    {
-        var rand = new Random();
+  double[][] randQuickSortCase = new double[iteration][];
 
-        for (int i = 0; i < iteration; i++) {
-            int len = rand.nextInt(10) + 20;
-            int bound = rand.nextInt(5) + 10;
-            randQuickSortCase[i] = randomDoubleArray(-bound, bound, len);
-        }
-    }
+  {
+    var rand = new Random();
 
-    @Test
-    void randQuickSortTest() {
-        for (int i = 0; i < iteration; i++) {
-            Sort.randomQuickSort(randQuickSortCase[i]);
-            assertTrue(isSorted(randQuickSortCase[i]));
-        }
+    for(int i = 0; i < iteration; i++){
+      int len = rand.nextInt(10) + 20;
+      int bound = rand.nextInt(5) + 10;
+      randQuickSortCase[i] = randomDoubleArray(-bound, bound, len);
     }
+  }
 
-    int[][] countingSortCase = new int[iteration][];
-    {
-        var rand = new Random();
-        for (int i = 0; i < iteration; i++) {
-            int len = rand.nextInt(10) + 20;
-            int bound = rand.nextInt(5) + 10;
-            countingSortCase[i] = randomIntArray(-bound, bound, len);
-        }
+  @Test
+  void randQuickSortTest(){
+    for(int i = 0; i < iteration; i++){
+      Sort.randomQuickSort(randQuickSortCase[i]);
+      assertTrue(isSorted(randQuickSortCase[i]));
     }
+  }
 
-    @Test
-    void countingSortTest() {
-        for (int i = 0; i < iteration; i++) {
-            Sort.countingSort(countingSortCase[i]);
-            assertTrue(isSorted(countingSortCase[i]));
-        }
-    }
+  int[][] countingSortCase = new int[iteration][];
 
-    static SimpleDate[] buildDate() {
-        var rand = new Random();
-        int len = rand.nextInt(20) + 20;
-        SimpleDate[] res = new SimpleDate[len];
-        int[] years = randomIntArray(2000, 2022, len);
-        int[] months = randomIntArray(1, 13, len);
-        int[] days = randomIntArray(1, 29, len);
-        for (int i = 0; i < len; i++) {
-            res[i] = new SimpleDate(years[i], months[i], days[i]);
-        }
-        return res;
+  {
+    var rand = new Random();
+    for(int i = 0; i < iteration; i++){
+      int len = rand.nextInt(10) + 20;
+      int bound = rand.nextInt(5) + 10;
+      countingSortCase[i] = randomIntArray(-bound, bound, len);
     }
+  }
 
-    SimpleDate[][] radixSortData = new SimpleDate[iteration][];
-    {
-        for(int i = 0 ; i < iteration; i++){
-            radixSortData[i] = buildDate();
-        }
+  @Test
+  void countingSortTest(){
+    for(int i = 0; i < iteration; i++){
+      Sort.countingSort(countingSortCase[i]);
+      assertTrue(isSorted(countingSortCase[i]));
     }
+  }
 
-    @Test
-    void radixSortTest() {
-        for(int i = 0; i < iteration; i++){
-            Sort.radixSort(radixSortData[i]);
-            assertTrue(isSorted(radixSortData[i]));
-        }
+  static SimpleDate[] buildDate(){
+    var rand = new Random();
+    int len = rand.nextInt(20) + 20;
+    SimpleDate[] res = new SimpleDate[len];
+    int[] years = randomIntArray(2000, 2022, len);
+    int[] months = randomIntArray(1, 13, len);
+    int[] days = randomIntArray(1, 29, len);
+    for(int i = 0; i < len; i++){
+      res[i] = new SimpleDate(years[i], months[i], days[i]);
     }
+    return res;
+  }
 
-    double[][] bucketSortCase = new double[iteration][];
-    {
-        var rand = new Random();
-        for (int i = 0; i < iteration; i++) {
-            int len = rand.nextInt(10) + 20;
-            bucketSortCase[i] = randomDoubleArray(0, 1, len);
-        }
+  SimpleDate[][] radixSortData = new SimpleDate[iteration][];
+
+  {
+    for(int i = 0; i < iteration; i++){
+      radixSortData[i] = buildDate();
     }
-    @Test
-    void bucketSortTest() {
-        for (int i = 0; i < iteration; i++) {
-            Sort.bucketSort(bucketSortCase[i]);
-            assertTrue(isSorted(bucketSortCase[i]));
-        }
+  }
+
+  @Test
+  void radixSortTest(){
+    for(int i = 0; i < iteration; i++){
+      Sort.radixSort(radixSortData[i]);
+      assertTrue(isSorted(radixSortData[i]));
     }
+  }
+
+  double[][] bucketSortCase = new double[iteration][];
+
+  {
+    var rand = new Random();
+    for(int i = 0; i < iteration; i++){
+      int len = rand.nextInt(10) + 20;
+      bucketSortCase[i] = randomDoubleArray(0, 1, len);
+    }
+  }
+
+  @Test
+  void bucketSortTest(){
+    for(int i = 0; i < iteration; i++){
+      Sort.bucketSort(bucketSortCase[i]);
+      assertTrue(isSorted(bucketSortCase[i]));
+    }
+  }
 
 }

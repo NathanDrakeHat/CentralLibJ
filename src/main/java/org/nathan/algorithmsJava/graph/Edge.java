@@ -2,9 +2,9 @@ package org.nathan.algorithmsJava.graph;
 
 public interface Edge<V extends Vertex<?>>{
 
-    V former();
+  V former();
 
-    V later();
+  V later();
 
-    V another(V vertex);
+  V another(V vertex);
 }

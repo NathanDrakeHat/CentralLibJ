@@ -4,21 +4,21 @@ import org.jetbrains.annotations.NotNull;
 import org.nathan.algorithmsJava.structures.DisjointSet;
 
 public class KruskalVertex<V> extends DisjointSet implements Vertex<V>{
-    @NotNull
-    private final V id;
+  @NotNull
+  private final V id;
 
-    KruskalVertex(@NotNull V n){
-        id = n;
-    }
+  KruskalVertex(@NotNull V n){
+    id = n;
+  }
 
-    @SuppressWarnings("unused")
-    public @NotNull V getId(){
-        return id;
-    }
+  @SuppressWarnings("unused")
+  public @NotNull V getId(){
+    return id;
+  }
 
-    @Override
-    public String toString(){
-        return String.format("KruskalVertex: %s", id);
-    }
+  @Override
+  public String toString(){
+    return String.format("KruskalVertex: %s", id);
+  }
 
 }
