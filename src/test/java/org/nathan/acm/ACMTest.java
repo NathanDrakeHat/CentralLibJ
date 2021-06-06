@@ -1,6 +1,7 @@
 package org.nathan.acm;
 
 import org.junit.jupiter.api.Test;
+import org.nathan.centralUtils.utils.ArrayUtils;
 import org.nathan.centralUtils.utils.LambdaUtils;
 
 import static org.nathan.acm.ACM.*;
@@ -114,5 +115,28 @@ public class ACMTest{
         assertEquals(1, maxExtremum(t4));
         assertEquals(2, maxExtremum(t5));
         assertEquals(1, maxExtremum(t6));
+    }
+
+    @Test
+    public void bestCowFencesTest(){
+        for(int i = 0; i < 10; i++){
+            int[] testCase = ArrayUtils.randomIntArray(-10, 11, 20);
+            int limit = 5;
+            var res = bestCowFences(testCase, limit);
+
+            for(int j = 1; j < testCase.length; j++){
+                testCase[j] += testCase[j-1];
+            }
+            int dumbRes = -11;
+            for(int j = 0; j < testCase.length -limit + 1; j++){
+                for(int k = j + limit; k < testCase.length; k++){
+                    int t = (testCase[k] - testCase[j])/(k-j);
+                    if(t > dumbRes){
+                        dumbRes = t;
+                    }
+                }
+            }
+            assertEquals(dumbRes, res);
+        }
     }
 }

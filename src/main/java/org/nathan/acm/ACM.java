@@ -10,7 +10,7 @@ import java.util.function.BiFunction;
 
 
 /**
- * 算法竞赛进阶指南, 李煜东
+ * 《算法竞赛进阶指南》, 李煜东
  */
 public class ACM{
 
@@ -288,7 +288,7 @@ public class ACM{
     }
 
     /**
-     * a^b%9901
+     * sum of (a^b)'s divisors mod 9901
      *
      * @param a a
      * @param b b
@@ -364,5 +364,45 @@ public class ACM{
         }
 
         return max_idx;
+    }
+
+
+    /**
+     * binary search on (small) answer range
+     * discrete max average[-10, 10]
+     * @param nums int array
+     * @param limit low limit
+     * @return max average
+     */
+    public static int bestCowFences(int[] nums, int limit){
+        int min = - 10, max = 11;
+
+        int[] norm = new int[nums.length];
+        while(max - min > 1){
+            System.arraycopy(nums, 0, norm, 0, nums.length);
+            int mid = (min + max) / 2;
+            norm[0] -= mid;
+            int t_min = norm[0], t_max_sum = -11;
+            for(int i = 1; i < norm.length; i++){
+                norm[i] -= mid;
+                norm[i] += norm[i-1];
+                if(i >= limit){
+                    if(norm[i - limit] < t_min){
+                        t_min = norm[i - limit];
+                    }
+                    int sum = norm[i] - t_min;
+                    if(sum > t_max_sum){
+                        t_max_sum = sum;
+                    }
+                }
+            }
+            if(t_max_sum >= 0){
+                min = mid;
+            }
+            else {
+                max = mid;
+            }
+        }
+        return min;
     }
 }
