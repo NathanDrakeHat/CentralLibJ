@@ -22,7 +22,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="set public" />
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="save">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/acm/ACM0x00.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/acm/ACM0x00.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -87,7 +90,7 @@
       <recent name="org.nathan.algorithmsJava.graph" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.pushThis">
+  <component name="RunManager" selected="JUnit.ACM0x00Test">
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.nathan.Main" />
       <module name="AlgorithmsJava" />
@@ -192,8 +195,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.All in AlgorithmsJava" />
         <item itemvalue="JUnit.ACM0x00Test" />
+        <item itemvalue="JUnit.All in AlgorithmsJava" />
         <item itemvalue="JUnit.ACM0x00Test.bestCowFencesTest" />
         <item itemvalue="JUnit.org.nathan.algorithmsJava in AlgorithmsJava" />
         <item itemvalue="JUnit.SortTest" />
@@ -373,13 +376,7 @@
       <workItem from="1622985181156" duration="225000" />
       <workItem from="1622985431581" duration="568000" />
       <workItem from="1623029161007" duration="4464000" />
-    </task>
-    <task id="LOCAL-00127" summary="add test">
-      <created>1622206606495</created>
-      <option name="number" value="00127" />
-      <option name="presentableId" value="LOCAL-00127" />
-      <option name="project" value="LOCAL" />
-      <updated>1622206606495</updated>
+      <workItem from="1623056283742" duration="1772000" />
     </task>
     <task id="LOCAL-00128" summary="save">
       <created>1622207310130</created>
@@ -717,7 +714,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623035997672</updated>
     </task>
-    <option name="localTasksCounter" value="176" />
+    <task id="LOCAL-00176" summary="save">
+      <created>1623057665518</created>
+      <option name="number" value="00176" />
+      <option name="presentableId" value="LOCAL-00176" />
+      <option name="project" value="LOCAL" />
+      <updated>1623057665518</updated>
+    </task>
+    <option name="localTasksCounter" value="177" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -766,12 +770,12 @@
     <MESSAGE value="rename" />
     <MESSAGE value="better implementation" />
     <MESSAGE value="move test build outer" />
-    <MESSAGE value="save" />
     <MESSAGE value="reformat" />
     <MESSAGE value="better algo, move test build outer" />
     <MESSAGE value="add acm, save todo" />
     <MESSAGE value="set public" />
-    <option name="LAST_COMMIT_MESSAGE" value="set public" />
+    <MESSAGE value="save" />
+    <option name="LAST_COMMIT_MESSAGE" value="save" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

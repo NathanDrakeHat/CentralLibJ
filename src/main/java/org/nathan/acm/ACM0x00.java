@@ -144,98 +144,105 @@ public class ACM0x00{
       throw new IllegalArgumentException();
     }
 
+    var singleFlipper = new Object(){
+      private void flip(int r, int c){
+        if(switches[r][c].equals("x")){
+          switches[r][c] = "o";
+        }
+        else if(switches[r][c].equals("o")){
+          switches[r][c] = "x";
+        }
+        else{ throw new RuntimeException("input format error."); }
+      }
+    };
+
+    var nextPosGetter = new Object(){
+      Tuple<Integer, Integer> get(int rIdx, int cIdx){
+        int nc = cIdx + 1;
+        int nr = rIdx;
+        if(nc >= switches.length){
+          nc = 0;
+          nr += 1;
+        }
+
+        return new Tuple<>(nr, nc);
+      }
+    };
+
+    var neighborFlipper = new Object(){
+      private void flip(int r, int c){
+        if((r - 1) >= 0 && (r - 1) < switches.length){
+          singleFlipper.flip(r - 1, c);
+        }
+        if((c - 1) >= 0 && (c - 1) < switches.length){
+          singleFlipper.flip(r, c - 1);
+        }
+
+        if((r + 1) >= 0 && (r + 1) < switches.length){
+          singleFlipper.flip(r + 1, c);
+        }
+        if((c + 1) >= 0 && (c + 1) < switches.length){
+          singleFlipper.flip(r, c + 1);
+        }
+        singleFlipper.flip(r, c);
+      }
+    };
+
     Deque<Tuple<Integer, Integer>> pushes = new ArrayDeque<>(16);
+    var recurSolver = new Object(){
+      private int solve(String[][] switches, int r, int c, int push_count){
 
-    return recursiveStrangeSwitch(switches, 0, 0, 0, pushes);
-  }
+        if(r == 0){
+          var pos = nextPosGetter.get(r, c);
+          int nc = pos.second();
+          int nr = pos.first();
 
-  private static Tuple<Integer, Integer> nextPos(int rIdx, int cIdx, String[][] switches){
-    int nc = cIdx + 1;
-    int nr = rIdx;
-    if(nc >= switches.length){
-      nc = 0;
-      nr += 1;
-    }
+          neighborFlipper.flip(r, c);
+          int left_min = solve(switches, nr, nc, push_count + 1);
+          neighborFlipper.flip(r, c);
 
-    return new Tuple<>(nr, nc);
-  }
+          int right_min = solve(switches, nr, nc, push_count);
 
-  private static int recursiveStrangeSwitch(String[][] switches, int r, int c, int push_count,
-                                            Deque<Tuple<Integer, Integer>> pushes){
-    if(r == 0){
-      var pos = nextPos(r, c, switches);
-      int nc = pos.second();
-      int nr = pos.first();
-
-      flipNeighbor(switches, r, c);
-      int left_min = recursiveStrangeSwitch(switches, nr, nc, push_count + 1, pushes);
-      flipNeighbor(switches, r, c);
-
-      int right_min = recursiveStrangeSwitch(switches, nr, nc, push_count, pushes);
-
-      if(left_min < 0 && right_min < 0){
-        return -1;
-      }
-      else if(left_min < 0){
-        return right_min;
-      }
-      else if(right_min < 0){
-        return left_min;
-      }
-      else{ return Math.min(left_min, right_min); }
-    }
-    else{
-      while(!(r >= switches.length)) {
-        if(switches[r - 1][c].equals("o")){
-          flipNeighbor(switches, r, c);
-          pushes.offerLast(new Tuple<>(r, c));
-          push_count += 1;
+          if(left_min < 0 && right_min < 0){
+            return -1;
+          }
+          else if(left_min < 0){
+            return right_min;
+          }
+          else if(right_min < 0){
+            return left_min;
+          }
+          else{ return Math.min(left_min, right_min); }
         }
-        var tPos = nextPos(r, c, switches);
-        r = tPos.first();
-        c = tPos.second();
-      }
+        else{
+          while(!(r >= switches.length)) {
+            if(switches[r - 1][c].equals("o")){
+              neighborFlipper.flip(r, c);
+              pushes.offerLast(new Tuple<>(r, c));
+              push_count += 1;
+            }
+            var tPos = nextPosGetter.get(r, c);
+            r = tPos.first();
+            c = tPos.second();
+          }
 
-      int res = push_count;
-      for(var item : switches[switches.length - 1]){
-        if(!item.equals("x")){
-          res = -1;
-          break;
+          int res = push_count;
+          for(var item : switches[switches.length - 1]){
+            if(!item.equals("x")){
+              res = -1;
+              break;
+            }
+          }
+          while(!pushes.isEmpty()) {
+            var tPos = pushes.removeLast();
+            neighborFlipper.flip(tPos.first(), tPos.second());
+          }
+          return res;
         }
       }
-      while(!pushes.isEmpty()) {
-        var tPos = pushes.removeLast();
-        flipNeighbor(switches, tPos.first(), tPos.second());
-      }
-      return res;
-    }
-  }
+    };
 
-  private static void flipSingle(String[][] switches, int r, int c){
-    if(switches[r][c].equals("x")){
-      switches[r][c] = "o";
-    }
-    else if(switches[r][c].equals("o")){
-      switches[r][c] = "x";
-    }
-    else{ throw new RuntimeException("input format error."); }
-  }
-
-  private static void flipNeighbor(String[][] switches, int r, int c){
-    if((r - 1) >= 0 && (r - 1) < switches.length){
-      flipSingle(switches, r - 1, c);
-    }
-    if((c - 1) >= 0 && (c - 1) < switches.length){
-      flipSingle(switches, r, c - 1);
-    }
-
-    if((r + 1) >= 0 && (r + 1) < switches.length){
-      flipSingle(switches, r + 1, c);
-    }
-    if((c + 1) >= 0 && (c + 1) < switches.length){
-      flipSingle(switches, r, c + 1);
-    }
-    flipSingle(switches, r, c);
+    return recurSolver.solve(switches, 0, 0, 0);
   }
 
   public static int laserBomb(int[][] targets, int radius){
