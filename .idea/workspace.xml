@@ -22,11 +22,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="reformat">
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="better algo, move test build outer">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/acm/ACM0x00.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/acm/ACM0x00.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJava/graph/LinkedGraph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJava/graph/LinkedGraph.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/acm/ACM0x00Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/acm/ACM0x00Test.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,7 +91,7 @@
       <recent name="org.nathan.algorithmsJava.graph" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ACM0x00Test">
+  <component name="RunManager" selected="JUnit.All in AlgorithmsJava">
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.nathan.Main" />
       <module name="AlgorithmsJava" />
@@ -148,18 +147,10 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ACM0x00Test.innovativeBusinessTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="All in AlgorithmsJava" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AlgorithmsJava" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.nathan.acm.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.nathan.acm" />
-      <option name="MAIN_CLASS_NAME" value="org.nathan.acm.ACM0x00Test" />
-      <option name="METHOD_NAME" value="innovativeBusinessTest" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -199,17 +190,17 @@
       <item itemvalue="Application.Main" />
       <item itemvalue="JUnit.org.nathan.algorithmsJava in AlgorithmsJava" />
       <item itemvalue="JUnit.ACM0x00Test.bestCowFencesTest" />
-      <item itemvalue="JUnit.ACM0x00Test.innovativeBusinessTest" />
       <item itemvalue="JUnit.SortTest" />
       <item itemvalue="JUnit.ACM0x00Test" />
+      <item itemvalue="JUnit.All in AlgorithmsJava" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.All in AlgorithmsJava" />
         <item itemvalue="JUnit.ACM0x00Test" />
         <item itemvalue="JUnit.ACM0x00Test.bestCowFencesTest" />
         <item itemvalue="JUnit.org.nathan.algorithmsJava in AlgorithmsJava" />
         <item itemvalue="JUnit.SortTest" />
-        <item itemvalue="JUnit.ACM0x00Test.innovativeBusinessTest" />
       </list>
     </recent_temporary>
   </component>
@@ -385,14 +376,7 @@
       <workItem from="1622874904421" duration="16811000" />
       <workItem from="1622985181156" duration="225000" />
       <workItem from="1622985431581" duration="568000" />
-      <workItem from="1623029161007" duration="1146000" />
-    </task>
-    <task id="LOCAL-00124" summary="fix junit pom, add method, set tuple record">
-      <created>1622122853423</created>
-      <option name="number" value="00124" />
-      <option name="presentableId" value="LOCAL-00124" />
-      <option name="project" value="LOCAL" />
-      <updated>1622122853428</updated>
+      <workItem from="1623029161007" duration="3164000" />
     </task>
     <task id="LOCAL-00125" summary="add laserBomb">
       <created>1622191817332</created>
@@ -730,7 +714,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622985495509</updated>
     </task>
-    <option name="localTasksCounter" value="173" />
+    <task id="LOCAL-00173" summary="better algo, move test build outer">
+      <created>1623030413300</created>
+      <option name="number" value="00173" />
+      <option name="presentableId" value="LOCAL-00173" />
+      <option name="project" value="LOCAL" />
+      <updated>1623030413300</updated>
+    </task>
+    <option name="localTasksCounter" value="174" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -759,7 +750,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add lambda" />
     <MESSAGE value="fix junit pom, add method, set tuple record" />
     <MESSAGE value="add laserBomb" />
     <MESSAGE value="change recursive to partly iterative" />
@@ -784,7 +774,8 @@
     <MESSAGE value="move test build outer" />
     <MESSAGE value="save" />
     <MESSAGE value="reformat" />
-    <option name="LAST_COMMIT_MESSAGE" value="reformat" />
+    <MESSAGE value="better algo, move test build outer" />
+    <option name="LAST_COMMIT_MESSAGE" value="better algo, move test build outer" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

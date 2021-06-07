@@ -426,4 +426,28 @@ public class ACM0x00{
     }
     return res;
   }
+
+  private static <E> List<E> discrete(List<E> l, Comparator<E> comp){
+    l.sort(comp);
+    return l.stream().distinct().toList();
+  }
+
+  private static <E> int query(List<E> dis, E elem, Comparator<E> comp){
+    int l = 0, r = dis.size();
+    while(r - l > 1) {
+      int mid = (r + l) / 2;
+      var mid_e  =dis.get(mid);
+      int c= comp.compare(elem, mid_e);
+      if(c > 0){
+        l = mid + 1;
+      }
+      else if(c < 0){
+        r = mid;
+      }
+      else {
+        return mid;
+      }
+    }
+    return l;
+  }
 }
