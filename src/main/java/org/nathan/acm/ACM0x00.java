@@ -144,10 +144,10 @@ public class ACM0x00{
       throw new IllegalArgumentException();
     }
 
-    var neighborFlipper = new Object(){
-      private void flip(int r, int c){
-        var singleFlipper = new Object(){
-          private void flip(int r, int c){
+    var flipNeighbor = new Object(){
+      private void apply(int r, int c){
+        var flipSingle = new Object(){
+          private void apply(int r, int c){
             if(switches[r][c].equals("x")){
               switches[r][c] = "o";
             }
@@ -158,27 +158,27 @@ public class ACM0x00{
           }
         };
         if((r - 1) >= 0 && (r - 1) < switches.length){
-          singleFlipper.flip(r - 1, c);
+          flipSingle.apply(r - 1, c);
         }
         if((c - 1) >= 0 && (c - 1) < switches.length){
-          singleFlipper.flip(r, c - 1);
+          flipSingle.apply(r, c - 1);
         }
 
         if((r + 1) >= 0 && (r + 1) < switches.length){
-          singleFlipper.flip(r + 1, c);
+          flipSingle.apply(r + 1, c);
         }
         if((c + 1) >= 0 && (c + 1) < switches.length){
-          singleFlipper.flip(r, c + 1);
+          flipSingle.apply(r, c + 1);
         }
-        singleFlipper.flip(r, c);
+        flipSingle.apply(r, c);
       }
     };
 
     Deque<Tuple<Integer, Integer>> pushes = new ArrayDeque<>(16);
-    var recurSolver = new Object(){
-      private int solve(String[][] switches, int r, int c, int push_count){
-        var nextPosGetter = new Object(){
-          Tuple<Integer, Integer> get(int rIdx, int cIdx){
+    var recurSolve = new Object(){
+      private int apply(String[][] switches, int r, int c, int push_count){
+        var nextPos = new Object(){
+          Tuple<Integer, Integer> apply(int rIdx, int cIdx){
             int nc = cIdx + 1;
             int nr = rIdx;
             if(nc >= switches.length){
@@ -190,15 +190,15 @@ public class ACM0x00{
           }
         };
         if(r == 0){
-          var pos = nextPosGetter.get(r, c);
+          var pos = nextPos.apply(r, c);
           int nc = pos.second();
           int nr = pos.first();
 
-          neighborFlipper.flip(r, c);
-          int left_min = solve(switches, nr, nc, push_count + 1);
-          neighborFlipper.flip(r, c);
+          flipNeighbor.apply(r, c);
+          int left_min = apply(switches, nr, nc, push_count + 1);
+          flipNeighbor.apply(r, c);
 
-          int right_min = solve(switches, nr, nc, push_count);
+          int right_min = apply(switches, nr, nc, push_count);
 
           if(left_min < 0 && right_min < 0){
             return -1;
@@ -214,11 +214,11 @@ public class ACM0x00{
         else{
           while(!(r >= switches.length)) {
             if(switches[r - 1][c].equals("o")){
-              neighborFlipper.flip(r, c);
+              flipNeighbor.apply(r, c);
               pushes.offerLast(new Tuple<>(r, c));
               push_count += 1;
             }
-            var tPos = nextPosGetter.get(r, c);
+            var tPos = nextPos.apply(r, c);
             r = tPos.first();
             c = tPos.second();
           }
@@ -232,14 +232,14 @@ public class ACM0x00{
           }
           while(!pushes.isEmpty()) {
             var tPos = pushes.removeLast();
-            neighborFlipper.flip(tPos.first(), tPos.second());
+            flipNeighbor.apply(tPos.first(), tPos.second());
           }
           return res;
         }
       }
     };
 
-    return recurSolver.solve(switches, 0, 0, 0);
+    return recurSolve.apply(switches, 0, 0, 0);
   }
 
   public static int laserBomb(int[][] targets, int radius){
