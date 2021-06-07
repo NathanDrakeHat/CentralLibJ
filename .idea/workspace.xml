@@ -22,7 +22,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="add acm, save todo" />
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="set public" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -372,14 +372,7 @@
       <workItem from="1622874904421" duration="16811000" />
       <workItem from="1622985181156" duration="225000" />
       <workItem from="1622985431581" duration="568000" />
-      <workItem from="1623029161007" duration="3574000" />
-    </task>
-    <task id="LOCAL-00126" summary="change recursive to partly iterative">
-      <created>1622199515603</created>
-      <option name="number" value="00126" />
-      <option name="presentableId" value="LOCAL-00126" />
-      <option name="project" value="LOCAL" />
-      <updated>1622199515603</updated>
+      <workItem from="1623029161007" duration="4464000" />
     </task>
     <task id="LOCAL-00127" summary="add test">
       <created>1622206606495</created>
@@ -717,7 +710,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623033045347</updated>
     </task>
-    <option name="localTasksCounter" value="175" />
+    <task id="LOCAL-00175" summary="set public">
+      <created>1623035997672</created>
+      <option name="number" value="00175" />
+      <option name="presentableId" value="LOCAL-00175" />
+      <option name="project" value="LOCAL" />
+      <updated>1623035997672</updated>
+    </task>
+    <option name="localTasksCounter" value="176" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -746,7 +746,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add laserBomb" />
     <MESSAGE value="change recursive to partly iterative" />
     <MESSAGE value="add test" />
     <MESSAGE value="add maxExtremum" />
@@ -771,7 +770,8 @@
     <MESSAGE value="reformat" />
     <MESSAGE value="better algo, move test build outer" />
     <MESSAGE value="add acm, save todo" />
-    <option name="LAST_COMMIT_MESSAGE" value="add acm, save todo" />
+    <MESSAGE value="set public" />
+    <option name="LAST_COMMIT_MESSAGE" value="set public" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

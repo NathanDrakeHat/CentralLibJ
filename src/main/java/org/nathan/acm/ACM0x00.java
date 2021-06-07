@@ -6,7 +6,6 @@ import org.nathan.centralUtils.utils.ArrayUtils;
 import org.nathan.centralUtils.utils.NumericUtils;
 
 import java.util.*;
-import java.util.function.BiFunction;
 
 
 /**
@@ -145,34 +144,34 @@ public class ACM0x00{
       throw new IllegalArgumentException();
     }
 
-    BiFunction<Integer, Integer, Tuple<Integer, Integer>> nextPos = (rIdx, cIdx) -> {
-      int nc = cIdx + 1;
-      int nr = rIdx;
-      if(nc >= switches.length){
-        nc = 0;
-        nr += 1;
-      }
-
-      return new Tuple<>(nr, nc);
-    };
     Deque<Tuple<Integer, Integer>> pushes = new ArrayDeque<>(16);
 
-    return recursiveStrangeSwitch(switches, 0, 0, 0, nextPos, pushes);
+    return recursiveStrangeSwitch(switches, 0, 0, 0, pushes);
+  }
+
+  private static Tuple<Integer, Integer> nextPos(int rIdx, int cIdx, String[][] switches){
+    int nc = cIdx + 1;
+    int nr = rIdx;
+    if(nc >= switches.length){
+      nc = 0;
+      nr += 1;
+    }
+
+    return new Tuple<>(nr, nc);
   }
 
   private static int recursiveStrangeSwitch(String[][] switches, int r, int c, int push_count,
-                                            BiFunction<Integer, Integer, Tuple<Integer, Integer>> nextPos,
                                             Deque<Tuple<Integer, Integer>> pushes){
     if(r == 0){
-      var pos = nextPos.apply(r, c);
+      var pos = nextPos(r, c, switches);
       int nc = pos.second();
       int nr = pos.first();
 
       flipNeighbor(switches, r, c);
-      int left_min = recursiveStrangeSwitch(switches, nr, nc, push_count + 1, nextPos, pushes);
+      int left_min = recursiveStrangeSwitch(switches, nr, nc, push_count + 1, pushes);
       flipNeighbor(switches, r, c);
 
-      int right_min = recursiveStrangeSwitch(switches, nr, nc, push_count, nextPos, pushes);
+      int right_min = recursiveStrangeSwitch(switches, nr, nc, push_count, pushes);
 
       if(left_min < 0 && right_min < 0){
         return -1;
@@ -192,7 +191,7 @@ public class ACM0x00{
           pushes.offerLast(new Tuple<>(r, c));
           push_count += 1;
         }
-        var tPos = nextPos.apply(r, c);
+        var tPos = nextPos(r, c, switches);
         r = tPos.first();
         c = tPos.second();
       }
