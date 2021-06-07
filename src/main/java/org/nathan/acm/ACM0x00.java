@@ -144,33 +144,19 @@ public class ACM0x00{
       throw new IllegalArgumentException();
     }
 
-    var singleFlipper = new Object(){
-      private void flip(int r, int c){
-        if(switches[r][c].equals("x")){
-          switches[r][c] = "o";
-        }
-        else if(switches[r][c].equals("o")){
-          switches[r][c] = "x";
-        }
-        else{ throw new RuntimeException("input format error."); }
-      }
-    };
-
-    var nextPosGetter = new Object(){
-      Tuple<Integer, Integer> get(int rIdx, int cIdx){
-        int nc = cIdx + 1;
-        int nr = rIdx;
-        if(nc >= switches.length){
-          nc = 0;
-          nr += 1;
-        }
-
-        return new Tuple<>(nr, nc);
-      }
-    };
-
     var neighborFlipper = new Object(){
       private void flip(int r, int c){
+        var singleFlipper = new Object(){
+          private void flip(int r, int c){
+            if(switches[r][c].equals("x")){
+              switches[r][c] = "o";
+            }
+            else if(switches[r][c].equals("o")){
+              switches[r][c] = "x";
+            }
+            else{ throw new RuntimeException("input format error."); }
+          }
+        };
         if((r - 1) >= 0 && (r - 1) < switches.length){
           singleFlipper.flip(r - 1, c);
         }
@@ -191,7 +177,18 @@ public class ACM0x00{
     Deque<Tuple<Integer, Integer>> pushes = new ArrayDeque<>(16);
     var recurSolver = new Object(){
       private int solve(String[][] switches, int r, int c, int push_count){
+        var nextPosGetter = new Object(){
+          Tuple<Integer, Integer> get(int rIdx, int cIdx){
+            int nc = cIdx + 1;
+            int nr = rIdx;
+            if(nc >= switches.length){
+              nc = 0;
+              nr += 1;
+            }
 
+            return new Tuple<>(nr, nc);
+          }
+        };
         if(r == 0){
           var pos = nextPosGetter.get(r, c);
           int nc = pos.second();
