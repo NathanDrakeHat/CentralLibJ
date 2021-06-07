@@ -409,8 +409,7 @@ public class ACM0x00{
   public static List<Integer> innovativeBusiness(boolean[][] greater){
     List<Integer> res = new ArrayList<>(greater.length);
 
-    res.add(0);
-    for(int i = 1; i < greater.length; i++){
+    for(int i = 0; i < greater.length; i++){
       int l = 0, r = res.size();
       while(r - l > 0) {
         int mid = (r + l) / 2;
