@@ -2,14 +2,14 @@ package org.nathan.algorithmsJ.graph;
 
 import org.jetbrains.annotations.NotNull;
 
-public class ComplexEdge<V extends Vertex<?>>{
+public class UnionEdge<V extends Vertex<?>>{
   @NotNull
   private final V former_vertex;
   @NotNull
   private final V later_vertex;
   double weight;
 
-  ComplexEdge(@NotNull V former, @NotNull V later, double weight){
+  UnionEdge(@NotNull V former, @NotNull V later, double weight){
     this.weight = weight;
     former_vertex = former;
     later_vertex = later;

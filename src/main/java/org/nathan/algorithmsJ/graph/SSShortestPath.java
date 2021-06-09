@@ -50,7 +50,7 @@ public final class SSShortestPath{
     }
   }
 
-  private static <T> void relax(ComplexEdge<BFSVertex<T>> edge){
+  private static <T> void relax(UnionEdge<BFSVertex<T>> edge){
     var weight = edge.weight();
     var u = edge.former();
     var v = edge.later();
