@@ -21,7 +21,7 @@ public final class MinSpanTree{
     edges_list.sort(Comparator.comparingDouble(UnionEdge::weight));
     for(var edge : edges_list){
       var v1 = edge.former();
-      var v2 = edge.later();
+      var v2 = edge.latter();
       if(v1.findGroupId() != v2.findGroupId()){
         res.add(edge);
         v1.union(v2);

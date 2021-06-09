@@ -6,21 +6,21 @@ public class UnionEdge<V extends Vertex<?>>{
   @NotNull
   private final V former_vertex;
   @NotNull
-  private final V later_vertex;
+  private final V latter_vertex;
   double weight;
 
   UnionEdge(@NotNull V former, @NotNull V later, double weight){
     this.weight = weight;
     former_vertex = former;
-    later_vertex = later;
+    latter_vertex = later;
   }
 
   public V former(){
     return former_vertex;
   }
 
-  public V later(){
-    return later_vertex;
+  public V latter(){
+    return latter_vertex;
   }
 
 
@@ -30,9 +30,9 @@ public class UnionEdge<V extends Vertex<?>>{
 
   public V another(V vertex){
     if(vertex.equals(former_vertex)){
-      return later_vertex;
+      return latter_vertex;
     }
-    else if(vertex.equals(later_vertex)){
+    else if(vertex.equals(latter_vertex)){
       return former_vertex;
     }
     else{

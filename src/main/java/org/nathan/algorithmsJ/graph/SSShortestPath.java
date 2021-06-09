@@ -34,7 +34,7 @@ public final class SSShortestPath{
       }
     }
     for(var edge : edges){
-      if(edge.later().distance > edge.former().distance + edge.weight()){
+      if(edge.latter().distance > edge.former().distance + edge.weight()){
         return false;
       }
     }
@@ -55,7 +55,7 @@ public final class SSShortestPath{
   private static <T> void relax(UnionEdge<BFSVertex<T>> edge){
     var weight = edge.weight();
     var u = edge.former();
-    var v = edge.later();
+    var v = edge.latter();
     var sum = u.distance + weight;
     if(v.distance > sum){
       v.distance = sum;
@@ -98,7 +98,7 @@ public final class SSShortestPath{
                     edges.parallelStream().map(edge ->
                             new UnionEdge<>(
                                     mapRecord.get(edge.former()),
-                                    mapRecord.get(edge.later()),
+                                    mapRecord.get(edge.latter()),
                                     edge.weight()))
                             .collect(Collectors.toList()))));
 
