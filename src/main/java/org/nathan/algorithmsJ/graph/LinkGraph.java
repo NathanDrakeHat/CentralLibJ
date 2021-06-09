@@ -9,7 +9,7 @@ import java.util.*;
 // TODO refactor edges
 
 /**
- * static graph
+ * static object (non-value) graph
  *
  * @param <V>
  */

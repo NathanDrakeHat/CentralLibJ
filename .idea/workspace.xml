@@ -22,10 +22,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="refactor">
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/graph/LinkGraph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/graph/LinkGraph.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/graph/UnionEdge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/graph/UnionEdge.java" afterDir="false" />
-    </list>
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="refactor" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -37,8 +34,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -381,28 +378,7 @@
       <workItem from="1623139350880" duration="15000" />
       <workItem from="1623155238465" duration="612000" />
       <workItem from="1623244700015" duration="643000" />
-      <workItem from="1623245522829" duration="1364000" />
-    </task>
-    <task id="LOCAL-00138" summary="move main">
-      <created>1622258485971</created>
-      <option name="number" value="00138" />
-      <option name="presentableId" value="LOCAL-00138" />
-      <option name="project" value="LOCAL" />
-      <updated>1622258485971</updated>
-    </task>
-    <task id="LOCAL-00139" summary="move main">
-      <created>1622258492280</created>
-      <option name="number" value="00139" />
-      <option name="presentableId" value="LOCAL-00139" />
-      <option name="project" value="LOCAL" />
-      <updated>1622258492280</updated>
-    </task>
-    <task id="LOCAL-00140" summary="add doc">
-      <created>1622259475229</created>
-      <option name="number" value="00140" />
-      <option name="presentableId" value="LOCAL-00140" />
-      <option name="project" value="LOCAL" />
-      <updated>1622259475229</updated>
+      <workItem from="1623245522829" duration="1890000" />
     </task>
     <task id="LOCAL-00141" summary="rename">
       <created>1622272297285</created>
@@ -726,7 +702,28 @@
       <option name="project" value="LOCAL" />
       <updated>1623246794218</updated>
     </task>
-    <option name="localTasksCounter" value="187" />
+    <task id="LOCAL-00187" summary="refactor">
+      <created>1623246969951</created>
+      <option name="number" value="00187" />
+      <option name="presentableId" value="LOCAL-00187" />
+      <option name="project" value="LOCAL" />
+      <updated>1623246969951</updated>
+    </task>
+    <task id="LOCAL-00188" summary="refactor">
+      <created>1623247061622</created>
+      <option name="number" value="00188" />
+      <option name="presentableId" value="LOCAL-00188" />
+      <option name="project" value="LOCAL" />
+      <updated>1623247061622</updated>
+    </task>
+    <task id="LOCAL-00189" summary="refactor">
+      <created>1623247428342</created>
+      <option name="number" value="00189" />
+      <option name="presentableId" value="LOCAL-00189" />
+      <option name="project" value="LOCAL" />
+      <updated>1623247428342</updated>
+    </task>
+    <option name="localTasksCounter" value="190" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
