@@ -6,6 +6,8 @@ import org.nathan.algorithmsJ.structures.FibonacciHeap;
 import org.nathan.algorithmsJ.structures.MinHeap;
 
 import java.util.Comparator;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import static org.nathan.algorithmsJ.graph.DFS.topologicalSort;
@@ -69,7 +71,7 @@ public final class SSShortestPath{
    * @param s                start
    */
   public static <T> void ssDAG(@NotNull LinkedGraph<BFSVertex<T>> BFS_Linked_graph, @NotNull BFSVertex<T> s){
-    var DFS_Linked_graph = new LinkedGraph<>(BFS_Linked_graph, DFSVertex::new);
+    var DFS_Linked_graph = transform(BFS_Linked_graph);
     var DFS_list = topologicalSort(DFS_Linked_graph);
     initializeSingleSource(BFS_Linked_graph, s);
     DFS_list.sort((d1, d2) -> d2.finish - d1.finish);
@@ -80,6 +82,27 @@ public final class SSShortestPath{
         relax(edge);
       }
     }
+  }
+
+  private static <T> LinkedGraph<DFSVertex<BFSVertex<T>>> transform(LinkedGraph<BFSVertex<T>> other_graph){
+    LinkedGraph<DFSVertex<BFSVertex<T>>> res = new LinkedGraph<>(other_graph.verticesCount(), other_graph.directed);
+    Map<BFSVertex<T>, DFSVertex<BFSVertex<T>>> mapRecord = new HashMap<>(res.verticesCount());
+    other_graph.allVertices().forEach(otherV -> {
+      var mapped = new DFSVertex<>(otherV);
+      res.vertices.add(mapped);
+      mapRecord.put(otherV, mapped);
+    });
+    other_graph.edges_map.forEach(((otherV, edges) ->
+            res.edges_map.put(
+                    mapRecord.get(otherV),
+                    edges.parallelStream().map(edge ->
+                            new UnionEdge<>(
+                                    mapRecord.get(edge.former()),
+                                    mapRecord.get(edge.later()),
+                                    edge.weight()))
+                            .collect(Collectors.toList()))));
+
+    return res;
   }
 
 

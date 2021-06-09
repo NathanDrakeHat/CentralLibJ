@@ -16,9 +16,9 @@ import java.util.stream.Collectors;
  * @param <V>
  */
 public class LinkedGraph<V extends Vertex<?>>{
-  private final boolean directed;
-  private final List<V> vertices;
-  private final Map<V, List<UnionEdge<V>>> edges_map;
+  final boolean directed;
+  final List<V> vertices;
+  final Map<V, List<UnionEdge<V>>> edges_map;
 
   /**
    * common constructor
@@ -57,32 +57,6 @@ public class LinkedGraph<V extends Vertex<?>>{
     this(other_graph.verticesCount(), other_graph.directed);
     this.edges_map.putAll(other_graph.edges_map);
     this.vertices.addAll(other_graph.vertices);
-  }
-
-  /**
-   * change wrapper of vertex
-   *
-   * @param other_graph other graph
-   * @param mapper      map function
-   * @param <OV>        other vertex wrapper
-   */
-  public <OV extends Vertex<?>> LinkedGraph(@NotNull LinkedGraph<OV> other_graph, Function<OV, V> mapper){
-    this(other_graph.verticesCount(), other_graph.directed);
-    Map<OV, V> mapRecord = new HashMap<>(verticesCount());
-    other_graph.vertices.forEach(otherV -> {
-      var mapped = mapper.apply(otherV);
-      vertices.add(mapped);
-      mapRecord.put(otherV, mapped);
-    });
-    other_graph.edges_map.forEach(((otherV, edges) ->
-            edges_map.put(
-                    mapRecord.get(otherV),
-                    edges.parallelStream().map(edge ->
-                            new UnionEdge<>(
-                                    mapRecord.get(edge.former()),
-                                    mapRecord.get(edge.later()),
-                                    edge.weight()))
-                            .collect(Collectors.toList()))));
   }
 
   public void setNeighbor(@NotNull V vertex, @NotNull V neighbor){
