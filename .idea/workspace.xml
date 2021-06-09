@@ -22,13 +22,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="rename packages">
-      <change afterPath="$PROJECT_DIR$/../CentralUtils/CentralUtils.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/graph/DirectedEdge.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/graph/Edge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/graph/Edge.java" afterDir="false" />
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="pass tests, save">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/graph/ComplexEdge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/graph/ComplexEdge.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/graph/LinkedGraph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/graph/LinkedGraph.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/graph/NonDirectedEdge.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/graph/WeightedEdge.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/graph/WeightEdge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/graph/WeightEdge.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -384,6 +382,7 @@
       <workItem from="1623138138493" duration="133000" />
       <workItem from="1623139350880" duration="15000" />
       <workItem from="1623155238465" duration="612000" />
+      <workItem from="1623244700015" duration="397000" />
     </task>
     <task id="LOCAL-00133" summary="add app">
       <created>1622255565478</created>
@@ -757,7 +756,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add maxExtremum" />
     <MESSAGE value="add app" />
     <MESSAGE value="add utils" />
     <MESSAGE value="move main" />
@@ -782,7 +780,8 @@
     <MESSAGE value="inner methods" />
     <MESSAGE value="rename" />
     <MESSAGE value="rename packages" />
-    <option name="LAST_COMMIT_MESSAGE" value="rename packages" />
+    <MESSAGE value="pass tests, save" />
+    <option name="LAST_COMMIT_MESSAGE" value="pass tests, save" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

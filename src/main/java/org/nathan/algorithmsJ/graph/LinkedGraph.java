@@ -81,8 +81,7 @@ public class LinkedGraph<V extends Vertex<?>>{
                             new ComplexEdge<>(
                                     mapRecord.get(edge.former()),
                                     mapRecord.get(edge.later()),
-                                    edge.weight(),
-                                    edge.directed()))
+                                    edge.weight()))
                             .collect(Collectors.toList()))));
   }
 
@@ -91,7 +90,7 @@ public class LinkedGraph<V extends Vertex<?>>{
   }
 
   public void setNeighbor(@NotNull V vertex, @NotNull V neighbor, double w){
-    var edge_t = new ComplexEdge<>(vertex, neighbor, w, directed);
+    var edge_t = new ComplexEdge<>(vertex, neighbor, w);
     if(directed){
       var edges_list = edges_map.get(vertex);
       edges_list.add(edge_t);

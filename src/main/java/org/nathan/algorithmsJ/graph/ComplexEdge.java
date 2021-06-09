@@ -7,14 +7,12 @@ public class ComplexEdge<V extends Vertex<?>>{
   private final V former_vertex;
   @NotNull
   private final V later_vertex;
-  private final boolean directed;
   double weight;
 
-  ComplexEdge(@NotNull V former, @NotNull V later, double weight, boolean is_directed){
+  ComplexEdge(@NotNull V former, @NotNull V later, double weight){
     this.weight = weight;
     former_vertex = former;
     later_vertex = later;
-    this.directed = is_directed;
   }
 
   public V former(){
@@ -25,9 +23,6 @@ public class ComplexEdge<V extends Vertex<?>>{
     return later_vertex;
   }
 
-  public boolean directed(){
-    return directed;
-  }
 
   public double weight(){
     return this.weight;
@@ -42,16 +37,6 @@ public class ComplexEdge<V extends Vertex<?>>{
     }
     else{
       throw new IllegalArgumentException();
-    }
-  }
-
-  @Override
-  public String toString(){
-    if(directed){
-      return String.format("[Edge(%s >>> %s)], weight:%f", former_vertex, later_vertex, weight);
-    }
-    else{
-      return String.format("[Edge(%s <-> %s)], weight:%f", former_vertex, later_vertex, weight);
     }
   }
 }

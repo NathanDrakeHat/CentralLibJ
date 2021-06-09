@@ -2,6 +2,8 @@ package org.nathan.algorithmsJ.graph;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.function.Function;
+
 public class WeightEdge<V extends Vertex<?>> extends BasicEdge<V>{
 
   double weight;
