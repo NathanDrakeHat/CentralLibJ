@@ -2,7 +2,7 @@ package org.nathan.algorithmsJ.misc;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.nathan.centralUtils.utils.ArrayUtils.randomDoubleArray;
@@ -57,7 +57,7 @@ class SortTest{
   double[][] iterMergeSortCase = new double[iteration][];
 
   {
-    var rand = new Random();
+    var rand = ThreadLocalRandom.current();
     for(int i = 0; i < iteration; i++){
       int len = rand.nextInt(10) + 20;
       int bound = rand.nextInt(5) + 10;
@@ -76,7 +76,7 @@ class SortTest{
   double[][] recurMergeSortCase = new double[iteration][];
 
   {
-    var rand = new Random();
+    var rand = ThreadLocalRandom.current();
     for(int i = 0; i < iteration; i++){
       int len = rand.nextInt(10) + 20;
       int bound = rand.nextInt(5) + 10;
@@ -95,7 +95,7 @@ class SortTest{
   double[][] heapSortCase = new double[iteration][];
 
   {
-    var rand = new Random();
+    var rand = ThreadLocalRandom.current();
 
     for(int i = 0; i < iteration; i++){
       int len = rand.nextInt(10) + 20;
@@ -115,7 +115,7 @@ class SortTest{
   double[][] quickSortCase = new double[iteration][];
 
   {
-    var rand = new Random();
+    var rand = ThreadLocalRandom.current();
 
     for(int i = 0; i < iteration; i++){
       int len = rand.nextInt(10) + 20;
@@ -135,7 +135,7 @@ class SortTest{
   double[][] randQuickSortCase = new double[iteration][];
 
   {
-    var rand = new Random();
+    var rand = ThreadLocalRandom.current();
 
     for(int i = 0; i < iteration; i++){
       int len = rand.nextInt(10) + 20;
@@ -155,7 +155,7 @@ class SortTest{
   int[][] countingSortCase = new int[iteration][];
 
   {
-    var rand = new Random();
+    var rand = ThreadLocalRandom.current();
     for(int i = 0; i < iteration; i++){
       int len = rand.nextInt(10) + 20;
       int bound = rand.nextInt(5) + 10;
@@ -172,7 +172,7 @@ class SortTest{
   }
 
   static SimpleDate[] buildDate(){
-    var rand = new Random();
+    var rand = ThreadLocalRandom.current();
     int len = rand.nextInt(20) + 20;
     SimpleDate[] res = new SimpleDate[len];
     int[] years = randomIntArray(2000, 2022, len);
@@ -203,7 +203,7 @@ class SortTest{
   double[][] bucketSortCase = new double[iteration][];
 
   {
-    var rand = new Random();
+    var rand = ThreadLocalRandom.current();
     for(int i = 0; i < iteration; i++){
       int len = rand.nextInt(10) + 20;
       bucketSortCase[i] = randomDoubleArray(0, 1, len);

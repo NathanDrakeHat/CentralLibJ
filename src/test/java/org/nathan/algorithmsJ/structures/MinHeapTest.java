@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -58,7 +58,7 @@ class MinHeapTest{
   void randomUpdateKeyTest(){
     for(int i = 0; i < iter; i++){
       List<Integer> l = randUpdateKeyCase.get(i);
-      var rand = new Random();
+      var rand = ThreadLocalRandom.current();
       MinHeap<Integer, String> heap = new MinHeap<>(
               l.stream().map(String::valueOf).collect(Collectors.toList()),
               s -> rand.nextInt(127 - 1) + 1,
