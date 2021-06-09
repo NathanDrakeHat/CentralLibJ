@@ -9,7 +9,6 @@ import java.util.stream.Collectors;
 
 
 // TODO refactor edges
-// TODO hide vertex build
 
 /**
  * static graph
