@@ -2,12 +2,12 @@ package org.nathan.algorithmsJ.graph;
 
 import org.jetbrains.annotations.NotNull;
 
-public class BasicEdge<V extends Vertex<?>>{
+public class BaseEdge<V extends Vertex<?>>{
 
   @NotNull final V former;
   @NotNull final V latter;
 
-  public BasicEdge(@NotNull V f, @NotNull V l){
+  public BaseEdge(@NotNull V f, @NotNull V l){
     former = f;
     latter = l;
   }

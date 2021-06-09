@@ -13,7 +13,7 @@ import java.util.*;
  *
  * @param <V>
  */
-public class LinkedGraph<V extends Vertex<?>>{
+public class LinkGraph<V extends Vertex<?>>{
   final boolean directed;
   final List<V> vertices;
   final Map<V, List<UnionEdge<V>>> edges_map;
@@ -24,7 +24,7 @@ public class LinkedGraph<V extends Vertex<?>>{
    * @param size        vertices size
    * @param is_directed bool
    */
-  LinkedGraph(int size, boolean is_directed){
+  LinkGraph(int size, boolean is_directed){
     directed = is_directed;
     vertices = new ArrayList<>(size);
     edges_map = new HashMap<>(size);
@@ -36,7 +36,7 @@ public class LinkedGraph<V extends Vertex<?>>{
    * @param vertices    all vertices
    * @param is_directed bool
    */
-  public LinkedGraph(@NotNull List<? extends V> vertices, boolean is_directed){
+  public LinkGraph(@NotNull List<? extends V> vertices, boolean is_directed){
     this(vertices.size(), is_directed);
     for(var vertex : vertices){
       Objects.requireNonNull(vertex);
@@ -51,7 +51,7 @@ public class LinkedGraph<V extends Vertex<?>>{
    *
    * @param other_graph other
    */
-  public LinkedGraph(@NotNull LinkedGraph<V> other_graph){
+  public LinkGraph(@NotNull LinkGraph<V> other_graph){
     this(other_graph.verticesCount(), other_graph.directed);
     this.edges_map.putAll(other_graph.edges_map);
     this.vertices.addAll(other_graph.vertices);

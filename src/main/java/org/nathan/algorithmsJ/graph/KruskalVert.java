@@ -3,11 +3,11 @@ package org.nathan.algorithmsJ.graph;
 import org.jetbrains.annotations.NotNull;
 import org.nathan.algorithmsJ.structures.DisjointSet;
 
-public class KruskalVertex<V> extends DisjointSet implements Vertex<V>{
+public class KruskalVert<V> extends DisjointSet implements Vertex<V>{
   @NotNull
   private final V id;
 
-  KruskalVertex(@NotNull V n){
+  KruskalVert(@NotNull V n){
     id = n;
   }
 

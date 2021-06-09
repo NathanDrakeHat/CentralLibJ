@@ -3,30 +3,30 @@ package org.nathan.algorithmsJ.graph;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class BFSVertex<ID> implements Vertex<ID>{
+public class BFSVert<ID> implements Vertex<ID>{
   final ID id;
   @Nullable
-  BFSVertex<ID> parent;
+  BFSVert<ID> parent;
   double distance; // d
   BFS.COLOR color;
 
-  BFSVertex(@NotNull ID name){
+  BFSVert(@NotNull ID name){
     this.id = name;
   }
 
-  BFSVertex(){
+  BFSVert(){
     id = null;
   }
 
-  public static <S_ID> BFSVertex<S_ID> make(S_ID id){
-    return new BFSVertex<>(id);
+  public static <S_ID> BFSVert<S_ID> make(S_ID id){
+    return new BFSVert<>(id);
   }
 
   public ID getId(){
     return id;
   }
 
-  public @Nullable BFSVertex<ID> getParent(){
+  public @Nullable BFSVert<ID> getParent(){
     return parent;
   }
 

@@ -10,7 +10,7 @@ import java.util.List;
  * depth first search
  */
 public final class DFS{
-  public static <T> void depthFirstSearch(@NotNull LinkedGraph<DFSVertex<T>> G){
+  public static <T> void depthFirstSearch(@NotNull LinkGraph<DFSVert<T>> G){
     var vertices = G.allVertices();
     vertices.parallelStream().forEach(v -> {
       v.color = COLOR.WHITE;
@@ -24,7 +24,7 @@ public final class DFS{
     }
   }
 
-  private static <T> int DFSVisit(LinkedGraph<DFSVertex<T>> G, DFSVertex<T> u, int time){
+  private static <T> int DFSVisit(LinkGraph<DFSVert<T>> G, DFSVert<T> u, int time){
     time++;
     u.discover = time;
     u.color = COLOR.GRAY;
@@ -42,20 +42,20 @@ public final class DFS{
     return time;
   }
 
-  public static <T> List<DFSVertex<T>> topologicalSort(@NotNull LinkedGraph<DFSVertex<T>> G){
+  public static <T> List<DFSVert<T>> topologicalSort(@NotNull LinkGraph<DFSVert<T>> G){
     depthFirstSearch(G);
-    List<DFSVertex<T>> l = new ArrayList<>(G.allVertices());
+    List<DFSVert<T>> l = new ArrayList<>(G.allVertices());
     l.sort((o1, o2) -> o2.finish - o1.finish); // descend order
     return l;
   }
 
-  public static <T> void stronglyConnectedComponents(@NotNull LinkedGraph<DFSVertex<T>> G){
+  public static <T> void stronglyConnectedComponents(@NotNull LinkGraph<DFSVert<T>> G){
     var l = topologicalSort(G);
     var G_T = transposeGraph(G);
     depthFirstSearchOrderly(G_T, l);
   }
 
-  private static <T> void depthFirstSearchOrderly(LinkedGraph<DFSVertex<T>> G, List<DFSVertex<T>> order){
+  private static <T> void depthFirstSearchOrderly(LinkGraph<DFSVert<T>> G, List<DFSVert<T>> order){
     var vertices = G.allVertices();
     for(var v : vertices){
       v.color = COLOR.WHITE;
@@ -69,8 +69,8 @@ public final class DFS{
     }
   }
 
-  private static <T> LinkedGraph<DFSVertex<T>> transposeGraph(LinkedGraph<DFSVertex<T>> graph){
-    var new_graph = new LinkedGraph<>(graph.allVertices(), true);
+  private static <T> LinkGraph<DFSVert<T>> transposeGraph(LinkGraph<DFSVert<T>> graph){
+    var new_graph = new LinkGraph<>(graph.allVertices(), true);
     var vertices = graph.allVertices();
     for(var v : vertices){
       var edges = graph.edgesAt(v);

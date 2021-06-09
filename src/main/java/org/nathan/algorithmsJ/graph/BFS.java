@@ -11,7 +11,7 @@ import java.util.Queue;
  * breath first search
  */
 public final class BFS{
-  public static <T> void breathFirstSearch(@NotNull LinkedGraph<BFSVertex<T>> G, @NotNull BFSVertex<T> s){
+  public static <T> void breathFirstSearch(@NotNull LinkGraph<BFSVert<T>> G, @NotNull BFSVert<T> s){
     var vs = G.allVertices();
     for(var v : vs){
       if(!v.equals(s)){
@@ -23,7 +23,7 @@ public final class BFS{
     s.color = COLOR.GRAY;
     s.distance = 0;
     s.parent = null;
-    Queue<BFSVertex<T>> Q = new LinkedList<>();
+    Queue<BFSVert<T>> Q = new LinkedList<>();
     Q.add(s);
     while(!Q.isEmpty()) {
       var u = Q.remove();
@@ -41,7 +41,7 @@ public final class BFS{
     }
   }
 
-  public static <T> List<T> getPath(@NotNull BFSVertex<T> s, @NotNull BFSVertex<T> v){
+  public static <T> List<T> getPath(@NotNull BFSVert<T> s, @NotNull BFSVert<T> v){
     List<T> t = new ArrayList<>();
     traverse(s, v, t);
     int idx = 0;
@@ -52,7 +52,7 @@ public final class BFS{
     return res;
   }
 
-  private static <T> void traverse(BFSVertex<T> s, BFSVertex<T> v, List<T> res){
+  private static <T> void traverse(BFSVert<T> s, BFSVert<T> v, List<T> res){
     if(v == s){
       res.add(s.id);
     }

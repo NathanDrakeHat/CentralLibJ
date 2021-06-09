@@ -12,15 +12,15 @@ import static org.nathan.algorithmsJ.graph.MinSpanTree.*;
 
 class MinSpanTreeTest{
 
-  LinkedGraph<KruskalVertex<String>> buildKruskalExample(){
+  LinkGraph<KruskalVert<String>> buildKruskalExample(){
     String n = "a,b,c,d,e,f,g,h,i";
     String[] names = n.split(",");
     int len = names.length;
-    var vertices = new ArrayList<KruskalVertex<String>>(len);
+    var vertices = new ArrayList<KruskalVert<String>>(len);
     for(int i = 0; i < len; i++){
-      vertices.add(i, new KruskalVertex<>(names[i]));
+      vertices.add(i, new KruskalVert<>(names[i]));
     }
-    LinkedGraph<KruskalVertex<String>> res = new LinkedGraph<>(vertices, false);
+    LinkGraph<KruskalVert<String>> res = new LinkGraph<>(vertices, false);
     int[] indexes1 = new int[]{0, 1, 2, 3, 4, 5, 6, 7, 1, 2, 8, 8, 2, 3};
     int[] indexes2 = new int[]{1, 2, 3, 4, 5, 6, 7, 0, 7, 8, 7, 6, 5, 5};
     double[] weights = new double[]{4, 8, 7, 9, 10, 2, 1, 8, 11, 2, 7, 6, 4, 14};
@@ -31,7 +31,7 @@ class MinSpanTreeTest{
     return res;
   }
 
-  LinkedGraph<KruskalVertex<String>> KruskalGraph = buildKruskalExample();
+  LinkGraph<KruskalVert<String>> KruskalGraph = buildKruskalExample();
 
   @Test
   public void KruskalTest(){
@@ -93,11 +93,11 @@ class MinSpanTreeTest{
     String n = "a,b,c,d,e,f,g,h,i";
     String[] names = n.split(",");
     int len = names.length;
-    var vertices = new ArrayList<PrimVertex<String>>(len);
+    var vertices = new ArrayList<PrimVert<String>>(len);
     for(int i = 0; i < len; i++){
-      vertices.add(i, new PrimVertex<>(names[i]));
+      vertices.add(i, new PrimVert<>(names[i]));
     }
-    LinkedGraph<PrimVertex<String>> res = new LinkedGraph<>(vertices, false);
+    LinkGraph<PrimVert<String>> res = new LinkGraph<>(vertices, false);
     int[] indices1 = new int[]{0, 1, 2, 3, 4, 5, 6, 7, 1, 2, 8, 8, 2, 3};
     int[] indices2 = new int[]{1, 2, 3, 4, 5, 6, 7, 0, 7, 8, 7, 6, 5, 5};
     double[] weights = new double[]{4, 8, 7, 9, 10, 2, 1, 8, 11, 2, 7, 6, 4, 14};
@@ -142,10 +142,10 @@ class MinSpanTreeTest{
   }
 
   static class GraphAndTarget{
-    LinkedGraph<PrimVertex<String>> graph;
-    PrimVertex<String> target;
+    LinkGraph<PrimVert<String>> graph;
+    PrimVert<String> target;
 
-    public GraphAndTarget(LinkedGraph<PrimVertex<String>> graph, PrimVertex<String> target){
+    public GraphAndTarget(LinkGraph<PrimVert<String>> graph, PrimVert<String> target){
       this.graph = graph;
       this.target = target;
     }

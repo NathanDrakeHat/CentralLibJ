@@ -15,7 +15,7 @@ import static org.nathan.algorithmsJ.graph.DFS.topologicalSort;
 /**
  * single source shortest path
  */
-public final class SSShortestPath{
+public final class SSSPath{
   /**
    * general case algorithm: negative weight, cyclic
    *
@@ -24,7 +24,7 @@ public final class SSShortestPath{
    * @param <T>   id
    * @return has shortest path
    */
-  public static <T> boolean BellmanFord(@NotNull LinkedGraph<BFSVertex<T>> graph, @NotNull BFSVertex<T> s){
+  public static <T> boolean BellmanFord(@NotNull LinkGraph<BFSVert<T>> graph, @NotNull BFSVert<T> s){
     initializeSingleSource(graph, s);
     int vertices_count = graph.verticesCount();
     var edges = graph.getAllEdges();
@@ -41,7 +41,7 @@ public final class SSShortestPath{
     return true;
   }
 
-  private static <T> void initializeSingleSource(LinkedGraph<BFSVertex<T>> G, BFSVertex<T> s){
+  private static <T> void initializeSingleSource(LinkGraph<BFSVert<T>> G, BFSVert<T> s){
     var vertices = G.allVertices();
     for(var v : vertices){
       v.distance = Double.POSITIVE_INFINITY;
@@ -52,7 +52,7 @@ public final class SSShortestPath{
     }
   }
 
-  private static <T> void relax(UnionEdge<BFSVertex<T>> edge){
+  private static <T> void relax(UnionEdge<BFSVert<T>> edge){
     var weight = edge.weight();
     var u = edge.former();
     var v = edge.latter();
@@ -70,12 +70,12 @@ public final class SSShortestPath{
    * @param BFS_Linked_graph linked graph with bfs vertex wrapper
    * @param s                start
    */
-  public static <T> void ssDAG(@NotNull LinkedGraph<BFSVertex<T>> BFS_Linked_graph, @NotNull BFSVertex<T> s){
+  public static <T> void ssDAG(@NotNull LinkGraph<BFSVert<T>> BFS_Linked_graph, @NotNull BFSVert<T> s){
     var DFS_Linked_graph = transform(BFS_Linked_graph);
     var DFS_list = topologicalSort(DFS_Linked_graph);
     initializeSingleSource(BFS_Linked_graph, s);
     DFS_list.sort((d1, d2) -> d2.finish - d1.finish);
-    var BFS_list = DFS_list.stream().map(DFSVertex::getId).collect(Collectors.toList());
+    var BFS_list = DFS_list.stream().map(DFSVert::getId).collect(Collectors.toList());
     for(var u : BFS_list){
       var u_edges = BFS_Linked_graph.edgesAt(u);
       for(var edge : u_edges){
@@ -84,11 +84,11 @@ public final class SSShortestPath{
     }
   }
 
-  private static <T> LinkedGraph<DFSVertex<BFSVertex<T>>> transform(LinkedGraph<BFSVertex<T>> other_graph){
-    LinkedGraph<DFSVertex<BFSVertex<T>>> res = new LinkedGraph<>(other_graph.verticesCount(), other_graph.directed);
-    Map<BFSVertex<T>, DFSVertex<BFSVertex<T>>> mapRecord = new HashMap<>(res.verticesCount());
+  private static <T> LinkGraph<DFSVert<BFSVert<T>>> transform(LinkGraph<BFSVert<T>> other_graph){
+    LinkGraph<DFSVert<BFSVert<T>>> res = new LinkGraph<>(other_graph.verticesCount(), other_graph.directed);
+    Map<BFSVert<T>, DFSVert<BFSVert<T>>> mapRecord = new HashMap<>(res.verticesCount());
     other_graph.allVertices().forEach(otherV -> {
-      var mapped = new DFSVertex<>(otherV);
+      var mapped = new DFSVert<>(otherV);
       res.vertices.add(mapped);
       mapRecord.put(otherV, mapped);
     });
@@ -113,10 +113,10 @@ public final class SSShortestPath{
    * @param s   start
    * @param <T> id
    */
-  public static <T> void DijkstraFibonacciHeap(@NotNull LinkedGraph<BFSVertex<T>> G, @NotNull BFSVertex<T> s){
+  public static <T> void DijkstraFibonacciHeap(@NotNull LinkGraph<BFSVert<T>> G, @NotNull BFSVert<T> s){
     initializeSingleSource(G, s);
     var vertices = G.allVertices();
-    FibonacciHeap<Double, BFSVertex<T>> Q = new FibonacciHeap<>(Comparator.comparingDouble(a -> a));
+    FibonacciHeap<Double, BFSVert<T>> Q = new FibonacciHeap<>(Comparator.comparingDouble(a -> a));
     for(var vertex : vertices){
       Q.insert(vertex.distance, vertex);
     }
@@ -141,10 +141,10 @@ public final class SSShortestPath{
    * @param s   start
    * @param <T> id
    */
-  public static <T> void DijkstraMinHeap(@NotNull LinkedGraph<BFSVertex<T>> G, @NotNull BFSVertex<T> s){
+  public static <T> void DijkstraMinHeap(@NotNull LinkGraph<BFSVert<T>> G, @NotNull BFSVert<T> s){
     initializeSingleSource(G, s);
     var vertices = G.allVertices();
-    MinHeap<Double, BFSVertex<T>> Q = new MinHeap<>(vertices, BFSVertex::getDistance, Double::compare);
+    MinHeap<Double, BFSVert<T>> Q = new MinHeap<>(vertices, BFSVert::getDistance, Double::compare);
     while(Q.length() > 0) {
       var u = Q.extractMin();
       var u_edges = G.edgesAt(u);

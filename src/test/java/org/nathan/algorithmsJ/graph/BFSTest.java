@@ -11,8 +11,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class BFSTest{
 
 
-  List<BFSVertex<Character>> vertices;
-  LinkedGraph<BFSVertex<Character>> graph;
+  List<BFSVert<Character>> vertices;
+  LinkGraph<BFSVert<Character>> graph;
 
   {
     vertices = Data.makeVertexes();
@@ -28,16 +28,16 @@ class BFSTest{
   public static class Data{
     public static String names = "rstuvwxy";
 
-    public static List<BFSVertex<Character>> makeVertexes(){
-      List<BFSVertex<Character>> vs = new ArrayList<>(8);
+    public static List<BFSVert<Character>> makeVertexes(){
+      List<BFSVert<Character>> vs = new ArrayList<>(8);
       for(int i = 0; i < 8; i++){
-        vs.add(i, new BFSVertex<>(names.charAt(i)));
+        vs.add(i, new BFSVert<>(names.charAt(i)));
       }
       return vs;
     }
 
-    public static LinkedGraph<BFSVertex<Character>> makeGraph(List<BFSVertex<Character>> vs){
-      var G = new LinkedGraph<>(vs, false);
+    public static LinkGraph<BFSVert<Character>> makeGraph(List<BFSVert<Character>> vs){
+      var G = new LinkGraph<>(vs, false);
       G.setNeighbor(vs.get(0), vs.get(1));
       G.setNeighbor(vs.get(0), vs.get(4));
 

@@ -2,13 +2,13 @@ package org.nathan.algorithmsJ.graph;
 
 import org.jetbrains.annotations.NotNull;
 
-public class PrimVertex<V> implements Vertex<V>{
+public class PrimVert<V> implements Vertex<V>{
   @NotNull
   private final V id;
-  PrimVertex<V> parent;
+  PrimVert<V> parent;
   double key = 0;
 
-  PrimVertex(@NotNull V name){
+  PrimVert(@NotNull V name){
     this.id = name;
   }
 

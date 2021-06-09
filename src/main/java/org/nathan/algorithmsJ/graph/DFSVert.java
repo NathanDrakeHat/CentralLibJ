@@ -3,16 +3,16 @@ package org.nathan.algorithmsJ.graph;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class DFSVertex<V> implements Vertex<V>{
+public class DFSVert<V> implements Vertex<V>{
   @NotNull
   final V id;
   @Nullable
-  DFSVertex<V> parent;
+  DFSVert<V> parent;
   int discover; //d
   int finish; // f
   DFS.COLOR color;
 
-  DFSVertex(@NotNull V name){
+  DFSVert(@NotNull V name){
     this.id = name;
   }
 
@@ -20,7 +20,7 @@ public class DFSVertex<V> implements Vertex<V>{
     return id;
   }
 
-  public @Nullable DFSVertex<V> getParent(){
+  public @Nullable DFSVert<V> getParent(){
     return parent;
   }
 

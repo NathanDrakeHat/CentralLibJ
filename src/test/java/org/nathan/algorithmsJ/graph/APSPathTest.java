@@ -8,15 +8,15 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-class APShortestPathTest{
+class APSPathTest{
 
-  static LinkedGraph<BFSVertex<String>> buildJohnsonTestCase(){
+  static LinkGraph<BFSVert<String>> buildJohnsonTestCase(){
     String[] names = "1,2,3,4,5".split(",");
-    List<BFSVertex<String>> vertices = new ArrayList<>();
+    List<BFSVert<String>> vertices = new ArrayList<>();
     for(var name : names){
-      vertices.add(new BFSVertex<>(name));
+      vertices.add(new BFSVert<>(name));
     }
-    var res = new LinkedGraph<>(vertices, true);
+    var res = new LinkGraph<>(vertices, true);
     res.setNeighbor(vertices.get(0), vertices.get(1), 3);
     res.setNeighbor(vertices.get(0), vertices.get(2), 8);
     res.setNeighbor(vertices.get(0), vertices.get(4), -4);
@@ -45,7 +45,7 @@ class APShortestPathTest{
 
   @Test
   void slowAllPairsShortestPaths(){
-    var res = APShortestPath.slowAllPairsShortestPaths(new double[][]{
+    var res = APSPath.slowAllPairsShortestPaths(new double[][]{
             {0, Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY, 2, Double.POSITIVE_INFINITY},
             {3, 0, 4, Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY},
             {8, Double.POSITIVE_INFINITY, 0, -5, Double.POSITIVE_INFINITY},
@@ -67,7 +67,7 @@ class APShortestPathTest{
 
   @Test
   void fasterAllPairsShortestPaths(){
-    var res = APShortestPath.fasterAllPairsShortestPaths(new double[][]{
+    var res = APSPath.fasterAllPairsShortestPaths(new double[][]{
             {0, Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY, 2, Double.POSITIVE_INFINITY},
             {3, 0, 4, Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY},
             {8, Double.POSITIVE_INFINITY, 0, -5, Double.POSITIVE_INFINITY},
@@ -88,7 +88,7 @@ class APShortestPathTest{
 
   @Test
   void FloydWarshallTest(){
-    var res = APShortestPath.FloydWarshall(new double[][]{
+    var res = APSPath.FloydWarshall(new double[][]{
             {0, Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY, 2, Double.POSITIVE_INFINITY},
             {3, 0, 4, Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY},
             {8, Double.POSITIVE_INFINITY, 0, -5, Double.POSITIVE_INFINITY},
@@ -108,7 +108,7 @@ class APShortestPathTest{
 
   @Test
   void transitiveClosureTest(){
-    var res = APShortestPath.transitiveClosure(new double[][]{
+    var res = APSPath.transitiveClosure(new double[][]{
             {0, Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY, 1},
             {Double.POSITIVE_INFINITY, 0, 1, Double.POSITIVE_INFINITY},
             {Double.POSITIVE_INFINITY, 1, 0, 1},
@@ -117,8 +117,8 @@ class APShortestPathTest{
     assertArrayEquals(transitiveClosureAnswer, res);
   }
 
-  LinkedGraph<BFSVertex<String>> JohnsonFibTest = buildJohnsonTestCase();
-  LinkedGraph<BFSVertex<String>> JohnsonMinHeapTest = buildJohnsonTestCase();
+  LinkGraph<BFSVert<String>> JohnsonFibTest = buildJohnsonTestCase();
+  LinkGraph<BFSVert<String>> JohnsonMinHeapTest = buildJohnsonTestCase();
   double[][] JohnsonAnswer = new double[][]{
           {0.0, 1.0, -3.0, 2.0, -4.0},
           {3.0, 0.0, -4.0, 1.0, -1.0},
@@ -129,14 +129,14 @@ class APShortestPathTest{
 
   @Test
   void JohnsonFibonacciHeapTest(){
-    var res = APShortestPath.Johnson(JohnsonFibTest, SSShortestPath::DijkstraFibonacciHeap);
+    var res = APSPath.Johnson(JohnsonFibTest, SSSPath::DijkstraFibonacciHeap);
     assertTrue(res.isPresent());
     assertArrayEquals(JohnsonAnswer, res.get());
   }
 
   @Test
   void JohnsonMinHeapTest(){
-    var res = APShortestPath.Johnson(JohnsonMinHeapTest, SSShortestPath::DijkstraMinHeap);
+    var res = APSPath.Johnson(JohnsonMinHeapTest, SSSPath::DijkstraMinHeap);
     assertTrue(res.isPresent());
     assertArrayEquals(JohnsonAnswer, res.get());
   }

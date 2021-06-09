@@ -11,14 +11,14 @@ import static org.junit.jupiter.api.Assertions.*;
 class DFSTest{
 
 
-  static LinkedGraph<DFSVertex<String>> makeStronglyConnectedComponentsDemo(){
+  static LinkGraph<DFSVert<String>> makeStronglyConnectedComponentsDemo(){
     String t = "a,b,c,d,e,f,g,h";
     var names = t.split(",");
-    var A = new ArrayList<DFSVertex<String>>(names.length);
+    var A = new ArrayList<DFSVert<String>>(names.length);
     for(int i = 0; i < names.length; i++){
-      A.add(i, new DFSVertex<>(names[i]));
+      A.add(i, new DFSVert<>(names[i]));
     }
-    LinkedGraph<DFSVertex<String>> G = new LinkedGraph<>(A, true);
+    LinkGraph<DFSVert<String>> G = new LinkGraph<>(A, true);
     G.setNeighbor(A.get(0), A.get(1));
 
     G.setNeighbor(A.get(1), A.get(2));
@@ -44,14 +44,14 @@ class DFSTest{
     return G;
   }
 
-  static LinkedGraph<DFSVertex<String>> makeGraph(){
+  static LinkGraph<DFSVert<String>> makeGraph(){
     String names = "uvwxyz";
-    var vs = new ArrayList<DFSVertex<String>>(6);
+    var vs = new ArrayList<DFSVert<String>>(6);
 
     for(int i = 0; i < 6; i++){
-      vs.add(i, new DFSVertex<>(String.valueOf(names.charAt(i))));
+      vs.add(i, new DFSVert<>(String.valueOf(names.charAt(i))));
     }
-    var G = new LinkedGraph<>(vs, true);
+    var G = new LinkGraph<>(vs, true);
     G.setNeighbor(vs.get(0), vs.get(1));
     G.setNeighbor(vs.get(0), vs.get(3));
 
@@ -69,14 +69,14 @@ class DFSTest{
     return G;
   }
 
-  LinkedGraph<DFSVertex<String>> dfsGraph = makeGraph();
+  LinkGraph<DFSVert<String>> dfsGraph = makeGraph();
 
   @Test
   void depthFirstSearchTest(){
     DFS.depthFirstSearch(dfsGraph);
     var vertices = dfsGraph.allVertices();
-    List<DFSVertex<String>> l = new ArrayList<>(vertices);
-    l.sort(Comparator.comparing(DFSVertex::getId));
+    List<DFSVert<String>> l = new ArrayList<>(vertices);
+    l.sort(Comparator.comparing(DFSVert::getId));
     assertEquals(1, l.get(0).discover);
     assertEquals(8, l.get(0).finish);
 
@@ -126,14 +126,14 @@ class DFSTest{
 
   }
 
-  static LinkedGraph<DFSVertex<String>> makeTopographicalDemo(){
-    var A = new ArrayList<DFSVertex<String>>(9);
+  static LinkGraph<DFSVert<String>> makeTopographicalDemo(){
+    var A = new ArrayList<DFSVert<String>>(9);
     String t = "undershorts,pants,belt,shirt,tie,jacket,socks,shoes,watch";
     var names = t.split(",");
     for(int i = 0; i < 9; i++){
-      A.add(i, new DFSVertex<>(names[i]));
+      A.add(i, new DFSVert<>(names[i]));
     }
-    LinkedGraph<DFSVertex<String>> G = new LinkedGraph<>(A, true);
+    LinkGraph<DFSVert<String>> G = new LinkGraph<>(A, true);
     G.setNeighbor(A.get(0), A.get(1));
     G.setNeighbor(A.get(0), A.get(6));
 
@@ -153,7 +153,7 @@ class DFSTest{
   }
 
 
-  LinkedGraph<DFSVertex<String>> topologicalGraph = makeTopographicalDemo();
+  LinkGraph<DFSVert<String>> topologicalGraph = makeTopographicalDemo();
 
   @Test
   void topologicalSortTest(){
@@ -174,7 +174,7 @@ class DFSTest{
     assertTrue(flag);
   }
 
-  boolean topologicalSorted(DFSVertex<String> target, DFSVertex<String> current, LinkedGraph<DFSVertex<String>> G){
+  boolean topologicalSorted(DFSVert<String> target, DFSVert<String> current, LinkGraph<DFSVert<String>> G){
     if(current.equals(target)){
       return false;
     }
@@ -195,13 +195,13 @@ class DFSTest{
     }
   }
 
-  LinkedGraph<DFSVertex<String>> sortedTestGraph = makeTopographicalDemo();
+  LinkGraph<DFSVert<String>> sortedTestGraph = makeTopographicalDemo();
 
   @Test
   void topologicalSortedTest(){
 
     boolean flag = true;
-    List<DFSVertex<String>> t = new ArrayList<>(sortedTestGraph.allVertices());
+    List<DFSVert<String>> t = new ArrayList<>(sortedTestGraph.allVertices());
     for(int i = 1; i < t.size(); i++){
       for(int j = 0; j < i; j++){
         flag = topologicalSorted(t.get(j), t.get(i), sortedTestGraph);
@@ -221,7 +221,7 @@ class DFSTest{
     var G = makeStronglyConnectedComponentsDemo();
     DFS.stronglyConnectedComponents(G);
     var vertices = G.allVertices();
-    List<DFSVertex<String>> vs = new ArrayList<>(vertices);
+    List<DFSVert<String>> vs = new ArrayList<>(vertices);
     assertTrue((getRoot(vs.get(0)) == getRoot(vs.get(1))) & (getRoot(vs.get(1)) == getRoot(vs.get(4))));
     assertSame(getRoot(vs.get(2)), getRoot(vs.get(3)));
     assertSame(getRoot(vs.get(5)), getRoot(vs.get(6)));
@@ -229,7 +229,7 @@ class DFSTest{
 
   }
 
-  DFSVertex<String> getRoot(DFSVertex<String> v){
+  DFSVert<String> getRoot(DFSVert<String> v){
     var t = v;
     while(t.parent != null) {
       t = t.parent;

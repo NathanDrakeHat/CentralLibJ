@@ -14,8 +14,8 @@ import java.util.Set;
  */
 public final class MinSpanTree{
   public static <T>
-  @NotNull Set<UnionEdge<KruskalVertex<T>>> Kruskal(@NotNull LinkedGraph<KruskalVertex<T>> graph){
-    Set<UnionEdge<KruskalVertex<T>>> res = new HashSet<>();
+  @NotNull Set<UnionEdge<KruskalVert<T>>> Kruskal(@NotNull LinkGraph<KruskalVert<T>> graph){
+    Set<UnionEdge<KruskalVert<T>>> res = new HashSet<>();
     var edges_set = graph.getAllEdges();
     var edges_list = new ArrayList<>(edges_set);
     edges_list.sort(Comparator.comparingDouble(UnionEdge::weight));
@@ -30,9 +30,9 @@ public final class MinSpanTree{
     return res;
   }
 
-  public static <T> void MSTPrimFibonacciHeap(@NotNull LinkedGraph<PrimVertex<T>> graph,
-                                              @NotNull PrimVertex<T> r){
-    FibonacciHeap<Double, PrimVertex<T>> Q = new FibonacciHeap<>(Comparator.comparingDouble(a -> a));
+  public static <T> void MSTPrimFibonacciHeap(@NotNull LinkGraph<PrimVert<T>> graph,
+                                              @NotNull PrimVert<T> r){
+    FibonacciHeap<Double, PrimVert<T>> Q = new FibonacciHeap<>(Comparator.comparingDouble(a -> a));
     var vertices = graph.allVertices();
     for(var u : vertices){
       if(u != r){
@@ -58,8 +58,8 @@ public final class MinSpanTree{
     }
   }
 
-  public static <T> void MSTPrimMinHeap(@NotNull LinkedGraph<PrimVertex<T>> graph,
-                                        @NotNull PrimVertex<T> r){
+  public static <T> void MSTPrimMinHeap(@NotNull LinkGraph<PrimVert<T>> graph,
+                                        @NotNull PrimVert<T> r){
     var vertices = graph.allVertices();
     for(var u : vertices){
       if(u != r){
@@ -70,7 +70,7 @@ public final class MinSpanTree{
       }
       u.parent = null;
     }
-    MinHeap<Double, PrimVertex<T>> Q = new MinHeap<>(vertices, PrimVertex::getKey, Double::compare);
+    MinHeap<Double, PrimVert<T>> Q = new MinHeap<>(vertices, PrimVert::getKey, Double::compare);
     while(Q.length() > 0) {
       var u = Q.extractMin();
       var u_edges = graph.edgesAt(u);

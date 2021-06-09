@@ -9,7 +9,7 @@ import java.util.function.BiConsumer;
 /**
  * all pair shortest path
  */
-public class APShortestPath{
+public class APSPath{
 
   /**
    * O(V^4)
@@ -111,15 +111,15 @@ public class APShortestPath{
    * @return all shortest path
    */
   public static <T>
-  Optional<double[][]> Johnson(@NotNull LinkedGraph<BFSVertex<T>> graph,
-                               @NotNull BiConsumer<LinkedGraph<BFSVertex<T>>, BFSVertex<T>> algoDijkstra){
-    Map<BFSVertex<T>, Double> h = new HashMap<>();
+  Optional<double[][]> Johnson(@NotNull LinkGraph<BFSVert<T>> graph,
+                               @NotNull BiConsumer<LinkGraph<BFSVert<T>>, BFSVert<T>> algoDijkstra){
+    Map<BFSVert<T>, Double> h = new HashMap<>();
     var n = graph.verticesCount();
     var vertices_new = new ArrayList<>(graph.allVertices());
-    var s = new BFSVertex<T>();
+    var s = new BFSVert<T>();
     vertices_new.add(s);
     var new_graph = buildGraph(graph, vertices_new, s);
-    if(!SSShortestPath.BellmanFord(new_graph, s)){
+    if(!SSSPath.BellmanFord(new_graph, s)){
       return Optional.empty();
     }
     else{
@@ -149,10 +149,10 @@ public class APShortestPath{
     }
   }
 
-  private static <T> LinkedGraph<BFSVertex<T>> buildGraph(@NotNull LinkedGraph<BFSVertex<T>> graph,
-                                                          @NotNull List<BFSVertex<T>> vertices,
-                                                          @NotNull BFSVertex<T> s){
-    var new_graph = new LinkedGraph<>(graph);
+  private static <T> LinkGraph<BFSVert<T>> buildGraph(@NotNull LinkGraph<BFSVert<T>> graph,
+                                                      @NotNull List<BFSVert<T>> vertices,
+                                                      @NotNull BFSVert<T> s){
+    var new_graph = new LinkGraph<>(graph);
     new_graph.addNewVertex(s);
     for(var vertex : vertices){
       if(vertex != s){

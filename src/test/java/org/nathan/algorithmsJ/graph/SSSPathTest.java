@@ -9,18 +9,18 @@ import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class SSShortestPathTest{
+class SSSPathTest{
 
-  static BFSVertex<String> targetBellmanFordCase_s;
-  static BFSVertex<String> targetBellmanFordCase_z;
+  static BFSVert<String> targetBellmanFordCase_s;
+  static BFSVert<String> targetBellmanFordCase_z;
 
-  static LinkedGraph<BFSVertex<String>> buildBellmanFordCase(){
+  static LinkGraph<BFSVert<String>> buildBellmanFordCase(){
     String[] names = "s,t,x,y,z".split(",");
-    List<BFSVertex<String>> vertices = new ArrayList<>();
+    List<BFSVert<String>> vertices = new ArrayList<>();
     for(var n : names){
-      vertices.add(new BFSVertex<>(n));
+      vertices.add(new BFSVert<>(n));
     }
-    var res = new LinkedGraph<>(vertices, true);
+    var res = new LinkGraph<>(vertices, true);
     int[] index1 = new int[]{0, 0, 1, 1, 1, 2, 3, 3, 4, 4};
     int[] index2 = new int[]{1, 3, 2, 3, 4, 1, 2, 4, 0, 2};
     double[] weights = new double[]{6, 7, 5, 8, -4, -2, -3, 9, 2, 7};
@@ -32,13 +32,13 @@ class SSShortestPathTest{
     return res;
   }
 
-  LinkedGraph<BFSVertex<String>> BellmanGraph = buildBellmanFordCase();
+  LinkGraph<BFSVert<String>> BellmanGraph = buildBellmanFordCase();
 
   @Test
   void BellmanFordTest(){
 
-    var b = SSShortestPath.BellmanFord(BellmanGraph, targetBellmanFordCase_s);
-    BFSVertex<String> target = targetBellmanFordCase_z;
+    var b = SSSPath.BellmanFord(BellmanGraph, targetBellmanFordCase_s);
+    BFSVert<String> target = targetBellmanFordCase_z;
     var vertices = BellmanGraph.allVertices();
     for(var v : vertices){
       if(v.equals(target)){
@@ -55,17 +55,17 @@ class SSShortestPathTest{
     assertEquals(List.of("z", "t", "x", "y", "s"), res);
   }
 
-  static BFSVertex<String> targetShortestPathOfDAGForBFS;
+  static BFSVert<String> targetShortestPathOfDAGForBFS;
 
-  static LinkedGraph<BFSVertex<String>> buildShortestPathOfDAGForBFS(){
+  static LinkGraph<BFSVert<String>> buildShortestPathOfDAGForBFS(){
     String[] names = "r,s,t,x,y,z".split(",");
-    List<BFSVertex<String>> BFS_vertex = new ArrayList<>();
+    List<BFSVert<String>> BFS_vertex = new ArrayList<>();
     for(String name : names){
-      BFS_vertex.add(new BFSVertex<>(name));
+      BFS_vertex.add(new BFSVert<>(name));
     }
 
 
-    var BFS_G = new LinkedGraph<>(BFS_vertex, true);
+    var BFS_G = new LinkGraph<>(BFS_vertex, true);
     int[] index1 = new int[]{0, 0, 1, 1, 2, 2, 2, 3, 3, 4};
     int[] index2 = new int[]{1, 2, 2, 3, 3, 4, 5, 4, 5, 5};
     double[] weights = new double[]{5, 3, 2, 6, 7, 4, 2, -1, 1, -2};
@@ -78,14 +78,14 @@ class SSShortestPathTest{
     return BFS_G;
   }
 
-  LinkedGraph<BFSVertex<String>> ssDAGGraph = buildShortestPathOfDAGForBFS();
+  LinkGraph<BFSVert<String>> ssDAGGraph = buildShortestPathOfDAGForBFS();
 
   @Test
   void shortestPathOfDAGTest(){
 
-    SSShortestPath.ssDAG(ssDAGGraph, targetShortestPathOfDAGForBFS);
+    SSSPath.ssDAG(ssDAGGraph, targetShortestPathOfDAGForBFS);
     var vertices = ssDAGGraph.allVertices();
-    var l = vertices.stream().sorted(Comparator.comparing(BFSVertex::getId)).collect(Collectors.toList());
+    var l = vertices.stream().sorted(Comparator.comparing(BFSVert::getId)).collect(Collectors.toList());
     assertNull(l.get(0).getParent());
     assertNull(l.get(1).getParent());
     assertEquals(l.get(1), l.get(2).getParent());
@@ -102,16 +102,16 @@ class SSShortestPathTest{
   }
 
 
-  static BFSVertex<String> targetDijkstraFib;
+  static BFSVert<String> targetDijkstraFib;
 
 
-  static LinkedGraph<BFSVertex<String>> buildDijkstraCase(boolean is_fib){
+  static LinkGraph<BFSVert<String>> buildDijkstraCase(boolean is_fib){
     String[] names = "s,t,x,y,z".split(",");
-    List<BFSVertex<String>> vertices = new ArrayList<>();
+    List<BFSVert<String>> vertices = new ArrayList<>();
     for(var n : names){
-      vertices.add(new BFSVertex<>(n));
+      vertices.add(new BFSVert<>(n));
     }
-    var graph = new LinkedGraph<>(vertices, true);
+    var graph = new LinkGraph<>(vertices, true);
     int[] indices1 = new int[]{0, 0, 1, 1, 2, 3, 3, 3, 4, 4};
     int[] indices2 = new int[]{1, 3, 2, 3, 4, 1, 2, 4, 0, 2};
     double[] weights = new double[]{10, 5, 1, 2, 4, 3, 9, 2, 7, 6};
@@ -127,14 +127,14 @@ class SSShortestPathTest{
     return graph;
   }
 
-  LinkedGraph<BFSVertex<String>> dijkstraFibGraph = buildDijkstraCase(true);
+  LinkGraph<BFSVert<String>> dijkstraFibGraph = buildDijkstraCase(true);
 
   @Test
   void DijkstraFibonacciHeapTest(){
 
-    SSShortestPath.DijkstraMinHeap(dijkstraFibGraph, targetDijkstraFib);
+    SSSPath.DijkstraMinHeap(dijkstraFibGraph, targetDijkstraFib);
     var vertices =
-            dijkstraFibGraph.allVertices().stream().sorted(Comparator.comparing(BFSVertex::getId)).collect(Collectors.toList());
+            dijkstraFibGraph.allVertices().stream().sorted(Comparator.comparing(BFSVert::getId)).collect(Collectors.toList());
     assertNull(vertices.get(0).getParent());
 
     assertEquals(vertices.get(3), vertices.get(1).getParent());
@@ -151,15 +151,15 @@ class SSShortestPathTest{
   }
 
 
-  LinkedGraph<BFSVertex<String>> dijkstraMinHeapGraph = buildDijkstraCase(false);
-  static BFSVertex<String> targetDijkstraMinHeap;
+  LinkGraph<BFSVert<String>> dijkstraMinHeapGraph = buildDijkstraCase(false);
+  static BFSVert<String> targetDijkstraMinHeap;
 
   @Test
   void DijkstraMinHeapTest(){
 
-    SSShortestPath.DijkstraFibonacciHeap(dijkstraMinHeapGraph, targetDijkstraMinHeap);
+    SSSPath.DijkstraFibonacciHeap(dijkstraMinHeapGraph, targetDijkstraMinHeap);
     var vertices =
-            dijkstraMinHeapGraph.allVertices().stream().sorted(Comparator.comparing(BFSVertex::getId)).collect(Collectors.toList());
+            dijkstraMinHeapGraph.allVertices().stream().sorted(Comparator.comparing(BFSVert::getId)).collect(Collectors.toList());
     assertNull(vertices.get(0).getParent());
 
     assertEquals(vertices.get(3), vertices.get(1).getParent());
