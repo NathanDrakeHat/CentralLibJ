@@ -1,6 +1,7 @@
 package org.nathan.algorithmsJ.graph;
 
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -11,7 +12,7 @@ import java.util.Queue;
  * breath first search
  */
 public final class BFS{
-  public static <T> void breathFirstSearch(@NotNull LinkGraph<BFSVert<T>> G, @NotNull BFSVert<T> s){
+  public static <T> void breathFirstSearch(@NotNull LinkGraph<Vert<T>> G, @NotNull BFS.Vert<T> s){
     var vs = G.allVertices();
     for(var v : vs){
       if(!v.equals(s)){
@@ -23,7 +24,7 @@ public final class BFS{
     s.color = COLOR.GRAY;
     s.distance = 0;
     s.parent = null;
-    Queue<BFSVert<T>> Q = new LinkedList<>();
+    Queue<Vert<T>> Q = new LinkedList<>();
     Q.add(s);
     while(!Q.isEmpty()) {
       var u = Q.remove();
@@ -41,7 +42,7 @@ public final class BFS{
     }
   }
 
-  public static <T> List<T> getPath(@NotNull BFSVert<T> s, @NotNull BFSVert<T> v){
+  public static <T> List<T> getPath(@NotNull BFS.Vert<T> s, @NotNull BFS.Vert<T> v){
     List<T> t = new ArrayList<>();
     traverse(s, v, t);
     int idx = 0;
@@ -52,7 +53,7 @@ public final class BFS{
     return res;
   }
 
-  private static <T> void traverse(BFSVert<T> s, BFSVert<T> v, List<T> res){
+  private static <T> void traverse(Vert<T> s, Vert<T> v, List<T> res){
     if(v == s){
       res.add(s.id);
     }
@@ -64,4 +65,40 @@ public final class BFS{
 
   enum COLOR{WHITE, GRAY, BLACK}
 
+  public static class Vert<ID>{
+    final ID id;
+    @Nullable
+    BFS.Vert<ID> parent;
+    double distance; // d
+    COLOR color;
+
+    Vert(@NotNull ID name){
+      this.id = name;
+    }
+
+    Vert(){
+      id = null;
+    }
+
+    public static <S_ID> Vert<S_ID> make(S_ID id){
+      return new Vert<>(id);
+    }
+
+    public ID getId(){
+      return id;
+    }
+
+    public @Nullable BFS.Vert<ID> getParent(){
+      return parent;
+    }
+
+    public double getDistance(){
+      return distance;
+    }
+
+    @Override
+    public String toString(){
+      return String.format("BFS.Vertex: (%s)", id != null ? id.toString() : "()");
+    }
+  }
 }

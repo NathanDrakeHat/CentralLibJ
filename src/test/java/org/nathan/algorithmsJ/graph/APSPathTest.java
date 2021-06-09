@@ -10,11 +10,11 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class APSPathTest{
 
-  static LinkGraph<BFSVert<String>> buildJohnsonTestCase(){
+  static LinkGraph<BFS.Vert<String>> buildJohnsonTestCase(){
     String[] names = "1,2,3,4,5".split(",");
-    List<BFSVert<String>> vertices = new ArrayList<>();
+    List<BFS.Vert<String>> vertices = new ArrayList<>();
     for(var name : names){
-      vertices.add(new BFSVert<>(name));
+      vertices.add(new BFS.Vert<>(name));
     }
     var res = new LinkGraph<>(vertices, true);
     res.setNeighbor(vertices.get(0), vertices.get(1), 3);
@@ -117,8 +117,8 @@ class APSPathTest{
     assertArrayEquals(transitiveClosureAnswer, res);
   }
 
-  LinkGraph<BFSVert<String>> JohnsonFibTest = buildJohnsonTestCase();
-  LinkGraph<BFSVert<String>> JohnsonMinHeapTest = buildJohnsonTestCase();
+  LinkGraph<BFS.Vert<String>> JohnsonFibTest = buildJohnsonTestCase();
+  LinkGraph<BFS.Vert<String>> JohnsonMinHeapTest = buildJohnsonTestCase();
   double[][] JohnsonAnswer = new double[][]{
           {0.0, 1.0, -3.0, 2.0, -4.0},
           {3.0, 0.0, -4.0, 1.0, -1.0},

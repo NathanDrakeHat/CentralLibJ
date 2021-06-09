@@ -111,12 +111,12 @@ public class APSPath{
    * @return all shortest path
    */
   public static <T>
-  Optional<double[][]> Johnson(@NotNull LinkGraph<BFSVert<T>> graph,
-                               @NotNull BiConsumer<LinkGraph<BFSVert<T>>, BFSVert<T>> algoDijkstra){
-    Map<BFSVert<T>, Double> h = new HashMap<>();
+  Optional<double[][]> Johnson(@NotNull LinkGraph<BFS.Vert<T>> graph,
+                               @NotNull BiConsumer<LinkGraph<BFS.Vert<T>>, BFS.Vert<T>> algoDijkstra){
+    Map<BFS.Vert<T>, Double> h = new HashMap<>();
     var n = graph.verticesCount();
     var vertices_new = new ArrayList<>(graph.allVertices());
-    var s = new BFSVert<T>();
+    var s = new BFS.Vert<T>();
     vertices_new.add(s);
     var new_graph = buildGraph(graph, vertices_new, s);
     if(!SSSPath.BellmanFord(new_graph, s)){
@@ -149,9 +149,9 @@ public class APSPath{
     }
   }
 
-  private static <T> LinkGraph<BFSVert<T>> buildGraph(@NotNull LinkGraph<BFSVert<T>> graph,
-                                                      @NotNull List<BFSVert<T>> vertices,
-                                                      @NotNull BFSVert<T> s){
+  private static <T> LinkGraph<BFS.Vert<T>> buildGraph(@NotNull LinkGraph<BFS.Vert<T>> graph,
+                                                       @NotNull List<BFS.Vert<T>> vertices,
+                                                       @NotNull BFS.Vert<T> s){
     var new_graph = new LinkGraph<>(graph);
     new_graph.addVertex(s);
     for(var vertex : vertices){
