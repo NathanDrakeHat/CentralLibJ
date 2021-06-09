@@ -2,7 +2,7 @@ package org.nathan.algorithmsJ.graph;
 
 import org.jetbrains.annotations.NotNull;
 
-public class BaseEdge<V extends Vertex<?>>{
+public class BaseEdge<V>{
 
   @NotNull final V former;
   @NotNull final V latter;

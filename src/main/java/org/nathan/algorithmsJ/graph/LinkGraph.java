@@ -13,7 +13,7 @@ import java.util.*;
  *
  * @param <V>
  */
-public class LinkGraph<V extends Vertex<?>>{
+public class LinkGraph<V>{
   final boolean directed;
   final List<V> vertices;
   final Map<V, List<UnionEdge<V>>> edges_map;

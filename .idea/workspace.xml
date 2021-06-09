@@ -22,10 +22,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="rename">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/graph/LinkedGraph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/graph/LinkedGraph.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/graph/SSShortestPath.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/graph/SSShortestPath.java" afterDir="false" />
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="refactor">
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/graph/LinkGraph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/graph/LinkGraph.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/graph/UnionEdge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/graph/UnionEdge.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -382,28 +381,7 @@
       <workItem from="1623139350880" duration="15000" />
       <workItem from="1623155238465" duration="612000" />
       <workItem from="1623244700015" duration="643000" />
-      <workItem from="1623245522829" duration="483000" />
-    </task>
-    <task id="LOCAL-00135" summary="refactor">
-      <created>1622257877860</created>
-      <option name="number" value="00135" />
-      <option name="presentableId" value="LOCAL-00135" />
-      <option name="project" value="LOCAL" />
-      <updated>1622257877860</updated>
-    </task>
-    <task id="LOCAL-00136" summary="refactor">
-      <created>1622257887635</created>
-      <option name="number" value="00136" />
-      <option name="presentableId" value="LOCAL-00136" />
-      <option name="project" value="LOCAL" />
-      <updated>1622257887635</updated>
-    </task>
-    <task id="LOCAL-00137" summary="refactor">
-      <created>1622257993284</created>
-      <option name="number" value="00137" />
-      <option name="presentableId" value="LOCAL-00137" />
-      <option name="project" value="LOCAL" />
-      <updated>1622257993284</updated>
+      <workItem from="1623245522829" duration="1364000" />
     </task>
     <task id="LOCAL-00138" summary="move main">
       <created>1622258485971</created>
@@ -727,7 +705,28 @@
       <option name="project" value="LOCAL" />
       <updated>1623245243107</updated>
     </task>
-    <option name="localTasksCounter" value="184" />
+    <task id="LOCAL-00184" summary="move graph transform">
+      <created>1623246054094</created>
+      <option name="number" value="00184" />
+      <option name="presentableId" value="LOCAL-00184" />
+      <option name="project" value="LOCAL" />
+      <updated>1623246054095</updated>
+    </task>
+    <task id="LOCAL-00185" summary="refactor">
+      <created>1623246299901</created>
+      <option name="number" value="00185" />
+      <option name="presentableId" value="LOCAL-00185" />
+      <option name="project" value="LOCAL" />
+      <updated>1623246299901</updated>
+    </task>
+    <task id="LOCAL-00186" summary="refactor">
+      <created>1623246794218</created>
+      <option name="number" value="00186" />
+      <option name="presentableId" value="LOCAL-00186" />
+      <option name="project" value="LOCAL" />
+      <updated>1623246794218</updated>
+    </task>
+    <option name="localTasksCounter" value="187" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -756,7 +755,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add utils" />
     <MESSAGE value="move main" />
     <MESSAGE value="remove list to array, add more primitive methods" />
     <MESSAGE value="fix ssDag" />
@@ -765,7 +763,6 @@
     <MESSAGE value="add doc" />
     <MESSAGE value="move class to outer" />
     <MESSAGE value="remove final for generic class" />
-    <MESSAGE value="refactor" />
     <MESSAGE value="add interface" />
     <MESSAGE value="fix test bug" />
     <MESSAGE value="add" />
@@ -781,7 +778,9 @@
     <MESSAGE value="pass tests, save" />
     <MESSAGE value="remove edge direction" />
     <MESSAGE value="rename" />
-    <option name="LAST_COMMIT_MESSAGE" value="rename" />
+    <MESSAGE value="move graph transform" />
+    <MESSAGE value="refactor" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

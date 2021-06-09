@@ -3,7 +3,7 @@ package org.nathan.algorithmsJ.graph;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class BFSVert<ID> implements Vertex<ID>{
+public class BFSVert<ID>{
   final ID id;
   @Nullable
   BFSVert<ID> parent;

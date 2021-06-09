@@ -2,7 +2,7 @@ package org.nathan.algorithmsJ.graph;
 
 import org.jetbrains.annotations.NotNull;
 
-public class UnionEdge<V extends Vertex<?>>{
+public class UnionEdge<V>{
   @NotNull
   private final V former_vertex;
   @NotNull

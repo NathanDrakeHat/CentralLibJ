@@ -3,7 +3,7 @@ package org.nathan.algorithmsJ.graph;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class DFSVert<V> implements Vertex<V>{
+public class DFSVert<V>{
   @NotNull
   final V id;
   @Nullable

@@ -2,7 +2,7 @@ package org.nathan.algorithmsJ.graph;
 
 import org.jetbrains.annotations.NotNull;
 
-public class WeightEdge<V extends Vertex<?>> extends BaseEdge<V>{
+public class WeightEdge<V> extends BaseEdge<V>{
 
   double weight;
 
