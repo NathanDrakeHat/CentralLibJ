@@ -153,7 +153,7 @@ public class APSPath{
                                                       @NotNull List<BFSVert<T>> vertices,
                                                       @NotNull BFSVert<T> s){
     var new_graph = new LinkGraph<>(graph);
-    new_graph.addNewVertex(s);
+    new_graph.addVertex(s);
     for(var vertex : vertices){
       if(vertex != s){
         new_graph.setNeighbor(s, vertex);

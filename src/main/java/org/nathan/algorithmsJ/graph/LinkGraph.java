@@ -76,7 +76,7 @@ public class LinkGraph<V>{
     }
   }
 
-  public void addNewVertex(@NotNull V vertex){
+  public void addVertex(@NotNull V vertex){
     if(edges_map.containsKey(vertex)){
       throw new IllegalArgumentException("repeated vertex");
     }
@@ -109,5 +109,9 @@ public class LinkGraph<V>{
    */
   public @NotNull List<UnionEdge<V>> edgesAt(V vertex){
     return Collections.unmodifiableList(edges_map.get(vertex));
+  }
+
+  public boolean isDirected(){
+    return directed;
   }
 }
