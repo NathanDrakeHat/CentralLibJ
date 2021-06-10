@@ -11,40 +11,40 @@ import static org.junit.jupiter.api.Assertions.*;
 class DFSTest{
 
 
-  static LinkGraph<DFS.Vert<String>> makeStronglyConnectedComponentsDemo(){
+  static LinkGraph<DFS.Vert<String>, BaseEdge<DFS.Vert<String>>> makeStronglyConnectedComponentsDemo(){
     String t = "a,b,c,d,e,f,g,h";
     var names = t.split(",");
     var A = new ArrayList<DFS.Vert<String>>(names.length);
     for(int i = 0; i < names.length; i++){
       A.add(i, new DFS.Vert<>(names[i]));
     }
-    LinkGraph<DFS.Vert<String>> G = new LinkGraph<>(A, true);
-    G.setNeighbor(A.get(0), A.get(1));
+    LinkGraph<DFS.Vert<String>, BaseEdge<DFS.Vert<String>>> G = new LinkGraph<>(A, true);
+    G.addEdge(new BaseEdge<>(A.get(0), A.get(1)));
 
-    G.setNeighbor(A.get(1), A.get(2));
-    G.setNeighbor(A.get(1), A.get(4));
-    G.setNeighbor(A.get(1), A.get(5));
+    G.addEdge(new BaseEdge<>(A.get(1), A.get(2)));
+    G.addEdge(new BaseEdge<>(A.get(1), A.get(4)));
+    G.addEdge(new BaseEdge<>(A.get(1), A.get(5)));
 
-    G.setNeighbor(A.get(2), A.get(3));
-    G.setNeighbor(A.get(2), A.get(6));
+    G.addEdge(new BaseEdge<>(A.get(2), A.get(3)));
+    G.addEdge(new BaseEdge<>(A.get(2), A.get(6)));
 
-    G.setNeighbor(A.get(3), A.get(2));
-    G.setNeighbor(A.get(3), A.get(7));
+    G.addEdge(new BaseEdge<>(A.get(3), A.get(2)));
+    G.addEdge(new BaseEdge<>(A.get(3), A.get(7)));
 
-    G.setNeighbor(A.get(4), A.get(0));
-    G.setNeighbor(A.get(4), A.get(5));
+    G.addEdge(new BaseEdge<>(A.get(4), A.get(0)));
+    G.addEdge(new BaseEdge<>(A.get(4), A.get(5)));
 
-    G.setNeighbor(A.get(5), A.get(6));
+    G.addEdge(new BaseEdge<>(A.get(5), A.get(6)));
 
-    G.setNeighbor(A.get(6), A.get(5));
-    G.setNeighbor(A.get(6), A.get(7));
+    G.addEdge(new BaseEdge<>(A.get(6), A.get(5)));
+    G.addEdge(new BaseEdge<>(A.get(6), A.get(7)));
 
-    G.setNeighbor(A.get(7), A.get(7));
+    G.addEdge(new BaseEdge<>(A.get(7), A.get(7)));
 
     return G;
   }
 
-  static LinkGraph<DFS.Vert<String>> makeGraph(){
+  static LinkGraph<DFS.Vert<String>, BaseEdge<DFS.Vert<String>>> makeGraph(){
     String names = "uvwxyz";
     var vs = new ArrayList<DFS.Vert<String>>(6);
 
@@ -52,24 +52,24 @@ class DFSTest{
       vs.add(i, new DFS.Vert<>(String.valueOf(names.charAt(i))));
     }
     var G = new LinkGraph<>(vs, true);
-    G.setNeighbor(vs.get(0), vs.get(1));
-    G.setNeighbor(vs.get(0), vs.get(3));
+    G.addEdge(new BaseEdge<>(vs.get(0), vs.get(1)));
+    G.addEdge(new BaseEdge<>(vs.get(0), vs.get(3)));
 
-    G.setNeighbor(vs.get(1), vs.get(4));
+    G.addEdge(new BaseEdge<>(vs.get(1), vs.get(4)));
 
-    G.setNeighbor(vs.get(2), vs.get(4));
-    G.setNeighbor(vs.get(2), vs.get(5));
+    G.addEdge(new BaseEdge<>(vs.get(2), vs.get(4)));
+    G.addEdge(new BaseEdge<>(vs.get(2), vs.get(5)));
 
-    G.setNeighbor(vs.get(3), vs.get(1));
+    G.addEdge(new BaseEdge<>(vs.get(3), vs.get(1)));
 
-    G.setNeighbor(vs.get(4), vs.get(3));
+    G.addEdge(new BaseEdge<>(vs.get(4), vs.get(3)));
 
-    G.setNeighbor(vs.get(5), vs.get(5));
+    G.addEdge(new BaseEdge<>(vs.get(5), vs.get(5)));
 
     return G;
   }
 
-  LinkGraph<DFS.Vert<String>> dfsGraph = makeGraph();
+  LinkGraph<DFS.Vert<String>, BaseEdge<DFS.Vert<String>>> dfsGraph = makeGraph();
 
   @Test
   void depthFirstSearchTest(){
@@ -126,34 +126,34 @@ class DFSTest{
 
   }
 
-  static LinkGraph<DFS.Vert<String>> makeTopographicalDemo(){
+  static LinkGraph<DFS.Vert<String>, BaseEdge<DFS.Vert<String>>> makeTopographicalDemo(){
     var A = new ArrayList<DFS.Vert<String>>(9);
     String t = "undershorts,pants,belt,shirt,tie,jacket,socks,shoes,watch";
     var names = t.split(",");
     for(int i = 0; i < 9; i++){
       A.add(i, new DFS.Vert<>(names[i]));
     }
-    LinkGraph<DFS.Vert<String>> G = new LinkGraph<>(A, true);
-    G.setNeighbor(A.get(0), A.get(1));
-    G.setNeighbor(A.get(0), A.get(6));
+    LinkGraph<DFS.Vert<String>, BaseEdge<DFS.Vert<String>>> G = new LinkGraph<>(A, true);
+    G.addEdge(new BaseEdge<>(A.get(0), A.get(1)));
+    G.addEdge(new BaseEdge<>(A.get(0), A.get(6)));
 
-    G.setNeighbor(A.get(1), A.get(2));
-    G.setNeighbor(A.get(1), A.get(6));
+    G.addEdge(new BaseEdge<>(A.get(1), A.get(2)));
+    G.addEdge(new BaseEdge<>(A.get(1), A.get(6)));
 
-    G.setNeighbor(A.get(2), A.get(5));
+    G.addEdge(new BaseEdge<>(A.get(2), A.get(5)));
 
-    G.setNeighbor(A.get(3), A.get(2));
-    G.setNeighbor(A.get(3), A.get(4));
+    G.addEdge(new BaseEdge<>(A.get(3), A.get(2)));
+    G.addEdge(new BaseEdge<>(A.get(3), A.get(4)));
 
-    G.setNeighbor(A.get(4), A.get(5));
+    G.addEdge(new BaseEdge<>(A.get(4), A.get(5)));
 
-    G.setNeighbor(A.get(6), A.get(7));
+    G.addEdge(new BaseEdge<>(A.get(6), A.get(7)));
 
     return G;
   }
 
 
-  LinkGraph<DFS.Vert<String>> topologicalGraph = makeTopographicalDemo();
+  LinkGraph<DFS.Vert<String>, BaseEdge<DFS.Vert<String>>> topologicalGraph = makeTopographicalDemo();
 
   @Test
   void topologicalSortTest(){
@@ -174,7 +174,10 @@ class DFSTest{
     assertTrue(flag);
   }
 
-  boolean topologicalSorted(DFS.Vert<String> target, DFS.Vert<String> current, LinkGraph<DFS.Vert<String>> G){
+  boolean topologicalSorted(
+          DFS.Vert<String> target,
+          DFS.Vert<String> current,
+          LinkGraph<DFS.Vert<String>, BaseEdge<DFS.Vert<String>>> G){
     if(current.equals(target)){
       return false;
     }
@@ -195,7 +198,7 @@ class DFSTest{
     }
   }
 
-  LinkGraph<DFS.Vert<String>> sortedTestGraph = makeTopographicalDemo();
+  LinkGraph<DFS.Vert<String>, BaseEdge<DFS.Vert<String>>> sortedTestGraph = makeTopographicalDemo();
 
   @Test
   void topologicalSortedTest(){

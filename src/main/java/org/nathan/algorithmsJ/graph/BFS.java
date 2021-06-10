@@ -12,7 +12,7 @@ import java.util.Queue;
  * breath first search
  */
 public final class BFS{
-  public static <T> void breathFirstSearch(@NotNull LinkGraph<Vert<T>> G, @NotNull BFS.Vert<T> s){
+  public static <T> void breathFirstSearch(@NotNull LinkGraph<Vert<T>, BaseEdge<Vert<T>>> G, @NotNull BFS.Vert<T> s){
     var vs = G.allVertices();
     for(var v : vs){
       if(!v.equals(s)){
@@ -78,10 +78,6 @@ public final class BFS{
 
     Vert(){
       id = null;
-    }
-
-    public static <S_ID> Vert<S_ID> make(S_ID id){
-      return new Vert<>(id);
     }
 
     public ID getId(){

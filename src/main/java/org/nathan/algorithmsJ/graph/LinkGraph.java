@@ -13,10 +13,10 @@ import java.util.*;
  *
  * @param <V>
  */
-public class LinkGraph<V>{
+public class LinkGraph<V, E extends BaseEdge<V>>{
   final boolean directed;
   final List<V> vertices;
-  final Map<V, List<UnionEdge<V>>> edges_map;
+  final Map<V, List<E>> edges_map;
 
   /**
    * common constructor
@@ -51,28 +51,35 @@ public class LinkGraph<V>{
    *
    * @param other_graph other
    */
-  public LinkGraph(@NotNull LinkGraph<V> other_graph){
+  public LinkGraph(@NotNull LinkGraph<V, E> other_graph){
     this(other_graph.verticesCount(), other_graph.directed);
     this.edges_map.putAll(other_graph.edges_map);
     this.vertices.addAll(other_graph.vertices);
   }
 
-  public void setNeighbor(@NotNull V vertex, @NotNull V neighbor){
-    setNeighbor(vertex, neighbor, 1);
-  }
+//  public void setNeighbor(@NotNull V vertex, @NotNull V neighbor){
+//    setNeighbor(vertex, neighbor, 1);
+//  }
+//
+//  public void setNeighbor(@NotNull V vertex, @NotNull V neighbor, double w){
+//    var edge_t = new UnionEdge<>(vertex, neighbor, w);
+//    if(directed){
+//      var edges_list = edges_map.get(vertex);
+//      edges_list.add(edge_t);
+//    }
+//    else{
+//      var edges_list = edges_map.get(vertex);
+//      edges_list.add(edge_t);
+//
+//      edges_list = edges_map.get(neighbor);
+//      edges_list.add(edge_t);
+//    }
+//  }
 
-  public void setNeighbor(@NotNull V vertex, @NotNull V neighbor, double w){
-    var edge_t = new UnionEdge<>(vertex, neighbor, w);
-    if(directed){
-      var edges_list = edges_map.get(vertex);
-      edges_list.add(edge_t);
-    }
-    else{
-      var edges_list = edges_map.get(vertex);
-      edges_list.add(edge_t);
-
-      edges_list = edges_map.get(neighbor);
-      edges_list.add(edge_t);
+  public void addEdge(@NotNull E edge){
+    edges_map.get(edge.former).add(edge);
+    if(!directed){
+      edges_map.get(edge.latter).add(edge);
     }
   }
 
@@ -88,8 +95,8 @@ public class LinkGraph<V>{
     return vertices.size();
   }
 
-  public @NotNull List<UnionEdge<V>> getAllEdges(){
-    List<UnionEdge<V>> res = new ArrayList<>();
+  public @NotNull List<E> getAllEdges(){
+    List<E> res = new ArrayList<>();
     for(var vertex : vertices){
       res.addAll(edges_map.get(vertex));
     }
@@ -107,7 +114,7 @@ public class LinkGraph<V>{
    * @param vertex vertex
    * @return unmodifiable list
    */
-  public @NotNull List<UnionEdge<V>> edgesAt(V vertex){
+  public @NotNull List<E> edgesAt(V vertex){
     return Collections.unmodifiableList(edges_map.get(vertex));
   }
 

@@ -22,8 +22,18 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="add todos, fix func interface">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/StringST.java" afterDir="false" />
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="add todos">
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/graph/BFS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/graph/BFS.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/graph/BaseEdge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/graph/BaseEdge.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/graph/DFS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/graph/DFS.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/graph/LinkGraph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/graph/LinkGraph.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/graph/MinSpanTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/graph/MST.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/graph/SSSPath.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/graph/SSSPath.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/graph/APSPathTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/graph/APSPathTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/graph/BFSTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/graph/BFSTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/graph/DFSTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/graph/DFSTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/graph/MinSpanTreeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/graph/MSTTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/graph/SSSPathTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/graph/SSSPathTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -385,14 +395,7 @@
       <workItem from="1623289763040" duration="2717000" />
       <workItem from="1623308566433" duration="5000" />
       <workItem from="1623314717001" duration="1519000" />
-      <workItem from="1623320355864" duration="3607000" />
-    </task>
-    <task id="LOCAL-00147" summary="add doc">
-      <created>1622288032748</created>
-      <option name="number" value="00147" />
-      <option name="presentableId" value="LOCAL-00147" />
-      <option name="project" value="LOCAL" />
-      <updated>1622288032748</updated>
+      <workItem from="1623320355864" duration="6124000" />
     </task>
     <task id="LOCAL-00148" summary="add doc">
       <created>1622288141973</created>
@@ -730,7 +733,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623327465493</updated>
     </task>
-    <option name="localTasksCounter" value="196" />
+    <task id="LOCAL-00196" summary="add todos">
+      <created>1623329901364</created>
+      <option name="number" value="00196" />
+      <option name="presentableId" value="LOCAL-00196" />
+      <option name="project" value="LOCAL" />
+      <updated>1623329901364</updated>
+    </task>
+    <option name="localTasksCounter" value="197" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -759,7 +769,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fix ssDag" />
     <MESSAGE value="add @NotNull" />
     <MESSAGE value="fix typo, optimizer import" />
     <MESSAGE value="move class to outer" />
@@ -784,7 +793,8 @@
     <MESSAGE value="refactor" />
     <MESSAGE value="save" />
     <MESSAGE value="add todos, fix func interface" />
-    <option name="LAST_COMMIT_MESSAGE" value="add todos, fix func interface" />
+    <MESSAGE value="add todos" />
+    <option name="LAST_COMMIT_MESSAGE" value="add todos" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

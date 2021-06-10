@@ -14,25 +14,25 @@ class SSSPathTest{
   static BFS.Vert<String> targetBellmanFordCase_s;
   static BFS.Vert<String> targetBellmanFordCase_z;
 
-  static LinkGraph<BFS.Vert<String>> buildBellmanFordCase(){
+  static LinkGraph<BFS.Vert<String>, WeightEdge<BFS.Vert<String>>> buildBellmanFordCase(){
     String[] names = "s,t,x,y,z".split(",");
     List<BFS.Vert<String>> vertices = new ArrayList<>();
     for(var n : names){
       vertices.add(new BFS.Vert<>(n));
     }
-    var res = new LinkGraph<>(vertices, true);
+    LinkGraph<BFS.Vert<String>, WeightEdge<BFS.Vert<String>>> res = new LinkGraph<>(vertices, true);
     int[] index1 = new int[]{0, 0, 1, 1, 1, 2, 3, 3, 4, 4};
     int[] index2 = new int[]{1, 3, 2, 3, 4, 1, 2, 4, 0, 2};
     double[] weights = new double[]{6, 7, 5, 8, -4, -2, -3, 9, 2, 7};
     for(int i = 0; i < index1.length; i++){
-      res.setNeighbor(vertices.get(index1[i]), vertices.get(index2[i]), weights[i]);
+      res.addEdge(new WeightEdge<>(vertices.get(index1[i]), vertices.get(index2[i]), weights[i]));
     }
     targetBellmanFordCase_s = vertices.get(0);
     targetBellmanFordCase_z = vertices.get(4);
     return res;
   }
 
-  LinkGraph<BFS.Vert<String>> BellmanGraph = buildBellmanFordCase();
+  LinkGraph<BFS.Vert<String>, WeightEdge<BFS.Vert<String>>> BellmanGraph = buildBellmanFordCase();
 
   @Test
   void BellmanFordTest(){
@@ -57,7 +57,7 @@ class SSSPathTest{
 
   static BFS.Vert<String> targetShortestPathOfDAGForBFS;
 
-  static LinkGraph<BFS.Vert<String>> buildShortestPathOfDAGForBFS(){
+  static LinkGraph<BFS.Vert<String>, WeightEdge<BFS.Vert<String>>> buildShortestPathOfDAGForBFS(){
     String[] names = "r,s,t,x,y,z".split(",");
     List<BFS.Vert<String>> BFS_vertex = new ArrayList<>();
     for(String name : names){
@@ -65,12 +65,12 @@ class SSSPathTest{
     }
 
 
-    var BFS_G = new LinkGraph<>(BFS_vertex, true);
+    LinkGraph<BFS.Vert<String>, WeightEdge<BFS.Vert<String>>> BFS_G = new LinkGraph<>(BFS_vertex, true);
     int[] index1 = new int[]{0, 0, 1, 1, 2, 2, 2, 3, 3, 4};
     int[] index2 = new int[]{1, 2, 2, 3, 3, 4, 5, 4, 5, 5};
     double[] weights = new double[]{5, 3, 2, 6, 7, 4, 2, -1, 1, -2};
     for(int i = 0; i < index1.length; i++){
-      BFS_G.setNeighbor(BFS_vertex.get(index1[i]), BFS_vertex.get(index2[i]), weights[i]);
+      BFS_G.addEdge(new WeightEdge<>(BFS_vertex.get(index1[i]), BFS_vertex.get(index2[i]), weights[i]));
     }
 
     targetShortestPathOfDAGForBFS = BFS_vertex.get(1);
@@ -78,7 +78,7 @@ class SSSPathTest{
     return BFS_G;
   }
 
-  LinkGraph<BFS.Vert<String>> ssDAGGraph = buildShortestPathOfDAGForBFS();
+  LinkGraph<BFS.Vert<String>, WeightEdge<BFS.Vert<String>>> ssDAGGraph = buildShortestPathOfDAGForBFS();
 
   @Test
   void shortestPathOfDAGTest(){
@@ -105,18 +105,18 @@ class SSSPathTest{
   static BFS.Vert<String> targetDijkstraFib;
 
 
-  static LinkGraph<BFS.Vert<String>> buildDijkstraCase(boolean is_fib){
+  static LinkGraph<BFS.Vert<String>, WeightEdge<BFS.Vert<String>>> buildDijkstraCase(boolean is_fib){
     String[] names = "s,t,x,y,z".split(",");
     List<BFS.Vert<String>> vertices = new ArrayList<>();
     for(var n : names){
       vertices.add(new BFS.Vert<>(n));
     }
-    var graph = new LinkGraph<>(vertices, true);
+    LinkGraph<BFS.Vert<String>, WeightEdge<BFS.Vert<String>>> graph = new LinkGraph<>(vertices, true);
     int[] indices1 = new int[]{0, 0, 1, 1, 2, 3, 3, 3, 4, 4};
     int[] indices2 = new int[]{1, 3, 2, 3, 4, 1, 2, 4, 0, 2};
     double[] weights = new double[]{10, 5, 1, 2, 4, 3, 9, 2, 7, 6};
     for(int i = 0; i < indices1.length; i++){
-      graph.setNeighbor(vertices.get(indices1[i]), vertices.get(indices2[i]), weights[i]);
+      graph.addEdge(new WeightEdge<>(vertices.get(indices1[i]), vertices.get(indices2[i]), weights[i]));
     }
     if(is_fib){
       targetDijkstraFib = vertices.get(0);
@@ -127,7 +127,7 @@ class SSSPathTest{
     return graph;
   }
 
-  LinkGraph<BFS.Vert<String>> dijkstraFibGraph = buildDijkstraCase(true);
+  LinkGraph<BFS.Vert<String>, WeightEdge<BFS.Vert<String>>> dijkstraFibGraph = buildDijkstraCase(true);
 
   @Test
   void DijkstraFibonacciHeapTest(){
@@ -151,7 +151,7 @@ class SSSPathTest{
   }
 
 
-  LinkGraph<BFS.Vert<String>> dijkstraMinHeapGraph = buildDijkstraCase(false);
+  LinkGraph<BFS.Vert<String>, WeightEdge<BFS.Vert<String>>> dijkstraMinHeapGraph = buildDijkstraCase(false);
   static BFS.Vert<String> targetDijkstraMinHeap;
 
   @Test

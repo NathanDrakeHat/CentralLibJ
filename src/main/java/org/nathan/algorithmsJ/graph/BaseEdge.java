@@ -16,7 +16,7 @@ public class BaseEdge<V>{
     return former;
   }
 
-  public @NotNull V later(){
+  public @NotNull V latter(){
     return latter;
   }
 

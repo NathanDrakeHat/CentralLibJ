@@ -13,13 +13,13 @@ import java.util.Set;
 /**
  * minimum spanning tree
  */
-public final class MinSpanTree{
+public final class MST{
   public static <T>
-  @NotNull Set<UnionEdge<KruskalVert<T>>> Kruskal(@NotNull LinkGraph<KruskalVert<T>> graph){
-    Set<UnionEdge<KruskalVert<T>>> res = new HashSet<>();
+  @NotNull Set<WeightEdge<KruskalVert<T>>> Kruskal(@NotNull LinkGraph<KruskalVert<T>, WeightEdge<KruskalVert<T>>> graph){
+    Set<WeightEdge<KruskalVert<T>>> res = new HashSet<>();
     var edges_set = graph.getAllEdges();
     var edges_list = new ArrayList<>(edges_set);
-    edges_list.sort(Comparator.comparingDouble(UnionEdge::weight));
+    edges_list.sort(Comparator.comparingDouble(WeightEdge::weight));
     for(var edge : edges_list){
       var v1 = edge.former();
       var v2 = edge.latter();
@@ -31,8 +31,9 @@ public final class MinSpanTree{
     return res;
   }
 
-  public static <T> void MSTPrimFibonacciHeap(@NotNull LinkGraph<PrimVert<T>> graph,
-                                              @NotNull PrimVert<T> r){
+  public static <T> void MSTPrimFibonacciHeap(
+          @NotNull LinkGraph<PrimVert<T>, WeightEdge<PrimVert<T>>> graph,
+          @NotNull PrimVert<T> r){
     FibonacciHeap<Double, PrimVert<T>> Q = new FibonacciHeap<>(Comparator.comparingDouble(a -> a));
     var vertices = graph.allVertices();
     for(var u : vertices){
@@ -59,7 +60,7 @@ public final class MinSpanTree{
     }
   }
 
-  public static <T> void MSTPrimMinHeap(@NotNull LinkGraph<PrimVert<T>> graph,
+  public static <T> void MSTPrimMinHeap(@NotNull LinkGraph<PrimVert<T>, WeightEdge<PrimVert<T>>> graph,
                                         @NotNull PrimVert<T> r){
     var vertices = graph.allVertices();
     for(var u : vertices){

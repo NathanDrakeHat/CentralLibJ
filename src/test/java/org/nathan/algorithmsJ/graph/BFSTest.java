@@ -12,7 +12,7 @@ class BFSTest{
 
 
   List<BFS.Vert<Character>> vertices;
-  LinkGraph<BFS.Vert<Character>> graph;
+  LinkGraph<BFS.Vert<Character>, BaseEdge<BFS.Vert<Character>>> graph;
 
   {
     vertices = Data.makeVertexes();
@@ -36,22 +36,22 @@ class BFSTest{
       return vs;
     }
 
-    public static LinkGraph<BFS.Vert<Character>> makeGraph(List<BFS.Vert<Character>> vs){
-      var G = new LinkGraph<>(vs, false);
-      G.setNeighbor(vs.get(0), vs.get(1));
-      G.setNeighbor(vs.get(0), vs.get(4));
+    public static LinkGraph<BFS.Vert<Character>, BaseEdge<BFS.Vert<Character>>> makeGraph(List<BFS.Vert<Character>> vs){
+      LinkGraph<BFS.Vert<Character>, BaseEdge<BFS.Vert<Character>>> G = new LinkGraph<>(vs, false);
+      G.addEdge(new BaseEdge<>(vs.get(0), vs.get(1)));
+      G.addEdge(new BaseEdge<>(vs.get(0), vs.get(4)));
 
-      G.setNeighbor(vs.get(1), vs.get(5));
+      G.addEdge(new BaseEdge<>(vs.get(1), vs.get(5)));
 
-      G.setNeighbor(vs.get(2), vs.get(3));
-      G.setNeighbor(vs.get(2), vs.get(5));
-      G.setNeighbor(vs.get(2), vs.get(6));
+      G.addEdge(new BaseEdge<>(vs.get(2), vs.get(3)));
+      G.addEdge(new BaseEdge<>(vs.get(2), vs.get(5)));
+      G.addEdge(new BaseEdge<>(vs.get(2), vs.get(6)));
 
-      G.setNeighbor(vs.get(3), vs.get(6));
+      G.addEdge(new BaseEdge<>(vs.get(3), vs.get(6)));
 
-      G.setNeighbor(vs.get(5), vs.get(6));
+      G.addEdge(new BaseEdge<>(vs.get(5), vs.get(6)));
 
-      G.setNeighbor(vs.get(6), vs.get(7));
+      G.addEdge(new BaseEdge<>(vs.get(6), vs.get(7)));
 
       return G;
     }

@@ -8,30 +8,31 @@ import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.nathan.algorithmsJ.graph.MinSpanTree.*;
+import static org.nathan.algorithmsJ.graph.MST.*;
 
-class MinSpanTreeTest{
+class MSTTest{
 
-  LinkGraph<MinSpanTree.KruskalVert<String>> buildKruskalExample(){
+  LinkGraph<MST.KruskalVert<String>, WeightEdge<MST.KruskalVert<String>>> buildKruskalExample(){
     String n = "a,b,c,d,e,f,g,h,i";
     String[] names = n.split(",");
     int len = names.length;
-    var vertices = new ArrayList<MinSpanTree.KruskalVert<String>>(len);
+    var vertices = new ArrayList<MST.KruskalVert<String>>(len);
     for(int i = 0; i < len; i++){
-      vertices.add(i, new MinSpanTree.KruskalVert<>(names[i]));
+      vertices.add(i, new MST.KruskalVert<>(names[i]));
     }
-    LinkGraph<MinSpanTree.KruskalVert<String>> res = new LinkGraph<>(vertices, false);
+    LinkGraph<MST.KruskalVert<String>, WeightEdge<MST.KruskalVert<String>>> res =
+            new LinkGraph<>(vertices, false);
     int[] indexes1 = new int[]{0, 1, 2, 3, 4, 5, 6, 7, 1, 2, 8, 8, 2, 3};
     int[] indexes2 = new int[]{1, 2, 3, 4, 5, 6, 7, 0, 7, 8, 7, 6, 5, 5};
     double[] weights = new double[]{4, 8, 7, 9, 10, 2, 1, 8, 11, 2, 7, 6, 4, 14};
     int len_ = indexes1.length;
     for(int i = 0; i < len_; i++){
-      res.setNeighbor(vertices.get(indexes1[i]), vertices.get(indexes2[i]), weights[i]);
+      res.addEdge(new WeightEdge<>(vertices.get(indexes1[i]), vertices.get(indexes2[i]), weights[i]));
     }
     return res;
   }
 
-  LinkGraph<MinSpanTree.KruskalVert<String>> KruskalGraph = buildKruskalExample();
+  LinkGraph<MST.KruskalVert<String>, WeightEdge<MST.KruskalVert<String>>> KruskalGraph = buildKruskalExample();
 
   @Test
   public void KruskalTest(){
@@ -93,17 +94,17 @@ class MinSpanTreeTest{
     String n = "a,b,c,d,e,f,g,h,i";
     String[] names = n.split(",");
     int len = names.length;
-    var vertices = new ArrayList<MinSpanTree.PrimVert<String>>(len);
+    var vertices = new ArrayList<MST.PrimVert<String>>(len);
     for(int i = 0; i < len; i++){
-      vertices.add(i, new MinSpanTree.PrimVert<>(names[i]));
+      vertices.add(i, new MST.PrimVert<>(names[i]));
     }
-    LinkGraph<MinSpanTree.PrimVert<String>> res = new LinkGraph<>(vertices, false);
+    LinkGraph<MST.PrimVert<String>, WeightEdge<MST.PrimVert<String>>> res = new LinkGraph<>(vertices, false);
     int[] indices1 = new int[]{0, 1, 2, 3, 4, 5, 6, 7, 1, 2, 8, 8, 2, 3};
     int[] indices2 = new int[]{1, 2, 3, 4, 5, 6, 7, 0, 7, 8, 7, 6, 5, 5};
     double[] weights = new double[]{4, 8, 7, 9, 10, 2, 1, 8, 11, 2, 7, 6, 4, 14};
     int len_ = indices1.length;
     for(int i = 0; i < len_; i++){
-      res.setNeighbor(vertices.get(indices1[i]), vertices.get(indices2[i]), weights[i]);
+      res.addEdge(new WeightEdge<>(vertices.get(indices1[i]), vertices.get(indices2[i]), weights[i]));
     }
 
     return new GraphAndTarget(res, vertices.get(0));
@@ -142,10 +143,10 @@ class MinSpanTreeTest{
   }
 
   static class GraphAndTarget{
-    LinkGraph<MinSpanTree.PrimVert<String>> graph;
-    MinSpanTree.PrimVert<String> target;
+    LinkGraph<MST.PrimVert<String>, WeightEdge<MST.PrimVert<String>>> graph;
+    MST.PrimVert<String> target;
 
-    public GraphAndTarget(LinkGraph<MinSpanTree.PrimVert<String>> graph, MinSpanTree.PrimVert<String> target){
+    public GraphAndTarget(LinkGraph<MST.PrimVert<String>, WeightEdge<MST.PrimVert<String>>> graph, MST.PrimVert<String> target){
       this.graph = graph;
       this.target = target;
     }
