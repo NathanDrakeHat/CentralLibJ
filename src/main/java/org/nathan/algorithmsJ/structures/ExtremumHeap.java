@@ -6,7 +6,6 @@ import org.nathan.centralUtils.tuples.Tuple;
 import java.util.*;
 import java.util.function.Function;
 
-// TODO change to MinMaxHeap
 public class ExtremumHeap<K, V> implements Iterable<Tuple<K, V>>{
   private final List<Node<K, V>> array = new ArrayList<>();
   private final Map<V, Node<K, V>> value_node_map = new HashMap<>();

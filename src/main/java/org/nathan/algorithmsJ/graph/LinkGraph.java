@@ -46,7 +46,6 @@ public class LinkGraph<V, E extends BaseEdge<V>>{
 
   /**
    * copy
-   *
    * @param other_graph other
    */
   public LinkGraph(@NotNull LinkGraph<V, E> other_graph){
