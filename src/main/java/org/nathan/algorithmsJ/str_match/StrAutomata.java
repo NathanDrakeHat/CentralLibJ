@@ -1,10 +1,10 @@
-package org.nathan.algorithmsJ.stringMatching;
+package org.nathan.algorithmsJ.str_match;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
 
-public class StringAutomata{
+public class StrAutomata{
   public static @NotNull Map<TransitionEntry, Integer> computeTransitionPattern(@NotNull String pattern,
                                                                                 char[] char_set){
     int m = pattern.length();

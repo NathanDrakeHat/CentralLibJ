@@ -1,12 +1,12 @@
-package org.nathan.algorithmsJ.stringMatching;
+package org.nathan.algorithmsJ.str_match;
 
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.nathan.algorithmsJ.stringMatching.StringAutomata.computeTransitionPattern;
-import static org.nathan.algorithmsJ.stringMatching.StringAutomata.finiteAutomationMatcher;
+import static org.nathan.algorithmsJ.str_match.StrAutomata.computeTransitionPattern;
+import static org.nathan.algorithmsJ.str_match.StrAutomata.finiteAutomationMatcher;
 
-class StringAutomataTest{
+class StrAutomataTest{
 
   @Test
   void finiteAutomationMatcherTest(){
