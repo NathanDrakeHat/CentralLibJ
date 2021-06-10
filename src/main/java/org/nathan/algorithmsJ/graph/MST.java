@@ -3,7 +3,7 @@ package org.nathan.algorithmsJ.graph;
 import org.jetbrains.annotations.NotNull;
 import org.nathan.algorithmsJ.structures.DisjointSet;
 import org.nathan.algorithmsJ.structures.FibonacciHeap;
-import org.nathan.algorithmsJ.structures.MinHeap;
+import org.nathan.algorithmsJ.structures.ExtremumHeap;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -72,9 +72,9 @@ public final class MST{
       }
       u.parent = null;
     }
-    MinHeap<Double, VertPrim<T>> Q = new MinHeap<>(vertices, VertPrim::getKey, Double::compare);
+    ExtremumHeap<Double, VertPrim<T>> Q = new ExtremumHeap<>(true,vertices, VertPrim::getKey, Double::compare);
     while(Q.length() > 0) {
-      var u = Q.extractMin();
+      var u = Q.extractExtremum();
       var u_edges = graph.edgesAt(u);
       for(var edge : u_edges){
         var v = edge.another(u);

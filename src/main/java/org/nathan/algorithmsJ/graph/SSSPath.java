@@ -3,7 +3,7 @@ package org.nathan.algorithmsJ.graph;
 
 import org.jetbrains.annotations.NotNull;
 import org.nathan.algorithmsJ.structures.FibonacciHeap;
-import org.nathan.algorithmsJ.structures.MinHeap;
+import org.nathan.algorithmsJ.structures.ExtremumHeap;
 
 import java.util.Comparator;
 import java.util.HashMap;
@@ -144,9 +144,9 @@ public final class SSSPath{
   public static <T> void DijkstraMinHeap(@NotNull LinkGraph<BFS.Vert<T>, WeightEdge<BFS.Vert<T>>> G, @NotNull BFS.Vert<T> s){
     initializeSingleSource(G, s);
     var vertices = G.allVertices();
-    MinHeap<Double, BFS.Vert<T>> Q = new MinHeap<>(vertices, BFS.Vert::getDistance, Double::compare);
+    ExtremumHeap<Double, BFS.Vert<T>> Q = new ExtremumHeap<>(true,vertices, BFS.Vert::getDistance, Double::compare);
     while(Q.length() > 0) {
-      var u = Q.extractMin();
+      var u = Q.extractExtremum();
       var u_edges = G.edgesAt(u);
       for(var edge : u_edges){
         var v = edge.another(u);
