@@ -35,7 +35,7 @@ class ExtremumHeapTest{
         res.add(Integer.valueOf(m.extractExtremum()));
       }
       for(int j = 0; j < res.size() - 1; j++){
-        if(res.get(j).compareTo(res.get(j + 1)) <= 0){
+        if(res.get(j).compareTo(res.get(j + 1)) < 0){
           assertTrue(true);
         }
         else{
@@ -66,7 +66,7 @@ class ExtremumHeapTest{
         res.add(Integer.valueOf(m.extractExtremum()));
       }
       for(int j = 0; j < res.size() - 1; j++){
-        if(res.get(j).compareTo(res.get(j + 1)) >= 0){
+        if(res.get(j).compareTo(res.get(j + 1)) > 0){
           assertTrue(true);
         }
         else{
@@ -103,7 +103,7 @@ class ExtremumHeapTest{
         res.add(Integer.valueOf(heap.extractExtremum()));
       }
       for(int j = 0; j < res.size() - 1; j++){
-        if(!(res.get(j).compareTo(res.get(j + 1)) <= 0)){
+        if(!(res.get(j).compareTo(res.get(j + 1)) < 0)){
           fail();
         }
       }
@@ -136,7 +136,7 @@ class ExtremumHeapTest{
         res.add(Integer.valueOf(heap.extractExtremum()));
       }
       for(int j = 0; j < res.size() - 1; j++){
-        if(!(res.get(j).compareTo(res.get(j + 1)) >= 0)){
+        if(!(res.get(j).compareTo(res.get(j + 1)) > 0)){
           fail();
         }
       }

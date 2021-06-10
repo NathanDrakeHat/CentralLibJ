@@ -22,12 +22,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="rename classes">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/graph/MST.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/graph/MST.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/graph/SSSPath.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/graph/SSSPath.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/MinHeap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/ExtremumHeap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/structures/MinHeapTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/structures/ExtremumHeapTest.java" afterDir="false" />
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="remove todo">
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/structures/ExtremumHeapTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/structures/ExtremumHeapTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -212,8 +208,8 @@
         <item itemvalue="JUnit.ExtremumHeapTest" />
         <item itemvalue="JUnit.ExtremumHeapTest.maxRandomUpdateKeyTest" />
         <item itemvalue="JUnit.ExtremumHeapTest.minRandomUpdateKeyTest" />
-        <item itemvalue="JUnit.ExtremumHeapTest.minRandomAddTest" />
         <item itemvalue="JUnit.ExtremumHeapTest.maxRandomAddTest" />
+        <item itemvalue="JUnit.ExtremumHeapTest.minRandomAddTest" />
       </list>
     </recent_temporary>
   </component>
@@ -399,21 +395,7 @@
       <workItem from="1623289763040" duration="2717000" />
       <workItem from="1623308566433" duration="5000" />
       <workItem from="1623314717001" duration="1519000" />
-      <workItem from="1623320355864" duration="7737000" />
-    </task>
-    <task id="LOCAL-00151" summary="add doc">
-      <created>1622289237338</created>
-      <option name="number" value="00151" />
-      <option name="presentableId" value="LOCAL-00151" />
-      <option name="project" value="LOCAL" />
-      <updated>1622289237338</updated>
-    </task>
-    <task id="LOCAL-00152" summary="refactor">
-      <created>1622289617304</created>
-      <option name="number" value="00152" />
-      <option name="presentableId" value="LOCAL-00152" />
-      <option name="project" value="LOCAL" />
-      <updated>1622289617304</updated>
+      <workItem from="1623320355864" duration="8288000" />
     </task>
     <task id="LOCAL-00153" summary="move class to outer">
       <created>1622339596947</created>
@@ -744,7 +726,21 @@
       <option name="project" value="LOCAL" />
       <updated>1623331721443</updated>
     </task>
-    <option name="localTasksCounter" value="200" />
+    <task id="LOCAL-00200" summary="refactor ExtremumHeap success">
+      <created>1623333137501</created>
+      <option name="number" value="00200" />
+      <option name="presentableId" value="LOCAL-00200" />
+      <option name="project" value="LOCAL" />
+      <updated>1623333137501</updated>
+    </task>
+    <task id="LOCAL-00201" summary="remove todo">
+      <created>1623333203006</created>
+      <option name="number" value="00201" />
+      <option name="presentableId" value="LOCAL-00201" />
+      <option name="project" value="LOCAL" />
+      <updated>1623333203006</updated>
+    </task>
+    <option name="localTasksCounter" value="202" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -773,7 +769,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="remove final for generic class" />
     <MESSAGE value="add interface" />
     <MESSAGE value="fix test bug" />
     <MESSAGE value="add" />
@@ -796,19 +791,13 @@
     <MESSAGE value="add todos, fix func interface" />
     <MESSAGE value="add todos" />
     <MESSAGE value="edge refactor success!" />
-    <MESSAGE value="remove todo" />
     <MESSAGE value="rename classes" />
-    <option name="LAST_COMMIT_MESSAGE" value="rename classes" />
+    <MESSAGE value="refactor ExtremumHeap success" />
+    <MESSAGE value="remove todo" />
+    <option name="LAST_COMMIT_MESSAGE" value="remove todo" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/structures/ExtremumHeapTest.java</url>
-          <line>137</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-      </breakpoints>
       <default-breakpoints>
         <breakpoint enabled="true" type="java-exception">
           <properties>
