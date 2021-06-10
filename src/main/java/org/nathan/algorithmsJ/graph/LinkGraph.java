@@ -6,8 +6,6 @@ import org.jetbrains.annotations.NotNull;
 import java.util.*;
 
 
-// TODO refactor edges
-
 /**
  * static object (non-value) graph
  *
@@ -56,25 +54,6 @@ public class LinkGraph<V, E extends BaseEdge<V>>{
     this.edges_map.putAll(other_graph.edges_map);
     this.vertices.addAll(other_graph.vertices);
   }
-
-//  public void setNeighbor(@NotNull V vertex, @NotNull V neighbor){
-//    setNeighbor(vertex, neighbor, 1);
-//  }
-//
-//  public void setNeighbor(@NotNull V vertex, @NotNull V neighbor, double w){
-//    var edge_t = new UnionEdge<>(vertex, neighbor, w);
-//    if(directed){
-//      var edges_list = edges_map.get(vertex);
-//      edges_list.add(edge_t);
-//    }
-//    else{
-//      var edges_list = edges_map.get(vertex);
-//      edges_list.add(edge_t);
-//
-//      edges_list = edges_map.get(neighbor);
-//      edges_list.add(edge_t);
-//    }
-//  }
 
   public void addEdge(@NotNull E edge){
     edges_map.get(edge.former).add(edge);
