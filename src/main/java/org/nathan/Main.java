@@ -2,6 +2,8 @@ package org.nathan;
 
 import org.nathan.centralUtils.utils.IOUtils;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 
@@ -21,7 +23,7 @@ class Main{
       GitPush.gitPush(args);
     }
     else{
-      int i;
+      List<Integer> l = new ArrayList<>();
     }
   }
 }

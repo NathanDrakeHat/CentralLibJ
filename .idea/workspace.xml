@@ -22,8 +22,14 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="rename">
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="refactor">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/misc/LRS.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AlgorithmsJava.iml" beforeDir="false" afterPath="$PROJECT_DIR$/AlgorithmsJava.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/acm/ACM0x00.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/acm/ACM0x00.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/acm/ACM0x00Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/acm/ACM0x00Test.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -145,25 +151,26 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="All in AlgorithmsJava" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ACM0x00Test.innovativeBusinessTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AlgorithmsJava" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.nathan.acm.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.nathan.acm" />
+      <option name="MAIN_CLASS_NAME" value="org.nathan.acm.ACM0x00Test" />
+      <option name="METHOD_NAME" value="innovativeBusinessTest" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SortTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="All in AlgorithmsJava" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AlgorithmsJava" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.nathan.algorithmsJ.misc.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.nathan.algorithmsJ.misc" />
-      <option name="MAIN_CLASS_NAME" value="org.nathan.algorithmsJ.misc.SortTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -187,18 +194,18 @@
       <item itemvalue="Application.pushUtils" />
       <item itemvalue="Application.Main" />
       <item itemvalue="JUnit.ACM0x00Test.bestCowFencesTest" />
-      <item itemvalue="JUnit.SortTest" />
       <item itemvalue="JUnit.ACM0x00Test" />
       <item itemvalue="JUnit.All in AlgorithmsJava" />
       <item itemvalue="JUnit.org.nathan.algorithmsJ in AlgorithmsJava" />
+      <item itemvalue="JUnit.ACM0x00Test.innovativeBusinessTest" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.All in AlgorithmsJava" />
         <item itemvalue="JUnit.ACM0x00Test" />
+        <item itemvalue="JUnit.ACM0x00Test.innovativeBusinessTest" />
         <item itemvalue="JUnit.ACM0x00Test.bestCowFencesTest" />
         <item itemvalue="JUnit.org.nathan.algorithmsJ in AlgorithmsJava" />
-        <item itemvalue="JUnit.SortTest" />
       </list>
     </recent_temporary>
   </component>
@@ -383,13 +390,8 @@
       <workItem from="1623245522829" duration="2232000" />
       <workItem from="1623289763040" duration="2717000" />
       <workItem from="1623308566433" duration="5000" />
-    </task>
-    <task id="LOCAL-00144" summary="fix ssDag">
-      <created>1622287244914</created>
-      <option name="number" value="00144" />
-      <option name="presentableId" value="LOCAL-00144" />
-      <option name="project" value="LOCAL" />
-      <updated>1622287244914</updated>
+      <workItem from="1623314717001" duration="1519000" />
+      <workItem from="1623320355864" duration="661000" />
     </task>
     <task id="LOCAL-00145" summary="add @NotNull">
       <created>1622287702527</created>
@@ -727,7 +729,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623294828578</updated>
     </task>
-    <option name="localTasksCounter" value="193" />
+    <task id="LOCAL-00193" summary="refactor">
+      <created>1623316113208</created>
+      <option name="number" value="00193" />
+      <option name="presentableId" value="LOCAL-00193" />
+      <option name="project" value="LOCAL" />
+      <updated>1623316113209</updated>
+    </task>
+    <option name="localTasksCounter" value="194" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -777,11 +786,11 @@
     <MESSAGE value="pass tests, save" />
     <MESSAGE value="remove edge direction" />
     <MESSAGE value="move graph transform" />
-    <MESSAGE value="refactor" />
     <MESSAGE value="add doc" />
     <MESSAGE value="add todo" />
     <MESSAGE value="rename" />
-    <option name="LAST_COMMIT_MESSAGE" value="rename" />
+    <MESSAGE value="refactor" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

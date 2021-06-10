@@ -1,6 +1,7 @@
 package org.nathan.acm;
 
 
+
 import org.nathan.centralUtils.tuples.Tuple;
 import org.nathan.centralUtils.utils.ArrayUtils;
 import org.nathan.centralUtils.utils.NumericUtils;
@@ -410,7 +411,7 @@ public class ACM0x00{
   }
 
   public static List<Integer> innovativeBusiness(boolean[][] greater){
-    List<Integer> res = new ArrayList<>(greater.length);
+    List<Integer> res = new ArrayList<>();
 
     for(int i = 0; i < greater.length; i++){
       int l = 0, r = res.size();

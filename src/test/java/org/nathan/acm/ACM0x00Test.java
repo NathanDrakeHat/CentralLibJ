@@ -7,6 +7,7 @@ import org.nathan.centralUtils.utils.NumericUtils;
 
 import java.util.List;
 import java.util.Random;
+import java.util.SplittableRandom;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
@@ -14,7 +15,7 @@ import static org.nathan.acm.ACM0x00.*;
 
 public class ACM0x00Test{
   static final int iteration = 20; // iter of for
-  static final int size = 20; // size of list
+  static final int size = 30; // size of list
 
   @Test
   public void fastPowerModTest(){
@@ -172,7 +173,7 @@ public class ACM0x00Test{
     for(int i = 0; i < size; i++){
       ibCases[i] = new boolean[size];
     }
-    Random rand = new Random();
+    var rand = new SplittableRandom();
     for(int i = 0; i < size - 1; i++){
       for(int j = i + 1; j < size; j++){
         var t = rand.nextBoolean();
