@@ -242,4 +242,24 @@ public final class Sort{
     }
   }
 
+  // TODO key indexed counting sort
+  public static void keyIndexedCountingSort(char[] a){
+
+  }
+
+  // TODO lsd radix sort
+  public static void LSDRadixSort(String[] strings){
+
+  }
+
+  // TODO msd radix sort
+  public static void MSDRadixSort(String[] strings){
+
+  }
+
+  // TODO string quicksort
+  public static void string3WayQuicksort(String[] strings){
+
+  }
+
 }
