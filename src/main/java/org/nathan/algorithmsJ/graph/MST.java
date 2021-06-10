@@ -15,8 +15,8 @@ import java.util.Set;
  */
 public final class MST{
   public static <T>
-  @NotNull Set<WeightEdge<KruskalVert<T>>> Kruskal(@NotNull LinkGraph<KruskalVert<T>, WeightEdge<KruskalVert<T>>> graph){
-    Set<WeightEdge<KruskalVert<T>>> res = new HashSet<>();
+  @NotNull Set<WeightEdge<VertKruskal<T>>> Kruskal(@NotNull LinkGraph<VertKruskal<T>, WeightEdge<VertKruskal<T>>> graph){
+    Set<WeightEdge<VertKruskal<T>>> res = new HashSet<>();
     var edges_set = graph.getAllEdges();
     var edges_list = new ArrayList<>(edges_set);
     edges_list.sort(Comparator.comparingDouble(WeightEdge::weight));
@@ -32,9 +32,9 @@ public final class MST{
   }
 
   public static <T> void MSTPrimFibonacciHeap(
-          @NotNull LinkGraph<PrimVert<T>, WeightEdge<PrimVert<T>>> graph,
-          @NotNull PrimVert<T> r){
-    FibonacciHeap<Double, PrimVert<T>> Q = new FibonacciHeap<>(Comparator.comparingDouble(a -> a));
+          @NotNull LinkGraph<VertPrim<T>, WeightEdge<VertPrim<T>>> graph,
+          @NotNull MST.VertPrim<T> r){
+    FibonacciHeap<Double, VertPrim<T>> Q = new FibonacciHeap<>(Comparator.comparingDouble(a -> a));
     var vertices = graph.allVertices();
     for(var u : vertices){
       if(u != r){
@@ -60,8 +60,8 @@ public final class MST{
     }
   }
 
-  public static <T> void MSTPrimMinHeap(@NotNull LinkGraph<PrimVert<T>, WeightEdge<PrimVert<T>>> graph,
-                                        @NotNull PrimVert<T> r){
+  public static <T> void MSTPrimMinHeap(@NotNull LinkGraph<VertPrim<T>, WeightEdge<VertPrim<T>>> graph,
+                                        @NotNull MST.VertPrim<T> r){
     var vertices = graph.allVertices();
     for(var u : vertices){
       if(u != r){
@@ -72,7 +72,7 @@ public final class MST{
       }
       u.parent = null;
     }
-    MinHeap<Double, PrimVert<T>> Q = new MinHeap<>(vertices, PrimVert::getKey, Double::compare);
+    MinHeap<Double, VertPrim<T>> Q = new MinHeap<>(vertices, VertPrim::getKey, Double::compare);
     while(Q.length() > 0) {
       var u = Q.extractMin();
       var u_edges = graph.edgesAt(u);
@@ -87,11 +87,11 @@ public final class MST{
     }
   }
 
-  public static class KruskalVert<V> extends DisjointSet{
+  public static class VertKruskal<V> extends DisjointSet{
     @NotNull
     private final V id;
 
-    KruskalVert(@NotNull V n){
+    VertKruskal(@NotNull V n){
       id = n;
     }
 
@@ -107,13 +107,13 @@ public final class MST{
 
   }
 
-  public static class PrimVert<V>{
+  public static class VertPrim<V>{
     @NotNull
     private final V id;
-    PrimVert<V> parent;
+    VertPrim<V> parent;
     double key = 0;
 
-    PrimVert(@NotNull V name){
+    VertPrim(@NotNull V name){
       this.id = name;
     }
 

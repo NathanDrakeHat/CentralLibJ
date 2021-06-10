@@ -12,15 +12,15 @@ import static org.nathan.algorithmsJ.graph.MST.*;
 
 class MSTTest{
 
-  LinkGraph<MST.KruskalVert<String>, WeightEdge<MST.KruskalVert<String>>> buildKruskalExample(){
+  LinkGraph<VertKruskal<String>, WeightEdge<VertKruskal<String>>> buildKruskalExample(){
     String n = "a,b,c,d,e,f,g,h,i";
     String[] names = n.split(",");
     int len = names.length;
-    var vertices = new ArrayList<MST.KruskalVert<String>>(len);
+    var vertices = new ArrayList<VertKruskal<String>>(len);
     for(int i = 0; i < len; i++){
-      vertices.add(i, new MST.KruskalVert<>(names[i]));
+      vertices.add(i, new VertKruskal<>(names[i]));
     }
-    LinkGraph<MST.KruskalVert<String>, WeightEdge<MST.KruskalVert<String>>> res =
+    LinkGraph<VertKruskal<String>, WeightEdge<VertKruskal<String>>> res =
             new LinkGraph<>(vertices, false);
     int[] indexes1 = new int[]{0, 1, 2, 3, 4, 5, 6, 7, 1, 2, 8, 8, 2, 3};
     int[] indexes2 = new int[]{1, 2, 3, 4, 5, 6, 7, 0, 7, 8, 7, 6, 5, 5};
@@ -32,7 +32,7 @@ class MSTTest{
     return res;
   }
 
-  LinkGraph<MST.KruskalVert<String>, WeightEdge<MST.KruskalVert<String>>> KruskalGraph = buildKruskalExample();
+  LinkGraph<VertKruskal<String>, WeightEdge<VertKruskal<String>>> KruskalGraph = buildKruskalExample();
 
   @Test
   public void KruskalTest(){
@@ -94,11 +94,11 @@ class MSTTest{
     String n = "a,b,c,d,e,f,g,h,i";
     String[] names = n.split(",");
     int len = names.length;
-    var vertices = new ArrayList<MST.PrimVert<String>>(len);
+    var vertices = new ArrayList<VertPrim<String>>(len);
     for(int i = 0; i < len; i++){
-      vertices.add(i, new MST.PrimVert<>(names[i]));
+      vertices.add(i, new VertPrim<>(names[i]));
     }
-    LinkGraph<MST.PrimVert<String>, WeightEdge<MST.PrimVert<String>>> res = new LinkGraph<>(vertices, false);
+    LinkGraph<VertPrim<String>, WeightEdge<VertPrim<String>>> res = new LinkGraph<>(vertices, false);
     int[] indices1 = new int[]{0, 1, 2, 3, 4, 5, 6, 7, 1, 2, 8, 8, 2, 3};
     int[] indices2 = new int[]{1, 2, 3, 4, 5, 6, 7, 0, 7, 8, 7, 6, 5, 5};
     double[] weights = new double[]{4, 8, 7, 9, 10, 2, 1, 8, 11, 2, 7, 6, 4, 14};
@@ -143,10 +143,10 @@ class MSTTest{
   }
 
   static class GraphAndTarget{
-    LinkGraph<MST.PrimVert<String>, WeightEdge<MST.PrimVert<String>>> graph;
-    MST.PrimVert<String> target;
+    LinkGraph<VertPrim<String>, WeightEdge<VertPrim<String>>> graph;
+    VertPrim<String> target;
 
-    public GraphAndTarget(LinkGraph<MST.PrimVert<String>, WeightEdge<MST.PrimVert<String>>> graph, MST.PrimVert<String> target){
+    public GraphAndTarget(LinkGraph<VertPrim<String>, WeightEdge<VertPrim<String>>> graph, VertPrim<String> target){
       this.graph = graph;
       this.target = target;
     }
