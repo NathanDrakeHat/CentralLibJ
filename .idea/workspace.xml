@@ -22,11 +22,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="save">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/RWayTries.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/TernaryTries.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/MinHeap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/MinHeap.java" afterDir="false" />
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="add todos, fix func interface">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/StringST.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -388,14 +385,7 @@
       <workItem from="1623289763040" duration="2717000" />
       <workItem from="1623308566433" duration="5000" />
       <workItem from="1623314717001" duration="1519000" />
-      <workItem from="1623320355864" duration="2908000" />
-    </task>
-    <task id="LOCAL-00146" summary="fix typo, optimizer import">
-      <created>1622287839583</created>
-      <option name="number" value="00146" />
-      <option name="presentableId" value="LOCAL-00146" />
-      <option name="project" value="LOCAL" />
-      <updated>1622287839583</updated>
+      <workItem from="1623320355864" duration="3607000" />
     </task>
     <task id="LOCAL-00147" summary="add doc">
       <created>1622288032748</created>
@@ -733,7 +723,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623321315616</updated>
     </task>
-    <option name="localTasksCounter" value="195" />
+    <task id="LOCAL-00195" summary="add todos, fix func interface">
+      <created>1623327465493</created>
+      <option name="number" value="00195" />
+      <option name="presentableId" value="LOCAL-00195" />
+      <option name="project" value="LOCAL" />
+      <updated>1623327465493</updated>
+    </task>
+    <option name="localTasksCounter" value="196" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -762,7 +759,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="remove list to array, add more primitive methods" />
     <MESSAGE value="fix ssDag" />
     <MESSAGE value="add @NotNull" />
     <MESSAGE value="fix typo, optimizer import" />
@@ -787,7 +783,8 @@
     <MESSAGE value="rename" />
     <MESSAGE value="refactor" />
     <MESSAGE value="save" />
-    <option name="LAST_COMMIT_MESSAGE" value="save" />
+    <MESSAGE value="add todos, fix func interface" />
+    <option name="LAST_COMMIT_MESSAGE" value="add todos, fix func interface" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
