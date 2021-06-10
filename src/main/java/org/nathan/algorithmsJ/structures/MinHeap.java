@@ -6,24 +6,20 @@ import org.nathan.centralUtils.tuples.Tuple;
 import java.util.*;
 import java.util.function.Function;
 
-
+// TODO change to MinMaxHeap
 public class MinHeap<K, V> implements Iterable<Tuple<K, V>>{
   private final List<Node<K, V>> array = new ArrayList<>();
   private final Map<V, Node<K, V>> value_node_map = new HashMap<>();
-  private final DualToIntFunction<K, K> key_comparer;
+  private final Comparator<K> key_comparer;
   private boolean iterating = false;
 
-  public interface DualToIntFunction<Arg1, Arg2>{
-    int applyAsInt(Arg1 arg1, Arg2 arg2);
-  }
-
-  public MinHeap(@NotNull DualToIntFunction<K, K> comparer){
+  public MinHeap(@NotNull Comparator<K> comparer){
     key_comparer = comparer;
   }
 
   public MinHeap(@NotNull Iterable<V> values,
                  @NotNull Function<V, K> getKey,
-                 @NotNull DualToIntFunction<K, K> comparer){
+                 @NotNull Comparator<K> comparer){
     key_comparer = comparer;
     for(var value : values){
       Objects.requireNonNull(value);
@@ -75,11 +71,11 @@ public class MinHeap<K, V> implements Iterable<Tuple<K, V>>{
     if(node == null){
       throw new NoSuchElementException("No such value.");
     }
-    if(key_comparer.applyAsInt(new_key, node.key) < 0){
+    if(key_comparer.compare(new_key, node.key) < 0){
       node.key = new_key;
       decreaseKey(node.index);
     }
-    else if(key_comparer.applyAsInt(new_key, node.key) > 0){
+    else if(key_comparer.compare(new_key, node.key) > 0){
       node.key = new_key;
       minHeapify(node.index);
     }
@@ -100,7 +96,7 @@ public class MinHeap<K, V> implements Iterable<Tuple<K, V>>{
 
   private void decreaseKey(int idx){
     while(idx > 0 &&
-            key_comparer.applyAsInt(array.get(parentIndex(idx)).key, array.get(idx).key) > 0) {
+            key_comparer.compare(array.get(parentIndex(idx)).key, array.get(idx).key) > 0) {
       int p_index = parentIndex(idx);
       var t = array.get(idx);
       updateArrayAndNode(idx, array.get(p_index));
@@ -113,10 +109,10 @@ public class MinHeap<K, V> implements Iterable<Tuple<K, V>>{
     int l_idx = leftIndex(idx);
     int r_idx = rightIndex(idx);
     int min_idx = idx;
-    if((l_idx < heapSize()) && key_comparer.applyAsInt(array.get(l_idx).key, array.get(min_idx).key) < 0){
+    if((l_idx < heapSize()) && key_comparer.compare(array.get(l_idx).key, array.get(min_idx).key) < 0){
       min_idx = l_idx;
     }
-    if((r_idx < heapSize()) && key_comparer.applyAsInt(array.get(r_idx).key, array.get(min_idx).key) < 0){
+    if((r_idx < heapSize()) && key_comparer.compare(array.get(r_idx).key, array.get(min_idx).key) < 0){
       min_idx = r_idx;
     }
     if(min_idx != idx){
