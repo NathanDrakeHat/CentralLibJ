@@ -5,8 +5,10 @@ import org.jetbrains.annotations.NotNull;
 import java.util.*;
 
 public class StrAutomata{
-  public static @NotNull Map<TransitionEntry, Integer> computeTransitionPattern(@NotNull String pattern,
-                                                                                char[] char_set){
+  public static
+  @NotNull Map<TransitionEntry, Integer> computeTransitionPattern(
+          @NotNull String pattern,
+          char[] char_set){
     int m = pattern.length();
     Map<TransitionEntry, Integer> map = new HashMap<>();
     for(int q = 0; q <= m; q++){
@@ -22,9 +24,10 @@ public class StrAutomata{
     return map;
   }
 
-  public static List<Integer> finiteAutomationMatcher(@NotNull String T,
-                                                      @NotNull Map<TransitionEntry, Integer> delta,
-                                                      int m){
+  public static List<Integer> finiteAutomationMatcher(
+          @NotNull String T,
+          @NotNull Map<TransitionEntry, Integer> delta,
+          int m){
     List<Integer> res = new ArrayList<>();
     int n = T.length();
     int q = 0;

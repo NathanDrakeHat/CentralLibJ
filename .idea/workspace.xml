@@ -22,10 +22,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="add doc">
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="rename">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/graph/MaxFlow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/graph/MaxFlow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/misc/Sort.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/misc/Sort.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -383,21 +381,8 @@
       <workItem from="1623155238465" duration="612000" />
       <workItem from="1623244700015" duration="643000" />
       <workItem from="1623245522829" duration="2232000" />
-      <workItem from="1623289763040" duration="2147000" />
-    </task>
-    <task id="LOCAL-00142" summary="remove list to array, add more primitive methods">
-      <created>1622276642426</created>
-      <option name="number" value="00142" />
-      <option name="presentableId" value="LOCAL-00142" />
-      <option name="project" value="LOCAL" />
-      <updated>1622276642426</updated>
-    </task>
-    <task id="LOCAL-00143" summary="refactor">
-      <created>1622276729946</created>
-      <option name="number" value="00143" />
-      <option name="presentableId" value="LOCAL-00143" />
-      <option name="project" value="LOCAL" />
-      <updated>1622276729946</updated>
+      <workItem from="1623289763040" duration="2717000" />
+      <workItem from="1623308566433" duration="5000" />
     </task>
     <task id="LOCAL-00144" summary="fix ssDag">
       <created>1622287244914</created>
@@ -728,7 +713,21 @@
       <option name="project" value="LOCAL" />
       <updated>1623247538281</updated>
     </task>
-    <option name="localTasksCounter" value="191" />
+    <task id="LOCAL-00191" summary="add todo">
+      <created>1623294627830</created>
+      <option name="number" value="00191" />
+      <option name="presentableId" value="LOCAL-00191" />
+      <option name="project" value="LOCAL" />
+      <updated>1623294627830</updated>
+    </task>
+    <task id="LOCAL-00192" summary="rename">
+      <created>1623294828578</created>
+      <option name="number" value="00192" />
+      <option name="presentableId" value="LOCAL-00192" />
+      <option name="project" value="LOCAL" />
+      <updated>1623294828578</updated>
+    </task>
+    <option name="localTasksCounter" value="193" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -757,7 +756,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="move main" />
     <MESSAGE value="remove list to array, add more primitive methods" />
     <MESSAGE value="fix ssDag" />
     <MESSAGE value="add @NotNull" />
@@ -778,11 +776,12 @@
     <MESSAGE value="rename packages" />
     <MESSAGE value="pass tests, save" />
     <MESSAGE value="remove edge direction" />
-    <MESSAGE value="rename" />
     <MESSAGE value="move graph transform" />
     <MESSAGE value="refactor" />
     <MESSAGE value="add doc" />
-    <option name="LAST_COMMIT_MESSAGE" value="add doc" />
+    <MESSAGE value="add todo" />
+    <MESSAGE value="rename" />
+    <option name="LAST_COMMIT_MESSAGE" value="rename" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
