@@ -76,7 +76,7 @@ class DFSTest{
     DFS.depthFirstSearch(dfsGraph);
     var vertices = dfsGraph.allVertices();
     List<DFS.Vert<String>> l = new ArrayList<>(vertices);
-    l.sort(Comparator.comparing(DFS.Vert::getId));
+    l.sort(Comparator.comparing(DFS.Vert::identity));
     assertEquals(1, l.get(0).discover);
     assertEquals(8, l.get(0).finish);
 

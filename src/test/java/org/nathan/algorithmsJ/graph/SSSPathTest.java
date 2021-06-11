@@ -48,7 +48,7 @@ class SSSPathTest{
     assertEquals(-2, target.getDistance());
     List<String> res = new ArrayList<>();
     while(target != null) {
-      res.add(target.getId());
+      res.add(target.identity());
       target = target.getParent();
     }
     assertTrue(b);
@@ -85,7 +85,7 @@ class SSSPathTest{
 
     SSSPath.ssDAG(ssDAGGraph, targetShortestPathOfDAGForBFS);
     var vertices = ssDAGGraph.allVertices();
-    var l = vertices.stream().sorted(Comparator.comparing(BFS.Vert::getId)).collect(Collectors.toList());
+    var l = vertices.stream().sorted(Comparator.comparing(BFS.Vert::identity)).collect(Collectors.toList());
     assertNull(l.get(0).getParent());
     assertNull(l.get(1).getParent());
     assertEquals(l.get(1), l.get(2).getParent());
@@ -134,7 +134,7 @@ class SSSPathTest{
 
     SSSPath.DijkstraMinHeap(dijkstraFibGraph, targetDijkstraFib);
     var vertices =
-            dijkstraFibGraph.allVertices().stream().sorted(Comparator.comparing(BFS.Vert::getId)).collect(Collectors.toList());
+            dijkstraFibGraph.allVertices().stream().sorted(Comparator.comparing(BFS.Vert::identity)).collect(Collectors.toList());
     assertNull(vertices.get(0).getParent());
 
     assertEquals(vertices.get(3), vertices.get(1).getParent());
@@ -159,7 +159,7 @@ class SSSPathTest{
 
     SSSPath.DijkstraFibonacciHeap(dijkstraMinHeapGraph, targetDijkstraMinHeap);
     var vertices =
-            dijkstraMinHeapGraph.allVertices().stream().sorted(Comparator.comparing(BFS.Vert::getId)).collect(Collectors.toList());
+            dijkstraMinHeapGraph.allVertices().stream().sorted(Comparator.comparing(BFS.Vert::identity)).collect(Collectors.toList());
     assertNull(vertices.get(0).getParent());
 
     assertEquals(vertices.get(3), vertices.get(1).getParent());

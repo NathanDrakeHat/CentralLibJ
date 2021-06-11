@@ -61,8 +61,8 @@ class MSTTest{
     for(var vertex : vertices){
       if(vertex.parent != null){
         Set<String> t = new HashSet<>();
-        t.add(vertex.getId());
-        t.add(vertex.parent.getId());
+        t.add(vertex.identity());
+        t.add(vertex.parent.identity());
         res.add(t);
       }
     }
@@ -82,8 +82,8 @@ class MSTTest{
     for(var vertex : vertices){
       if(vertex.parent != null){
         Set<String> t = new HashSet<>();
-        t.add(vertex.getId());
-        t.add(vertex.parent.getId());
+        t.add(vertex.identity());
+        t.add(vertex.parent.identity());
         res.add(t);
       }
     }

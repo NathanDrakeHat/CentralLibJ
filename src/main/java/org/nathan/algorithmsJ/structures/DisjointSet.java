@@ -4,7 +4,7 @@ package org.nathan.algorithmsJ.structures;
  * to use union() and findSet(),
  * extends this class or initial it in a public field
  */
-public class DisjointSet{
+public final class DisjointSet{
   private int rank = 0;
   private DisjointSet parent = this;
 

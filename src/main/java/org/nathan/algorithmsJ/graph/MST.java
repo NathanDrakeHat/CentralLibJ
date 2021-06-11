@@ -23,9 +23,9 @@ public final class MST{
     for(var edge : edges_list){
       var v1 = edge.from();
       var v2 = edge.to();
-      if(v1.findGroupId() != v2.findGroupId()){
+      if(v1.setId.findGroupId() != v2.setId.findGroupId()){
         res.add(edge);
-        v1.union(v2);
+        v1.setId.union(v2.setId);
       }
     }
     return res;
@@ -87,38 +87,33 @@ public final class MST{
     }
   }
 
-  public static class VertKruskal<V> extends DisjointSet{
+  public static class VertKruskal<Id>{
     @NotNull
-    private final V id;
+    private final Id identity;
+    final DisjointSet setId = new DisjointSet();
 
-    VertKruskal(@NotNull V n){
-      id = n;
+    VertKruskal(@NotNull Id n){
+      identity = n;
     }
 
     @SuppressWarnings("unused")
-    public @NotNull V getId(){
-      return id;
+    public @NotNull Id identity(){
+      return identity;
     }
 
     @Override
     public String toString(){
-      return String.format("KruskalVertex: %s", id);
+      return String.format("KruskalVertex: %s", identity);
     }
 
   }
 
-  public static class VertPrim<V>{
-    @NotNull
-    private final V id;
-    VertPrim<V> parent;
+  public static class VertPrim<Id> extends BaseVert<Id>{
+    VertPrim<Id> parent;
     double key = 0;
 
-    VertPrim(@NotNull V name){
-      this.id = name;
-    }
-
-    public @NotNull V getId(){
-      return id;
+    VertPrim(@NotNull Id name){
+      super(name);
     }
 
     public double getKey(){
@@ -127,7 +122,7 @@ public final class MST{
 
     @Override
     public String toString(){
-      return String.format("PrimVertex: (%s)", id);
+      return String.format("PrimVertex: (%s)", identity);
     }
   }
 }

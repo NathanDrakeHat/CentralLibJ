@@ -75,7 +75,7 @@ public final class SSSPath{
     var DFS_list = topologicalSort(DFS_Linked_graph);
     initializeSingleSource(BFS_Linked_graph, s);
     DFS_list.sort((d1, d2) -> d2.finish - d1.finish);
-    var BFS_list = DFS_list.stream().map(DFS.Vert::getId).collect(Collectors.toList());
+    var BFS_list = DFS_list.stream().map(DFS.Vert::identity).collect(Collectors.toList());
     for(var u : BFS_list){
       var u_edges = BFS_Linked_graph.edgesAt(u);
       for(var edge : u_edges){

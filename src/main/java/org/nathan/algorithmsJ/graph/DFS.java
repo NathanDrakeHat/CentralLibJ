@@ -85,9 +85,7 @@ public final class DFS{
 
   enum COLOR{WHITE, GRAY, BLACK}
 
-  public static class Vert<V>{
-    @NotNull
-    final V id;
+  public static class Vert<V> extends BaseVert<V>{
     @Nullable
     DFS.Vert<V> parent;
     int discover; //d
@@ -95,20 +93,16 @@ public final class DFS{
     COLOR color;
 
     Vert(@NotNull V name){
-      this.id = name;
+      super(name);
     }
-
-    public @NotNull V getId(){
-      return id;
-    }
-
+    
     public @Nullable DFS.Vert<V> getParent(){
       return parent;
     }
 
     @Override
     public String toString(){
-      return String.format("DFS.Vertex: (%s)", id);
+      return String.format("DFS.Vertex: (%s)", identity);
     }
   }
 }

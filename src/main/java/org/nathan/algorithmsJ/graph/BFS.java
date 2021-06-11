@@ -55,33 +55,28 @@ public final class BFS{
 
   private static <T> void traverse(Vert<T> s, Vert<T> v, List<T> res){
     if(v == s){
-      res.add(s.id);
+      res.add(s.identity);
     }
     else if(v.parent != null){
       traverse(s, v.parent, res);
-      res.add(v.id);
+      res.add(v.identity);
     }
   }
 
   enum COLOR{WHITE, GRAY, BLACK}
 
-  public static class Vert<ID>{
-    final ID id;
+  public static class Vert<ID> extends BaseVert<ID>{
     @Nullable
     BFS.Vert<ID> parent;
     double distance; // d
     COLOR color;
 
     Vert(@NotNull ID name){
-      this.id = name;
+      super(name);
     }
 
     Vert(){
-      id = null;
-    }
-
-    public @NotNull ID getId(){
-      return id;
+      super(null);
     }
 
     public @Nullable BFS.Vert<ID> getParent(){
@@ -94,7 +89,7 @@ public final class BFS{
 
     @Override
     public String toString(){
-      return String.format("BFS.Vertex: (%s)", id != null ? id.toString() : "()");
+      return String.format("BFS.Vertex: (%s)", identity != null ? identity.toString() : "()");
     }
   }
 }
