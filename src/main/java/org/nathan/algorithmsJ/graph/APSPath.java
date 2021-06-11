@@ -157,7 +157,7 @@ public class APSPath{
     new_graph.addVertex(s);
     for(var vertex : vertices){
       if(vertex != s){
-        new_graph.addEdge(new WeightEdge<>(s, vertex, 1));
+        new_graph.addEdge(new WeightEdge<>(s, vertex, 0));
       }
     }
     return new_graph;

@@ -22,9 +22,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="save">
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/graph/FlowEdge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/graph/FlowEdge.java" afterDir="false" />
-    </list>
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="save flow edge" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -89,7 +87,7 @@
       <recent name="org.nathan.algorithmsJava.graph" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ExtremumHeapTest">
+  <component name="RunManager" selected="JUnit.All in AlgorithmsJava">
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.nathan.Main" />
       <module name="AlgorithmsJava" />
@@ -110,6 +108,14 @@
       <module name="CentralUtils" />
       <option name="PROGRAM_PARAMETERS" value="7890" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../CentralUtils" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="All in AlgorithmsJava" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AlgorithmsJava" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -161,22 +167,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ExtremumHeapTest.minRandomAddTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="AlgorithmsJava" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.nathan.algorithmsJ.structures.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.nathan.algorithmsJ.structures" />
-      <option name="MAIN_CLASS_NAME" value="org.nathan.algorithmsJ.structures.ExtremumHeapTest" />
-      <option name="METHOD_NAME" value="minRandomAddTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="ExtremumHeapTest.minRandomUpdateKeyTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AlgorithmsJava" />
       <extension name="coverage">
@@ -198,18 +188,18 @@
       <item itemvalue="Application.pushUtils" />
       <item itemvalue="Application.Main" />
       <item itemvalue="JUnit.ExtremumHeapTest.maxRandomAddTest" />
-      <item itemvalue="JUnit.ExtremumHeapTest.minRandomAddTest" />
       <item itemvalue="JUnit.ExtremumHeapTest.maxRandomUpdateKeyTest" />
       <item itemvalue="JUnit.ExtremumHeapTest.minRandomUpdateKeyTest" />
       <item itemvalue="JUnit.ExtremumHeapTest" />
+      <item itemvalue="JUnit.All in AlgorithmsJava" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.All in AlgorithmsJava" />
         <item itemvalue="JUnit.ExtremumHeapTest" />
         <item itemvalue="JUnit.ExtremumHeapTest.maxRandomUpdateKeyTest" />
         <item itemvalue="JUnit.ExtremumHeapTest.minRandomUpdateKeyTest" />
         <item itemvalue="JUnit.ExtremumHeapTest.maxRandomAddTest" />
-        <item itemvalue="JUnit.ExtremumHeapTest.minRandomAddTest" />
       </list>
     </recent_temporary>
   </component>
@@ -395,14 +385,7 @@
       <workItem from="1623289763040" duration="2717000" />
       <workItem from="1623308566433" duration="5000" />
       <workItem from="1623314717001" duration="1519000" />
-      <workItem from="1623320355864" duration="9197000" />
-    </task>
-    <task id="LOCAL-00154" summary="move class to outer">
-      <created>1622340368347</created>
-      <option name="number" value="00154" />
-      <option name="presentableId" value="LOCAL-00154" />
-      <option name="project" value="LOCAL" />
-      <updated>1622340368347</updated>
+      <workItem from="1623320355864" duration="9433000" />
     </task>
     <task id="LOCAL-00155" summary="remove final for generic class">
       <created>1622340860481</created>
@@ -740,7 +723,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623333650173</updated>
     </task>
-    <option name="localTasksCounter" value="203" />
+    <task id="LOCAL-00203" summary="save flow edge">
+      <created>1623334638322</created>
+      <option name="number" value="00203" />
+      <option name="presentableId" value="LOCAL-00203" />
+      <option name="project" value="LOCAL" />
+      <updated>1623334638322</updated>
+    </task>
+    <option name="localTasksCounter" value="204" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -769,7 +759,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add interface" />
     <MESSAGE value="fix test bug" />
     <MESSAGE value="add" />
     <MESSAGE value="better implementation" />
@@ -794,7 +783,8 @@
     <MESSAGE value="refactor ExtremumHeap success" />
     <MESSAGE value="remove todo" />
     <MESSAGE value="save" />
-    <option name="LAST_COMMIT_MESSAGE" value="save" />
+    <MESSAGE value="save flow edge" />
+    <option name="LAST_COMMIT_MESSAGE" value="save flow edge" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
