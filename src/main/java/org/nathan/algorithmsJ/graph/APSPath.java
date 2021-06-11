@@ -128,7 +128,7 @@ public class APSPath{
         h.put(vertex, vertex.distance);
       }
       for(var edge : edges_new){
-        edge.weight = edge.weight + edge.former().distance - edge.latter().distance;
+        edge.weight = edge.weight + edge.from().distance - edge.to().distance;
       }
       var D = new double[n][n];
       int idx_u = 0;

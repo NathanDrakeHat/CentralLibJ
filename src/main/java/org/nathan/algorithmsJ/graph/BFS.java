@@ -80,7 +80,7 @@ public final class BFS{
       id = null;
     }
 
-    public ID getId(){
+    public @NotNull ID getId(){
       return id;
     }
 

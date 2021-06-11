@@ -21,8 +21,8 @@ public final class MST{
     var edges_list = new ArrayList<>(edges_set);
     edges_list.sort(Comparator.comparingDouble(WeightEdge::weight));
     for(var edge : edges_list){
-      var v1 = edge.former();
-      var v2 = edge.latter();
+      var v1 = edge.from();
+      var v2 = edge.to();
       if(v1.findGroupId() != v2.findGroupId()){
         res.add(edge);
         v1.union(v2);

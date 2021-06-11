@@ -34,7 +34,7 @@ public final class SSSPath{
       }
     }
     for(var edge : edges){
-      if(edge.latter().distance > edge.former().distance + edge.weight()){
+      if(edge.to().distance > edge.from().distance + edge.weight()){
         return false;
       }
     }
@@ -54,8 +54,8 @@ public final class SSSPath{
 
   private static <T> void relax(WeightEdge<BFS.Vert<T>> edge){
     var weight = edge.weight();
-    var u = edge.former();
-    var v = edge.latter();
+    var u = edge.from();
+    var v = edge.to();
     var sum = u.distance + weight;
     if(v.distance > sum){
       v.distance = sum;
@@ -98,8 +98,8 @@ public final class SSSPath{
                     mapRecord.get(otherV),
                     edges.parallelStream().map(edge ->
                             new BaseEdge<>(
-                                    mapRecord.get(edge.former()),
-                                    mapRecord.get(edge.latter())))
+                                    mapRecord.get(edge.from()),
+                                    mapRecord.get(edge.to())))
                             .collect(Collectors.toList()))));
 
     return res;

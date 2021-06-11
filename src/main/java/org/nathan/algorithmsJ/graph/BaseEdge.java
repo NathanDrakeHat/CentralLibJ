@@ -3,7 +3,6 @@ package org.nathan.algorithmsJ.graph;
 import org.jetbrains.annotations.NotNull;
 
 public class BaseEdge<V>{
-
   @NotNull final V former;
   @NotNull final V latter;
 
@@ -12,11 +11,11 @@ public class BaseEdge<V>{
     latter = l;
   }
 
-  public @NotNull V former(){
+  public @NotNull V from(){
     return former;
   }
 
-  public @NotNull V latter(){
+  public @NotNull V to(){
     return latter;
   }
 
