@@ -22,7 +22,16 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="save flow edge" />
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="fix trivial bug">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/graph/DFS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/graph/DFS.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/graph/LinkGraph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/graph/LinkGraph.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/graph/APSPathTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/graph/APSPathTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/graph/BFSTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/graph/BFSTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/graph/DFSTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/graph/DFSTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/graph/MSTTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/graph/MSTTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/graph/SSSPathTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/graph/SSSPathTest.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -386,13 +395,8 @@
       <workItem from="1623308566433" duration="5000" />
       <workItem from="1623314717001" duration="1519000" />
       <workItem from="1623320355864" duration="9433000" />
-    </task>
-    <task id="LOCAL-00155" summary="remove final for generic class">
-      <created>1622340860481</created>
-      <option name="number" value="00155" />
-      <option name="presentableId" value="LOCAL-00155" />
-      <option name="project" value="LOCAL" />
-      <updated>1622340860481</updated>
+      <workItem from="1623373213926" duration="1258000" />
+      <workItem from="1623378364711" duration="662000" />
     </task>
     <task id="LOCAL-00156" summary="add interface">
       <created>1622341117386</created>
@@ -730,7 +734,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623334638322</updated>
     </task>
-    <option name="localTasksCounter" value="204" />
+    <task id="LOCAL-00204" summary="fix trivial bug">
+      <created>1623373481012</created>
+      <option name="number" value="00204" />
+      <option name="presentableId" value="LOCAL-00204" />
+      <option name="project" value="LOCAL" />
+      <updated>1623373481012</updated>
+    </task>
+    <option name="localTasksCounter" value="205" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -759,7 +770,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fix test bug" />
     <MESSAGE value="add" />
     <MESSAGE value="better implementation" />
     <MESSAGE value="move test build outer" />
@@ -784,7 +794,8 @@
     <MESSAGE value="remove todo" />
     <MESSAGE value="save" />
     <MESSAGE value="save flow edge" />
-    <option name="LAST_COMMIT_MESSAGE" value="save flow edge" />
+    <MESSAGE value="fix trivial bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix trivial bug" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

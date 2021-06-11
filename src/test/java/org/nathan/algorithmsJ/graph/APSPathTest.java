@@ -16,7 +16,7 @@ class APSPathTest{
     for(var name : names){
       vertices.add(new BFS.Vert<>(name));
     }
-    LinkGraph<BFS.Vert<String>, WeightEdge<BFS.Vert<String>>> res = new LinkGraph<>(vertices, true);
+    LinkGraph<BFS.Vert<String>, WeightEdge<BFS.Vert<String>>> res = new LinkGraph<>(true, vertices);
     res.addEdge(new WeightEdge<>(vertices.get(0), vertices.get(1), 3));
     res.addEdge(new WeightEdge<>(vertices.get(0), vertices.get(2), 8));
     res.addEdge(new WeightEdge<>(vertices.get(0), vertices.get(4), -4));

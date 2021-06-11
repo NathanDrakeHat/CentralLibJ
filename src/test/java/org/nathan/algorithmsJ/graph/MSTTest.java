@@ -21,7 +21,7 @@ class MSTTest{
       vertices.add(i, new VertKruskal<>(names[i]));
     }
     LinkGraph<VertKruskal<String>, WeightEdge<VertKruskal<String>>> res =
-            new LinkGraph<>(vertices, false);
+            new LinkGraph<>(false, vertices);
     int[] indexes1 = new int[]{0, 1, 2, 3, 4, 5, 6, 7, 1, 2, 8, 8, 2, 3};
     int[] indexes2 = new int[]{1, 2, 3, 4, 5, 6, 7, 0, 7, 8, 7, 6, 5, 5};
     double[] weights = new double[]{4, 8, 7, 9, 10, 2, 1, 8, 11, 2, 7, 6, 4, 14};
@@ -98,7 +98,7 @@ class MSTTest{
     for(int i = 0; i < len; i++){
       vertices.add(i, new VertPrim<>(names[i]));
     }
-    LinkGraph<VertPrim<String>, WeightEdge<VertPrim<String>>> res = new LinkGraph<>(vertices, false);
+    LinkGraph<VertPrim<String>, WeightEdge<VertPrim<String>>> res = new LinkGraph<>(false, vertices);
     int[] indices1 = new int[]{0, 1, 2, 3, 4, 5, 6, 7, 1, 2, 8, 8, 2, 3};
     int[] indices2 = new int[]{1, 2, 3, 4, 5, 6, 7, 0, 7, 8, 7, 6, 5, 5};
     double[] weights = new double[]{4, 8, 7, 9, 10, 2, 1, 8, 11, 2, 7, 6, 4, 14};

@@ -71,7 +71,7 @@ public final class DFS{
   }
 
   private static <T> LinkGraph<Vert<T>, BaseEdge<Vert<T>>> transposeGraph(LinkGraph<Vert<T>, BaseEdge<Vert<T>>> graph){
-    var new_graph = new LinkGraph<>(graph.allVertices(), true);
+    LinkGraph<Vert<T>, BaseEdge<Vert<T>>> new_graph = new LinkGraph<>(true, graph.allVertices());
     var vertices = graph.allVertices();
     for(var v : vertices){
       var edges = graph.edgesAt(v);

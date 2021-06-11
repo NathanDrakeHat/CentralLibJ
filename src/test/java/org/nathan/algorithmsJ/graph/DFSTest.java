@@ -18,7 +18,7 @@ class DFSTest{
     for(int i = 0; i < names.length; i++){
       A.add(i, new DFS.Vert<>(names[i]));
     }
-    LinkGraph<DFS.Vert<String>, BaseEdge<DFS.Vert<String>>> G = new LinkGraph<>(A, true);
+    LinkGraph<DFS.Vert<String>, BaseEdge<DFS.Vert<String>>> G = new LinkGraph<>(true, A);
     G.addEdge(new BaseEdge<>(A.get(0), A.get(1)));
 
     G.addEdge(new BaseEdge<>(A.get(1), A.get(2)));
@@ -51,7 +51,7 @@ class DFSTest{
     for(int i = 0; i < 6; i++){
       vs.add(i, new DFS.Vert<>(String.valueOf(names.charAt(i))));
     }
-    var G = new LinkGraph<>(vs, true);
+    var G = new LinkGraph<>(true, vs);
     G.addEdge(new BaseEdge<>(vs.get(0), vs.get(1)));
     G.addEdge(new BaseEdge<>(vs.get(0), vs.get(3)));
 
@@ -133,7 +133,7 @@ class DFSTest{
     for(int i = 0; i < 9; i++){
       A.add(i, new DFS.Vert<>(names[i]));
     }
-    LinkGraph<DFS.Vert<String>, BaseEdge<DFS.Vert<String>>> G = new LinkGraph<>(A, true);
+    LinkGraph<DFS.Vert<String>, BaseEdge<DFS.Vert<String>>> G = new LinkGraph<>(true, A);
     G.addEdge(new BaseEdge<>(A.get(0), A.get(1)));
     G.addEdge(new BaseEdge<>(A.get(0), A.get(6)));
 

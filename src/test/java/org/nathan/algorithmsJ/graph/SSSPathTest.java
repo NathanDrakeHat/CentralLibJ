@@ -20,7 +20,7 @@ class SSSPathTest{
     for(var n : names){
       vertices.add(new BFS.Vert<>(n));
     }
-    LinkGraph<BFS.Vert<String>, WeightEdge<BFS.Vert<String>>> res = new LinkGraph<>(vertices, true);
+    LinkGraph<BFS.Vert<String>, WeightEdge<BFS.Vert<String>>> res = new LinkGraph<>(true, vertices);
     int[] index1 = new int[]{0, 0, 1, 1, 1, 2, 3, 3, 4, 4};
     int[] index2 = new int[]{1, 3, 2, 3, 4, 1, 2, 4, 0, 2};
     double[] weights = new double[]{6, 7, 5, 8, -4, -2, -3, 9, 2, 7};
@@ -65,7 +65,7 @@ class SSSPathTest{
     }
 
 
-    LinkGraph<BFS.Vert<String>, WeightEdge<BFS.Vert<String>>> BFS_G = new LinkGraph<>(BFS_vertex, true);
+    LinkGraph<BFS.Vert<String>, WeightEdge<BFS.Vert<String>>> BFS_G = new LinkGraph<>(true, BFS_vertex);
     int[] index1 = new int[]{0, 0, 1, 1, 2, 2, 2, 3, 3, 4};
     int[] index2 = new int[]{1, 2, 2, 3, 3, 4, 5, 4, 5, 5};
     double[] weights = new double[]{5, 3, 2, 6, 7, 4, 2, -1, 1, -2};
@@ -111,7 +111,7 @@ class SSSPathTest{
     for(var n : names){
       vertices.add(new BFS.Vert<>(n));
     }
-    LinkGraph<BFS.Vert<String>, WeightEdge<BFS.Vert<String>>> graph = new LinkGraph<>(vertices, true);
+    LinkGraph<BFS.Vert<String>, WeightEdge<BFS.Vert<String>>> graph = new LinkGraph<>(true, vertices);
     int[] indices1 = new int[]{0, 0, 1, 1, 2, 3, 3, 3, 4, 4};
     int[] indices2 = new int[]{1, 3, 2, 3, 4, 1, 2, 4, 0, 2};
     double[] weights = new double[]{10, 5, 1, 2, 4, 3, 9, 2, 7, 6};

@@ -31,10 +31,10 @@ public class LinkGraph<V, E extends BaseEdge<V>>{
   /**
    * build
    *
-   * @param vertices    all vertices
    * @param is_directed bool
+   * @param vertices    all vertices
    */
-  public LinkGraph(@NotNull List<? extends V> vertices, boolean is_directed){
+  public LinkGraph(boolean is_directed, @NotNull List<? extends V> vertices){
     this(vertices.size(), is_directed);
     for(var vertex : vertices){
       Objects.requireNonNull(vertex);
@@ -58,6 +58,12 @@ public class LinkGraph<V, E extends BaseEdge<V>>{
     edges_map.get(edge.former).add(edge);
     if(!directed){
       edges_map.get(edge.latter).add(edge);
+    }
+  }
+
+  public void addEdges(@NotNull List<E> edges){
+    for(var edge : edges){
+      addEdge(edge);
     }
   }
 
