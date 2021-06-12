@@ -244,17 +244,6 @@ public final class Sort{
     }
   }
 
-  private static boolean isASCII(String str){
-    for(int i = 0; i < str.length(); i++){
-      var c = str.charAt(i);
-      if(c >= 256){
-        return false;
-      }
-    }
-
-    return true;
-  }
-
   /**
    * O(n)
    * @param <E> element

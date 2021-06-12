@@ -22,11 +22,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="remove array to list">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/misc/Sort.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/misc/Sort.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/misc/SortTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/misc/SortTest.java" afterDir="false" />
-    </list>
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="add lsd" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -91,7 +87,7 @@
       <recent name="org.nathan.algorithmsJava.graph" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.SortTest.LSDTest">
+  <component name="RunManager" selected="JUnit.SortTest.keyIndexCountingSortTest">
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.nathan.Main" />
       <module name="AlgorithmsJava" />
@@ -199,8 +195,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.SortTest.LSDTest" />
         <item itemvalue="JUnit.SortTest.keyIndexCountingSortTest" />
+        <item itemvalue="JUnit.SortTest.LSDTest" />
         <item itemvalue="JUnit.MaxFlowTest.FordFulkersonTest" />
         <item itemvalue="JUnit.All in AlgorithmsJava" />
         <item itemvalue="JUnit.ExtremumHeapTest" />
@@ -397,14 +393,7 @@
       <workItem from="1623420572398" duration="19000" />
       <workItem from="1623420604992" duration="9777000" />
       <workItem from="1623493247127" duration="865000" />
-      <workItem from="1623494511253" duration="5495000" />
-    </task>
-    <task id="LOCAL-00163" summary="save">
-      <created>1622468486206</created>
-      <option name="number" value="00163" />
-      <option name="presentableId" value="LOCAL-00163" />
-      <option name="project" value="LOCAL" />
-      <updated>1622468486206</updated>
+      <workItem from="1623494511253" duration="5805000" />
     </task>
     <task id="LOCAL-00164" summary="add">
       <created>1622960584432</created>
@@ -742,7 +731,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623496684655</updated>
     </task>
-    <option name="localTasksCounter" value="212" />
+    <task id="LOCAL-00212" summary="add lsd">
+      <created>1623500376785</created>
+      <option name="number" value="00212" />
+      <option name="presentableId" value="LOCAL-00212" />
+      <option name="project" value="LOCAL" />
+      <updated>1623500376785</updated>
+    </task>
+    <option name="localTasksCounter" value="213" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -771,7 +767,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="better algo, move test build outer" />
     <MESSAGE value="add acm, save todo" />
     <MESSAGE value="set public" />
     <MESSAGE value="inner methods" />
@@ -796,7 +791,8 @@
     <MESSAGE value="add max flow" />
     <MESSAGE value="add key indexed counting sort" />
     <MESSAGE value="remove array to list" />
-    <option name="LAST_COMMIT_MESSAGE" value="remove array to list" />
+    <MESSAGE value="add lsd" />
+    <option name="LAST_COMMIT_MESSAGE" value="add lsd" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

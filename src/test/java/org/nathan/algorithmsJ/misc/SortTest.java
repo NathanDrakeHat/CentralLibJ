@@ -225,26 +225,8 @@ class SortTest{
   }
 
   Map<String, Integer> nameToSection = new HashMap<>(20);
-  String[] names = ("Anderson," +
-          "Brown," +
-          "Davis," +
-          "Garcia," +
-          "Harris," +
-          "Jackson," +
-          "Johnson," +
-          "Jones," +
-          "Martin," +
-          "Martinez," +
-          "Miller," +
-          "Moore," +
-          "Robinson," +
-          "Smith," +
-          "Taylor," +
-          "Thomas," +
-          "Thompson," +
-          "White," +
-          "Williams," +
-          "Wilson").split(",");
+  String[] names = ("Anderson,Brown,Davis,Garcia,Harris,Jackson,Johnson,Jones,Martin,Martinez,Miller,Moore,Robinson," +
+          "Smith,Taylor,Thomas,Thompson,White,Williams,Wilson").split(",");
   List<String> nameSortAnswer = Arrays.stream(("Harris,Martin,Moore,Anderson,Martinez,Miller,Robinson,White," +
           "Brown,Davis,Jackson,Jones,Taylor,Williams,Garcia,Johnson,Smith,Thomas,Thompson,Wilson").split(
           ",")).toList();
@@ -273,7 +255,7 @@ class SortTest{
     Sort.LSDRadixSort(LSDData);
     assertEquals(LSDAnswer.length, LSDData.length);
     for(int i = 0; i < LSDData.length; i++){
-      assertEquals(LSDAnswer[i],LSDData[i]);
+      assertEquals(LSDAnswer[i], LSDData[i]);
     }
   }
 }
