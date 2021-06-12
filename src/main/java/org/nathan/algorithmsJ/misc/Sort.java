@@ -3,7 +3,7 @@ package org.nathan.algorithmsJ.misc;
 import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.function.ToIntFunction;
-import java.util.stream.IntStream;
+import java.util.stream.Collectors;
 
 
 public final class Sort{
@@ -255,9 +255,19 @@ public final class Sort{
     return true;
   }
 
+  /**
+   * O(n)
+   * @param <E> element
+   */
   public static class KeyIndexedCountingSorter<E>{
     private final int[] count;
+    private boolean clear = false;
     public final int RADIX;
+
+    public KeyIndexedCountingSorter(){
+      count = new int[256+1];
+      RADIX = 256;
+    }
 
     public KeyIndexedCountingSorter(int radix){
       count = new int[radix+1];
@@ -265,7 +275,9 @@ public final class Sort{
     }
 
     public void sort(List<E> array, ToIntFunction<E> toKey){
-      Arrays.fill(count, 0);
+      if(clear){
+        Arrays.fill(count, 0);
+      }
       List<E> aux = new ArrayList<>(array.size());
       for(int i = 0; i < array.size(); i++){
         aux.add(null);
@@ -292,12 +304,27 @@ public final class Sort{
       }
       array.clear();
       array.addAll(aux);
+      clear = true;
     }
   }
 
-  // TODO lsd radix sort
   public static void LSDRadixSort(String[] strings){
+    if(strings.length == 0){
+      return;
+    }
 
+    var len = strings[0].length();
+    if(!Arrays.stream(strings).parallel().allMatch(s->s.length() == len)){
+      throw new IllegalArgumentException("strings do not have the same length.");
+    }
+
+    List<String> l = Arrays.stream(strings).collect(Collectors.toList());
+    var sorter = new KeyIndexedCountingSorter<String>();
+    for(int i = len - 1; i >= 0; i--){
+      int finalI = i;
+      sorter.sort(l, s->s.charAt(finalI));
+    }
+    System.arraycopy(l.toArray(new String[0]), 0, strings, 0, strings.length);
   }
 
   // TODO msd radix sort

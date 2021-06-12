@@ -264,4 +264,16 @@ class SortTest{
     sorter.sort(l, name -> nameToSection.get(name));
     assertEquals(nameSortAnswer, l);
   }
+
+  String[] LSDData = "dab,add,cab,fad,fee,bad,dad,bee,fed,bed,ebb,ace".split(",");
+  String[] LSDAnswer = "ace,add,bad,bed,bee,cab,dab,dad,ebb,fad,fed,fee".split(",");
+
+  @Test
+  void LSDTest(){
+    Sort.LSDRadixSort(LSDData);
+    assertEquals(LSDAnswer.length, LSDData.length);
+    for(int i = 0; i < LSDData.length; i++){
+      assertEquals(LSDAnswer[i],LSDData[i]);
+    }
+  }
 }
