@@ -59,6 +59,44 @@ class SortTest{
     return is_sorted;
   }
 
+  double[][] insertionSortCase = new double[iteration][];
+
+  {
+    var rand = ThreadLocalRandom.current();
+    for(int i = 0; i < iteration; i++){
+      int len = rand.nextInt(10) + 20;
+      int bound = rand.nextInt(5) + 10;
+      insertionSortCase[i] = randomDoubleArray(-bound, bound, len);
+    }
+  }
+
+  @Test
+  void insertionSortTest(){
+    for(int i = 0; i < iteration; i++){
+      Sort.insertionSort(insertionSortCase[i]);
+      assertTrue(isSorted(insertionSortCase[i]));
+    }
+  }
+
+  double[][] selectionSortCase = new double[iteration][];
+
+  {
+    var rand = ThreadLocalRandom.current();
+    for(int i = 0; i < iteration; i++){
+      int len = rand.nextInt(10) + 20;
+      int bound = rand.nextInt(5) + 10;
+      selectionSortCase[i] = randomDoubleArray(-bound, bound, len);
+    }
+  }
+
+  @Test
+  void selectionSortTest(){
+    for(int i = 0; i < iteration; i++){
+      Sort.selectionSort(selectionSortCase[i]);
+      assertTrue(isSorted(selectionSortCase[i]));
+    }
+  }
+
 
   double[][] iterMergeSortCase = new double[iteration][];
 

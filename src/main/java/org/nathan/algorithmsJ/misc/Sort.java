@@ -7,6 +7,30 @@ import java.util.stream.Collectors;
 
 
 public final class Sort{
+  public static void selectionSort(double[] array){
+    for(int i = 0; i < array.length; i++){
+      int min_idx = i;
+      for(int j = i + 1; j < array.length; j++){
+        if(array[j] < array[min_idx]){
+          min_idx = j;
+        }
+      }
+      double t = array[i];
+      array[i] = array[min_idx];
+      array[min_idx] = t;
+    }
+  }
+
+  public static void insertionSort(double[] array){
+    for(int i = 1; i < array.length; i++){
+      for(int j = i - 1; j >= 0 && array[j] > array[j + 1]; j--){
+        var t = array[j];
+        array[j] = array[j + 1];
+        array[j + 1] = t;
+      }
+    }
+  }
+
   private static void merge(double[] array, int start, double[] cache1, double[] cache2){
     int right_idx = 0;
     int left_idx = 0;
@@ -246,6 +270,7 @@ public final class Sort{
 
   /**
    * O(n)
+   *
    * @param <E> element
    */
   public static class KeyIndexedCountingSorter<E>{
@@ -254,12 +279,12 @@ public final class Sort{
     public final int RADIX;
 
     public KeyIndexedCountingSorter(){
-      count = new int[256+1];
+      count = new int[256 + 1];
       RADIX = 256;
     }
 
     public KeyIndexedCountingSorter(int radix){
-      count = new int[radix+1];
+      count = new int[radix + 1];
       RADIX = radix;
     }
 
@@ -277,11 +302,11 @@ public final class Sort{
         if(a >= RADIX){
           throw new IllegalArgumentException("key >= radix");
         }
-        count[a+1]++;
+        count[a + 1]++;
       }
 
       for(int i = 0; i < RADIX; i++){
-        count[i+1] += count[i];
+        count[i + 1] += count[i];
       }
 
       for(var item : array){
@@ -303,7 +328,7 @@ public final class Sort{
     }
 
     var len = strings[0].length();
-    if(!Arrays.stream(strings).parallel().allMatch(s->s.length() == len)){
+    if(!Arrays.stream(strings).parallel().allMatch(s -> s.length() == len)){
       throw new IllegalArgumentException("strings do not have the same length.");
     }
 
@@ -311,7 +336,7 @@ public final class Sort{
     var sorter = new KeyIndexedCountingSorter<String>();
     for(int i = len - 1; i >= 0; i--){
       int finalI = i;
-      sorter.sort(l, s->s.charAt(finalI));
+      sorter.sort(l, s -> s.charAt(finalI));
     }
     System.arraycopy(l.toArray(new String[0]), 0, strings, 0, strings.length);
   }

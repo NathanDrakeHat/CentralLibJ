@@ -22,7 +22,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="add lsd" />
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="remove redundant methods">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/misc/Sort.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/misc/Sort.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/misc/SortTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/misc/SortTest.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -87,7 +91,7 @@
       <recent name="org.nathan.algorithmsJava.graph" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.SortTest.keyIndexCountingSortTest">
+  <component name="RunManager" selected="JUnit.SortTest.selectionSortTest">
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.nathan.Main" />
       <module name="AlgorithmsJava" />
@@ -120,37 +124,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ExtremumHeapTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="AlgorithmsJava" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.nathan.algorithmsJ.structures.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.nathan.algorithmsJ.structures" />
-      <option name="MAIN_CLASS_NAME" value="org.nathan.algorithmsJ.structures.ExtremumHeapTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MaxFlowTest.FordFulkersonTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="AlgorithmsJava" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.nathan.algorithmsJ.graph.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.nathan.algorithmsJ.graph" />
-      <option name="MAIN_CLASS_NAME" value="org.nathan.algorithmsJ.graph.MaxFlowTest" />
-      <option name="METHOD_NAME" value="FordFulkersonTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="SortTest.LSDTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AlgorithmsJava" />
       <extension name="coverage">
@@ -162,6 +135,22 @@
       <option name="PACKAGE_NAME" value="org.nathan.algorithmsJ.misc" />
       <option name="MAIN_CLASS_NAME" value="org.nathan.algorithmsJ.misc.SortTest" />
       <option name="METHOD_NAME" value="LSDTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SortTest.insertionSortTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AlgorithmsJava" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.nathan.algorithmsJ.misc.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.nathan.algorithmsJ.misc" />
+      <option name="MAIN_CLASS_NAME" value="org.nathan.algorithmsJ.misc.SortTest" />
+      <option name="METHOD_NAME" value="insertionSortTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -183,23 +172,39 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="SortTest.selectionSortTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AlgorithmsJava" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.nathan.algorithmsJ.misc.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.nathan.algorithmsJ.misc" />
+      <option name="MAIN_CLASS_NAME" value="org.nathan.algorithmsJ.misc.SortTest" />
+      <option name="METHOD_NAME" value="selectionSortTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="Application.pushThis" />
       <item itemvalue="Application.pushUtils" />
       <item itemvalue="Application.Main" />
-      <item itemvalue="JUnit.ExtremumHeapTest" />
       <item itemvalue="JUnit.All in AlgorithmsJava" />
-      <item itemvalue="JUnit.MaxFlowTest.FordFulkersonTest" />
       <item itemvalue="JUnit.SortTest.keyIndexCountingSortTest" />
       <item itemvalue="JUnit.SortTest.LSDTest" />
+      <item itemvalue="JUnit.SortTest.selectionSortTest" />
+      <item itemvalue="JUnit.SortTest.insertionSortTest" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.SortTest.selectionSortTest" />
+        <item itemvalue="JUnit.SortTest.insertionSortTest" />
+        <item itemvalue="JUnit.All in AlgorithmsJava" />
         <item itemvalue="JUnit.SortTest.keyIndexCountingSortTest" />
         <item itemvalue="JUnit.SortTest.LSDTest" />
-        <item itemvalue="JUnit.MaxFlowTest.FordFulkersonTest" />
-        <item itemvalue="JUnit.All in AlgorithmsJava" />
-        <item itemvalue="JUnit.ExtremumHeapTest" />
       </list>
     </recent_temporary>
   </component>
@@ -393,14 +398,7 @@
       <workItem from="1623420572398" duration="19000" />
       <workItem from="1623420604992" duration="9777000" />
       <workItem from="1623493247127" duration="865000" />
-      <workItem from="1623494511253" duration="5805000" />
-    </task>
-    <task id="LOCAL-00164" summary="add">
-      <created>1622960584432</created>
-      <option name="number" value="00164" />
-      <option name="presentableId" value="LOCAL-00164" />
-      <option name="project" value="LOCAL" />
-      <updated>1622960584432</updated>
+      <workItem from="1623494511253" duration="9451000" />
     </task>
     <task id="LOCAL-00165" summary="fix test bug">
       <created>1622961174796</created>
@@ -738,7 +736,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623500376785</updated>
     </task>
-    <option name="localTasksCounter" value="213" />
+    <task id="LOCAL-00213" summary="remove redundant methods">
+      <created>1623500629460</created>
+      <option name="number" value="00213" />
+      <option name="presentableId" value="LOCAL-00213" />
+      <option name="project" value="LOCAL" />
+      <updated>1623500629460</updated>
+    </task>
+    <option name="localTasksCounter" value="214" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -767,7 +772,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add acm, save todo" />
     <MESSAGE value="set public" />
     <MESSAGE value="inner methods" />
     <MESSAGE value="rename packages" />
@@ -792,7 +796,8 @@
     <MESSAGE value="add key indexed counting sort" />
     <MESSAGE value="remove array to list" />
     <MESSAGE value="add lsd" />
-    <option name="LAST_COMMIT_MESSAGE" value="add lsd" />
+    <MESSAGE value="remove redundant methods" />
+    <option name="LAST_COMMIT_MESSAGE" value="remove redundant methods" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
