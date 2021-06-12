@@ -23,7 +23,8 @@ class Main{
       GitPush.gitPush(args);
     }
     else{
-      List<Integer> l = new ArrayList<>();
+      String t = "ab";
+
     }
   }
 }

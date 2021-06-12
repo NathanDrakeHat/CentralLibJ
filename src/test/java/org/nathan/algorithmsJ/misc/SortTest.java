@@ -2,8 +2,14 @@ package org.nathan.algorithmsJ.misc;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.stream.Collectors;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.nathan.centralUtils.utils.ArrayUtils.randomDoubleArray;
 import static org.nathan.centralUtils.utils.ArrayUtils.randomIntArray;
@@ -218,4 +224,44 @@ class SortTest{
     }
   }
 
+  Map<String, Integer> nameToSection = new HashMap<>(20);
+  String[] names = ("Anderson," +
+          "Brown," +
+          "Davis," +
+          "Garcia," +
+          "Harris," +
+          "Jackson," +
+          "Johnson," +
+          "Jones," +
+          "Martin," +
+          "Martinez," +
+          "Miller," +
+          "Moore," +
+          "Robinson," +
+          "Smith," +
+          "Taylor," +
+          "Thomas," +
+          "Thompson," +
+          "White," +
+          "Williams," +
+          "Wilson").split(",");
+  List<String> nameSortAnswer = Arrays.stream(("Harris,Martin,Moore,Anderson,Martinez,Miller,Robinson,White," +
+          "Brown,Davis,Jackson,Jones,Taylor,Williams,Garcia,Johnson,Smith,Thomas,Thompson,Wilson").split(
+          ",")).toList();
+
+  {
+    int[] section = new int[]{2, 3, 3, 4, 1, 3, 4, 3, 1, 2, 2, 1, 2, 4, 3, 4, 4, 2, 3, 4};
+    for(int i = 0; i < names.length; i++){
+      nameToSection.put(names[i], section[i]);
+    }
+  }
+
+
+  @Test
+  void keyIndexCountingSortTest(){
+    var l = Arrays.stream(names).collect(Collectors.toList());
+    var sorter = new Sort.KeyIndexedCountingSorter<String>(256);
+    sorter.sort(l, name -> nameToSection.get(name));
+    assertEquals(nameSortAnswer, l);
+  }
 }

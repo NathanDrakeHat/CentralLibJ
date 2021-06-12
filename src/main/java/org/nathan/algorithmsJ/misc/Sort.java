@@ -2,6 +2,8 @@ package org.nathan.algorithmsJ.misc;
 
 import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.function.ToIntFunction;
+import java.util.stream.IntStream;
 
 
 public final class Sort{
@@ -242,9 +244,55 @@ public final class Sort{
     }
   }
 
-  // TODO key indexed counting sort
-  public static void keyIndexedCountingSort(char[] a){
+  private static boolean isASCII(String str){
+    for(int i = 0; i < str.length(); i++){
+      var c = str.charAt(i);
+      if(c >= 256){
+        return false;
+      }
+    }
 
+    return true;
+  }
+
+  public static class KeyIndexedCountingSorter<E>{
+    private final int[] count;
+    public final int RADIX;
+
+    public KeyIndexedCountingSorter(int radix){
+      count = new int[radix+1];
+      RADIX = radix;
+    }
+
+    public void sort(List<E> array, ToIntFunction<E> toKey){
+      Arrays.fill(count, 0);
+      List<E> aux = new ArrayList<>(array.size());
+      for(int i = 0; i < array.size(); i++){
+        aux.add(null);
+      }
+
+      for(var item : array){
+        var a = toKey.applyAsInt(item);
+        if(a >= RADIX){
+          throw new IllegalArgumentException("key >= radix");
+        }
+        count[a+1]++;
+      }
+
+      for(int i = 0; i < RADIX; i++){
+        count[i+1] += count[i];
+      }
+
+      for(var item : array){
+        var a = toKey.applyAsInt(item);
+        if(a >= RADIX){
+          throw new IllegalArgumentException("key >= radix");
+        }
+        aux.set(count[a]++, item);
+      }
+      array.clear();
+      array.addAll(aux);
+    }
   }
 
   // TODO lsd radix sort
