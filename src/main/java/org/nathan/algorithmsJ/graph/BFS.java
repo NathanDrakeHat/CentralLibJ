@@ -28,7 +28,7 @@ public final class BFS{
     Q.add(s);
     while(!Q.isEmpty()) {
       var u = Q.remove();
-      var u_edges = G.edgesAt(u);
+      var u_edges = G.adjacentEdgesOf(u);
       for(var edge : u_edges){
         var v = edge.another(u);
         if(v.color == COLOR.WHITE){

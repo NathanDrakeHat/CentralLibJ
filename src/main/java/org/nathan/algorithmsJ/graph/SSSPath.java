@@ -77,7 +77,7 @@ public final class SSSPath{
     DFS_list.sort((d1, d2) -> d2.finish - d1.finish);
     var BFS_list = DFS_list.stream().map(DFS.Vert::identity).collect(Collectors.toList());
     for(var u : BFS_list){
-      var u_edges = BFS_Linked_graph.edgesAt(u);
+      var u_edges = BFS_Linked_graph.adjacentEdgesOf(u);
       for(var edge : u_edges){
         relax(edge);
       }
@@ -122,7 +122,7 @@ public final class SSSPath{
     }
     while(Q.count() > 0) {
       var u = Q.extractMin();
-      var u_edges = G.edgesAt(u);
+      var u_edges = G.adjacentEdgesOf(u);
       for(var edge : u_edges){
         var v = edge.another(u);
         var original = v.distance;
@@ -147,7 +147,7 @@ public final class SSSPath{
     ExtremumHeap<Double, BFS.Vert<T>> Q = new ExtremumHeap<>(true,vertices, BFS.Vert::getDistance, Double::compare);
     while(Q.length() > 0) {
       var u = Q.extractExtremum();
-      var u_edges = G.edgesAt(u);
+      var u_edges = G.adjacentEdgesOf(u);
       for(var edge : u_edges){
         var v = edge.another(u);
         var original = v.distance;

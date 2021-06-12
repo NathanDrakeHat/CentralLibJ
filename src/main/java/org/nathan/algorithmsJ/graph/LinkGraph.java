@@ -98,7 +98,7 @@ public class LinkGraph<V, E extends BaseEdge<V>>{
    * @param vertex vertex
    * @return unmodifiable list
    */
-  public @NotNull List<E> edgesAt(V vertex){
+  public @NotNull List<E> adjacentEdgesOf(V vertex){
     return Collections.unmodifiableList(edges_map.get(vertex));
   }
 

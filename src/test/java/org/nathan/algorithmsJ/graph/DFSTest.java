@@ -181,7 +181,7 @@ class DFSTest{
     if(current.equals(target)){
       return false;
     }
-    var edges = G.edgesAt(current);
+    var edges = G.adjacentEdgesOf(current);
     if(edges.isEmpty()){
       return true;
     }

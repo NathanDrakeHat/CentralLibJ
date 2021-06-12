@@ -9,4 +9,9 @@ public class BaseVert<Id>{
   public Id identity(){
     return identity;
   }
+
+  @Override
+  public String toString(){
+    return String.format("vertex<%s>",identity);
+  }
 }

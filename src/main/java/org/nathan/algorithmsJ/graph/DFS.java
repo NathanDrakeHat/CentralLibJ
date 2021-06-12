@@ -29,7 +29,7 @@ public final class DFS{
     time++;
     u.discover = time;
     u.color = COLOR.GRAY;
-    var u_edges = G.edgesAt(u);
+    var u_edges = G.adjacentEdgesOf(u);
     for(var edge : u_edges){
       var v = edge.another(u);
       if(v.color == COLOR.WHITE){
@@ -74,7 +74,7 @@ public final class DFS{
     LinkGraph<Vert<T>, BaseEdge<Vert<T>>> new_graph = new LinkGraph<>(true, graph.allVertices());
     var vertices = graph.allVertices();
     for(var v : vertices){
-      var edges = graph.edgesAt(v);
+      var edges = graph.adjacentEdgesOf(v);
       for(var edge : edges){
         var n = edge.another(v);
         new_graph.addEdge(new BaseEdge<>(n, v));
