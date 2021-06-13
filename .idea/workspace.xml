@@ -22,10 +22,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="rename package">
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="rename FibonacciHeap.java">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/VEBTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/VEBTree.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/structures/OrderStatisticTreeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/structures/OrderStatisticTreeTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/misc/Sort.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/misc/Sort.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +55,7 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/FibonacciHeap.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/FibonacciMinHeap.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="1frQbN17KMrYLWgoSMIuH1vYjss" />
   <component name="ProjectViewState">
@@ -91,7 +90,7 @@
       <recent name="org.nathan.algorithmsJava.graph" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.OrderStatisticTreeTest.functionsTest">
+  <component name="RunManager" selected="JUnit.SortTest.shellSortTest">
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.nathan.Main" />
       <module name="AlgorithmsJava" />
@@ -156,22 +155,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SortTest.insertionSortTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="AlgorithmsJava" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.nathan.algorithmsJ.misc.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.nathan.algorithmsJ.misc" />
-      <option name="MAIN_CLASS_NAME" value="org.nathan.algorithmsJ.misc.SortTest" />
-      <option name="METHOD_NAME" value="insertionSortTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="SortTest.selectionSortTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AlgorithmsJava" />
       <extension name="coverage">
@@ -188,23 +171,39 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="SortTest.shellSortTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AlgorithmsJava" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.nathan.algorithmsJ.misc.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.nathan.algorithmsJ.misc" />
+      <option name="MAIN_CLASS_NAME" value="org.nathan.algorithmsJ.misc.SortTest" />
+      <option name="METHOD_NAME" value="shellSortTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="Application.pushThis" />
       <item itemvalue="Application.pushUtils" />
       <item itemvalue="Application.Main" />
       <item itemvalue="JUnit.All in AlgorithmsJava" />
       <item itemvalue="JUnit.SortTest.selectionSortTest" />
-      <item itemvalue="JUnit.SortTest.insertionSortTest" />
       <item itemvalue="JUnit.OrderStatisticTreeTest.balanceTest" />
       <item itemvalue="JUnit.OrderStatisticTreeTest.functionsTest" />
+      <item itemvalue="JUnit.SortTest.shellSortTest" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.SortTest.shellSortTest" />
         <item itemvalue="JUnit.OrderStatisticTreeTest.functionsTest" />
         <item itemvalue="JUnit.All in AlgorithmsJava" />
         <item itemvalue="JUnit.OrderStatisticTreeTest.balanceTest" />
         <item itemvalue="JUnit.SortTest.selectionSortTest" />
-        <item itemvalue="JUnit.SortTest.insertionSortTest" />
       </list>
     </recent_temporary>
   </component>
@@ -398,21 +397,7 @@
       <workItem from="1623420572398" duration="19000" />
       <workItem from="1623420604992" duration="9777000" />
       <workItem from="1623493247127" duration="865000" />
-      <workItem from="1623494511253" duration="12791000" />
-    </task>
-    <task id="LOCAL-00173" summary="better algo, move test build outer">
-      <created>1623030413300</created>
-      <option name="number" value="00173" />
-      <option name="presentableId" value="LOCAL-00173" />
-      <option name="project" value="LOCAL" />
-      <updated>1623030413300</updated>
-    </task>
-    <task id="LOCAL-00174" summary="add acm, save todo">
-      <created>1623033045347</created>
-      <option name="number" value="00174" />
-      <option name="presentableId" value="LOCAL-00174" />
-      <option name="project" value="LOCAL" />
-      <updated>1623033045347</updated>
+      <workItem from="1623494511253" duration="13709000" />
     </task>
     <task id="LOCAL-00175" summary="set public">
       <created>1623035997672</created>
@@ -743,7 +728,21 @@
       <option name="project" value="LOCAL" />
       <updated>1623570893232</updated>
     </task>
-    <option name="localTasksCounter" value="222" />
+    <task id="LOCAL-00222" summary="fix OrderStatisticTreeTest bug">
+      <created>1623571508670</created>
+      <option name="number" value="00222" />
+      <option name="presentableId" value="LOCAL-00222" />
+      <option name="project" value="LOCAL" />
+      <updated>1623571508670</updated>
+    </task>
+    <task id="LOCAL-00223" summary="rename FibonacciHeap.java">
+      <created>1623571559932</created>
+      <option name="number" value="00223" />
+      <option name="presentableId" value="LOCAL-00223" />
+      <option name="project" value="LOCAL" />
+      <updated>1623571559932</updated>
+    </task>
+    <option name="localTasksCounter" value="224" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -772,8 +771,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="rename" />
-    <MESSAGE value="add todos, fix func interface" />
     <MESSAGE value="add todos" />
     <MESSAGE value="edge refactor success!" />
     <MESSAGE value="rename classes" />
@@ -797,7 +794,9 @@
     <MESSAGE value="add todo" />
     <MESSAGE value="delete Bag.java" />
     <MESSAGE value="rename package" />
-    <option name="LAST_COMMIT_MESSAGE" value="rename package" />
+    <MESSAGE value="fix OrderStatisticTreeTest bug" />
+    <MESSAGE value="rename FibonacciHeap.java" />
+    <option name="LAST_COMMIT_MESSAGE" value="rename FibonacciHeap.java" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

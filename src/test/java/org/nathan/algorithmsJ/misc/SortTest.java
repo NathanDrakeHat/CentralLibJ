@@ -59,6 +59,25 @@ class SortTest{
     return is_sorted;
   }
 
+  double[][] shellSortCase = new double[iteration][];
+
+  {
+    var rand = ThreadLocalRandom.current();
+    for(int i = 0; i < iteration; i++){
+      int len = rand.nextInt(10) + 20;
+      int bound = rand.nextInt(5) + 10;
+      shellSortCase[i] = randomDoubleArray(-bound, bound, len);
+    }
+  }
+
+  @Test
+  void shellSortTest(){
+    for(int i = 0; i < iteration; i++){
+      Sort.shellSort(shellSortCase[i]);
+      assertTrue(isSorted(shellSortCase[i]));
+    }
+  }
+
   double[][] insertionSortCase = new double[iteration][];
 
   {

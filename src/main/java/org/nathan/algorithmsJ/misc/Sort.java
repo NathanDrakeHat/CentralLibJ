@@ -32,7 +32,20 @@ public final class Sort{
   }
 
   public static void shellSort(double[] array){
-
+    int h = 1;
+    while(h < array.length / 3) {
+      h = 3 * h + 1;
+    }
+    while(h >= 1) {
+      for(int i = h; i < array.length; i+=h){
+        for(int j = i; j >= h && array[j] < array[j-h]; j-=h){
+          var t = array[j];
+          array[j] = array[j - h];
+          array[j -h] = t;
+        }
+      }
+      h /= 3;
+    }
   }
 
   private static void merge(double[] array, int start, double[] cache1, double[] cache2){
