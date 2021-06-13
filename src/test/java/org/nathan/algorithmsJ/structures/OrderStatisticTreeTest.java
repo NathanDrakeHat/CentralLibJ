@@ -2,7 +2,6 @@ package org.nathan.algorithmsJ.structures;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.Comparator;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -37,7 +36,7 @@ class OrderStatisticTreeTest{
     RBtree.insertKey(5);
     RBtree.insertKey(8);
     RBtree.insertKey(4);
-    OrderStatisticTree.ColorSizeNode root = RBtree.getRoot();
+    OrderStatisticTree.Node root = RBtree.getRoot();
     assertEquals(7, root.key); // 7
     assertEquals(2, root.left.key); // 2
     assertEquals(11, root.right.key); // 11

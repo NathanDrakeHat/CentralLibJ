@@ -22,13 +22,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="add two sort">
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/misc/ConvexHull.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/misc/Shuffle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="move">
       <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/OrderStatisticTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/OrderStatisticTree.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/structures/OrderStatisticTreeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/structures/OrderStatisticTreeTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/structures/RedBlackTreeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/structures/RedBlackTreeTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,11 +80,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="org.nathan.algorithmsJ.misc" />
       <recent name="org.nathan.algorithmsJava.miscellaneous" />
       <recent name="org.nathan" />
       <recent name="org.nathan.algorithmsJava" />
       <recent name="org.nathan.centralUtils" />
-      <recent name="org.nathan.AlgorithmsJava.structures" />
     </key>
     <key name="MoveInnerDialog.RECENTS_KEY">
       <recent name="org.nathan.algorithmsJava.graph" />
@@ -401,21 +397,7 @@
       <workItem from="1623420572398" duration="19000" />
       <workItem from="1623420604992" duration="9777000" />
       <workItem from="1623493247127" duration="865000" />
-      <workItem from="1623494511253" duration="10846000" />
-    </task>
-    <task id="LOCAL-00166" summary="add">
-      <created>1622977893003</created>
-      <option name="number" value="00166" />
-      <option name="presentableId" value="LOCAL-00166" />
-      <option name="project" value="LOCAL" />
-      <updated>1622977893003</updated>
-    </task>
-    <task id="LOCAL-00167" summary="rename">
-      <created>1622978346911</created>
-      <option name="number" value="00167" />
-      <option name="presentableId" value="LOCAL-00167" />
-      <option name="project" value="LOCAL" />
-      <updated>1622978346911</updated>
+      <workItem from="1623494511253" duration="12063000" />
     </task>
     <task id="LOCAL-00168" summary="better implementation">
       <created>1622979543552</created>
@@ -746,7 +728,21 @@
       <option name="project" value="LOCAL" />
       <updated>1623507397210</updated>
     </task>
-    <option name="localTasksCounter" value="215" />
+    <task id="LOCAL-00215" summary="add todo, add tests">
+      <created>1623569247265</created>
+      <option name="number" value="00215" />
+      <option name="presentableId" value="LOCAL-00215" />
+      <option name="project" value="LOCAL" />
+      <updated>1623569247265</updated>
+    </task>
+    <task id="LOCAL-00216" summary="move">
+      <created>1623569294439</created>
+      <option name="number" value="00216" />
+      <option name="presentableId" value="LOCAL-00216" />
+      <option name="project" value="LOCAL" />
+      <updated>1623569294439</updated>
+    </task>
+    <option name="localTasksCounter" value="217" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -775,8 +771,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="inner methods" />
-    <MESSAGE value="rename packages" />
     <MESSAGE value="pass tests, save" />
     <MESSAGE value="remove edge direction" />
     <MESSAGE value="move graph transform" />
@@ -800,7 +794,9 @@
     <MESSAGE value="add lsd" />
     <MESSAGE value="remove redundant methods" />
     <MESSAGE value="add two sort" />
-    <option name="LAST_COMMIT_MESSAGE" value="add two sort" />
+    <MESSAGE value="add todo, add tests" />
+    <MESSAGE value="move" />
+    <option name="LAST_COMMIT_MESSAGE" value="move" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
