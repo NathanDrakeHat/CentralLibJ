@@ -1,4 +1,4 @@
-package org.nathan.algorithmsJ.str_match;
+package org.nathan.algorithmsJ.strMatch;
 
 import org.jetbrains.annotations.NotNull;
 

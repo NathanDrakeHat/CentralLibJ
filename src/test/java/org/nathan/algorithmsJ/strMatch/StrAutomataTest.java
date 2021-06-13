@@ -1,10 +1,10 @@
-package org.nathan.algorithmsJ.str_match;
+package org.nathan.algorithmsJ.strMatch;
 
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.nathan.algorithmsJ.str_match.StrAutomata.computeTransitionPattern;
-import static org.nathan.algorithmsJ.str_match.StrAutomata.finiteAutomationMatcher;
+import static org.nathan.algorithmsJ.strMatch.StrAutomata.computeTransitionPattern;
+import static org.nathan.algorithmsJ.strMatch.StrAutomata.finiteAutomationMatcher;
 
 class StrAutomataTest{
 
