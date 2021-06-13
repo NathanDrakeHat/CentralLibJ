@@ -3,7 +3,7 @@ package org.nathan.algorithmsJ.dp;
 /**
  * longest common sequence problem, biological problem
  */
-final class LongestCommonSequence{
+final class LCS{
 
   public static char[] solve(char[] x, char[] y){
     int m = x.length;

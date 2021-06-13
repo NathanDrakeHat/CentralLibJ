@@ -3,9 +3,9 @@ package org.nathan.algorithmsJ.dp;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static org.nathan.algorithmsJ.dp.LongestCommonSequence.solve;
+import static org.nathan.algorithmsJ.dp.LCS.solve;
 
-class LongestCommonSequenceTest{
+class LCSTest{
 
   @Test
   void solveTest(){

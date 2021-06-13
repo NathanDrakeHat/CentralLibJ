@@ -22,8 +22,15 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="add shell sort">
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="add knuth shuffle">
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/misc/ConvexHullTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/dp/LongestCommonSequence.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/dp/LCS.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/misc/ConvexHull.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/misc/ConvexHull.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/misc/Shuffle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/misc/Shuffle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/misc/Sort.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/misc/Sort.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/dp/LongestCommonSequenceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/dp/LCSTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/structures/OrderStatisticTreeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/structures/OrderStatisticTreeTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,7 +96,7 @@
       <recent name="org.nathan.algorithmsJava.graph" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.SortTest.shellSortTest">
+  <component name="RunManager" selected="JUnit.ConvexHullTest.GrahamScanTest">
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.nathan.Main" />
       <module name="AlgorithmsJava" />
@@ -118,6 +125,22 @@
       <module name="AlgorithmsJava" />
       <option name="PACKAGE_NAME" value="" />
       <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ConvexHullTest.GrahamScanTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AlgorithmsJava" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.nathan.algorithmsJ.misc.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.nathan.algorithmsJ.misc" />
+      <option name="MAIN_CLASS_NAME" value="org.nathan.algorithmsJ.misc.ConvexHullTest" />
+      <option name="METHOD_NAME" value="GrahamScanTest" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -154,22 +177,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SortTest.selectionSortTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="AlgorithmsJava" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.nathan.algorithmsJ.misc.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.nathan.algorithmsJ.misc" />
-      <option name="MAIN_CLASS_NAME" value="org.nathan.algorithmsJ.misc.SortTest" />
-      <option name="METHOD_NAME" value="selectionSortTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="SortTest.shellSortTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AlgorithmsJava" />
       <extension name="coverage">
@@ -191,18 +198,18 @@
       <item itemvalue="Application.pushUtils" />
       <item itemvalue="Application.Main" />
       <item itemvalue="JUnit.All in AlgorithmsJava" />
-      <item itemvalue="JUnit.SortTest.selectionSortTest" />
       <item itemvalue="JUnit.OrderStatisticTreeTest.balanceTest" />
       <item itemvalue="JUnit.OrderStatisticTreeTest.functionsTest" />
       <item itemvalue="JUnit.SortTest.shellSortTest" />
+      <item itemvalue="JUnit.ConvexHullTest.GrahamScanTest" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ConvexHullTest.GrahamScanTest" />
         <item itemvalue="JUnit.SortTest.shellSortTest" />
         <item itemvalue="JUnit.OrderStatisticTreeTest.functionsTest" />
         <item itemvalue="JUnit.All in AlgorithmsJava" />
         <item itemvalue="JUnit.OrderStatisticTreeTest.balanceTest" />
-        <item itemvalue="JUnit.SortTest.selectionSortTest" />
       </list>
     </recent_temporary>
   </component>
@@ -396,14 +403,7 @@
       <workItem from="1623420572398" duration="19000" />
       <workItem from="1623420604992" duration="9777000" />
       <workItem from="1623493247127" duration="865000" />
-      <workItem from="1623494511253" duration="14237000" />
-    </task>
-    <task id="LOCAL-00176" summary="save">
-      <created>1623057665518</created>
-      <option name="number" value="00176" />
-      <option name="presentableId" value="LOCAL-00176" />
-      <option name="project" value="LOCAL" />
-      <updated>1623057665518</updated>
+      <workItem from="1623494511253" duration="22557000" />
     </task>
     <task id="LOCAL-00177" summary="inner methods">
       <created>1623062168266</created>
@@ -741,7 +741,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623572385976</updated>
     </task>
-    <option name="localTasksCounter" value="225" />
+    <task id="LOCAL-00225" summary="add knuth shuffle">
+      <created>1623572824152</created>
+      <option name="number" value="00225" />
+      <option name="presentableId" value="LOCAL-00225" />
+      <option name="project" value="LOCAL" />
+      <updated>1623572824152</updated>
+    </task>
+    <option name="localTasksCounter" value="226" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -770,7 +777,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="edge refactor success!" />
     <MESSAGE value="rename classes" />
     <MESSAGE value="refactor ExtremumHeap success" />
     <MESSAGE value="remove todo" />
@@ -795,10 +801,18 @@
     <MESSAGE value="fix OrderStatisticTreeTest bug" />
     <MESSAGE value="rename FibonacciHeap.java" />
     <MESSAGE value="add shell sort" />
-    <option name="LAST_COMMIT_MESSAGE" value="add shell sort" />
+    <MESSAGE value="add knuth shuffle" />
+    <option name="LAST_COMMIT_MESSAGE" value="add knuth shuffle" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/misc/ConvexHull.java</url>
+          <line>88</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+      </breakpoints>
       <default-breakpoints>
         <breakpoint enabled="true" type="java-exception">
           <properties>

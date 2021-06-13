@@ -39,7 +39,7 @@ class OrderStatisticTreeTest{
     caseTree.insertKey(4);
   }
   @Test
-  void case1(){
+  void case1Test(){
     OrderStatisticTree.Node root = caseTree.getRoot();
     assertEquals(7, root.key); // 7
     assertEquals(2, root.left.key); // 2

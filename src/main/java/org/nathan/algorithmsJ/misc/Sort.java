@@ -31,6 +31,10 @@ public final class Sort{
     }
   }
 
+  /**
+   * better insertion sort
+   * @param array array
+   */
   public static void shellSort(double[] array){
     int h = 1;
     while(h < array.length / 3) {
@@ -339,6 +343,10 @@ public final class Sort{
     }
   }
 
+  /**
+   * least significant digit radix sort
+   * @param strings strings
+   */
   public static void LSDRadixSort(String[] strings){
     if(strings.length == 0){
       return;
