@@ -31,6 +31,10 @@ public final class Sort{
     }
   }
 
+  public static void shellSort(double[] array){
+
+  }
+
   private static void merge(double[] array, int start, double[] cache1, double[] cache2){
     int right_idx = 0;
     int left_idx = 0;

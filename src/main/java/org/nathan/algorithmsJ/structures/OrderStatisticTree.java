@@ -3,6 +3,9 @@ package org.nathan.algorithmsJ.structures;
 import java.util.NoSuchElementException;
 import java.util.function.BiConsumer;
 
+// TODO add more BST applications (intersection search, k-d tree, etc)
+
+@SuppressWarnings("unused")
 public final class OrderStatisticTree{ // get rank of node from left to right
   private final Node sentinel = new Node(0, Color.BLACK);
   private Node root = null;
