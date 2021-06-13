@@ -40,17 +40,21 @@ class RedBlackTreeTest{
     assertEquals(root.right.right.right.key, 15); // 15
   }
 
+  RedBlackTree<Integer, Integer> balanceTree;
+  {
+    balanceTree = new RedBlackTree<>(Comparator.comparingInt(o -> o));
+    for(int i = 0; i < 127; i++){
+      balanceTree.insert(i, i);
+    }
+    assertEquals(6, balanceTree.getHeight());
+    for(int i = 0; i < 65; i++){
+      balanceTree.delete(i);
+    }
+  }
+
   @Test
   public void balanceTest(){
-    RedBlackTree<Integer, Integer> t = new RedBlackTree<>(Comparator.comparingInt(o -> o));
-    for(int i = 0; i < 127; i++){
-      t.insert(i, i);
-    }
-    assertEquals(6, t.getHeight());
-    for(int i = 0; i < 65; i++){
-      t.delete(i);
-    }
-    assertEquals(5, t.getHeight());
+    assertEquals(5, balanceTree.getHeight());
   }
 
   RedBlackTree<Integer, String> funcTestCase;

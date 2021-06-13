@@ -106,7 +106,7 @@ public final class OrderStatisticTree{ // get rank of node from left to right
     }
 
     if(root == null || root == sentinel){
-      n.setBlack();
+      n.color = Color.BLACK;
       setRoot(n);
       root.right = sentinel;
       root.left = sentinel;
@@ -138,13 +138,13 @@ public final class OrderStatisticTree{ // get rank of node from left to right
   }
 
   private void insertFixUp(ColorSizeNode ptr){
-    while(ptr.parent.isRed()) {
+    while(ptr.parent.color == Color.RED) {
       if(ptr.parent == ptr.parent.parent.left){
         ColorSizeNode right = ptr.parent.parent.right;
-        if(right.isRed()){ // case1: sibling is red
-          ptr.parent.setBlack();
-          right.setBlack();
-          ptr.parent.parent.setRed();
+        if(right.color == Color.RED){ // case1: sibling is red
+          ptr.parent.color = Color.BLACK;
+          right.color = Color.BLACK;
+          ptr.parent.parent.color = Color.RED;
           ptr = ptr.parent.parent;
           continue;
         }
@@ -152,17 +152,17 @@ public final class OrderStatisticTree{ // get rank of node from left to right
           ptr = ptr.parent;
           leftRotate(ptr);
         }
-        ptr.parent.setBlack(); // case3
-        ptr.parent.parent.setRed();
+        ptr.parent.color = Color.BLACK; // case3
+        ptr.parent.parent.color = Color.RED;
         rightRotate(ptr.parent.parent); // ptr.getParent will be black and then break
-        ptr = ptr.getParent();
+        ptr = ptr.parent;
       }
       else{
         ColorSizeNode left = ptr.parent.parent.left;
-        if(left.isRed()){
-          ptr.parent.setBlack();
-          left.setBlack();
-          ptr.parent.parent.setRed();
+        if(left.color == Color.RED){
+          ptr.parent.color = Color.BLACK;
+          left.color = Color.BLACK;
+          ptr.parent.parent.color = Color.RED;
           ptr = ptr.parent.parent;
           continue;
         }
@@ -170,13 +170,13 @@ public final class OrderStatisticTree{ // get rank of node from left to right
           ptr = ptr.parent;
           rightRotate(ptr);
         }
-        ptr.parent.setBlack();
-        ptr.parent.parent.setRed();
+        ptr.parent.color = Color.BLACK;
+        ptr.parent.parent.color = Color.RED;
         leftRotate(ptr.parent.parent);
-        ptr = ptr.getParent();
+        ptr = ptr.parent;
       }
     }
-    root.setBlack();
+    root.color = Color.BLACK;
   }
 
   public void deleteKey(double key){
@@ -228,59 +228,59 @@ public final class OrderStatisticTree{ // get rank of node from left to right
   }
 
   private void deleteFixUp(ColorSizeNode fix_up){
-    while(fix_up != root && fix_up.isBlack()) {
+    while(fix_up != root && fix_up.color == Color.BLACK) {
       ColorSizeNode sibling;
       if(fix_up == fix_up.parent.left){
         sibling = fix_up.parent.right;
-        if(sibling.isRed()){ // case1:sibling is black, convert to case 2, 3 or 4
-          sibling.setBlack(); // , which denote that sibling is black
-          fix_up.parent.setRed();
+        if(sibling.color == Color.RED){ // case1:sibling is black, convert to case 2, 3 or 4
+          sibling.color = Color.BLACK; // , which denote that sibling is black
+          fix_up.parent.color = Color.RED;
           leftRotate(fix_up.parent);
           sibling = fix_up.parent.right;
         }
-        if(sibling.left.isBlack() && sibling.right.isBlack()){ // case2: sibling children is black
-          sibling.setRed();
+        if(sibling.left.color == Color.BLACK && sibling.right.color == Color.BLACK){ // case2: sibling children is black
+          sibling.color = Color.RED;
           fix_up = fix_up.parent;
           continue; // may break while condition
         }
-        else if(sibling.right.isBlack()){ // case3: sibling left red, right black. convert case4
-          sibling.left.setBlack();
-          sibling.setRed();
+        else if(sibling.right.color == Color.BLACK){ // case3: sibling left red, right black. convert case4
+          sibling.left.color = Color.BLACK;
+          sibling.color = Color.RED;
           rightRotate(sibling);
           sibling = fix_up.parent.right;
         }
         sibling.color = fix_up.parent.color; // case4: sibling right red
-        fix_up.parent.setBlack();
-        sibling.right.setBlack();
+        fix_up.parent.color = Color.BLACK;
+        sibling.right.color = Color.BLACK;
         leftRotate(fix_up.parent);
       }
       else{
         sibling = fix_up.parent.left;
-        if(sibling.isRed()){
-          sibling.setBlack();
-          fix_up.parent.setRed();
+        if(sibling.color == Color.RED){
+          sibling.color = Color.BLACK;
+          fix_up.parent.color = Color.RED;
           rightRotate(fix_up.parent);
           sibling = fix_up.parent.left;
         }
-        if(sibling.left.isBlack() && sibling.right.isBlack()){
-          sibling.setRed();
+        if(sibling.left.color == Color.BLACK && sibling.right.color == Color.BLACK){
+          sibling.color = Color.RED;
           fix_up = fix_up.parent;
           continue;
         }
-        else if(sibling.left.isBlack()){
-          sibling.right.setBlack();
-          sibling.setRed();
+        else if(sibling.left.color == Color.BLACK){
+          sibling.right.color = Color.BLACK;
+          sibling.color = Color.RED;
           leftRotate(sibling);
           sibling = fix_up.parent.left;
         }
         sibling.color = fix_up.parent.color;
-        fix_up.parent.setBlack();
-        sibling.left.setBlack();
+        fix_up.parent.color = Color.BLACK;
+        sibling.left.color = Color.BLACK;
         rightRotate(fix_up.parent);
       }
       fix_up = root;
     }
-    fix_up.setBlack();
+    fix_up.color = Color.BLACK;
   }
 
   private void transplant(ColorSizeNode a, ColorSizeNode b){
@@ -412,9 +412,9 @@ public final class OrderStatisticTree{ // get rank of node from left to right
 
   private void inorderTreeWalk(ColorSizeNode n, BiConsumer<Double, Integer> bc){
     if(n != getSentinel() & n != null){
-      inorderTreeWalk(n.getLeft(), bc);
-      bc.accept(n.getKey(), n.getSize());
-      inorderTreeWalk(n.getRight(), bc);
+      inorderTreeWalk(n.left, bc);
+      bc.accept(n.key, n.size);
+      inorderTreeWalk(n.right, bc);
     }
   }
 
@@ -426,14 +426,14 @@ public final class OrderStatisticTree{ // get rank of node from left to right
   }
 
   private int getCount(ColorSizeNode n){ //overload trick
-    if(n.getRight() != getSentinel() && n.getLeft() == getSentinel()){
-      return getCount(n.getRight()) + 1;
+    if(n.right != getSentinel() && n.left == getSentinel()){
+      return getCount(n.right) + 1;
     }
-    else if(n.getRight() == getSentinel() && n.getLeft() != getSentinel()){
-      return getCount(n.getLeft()) + 1;
+    else if(n.right == getSentinel() && n.left != getSentinel()){
+      return getCount(n.left) + 1;
     }
-    else if(n.getRight() != getSentinel() && n.getLeft() != getSentinel()){
-      return getCount(n.getLeft()) + getCount(n.getRight()) + 1;
+    else if(n.right != getSentinel() && n.left != getSentinel()){
+      return getCount(n.left) + getCount(n.right) + 1;
     }
     else{
       return 1;
@@ -445,15 +445,15 @@ public final class OrderStatisticTree{ // get rank of node from left to right
       return 0;
     }
     int height = 1;
-    int left_max = getHeight(getRoot().getLeft(), height);
-    int right_max = getHeight(getRoot().getRight(), height);
+    int left_max = getHeight(getRoot().left, height);
+    int right_max = getHeight(getRoot().right, height);
     return Math.max(left_max, right_max) - 1;
   }
 
   private int getHeight(ColorSizeNode n, int height){
     if(n != getSentinel()){
-      int left_max = getHeight(n.getLeft(), height + 1);
-      int right_max = getHeight(n.getRight(), height + 1);
+      int left_max = getHeight(n.left, height + 1);
+      int right_max = getHeight(n.right, height + 1);
       return Math.max(left_max, right_max);
     }
     return height;
@@ -466,12 +466,12 @@ public final class OrderStatisticTree{ // get rank of node from left to right
 
   // sentinel: denote leaf and parent of root
   static class ColorSizeNode{
-    private double key;
-    private Color color;
-    private ColorSizeNode parent;
-    private ColorSizeNode left;
-    private ColorSizeNode right;
-    private int size; // subtree size
+    double key;
+    Color color;
+    ColorSizeNode parent;
+    ColorSizeNode left;
+    ColorSizeNode right;
+    int size; // subtree size
 
     ColorSizeNode(double key){
       this.key = key;
@@ -482,47 +482,6 @@ public final class OrderStatisticTree{ // get rank of node from left to right
     ColorSizeNode(double key, Color color){
       this.key = key;
       this.color = color;
-    }
-
-
-    public int getSize(){
-      return this.size;
-    }
-
-    public boolean isRed(){
-      return this.color == Color.RED;
-    }
-
-    public boolean isBlack(){
-      return this.color == Color.BLACK;
-    }
-
-    public Color getColor(){
-      return this.color;
-    }
-
-    private void setRed(){
-      this.color = Color.RED;
-    }
-
-    private void setBlack(){
-      this.color = Color.BLACK;
-    }
-
-    public double getKey(){
-      return this.key;
-    }
-
-    public ColorSizeNode getParent(){
-      return this.parent;
-    }
-
-    public ColorSizeNode getLeft(){
-      return this.left;
-    }
-
-    public ColorSizeNode getRight(){
-      return this.right;
     }
   }
 

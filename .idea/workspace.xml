@@ -22,10 +22,13 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="remove redundant methods">
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="add two sort">
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/misc/ConvexHull.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/misc/Shuffle.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/misc/Sort.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/misc/Sort.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/misc/SortTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/misc/SortTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/OrderStatisticTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/OrderStatisticTree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/structures/OrderStatisticTreeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/structures/OrderStatisticTreeTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/structures/RedBlackTreeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/structures/RedBlackTreeTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,7 +94,7 @@
       <recent name="org.nathan.algorithmsJava.graph" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.SortTest.selectionSortTest">
+  <component name="RunManager" selected="JUnit.All in AlgorithmsJava">
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.nathan.Main" />
       <module name="AlgorithmsJava" />
@@ -124,17 +127,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SortTest.LSDTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="OrderStatisticTreeTest.balanceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AlgorithmsJava" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.nathan.algorithmsJ.misc.*" />
+          <option name="PATTERN" value="org.nathan.algorithmsJ.structures.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="org.nathan.algorithmsJ.misc" />
-      <option name="MAIN_CLASS_NAME" value="org.nathan.algorithmsJ.misc.SortTest" />
-      <option name="METHOD_NAME" value="LSDTest" />
+      <option name="PACKAGE_NAME" value="org.nathan.algorithmsJ.structures" />
+      <option name="MAIN_CLASS_NAME" value="org.nathan.algorithmsJ.structures.OrderStatisticTreeTest" />
+      <option name="METHOD_NAME" value="balanceTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -194,17 +197,17 @@
       <item itemvalue="Application.Main" />
       <item itemvalue="JUnit.All in AlgorithmsJava" />
       <item itemvalue="JUnit.SortTest.keyIndexCountingSortTest" />
-      <item itemvalue="JUnit.SortTest.LSDTest" />
       <item itemvalue="JUnit.SortTest.selectionSortTest" />
       <item itemvalue="JUnit.SortTest.insertionSortTest" />
+      <item itemvalue="JUnit.OrderStatisticTreeTest.balanceTest" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.All in AlgorithmsJava" />
+        <item itemvalue="JUnit.OrderStatisticTreeTest.balanceTest" />
         <item itemvalue="JUnit.SortTest.selectionSortTest" />
         <item itemvalue="JUnit.SortTest.insertionSortTest" />
-        <item itemvalue="JUnit.All in AlgorithmsJava" />
         <item itemvalue="JUnit.SortTest.keyIndexCountingSortTest" />
-        <item itemvalue="JUnit.SortTest.LSDTest" />
       </list>
     </recent_temporary>
   </component>
@@ -398,14 +401,7 @@
       <workItem from="1623420572398" duration="19000" />
       <workItem from="1623420604992" duration="9777000" />
       <workItem from="1623493247127" duration="865000" />
-      <workItem from="1623494511253" duration="9451000" />
-    </task>
-    <task id="LOCAL-00165" summary="fix test bug">
-      <created>1622961174796</created>
-      <option name="number" value="00165" />
-      <option name="presentableId" value="LOCAL-00165" />
-      <option name="project" value="LOCAL" />
-      <updated>1622961174796</updated>
+      <workItem from="1623494511253" duration="10846000" />
     </task>
     <task id="LOCAL-00166" summary="add">
       <created>1622977893003</created>
@@ -743,7 +739,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623500629460</updated>
     </task>
-    <option name="localTasksCounter" value="214" />
+    <task id="LOCAL-00214" summary="add two sort">
+      <created>1623507397210</created>
+      <option name="number" value="00214" />
+      <option name="presentableId" value="LOCAL-00214" />
+      <option name="project" value="LOCAL" />
+      <updated>1623507397210</updated>
+    </task>
+    <option name="localTasksCounter" value="215" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -772,7 +775,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="set public" />
     <MESSAGE value="inner methods" />
     <MESSAGE value="rename packages" />
     <MESSAGE value="pass tests, save" />
@@ -797,7 +799,8 @@
     <MESSAGE value="remove array to list" />
     <MESSAGE value="add lsd" />
     <MESSAGE value="remove redundant methods" />
-    <option name="LAST_COMMIT_MESSAGE" value="remove redundant methods" />
+    <MESSAGE value="add two sort" />
+    <option name="LAST_COMMIT_MESSAGE" value="add two sort" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
