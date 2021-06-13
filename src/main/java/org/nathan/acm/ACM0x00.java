@@ -144,38 +144,9 @@ public class ACM0x00{
     if(!ArrayUtils.isMatrix(switches)){
       throw new IllegalArgumentException();
     }
-
-    var funcFlipNeighbor = new Object(){
-      private void apply(int r, int c){
-        var funcFlipSingle = new Object(){
-          private void apply(int r, int c){
-            if(switches[r][c].equals("x")){
-              switches[r][c] = "o";
-            }
-            else if(switches[r][c].equals("o")){
-              switches[r][c] = "x";
-            }
-            else{ throw new RuntimeException("input format error."); }
-          }
-        };
-        if((r - 1) >= 0 && (r - 1) < switches.length){
-          funcFlipSingle.apply(r - 1, c);
-        }
-        if((c - 1) >= 0 && (c - 1) < switches.length){
-          funcFlipSingle.apply(r, c - 1);
-        }
-
-        if((r + 1) >= 0 && (r + 1) < switches.length){
-          funcFlipSingle.apply(r + 1, c);
-        }
-        if((c + 1) >= 0 && (c + 1) < switches.length){
-          funcFlipSingle.apply(r, c + 1);
-        }
-        funcFlipSingle.apply(r, c);
-      }
-    };
-
+    
     Deque<Tuple<Integer, Integer>> pushes = new ArrayDeque<>(16);
+
     var funcRecurSolve = new Object(){
       private int apply(String[][] switches, int r, int c, int push_count){
         var funcNextPos = new Object(){
@@ -195,9 +166,9 @@ public class ACM0x00{
           int nc = pos.second();
           int nr = pos.first();
 
-          funcFlipNeighbor.apply(r, c);
+          flipNeighbor(r, c, switches);
           int left_min = apply(switches, nr, nc, push_count + 1);
-          funcFlipNeighbor.apply(r, c);
+          flipNeighbor(r, c, switches);
 
           int right_min = apply(switches, nr, nc, push_count);
 
@@ -215,7 +186,7 @@ public class ACM0x00{
         else{
           while(!(r >= switches.length)) {
             if(switches[r - 1][c].equals("o")){
-              funcFlipNeighbor.apply(r, c);
+              flipNeighbor(r, c, switches);
               pushes.offerLast(new Tuple<>(r, c));
               push_count += 1;
             }
@@ -233,7 +204,7 @@ public class ACM0x00{
           }
           while(!pushes.isEmpty()) {
             var tPos = pushes.removeLast();
-            funcFlipNeighbor.apply(tPos.first(), tPos.second());
+            flipNeighbor(tPos.first(), tPos.second(), switches);
           }
           return res;
         }
@@ -241,6 +212,34 @@ public class ACM0x00{
     };
 
     return funcRecurSolve.apply(switches, 0, 0, 0);
+  }
+
+  private static void flipNeighbor(int r, int c, String[][] switches){
+    var funcFlipSingle = new Object(){
+      private void apply(int r, int c){
+        if(switches[r][c].equals("x")){
+          switches[r][c] = "o";
+        }
+        else if(switches[r][c].equals("o")){
+          switches[r][c] = "x";
+        }
+        else{ throw new RuntimeException("input format error."); }
+      }
+    };
+    if((r - 1) >= 0 && (r - 1) < switches.length){
+      funcFlipSingle.apply(r - 1, c);
+    }
+    if((c - 1) >= 0 && (c - 1) < switches.length){
+      funcFlipSingle.apply(r, c - 1);
+    }
+
+    if((r + 1) >= 0 && (r + 1) < switches.length){
+      funcFlipSingle.apply(r + 1, c);
+    }
+    if((c + 1) >= 0 && (c + 1) < switches.length){
+      funcFlipSingle.apply(r, c + 1);
+    }
+    funcFlipSingle.apply(r, c);
   }
 
   public static int laserBomb(int[][] targets, int radius){
