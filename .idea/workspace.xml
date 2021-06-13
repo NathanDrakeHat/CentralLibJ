@@ -22,9 +22,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="rename FibonacciHeap.java">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/misc/Sort.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/misc/Sort.java" afterDir="false" />
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="add shell sort">
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/misc/Shuffle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/misc/Shuffle.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -397,14 +396,7 @@
       <workItem from="1623420572398" duration="19000" />
       <workItem from="1623420604992" duration="9777000" />
       <workItem from="1623493247127" duration="865000" />
-      <workItem from="1623494511253" duration="13709000" />
-    </task>
-    <task id="LOCAL-00175" summary="set public">
-      <created>1623035997672</created>
-      <option name="number" value="00175" />
-      <option name="presentableId" value="LOCAL-00175" />
-      <option name="project" value="LOCAL" />
-      <updated>1623035997672</updated>
+      <workItem from="1623494511253" duration="14237000" />
     </task>
     <task id="LOCAL-00176" summary="save">
       <created>1623057665518</created>
@@ -742,7 +734,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623571559932</updated>
     </task>
-    <option name="localTasksCounter" value="224" />
+    <task id="LOCAL-00224" summary="add shell sort">
+      <created>1623572385976</created>
+      <option name="number" value="00224" />
+      <option name="presentableId" value="LOCAL-00224" />
+      <option name="project" value="LOCAL" />
+      <updated>1623572385976</updated>
+    </task>
+    <option name="localTasksCounter" value="225" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -771,7 +770,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add todos" />
     <MESSAGE value="edge refactor success!" />
     <MESSAGE value="rename classes" />
     <MESSAGE value="refactor ExtremumHeap success" />
@@ -796,7 +794,8 @@
     <MESSAGE value="rename package" />
     <MESSAGE value="fix OrderStatisticTreeTest bug" />
     <MESSAGE value="rename FibonacciHeap.java" />
-    <option name="LAST_COMMIT_MESSAGE" value="rename FibonacciHeap.java" />
+    <MESSAGE value="add shell sort" />
+    <option name="LAST_COMMIT_MESSAGE" value="add shell sort" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
