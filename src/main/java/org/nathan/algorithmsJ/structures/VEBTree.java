@@ -7,7 +7,7 @@ import java.util.Optional;
 public final class VEBTree{
   private final int NONE = -1;
   //keys are not duplicate and confined in a range
-  private int u; //universe size
+  private final int u; //universe size
   private VEBTree summary = null;
   private VEBTree[] cluster = null;
   private int min = NONE; // hidden in cluster

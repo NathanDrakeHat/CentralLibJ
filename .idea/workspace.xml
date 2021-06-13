@@ -22,8 +22,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="move">
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/OrderStatisticTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/OrderStatisticTree.java" afterDir="false" />
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="rename package">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/VEBTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/VEBTree.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/structures/OrderStatisticTreeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/structures/OrderStatisticTreeTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -90,7 +91,7 @@
       <recent name="org.nathan.algorithmsJava.graph" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.All in AlgorithmsJava">
+  <component name="RunManager" selected="JUnit.OrderStatisticTreeTest.functionsTest">
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.nathan.Main" />
       <module name="AlgorithmsJava" />
@@ -139,6 +140,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="OrderStatisticTreeTest.functionsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AlgorithmsJava" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.nathan.algorithmsJ.structures.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.nathan.algorithmsJ.structures" />
+      <option name="MAIN_CLASS_NAME" value="org.nathan.algorithmsJ.structures.OrderStatisticTreeTest" />
+      <option name="METHOD_NAME" value="functionsTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="SortTest.insertionSortTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AlgorithmsJava" />
       <extension name="coverage">
@@ -150,22 +167,6 @@
       <option name="PACKAGE_NAME" value="org.nathan.algorithmsJ.misc" />
       <option name="MAIN_CLASS_NAME" value="org.nathan.algorithmsJ.misc.SortTest" />
       <option name="METHOD_NAME" value="insertionSortTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SortTest.keyIndexCountingSortTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="AlgorithmsJava" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.nathan.algorithmsJ.misc.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.nathan.algorithmsJ.misc" />
-      <option name="MAIN_CLASS_NAME" value="org.nathan.algorithmsJ.misc.SortTest" />
-      <option name="METHOD_NAME" value="keyIndexCountingSortTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -192,18 +193,18 @@
       <item itemvalue="Application.pushUtils" />
       <item itemvalue="Application.Main" />
       <item itemvalue="JUnit.All in AlgorithmsJava" />
-      <item itemvalue="JUnit.SortTest.keyIndexCountingSortTest" />
       <item itemvalue="JUnit.SortTest.selectionSortTest" />
       <item itemvalue="JUnit.SortTest.insertionSortTest" />
       <item itemvalue="JUnit.OrderStatisticTreeTest.balanceTest" />
+      <item itemvalue="JUnit.OrderStatisticTreeTest.functionsTest" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.OrderStatisticTreeTest.functionsTest" />
         <item itemvalue="JUnit.All in AlgorithmsJava" />
         <item itemvalue="JUnit.OrderStatisticTreeTest.balanceTest" />
         <item itemvalue="JUnit.SortTest.selectionSortTest" />
         <item itemvalue="JUnit.SortTest.insertionSortTest" />
-        <item itemvalue="JUnit.SortTest.keyIndexCountingSortTest" />
       </list>
     </recent_temporary>
   </component>
@@ -397,42 +398,7 @@
       <workItem from="1623420572398" duration="19000" />
       <workItem from="1623420604992" duration="9777000" />
       <workItem from="1623493247127" duration="865000" />
-      <workItem from="1623494511253" duration="12063000" />
-    </task>
-    <task id="LOCAL-00168" summary="better implementation">
-      <created>1622979543552</created>
-      <option name="number" value="00168" />
-      <option name="presentableId" value="LOCAL-00168" />
-      <option name="project" value="LOCAL" />
-      <updated>1622979543552</updated>
-    </task>
-    <task id="LOCAL-00169" summary="move test build outer">
-      <created>1622981402753</created>
-      <option name="number" value="00169" />
-      <option name="presentableId" value="LOCAL-00169" />
-      <option name="project" value="LOCAL" />
-      <updated>1622981402753</updated>
-    </task>
-    <task id="LOCAL-00170" summary="save">
-      <created>1622981453304</created>
-      <option name="number" value="00170" />
-      <option name="presentableId" value="LOCAL-00170" />
-      <option name="project" value="LOCAL" />
-      <updated>1622981453304</updated>
-    </task>
-    <task id="LOCAL-00171" summary="save">
-      <created>1622981525187</created>
-      <option name="number" value="00171" />
-      <option name="presentableId" value="LOCAL-00171" />
-      <option name="project" value="LOCAL" />
-      <updated>1622981525187</updated>
-    </task>
-    <task id="LOCAL-00172" summary="reformat">
-      <created>1622985495509</created>
-      <option name="number" value="00172" />
-      <option name="presentableId" value="LOCAL-00172" />
-      <option name="project" value="LOCAL" />
-      <updated>1622985495509</updated>
+      <workItem from="1623494511253" duration="12791000" />
     </task>
     <task id="LOCAL-00173" summary="better algo, move test build outer">
       <created>1623030413300</created>
@@ -742,7 +708,42 @@
       <option name="project" value="LOCAL" />
       <updated>1623569294439</updated>
     </task>
-    <option name="localTasksCounter" value="217" />
+    <task id="LOCAL-00217" summary="add new function to OrderStatisticTree, remove RedBlackBST.java">
+      <created>1623570579329</created>
+      <option name="number" value="00217" />
+      <option name="presentableId" value="LOCAL-00217" />
+      <option name="project" value="LOCAL" />
+      <updated>1623570579329</updated>
+    </task>
+    <task id="LOCAL-00218" summary="move SimpleDate.java to inner">
+      <created>1623570723245</created>
+      <option name="number" value="00218" />
+      <option name="presentableId" value="LOCAL-00218" />
+      <option name="project" value="LOCAL" />
+      <updated>1623570723245</updated>
+    </task>
+    <task id="LOCAL-00219" summary="add todo">
+      <created>1623570823793</created>
+      <option name="number" value="00219" />
+      <option name="presentableId" value="LOCAL-00219" />
+      <option name="project" value="LOCAL" />
+      <updated>1623570823793</updated>
+    </task>
+    <task id="LOCAL-00220" summary="delete Bag.java">
+      <created>1623570863013</created>
+      <option name="number" value="00220" />
+      <option name="presentableId" value="LOCAL-00220" />
+      <option name="project" value="LOCAL" />
+      <updated>1623570863013</updated>
+    </task>
+    <task id="LOCAL-00221" summary="rename package">
+      <created>1623570893232</created>
+      <option name="number" value="00221" />
+      <option name="presentableId" value="LOCAL-00221" />
+      <option name="project" value="LOCAL" />
+      <updated>1623570893232</updated>
+    </task>
+    <option name="localTasksCounter" value="222" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -771,11 +772,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="pass tests, save" />
-    <MESSAGE value="remove edge direction" />
-    <MESSAGE value="move graph transform" />
-    <MESSAGE value="add doc" />
-    <MESSAGE value="add todo" />
     <MESSAGE value="rename" />
     <MESSAGE value="add todos, fix func interface" />
     <MESSAGE value="add todos" />
@@ -796,7 +792,12 @@
     <MESSAGE value="add two sort" />
     <MESSAGE value="add todo, add tests" />
     <MESSAGE value="move" />
-    <option name="LAST_COMMIT_MESSAGE" value="move" />
+    <MESSAGE value="add new function to OrderStatisticTree, remove RedBlackBST.java" />
+    <MESSAGE value="move SimpleDate.java to inner" />
+    <MESSAGE value="add todo" />
+    <MESSAGE value="delete Bag.java" />
+    <MESSAGE value="rename package" />
+    <option name="LAST_COMMIT_MESSAGE" value="rename package" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

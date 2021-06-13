@@ -8,15 +8,15 @@ import java.util.function.BiConsumer;
 @SuppressWarnings("unused")
 public final class OrderStatisticTree{ // get rank of node from left to right
   private final Node sentinel = new Node(0, Color.BLACK);
-  private Node root = null;
+  private Node root = sentinel;
 
   public double floor(double key){
-    if(root == null){
+    if(root == sentinel){
       throw new NoSuchElementException("calls floor() with empty symbol table");
     }
     else{
       Node x = floor(root, key);
-      if(x == null){
+      if(x == sentinel){
         throw new NoSuchElementException("argument to floor() is too small");
       }
       else{
@@ -26,8 +26,8 @@ public final class OrderStatisticTree{ // get rank of node from left to right
   }
 
   private Node floor(Node x, double key){
-    if(x == null){
-      return null;
+    if(x == sentinel){
+      return sentinel;
     }
     else{
       int cmp = Double.compare(key, x.key);
@@ -39,21 +39,18 @@ public final class OrderStatisticTree{ // get rank of node from left to right
       }
       else{
         var t = floor(x.right, key);
-        return t != null ? t : x;
+        return t != sentinel ? t : x;
       }
     }
   }
 
   public double ceiling(double key){
-//    if(key == null){
-//      throw new IllegalArgumentException("argument to ceiling() is null");
-//    }
-    if(root == null){
+    if(root == sentinel){
       throw new NoSuchElementException("calls ceiling() with empty symbol table");
     }
     else{
       var x = ceiling(root, key);
-      if(x == null){
+      if(x == sentinel){
         throw new NoSuchElementException("argument to ceiling() is too small");
       }
       else{
@@ -63,8 +60,8 @@ public final class OrderStatisticTree{ // get rank of node from left to right
   }
 
   private Node ceiling(Node x, double key){
-    if(x == null){
-      return null;
+    if(x == sentinel){
+      return sentinel;
     }
     else{
       int cmp = Double.compare(key, x.key);
@@ -76,7 +73,7 @@ public final class OrderStatisticTree{ // get rank of node from left to right
       }
       else{
         var t = ceiling(x.left, key);
-        return t != null ? t : x;
+        return t != sentinel ? t : x;
       }
     }
   }
@@ -129,7 +126,7 @@ public final class OrderStatisticTree{ // get rank of node from left to right
   }
 
   public Node search(double key){
-    if(root == null || root == sentinel){
+    if(root == sentinel){
       throw new NoSuchElementException();
     }
     return search(root, key);
@@ -145,7 +142,7 @@ public final class OrderStatisticTree{ // get rank of node from left to right
     else if(key > n.key && n.right != sentinel){
       return search(n.right, key);
     }
-    return null;
+    return sentinel;
   }
 
   private Node getSentinel(){
@@ -175,11 +172,11 @@ public final class OrderStatisticTree{ // get rank of node from left to right
   }
 
   private void insertNode(Node n){
-    if(n == null || n == sentinel){
+    if(n == sentinel){
       return;
     }
 
-    if(root == null || root == sentinel){
+    if(root == sentinel){
       n.color = Color.BLACK;
       setRoot(n);
       root.right = sentinel;
@@ -259,7 +256,7 @@ public final class OrderStatisticTree{ // get rank of node from left to right
   }
 
   private void delete(Node target){
-    if(target == null || target == sentinel){
+    if(target == sentinel){
       return;
     }
     Node ptr = target;
@@ -478,14 +475,14 @@ public final class OrderStatisticTree{ // get rank of node from left to right
   }
 
   public void inOrderForEach(BiConsumer<Double, Integer> bc){ // inorder print
-    if(getRoot() == null || getSentinel() == getRoot()){
+    if(getSentinel() == getRoot()){
       return;
     }
     inorderTreeWalk(getRoot(), bc);
   }
 
   private void inorderTreeWalk(Node n, BiConsumer<Double, Integer> bc){
-    if(n != getSentinel() & n != null){
+    if(n != getSentinel()){
       inorderTreeWalk(n.left, bc);
       bc.accept(n.key, n.size);
       inorderTreeWalk(n.right, bc);
@@ -515,7 +512,7 @@ public final class OrderStatisticTree{ // get rank of node from left to right
   }
 
   public int getHeight(){
-    if(getRoot() == null || getRoot() == getSentinel()){
+    if(getRoot() == getSentinel()){
       return 0;
     }
     int height = 1;
