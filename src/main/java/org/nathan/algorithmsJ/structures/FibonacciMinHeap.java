@@ -7,18 +7,18 @@ import java.util.*;
 
 // dynamic minimum priority queue
 // key must be a number
-public class FibonacciHeap<K, V>{
+public class FibonacciMinHeap<K, V>{
   private final Map<V, Node<K, V>> value_Node_map = new HashMap<>();
   private final Comparator<K> keyComparator;
   Node<K, V> rootList = null;
   int count = 0; // number of nodes
 
-  public FibonacciHeap(@NotNull Comparator<K> keyComparator){
+  public FibonacciMinHeap(@NotNull Comparator<K> keyComparator){
     this.keyComparator = keyComparator;
   }
 
-  public static <K, V> FibonacciHeap<K, V> union(@NotNull FibonacciHeap<K, V> f1, @NotNull FibonacciHeap<K, V> f2){
-    var res = new FibonacciHeap<K, V>(f1.keyComparator);
+  public static <K, V> FibonacciMinHeap<K, V> union(@NotNull FibonacciMinHeap<K, V> f1, @NotNull FibonacciMinHeap<K, V> f2){
+    var res = new FibonacciMinHeap<K, V>(f1.keyComparator);
     res.rootList = f1.rootList;
     Objects.requireNonNull(f1.rootList);
     Objects.requireNonNull(f2.rootList);

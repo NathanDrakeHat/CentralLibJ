@@ -8,17 +8,17 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class FibonacciHeapTest{
+class FibonacciMinHeapTest{
 
-  private static FibonacciHeap.Node<Integer, Integer> buildNode(Integer key, boolean mark){
-    var res = new FibonacciHeap.Node<>(key, key);
+  private static FibonacciMinHeap.Node<Integer, Integer> buildNode(Integer key, boolean mark){
+    var res = new FibonacciMinHeap.Node<>(key, key);
     res.mark = mark;
     return res;
   }
 
-  static void addChildren(FibonacciHeap.Node<Integer, Integer> n, int... t){
+  static void addChildren(FibonacciMinHeap.Node<Integer, Integer> n, int... t){
     for(var i : t){
-      var x = new FibonacciHeap.Node<>(i, i);
+      var x = new FibonacciMinHeap.Node<>(i, i);
       x.mark = false;
       var listLeft = n.left;
       n.left = x;
@@ -29,13 +29,13 @@ class FibonacciHeapTest{
     }
   }
 
-  private static FibonacciHeap<Integer, Integer> buildExample(){
-    var H = new FibonacciHeap<Integer, Integer>(Comparator.comparingInt(a -> a));
+  private static FibonacciMinHeap<Integer, Integer> buildExample(){
+    var H = new FibonacciMinHeap<Integer, Integer>(Comparator.comparingInt(a -> a));
     H.insert(3, 3);
     var m = H.rootList;
     addChildren(m, 17, 24, 23, 7, 21);
 
-    FibonacciHeap.Node<Integer, Integer> ptr;
+    FibonacciMinHeap.Node<Integer, Integer> ptr;
     ptr = buildNode(18, true);
     m.childList = ptr;
     ptr.parent = m;
@@ -58,7 +58,7 @@ class FibonacciHeapTest{
     ptr.parent = m.right;
     m.right.degree = 1;
 
-    FibonacciHeap.Node<Integer, Integer> t = buildNode(26, true);
+    FibonacciMinHeap.Node<Integer, Integer> t = buildNode(26, true);
     t.degree = 1;
     ptr = buildNode(35, false);
     t.childList = ptr;
@@ -73,7 +73,7 @@ class FibonacciHeapTest{
     return H;
   }
 
-  private static List<Integer> bcl(FibonacciHeap.Node<Integer, Integer> t){
+  private static List<Integer> bcl(FibonacciMinHeap.Node<Integer, Integer> t){
     List<Integer> res = new ArrayList<>();
     var p = t;
     do{
@@ -91,7 +91,7 @@ class FibonacciHeapTest{
   }
 
 
-  FibonacciHeap<Integer, Integer> fibHeap = buildExample();
+  FibonacciMinHeap<Integer, Integer> fibHeap = buildExample();
 
   @Test
   void case1(){

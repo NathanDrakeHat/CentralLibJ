@@ -2,7 +2,7 @@ package org.nathan.algorithmsJ.graph;
 
 import org.jetbrains.annotations.NotNull;
 import org.nathan.algorithmsJ.structures.DisjointSet;
-import org.nathan.algorithmsJ.structures.FibonacciHeap;
+import org.nathan.algorithmsJ.structures.FibonacciMinHeap;
 import org.nathan.algorithmsJ.structures.ExtremumHeap;
 
 import java.util.ArrayList;
@@ -34,7 +34,7 @@ public final class MST{
   public static <T> void MSTPrimFibonacciHeap(
           @NotNull LinkGraph<VertPrim<T>, WeightEdge<VertPrim<T>>> graph,
           @NotNull MST.VertPrim<T> r){
-    FibonacciHeap<Double, VertPrim<T>> Q = new FibonacciHeap<>(Comparator.comparingDouble(a -> a));
+    FibonacciMinHeap<Double, VertPrim<T>> Q = new FibonacciMinHeap<>(Comparator.comparingDouble(a -> a));
     var vertices = graph.allVertices();
     for(var u : vertices){
       if(u != r){

@@ -2,7 +2,7 @@ package org.nathan.algorithmsJ.graph;
 
 
 import org.jetbrains.annotations.NotNull;
-import org.nathan.algorithmsJ.structures.FibonacciHeap;
+import org.nathan.algorithmsJ.structures.FibonacciMinHeap;
 import org.nathan.algorithmsJ.structures.ExtremumHeap;
 
 import java.util.Comparator;
@@ -116,7 +116,7 @@ public final class SSSPath{
   public static <T> void DijkstraFibonacciHeap(@NotNull LinkGraph<BFS.Vert<T>, WeightEdge<BFS.Vert<T>>> G, @NotNull BFS.Vert<T> s){
     initializeSingleSource(G, s);
     var vertices = G.allVertices();
-    FibonacciHeap<Double, BFS.Vert<T>> Q = new FibonacciHeap<>(Comparator.comparingDouble(a -> a));
+    FibonacciMinHeap<Double, BFS.Vert<T>> Q = new FibonacciMinHeap<>(Comparator.comparingDouble(a -> a));
     for(var vertex : vertices){
       Q.insert(vertex.distance, vertex);
     }
