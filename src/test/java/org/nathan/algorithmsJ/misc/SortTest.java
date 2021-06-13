@@ -40,7 +40,7 @@ class SortTest{
     return is_sorted;
   }
 
-  static boolean isSorted(SimpleDate[] res){
+  static boolean isSorted(Sort.SimpleDate[] res){
     boolean is_sorted = true;
     for(int i = 1; i < res.length; i++){
       if(res[i - 1].year > res[i].year){
@@ -215,20 +215,20 @@ class SortTest{
     }
   }
 
-  static SimpleDate[] buildDate(){
+  static Sort.SimpleDate[] buildDate(){
     var rand = ThreadLocalRandom.current();
     int len = rand.nextInt(20) + 20;
-    SimpleDate[] res = new SimpleDate[len];
+    Sort.SimpleDate[] res = new Sort.SimpleDate[len];
     int[] years = randomIntArray(2000, 2022, len);
     int[] months = randomIntArray(1, 13, len);
     int[] days = randomIntArray(1, 29, len);
     for(int i = 0; i < len; i++){
-      res[i] = new SimpleDate(years[i], months[i], days[i]);
+      res[i] = new Sort.SimpleDate(years[i], months[i], days[i]);
     }
     return res;
   }
 
-  SimpleDate[][] radixSortData = new SimpleDate[iteration][];
+  Sort.SimpleDate[][] radixSortData = new Sort.SimpleDate[iteration][];
 
   {
     for(int i = 0; i < iteration; i++){
