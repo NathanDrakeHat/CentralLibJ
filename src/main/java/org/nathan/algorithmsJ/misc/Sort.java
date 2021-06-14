@@ -162,29 +162,32 @@ public final class Sort{
     }
   }
 
-  private static int partition(double[] a, int start, int end){
-    var pivot = a[end - 1];
-    int i = start - 1;
-    for(int j = start; j < end - 1; j++){
-      if(a[j] <= pivot){
-        exchange(a, j, ++i);
-      }
-    }
-    a[end - 1] = a[++i];
-    a[i] = pivot;
-    return i;
-  }
-
   public static void quickSort(double[] a){
-    quickSort(a, 0, a.length);
-  }
+    var funcPartition = new Object(){
+      int apply(int start, int end){
+        var pivot = a[end - 1];
+        int i = start - 1;
+        for(int j = start; j < end - 1; j++){
+          if(a[j] <= pivot){
+            exchange(a, j, ++i);
+          }
+        }
+        a[end - 1] = a[++i];
+        a[i] = pivot;
+        return i;
+      }
+    };
 
-  private static void quickSort(double[] a, int start, int end){
-    if((end - start) > 1){
-      int middle = partition(a, start, end);
-      quickSort(a, start, middle);
-      quickSort(a, middle, end);
-    }
+    var funcSort = new Object(){
+      void apply(int start, int end){
+        if((end - start) > 1){
+          int middle = funcPartition.apply(start, end);
+          apply(start, middle);
+          apply(middle, end);
+        }
+      }
+    };
+    funcSort.apply(0, a.length);
   }
 
   public static void quickSort3Way(double[] array){
@@ -220,11 +223,7 @@ public final class Sort{
   private static int randomPartition(double[] a, int start, int end){
     int pivot_idx = ThreadLocalRandom.current().nextInt(start, end);
     var pivot = a[pivot_idx];
-
-    var temp = a[end - 1];
-    a[end - 1] = pivot;
-    a[pivot_idx] = temp;
-
+    exchange(a, pivot_idx, end-1);
     int i = start - 1;
     for(int j = start; j < end - 1; j++){
       if(a[j] <= pivot){

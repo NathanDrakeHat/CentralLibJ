@@ -22,7 +22,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="move some methods outer">
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="add quickSort3Way">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/misc/Sort.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/misc/Sort.java" afterDir="false" />
     </list>
@@ -90,7 +90,7 @@
       <recent name="org.nathan.algorithmsJava.graph" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.SortTest.quickSort3WayTest">
+  <component name="RunManager" selected="JUnit.All in AlgorithmsJava">
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.nathan.Main" />
       <module name="AlgorithmsJava" />
@@ -199,8 +199,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.SortTest.quickSort3WayTest" />
         <item itemvalue="JUnit.All in AlgorithmsJava" />
+        <item itemvalue="JUnit.SortTest.quickSort3WayTest" />
         <item itemvalue="JUnit.ConvexHullTest.GrahamScanTest" />
         <item itemvalue="JUnit.SortTest.shellSortTest" />
         <item itemvalue="JUnit.OrderStatisticTreeTest.functionsTest" />
@@ -400,14 +400,7 @@
       <workItem from="1623494511253" duration="25692000" />
       <workItem from="1623639756028" duration="227000" />
       <workItem from="1623654077799" duration="598000" />
-      <workItem from="1623655422172" duration="316000" />
-    </task>
-    <task id="LOCAL-00179" summary="rename">
-      <created>1623066904058</created>
-      <option name="number" value="00179" />
-      <option name="presentableId" value="LOCAL-00179" />
-      <option name="project" value="LOCAL" />
-      <updated>1623066904058</updated>
+      <workItem from="1623655422172" duration="1500000" />
     </task>
     <task id="LOCAL-00180" summary="rename">
       <created>1623069729208</created>
@@ -745,7 +738,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623590540003</updated>
     </task>
-    <option name="localTasksCounter" value="228" />
+    <task id="LOCAL-00228" summary="add quickSort3Way">
+      <created>1623655950273</created>
+      <option name="number" value="00228" />
+      <option name="presentableId" value="LOCAL-00228" />
+      <option name="project" value="LOCAL" />
+      <updated>1623655950273</updated>
+    </task>
+    <option name="localTasksCounter" value="229" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -774,7 +774,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="remove todo" />
     <MESSAGE value="save flow edge" />
     <MESSAGE value="fix trivial bug" />
     <MESSAGE value="delete UnionEdge.java" />
@@ -799,7 +798,8 @@
     <MESSAGE value="add knuth shuffle" />
     <MESSAGE value="add ConvexHull.java Graham Scan" />
     <MESSAGE value="move some methods outer" />
-    <option name="LAST_COMMIT_MESSAGE" value="move some methods outer" />
+    <MESSAGE value="add quickSort3Way" />
+    <option name="LAST_COMMIT_MESSAGE" value="add quickSort3Way" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
