@@ -10,7 +10,7 @@ import java.util.function.BiConsumer;
 
 @SuppressWarnings("unused")
 public class OrderStatisticTree<Key>{ // get rank of node from left to right
-  private final Node<Key>sentinel = new Node<>(null, Color.BLACK);
+  private final Node<Key>sentinel = new Node<>(null, BLACK);
   @NotNull private final Comparator<Key> comparator;
   private Node<Key>root = sentinel;
 
@@ -185,7 +185,7 @@ public class OrderStatisticTree<Key>{ // get rank of node from left to right
     }
 
     if(root == sentinel){
-      n.color = Color.BLACK;
+      n.color = BLACK;
       setRoot(n);
       root.right = sentinel;
       root.left = sentinel;
@@ -217,13 +217,13 @@ public class OrderStatisticTree<Key>{ // get rank of node from left to right
   }
 
   private void insertFixUp(Node<Key>ptr){
-    while(ptr.parent.color == Color.RED) {
+    while(ptr.parent.color == RED) {
       if(ptr.parent == ptr.parent.parent.left){
         Node<Key>right = ptr.parent.parent.right;
-        if(right.color == Color.RED){ // case1: sibling is red
-          ptr.parent.color = Color.BLACK;
-          right.color = Color.BLACK;
-          ptr.parent.parent.color = Color.RED;
+        if(right.color == RED){ // case1: sibling is red
+          ptr.parent.color = BLACK;
+          right.color = BLACK;
+          ptr.parent.parent.color = RED;
           ptr = ptr.parent.parent;
           continue;
         }
@@ -231,17 +231,17 @@ public class OrderStatisticTree<Key>{ // get rank of node from left to right
           ptr = ptr.parent;
           leftRotate(ptr);
         }
-        ptr.parent.color = Color.BLACK; // case3
-        ptr.parent.parent.color = Color.RED;
+        ptr.parent.color = BLACK; // case3
+        ptr.parent.parent.color = RED;
         rightRotate(ptr.parent.parent); // ptr.getParent will be black and then break
         ptr = ptr.parent;
       }
       else{
         Node<Key>left = ptr.parent.parent.left;
-        if(left.color == Color.RED){
-          ptr.parent.color = Color.BLACK;
-          left.color = Color.BLACK;
-          ptr.parent.parent.color = Color.RED;
+        if(left.color == RED){
+          ptr.parent.color = BLACK;
+          left.color = BLACK;
+          ptr.parent.parent.color = RED;
           ptr = ptr.parent.parent;
           continue;
         }
@@ -249,13 +249,13 @@ public class OrderStatisticTree<Key>{ // get rank of node from left to right
           ptr = ptr.parent;
           rightRotate(ptr);
         }
-        ptr.parent.color = Color.BLACK;
-        ptr.parent.parent.color = Color.RED;
+        ptr.parent.color = BLACK;
+        ptr.parent.parent.color = RED;
         leftRotate(ptr.parent.parent);
         ptr = ptr.parent;
       }
     }
-    root.color = Color.BLACK;
+    root.color = BLACK;
   }
 
   public void deleteKey(Key key){
@@ -268,7 +268,7 @@ public class OrderStatisticTree<Key>{ // get rank of node from left to right
       return;
     }
     Node<Key>ptr = target;
-    Color ptr_color = ptr.color;
+    boolean ptr_color = ptr.color;
     Node<Key>fix_up;
     if(ptr.left == sentinel){
       fix_up = target.right;
@@ -301,65 +301,65 @@ public class OrderStatisticTree<Key>{ // get rank of node from left to right
       ptr.parent.size = ptr.parent.size - 1;
       ptr.color = target.color;
     }
-    if(ptr_color == Color.BLACK){ // delete black node may violate property of red-black tree
+    if(ptr_color == BLACK){ // delete black node may violate property of red-black tree
       deleteFixUp(fix_up);
     }
   }
 
   private void deleteFixUp(Node<Key>fix_up){
-    while(fix_up != root && fix_up.color == Color.BLACK) {
+    while(fix_up != root && fix_up.color == BLACK) {
       Node<Key>sibling;
       if(fix_up == fix_up.parent.left){
         sibling = fix_up.parent.right;
-        if(sibling.color == Color.RED){ // case1:sibling is black, convert to case 2, 3 or 4
-          sibling.color = Color.BLACK; // , which denote that sibling is black
-          fix_up.parent.color = Color.RED;
+        if(sibling.color == RED){ // case1:sibling is black, convert to case 2, 3 or 4
+          sibling.color = BLACK; // , which denote that sibling is black
+          fix_up.parent.color = RED;
           leftRotate(fix_up.parent);
           sibling = fix_up.parent.right;
         }
-        if(sibling.left.color == Color.BLACK && sibling.right.color == Color.BLACK){ // case2: sibling children is black
-          sibling.color = Color.RED;
+        if(sibling.left.color == BLACK && sibling.right.color == BLACK){ // case2: sibling children is black
+          sibling.color = RED;
           fix_up = fix_up.parent;
           continue; // may break while condition
         }
-        else if(sibling.right.color == Color.BLACK){ // case3: sibling left red, right black. convert case4
-          sibling.left.color = Color.BLACK;
-          sibling.color = Color.RED;
+        else if(sibling.right.color == BLACK){ // case3: sibling left red, right black. convert case4
+          sibling.left.color = BLACK;
+          sibling.color = RED;
           rightRotate(sibling);
           sibling = fix_up.parent.right;
         }
         sibling.color = fix_up.parent.color; // case4: sibling right red
-        fix_up.parent.color = Color.BLACK;
-        sibling.right.color = Color.BLACK;
+        fix_up.parent.color = BLACK;
+        sibling.right.color = BLACK;
         leftRotate(fix_up.parent);
       }
       else{
         sibling = fix_up.parent.left;
-        if(sibling.color == Color.RED){
-          sibling.color = Color.BLACK;
-          fix_up.parent.color = Color.RED;
+        if(sibling.color == RED){
+          sibling.color = BLACK;
+          fix_up.parent.color = RED;
           rightRotate(fix_up.parent);
           sibling = fix_up.parent.left;
         }
-        if(sibling.left.color == Color.BLACK && sibling.right.color == Color.BLACK){
-          sibling.color = Color.RED;
+        if(sibling.left.color == BLACK && sibling.right.color == BLACK){
+          sibling.color = RED;
           fix_up = fix_up.parent;
           continue;
         }
-        else if(sibling.left.color == Color.BLACK){
-          sibling.right.color = Color.BLACK;
-          sibling.color = Color.RED;
+        else if(sibling.left.color == BLACK){
+          sibling.right.color = BLACK;
+          sibling.color = RED;
           leftRotate(sibling);
           sibling = fix_up.parent.left;
         }
         sibling.color = fix_up.parent.color;
-        fix_up.parent.color = Color.BLACK;
-        sibling.left.color = Color.BLACK;
+        fix_up.parent.color = BLACK;
+        sibling.left.color = BLACK;
         rightRotate(fix_up.parent);
       }
       fix_up = root;
     }
-    fix_up.color = Color.BLACK;
+    fix_up.color = BLACK;
   }
 
   private void transplant(Node<Key>a, Node<Key>b){
@@ -537,15 +537,13 @@ public class OrderStatisticTree<Key>{ // get rank of node from left to right
     }
     return height;
   }
-
-  enum Color{
-    RED,
-    BLACK
-  }
+  
+  private static final boolean RED = false;
+  private static final boolean BLACK = true;
 
   static class Node<K>{
     K key;
-    Color color;
+    boolean color;
     Node<K>parent;
     Node<K>left;
     Node<K>right;
@@ -553,11 +551,10 @@ public class OrderStatisticTree<Key>{ // get rank of node from left to right
 
     Node(K key){
       this.key = key;
-      this.color = Color.RED;
       int size = 1;
     }
 
-    Node(K key, Color color){
+    Node(K key, boolean color){
       this.key = key;
       this.color = color;
     }

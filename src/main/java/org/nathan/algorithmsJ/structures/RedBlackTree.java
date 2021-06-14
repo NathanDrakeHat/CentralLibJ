@@ -6,7 +6,6 @@ import org.nathan.centralUtils.tuples.Tuple;
 import java.util.*;
 import java.util.function.BiConsumer;
 
-
 public class RedBlackTree<K, V> implements Iterable<Tuple<K, V>>{
   @NotNull
   private final Comparator<K> k_comparator;
@@ -190,13 +189,13 @@ public class RedBlackTree<K, V> implements Iterable<Tuple<K, V>>{
   }
 
   private void insertFixUp(Node<K, V> ptr){
-    while(ptr.parent.isBlack == RED) {
+    while(ptr.parent.color == RED) {
       if(ptr.parent == ptr.parent.parent.left){
         var right = ptr.parent.parent.right;
-        if(right.isBlack == RED){ // case1: sibling is red
-          ptr.parent.isBlack = BLACK;
-          right.isBlack = BLACK;
-          ptr.parent.parent.isBlack = RED;
+        if(right.color == RED){ // case1: sibling is red
+          ptr.parent.color = BLACK;
+          right.color = BLACK;
+          ptr.parent.parent.color = RED;
           ptr = ptr.parent.parent;
           continue;
         }
@@ -204,17 +203,17 @@ public class RedBlackTree<K, V> implements Iterable<Tuple<K, V>>{
           ptr = ptr.parent;
           leftRotate(ptr);
         }
-        ptr.parent.isBlack = BLACK; // case3
-        ptr.parent.parent.isBlack = RED;
+        ptr.parent.color = BLACK; // case3
+        ptr.parent.parent.color = RED;
         rightRotate(ptr.parent.parent); // ptr.getParent will be black and then break
         ptr = ptr.parent;
       }
       else{
         var left = ptr.parent.parent.left;
-        if(left.isBlack == RED){
-          ptr.parent.isBlack = BLACK;
-          left.isBlack = BLACK;
-          ptr.parent.parent.isBlack = RED;
+        if(left.color == RED){
+          ptr.parent.color = BLACK;
+          left.color = BLACK;
+          ptr.parent.parent.color = RED;
           ptr = ptr.parent.parent;
           continue;
         }
@@ -222,13 +221,13 @@ public class RedBlackTree<K, V> implements Iterable<Tuple<K, V>>{
           ptr = ptr.parent;
           rightRotate(ptr);
         }
-        ptr.parent.isBlack = BLACK;
-        ptr.parent.parent.isBlack = RED;
+        ptr.parent.color = BLACK;
+        ptr.parent.parent.color = RED;
         leftRotate(ptr.parent.parent);
         ptr = ptr.parent;
       }
     }
-    root.isBlack = BLACK;
+    root.color = BLACK;
   }
 
   public void delete(@NotNull K key){
@@ -241,7 +240,7 @@ public class RedBlackTree<K, V> implements Iterable<Tuple<K, V>>{
       throw new NoSuchElementException("null tree");
     }
     var ptr = target;
-    var ptr_color = ptr.isBlack;
+    var ptr_color = ptr.color;
     Node<K, V> fix_up;
     if(ptr.left == sentinel){
       fix_up = target.right;
@@ -253,7 +252,7 @@ public class RedBlackTree<K, V> implements Iterable<Tuple<K, V>>{
     }
     else{
       ptr = getSuccessor(target);
-      ptr_color = ptr.isBlack;
+      ptr_color = ptr.color;
       fix_up = ptr.right;
       if(ptr.parent == target){
         fix_up.parent = ptr; // in case of sentinel refer to target
@@ -266,7 +265,7 @@ public class RedBlackTree<K, V> implements Iterable<Tuple<K, V>>{
       transplant(target, ptr);
       ptr.left = target.left;
       target.left.parent = ptr;
-      ptr.isBlack = target.isBlack;
+      ptr.color = target.color;
     }
     if(ptr_color == BLACK){ // delete black node may violate property of red-black tree
       deleteFixUp(fix_up);
@@ -274,59 +273,59 @@ public class RedBlackTree<K, V> implements Iterable<Tuple<K, V>>{
   }
 
   private void deleteFixUp(Node<K, V> fix_up){
-    while(fix_up != root && fix_up.isBlack == BLACK) {
+    while(fix_up != root && fix_up.color == BLACK) {
       Node<K, V> sibling;
       if(fix_up == fix_up.parent.left){
         sibling = fix_up.parent.right;
-        if(sibling.isBlack == RED){ // case1:sibling is black, convert to case 2, 3 or 4
-          sibling.isBlack = BLACK; // , which denote that sibling is black
-          fix_up.parent.isBlack = RED;
+        if(sibling.color == RED){ // case1:sibling is black, convert to case 2, 3 or 4
+          sibling.color = BLACK; // , which denote that sibling is black
+          fix_up.parent.color = RED;
           leftRotate(fix_up.parent);
           sibling = fix_up.parent.right;
         }
-        if(sibling.left.isBlack == BLACK && sibling.right.isBlack == BLACK){ // case2: sibling children is black
-          sibling.isBlack = RED;
+        if(sibling.left.color == BLACK && sibling.right.color == BLACK){ // case2: sibling children is black
+          sibling.color = RED;
           fix_up = fix_up.parent;
           continue;
         }
-        else if(sibling.right.isBlack == BLACK){ // case3: sibling left red, right black. convert case4
-          sibling.left.isBlack = BLACK;
-          sibling.isBlack = RED;
+        else if(sibling.right.color == BLACK){ // case3: sibling left red, right black. convert case4
+          sibling.left.color = BLACK;
+          sibling.color = RED;
           rightRotate(sibling);
           sibling = fix_up.parent.right;
         }
-        sibling.isBlack = fix_up.parent.isBlack; // case4: sibling right red
-        fix_up.parent.isBlack = BLACK;
-        sibling.right.isBlack = BLACK;
+        sibling.color = fix_up.parent.color; // case4: sibling right red
+        fix_up.parent.color = BLACK;
+        sibling.right.color = BLACK;
         leftRotate(fix_up.parent);
       }
       else{
         sibling = fix_up.parent.left;
-        if(sibling.isBlack == RED){
-          sibling.isBlack = BLACK;
-          fix_up.parent.isBlack = RED;
+        if(sibling.color == RED){
+          sibling.color = BLACK;
+          fix_up.parent.color = RED;
           rightRotate(fix_up.parent);
           sibling = fix_up.parent.left;
         }
-        if(sibling.left.isBlack == BLACK && sibling.right.isBlack == BLACK){
-          sibling.isBlack = RED;
+        if(sibling.left.color == BLACK && sibling.right.color == BLACK){
+          sibling.color = RED;
           fix_up = fix_up.parent;
           continue;
         }
-        else if(sibling.left.isBlack == BLACK){
-          sibling.right.isBlack = BLACK;
-          sibling.isBlack = RED;
+        else if(sibling.left.color == BLACK){
+          sibling.right.color = BLACK;
+          sibling.color = RED;
           leftRotate(sibling);
           sibling = fix_up.parent.left;
         }
-        sibling.isBlack = fix_up.parent.isBlack;
-        fix_up.parent.isBlack = BLACK;
-        sibling.left.isBlack = BLACK;
+        sibling.color = fix_up.parent.color;
+        fix_up.parent.color = BLACK;
+        sibling.left.color = BLACK;
         rightRotate(fix_up.parent);
       }
       fix_up = root;
     }
-    fix_up.isBlack = BLACK;
+    fix_up.color = BLACK;
   }
 
   private void transplant(Node<K, V> a, Node<K, V> b){
@@ -593,17 +592,17 @@ public class RedBlackTree<K, V> implements Iterable<Tuple<K, V>>{
   static class Node<P, Q>{
     P key;
     Q value;
-    boolean isBlack;
+    boolean color;
     Node<P, Q> parent;
     Node<P, Q> left;
     Node<P, Q> right;
 
-    Node(boolean is_black){
-      this.isBlack = is_black;
+    Node(boolean color){
+      this.color = color;
     }
 
     Node(@NotNull P key, Q val){
-      isBlack = RED;
+      color = RED;
       this.key = key;
       this.value = val;
     }

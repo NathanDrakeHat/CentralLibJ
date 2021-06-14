@@ -22,7 +22,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="add comments">
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="small fix">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/OrderStatisticTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/OrderStatisticTree.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/RedBlackTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/RedBlackTree.java" afterDir="false" />
     </list>
@@ -71,7 +72,7 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../CentralUtils" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -82,6 +83,9 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Nathan\IdeaProjects\AlgorithmsJava\src\main\java\org\nathan\algorithmsJ\structures" />
+    </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
@@ -407,14 +411,7 @@
       <workItem from="1623494511253" duration="25692000" />
       <workItem from="1623639756028" duration="227000" />
       <workItem from="1623654077799" duration="598000" />
-      <workItem from="1623655422172" duration="15802000" />
-    </task>
-    <task id="LOCAL-00192" summary="rename">
-      <created>1623294828578</created>
-      <option name="number" value="00192" />
-      <option name="presentableId" value="LOCAL-00192" />
-      <option name="project" value="LOCAL" />
-      <updated>1623294828578</updated>
+      <workItem from="1623655422172" duration="17766000" />
     </task>
     <task id="LOCAL-00193" summary="refactor">
       <created>1623316113208</created>
@@ -752,7 +749,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623676207645</updated>
     </task>
-    <option name="localTasksCounter" value="241" />
+    <task id="LOCAL-00241" summary="small fix">
+      <created>1623676630563</created>
+      <option name="number" value="00241" />
+      <option name="presentableId" value="LOCAL-00241" />
+      <option name="project" value="LOCAL" />
+      <updated>1623676630563</updated>
+    </task>
+    <option name="localTasksCounter" value="242" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -781,7 +785,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="remove redundant methods" />
     <MESSAGE value="add two sort" />
     <MESSAGE value="add todo, add tests" />
     <MESSAGE value="move" />
@@ -806,7 +809,8 @@
     <MESSAGE value="add input check" />
     <MESSAGE value="change README.md" />
     <MESSAGE value="add comments" />
-    <option name="LAST_COMMIT_MESSAGE" value="add comments" />
+    <MESSAGE value="small fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="small fix" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
