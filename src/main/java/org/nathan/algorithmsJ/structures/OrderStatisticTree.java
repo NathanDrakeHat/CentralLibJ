@@ -543,7 +543,6 @@ public class OrderStatisticTree<Key>{ // get rank of node from left to right
     BLACK
   }
 
-  // sentinel: denote leaf and parent of root
   static class Node<K>{
     K key;
     Color color;
