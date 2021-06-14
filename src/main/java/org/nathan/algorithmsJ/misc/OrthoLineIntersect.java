@@ -40,6 +40,9 @@ public class OrthoLineIntersect{
 
         hPoints.add(point_pair.first());
         hPoints.add(point_pair.second());
+        if(getY.applyAsDouble(point_pair.first()) != getY.applyAsDouble(point_pair.second())){
+          throw new IllegalArgumentException("lines are not orthogonal.");
+        }
       }
     }
 
