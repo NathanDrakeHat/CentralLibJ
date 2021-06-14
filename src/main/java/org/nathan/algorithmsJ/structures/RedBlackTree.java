@@ -20,6 +20,12 @@ public class RedBlackTree<K, V> implements Iterable<Tuple<K, V>>{
     root = sentinel;
   }
 
+  /**
+   * 1d range search
+   * @param low low
+   * @param high high (inclusive)
+   * @return list of key-value in range
+   */
   public List<Tuple<K, V>> keyRangeSearch(@NotNull K low, @NotNull K high){
     List<Tuple<K, V>> res = new ArrayList<>();
     if(root == sentinel){
@@ -33,12 +39,13 @@ public class RedBlackTree<K, V> implements Iterable<Tuple<K, V>>{
     if(n == sentinel){
       return;
     }
-    if(k_comparator.compare(n.key, low) >= 0 && k_comparator.compare(n.key, high) <= 0){
-      l.add(new Tuple<>(n.key, n.value));
-    }
 
     if(k_comparator.compare(n.key, low) > 0){
       keyRangeSearch(n.left, low, high, l);
+    }
+
+    if(k_comparator.compare(n.key, low) >= 0 && k_comparator.compare(n.key, high) <= 0){
+      l.add(new Tuple<>(n.key, n.value));
     }
 
     if(k_comparator.compare(n.key, high) < 0){

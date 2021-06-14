@@ -22,10 +22,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="move functions to inner">
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="set OrderStatisticTree.java generic">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/OrderStatisticTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/OrderStatisticTree.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/structures/OrderStatisticTreeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/structures/OrderStatisticTreeTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/RedBlackTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/RedBlackTree.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -400,14 +399,7 @@
       <workItem from="1623494511253" duration="25692000" />
       <workItem from="1623639756028" duration="227000" />
       <workItem from="1623654077799" duration="598000" />
-      <workItem from="1623655422172" duration="3261000" />
-    </task>
-    <task id="LOCAL-00181" summary="rename packages">
-      <created>1623138188503</created>
-      <option name="number" value="00181" />
-      <option name="presentableId" value="LOCAL-00181" />
-      <option name="project" value="LOCAL" />
-      <updated>1623138188503</updated>
+      <workItem from="1623655422172" duration="4092000" />
     </task>
     <task id="LOCAL-00182" summary="remove edge direction">
       <created>1623245118248</created>
@@ -745,7 +737,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623657009212</updated>
     </task>
-    <option name="localTasksCounter" value="230" />
+    <task id="LOCAL-00230" summary="set OrderStatisticTree.java generic">
+      <created>1623658733833</created>
+      <option name="number" value="00230" />
+      <option name="presentableId" value="LOCAL-00230" />
+      <option name="project" value="LOCAL" />
+      <updated>1623658733833</updated>
+    </task>
+    <option name="localTasksCounter" value="231" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -774,7 +773,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fix trivial bug" />
     <MESSAGE value="delete UnionEdge.java" />
     <MESSAGE value="save" />
     <MESSAGE value="refactor" />
@@ -799,7 +797,8 @@
     <MESSAGE value="move some methods outer" />
     <MESSAGE value="add quickSort3Way" />
     <MESSAGE value="move functions to inner" />
-    <option name="LAST_COMMIT_MESSAGE" value="move functions to inner" />
+    <MESSAGE value="set OrderStatisticTree.java generic" />
+    <option name="LAST_COMMIT_MESSAGE" value="set OrderStatisticTree.java generic" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
