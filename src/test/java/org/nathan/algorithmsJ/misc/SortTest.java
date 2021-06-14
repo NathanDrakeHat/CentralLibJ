@@ -59,6 +59,25 @@ class SortTest{
     return is_sorted;
   }
 
+  double[][] quickSort3WayCase = new double[iteration][];
+
+  {
+    var rand = ThreadLocalRandom.current();
+    for(int i = 0; i < iteration; i++){
+      int len = rand.nextInt(10) + 20;
+      int bound = rand.nextInt(5) + 10;
+      quickSort3WayCase[i] = randomDoubleArray(-bound, bound, len);
+    }
+  }
+
+  @Test
+  void quickSort3WayTest(){
+    for(int i = 0; i < iteration; i++){
+      Sort.quickSort3Way(quickSort3WayCase[i]);
+      assertTrue(isSorted(quickSort3WayCase[i]));
+    }
+  }
+
   double[][] shellSortCase = new double[iteration][];
 
   {

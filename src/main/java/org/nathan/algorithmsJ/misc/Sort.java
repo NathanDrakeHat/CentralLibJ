@@ -7,6 +7,12 @@ import java.util.stream.Collectors;
 
 
 public final class Sort{
+  private static void exchange(double[] array, int i, int j){
+    var t = array[i];
+    array[i] = array[j];
+    array[j] = t;
+  }
+
   public static void selectionSort(double[] array){
     for(int i = 0; i < array.length; i++){
       int min_idx = i;
@@ -15,18 +21,14 @@ public final class Sort{
           min_idx = j;
         }
       }
-      double t = array[i];
-      array[i] = array[min_idx];
-      array[min_idx] = t;
+      exchange(array, i, min_idx);
     }
   }
 
   public static void insertionSort(double[] array){
     for(int i = 1; i < array.length; i++){
       for(int j = i - 1; j >= 0 && array[j] > array[j + 1]; j--){
-        var t = array[j];
-        array[j] = array[j + 1];
-        array[j + 1] = t;
+        exchange(array, j, j+1);
       }
     }
   }
@@ -43,9 +45,7 @@ public final class Sort{
     while(h >= 1) {
       for(int i = h; i < array.length; i+=h){
         for(int j = i; j >= h && array[j] < array[j-h]; j-=h){
-          var t = array[j];
-          array[j] = array[j - h];
-          array[j -h] = t;
+          exchange(array, j, j-h);
         }
       }
       h /= 3;
@@ -167,9 +167,7 @@ public final class Sort{
     int i = start - 1;
     for(int j = start; j < end - 1; j++){
       if(a[j] <= pivot){
-        var t = a[j];
-        a[j] = a[++i];
-        a[i] = t;
+        exchange(a, j, ++i);
       }
     }
     a[end - 1] = a[++i];
@@ -189,6 +187,32 @@ public final class Sort{
     }
   }
 
+  public static void quickSort3Way(double[] array){
+    var funcSort = new Object(){
+      void apply(int lo, int hi){
+        if(hi - lo <= 0){
+          return;
+        }
+        int lt = lo, gt = hi, i = lo;
+        double val = array[lo]; // Tukey's ninther to select better value
+        while(i <= gt){
+          if(array[i] < val){
+            exchange(array, i++, lt++);
+          }
+          else if(array[i] > val){
+            exchange(array, i, gt--);
+          }
+          else{
+            i++;
+          }
+        }
+        apply(lo, lt-1);
+        apply(gt+1, hi);
+      }
+    };
+    funcSort.apply(0, array.length - 1);
+  }
+
   public static void randomQuickSort(double[] a){
     randomQuickSort(a, 0, a.length);
   }
@@ -204,9 +228,7 @@ public final class Sort{
     int i = start - 1;
     for(int j = start; j < end - 1; j++){
       if(a[j] <= pivot){
-        var t = a[j];
-        a[j] = a[++i];
-        a[i] = t;
+        exchange(a, j, ++i);
       }
     }
     a[end - 1] = a[++i];
