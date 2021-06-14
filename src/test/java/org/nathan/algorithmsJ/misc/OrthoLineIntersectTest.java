@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 class OrthoLineIntersectTest{
-  List<Tuple<Tuple<Integer,Integer>, Tuple<Integer,Integer>>> linesData;
+  List<Tuple<Tuple<Integer,Integer>, Tuple<Integer,Integer>>> linesData = new ArrayList<>();
   {
     List<Tuple<Integer, Integer>> pointsData = new ArrayList<>();
     pointsData.add(new Tuple<>(43,448-395));
@@ -46,12 +46,15 @@ class OrthoLineIntersectTest{
     pointsData.add(new Tuple<>(691,448-71));
     pointsData.add(new Tuple<>(691,448-421));
 
-    for(int i = 0; i < 12; i++){
+    for(int i = 0; i < 24; i+=2){
       linesData.add(new Tuple<>(pointsData.get(i), pointsData.get(i+1)));
     }
   }
   
   @Test
   void intersectsTest(){
+    var res =
+            OrthoLineIntersect.intersects(linesData, l->new Tuple<>(l.first(),l.second()), Tuple::first, Tuple::second);
+    System.out.println(res.size());
   }
 }

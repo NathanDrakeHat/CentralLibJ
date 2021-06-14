@@ -1,10 +1,15 @@
 package org.nathan.algorithmsJ.misc;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.*;
 import java.util.function.ToDoubleFunction;
 
 public class ConvexHull{
-  public static <E> List<E> GrahamScan(List<E> points, ToDoubleFunction<E> getX, ToDoubleFunction<E> getY){
+  public static <E> @NotNull List<E> GrahamScan(
+          @NotNull List<E> points,
+          @NotNull ToDoubleFunction<E> getX,
+          @NotNull ToDoubleFunction<E> getY){
     if(points.size() <= 2){
       return Collections.emptyList();
     }
