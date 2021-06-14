@@ -589,19 +589,19 @@ public class RedBlackTree<K, V> implements Iterable<Tuple<K, V>>{
   private static final boolean RED = false;
   private static final boolean BLACK = true;
 
-  static class Node<P, Q>{
-    P key;
-    Q value;
+  static class Node<key, val>{
+    key key;
+    val value;
     boolean color;
-    Node<P, Q> parent;
-    Node<P, Q> left;
-    Node<P, Q> right;
+    Node<key, val> parent;
+    Node<key, val> left;
+    Node<key, val> right;
 
     Node(boolean color){
       this.color = color;
     }
 
-    Node(@NotNull P key, Q val){
+    Node(@NotNull key key, val val){
       color = RED;
       this.key = key;
       this.value = val;
