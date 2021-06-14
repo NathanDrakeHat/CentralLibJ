@@ -76,17 +76,20 @@ public class OrthoLineIntersect{
       if(hPoints.contains(p)){
         if(inTree.contains(otherEndPoint.get(p))){
           if(i + 1 < scanPoints.size() && getX.applyAsDouble(p) == getX.applyAsDouble(scanPoints.get(i+1))){
+            // lines with the same x
             var ti = i + 1;
             while(getX.applyAsDouble(p) == getX.applyAsDouble(scanPoints.get(ti)) && hPoints.contains(scanPoints.get(ti))){
               ti++; // degeneration when lots of horizon lines end in the same x value
             }
             if(getX.applyAsDouble(p) == getX.applyAsDouble(scanPoints.get(ti))){
+              // exchange vertical point first encountered with current horizontal point
               var op = p;
               p = scanPoints.get(ti);
               scanPoints.set(ti, op);
               funcAddIntersect.apply(p);
             }
             else {
+              // no vertical point left
               funcRmFromTree.apply(otherEndPoint.get(p));
               var np = scanPoints.get(i+1);
               do{
@@ -98,7 +101,6 @@ public class OrthoLineIntersect{
             }
           }
           else{
-            // remove last
             funcRmFromTree.apply(otherEndPoint.get(p));
           }
         }
