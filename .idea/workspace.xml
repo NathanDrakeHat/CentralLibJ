@@ -22,9 +22,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="add quickSort3Way">
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="move functions to inner">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/misc/Sort.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/misc/Sort.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/OrderStatisticTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/OrderStatisticTree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/structures/OrderStatisticTreeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/structures/OrderStatisticTreeTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,7 +140,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="OrderStatisticTreeTest.functionsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="OrderStatisticTreeTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AlgorithmsJava" />
       <extension name="coverage">
         <pattern>
@@ -149,8 +150,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="org.nathan.algorithmsJ.structures" />
       <option name="MAIN_CLASS_NAME" value="org.nathan.algorithmsJ.structures.OrderStatisticTreeTest" />
-      <option name="METHOD_NAME" value="functionsTest" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -192,18 +192,18 @@
       <item itemvalue="Application.pushUtils" />
       <item itemvalue="Application.Main" />
       <item itemvalue="JUnit.All in AlgorithmsJava" />
-      <item itemvalue="JUnit.OrderStatisticTreeTest.functionsTest" />
       <item itemvalue="JUnit.SortTest.shellSortTest" />
       <item itemvalue="JUnit.ConvexHullTest.GrahamScanTest" />
       <item itemvalue="JUnit.SortTest.quickSort3WayTest" />
+      <item itemvalue="JUnit.OrderStatisticTreeTest" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.All in AlgorithmsJava" />
+        <item itemvalue="JUnit.OrderStatisticTreeTest" />
         <item itemvalue="JUnit.SortTest.quickSort3WayTest" />
         <item itemvalue="JUnit.ConvexHullTest.GrahamScanTest" />
         <item itemvalue="JUnit.SortTest.shellSortTest" />
-        <item itemvalue="JUnit.OrderStatisticTreeTest.functionsTest" />
       </list>
     </recent_temporary>
   </component>
@@ -400,14 +400,7 @@
       <workItem from="1623494511253" duration="25692000" />
       <workItem from="1623639756028" duration="227000" />
       <workItem from="1623654077799" duration="598000" />
-      <workItem from="1623655422172" duration="1500000" />
-    </task>
-    <task id="LOCAL-00180" summary="rename">
-      <created>1623069729208</created>
-      <option name="number" value="00180" />
-      <option name="presentableId" value="LOCAL-00180" />
-      <option name="project" value="LOCAL" />
-      <updated>1623069729208</updated>
+      <workItem from="1623655422172" duration="3261000" />
     </task>
     <task id="LOCAL-00181" summary="rename packages">
       <created>1623138188503</created>
@@ -745,7 +738,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623655950273</updated>
     </task>
-    <option name="localTasksCounter" value="229" />
+    <task id="LOCAL-00229" summary="move functions to inner">
+      <created>1623657009212</created>
+      <option name="number" value="00229" />
+      <option name="presentableId" value="LOCAL-00229" />
+      <option name="project" value="LOCAL" />
+      <updated>1623657009212</updated>
+    </task>
+    <option name="localTasksCounter" value="230" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -774,7 +774,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="save flow edge" />
     <MESSAGE value="fix trivial bug" />
     <MESSAGE value="delete UnionEdge.java" />
     <MESSAGE value="save" />
@@ -799,7 +798,8 @@
     <MESSAGE value="add ConvexHull.java Graham Scan" />
     <MESSAGE value="move some methods outer" />
     <MESSAGE value="add quickSort3Way" />
-    <option name="LAST_COMMIT_MESSAGE" value="add quickSort3Way" />
+    <MESSAGE value="move functions to inner" />
+    <option name="LAST_COMMIT_MESSAGE" value="move functions to inner" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
