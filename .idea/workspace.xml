@@ -22,10 +22,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="save data">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/misc/OrthoLineIntersect.java" afterDir="false" />
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="set tuples inheritable class">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/misc/ConvexHull.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/misc/ConvexHull.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/misc/OrthoLineIntersectTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/misc/OrthoLineIntersectTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -46,7 +44,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../CentralUtils" />
     <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="GitSEFilterConfiguration">
@@ -101,7 +99,7 @@
       <recent name="org.nathan.algorithmsJ.misc" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.OrthoLineIntersectTest.intersectsTest">
+  <component name="RunManager" selected="JUnit.All in AlgorithmsJava">
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.nathan.Main" />
       <module name="AlgorithmsJava" />
@@ -208,9 +206,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.All in AlgorithmsJava" />
         <item itemvalue="JUnit.OrthoLineIntersectTest.intersectsTest" />
         <item itemvalue="JUnit.OrthoLineIntersectTest" />
-        <item itemvalue="JUnit.All in AlgorithmsJava" />
         <item itemvalue="JUnit.OrderStatisticTreeTest" />
         <item itemvalue="JUnit.SortTest.quickSort3WayTest" />
       </list>
@@ -409,28 +407,7 @@
       <workItem from="1623494511253" duration="25692000" />
       <workItem from="1623639756028" duration="227000" />
       <workItem from="1623654077799" duration="598000" />
-      <workItem from="1623655422172" duration="11945000" />
-    </task>
-    <task id="LOCAL-00185" summary="refactor">
-      <created>1623246299901</created>
-      <option name="number" value="00185" />
-      <option name="presentableId" value="LOCAL-00185" />
-      <option name="project" value="LOCAL" />
-      <updated>1623246299901</updated>
-    </task>
-    <task id="LOCAL-00186" summary="refactor">
-      <created>1623246794218</created>
-      <option name="number" value="00186" />
-      <option name="presentableId" value="LOCAL-00186" />
-      <option name="project" value="LOCAL" />
-      <updated>1623246794218</updated>
-    </task>
-    <task id="LOCAL-00187" summary="refactor">
-      <created>1623246969951</created>
-      <option name="number" value="00187" />
-      <option name="presentableId" value="LOCAL-00187" />
-      <option name="project" value="LOCAL" />
-      <updated>1623246969951</updated>
+      <workItem from="1623655422172" duration="12990000" />
     </task>
     <task id="LOCAL-00188" summary="refactor">
       <created>1623247061622</created>
@@ -754,7 +731,28 @@
       <option name="project" value="LOCAL" />
       <updated>1623668286673</updated>
     </task>
-    <option name="localTasksCounter" value="234" />
+    <task id="LOCAL-00234" summary="pass test">
+      <created>1623670682126</created>
+      <option name="number" value="00234" />
+      <option name="presentableId" value="LOCAL-00234" />
+      <option name="project" value="LOCAL" />
+      <updated>1623670682126</updated>
+    </task>
+    <task id="LOCAL-00235" summary="pass test">
+      <created>1623670735802</created>
+      <option name="number" value="00235" />
+      <option name="presentableId" value="LOCAL-00235" />
+      <option name="project" value="LOCAL" />
+      <updated>1623670735802</updated>
+    </task>
+    <task id="LOCAL-00236" summary="set tuples inheritable class">
+      <created>1623671657196</created>
+      <option name="number" value="00236" />
+      <option name="presentableId" value="LOCAL-00236" />
+      <option name="project" value="LOCAL" />
+      <updated>1623671657196</updated>
+    </task>
+    <option name="localTasksCounter" value="237" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -783,8 +781,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="refactor" />
-    <MESSAGE value="add max flow" />
     <MESSAGE value="add key indexed counting sort" />
     <MESSAGE value="remove array to list" />
     <MESSAGE value="add lsd" />
@@ -808,17 +804,12 @@
     <MESSAGE value="set OrderStatisticTree.java generic" />
     <MESSAGE value="save" />
     <MESSAGE value="save data" />
-    <option name="LAST_COMMIT_MESSAGE" value="save data" />
+    <MESSAGE value="pass test" />
+    <MESSAGE value="set tuples inheritable class" />
+    <option name="LAST_COMMIT_MESSAGE" value="set tuples inheritable class" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/misc/OrthoLineIntersectTest.java</url>
-          <line>57</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
       <default-breakpoints>
         <breakpoint enabled="true" type="java-exception">
           <properties>
