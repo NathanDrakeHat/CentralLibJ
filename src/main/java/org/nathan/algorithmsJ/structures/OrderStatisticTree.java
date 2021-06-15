@@ -2,17 +2,17 @@ package org.nathan.algorithmsJ.structures;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Comparator;
-import java.util.NoSuchElementException;
+import java.util.*;
 import java.util.function.BiConsumer;
 
 // TODO add more BST applications (intersection search, k-d tree, etc)
 
 @SuppressWarnings("unused")
-public class OrderStatisticTree<K>{ // get rank of node from left to right
-  private final Node<K>sentinel = new Node<>(null, BLACK);
-  @NotNull private final Comparator<K> comparator;
-  private Node<K>root = sentinel;
+public class OrderStatisticTree<K> implements Iterable<K>{ // get rank of node from left to right
+  private final Node<K> sentinel = new Node<>(null, BLACK);
+  @NotNull
+  final Comparator<K> comparator;
+  Node<K> root = sentinel;
 
   public OrderStatisticTree(@NotNull Comparator<K> comparator){
     this.comparator = comparator;
@@ -23,7 +23,7 @@ public class OrderStatisticTree<K>{ // get rank of node from left to right
       throw new NoSuchElementException("calls floor() with empty symbol table");
     }
     else{
-      Node<K>x = floor(root, key);
+      Node<K> x = floor(root, key);
       if(x == sentinel){
         throw new NoSuchElementException("argument to floor() is too small");
       }
@@ -33,7 +33,7 @@ public class OrderStatisticTree<K>{ // get rank of node from left to right
     }
   }
 
-  private Node<K>floor(Node<K>x, K key){
+  private Node<K> floor(Node<K> x, K key){
     if(x == sentinel){
       return sentinel;
     }
@@ -67,7 +67,7 @@ public class OrderStatisticTree<K>{ // get rank of node from left to right
     }
   }
 
-  private Node<K>ceiling(Node<K>x, K key){
+  private Node<K> ceiling(Node<K> x, K key){
     if(x == sentinel){
       return sentinel;
     }
@@ -87,42 +87,42 @@ public class OrderStatisticTree<K>{ // get rank of node from left to right
   }
 
   public K getKeyOfRank(int rank){
-    Node<K>n = rankSelect(rank);
+    Node<K> n = getNodeOfRank(rank);
     return n.key;
   }
 
-  private Node<K>rankSelect(int ith){
+  Node<K> getNodeOfRank(int ith){
     int rank = root.left.size + 1;
     if(rank == ith){
       return root;
     }
     else if(ith < rank){
-      return rankSelectChild(root.left, ith);
+      return getNodeOfRank(root.left, ith);
     }
     else{
-      return rankSelectChild(root.right, ith - rank);
+      return getNodeOfRank(root.right, ith - rank);
     }
   }
 
-  private Node<K>rankSelectChild(Node<K>current, int ith){
+  private Node<K> getNodeOfRank(Node<K> current, int ith){
     int rank = current.left.size + 1;
     if(rank == ith){
       return current;
     }
     else if(ith < rank){
-      return rankSelectChild(current.left, ith);
+      return getNodeOfRank(current.left, ith);
     }
     else{
-      return rankSelectChild(current.right, ith - rank);
+      return getNodeOfRank(current.right, ith - rank);
     }
   }
 
   public int getRankOfKey(K key){
-    Node<K>n = search(key);
-    return getNodeRank(n);
+    Node<K> n = search(key);
+    return getRankOfNode(n);
   }
 
-  private int getNodeRank(Node<K>node){
+  int getRankOfNode(Node<K> node){
     int rank = node.left.size + 1;
     while(node != root) {
       if(node == node.parent.right){
@@ -133,14 +133,14 @@ public class OrderStatisticTree<K>{ // get rank of node from left to right
     return rank;
   }
 
-  public Node<K>search(K key){
+  public Node<K> search(K key){
     if(root == sentinel){
       throw new NoSuchElementException();
     }
     return search(root, key);
   }
 
-  private Node<K>search(Node<K>n, K key){
+  private Node<K> search(Node<K> n, K key){
     if(n.key == key){
       return n;
     }
@@ -153,33 +153,33 @@ public class OrderStatisticTree<K>{ // get rank of node from left to right
     return sentinel;
   }
 
-  private Node<K>getSentinel(){
+  private Node<K> getSentinel(){
     return sentinel;
   }
 
-  public Node<K>getRoot(){
+  public Node<K> getRoot(){
     return this.root;
   }
 
-  private void setRoot(Node<K>n){
+  private void setRoot(Node<K> n){
     root = n;
     n.parent = sentinel;
   }
 
-  public Node<K>getMinimum(){
+  public Node<K> getMinimum(){
     return getMinimum(root);
   }
 
-  public Node<K>getMaximum(){
+  public Node<K> getMaximum(){
     return getMaximum(root);
   }
 
   public void insertKey(K key){
-    Node<K>n = new Node<>(key); // default red
+    Node<K> n = new Node<>(key); // default red
     insertNode(n);
   }
 
-  private void insertNode(Node<K>n){
+  private void insertNode(Node<K> n){
     if(n == sentinel){
       return;
     }
@@ -191,8 +191,8 @@ public class OrderStatisticTree<K>{ // get rank of node from left to right
       root.left = sentinel;
     }
     else{
-      Node<K>store = sentinel;
-      Node<K>ptr = root;
+      Node<K> store = sentinel;
+      Node<K> ptr = root;
       while(ptr != sentinel) {
         store = ptr;
         ptr.size = ptr.size + 1;
@@ -216,10 +216,10 @@ public class OrderStatisticTree<K>{ // get rank of node from left to right
     insertFixUp(n);
   }
 
-  private void insertFixUp(Node<K>ptr){
+  private void insertFixUp(Node<K> ptr){
     while(ptr.parent.color == RED) {
       if(ptr.parent == ptr.parent.parent.left){
-        Node<K>right = ptr.parent.parent.right;
+        Node<K> right = ptr.parent.parent.right;
         if(right.color == RED){ // case1: sibling is red
           ptr.parent.color = BLACK;
           right.color = BLACK;
@@ -237,7 +237,7 @@ public class OrderStatisticTree<K>{ // get rank of node from left to right
         ptr = ptr.parent;
       }
       else{
-        Node<K>left = ptr.parent.parent.left;
+        Node<K> left = ptr.parent.parent.left;
         if(left.color == RED){
           ptr.parent.color = BLACK;
           left.color = BLACK;
@@ -259,17 +259,17 @@ public class OrderStatisticTree<K>{ // get rank of node from left to right
   }
 
   public void deleteKey(K key){
-    Node<K>target = search(key);
+    Node<K> target = search(key);
     delete(target);
   }
 
-  private void delete(Node<K>target){
+  private void delete(Node<K> target){
     if(target == sentinel){
       return;
     }
-    Node<K>ptr = target;
+    Node<K> ptr = target;
     boolean ptr_color = ptr.color;
-    Node<K>fix_up;
+    Node<K> fix_up;
     if(ptr.left == sentinel){
       fix_up = target.right;
       transplant(target, fix_up);
@@ -306,9 +306,9 @@ public class OrderStatisticTree<K>{ // get rank of node from left to right
     }
   }
 
-  private void deleteFixUp(Node<K>fix_up){
+  private void deleteFixUp(Node<K> fix_up){
     while(fix_up != root && fix_up.color == BLACK) {
-      Node<K>sibling;
+      Node<K> sibling;
       if(fix_up == fix_up.parent.left){
         sibling = fix_up.parent.right;
         if(sibling.color == RED){ // case1:sibling is black, convert to case 2, 3 or 4
@@ -362,7 +362,7 @@ public class OrderStatisticTree<K>{ // get rank of node from left to right
     fix_up.color = BLACK;
   }
 
-  private void transplant(Node<K>a, Node<K>b){
+  private void transplant(Node<K> a, Node<K> b){
     if(a.parent == sentinel){
       setRoot(b);
     }
@@ -376,8 +376,8 @@ public class OrderStatisticTree<K>{ // get rank of node from left to right
     }
   }
 
-  private void leftRotate(Node<K>left_node){
-    Node<K>right_node = left_node.right;
+  private void leftRotate(Node<K> left_node){
+    Node<K> right_node = left_node.right;
     //exchange
     left_node.right = right_node.left;
     if(right_node.left != sentinel){ // remember to double link
@@ -401,8 +401,8 @@ public class OrderStatisticTree<K>{ // get rank of node from left to right
     left_node.size = left_node.left.size + left_node.right.size + 1;
   }
 
-  private void rightRotate(Node<K>right_node){ // mirror of leftRotate
-    Node<K>left_node = right_node.left;
+  private void rightRotate(Node<K> right_node){ // mirror of leftRotate
+    Node<K> left_node = right_node.left;
     //exchange
     right_node.left = left_node.right;
     if(left_node.right != sentinel){ // remember to double link
@@ -426,9 +426,9 @@ public class OrderStatisticTree<K>{ // get rank of node from left to right
     right_node.size = right_node.left.size + right_node.right.size + 1;
   }
 
-  private Node<K>getMinimum(Node<K>current){
-    Node<K>target = null;
-    Node<K>ptr = current;
+  private Node<K> getMinimum(Node<K> current){
+    Node<K> target = null;
+    Node<K> ptr = current;
     while(ptr != sentinel) {
       target = ptr;
       ptr = ptr.left;
@@ -439,9 +439,9 @@ public class OrderStatisticTree<K>{ // get rank of node from left to right
     return target;
   }
 
-  private Node<K>getMaximum(Node<K>current){
-    Node<K>target = null;
-    Node<K>ptr = current;
+  private Node<K> getMaximum(Node<K> current){
+    Node<K> target = null;
+    Node<K> ptr = current;
     while(ptr != sentinel) {
       target = ptr;
       ptr = ptr.right;
@@ -452,13 +452,13 @@ public class OrderStatisticTree<K>{ // get rank of node from left to right
     return target;
   }
 
-  private Node<K>getSuccessor(Node<K>current){
+  private Node<K> getSuccessor(Node<K> current){
     if(current.right != sentinel){
       return getMinimum(current.right);
     }
     else{
-      Node<K>target = current.parent;
-      Node<K>target_right = current;
+      Node<K> target = current.parent;
+      Node<K> target_right = current;
       while(target != sentinel && target.right == target_right) {
         target_right = target;
         target = target.parent;
@@ -467,13 +467,13 @@ public class OrderStatisticTree<K>{ // get rank of node from left to right
     }
   }
 
-  private Node<K>getPredecessor(Node<K>current){
+  private Node<K> getPredecessor(Node<K> current){
     if(current.left != null){
       return getMaximum(current.left);
     }
     else{
-      Node<K>target = current.parent;
-      Node<K>target_left = current;
+      Node<K> target = current.parent;
+      Node<K> target_left = current;
       while(target != null && target.left == target_left) {
         target_left = target;
         target = target.parent;
@@ -489,7 +489,7 @@ public class OrderStatisticTree<K>{ // get rank of node from left to right
     inorderTreeWalk(getRoot(), bc);
   }
 
-  private void inorderTreeWalk(Node<K>n, BiConsumer<K, Integer> bc){
+  private void inorderTreeWalk(Node<K> n, BiConsumer<K, Integer> bc){
     if(n != getSentinel()){
       inorderTreeWalk(n.left, bc);
       bc.accept(n.key, n.size);
@@ -504,7 +504,7 @@ public class OrderStatisticTree<K>{ // get rank of node from left to right
     return getCount(getRoot());
   }
 
-  private int getCount(Node<K>n){ //overload trick
+  private int getCount(Node<K> n){ //overload trick
     if(n.right != getSentinel() && n.left == getSentinel()){
       return getCount(n.right) + 1;
     }
@@ -529,7 +529,7 @@ public class OrderStatisticTree<K>{ // get rank of node from left to right
     return Math.max(left_max, right_max) - 1;
   }
 
-  private int getHeight(Node<K>n, int height){
+  private int getHeight(Node<K> n, int height){
     if(n != getSentinel()){
       int left_max = getHeight(n.left, height + 1);
       int right_max = getHeight(n.right, height + 1);
@@ -537,16 +537,22 @@ public class OrderStatisticTree<K>{ // get rank of node from left to right
     }
     return height;
   }
-  
+
   private static final boolean RED = false;
   private static final boolean BLACK = true;
+
+  @NotNull
+  @Override
+  public Iterator<K> iterator(){
+    return new BSTIterator();
+  }
 
   static class Node<key>{
     key key;
     boolean color;
-    Node<key>parent;
-    Node<key>left;
-    Node<key>right;
+    Node<key> parent;
+    Node<key> left;
+    Node<key> right;
     int size; // subtree size
 
     Node(key key){
@@ -557,6 +563,54 @@ public class OrderStatisticTree<K>{ // get rank of node from left to right
     Node(key key, boolean color){
       this.key = key;
       this.color = color;
+    }
+  }
+
+  private final class BSTIterator implements Iterator<K>{
+    private final Deque<OrderStatisticTree.Node<K>> stack = new LinkedList<>();
+    private OrderStatisticTree.Node<K> ptr;
+    private boolean poppedBefore = false;
+    private boolean finish = false;
+
+    public BSTIterator(){
+      ptr = root;
+      if(ptr == sentinel){
+        finish = true;
+      }
+    }
+
+    @Override
+    public boolean hasNext(){
+      return !finish && ptr != null;
+    }
+
+    @Override
+    public K next(){
+      while(ptr != null) {
+        if(ptr.left != sentinel && !poppedBefore){
+          stack.push(ptr);
+          ptr = ptr.left;
+        }
+        else{
+          var t = ptr;
+          if(ptr.right != sentinel){
+            ptr = ptr.right;
+            poppedBefore = false;
+          }
+          else{
+            if(stack.size() != 0){
+              ptr = stack.pop();
+              poppedBefore = true;
+            }
+            else{
+              ptr = null;
+            }
+          }
+          return t.key;
+        }
+      }
+      finish = true;
+      throw new NoSuchElementException("Iterate finish.");
     }
   }
 

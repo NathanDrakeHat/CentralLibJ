@@ -6,16 +6,16 @@ import org.nathan.centralUtils.tuples.Tuple;
 import java.util.*;
 import java.util.function.BiConsumer;
 
-public class RedBlackTree<K, V> implements Iterable<Tuple<K, V>>{
+public class RBTree<K, V> implements Iterable<Tuple<K, V>>{
   @NotNull
-  final Comparator<K> k_comparator;
+  final Comparator<K> comparator;
   @NotNull
   final Node<K, V> sentinel = new Node<>(BLACK);
   @NotNull Node<K, V> root = sentinel;
   private boolean iterating = false;
 
-  public RedBlackTree(@NotNull Comparator<K> k_comparator){
-    this.k_comparator = k_comparator;
+  public RBTree(@NotNull Comparator<K> comparator){
+    this.comparator = comparator;
   }
 
   /**
@@ -39,15 +39,15 @@ public class RedBlackTree<K, V> implements Iterable<Tuple<K, V>>{
       return;
     }
 
-    if(k_comparator.compare(n.key, low) > 0){
+    if(comparator.compare(n.key, low) > 0){
       keyRangeSearch(n.left, low, high, l);
     }
 
-    if(k_comparator.compare(n.key, low) >= 0 && k_comparator.compare(n.key, high) <= 0){
+    if(comparator.compare(n.key, low) >= 0 && comparator.compare(n.key, high) <= 0){
       l.add(new Tuple<>(n.key, n.value));
     }
 
-    if(k_comparator.compare(n.key, high) < 0){
+    if(comparator.compare(n.key, high) < 0){
       keyRangeSearch(n.right, low, high, l);
     }
   }
@@ -93,41 +93,8 @@ public class RedBlackTree<K, V> implements Iterable<Tuple<K, V>>{
     n.right = sentinel;
   }
 
-  public void inOrderForEach(@NotNull BiConsumer<K, V> bc){
-    if(sentinel == root){
-      return;
-    }
-    inorderTreeWalk(root, bc);
-  }
-
-  private void inorderTreeWalk(Node<K, V> n, BiConsumer<K, V> bc){
-    if(n != sentinel){
-      inorderTreeWalk(n.left, bc);
-      bc.accept(n.key, n.value);
-      inorderTreeWalk(n.right, bc);
-    }
-  }
-
-  public int getCount(){
-    if(root == sentinel){
-      return 0;
-    }
-    return getCount(root);
-  }
-
-  private int getCount(Node<K, V> n){
-    if(n.right != sentinel && n.left == sentinel){
-      return getCount(n.right) + 1;
-    }
-    else if(n.right == sentinel && n.left != sentinel){
-      return getCount(n.left) + 1;
-    }
-    else if(n.right != sentinel){
-      return getCount(n.left) + getCount(n.right) + 1;
-    }
-    else{
-      return 1;
-    }
+  public int size(){
+    return root.size;
   }
 
   public int getHeight(){
@@ -146,7 +113,9 @@ public class RedBlackTree<K, V> implements Iterable<Tuple<K, V>>{
       int right_max = getHeight(n.right, height + 1);
       return Math.max(left_max, right_max);
     }
-    return height;
+    else{
+      return height;
+    }
   }
 
   public void insert(@NotNull K key, V val){
@@ -160,30 +129,38 @@ public class RedBlackTree<K, V> implements Iterable<Tuple<K, V>>{
     var x = root;
     while(x != sentinel) {
       y = x;
-      if(k_comparator.compare(z.key, x.key) < 0){
+      x.size++;
+      if(comparator.compare(z.key, x.key) < 0){
         x = x.left;
       }
-      else{
+      else if(comparator.compare(z.key, x.key) > 0){
         x = x.right;
+      }
+      else{
+        throw new IllegalArgumentException("duplicate key.");
       }
     }
     z.parent = y;
     if(y == sentinel){
       root = z;
     }
-    else if(k_comparator.compare(z.key, y.key) < 0){
+    else if(comparator.compare(z.key, y.key) < 0){
       y.left = z;
     }
-    else{
+    else if(comparator.compare(z.key, y.key) > 0){
       y.right = z;
+    }
+    else{
+      throw new RuntimeException("no possible error.");
     }
     setLeaf(z);
     z.color = RED;
-    RBInsertFixUp(z);
+    z.size = 1;
+    insertFixUp(z);
   }
 
   @SuppressWarnings("SuspiciousNameCombination")
-  private void RBInsertFixUp(Node<K, V> z){
+  private void insertFixUp(Node<K, V> z){
     while(z.parent.color == RED) {
       if(z.parent == z.parent.parent.left){
         var y = z.parent.parent.right;
@@ -264,6 +241,16 @@ public class RedBlackTree<K, V> implements Iterable<Tuple<K, V>>{
       y.left = z.left;
       y.left.parent = y;
       y.color = z.color;
+
+      y.size = y.left.size + y.right.size + 1;
+      if(y.right != sentinel){
+        y.right.size = 1 + y.right.left.size + y.right.right.size;
+      }
+    }
+    var p = y.parent;
+    while(p != sentinel) {
+      p.size--;
+      p = p.parent;
     }
     if(y_origin_color == BLACK){
       deleteFixUp(x);
@@ -334,9 +321,11 @@ public class RedBlackTree<K, V> implements Iterable<Tuple<K, V>>{
     }
     else if(u == u.parent.left){
       u.parent.left = v;
+      u.parent.size = 1 + u.parent.left.size + u.parent.right.size;
     }
     else{
       u.parent.right = v;
+      u.parent.size = 1 + u.parent.left.size + u.parent.right.size;
     }
     v.parent = u.parent;
   }
@@ -353,13 +342,13 @@ public class RedBlackTree<K, V> implements Iterable<Tuple<K, V>>{
   }
 
   private Node<K, V> search(Node<K, V> n, K key){
-    if(k_comparator.compare(n.key, key) == 0){
+    if(comparator.compare(n.key, key) == 0){
       return n;
     }
-    else if(k_comparator.compare(n.key, key) > 0 && n.left != sentinel){
+    else if(comparator.compare(n.key, key) > 0 && n.left != sentinel){
       return search(n.left, key);
     }
-    else if(k_comparator.compare(n.key, key) < 0 && n.right != sentinel){
+    else if(comparator.compare(n.key, key) < 0 && n.right != sentinel){
       return search(n.right, key);
     }
     return sentinel;
@@ -387,6 +376,8 @@ public class RedBlackTree<K, V> implements Iterable<Tuple<K, V>>{
 
     y.left = x;
     x.parent = y;
+    y.size = x.size;
+    x.size = x.left.size + x.right.size + 1;
   }
 
   @SuppressWarnings("SuspiciousNameCombination")
@@ -411,6 +402,8 @@ public class RedBlackTree<K, V> implements Iterable<Tuple<K, V>>{
 
     y.right = x;
     x.parent = y;
+    y.size = x.size;
+    x.size = x.left.size + x.right.size + 1;
   }
 
   private Node<K, V> treeMinimum(Node<K, V> x){
@@ -554,6 +547,7 @@ public class RedBlackTree<K, V> implements Iterable<Tuple<K, V>>{
     Node<key, val> parent;
     Node<key, val> left;
     Node<key, val> right;
+    int size;
 
     Node(boolean color){
       this.color = color;
