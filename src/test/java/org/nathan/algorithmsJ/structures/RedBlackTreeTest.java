@@ -40,35 +40,19 @@ class RedBlackTreeTest{
     assertEquals(15, root.right.right.right.key); // 15
   }
 
-  RedBlackTree<Integer, Integer> balanceTree;
-  {
-    balanceTree = new RedBlackTree<>(Comparator.comparingInt(o -> o));
-    List<Integer> shuffle = ArrayUtils.shuffledSequence(0, 127);
-    for(int i = 0; i < 127; i++){
-      balanceTree.insert(shuffle.get(i), shuffle.get(i));
-    }
-    assertTrue(isBalanced(balanceTree));
-
-    for(int i = 0; i < 65; i++){
-      balanceTree.delete(shuffle.get(i));
-    }
-    assertTrue(isBalanced(balanceTree));
-  }
-
-  private static boolean isBalanced(RedBlackTree<Integer,Integer> tree) {
+  private static boolean isBalanced(RedBlackTree<Integer, Integer> tree){
     int black = 0;
     var x = tree.root;
-    while (x != null) {
-      if (x.color== RedBlackTree.BLACK) black++;
+    while(x != null) {
+      if(x.color == RedBlackTree.BLACK){ black++; }
       x = x.left;
     }
-
     var func = new Object(){
-      private boolean apply(RedBlackTree.Node<Integer,Integer> x, int black) {
-        if (x == null) {
+      private boolean apply(RedBlackTree.Node<Integer, Integer> x, int black){
+        if(x == null){
           return black == 0;
         }
-        if (x.color == RedBlackTree.BLACK) {
+        if(x.color == RedBlackTree.BLACK){
           black--;
         }
         return apply(x.left, black) && apply(x.right, black);
@@ -79,8 +63,21 @@ class RedBlackTreeTest{
 
   @Test
   public void balanceTest(){
-    assertEquals(6, balanceTree.getHeight());
-    assertTrue(isBalanced(balanceTree));
+    RedBlackTree<Integer, Integer> balanceTree;
+    balanceTree = new RedBlackTree<>(Comparator.comparingInt(o -> o));
+    int len = 2048;
+    List<Integer> shuffle = ArrayUtils.shuffledSequence(0, len);
+    for(int i = 0; i < len; i++){
+      balanceTree.insert(shuffle.get(i), shuffle.get(i));
+      assertTrue(isBalanced(balanceTree));
+      assertTrue(balanceTree.getHeight() <= 2 * Math.log(balanceTree.getCount() + 1) / Math.log(2));
+    }
+
+    for(int i = 0; i < len / 2; i++){
+      balanceTree.delete(shuffle.get(i));
+      assertTrue(isBalanced(balanceTree));
+      assertTrue(balanceTree.getHeight() <= 2 * Math.log(balanceTree.getCount() + 1) / Math.log(2));
+    }
   }
 
   RedBlackTree<Integer, String> funcTestCase;
@@ -102,7 +99,7 @@ class RedBlackTreeTest{
     assertEquals(15, ri.next().first());
 
     assertEquals(5 + 1 - 2, funcTestCase.keyRangeSearch(2, 5).size());
-    assertEquals(5, funcTestCase.getHeight());
+    assertTrue(funcTestCase.getHeight() <= 2 * Math.log(funcTestCase.getCount() + 1) / Math.log(2));
     assertEquals(16, funcTestCase.getCount());
     assertEquals(0, funcTestCase.getMinKey());
     assertEquals(15, funcTestCase.getMaxKey());

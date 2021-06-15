@@ -23,7 +23,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="save">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/RedBlackTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/RedBlackTree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/structures/RedBlackTreeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/structures/RedBlackTreeTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -206,9 +208,9 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.All in AlgorithmsJava" />
+        <item itemvalue="JUnit.RedBlackTreeTest.balanceTest" />
         <item itemvalue="JUnit.RedBlackTreeTest.functionsTest" />
         <item itemvalue="JUnit.RedBlackTreeTest.insertFixUpTest" />
-        <item itemvalue="JUnit.RedBlackTreeTest.balanceTest" />
         <item itemvalue="JUnit.RedBlackTreeTest" />
       </list>
     </recent_temporary>
@@ -406,14 +408,7 @@
       <workItem from="1623494511253" duration="25692000" />
       <workItem from="1623639756028" duration="227000" />
       <workItem from="1623654077799" duration="598000" />
-      <workItem from="1623655422172" duration="33694000" />
-    </task>
-    <task id="LOCAL-00196" summary="add todos">
-      <created>1623329901364</created>
-      <option name="number" value="00196" />
-      <option name="presentableId" value="LOCAL-00196" />
-      <option name="project" value="LOCAL" />
-      <updated>1623329901364</updated>
+      <workItem from="1623655422172" duration="33998000" />
     </task>
     <task id="LOCAL-00197" summary="edge refactor success!">
       <created>1623331645526</created>
@@ -751,7 +746,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623745594694</updated>
     </task>
-    <option name="localTasksCounter" value="245" />
+    <task id="LOCAL-00245" summary="save">
+      <created>1623745679696</created>
+      <option name="number" value="00245" />
+      <option name="presentableId" value="LOCAL-00245" />
+      <option name="project" value="LOCAL" />
+      <updated>1623745679696</updated>
+    </task>
+    <option name="localTasksCounter" value="246" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

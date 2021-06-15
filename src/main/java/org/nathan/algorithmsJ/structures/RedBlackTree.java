@@ -132,12 +132,12 @@ public class RedBlackTree<K, V> implements Iterable<Tuple<K, V>>{
 
   public int getHeight(){
     if(root == sentinel){
-      return 0;
+      return 1;
     }
     int height = 1;
     int left_max = getHeight(root.left, height);
     int right_max = getHeight(root.right, height);
-    return Math.max(left_max, right_max) - 1;
+    return Math.max(left_max, right_max);
   }
 
   private int getHeight(Node<K, V> n, int height){
