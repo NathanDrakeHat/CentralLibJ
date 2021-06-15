@@ -4,9 +4,8 @@ import org.jetbrains.annotations.NotNull;
 import org.nathan.centralUtils.tuples.Tuple;
 
 import java.util.*;
-import java.util.function.BiConsumer;
 
-public class RBTree<K, V> implements Iterable<Tuple<K, V>>{
+public class OSTree<K, V> implements Iterable<Tuple<K, V>>{
   @NotNull
   final Comparator<K> comparator;
   @NotNull
@@ -14,7 +13,7 @@ public class RBTree<K, V> implements Iterable<Tuple<K, V>>{
   @NotNull Node<K, V> root = sentinel;
   private boolean iterating = false;
 
-  public RBTree(@NotNull Comparator<K> comparator){
+  public OSTree(@NotNull Comparator<K> comparator){
     this.comparator = comparator;
   }
 
@@ -151,7 +150,7 @@ public class RBTree<K, V> implements Iterable<Tuple<K, V>>{
       y.right = z;
     }
     else{
-      throw new RuntimeException("no possible error.");
+      throw new RuntimeException("not possible error.");
     }
     setLeaf(z);
     z.color = RED;
@@ -241,17 +240,16 @@ public class RBTree<K, V> implements Iterable<Tuple<K, V>>{
       y.left = z.left;
       y.left.parent = y;
       y.color = z.color;
+    }
 
-      y.size = y.left.size + y.right.size + 1;
-      if(y.right != sentinel){
-        y.right.size = 1 + y.right.left.size + y.right.right.size;
-      }
+    if(y.right != sentinel){
+      y = treeMinimum(y.right);
     }
-    var p = y.parent;
-    while(p != sentinel) {
-      p.size--;
-      p = p.parent;
+    while(y != sentinel){
+      y.size = y.right.size + y.left.size + 1;
+      y = y.parent;
     }
+
     if(y_origin_color == BLACK){
       deleteFixUp(x);
     }
@@ -321,11 +319,9 @@ public class RBTree<K, V> implements Iterable<Tuple<K, V>>{
     }
     else if(u == u.parent.left){
       u.parent.left = v;
-      u.parent.size = 1 + u.parent.left.size + u.parent.right.size;
     }
     else{
       u.parent.right = v;
-      u.parent.size = 1 + u.parent.left.size + u.parent.right.size;
     }
     v.parent = u.parent;
   }
@@ -557,6 +553,15 @@ public class RBTree<K, V> implements Iterable<Tuple<K, V>>{
       color = RED;
       this.key = key;
       this.value = val;
+    }
+
+    @Override
+    public String toString(){
+      return "Node{" +
+              "key=" + key +
+              ", value=" + value +
+              ", size=" + size +
+              '}';
     }
   }
 }
