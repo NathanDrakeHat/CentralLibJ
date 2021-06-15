@@ -8,20 +8,20 @@ import java.util.function.BiConsumer;
 
 public class RedBlackTree<K, V> implements Iterable<Tuple<K, V>>{
   @NotNull
-  private final Comparator<K> k_comparator;
+  final Comparator<K> k_comparator;
   @NotNull
-  private final Node<K, V> sentinel = new Node<>(BLACK);// sentinel: denote leaf and parent of root
-  @NotNull Node<K, V> root;
+  final Node<K, V> sentinel = new Node<>(BLACK);// sentinel: denote leaf and parent of root
+  @NotNull Node<K, V> root = sentinel;
   private boolean iterating = false;
 
   public RedBlackTree(@NotNull Comparator<K> k_comparator){
     this.k_comparator = k_comparator;
-    root = sentinel;
   }
 
   /**
    * 1d range search
-   * @param low low
+   *
+   * @param low  low
    * @param high high (inclusive)
    * @return list of key-value in range
    */
@@ -54,7 +54,7 @@ public class RedBlackTree<K, V> implements Iterable<Tuple<K, V>>{
 
   public V getValueOfMinKey(){
     if(sentinel != root){
-      return getMinimum(root).value;
+      return treeMinimum(root).value;
     }
     else{
       throw new NoSuchElementException("null tree");
@@ -63,7 +63,7 @@ public class RedBlackTree<K, V> implements Iterable<Tuple<K, V>>{
 
   public K getMinKey(){
     if(sentinel != root){
-      return getMinimum(root).key;
+      return treeMinimum(root).key;
     }
     else{
       throw new NoSuchElementException("null tree");
@@ -72,7 +72,7 @@ public class RedBlackTree<K, V> implements Iterable<Tuple<K, V>>{
 
   public V getValueOfMaxKey(){
     if(root != sentinel){
-      return getMaximum(root).value;
+      return treeMaximum(root).value;
     }
     else{
       throw new NoSuchElementException("null tree");
@@ -81,16 +81,21 @@ public class RedBlackTree<K, V> implements Iterable<Tuple<K, V>>{
 
   public K getMaxKey(){
     if(root != sentinel){
-      return getMaximum(root).key;
+      return treeMaximum(root).key;
     }
     else{
       throw new NoSuchElementException("null tree");
     }
   }
 
-  private void resetRoot(Node<K, V> r){
+  private void setRoot(Node<K, V> r){
     root = r;
     root.parent = sentinel;
+  }
+
+  private void setLeaf(Node<K, V> n){
+    n.left = sentinel;
+    n.right = sentinel;
   }
 
   public void inOrderForEach(@NotNull BiConsumer<K, V> bc){ // inorder print
@@ -101,7 +106,7 @@ public class RedBlackTree<K, V> implements Iterable<Tuple<K, V>>{
   }
 
   private void inorderTreeWalk(Node<K, V> n, BiConsumer<K, V> bc){
-    if(n != sentinel & n != null){
+    if(n != sentinel){
       inorderTreeWalk(n.left, bc);
       bc.accept(n.key, n.value);
       inorderTreeWalk(n.right, bc);
@@ -154,77 +159,72 @@ public class RedBlackTree<K, V> implements Iterable<Tuple<K, V>>{
     insert(new Node<>(key, val));
   }
 
-  private void insert(Node<K, V> n){
-    if(n == sentinel){
-      return;
+  @SuppressWarnings("SuspiciousNameCombination")
+  private void insert(Node<K, V> z){
+    var y = sentinel;
+    var x = root;
+    while(x != sentinel) {
+      y = x;
+      if(k_comparator.compare(z.key, x.key) < 0){
+        x = x.left;
+      }
+      else{
+        x = x.right;
+      }
     }
-    if(root == sentinel){
-      resetRoot(n);
-      root.right = sentinel;
-      root.left = sentinel;
+    z.parent = y;
+    if(y == sentinel){
+      root = z;
+    }
+    else if(k_comparator.compare(z.key, y.key) < 0){
+      y.left = z;
     }
     else{
-      var store = sentinel;
-      var ptr = root;
-      while(ptr != sentinel) {
-        store = ptr;
-        if(k_comparator.compare(n.key, ptr.key) < 0){
-          ptr = ptr.left;
-        }
-        else{
-          ptr = ptr.right;
-        }
-      }
-      n.parent = store;
-      if(k_comparator.compare(n.key, store.key) < 0){
-        store.left = n;
-      }
-      else{
-        store.right = n;
-      }
-      n.left = sentinel;
-      n.right = sentinel;
+      y.right = z;
     }
-    insertFixUp(n);
+    setLeaf(z);
+    z.color = RED;
+    RBInsertFixUp(z);
   }
 
-  private void insertFixUp(Node<K, V> ptr){
-    while(ptr.parent.color == RED) {
-      if(ptr.parent == ptr.parent.parent.left){
-        var right = ptr.parent.parent.right;
-        if(right.color == RED){ // case1: sibling is red
-          ptr.parent.color = BLACK;
-          right.color = BLACK;
-          ptr.parent.parent.color = RED;
-          ptr = ptr.parent.parent;
-          continue;
+  @SuppressWarnings("SuspiciousNameCombination")
+  private void RBInsertFixUp(Node<K, V> z){
+    while(z.parent.color == RED) {
+      if(z.parent == z.parent.parent.left){
+        var y = z.parent.parent.right;
+        if(y.color == RED){ // case1: sibling is red
+          z.parent.color = BLACK;
+          y.color = BLACK;
+          z.parent.parent.color = RED;
+          z = z.parent.parent;
         }
-        else if(ptr == ptr.parent.right){ //case 2 convert to case 3
-          ptr = ptr.parent;
-          leftRotate(ptr);
+        else{
+          if(z == z.parent.right){ //case 2 convert to case 3
+            z = z.parent;
+            leftRotate(z);
+          }
+          z.parent.color = BLACK; // case3
+          z.parent.parent.color = RED;
+          rightRotate(z.parent.parent); // ptr.getParent will be black and then break
         }
-        ptr.parent.color = BLACK; // case3
-        ptr.parent.parent.color = RED;
-        rightRotate(ptr.parent.parent); // ptr.getParent will be black and then break
-        ptr = ptr.parent;
       }
       else{
-        var left = ptr.parent.parent.left;
-        if(left.color == RED){
-          ptr.parent.color = BLACK;
-          left.color = BLACK;
-          ptr.parent.parent.color = RED;
-          ptr = ptr.parent.parent;
-          continue;
+        var y = z.parent.parent.left;
+        if(y.color == RED){
+          z.parent.color = BLACK;
+          y.color = BLACK;
+          z.parent.parent.color = RED;
+          z = z.parent.parent;
         }
-        else if(ptr == ptr.parent.left){
-          ptr = ptr.parent;
-          rightRotate(ptr);
+        else{
+          if(z == z.parent.left){
+            z = z.parent;
+            rightRotate(z);
+          }
+          z.parent.color = BLACK;
+          z.parent.parent.color = RED;
+          leftRotate(z.parent.parent);
         }
-        ptr.parent.color = BLACK;
-        ptr.parent.parent.color = RED;
-        leftRotate(ptr.parent.parent);
-        ptr = ptr.parent;
       }
     }
     root.color = BLACK;
@@ -232,121 +232,129 @@ public class RedBlackTree<K, V> implements Iterable<Tuple<K, V>>{
 
   public void delete(@NotNull K key){
     modified();
-    delete(search(root, key));
+    if(root == sentinel){
+      return;
+    }
+    var n = search(root, key);
+    if(n != sentinel){
+      delete(n);
+    }
   }
 
-  private void delete(Node<K, V> target){
-    if(target == null || target == sentinel){
-      throw new NoSuchElementException("null tree");
+  private void delete(Node<K, V> z){
+    var y = z;
+    var y_origin_color = y.color;
+    Node<K, V> x;
+    if(z.left == sentinel){
+      x = z.right;
+      RBTransplant(z, z.right);
     }
-    var ptr = target;
-    var ptr_color = ptr.color;
-    Node<K, V> fix_up;
-    if(ptr.left == sentinel){
-      fix_up = target.right;
-      transplant(target, fix_up);
-    }
-    else if(ptr.right == sentinel){
-      fix_up = target.left;
-      transplant(target, fix_up);
+    else if(z.right == sentinel){
+      x = z.left;
+      RBTransplant(z, z.left);
     }
     else{
-      ptr = getSuccessor(target);
-      ptr_color = ptr.color;
-      fix_up = ptr.right;
-      if(ptr.parent == target){
-        fix_up.parent = ptr; // in case of sentinel refer to target
+      y = treeMinimum(z.right);
+      y_origin_color = y.color;
+      x = y.right;
+      if(y.parent == z){
+        x.parent = y; // in case of sentinel refer to target
       }
       else{
-        transplant(ptr, ptr.right);
-        ptr.right = target.right;
-        target.right.parent = ptr;
+        RBTransplant(y, y.right);
+        y.right = z.right;
+        y.right.parent = y;
       }
-      transplant(target, ptr);
-      ptr.left = target.left;
-      target.left.parent = ptr;
-      ptr.color = target.color;
+      RBTransplant(z, y);
+      y.left = z.left;
+      y.left.parent = y;
+      y.color = z.color;
     }
-    if(ptr_color == BLACK){ // delete black node may violate property of red-black tree
-      deleteFixUp(fix_up);
+    if(y_origin_color == BLACK){ // delete black node may violate property of red-black tree
+      deleteFixUp(x);
     }
   }
 
-  private void deleteFixUp(Node<K, V> fix_up){
-    while(fix_up != root && fix_up.color == BLACK) {
-      Node<K, V> sibling;
-      if(fix_up == fix_up.parent.left){
-        sibling = fix_up.parent.right;
-        if(sibling.color == RED){ // case1:sibling is black, convert to case 2, 3 or 4
-          sibling.color = BLACK; // , which denote that sibling is black
-          fix_up.parent.color = RED;
-          leftRotate(fix_up.parent);
-          sibling = fix_up.parent.right;
+  private void deleteFixUp(Node<K, V> x){
+    while(x != root && x.color == BLACK) {
+      if(x == x.parent.left){
+        var w = x.parent.right;
+        if(w.color == RED){ // case1:sibling is black, convert to case 2, 3 or 4
+          w.color = BLACK; // , which denote that sibling is black
+          x.parent.color = RED;
+          leftRotate(x.parent);
+          w = x.parent.right;
         }
-        if(sibling.left.color == BLACK && sibling.right.color == BLACK){ // case2: sibling children is black
-          sibling.color = RED;
-          fix_up = fix_up.parent;
-          continue;
+        if(w.left.color == BLACK && w.right.color == BLACK){ // case2: sibling children is black
+          w.color = RED;
+          x = x.parent;
         }
-        else if(sibling.right.color == BLACK){ // case3: sibling left red, right black. convert case4
-          sibling.left.color = BLACK;
-          sibling.color = RED;
-          rightRotate(sibling);
-          sibling = fix_up.parent.right;
+        else{
+          if(w.right.color == BLACK){ // case3: sibling left red, right black. convert case4
+            w.left.color = BLACK;
+            w.color = RED;
+            rightRotate(w);
+            w = x.parent.right;
+          }
+          w.color = x.parent.color; // case4: sibling right red
+          x.parent.color = BLACK;
+          w.right.color = BLACK;
+          leftRotate(x.parent);
+          x = root;
         }
-        sibling.color = fix_up.parent.color; // case4: sibling right red
-        fix_up.parent.color = BLACK;
-        sibling.right.color = BLACK;
-        leftRotate(fix_up.parent);
       }
       else{
-        sibling = fix_up.parent.left;
-        if(sibling.color == RED){
-          sibling.color = BLACK;
-          fix_up.parent.color = RED;
-          rightRotate(fix_up.parent);
-          sibling = fix_up.parent.left;
+        var w = x.parent.left;
+        if(w.color == RED){
+          w.color = BLACK;
+          x.parent.color = RED;
+          rightRotate(x.parent);
+          w = x.parent.left;
         }
-        if(sibling.left.color == BLACK && sibling.right.color == BLACK){
-          sibling.color = RED;
-          fix_up = fix_up.parent;
-          continue;
+        if(w.right.color == BLACK && w.left.color == BLACK){
+          w.color = RED;
+          x = x.parent;
         }
-        else if(sibling.left.color == BLACK){
-          sibling.right.color = BLACK;
-          sibling.color = RED;
-          leftRotate(sibling);
-          sibling = fix_up.parent.left;
+        else{
+          if(w.left.color == BLACK){
+            w.right.color = BLACK;
+            w.color = RED;
+            leftRotate(w);
+            w = x.parent.left;
+          }
+          w.color = x.parent.color;
+          x.parent.color = BLACK;
+          w.left.color = BLACK;
+          rightRotate(x.parent);
+          x = root;
         }
-        sibling.color = fix_up.parent.color;
-        fix_up.parent.color = BLACK;
-        sibling.left.color = BLACK;
-        rightRotate(fix_up.parent);
       }
-      fix_up = root;
     }
-    fix_up.color = BLACK;
+    x.color = BLACK;
   }
 
-  private void transplant(Node<K, V> a, Node<K, V> b){
-    if(a.parent == sentinel){
-      resetRoot(b);
+  private void RBTransplant(Node<K, V> u, Node<K, V> v){
+    if(u.parent == sentinel){
+      root = v;
     }
-    else if(a.parent.right == a){
-      a.parent.right = b;
-      b.parent = a.parent; // permissible if b is sentinel
+    else if(u == u.parent.left){
+      u.parent.left = v;
     }
     else{
-      a.parent.left = b;
-      b.parent = a.parent;
+      u.parent.right = v;
     }
+    v.parent = u.parent;
   }
 
   public V search(@NotNull K key){
     if(root == sentinel){
       throw new NoSuchElementException();
     }
-    return search(root, key).value;
+    var res = search(root, key).value;
+    if(res == sentinel){
+      throw new NoSuchElementException();
+    }
+    return res;
   }
 
   private Node<K, V> search(Node<K, V> n, K key){
@@ -359,112 +367,102 @@ public class RedBlackTree<K, V> implements Iterable<Tuple<K, V>>{
     else if(k_comparator.compare(n.key, key) < 0 && n.right != sentinel){
       return search(n.right, key);
     }
-    throw new NoSuchElementException();
+    return sentinel;
   }
 
-  private void leftRotate(Node<K, V> left_node){
-    var right_node = left_node.right;
+  @SuppressWarnings("SuspiciousNameCombination")
+  private void leftRotate(Node<K, V> x){
+    var y = x.right;
     //exchange
-    left_node.right = right_node.left;
-    if(right_node.left != sentinel){ // remember to double link
-      right_node.left.parent = left_node;
+    x.right = y.left;
+    if(y.left != sentinel){ // remember to double link
+      y.left.parent = x;
     }
     //exchange
-    right_node.parent = left_node.parent; // double link right_node to left_node parent
-    if(left_node.parent == sentinel){
-      resetRoot(right_node);
+    y.parent = x.parent; // double link right_node to left_node parent
+    if(x.parent == sentinel){
+      root = y;
     }
-    else if(left_node.parent.left == left_node){
-      left_node.parent.left = right_node;
+    else if(x == x.parent.left){
+      x.parent.left = y;
     }
     else{
-      left_node.parent.right = right_node;
+      x.parent.right = y;
     }
     //exchange
-    right_node.left = left_node;
-    left_node.parent = right_node;
+    y.left = x;
+    x.parent = y;
   }
 
-  private void rightRotate(Node<K, V> right_node){ // mirror of leftRotate
-    var left_node = right_node.left;
+  @SuppressWarnings("SuspiciousNameCombination")
+  private void rightRotate(Node<K, V> x){ // mirror of leftRotate
+    var y = x.left;
     //exchange
-    right_node.left = left_node.right;
-    if(left_node.right != sentinel){ // remember to double link
-      left_node.right.parent = right_node;
+    x.left = y.right;
+    if(y.right != sentinel){ // remember to double link
+      y.right.parent = x;
     }
     //exchange
-    left_node.parent = right_node.parent; // double link right_node to left_node parent
-    if(right_node.parent == sentinel){
-      resetRoot(left_node);
+    y.parent = x.parent; // double link right_node to left_node parent
+    if(x.parent == sentinel){
+      root = y;
     }
-    else if(right_node.parent.right == right_node){
-      right_node.parent.right = left_node;
+    else if(x == x.parent.right){
+      x.parent.right = y;
     }
     else{
-      right_node.parent.left = left_node;
+      x.parent.left = y;
     }
     //exchange
-    left_node.right = right_node;
-    right_node.parent = left_node;
+    y.right = x;
+    x.parent = y;
   }
 
-  private Node<K, V> getMinimum(Node<K, V> current){
-    Node<K, V> target = null;
-    var ptr = current;
-    while(ptr != sentinel) {
-      target = ptr;
-      ptr = ptr.left;
+  private Node<K, V> treeMinimum(Node<K, V> x){
+    while(x.left != sentinel) {
+      x = x.left;
     }
-    if(target == null){
-      throw new NoSuchElementException();
-    }
-    return target;
+    return x;
   }
 
-  private Node<K, V> getMaximum(Node<K, V> current){
-    Node<K, V> target = null;
-    var ptr = current;
-    while(ptr != sentinel) {
-      target = ptr;
-      ptr = ptr.right;
+  private Node<K, V> treeMaximum(Node<K, V> x){
+    while(x.right != sentinel) {
+      x = x.right;
     }
-    if(target == null){
-      throw new NoSuchElementException();
-    }
-    return target;
+    return x;
   }
 
-  private Node<K, V> getSuccessor(Node<K, V> current){
-    if(current.right != sentinel){
-      return getMinimum(current.right);
-    }
-    else{
-      var target = current.parent;
-      var target_right = current;
-      while((target != sentinel) && target.right == target_right) {
-        target_right = target;
-        target = target.parent;
-      }
-      return target;
-    }
-  }
-
-  @SuppressWarnings("unused")
-  private Node<K, V> getPredecessor(Node<K, V> current){
-    if(current.left != sentinel){
-      return getMaximum(current.left);
-    }
-    else{
-      var target = current.parent;
-      var target_left = current;
-      while((target != sentinel) && (target.left == target_left)) {
-        target_left = target;
-        target = target.parent;
-
-      }
-      return target;
-    }
-  }
+//  private Node<K, V> getSuccessor(Node<K, V> current){
+//    if(current.right != sentinel){
+//      return treeMinimum(current.right);
+//    }
+//    else{
+//      var target = current.parent;
+//      var target_right = current;
+//      while((target != sentinel) && target.right == target_right) {
+//        target_right = target;
+//        target = target.parent;
+//      }
+//      return target;
+//    }
+//  }
+//
+//  @SuppressWarnings("unused")
+//  private Node<K, V> getPredecessor(Node<K, V> current){
+//    if(current.left != sentinel){
+//      return treeMaximum(current.left);
+//    }
+//    else{
+//      var target = current.parent;
+//      var target_left = current;
+//      while((target != sentinel) && (target.left == target_left)) {
+//        target_left = target;
+//        target = target.parent;
+//
+//      }
+//      return target;
+//    }
+//  }
 
   @Override
   public @NotNull Iterator<Tuple<K, V>> iterator(){
@@ -586,8 +584,8 @@ public class RedBlackTree<K, V> implements Iterable<Tuple<K, V>>{
     }
   }
 
-  private static final boolean RED = false;
-  private static final boolean BLACK = true;
+  static final boolean RED = false;
+  static final boolean BLACK = true;
 
   static class Node<key, val>{
     key key;

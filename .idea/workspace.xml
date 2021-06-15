@@ -22,10 +22,14 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="small fix">
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="color enum to boolean">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/RBTree.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/structures/RBTreeTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/OrderStatisticTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/OrderStatisticTree.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/RedBlackTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/RedBlackTree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/structures/OrderStatisticTreeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/structures/OrderStatisticTreeTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/structures/RedBlackTreeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/structures/RedBlackTreeTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CentralUtils/src/main/java/org/nathan/centralUtils/utils/ArrayUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CentralUtils/src/main/java/org/nathan/centralUtils/utils/ArrayUtils.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,8 +43,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Class" />
         <option value="JUnit5 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -136,7 +140,18 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="OrderStatisticTreeTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="RedBlackTreeTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AlgorithmsJava" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="uniqueId" />
+      <uniqueIds>
+        <uniqueId value="[engine:junit-jupiter]/[class:org.nathan.algorithmsJ.structures.RedBlackTreeTest]" />
+      </uniqueIds>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RedBlackTreeTest.balanceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AlgorithmsJava" />
       <extension name="coverage">
         <pattern>
@@ -145,54 +160,40 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="org.nathan.algorithmsJ.structures" />
-      <option name="MAIN_CLASS_NAME" value="org.nathan.algorithmsJ.structures.OrderStatisticTreeTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="OrthoLineIntersectTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="AlgorithmsJava" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.nathan.algorithmsJ.misc.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.nathan.algorithmsJ.misc" />
-      <option name="MAIN_CLASS_NAME" value="org.nathan.algorithmsJ.misc.OrthoLineIntersectTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="OrthoLineIntersectTest.intersectsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="AlgorithmsJava" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.nathan.algorithmsJ.misc.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.nathan.algorithmsJ.misc" />
-      <option name="MAIN_CLASS_NAME" value="org.nathan.algorithmsJ.misc.OrthoLineIntersectTest" />
-      <option name="METHOD_NAME" value="intersectsTest" />
+      <option name="MAIN_CLASS_NAME" value="org.nathan.algorithmsJ.structures.RedBlackTreeTest" />
+      <option name="METHOD_NAME" value="balanceTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SortTest.quickSort3WayTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="RedBlackTreeTest.functionsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AlgorithmsJava" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.nathan.algorithmsJ.misc.*" />
+          <option name="PATTERN" value="org.nathan.algorithmsJ.structures.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="org.nathan.algorithmsJ.misc" />
-      <option name="MAIN_CLASS_NAME" value="org.nathan.algorithmsJ.misc.SortTest" />
-      <option name="METHOD_NAME" value="quickSort3WayTest" />
+      <option name="PACKAGE_NAME" value="org.nathan.algorithmsJ.structures" />
+      <option name="MAIN_CLASS_NAME" value="org.nathan.algorithmsJ.structures.RedBlackTreeTest" />
+      <option name="METHOD_NAME" value="functionsTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RedBlackTreeTest.insertFixUpTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AlgorithmsJava" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.nathan.algorithmsJ.structures.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.nathan.algorithmsJ.structures" />
+      <option name="MAIN_CLASS_NAME" value="org.nathan.algorithmsJ.structures.RedBlackTreeTest" />
+      <option name="METHOD_NAME" value="insertFixUpTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -203,18 +204,18 @@
       <item itemvalue="Application.pushUtils" />
       <item itemvalue="Application.Main" />
       <item itemvalue="JUnit.All in AlgorithmsJava" />
-      <item itemvalue="JUnit.SortTest.quickSort3WayTest" />
-      <item itemvalue="JUnit.OrderStatisticTreeTest" />
-      <item itemvalue="JUnit.OrthoLineIntersectTest.intersectsTest" />
-      <item itemvalue="JUnit.OrthoLineIntersectTest" />
+      <item itemvalue="JUnit.RedBlackTreeTest.balanceTest" />
+      <item itemvalue="JUnit.RedBlackTreeTest.insertFixUpTest" />
+      <item itemvalue="JUnit.RedBlackTreeTest" />
+      <item itemvalue="JUnit.RedBlackTreeTest.functionsTest" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.All in AlgorithmsJava" />
-        <item itemvalue="JUnit.OrthoLineIntersectTest" />
-        <item itemvalue="JUnit.OrthoLineIntersectTest.intersectsTest" />
-        <item itemvalue="JUnit.OrderStatisticTreeTest" />
-        <item itemvalue="JUnit.SortTest.quickSort3WayTest" />
+        <item itemvalue="JUnit.RedBlackTreeTest.functionsTest" />
+        <item itemvalue="JUnit.RedBlackTreeTest.insertFixUpTest" />
+        <item itemvalue="JUnit.RedBlackTreeTest.balanceTest" />
+        <item itemvalue="JUnit.RedBlackTreeTest" />
       </list>
     </recent_temporary>
   </component>
@@ -411,21 +412,7 @@
       <workItem from="1623494511253" duration="25692000" />
       <workItem from="1623639756028" duration="227000" />
       <workItem from="1623654077799" duration="598000" />
-      <workItem from="1623655422172" duration="17766000" />
-    </task>
-    <task id="LOCAL-00193" summary="refactor">
-      <created>1623316113208</created>
-      <option name="number" value="00193" />
-      <option name="presentableId" value="LOCAL-00193" />
-      <option name="project" value="LOCAL" />
-      <updated>1623316113209</updated>
-    </task>
-    <task id="LOCAL-00194" summary="save">
-      <created>1623321315616</created>
-      <option name="number" value="00194" />
-      <option name="presentableId" value="LOCAL-00194" />
-      <option name="project" value="LOCAL" />
-      <updated>1623321315616</updated>
+      <workItem from="1623655422172" duration="33256000" />
     </task>
     <task id="LOCAL-00195" summary="add todos, fix func interface">
       <created>1623327465493</created>
@@ -756,7 +743,21 @@
       <option name="project" value="LOCAL" />
       <updated>1623676630563</updated>
     </task>
-    <option name="localTasksCounter" value="242" />
+    <task id="LOCAL-00242" summary="color enum to boolean">
+      <created>1623678663873</created>
+      <option name="number" value="00242" />
+      <option name="presentableId" value="LOCAL-00242" />
+      <option name="project" value="LOCAL" />
+      <updated>1623678663873</updated>
+    </task>
+    <task id="LOCAL-00243" summary="color enum to boolean">
+      <created>1623679413353</created>
+      <option name="number" value="00243" />
+      <option name="presentableId" value="LOCAL-00243" />
+      <option name="project" value="LOCAL" />
+      <updated>1623679413353</updated>
+    </task>
+    <option name="localTasksCounter" value="244" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -785,7 +786,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add two sort" />
     <MESSAGE value="add todo, add tests" />
     <MESSAGE value="move" />
     <MESSAGE value="add new function to OrderStatisticTree, remove RedBlackBST.java" />
@@ -810,10 +810,52 @@
     <MESSAGE value="change README.md" />
     <MESSAGE value="add comments" />
     <MESSAGE value="small fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="small fix" />
+    <MESSAGE value="color enum to boolean" />
+    <option name="LAST_COMMIT_MESSAGE" value="color enum to boolean" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/structures/RedBlackTreeTest.java</url>
+          <line>104</line>
+          <option name="timeStamp" value="29" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <condition expression="u.parent == null" language="JAVA" />
+          <url>file://$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/RedBlackTree.java</url>
+          <line>339</line>
+          <option name="timeStamp" value="32" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <condition expression="w.left == null" language="JAVA" />
+          <url>file://$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/RedBlackTree.java</url>
+          <line>287</line>
+          <option name="timeStamp" value="33" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <condition expression="w.right == null" language="JAVA" />
+          <url>file://$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/RedBlackTree.java</url>
+          <line>313</line>
+          <option name="timeStamp" value="34" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <condition expression="black != 0" language="JAVA" />
+          <url>file://$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/structures/RedBlackTreeTest.java</url>
+          <line>89</line>
+          <option name="timeStamp" value="39" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/structures/RedBlackTreeTest.java</url>
+          <line>69</line>
+          <option name="timeStamp" value="40" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/structures/RedBlackTreeTest.java</url>
+          <line>65</line>
+          <option name="timeStamp" value="41" />
+        </line-breakpoint>
+      </breakpoints>
       <default-breakpoints>
         <breakpoint enabled="true" type="java-exception">
           <properties>

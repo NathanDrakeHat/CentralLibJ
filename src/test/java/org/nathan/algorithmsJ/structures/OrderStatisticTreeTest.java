@@ -57,4 +57,21 @@ class OrderStatisticTreeTest{
     assertEquals(2, caseTree.floor(2.5));
     assertEquals(15, caseTree.ceiling(14.5));
   }
+
+//  // are the size fields correct?
+//  private boolean isSizeConsistent() { return isSizeConsistent(root); }
+//  private boolean isSizeConsistent(RedBlackTree.Node<Integer, Integer> x) {
+//    if (x == null) return true;
+//    if (x.size != size(x.left) + size(x.right) + 1) return false;
+//    return isSizeConsistent(x.left) && isSizeConsistent(x.right);
+//  }
+//
+//  // check that ranks are consistent
+//  private boolean isRankConsistent() {
+//    for (int i = 0; i < size(); i++)
+//      if (i != rank(select(i))) return false;
+//    for (Key key : keys())
+//      if (key.compareTo(select(rank(key))) != 0) return false;
+//    return true;
+//  }
 }
