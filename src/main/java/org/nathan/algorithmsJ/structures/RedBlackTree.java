@@ -10,7 +10,7 @@ public class RedBlackTree<K, V> implements Iterable<Tuple<K, V>>{
   @NotNull
   final Comparator<K> k_comparator;
   @NotNull
-  final Node<K, V> sentinel = new Node<>(BLACK);// sentinel: denote leaf and parent of root
+  final Node<K, V> sentinel = new Node<>(BLACK);
   @NotNull Node<K, V> root = sentinel;
   private boolean iterating = false;
 
@@ -88,17 +88,12 @@ public class RedBlackTree<K, V> implements Iterable<Tuple<K, V>>{
     }
   }
 
-  private void setRoot(Node<K, V> r){
-    root = r;
-    root.parent = sentinel;
-  }
-
   private void setLeaf(Node<K, V> n){
     n.left = sentinel;
     n.right = sentinel;
   }
 
-  public void inOrderForEach(@NotNull BiConsumer<K, V> bc){ // inorder print
+  public void inOrderForEach(@NotNull BiConsumer<K, V> bc){
     if(sentinel == root){
       return;
     }
@@ -120,7 +115,7 @@ public class RedBlackTree<K, V> implements Iterable<Tuple<K, V>>{
     return getCount(root);
   }
 
-  private int getCount(Node<K, V> n){ //overload trick
+  private int getCount(Node<K, V> n){
     if(n.right != sentinel && n.left == sentinel){
       return getCount(n.right) + 1;
     }
@@ -192,20 +187,20 @@ public class RedBlackTree<K, V> implements Iterable<Tuple<K, V>>{
     while(z.parent.color == RED) {
       if(z.parent == z.parent.parent.left){
         var y = z.parent.parent.right;
-        if(y.color == RED){ // case1: sibling is red
+        if(y.color == RED){
           z.parent.color = BLACK;
           y.color = BLACK;
           z.parent.parent.color = RED;
           z = z.parent.parent;
         }
         else{
-          if(z == z.parent.right){ //case 2 convert to case 3
+          if(z == z.parent.right){
             z = z.parent;
             leftRotate(z);
           }
-          z.parent.color = BLACK; // case3
+          z.parent.color = BLACK;
           z.parent.parent.color = RED;
-          rightRotate(z.parent.parent); // ptr.getParent will be black and then break
+          rightRotate(z.parent.parent);
         }
       }
       else{
@@ -258,7 +253,7 @@ public class RedBlackTree<K, V> implements Iterable<Tuple<K, V>>{
       y_origin_color = y.color;
       x = y.right;
       if(y.parent == z){
-        x.parent = y; // in case of sentinel refer to target
+        x.parent = y;
       }
       else{
         RBTransplant(y, y.right);
@@ -270,7 +265,7 @@ public class RedBlackTree<K, V> implements Iterable<Tuple<K, V>>{
       y.left.parent = y;
       y.color = z.color;
     }
-    if(y_origin_color == BLACK){ // delete black node may violate property of red-black tree
+    if(y_origin_color == BLACK){
       deleteFixUp(x);
     }
   }
@@ -279,24 +274,24 @@ public class RedBlackTree<K, V> implements Iterable<Tuple<K, V>>{
     while(x != root && x.color == BLACK) {
       if(x == x.parent.left){
         var w = x.parent.right;
-        if(w.color == RED){ // case1:sibling is black, convert to case 2, 3 or 4
-          w.color = BLACK; // , which denote that sibling is black
+        if(w.color == RED){
+          w.color = BLACK;
           x.parent.color = RED;
           leftRotate(x.parent);
           w = x.parent.right;
         }
-        if(w.left.color == BLACK && w.right.color == BLACK){ // case2: sibling children is black
+        if(w.left.color == BLACK && w.right.color == BLACK){
           w.color = RED;
           x = x.parent;
         }
         else{
-          if(w.right.color == BLACK){ // case3: sibling left red, right black. convert case4
+          if(w.right.color == BLACK){
             w.left.color = BLACK;
             w.color = RED;
             rightRotate(w);
             w = x.parent.right;
           }
-          w.color = x.parent.color; // case4: sibling right red
+          w.color = x.parent.color;
           x.parent.color = BLACK;
           w.right.color = BLACK;
           leftRotate(x.parent);
@@ -373,13 +368,13 @@ public class RedBlackTree<K, V> implements Iterable<Tuple<K, V>>{
   @SuppressWarnings("SuspiciousNameCombination")
   private void leftRotate(Node<K, V> x){
     var y = x.right;
-    //exchange
+
     x.right = y.left;
-    if(y.left != sentinel){ // remember to double link
+    if(y.left != sentinel){
       y.left.parent = x;
     }
-    //exchange
-    y.parent = x.parent; // double link right_node to left_node parent
+
+    y.parent = x.parent;
     if(x.parent == sentinel){
       root = y;
     }
@@ -389,21 +384,21 @@ public class RedBlackTree<K, V> implements Iterable<Tuple<K, V>>{
     else{
       x.parent.right = y;
     }
-    //exchange
+
     y.left = x;
     x.parent = y;
   }
 
   @SuppressWarnings("SuspiciousNameCombination")
-  private void rightRotate(Node<K, V> x){ // mirror of leftRotate
+  private void rightRotate(Node<K, V> x){
     var y = x.left;
-    //exchange
+
     x.left = y.right;
-    if(y.right != sentinel){ // remember to double link
+    if(y.right != sentinel){
       y.right.parent = x;
     }
-    //exchange
-    y.parent = x.parent; // double link right_node to left_node parent
+
+    y.parent = x.parent;
     if(x.parent == sentinel){
       root = y;
     }
@@ -413,7 +408,7 @@ public class RedBlackTree<K, V> implements Iterable<Tuple<K, V>>{
     else{
       x.parent.left = y;
     }
-    //exchange
+
     y.right = x;
     x.parent = y;
   }
@@ -432,38 +427,6 @@ public class RedBlackTree<K, V> implements Iterable<Tuple<K, V>>{
     return x;
   }
 
-//  private Node<K, V> getSuccessor(Node<K, V> current){
-//    if(current.right != sentinel){
-//      return treeMinimum(current.right);
-//    }
-//    else{
-//      var target = current.parent;
-//      var target_right = current;
-//      while((target != sentinel) && target.right == target_right) {
-//        target_right = target;
-//        target = target.parent;
-//      }
-//      return target;
-//    }
-//  }
-//
-//  @SuppressWarnings("unused")
-//  private Node<K, V> getPredecessor(Node<K, V> current){
-//    if(current.left != sentinel){
-//      return treeMaximum(current.left);
-//    }
-//    else{
-//      var target = current.parent;
-//      var target_left = current;
-//      while((target != sentinel) && (target.left == target_left)) {
-//        target_left = target;
-//        target = target.parent;
-//
-//      }
-//      return target;
-//    }
-//  }
-
   @Override
   public @NotNull Iterator<Tuple<K, V>> iterator(){
     return new BSTIterator();
@@ -476,7 +439,6 @@ public class RedBlackTree<K, V> implements Iterable<Tuple<K, V>>{
   private void modified(){
     iterating = false;
   }
-
 
   private final class BSTIterator implements Iterator<Tuple<K, V>>{
     private final Deque<Node<K, V>> stack = new LinkedList<>();
@@ -503,8 +465,7 @@ public class RedBlackTree<K, V> implements Iterable<Tuple<K, V>>{
     @Override
     public Tuple<K, V> next(){
       while(ptr != null) {
-        if(ptr.left != sentinel && !poppedBefore) // if popped before, walk to right
-        {
+        if(ptr.left != sentinel && !poppedBefore){
           stack.push(ptr);
           ptr = ptr.left;
         }
@@ -556,8 +517,7 @@ public class RedBlackTree<K, V> implements Iterable<Tuple<K, V>>{
     @Override
     public Tuple<K, V> next(){
       while(ptr != null) {
-        if(ptr.right != sentinel && !poppedBefore) // if popped before, walk to right
-        {
+        if(ptr.right != sentinel && !poppedBefore){
           stack.push(ptr);
           ptr = ptr.right;
         }
