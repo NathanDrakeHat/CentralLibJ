@@ -187,7 +187,7 @@ class RBTreeTemplate<Key>{
         }
         var pi = (IntvalSerchTree.Node<Key>)p;
         while(pi != sentinel){
-          updateISNode(pi);
+          updateIntvalSerchNode(pi);
           pi = pi.parent;
         }
       }
@@ -304,10 +304,10 @@ class RBTreeTemplate<Key>{
         xo.size = xo.left.size + xo.right.size + 1;
       }
       else if(x instanceof IntvalSerchTree.Node<Key> xi){
-        updateISNode(xi);
+        updateIntvalSerchNode(xi);
         xi = xi.parent;
         if(xi != sentinel){
-          updateISNode(xi);
+          updateIntvalSerchNode(xi);
         }
       }
     }
@@ -341,16 +341,16 @@ class RBTreeTemplate<Key>{
         xo.size = xo.left.size + xo.right.size + 1;
       }
       else if(x instanceof IntvalSerchTree.Node<Key> xi){
-        updateISNode(xi);
+        updateIntvalSerchNode(xi);
         xi = xi.parent;
         if(xi != sentinel){
-          updateISNode(xi);
+          updateIntvalSerchNode(xi);
         }
       }
     }
   }
 
-  private void updateISNode(IntvalSerchTree.Node<Key> n){
+  private void updateIntvalSerchNode(IntvalSerchTree.Node<Key> n){
     if(n.left != sentinel && n.right != sentinel){
       n.max = comparator.compare(n.right.max, n.left.max) < 0 ? n.left.max : n.right.max;
       n.max = comparator.compare(n.max, n.high) < 0 ? n.high : n.max;
