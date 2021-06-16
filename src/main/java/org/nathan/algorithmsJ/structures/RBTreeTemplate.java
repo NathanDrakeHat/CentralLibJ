@@ -11,7 +11,7 @@ import java.util.function.Consumer;
 import static org.nathan.centralUtils.utils.LambdaUtils.stripCE;
 
 /**
- * where to add new operation
+ * annotate where to augment new operation
  */
 @Target(ElementType.METHOD)
 @interface Template{
