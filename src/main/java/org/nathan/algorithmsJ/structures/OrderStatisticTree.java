@@ -5,7 +5,8 @@ import org.jetbrains.annotations.NotNull;
 import java.util.*;
 import java.util.function.BiConsumer;
 
-// TODO add more BST applications (intersection search, k-d tree, etc)
+// TODO add k-d tree
+// TODO migrate to OSTree
 
 @SuppressWarnings("unused")
 public class OrderStatisticTree<K> implements Iterable<K>{ // get rank of node from left to right

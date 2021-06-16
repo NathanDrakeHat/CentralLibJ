@@ -37,15 +37,4 @@ class OrderStatisticTreeTest{
     }
     return true;
   }
-
-  @Test
-  void randomCaseTest(){
-    List<Integer> l = ArrayUtils.shuffledSequence(0, 1024);
-    OrderStatisticTree<Integer> t = new OrderStatisticTree<>(Integer::compareTo);
-    for(var i : l){
-      t.insertKey(i);
-      assertTrue(isSizeConsistent(t));
-      assertTrue(isRankConsistent(t));
-    }
-  }
 }

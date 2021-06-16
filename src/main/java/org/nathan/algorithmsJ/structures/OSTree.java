@@ -98,7 +98,7 @@ public class OSTree<K, V> implements Iterable<Tuple<K, V>>{
 
   public int getHeight(){
     if(root == sentinel){
-      return 1;
+      return 0;
     }
     int height = 1;
     int left_max = getHeight(root.left, height);

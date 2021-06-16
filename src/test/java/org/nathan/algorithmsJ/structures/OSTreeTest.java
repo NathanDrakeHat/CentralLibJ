@@ -113,15 +113,17 @@ class OSTreeTest{
         tree.insert(shuffle.get(i), shuffle.get(i));
         assertTrue(isBalanced(tree));
         assertTrue(is23(tree));
-        assertTrue(tree.getHeight() <= 2 * Math.log(tree.size() + 1) / Math.log(2));
+        assertTrue(tree.getHeight() <= (2 * Math.log(tree.size() + 1) / Math.log(2)));
         assertTrue(isSizeConsistent(tree));
       }
 
-      for(int i = 0; i < len / 2; i++){
+      Collections.shuffle(shuffle);
+
+      for(int i = 0; i < len; i++){
         tree.delete(shuffle.get(i));
         assertTrue(isBalanced(tree));
         assertTrue(is23(tree));
-        assertTrue(tree.getHeight() <= 2 * Math.log(tree.size() + 1) / Math.log(2));
+        assertTrue(tree.getHeight() <= (2 * Math.log(tree.size() + 1) / Math.log(2)));
         assertTrue(isSizeConsistent(tree));
       }
     }
