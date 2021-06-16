@@ -22,12 +22,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="add test">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/RBNode.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/RBTreeTemplate.java" afterDir="false" />
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="save template">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/OSTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/OSTree.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/structures/OSTreeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/structures/OSTreeTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/RBNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/RBNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/RBTreeTemplate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/RBTreeTemplate.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,7 +104,7 @@
       <recent name="org.nathan.algorithmsJ.misc" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.OSTreeTest.implementationTest">
+  <component name="RunManager" selected="JUnit.All in AlgorithmsJava">
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.nathan.Main" />
       <module name="AlgorithmsJava" />
@@ -213,8 +212,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.OSTreeTest.implementationTest" />
         <item itemvalue="JUnit.All in AlgorithmsJava" />
+        <item itemvalue="JUnit.OSTreeTest.implementationTest" />
         <item itemvalue="JUnit.OSTreeTest.functionsTest" />
         <item itemvalue="JUnit.OSTreeTest" />
         <item itemvalue="JUnit.OrderStatisticTreeTest.randomCaseTest" />
@@ -415,14 +414,7 @@
       <workItem from="1623639756028" duration="227000" />
       <workItem from="1623654077799" duration="598000" />
       <workItem from="1623655422172" duration="57041000" />
-      <workItem from="1623810793813" duration="5384000" />
-    </task>
-    <task id="LOCAL-00202" summary="save">
-      <created>1623333650173</created>
-      <option name="number" value="00202" />
-      <option name="presentableId" value="LOCAL-00202" />
-      <option name="project" value="LOCAL" />
-      <updated>1623333650173</updated>
+      <workItem from="1623810793813" duration="5920000" />
     </task>
     <task id="LOCAL-00203" summary="save flow edge">
       <created>1623334638322</created>
@@ -760,7 +752,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623807603920</updated>
     </task>
-    <option name="localTasksCounter" value="251" />
+    <task id="LOCAL-00251" summary="save template">
+      <created>1623827679673</created>
+      <option name="number" value="00251" />
+      <option name="presentableId" value="LOCAL-00251" />
+      <option name="project" value="LOCAL" />
+      <updated>1623827679673</updated>
+    </task>
+    <option name="localTasksCounter" value="252" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -789,7 +788,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add todo" />
     <MESSAGE value="delete Bag.java" />
     <MESSAGE value="rename package" />
     <MESSAGE value="fix OrderStatisticTreeTest bug" />
@@ -814,7 +812,8 @@
     <MESSAGE value="fix bug finally!" />
     <MESSAGE value="save" />
     <MESSAGE value="add test" />
-    <option name="LAST_COMMIT_MESSAGE" value="add test" />
+    <MESSAGE value="save template" />
+    <option name="LAST_COMMIT_MESSAGE" value="save template" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

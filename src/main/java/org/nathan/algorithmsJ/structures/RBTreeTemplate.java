@@ -3,22 +3,24 @@ package org.nathan.algorithmsJ.structures;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Comparator;
-import java.util.function.BiConsumer;
-import java.util.function.Function;
-
-record RBTreeTemplate<Key, Tree>(@NotNull RBNode<Key> sentinel,
-                                 @NotNull Comparator<Key> comparator, @NotNull Tree tree,
-                                 @NotNull Function<Tree, RBNode<Key>> getRoot,
-                                 @NotNull BiConsumer<Tree, RBNode<Key>> setRoot){
-  RBTreeTemplate(
-          @NotNull RBNode<Key> sentinel,
-          @NotNull Comparator<Key> comparator,
-          @NotNull Tree tree,
-          @NotNull Function<Tree, RBNode<Key>> getRoot,
-          @NotNull BiConsumer<Tree, RBNode<Key>> setRoot){
+import java.util.concurrent.Callable;
+import java.util.function.Consumer;
+import static org.nathan.centralUtils.utils.LambdaUtils.*;
+/**
+ * red black tree code template
+ *
+ * @param <Key>  key of node
+ */
+record RBTreeTemplate<Key>(@NotNull RBNode<Key> sentinel,
+                           @NotNull Comparator<Key> comparator,
+                           @NotNull Callable<RBNode<Key>> getRoot,
+                           @NotNull Consumer<RBNode<Key>> setRoot){
+  RBTreeTemplate(@NotNull RBNode<Key> sentinel,
+                 @NotNull Comparator<Key> comparator,
+                 @NotNull Callable<RBNode<Key>> getRoot,
+                 @NotNull Consumer<RBNode<Key>> setRoot){
     this.sentinel = sentinel;
     this.comparator = comparator;
-    this.tree = tree;
     this.getRoot = getRoot;
     this.setRoot = setRoot;
   }
@@ -26,7 +28,7 @@ record RBTreeTemplate<Key, Tree>(@NotNull RBNode<Key> sentinel,
   @SuppressWarnings("SuspiciousNameCombination")
   void insert(RBNode<Key> z){
     var y = sentinel;
-    var x = getRoot.apply(tree);
+    var x = stripCE(getRoot);
     while(x != sentinel) {
       y = x;
       if(x instanceof OSTree.Node<?, ?> xo){
@@ -44,7 +46,7 @@ record RBTreeTemplate<Key, Tree>(@NotNull RBNode<Key> sentinel,
     }
     z.setParent(y);
     if(y == sentinel){
-      setRoot.accept(tree, z);
+      setRoot.accept(z);
     }
     else if(comparator.compare(z.getKey(), y.getKey()) < 0){
       y.setLeft(z);
@@ -103,7 +105,7 @@ record RBTreeTemplate<Key, Tree>(@NotNull RBNode<Key> sentinel,
         }
       }
     }
-    getRoot.apply(tree).setBlack();
+    stripCE(getRoot).setBlack();
   }
 
   void delete(RBNode<Key> z){
@@ -150,7 +152,7 @@ record RBTreeTemplate<Key, Tree>(@NotNull RBNode<Key> sentinel,
   }
 
   private void deleteFixUp(RBNode<Key> x){
-    while(x != getRoot.apply(tree) && x.isBlack()) {
+    while(x != stripCE(getRoot) && x.isBlack()) {
       if(x == x.getParent().getLeft()){
         var w = x.getParent().getRight();
         if(w.isRed()){
@@ -174,7 +176,7 @@ record RBTreeTemplate<Key, Tree>(@NotNull RBNode<Key> sentinel,
           x.getParent().setBlack();
           w.getRight().setBlack();
           leftRotate(x.getParent());
-          x = getRoot.apply(tree);
+          x = stripCE(getRoot);
         }
       }
       else{
@@ -200,7 +202,7 @@ record RBTreeTemplate<Key, Tree>(@NotNull RBNode<Key> sentinel,
           x.getParent().setBlack();
           w.getLeft().setBlack();
           rightRotate(x.getParent());
-          x = getRoot.apply(tree);
+          x = stripCE(getRoot);
         }
       }
     }
@@ -216,7 +218,7 @@ record RBTreeTemplate<Key, Tree>(@NotNull RBNode<Key> sentinel,
 
   private void RBTransplant(RBNode<Key> u, RBNode<Key> v){
     if(u.getParent() == sentinel){
-      setRoot.accept(tree, v);
+      setRoot.accept(v);
     }
     else if(u == u.getParent().getLeft()){
       u.getParent().setLeft(v);
@@ -237,7 +239,7 @@ record RBTreeTemplate<Key, Tree>(@NotNull RBNode<Key> sentinel,
 
     y.setParent(x.getParent());
     if(x.getParent() == sentinel){
-      setRoot.accept(tree, y);
+      setRoot.accept(y);
     }
     else if(x == x.getParent().getLeft()){
       x.getParent().setLeft(y);
@@ -264,7 +266,7 @@ record RBTreeTemplate<Key, Tree>(@NotNull RBNode<Key> sentinel,
 
     y.setParent(x.getParent());
     if(x.getParent() == sentinel){
-      setRoot.accept(tree, y);
+      setRoot.accept(y);
     }
     else if(x == x.getParent().getRight()){
       x.getParent().setRight(y);

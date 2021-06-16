@@ -13,11 +13,11 @@ public class OSTree<K, V> implements Iterable<Tuple<K, V>>{
   @NotNull Node<K, V> root = sentinel;
   private boolean iterating = false;
   @NotNull
-  private final RBTreeTemplate<K, OSTree<K, V>> template;
+  private final RBTreeTemplate<K> template;
 
   public OSTree(@NotNull Comparator<K> comparator){
     this.comparator = comparator;
-    template = new RBTreeTemplate<>(sentinel, comparator, this, (t)->t.root, (t,r)->t.root = (Node<K, V>) r);
+    template = new RBTreeTemplate<>(sentinel, comparator, ()->this.root, (r)->this.root = (Node<K, V>) r);
   }
 
   /**
@@ -230,88 +230,7 @@ public class OSTree<K, V> implements Iterable<Tuple<K, V>>{
   public void insert(@NotNull K key, V val){
     modified();
     var n = new Node<>(key, val);
-//    insert(n);
     template.insert(n);
-  }
-
-  @SuppressWarnings("SuspiciousNameCombination")
-  private void insert(Node<K, V> z){
-    var y = sentinel;
-    var x = root;
-    while(x != sentinel) {
-      y = x;
-      x.size++;
-      if(comparator.compare(z.key, x.key) < 0){
-        x = x.left;
-      }
-      else if(comparator.compare(z.key, x.key) > 0){
-        x = x.right;
-      }
-      else{
-        throw new IllegalArgumentException("duplicate key.");
-      }
-    }
-    z.parent = y;
-    if(y == sentinel){
-      root = z;
-    }
-    else if(comparator.compare(z.key, y.key) < 0){
-      y.left = z;
-    }
-    else if(comparator.compare(z.key, y.key) > 0){
-      y.right = z;
-    }
-    else{
-      throw new RuntimeException("not possible error.");
-    }
-    z.left = sentinel;
-    z.right = sentinel;
-    z.color = RED;
-    z.size = 1;
-    insertFixUp(z);
-  }
-
-  @SuppressWarnings("SuspiciousNameCombination")
-  private void insertFixUp(Node<K, V> z){
-    while(z.parent.color == RED) {
-      if(z.parent == z.parent.parent.left){
-        var y = z.parent.parent.right;
-        if(y.color == RED){
-          z.parent.color = BLACK;
-          y.color = BLACK;
-          z.parent.parent.color = RED;
-          z = z.parent.parent;
-        }
-        else{
-          if(z == z.parent.right){
-            z = z.parent;
-            leftRotate(z);
-          }
-          z.parent.color = BLACK;
-          z.parent.parent.color = RED;
-          rightRotate(z.parent.parent);
-        }
-      }
-      else{
-        var y = z.parent.parent.left;
-        if(y.color == RED){
-          z.parent.color = BLACK;
-          y.color = BLACK;
-          z.parent.parent.color = RED;
-          z = z.parent.parent;
-        }
-        else{
-          if(z == z.parent.left){
-            z = z.parent;
-            rightRotate(z);
-          }
-          z.parent.color = BLACK;
-          z.parent.parent.color = RED;
-          leftRotate(z.parent.parent);
-        }
-      }
-    }
-    root.color = BLACK;
   }
 
   public void delete(@NotNull K key){
@@ -321,123 +240,8 @@ public class OSTree<K, V> implements Iterable<Tuple<K, V>>{
     }
     var n = search(root, key);
     if(n != sentinel){
-//      delete(n);
       template.delete(n);
     }
-  }
-
-  private void delete(Node<K, V> z){
-    var y = z;
-    var y_origin_color = y.color;
-    Node<K, V> x;
-    if(z.left == sentinel){
-      x = z.right;
-      RBTransplant(z, z.right);
-    }
-    else if(z.right == sentinel){
-      x = z.left;
-      RBTransplant(z, z.left);
-    }
-    else{
-      y = minimumNodeOf(z.right);
-      y_origin_color = y.color;
-      x = y.right;
-      if(y.parent == z){
-        x.parent = y;
-      }
-      else{
-        RBTransplant(y, y.right);
-        y.right = z.right;
-        y.right.parent = y;
-      }
-      RBTransplant(z, y);
-      y.left = z.left;
-      y.left.parent = y;
-      y.color = z.color;
-    }
-
-    if(y.right != sentinel){
-      y = minimumNodeOf(y.right);
-    }
-    while(y != sentinel) {
-      y.size = y.right.size + y.left.size + 1;
-      y = y.parent;
-    }
-
-    if(y_origin_color == BLACK){
-      deleteFixUp(x);
-    }
-  }
-
-  private void deleteFixUp(Node<K, V> x){
-    while(x != root && x.color == BLACK) {
-      if(x == x.parent.left){
-        var w = x.parent.right;
-        if(w.color == RED){
-          w.color = BLACK;
-          x.parent.color = RED;
-          leftRotate(x.parent);
-          w = x.parent.right;
-        }
-        if(w.left.color == BLACK && w.right.color == BLACK){
-          w.color = RED;
-          x = x.parent;
-        }
-        else{
-          if(w.right.color == BLACK){
-            w.left.color = BLACK;
-            w.color = RED;
-            rightRotate(w);
-            w = x.parent.right;
-          }
-          w.color = x.parent.color;
-          x.parent.color = BLACK;
-          w.right.color = BLACK;
-          leftRotate(x.parent);
-          x = root;
-        }
-      }
-      else{
-        var w = x.parent.left;
-        if(w.color == RED){
-          w.color = BLACK;
-          x.parent.color = RED;
-          rightRotate(x.parent);
-          w = x.parent.left;
-        }
-        if(w.right.color == BLACK && w.left.color == BLACK){
-          w.color = RED;
-          x = x.parent;
-        }
-        else{
-          if(w.left.color == BLACK){
-            w.right.color = BLACK;
-            w.color = RED;
-            leftRotate(w);
-            w = x.parent.left;
-          }
-          w.color = x.parent.color;
-          x.parent.color = BLACK;
-          w.left.color = BLACK;
-          rightRotate(x.parent);
-          x = root;
-        }
-      }
-    }
-    x.color = BLACK;
-  }
-
-  private void RBTransplant(Node<K, V> u, Node<K, V> v){
-    if(u.parent == sentinel){
-      root = v;
-    }
-    else if(u == u.parent.left){
-      u.parent.left = v;
-    }
-    else{
-      u.parent.right = v;
-    }
-    v.parent = u.parent;
   }
 
   public V search(@NotNull K key){
@@ -462,58 +266,6 @@ public class OSTree<K, V> implements Iterable<Tuple<K, V>>{
       return search(n.right, key);
     }
     return sentinel;
-  }
-
-  @SuppressWarnings("SuspiciousNameCombination")
-  private void leftRotate(Node<K, V> x){
-    var y = x.right;
-
-    x.right = y.left;
-    if(y.left != sentinel){
-      y.left.parent = x;
-    }
-
-    y.parent = x.parent;
-    if(x.parent == sentinel){
-      root = y;
-    }
-    else if(x == x.parent.left){
-      x.parent.left = y;
-    }
-    else{
-      x.parent.right = y;
-    }
-
-    y.left = x;
-    x.parent = y;
-    y.size = x.size;
-    x.size = x.left.size + x.right.size + 1;
-  }
-
-  @SuppressWarnings("SuspiciousNameCombination")
-  private void rightRotate(Node<K, V> x){
-    var y = x.left;
-
-    x.left = y.right;
-    if(y.right != sentinel){
-      y.right.parent = x;
-    }
-
-    y.parent = x.parent;
-    if(x.parent == sentinel){
-      root = y;
-    }
-    else if(x == x.parent.right){
-      x.parent.right = y;
-    }
-    else{
-      x.parent.left = y;
-    }
-
-    y.right = x;
-    x.parent = y;
-    y.size = x.size;
-    x.size = x.left.size + x.right.size + 1;
   }
 
   private Node<K, V> minimumNodeOf(Node<K, V> x){

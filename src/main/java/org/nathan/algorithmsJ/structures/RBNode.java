@@ -1,6 +1,5 @@
 package org.nathan.algorithmsJ.structures;
 
-import org.jetbrains.annotations.NotNull;
 
 interface RBNode<Key>{
   boolean RED = false;
