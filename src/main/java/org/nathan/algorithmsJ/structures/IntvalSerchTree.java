@@ -8,7 +8,7 @@ import java.util.NoSuchElementException;
 /**
  * interval search tree
  */
-public class ISTree<Key>{
+public class IntvalSerchTree<Key>{
   static class Node<Key> implements RBNode<Key>{
     Node<Key> parent;
     Node<Key> left;
@@ -79,7 +79,7 @@ public class ISTree<Key>{
   @NotNull final Comparator<Key> comparator;
   @NotNull final RBTreeTemplate<Key> template;
 
-  public ISTree(@NotNull Comparator<Key> comparator){
+  public IntvalSerchTree(@NotNull Comparator<Key> comparator){
     this.comparator = comparator;
     template = new RBTreeTemplate<>(sentinel,comparator,()->this.root, (r)->this.root= (Node<Key>) r);
   }

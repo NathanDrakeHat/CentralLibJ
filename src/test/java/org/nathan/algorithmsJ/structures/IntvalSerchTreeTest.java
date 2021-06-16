@@ -11,36 +11,27 @@ import java.util.SplittableRandom;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 
-class ISTreeTest{
+class IntvalSerchTreeTest{
 
-  static <Key> boolean isISTree(ISTree<Key> tree){
+  static <Key> boolean isISTree(IntvalSerchTree<Key> tree){
     var funcWalk = new Object(){
       boolean b = true;
-      void apply(ISTree.Node<Key> n){
+      void apply(IntvalSerchTree.Node<Key> n){
         if(!b || n == tree.sentinel){ return; }
         if(n.left != tree.sentinel && n.right != tree.sentinel){
           var c = tree.comparator.compare(n.left.max, n.right.max) < 0 ? n.right.max : n.left.max;
           var m = tree.comparator.compare(n.max, c) < 0 ? c : n.max;
           b = (n.max == m);
-          if(b && n.high == m){
-              b = (n.high == n.max);
-          }
         }
         else if(n.left != tree.sentinel){
           var c = n.left.max;
           var m = tree.comparator.compare(n.max, c) < 0 ? c : n.max;
           b = (n.max == m);
-          if(b && n.high == m){
-              b = (n.high == n.max);
-          }
         }
         else if(n.right != tree.sentinel){
           var c = n.right.max;
           var m = tree.comparator.compare(n.max, c) < 0 ? c : n.max;
           b = (n.max == m);
-          if(b && n.high == m){
-              b = (n.high == n.max);
-          }
         }
         else if(n.left == tree.sentinel && n.right == tree.sentinel){
           b = (n.high == n.max);
@@ -60,41 +51,47 @@ class ISTreeTest{
 
   @Test
   void isISTreeTest(){
-    List<Integer> shuffle = ArrayUtils.shuffledSequence(0, 128);
-    ISTree<Integer> t = new ISTree<>(Integer::compareTo);
     var rand = new SplittableRandom();
-    for(var item : shuffle){
-      t.insertInterval(item, item + rand.nextInt(8, 64));
-      assertTrue(isISTree(t));
-    }
+    for(int i = 0; i < 5; i++){
+      List<Integer> shuffle = ArrayUtils.shuffledSequence(0, rand.nextInt(8, 128));
+      IntvalSerchTree<Integer> t = new IntvalSerchTree<>(Integer::compareTo);
+      for(var item : shuffle){
+        t.insertInterval(item, item + rand.nextInt(8, 64));
+        assertTrue(isISTree(t));
+      }
 
-    Collections.shuffle(shuffle);
-    for(var item : shuffle){
-      t.deleteInterval(item);
-      assertTrue(isISTree(t));
-    }
+      Collections.shuffle(shuffle);
+      for(var item : shuffle){
+        t.deleteInterval(item);
+        if(!isISTree(t)){
+          fail();
+        }
+      }
 
-    for(var item : shuffle){
-      t.insertInterval(item, item + rand.nextInt(8, 64));
-      assertTrue(isISTree(t));
-    }
+      for(var item : shuffle){
+        t.insertInterval(item, item + rand.nextInt(8, 64));
+        assertTrue(isISTree(t));
+      }
 
-    Collections.shuffle(shuffle);
-    for(var item : shuffle){
-      t.deleteInterval(item);
-      assertTrue(isISTree(t));
+      Collections.shuffle(shuffle);
+      for(var item : shuffle){
+        t.deleteInterval(item);
+        if(!isISTree(t)){
+          fail();
+        }
+      }
     }
   }
 
   @SuppressWarnings("unused")
   private static class BTreePrinter {
-    public static <T extends Comparable<?>> void printNode(ISTree.Node<T> root) {
+    public static <T extends Comparable<?>> void printNode(IntvalSerchTree.Node<T> root) {
       int maxLevel = BTreePrinter.maxLevel(root);
 
       printNodeInternal(Collections.singletonList(root), 1, maxLevel);
     }
 
-    private static <T extends Comparable<?>> void printNodeInternal(List<ISTree.Node<T>> nodes, int level, int maxLevel) {
+    private static <T extends Comparable<?>> void printNodeInternal(List<IntvalSerchTree.Node<T>> nodes, int level, int maxLevel) {
       if (nodes.isEmpty() || BTreePrinter.isAllElementsNull(nodes))
         return;
 
@@ -105,13 +102,11 @@ class ISTreeTest{
 
       BTreePrinter.printWhitespaces(firstSpaces);
 
-      List<ISTree.Node<T> > newNodes = new ArrayList<>();
+      List<IntvalSerchTree.Node<T> > newNodes = new ArrayList<>();
       int backs = 0;
-      for (ISTree.Node<T>  node : nodes) {
+      for (IntvalSerchTree.Node<T>  node : nodes) {
         if (node != null) {
-//          System.out.print("\b".repeat(backs));
           String data = String.format("(%s,%s,%s)",node.low != null ? node.low:"N",node.high != null ? node.high:"N",node.max != null ? node.max:"N");
-//          backs = data.length() - 1;
           System.out.print(data);
           newNodes.add(node.left);
           newNodes.add(node.right);
@@ -159,7 +154,7 @@ class ISTreeTest{
         System.out.print(" ");
     }
 
-    private static <T extends Comparable<?>> int maxLevel(ISTree.Node<T>  node) {
+    private static <T extends Comparable<?>> int maxLevel(IntvalSerchTree.Node<T>  node) {
       if (node == null)
         return 0;
 

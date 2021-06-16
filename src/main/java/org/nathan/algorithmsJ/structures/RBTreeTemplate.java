@@ -23,10 +23,13 @@ import static org.nathan.centralUtils.utils.LambdaUtils.stripCE;
  *
  * @param <Key> key of node
  */
-record RBTreeTemplate<Key>(@NotNull RBNode<Key> sentinel,
-                           @NotNull Comparator<Key> comparator,
-                           @NotNull Callable<RBNode<Key>> getRoot,
-                           @NotNull Consumer<RBNode<Key>> setRoot){
+@SuppressWarnings("ClassCanBeRecord")
+class RBTreeTemplate<Key>{
+  final @NotNull RBNode<Key> sentinel;
+  final @NotNull Comparator<Key> comparator;
+  final @NotNull Callable<RBNode<Key>> getRoot;
+  final @NotNull Consumer<RBNode<Key>> setRoot;
+
   RBTreeTemplate(@NotNull RBNode<Key> sentinel,
                  @NotNull Comparator<Key> comparator,
                  @NotNull Callable<RBNode<Key>> getRoot,
@@ -50,11 +53,11 @@ record RBTreeTemplate<Key>(@NotNull RBNode<Key> sentinel,
     while(x != sentinel) {
       y = x;
       {//
-        if(x instanceof OSTree.Node<?, ?> xo){
+        if(x instanceof OrderStatTree.Node<?, ?> xo){
           xo.size++;
         }
-        else if(x instanceof ISTree.Node<Key> xi){
-          var zi = (ISTree.Node<Key>) z;
+        else if(x instanceof IntvalSerchTree.Node<Key> xi){
+          var zi = (IntvalSerchTree.Node<Key>) z;
           xi.max = comparator.compare(xi.max, zi.max) < 0 ? zi.max : xi.max;
         }
       }
@@ -79,13 +82,13 @@ record RBTreeTemplate<Key>(@NotNull RBNode<Key> sentinel,
       y.setRight(z);
     }
     else{
-      throw new RuntimeException("not possible error.");
+      throw new RuntimeException("impossible error.");
     }
     z.setLeft(sentinel);
     z.setRight(sentinel);
     z.setRed();
     {//
-      if(z instanceof OSTree.Node<?, ?> zo){
+      if(z instanceof OrderStatTree.Node<?, ?> zo){
         zo.size = 1;
       }
     }
@@ -166,30 +169,26 @@ record RBTreeTemplate<Key>(@NotNull RBNode<Key> sentinel,
     }
 
     {//
-      if(y instanceof OSTree.Node<?, ?>){
+      if(y instanceof OrderStatTree.Node<?, ?>){
         if(y.getRight() != sentinel){
           y = minimumNodeOf(y.getRight());
         }
         //noinspection PatternVariableCanBeUsed
-        var yo = (OSTree.Node<?,?>)y;
+        var yo = (OrderStatTree.Node<?, ?>) y;
         while(yo != sentinel) {
           yo.size = yo.right.size + yo.left.size + 1;
           yo = yo.parent;
         }
       }
-      else if(y instanceof ISTree.Node<Key> yi){
-        while(yi != sentinel) {
-          if(yi.left != sentinel && yi.right != sentinel){
-            yi.max = comparator.compare(yi.max, yi.left.max) < 0 ? yi.left.max : yi.max;
-            yi.max = comparator.compare(yi.max, yi.right.max) < 0 ? yi.right.max : yi.max;
-          }
-          else if(yi.left != sentinel){
-            yi.max = comparator.compare(yi.max, yi.left.max) < 0 ? yi.left.max : yi.max;
-          }
-          else if(yi.right != sentinel){
-            yi.max = comparator.compare(yi.max, yi.right.max) < 0 ? yi.right.max : yi.max;
-          }
-          yi = yi.parent;
+      else if(y instanceof IntvalSerchTree.Node<Key>){
+        var p = y;
+        if(p.getRight() != sentinel){
+          p = minimumNodeOf(p.getRight());
+        }
+        var pi = (IntvalSerchTree.Node<Key>)p;
+        while(pi != sentinel){
+          updateISNode(pi);
+          pi = pi.parent;
         }
       }
     }
@@ -300,29 +299,15 @@ record RBTreeTemplate<Key>(@NotNull RBNode<Key> sentinel,
     y.setLeft(x);
     x.setParent(y);
     {//
-      if(x instanceof OSTree.Node<?, ?> xo && y instanceof OSTree.Node<?, ?> yo){
+      if(x instanceof OrderStatTree.Node<?, ?> xo && y instanceof OrderStatTree.Node<?, ?> yo){
         yo.size = xo.size;
         xo.size = xo.left.size + xo.right.size + 1;
       }
-      else if(x instanceof ISTree.Node<Key> xi){
-        while(xi != sentinel){
-          if(xi.left != sentinel && xi.right != sentinel){
-            xi.max = comparator.compare(xi.max, xi.left.max) < 0 ? xi.left.max : xi.max;
-            xi.max = comparator.compare(xi.max, xi.right.max) < 0 ? xi.right.max : xi.max;
-          }
-          else if(xi.left != sentinel){
-            xi.max = comparator.compare(xi.max, xi.left.max) < 0 ? xi.left.max : xi.max;
-          }
-          else if(xi.right != sentinel){
-            xi.max = comparator.compare(xi.max, xi.right.max) < 0 ? xi.right.max : xi.max;
-          }
-          else if(xi.left == sentinel && xi.right == sentinel){
-            xi.max = xi.high;
-          }
-          else {
-            throw new RuntimeException("not impossible error.");
-          }
-          xi = xi.parent;
+      else if(x instanceof IntvalSerchTree.Node<Key> xi){
+        updateISNode(xi);
+        xi = xi.parent;
+        if(xi != sentinel){
+          updateISNode(xi);
         }
       }
     }
@@ -351,37 +336,38 @@ record RBTreeTemplate<Key>(@NotNull RBNode<Key> sentinel,
     y.setRight(x);
     x.setParent(y);
     {//
-      if(x instanceof OSTree.Node<?, ?> xo && y instanceof OSTree.Node<?, ?> yo){
+      if(x instanceof OrderStatTree.Node<?, ?> xo && y instanceof OrderStatTree.Node<?, ?> yo){
         yo.size = xo.size;
         xo.size = xo.left.size + xo.right.size + 1;
       }
-      else if(x instanceof ISTree.Node<Key> xi){
-        while(xi != sentinel){
-          if(xi.left != sentinel && xi.right != sentinel){
-            xi.max = comparator.compare(xi.max, xi.left.max) < 0 ? xi.left.max : xi.max;
-            xi.max = comparator.compare(xi.max, xi.right.max) < 0 ? xi.right.max : xi.max;
-          }
-          else if(xi.left != sentinel){
-            xi.max = comparator.compare(xi.max, xi.left.max) < 0 ? xi.left.max : xi.max;
-          }
-          else if(xi.right != sentinel){
-            xi.max = comparator.compare(xi.max, xi.right.max) < 0 ? xi.right.max : xi.max;
-          }
-          else if(xi.left == sentinel && xi.right == sentinel){
-            xi.max = xi.high;
-          }
-          else {
-            throw new RuntimeException("not impossible error.");
-          }
-          xi = xi.parent;
+      else if(x instanceof IntvalSerchTree.Node<Key> xi){
+        updateISNode(xi);
+        xi = xi.parent;
+        if(xi != sentinel){
+          updateISNode(xi);
         }
       }
     }
   }
 
+  private void updateISNode(IntvalSerchTree.Node<Key> n){
+    if(n.left != sentinel && n.right != sentinel){
+      n.max = comparator.compare(n.right.max, n.left.max) < 0 ? n.left.max : n.right.max;
+      n.max = comparator.compare(n.max, n.high) < 0 ? n.high : n.max;
+    }
+    else if(n.left != sentinel){
+      n.max = comparator.compare(n.high, n.left.max) < 0 ? n.left.max : n.high;
+    }
+    else if(n.right != sentinel){
+      n.max = comparator.compare(n.high, n.right.max) < 0 ? n.right.max : n.high;
+    }
+    else{
+      n.max = n.high;
+    }
+  }
+
   /**
-   *
-   * @param n node
+   * @param n   node
    * @param key key
    * @return node with key or sentinel
    */

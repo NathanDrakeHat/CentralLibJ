@@ -1,7 +1,7 @@
 package org.nathan.algorithmsJ.misc;
 
 import org.jetbrains.annotations.NotNull;
-import org.nathan.algorithmsJ.structures.OSTree;
+import org.nathan.algorithmsJ.structures.OrderStatTree;
 import org.nathan.centralUtils.tuples.Tuple;
 
 import java.util.*;
@@ -48,7 +48,7 @@ public class OrthoLineIntersect{
 
     scanPoints.sort(Comparator.comparing(getX::applyAsDouble));
     Set<P> inTree = new HashSet<>();
-    OSTree<Double, L> HYToHL_tree = new OSTree<>(Double::compareTo);
+    OrderStatTree<Double, L> HYToHL_tree = new OrderStatTree<>(Double::compareTo);
     Map<L, List<L>> res = new HashMap<>();
     var funcAddIntersect = new Object(){
       void apply(P v_p){

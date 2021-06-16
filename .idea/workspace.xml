@@ -22,15 +22,14 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="better template">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/ISTree.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/structures/ISTreeTest.java" afterDir="false" />
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="fix is insert bug">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/misc/OrthoLineIntersect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/misc/OrthoLineIntersect.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/OSTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/OSTree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/ISTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/IntvalSerchTree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/OSTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/OrderStatTree.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/RBTreeTemplate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/RBTreeTemplate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/structures/OSTreeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/structures/OSTreeTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/structures/ISTreeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/structures/IntvalSerchTreeTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/structures/OSTreeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/structures/OrderStatTreeTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,7 +108,7 @@
       <recent name="org.nathan.algorithmsJ.misc" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ISTreeTest.isISTreeTest">
+  <component name="RunManager" selected="JUnit.OrderStatTreeTest.implementationTest">
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.nathan.Main" />
       <module name="AlgorithmsJava" />
@@ -144,7 +143,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ISTreeTest.isISTreeTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="IntvalSerchTreeTest.isISTreeTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AlgorithmsJava" />
       <extension name="coverage">
         <pattern>
@@ -153,14 +152,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="org.nathan.algorithmsJ.structures" />
-      <option name="MAIN_CLASS_NAME" value="org.nathan.algorithmsJ.structures.ISTreeTest" />
+      <option name="MAIN_CLASS_NAME" value="org.nathan.algorithmsJ.structures.IntvalSerchTreeTest" />
       <option name="METHOD_NAME" value="isISTreeTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="OSTreeTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="OrderStatTreeTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AlgorithmsJava" />
       <extension name="coverage">
         <pattern>
@@ -169,13 +168,13 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="org.nathan.algorithmsJ.structures" />
-      <option name="MAIN_CLASS_NAME" value="org.nathan.algorithmsJ.structures.OSTreeTest" />
+      <option name="MAIN_CLASS_NAME" value="org.nathan.algorithmsJ.structures.OrderStatTreeTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="OSTreeTest.functionsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="OrderStatTreeTest.functionsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AlgorithmsJava" />
       <extension name="coverage">
         <pattern>
@@ -184,14 +183,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="org.nathan.algorithmsJ.structures" />
-      <option name="MAIN_CLASS_NAME" value="org.nathan.algorithmsJ.structures.OSTreeTest" />
+      <option name="MAIN_CLASS_NAME" value="org.nathan.algorithmsJ.structures.OrderStatTreeTest" />
       <option name="METHOD_NAME" value="functionsTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="OSTreeTest.implementationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="OrderStatTreeTest.implementationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AlgorithmsJava" />
       <extension name="coverage">
         <pattern>
@@ -200,7 +199,7 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="org.nathan.algorithmsJ.structures" />
-      <option name="MAIN_CLASS_NAME" value="org.nathan.algorithmsJ.structures.OSTreeTest" />
+      <option name="MAIN_CLASS_NAME" value="org.nathan.algorithmsJ.structures.OrderStatTreeTest" />
       <option name="METHOD_NAME" value="implementationTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
@@ -212,18 +211,18 @@
       <item itemvalue="Application.pushUtils" />
       <item itemvalue="Application.Main" />
       <item itemvalue="JUnit.All in AlgorithmsJava" />
-      <item itemvalue="JUnit.OSTreeTest.functionsTest" />
-      <item itemvalue="JUnit.OSTreeTest.implementationTest" />
-      <item itemvalue="JUnit.OSTreeTest" />
-      <item itemvalue="JUnit.ISTreeTest.isISTreeTest" />
+      <item itemvalue="JUnit.OrderStatTreeTest.functionsTest" />
+      <item itemvalue="JUnit.OrderStatTreeTest.implementationTest" />
+      <item itemvalue="JUnit.OrderStatTreeTest" />
+      <item itemvalue="JUnit.IntvalSerchTreeTest.isISTreeTest" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.ISTreeTest.isISTreeTest" />
+        <item itemvalue="JUnit.OrderStatTreeTest.implementationTest" />
+        <item itemvalue="JUnit.IntvalSerchTreeTest.isISTreeTest" />
         <item itemvalue="JUnit.All in AlgorithmsJava" />
-        <item itemvalue="JUnit.OSTreeTest.implementationTest" />
-        <item itemvalue="JUnit.OSTreeTest.functionsTest" />
-        <item itemvalue="JUnit.OSTreeTest" />
+        <item itemvalue="JUnit.OrderStatTreeTest.functionsTest" />
+        <item itemvalue="JUnit.OrderStatTreeTest" />
       </list>
     </recent_temporary>
   </component>
@@ -421,14 +420,7 @@
       <workItem from="1623639756028" duration="227000" />
       <workItem from="1623654077799" duration="598000" />
       <workItem from="1623655422172" duration="57041000" />
-      <workItem from="1623810793813" duration="14910000" />
-    </task>
-    <task id="LOCAL-00204" summary="fix trivial bug">
-      <created>1623373481012</created>
-      <option name="number" value="00204" />
-      <option name="presentableId" value="LOCAL-00204" />
-      <option name="project" value="LOCAL" />
-      <updated>1623373481012</updated>
+      <workItem from="1623810793813" duration="19313000" />
     </task>
     <task id="LOCAL-00205" summary="save">
       <created>1623379042018</created>
@@ -766,7 +758,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623828185073</updated>
     </task>
-    <option name="localTasksCounter" value="253" />
+    <task id="LOCAL-00253" summary="fix is insert bug">
+      <created>1623841864594</created>
+      <option name="number" value="00253" />
+      <option name="presentableId" value="LOCAL-00253" />
+      <option name="project" value="LOCAL" />
+      <updated>1623841864594</updated>
+    </task>
+    <option name="localTasksCounter" value="254" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -795,7 +794,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="rename package" />
     <MESSAGE value="fix OrderStatisticTreeTest bug" />
     <MESSAGE value="rename FibonacciHeap.java" />
     <MESSAGE value="add shell sort" />
@@ -820,22 +818,16 @@
     <MESSAGE value="add test" />
     <MESSAGE value="save template" />
     <MESSAGE value="better template" />
-    <option name="LAST_COMMIT_MESSAGE" value="better template" />
+    <MESSAGE value="fix is insert bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix is insert bug" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <condition expression="!b" language="JAVA" />
-          <url>file://$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/structures/ISTreeTest.java</url>
-          <line>19</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <condition expression="!b" language="JAVA" />
-          <url>file://$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/structures/ISTreeTest.java</url>
-          <line>51</line>
-          <option name="timeStamp" value="15" />
+          <url>file://$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/structures/IntvalSerchTreeTest.java</url>
+          <line>47</line>
+          <option name="timeStamp" value="17" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>

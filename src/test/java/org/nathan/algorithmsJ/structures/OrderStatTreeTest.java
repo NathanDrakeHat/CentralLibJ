@@ -9,12 +9,12 @@ import java.util.stream.DoubleStream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class OSTreeTest{
+class OrderStatTreeTest{
 
-  OSTree<Integer, Integer> fixUpTree;
+  OrderStatTree<Integer, Integer> fixUpTree;
 
   {
-    fixUpTree = new OSTree<>(Comparator.comparingInt(o -> o));
+    fixUpTree = new OrderStatTree<>(Comparator.comparingInt(o -> o));
     fixUpTree.insertKV(11, 0);
     fixUpTree.insertKV(2, 0);
     fixUpTree.insertKV(14, 0);
@@ -40,7 +40,7 @@ class OSTreeTest{
     assertEquals(15, root.right.right.right.key); // 15
   }
 
-  private static boolean isBalanced(OSTree<Integer, Integer> tree){
+  private static boolean isBalanced(OrderStatTree<Integer, Integer> tree){
     int black = 0;
     var x = tree.root;
     while(x != null) {
@@ -48,7 +48,7 @@ class OSTreeTest{
       x = x.left;
     }
     var func = new Object(){
-      private boolean apply(OSTree.Node<Integer, Integer> x, int black){
+      private boolean apply(OrderStatTree.Node<Integer, Integer> x, int black){
         if(x == null){
           return black == 0;
         }
@@ -61,9 +61,9 @@ class OSTreeTest{
     return func.apply(tree.root, black);
   }
 
-  private static boolean is23(OSTree<Integer, Integer> tree){
+  private static boolean is23(OrderStatTree<Integer, Integer> tree){
     var func = new Object(){
-      private boolean is23(OSTree.Node<Integer,Integer> x) {
+      private boolean is23(OrderStatTree.Node<Integer,Integer> x) {
         if (x == null) return true;
         if (x != tree.root && ((x.color == RBNode.RED && x.left.color == RBNode.RED || (x.color == RBNode.RED && x.right.color == RBNode.RED))))
           return false;
@@ -73,9 +73,9 @@ class OSTreeTest{
     return func.is23(tree.root);
   }
 
-  private static boolean isSizeConsistent(OSTree<Integer,Integer> tree){
+  private static boolean isSizeConsistent(OrderStatTree<Integer,Integer> tree){
     var func = new Object(){
-      private boolean apply(OSTree.Node<Integer,Integer> x){
+      private boolean apply(OrderStatTree.Node<Integer,Integer> x){
         if(x == tree.sentinel){
           return true;
         }
@@ -88,7 +88,7 @@ class OSTreeTest{
     return func.apply(tree.root);
   }
 
-  private static boolean isRankConsistent(OSTree<Integer,Integer> tree){
+  private static boolean isRankConsistent(OrderStatTree<Integer,Integer> tree){
     for(int i = 0; i < tree.root.size; i++){
       if(i+1 != tree.getRankOfNode(tree.getNodeOfRank(i+1))){
         return false;
@@ -107,9 +107,9 @@ class OSTreeTest{
   public void implementationTest(){
     var rand = new SplittableRandom();
     for(int t = 0; t < 5; t++){
-      OSTree<Integer, Integer> tree;
-      tree = new OSTree<>(Comparator.comparingInt(o -> o));
-      int len = rand.nextInt(16,64);
+      OrderStatTree<Integer, Integer> tree;
+      tree = new OrderStatTree<>(Comparator.comparingInt(o -> o));
+      int len = rand.nextInt(8,128);
       List<Integer> shuffle = ArrayUtils.shuffledSequence(0, len);
       for(int i = 0; i < len; i++){
         tree.insertKV(shuffle.get(i), shuffle.get(i));
@@ -153,11 +153,11 @@ class OSTreeTest{
     }
   }
 
-  OSTree<Double, String> funcTestTree;
+  OrderStatTree<Double, String> funcTestTree;
   List<Double> funcTestAnswer = new ArrayList<>();
 
   {
-    funcTestTree = new OSTree<>(Comparator.comparingDouble(o -> o));
+    funcTestTree = new OrderStatTree<>(Comparator.comparingDouble(o -> o));
     List<Double> shuffle = DoubleStream.iterate(0, d->d<16,d->++d).boxed().collect(Collectors.toList());
     Collections.shuffle(shuffle);
     for(int i = 0; i < 16; i++){
@@ -199,13 +199,13 @@ class OSTreeTest{
 
   @SuppressWarnings("unused")
  private static class BTreePrinter {
-   public static <T extends Comparable<?>> void printNode(OSTree.Node<T,T> root) {
+   public static <T extends Comparable<?>> void printNode(OrderStatTree.Node<T,T> root) {
      int maxLevel = BTreePrinter.maxLevel(root);
 
      printNodeInternal(Collections.singletonList(root), 1, maxLevel);
    }
 
-   private static <T extends Comparable<?>> void printNodeInternal(List<OSTree.Node<T,T>> nodes, int level, int maxLevel) {
+   private static <T extends Comparable<?>> void printNodeInternal(List<OrderStatTree.Node<T,T>> nodes, int level, int maxLevel) {
      if (nodes.isEmpty() || BTreePrinter.isAllElementsNull(nodes))
        return;
 
@@ -216,9 +216,9 @@ class OSTreeTest{
 
      BTreePrinter.printWhitespaces(firstSpaces);
 
-     List<OSTree.Node<T,T>> newNodes = new ArrayList<>();
+     List<OrderStatTree.Node<T,T>> newNodes = new ArrayList<>();
      int backs = 0;
-     for (OSTree.Node<T,T> node : nodes) {
+     for (OrderStatTree.Node<T,T> node : nodes) {
        if (node != null) {
          System.out.print("\b".repeat(backs));
          String data = String.format("%s,%s",node.key != null ? node.key:"N",node.color? "b":"r");
@@ -270,7 +270,7 @@ class OSTreeTest{
        System.out.print(" ");
    }
 
-   private static <T extends Comparable<?>> int maxLevel(OSTree.Node<T,T> node) {
+   private static <T extends Comparable<?>> int maxLevel(OrderStatTree.Node<T,T> node) {
      if (node == null)
        return 0;
 

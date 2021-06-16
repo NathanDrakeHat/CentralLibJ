@@ -10,7 +10,7 @@ import java.util.*;
  * @param <K> key
  * @param <V> value
  */
-public class OSTree<K, V> implements Iterable<Tuple<K, V>>{
+public class OrderStatTree<K, V> implements Iterable<Tuple<K, V>>{
   @NotNull
   final Comparator<K> comparator;
   @NotNull
@@ -20,7 +20,7 @@ public class OSTree<K, V> implements Iterable<Tuple<K, V>>{
   @NotNull
   private final RBTreeTemplate<K> template;
 
-  public OSTree(@NotNull Comparator<K> comparator){
+  public OrderStatTree(@NotNull Comparator<K> comparator){
     this.comparator = comparator;
     template = new RBTreeTemplate<>(sentinel, comparator, ()->this.root, (r)->this.root = (Node<K, V>) r);
   }
