@@ -33,7 +33,7 @@ public class OSTree<K, V> implements Iterable<Tuple<K, V>>{
     return res;
   }
 
-  public void keyRangeSearch(Node<K, V> n, @NotNull K low, @NotNull K high, List<Tuple<K, V>> l){
+  private void keyRangeSearch(Node<K, V> n, @NotNull K low, @NotNull K high, List<Tuple<K, V>> l){
     if(n == sentinel){
       return;
     }
@@ -53,7 +53,7 @@ public class OSTree<K, V> implements Iterable<Tuple<K, V>>{
 
   public V getValueOfMinKey(){
     if(sentinel != root){
-      return treeMinimum(root).value;
+      return minimumNodeOf(root).value;
     }
     else{
       throw new NoSuchElementException("null tree");
@@ -62,7 +62,7 @@ public class OSTree<K, V> implements Iterable<Tuple<K, V>>{
 
   public K getMinKey(){
     if(sentinel != root){
-      return treeMinimum(root).key;
+      return minimumNodeOf(root).key;
     }
     else{
       throw new NoSuchElementException("null tree");
@@ -71,7 +71,7 @@ public class OSTree<K, V> implements Iterable<Tuple<K, V>>{
 
   public V getValueOfMaxKey(){
     if(root != sentinel){
-      return treeMaximum(root).value;
+      return maximumNodeOf(root).value;
     }
     else{
       throw new NoSuchElementException("null tree");
@@ -80,11 +80,123 @@ public class OSTree<K, V> implements Iterable<Tuple<K, V>>{
 
   public K getMaxKey(){
     if(root != sentinel){
-      return treeMaximum(root).key;
+      return maximumNodeOf(root).key;
     }
     else{
       throw new NoSuchElementException("null tree");
     }
+  }
+
+  public K floor(K key){
+    if(root == sentinel){
+      throw new NoSuchElementException("calls floor() with empty symbol table");
+    }
+    else{
+      Node<K,V> x = floor(root, key);
+      if(x == sentinel){
+        throw new NoSuchElementException("argument to floor() is too small");
+      }
+      else{
+        return x.key;
+      }
+    }
+  }
+
+  private Node<K,V> floor(Node<K,V> x, K key){
+    if(x == sentinel){
+      return sentinel;
+    }
+    else{
+      int cmp = comparator.compare(key, x.key);
+      if(cmp == 0){
+        return x;
+      }
+      else if(cmp < 0){
+        return floor(x.left, key);
+      }
+      else{
+        var t = floor(x.right, key);
+        return t != sentinel ? t : x;
+      }
+    }
+  }
+
+  public K ceiling(K key){
+    if(root == sentinel){
+      throw new NoSuchElementException("calls ceiling() with empty symbol table");
+    }
+    else{
+      var x = ceiling(root, key);
+      if(x == sentinel){
+        throw new NoSuchElementException("argument to ceiling() is too small");
+      }
+      else{
+        return x.key;
+      }
+    }
+  }
+
+  private Node<K,V> ceiling(Node<K,V> x, K key){
+    if(x == sentinel){
+      return sentinel;
+    }
+    else{
+      int cmp = comparator.compare(key, x.key);
+      if(cmp == 0){
+        return x;
+      }
+      else if(cmp > 0){
+        return ceiling(x.right, key);
+      }
+      else{
+        var t = ceiling(x.left, key);
+        return t != sentinel ? t : x;
+      }
+    }
+  }
+
+  public K getKeyOfRank(int rank){
+    if(rank <= 0 || rank > size()){
+      throw new IndexOutOfBoundsException();
+    }
+    Node<K,V> n = getNodeOfRank(rank);
+    return n.key;
+  }
+
+  Node<K,V> getNodeOfRank(int ith){
+    return getNodeOfRank(root, ith);
+  }
+
+  Node<K,V> getNodeOfRank(Node<K,V> current, int ith){
+    int rank = current.left.size + 1;
+    if(rank == ith){
+      return current;
+    }
+    else if(ith < rank){
+      return getNodeOfRank(current.left, ith);
+    }
+    else{
+      return getNodeOfRank(current.right, ith - rank);
+    }
+  }
+
+  public int getRankOfKey(K key){
+    Node<K,V> n = search(root, key);
+    if(n == sentinel){
+      throw new NoSuchElementException();
+    }
+    return getRankOfNode(n);
+  }
+
+  int getRankOfNode(Node<K,V> node){
+    int rank = node.left.size + 1;
+    while(node != root) {
+      if(node == node.parent.right){
+        rank += node.parent.left.size + 1;
+      }
+      node = node.parent;
+    }
+    return rank;
   }
 
   private void setLeaf(Node<K, V> n){
@@ -225,7 +337,7 @@ public class OSTree<K, V> implements Iterable<Tuple<K, V>>{
       RBTransplant(z, z.left);
     }
     else{
-      y = treeMinimum(z.right);
+      y = minimumNodeOf(z.right);
       y_origin_color = y.color;
       x = y.right;
       if(y.parent == z){
@@ -243,7 +355,7 @@ public class OSTree<K, V> implements Iterable<Tuple<K, V>>{
     }
 
     if(y.right != sentinel){
-      y = treeMinimum(y.right);
+      y = minimumNodeOf(y.right);
     }
     while(y != sentinel){
       y.size = y.right.size + y.left.size + 1;
@@ -402,14 +514,14 @@ public class OSTree<K, V> implements Iterable<Tuple<K, V>>{
     x.size = x.left.size + x.right.size + 1;
   }
 
-  private Node<K, V> treeMinimum(Node<K, V> x){
+  private Node<K, V> minimumNodeOf(Node<K, V> x){
     while(x.left != sentinel) {
       x = x.left;
     }
     return x;
   }
 
-  private Node<K, V> treeMaximum(Node<K, V> x){
+  private Node<K, V> maximumNodeOf(Node<K, V> x){
     while(x.right != sentinel) {
       x = x.right;
     }
