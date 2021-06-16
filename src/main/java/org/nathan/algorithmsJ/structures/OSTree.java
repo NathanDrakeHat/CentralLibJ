@@ -12,9 +12,12 @@ public class OSTree<K, V> implements Iterable<Tuple<K, V>>{
   final Node<K, V> sentinel = new Node<>(BLACK);
   @NotNull Node<K, V> root = sentinel;
   private boolean iterating = false;
+  @NotNull
+  private final RBTreeTemplate<K, OSTree<K, V>> template;
 
   public OSTree(@NotNull Comparator<K> comparator){
     this.comparator = comparator;
+    template = new RBTreeTemplate<>(sentinel, comparator, this, (t)->t.root, (t,r)->t.root = (Node<K, V>) r);
   }
 
   /**
@@ -92,7 +95,7 @@ public class OSTree<K, V> implements Iterable<Tuple<K, V>>{
       throw new NoSuchElementException("calls floor() with empty symbol table");
     }
     else{
-      Node<K,V> x = floor(root, key);
+      Node<K, V> x = floor(root, key);
       if(x == sentinel){
         throw new NoSuchElementException("argument to floor() is too small");
       }
@@ -102,7 +105,7 @@ public class OSTree<K, V> implements Iterable<Tuple<K, V>>{
     }
   }
 
-  private Node<K,V> floor(Node<K,V> x, K key){
+  private Node<K, V> floor(Node<K, V> x, K key){
     if(x == sentinel){
       return sentinel;
     }
@@ -136,7 +139,7 @@ public class OSTree<K, V> implements Iterable<Tuple<K, V>>{
     }
   }
 
-  private Node<K,V> ceiling(Node<K,V> x, K key){
+  private Node<K, V> ceiling(Node<K, V> x, K key){
     if(x == sentinel){
       return sentinel;
     }
@@ -159,15 +162,15 @@ public class OSTree<K, V> implements Iterable<Tuple<K, V>>{
     if(rank <= 0 || rank > size()){
       throw new IndexOutOfBoundsException();
     }
-    Node<K,V> n = getNodeOfRank(rank);
+    Node<K, V> n = getNodeOfRank(rank);
     return n.key;
   }
 
-  Node<K,V> getNodeOfRank(int ith){
+  Node<K, V> getNodeOfRank(int ith){
     return getNodeOfRank(root, ith);
   }
 
-  Node<K,V> getNodeOfRank(Node<K,V> current, int ith){
+  Node<K, V> getNodeOfRank(Node<K, V> current, int ith){
     int rank = current.left.size + 1;
     if(rank == ith){
       return current;
@@ -181,14 +184,14 @@ public class OSTree<K, V> implements Iterable<Tuple<K, V>>{
   }
 
   public int getRankOfKey(K key){
-    Node<K,V> n = search(root, key);
+    Node<K, V> n = search(root, key);
     if(n == sentinel){
       throw new NoSuchElementException();
     }
     return getRankOfNode(n);
   }
 
-  int getRankOfNode(Node<K,V> node){
+  int getRankOfNode(Node<K, V> node){
     int rank = node.left.size + 1;
     while(node != root) {
       if(node == node.parent.right){
@@ -197,11 +200,6 @@ public class OSTree<K, V> implements Iterable<Tuple<K, V>>{
       node = node.parent;
     }
     return rank;
-  }
-
-  private void setLeaf(Node<K, V> n){
-    n.left = sentinel;
-    n.right = sentinel;
   }
 
   public int size(){
@@ -231,7 +229,9 @@ public class OSTree<K, V> implements Iterable<Tuple<K, V>>{
 
   public void insert(@NotNull K key, V val){
     modified();
-    insert(new Node<>(key, val));
+    var n = new Node<>(key, val);
+//    insert(n);
+    template.insert(n);
   }
 
   @SuppressWarnings("SuspiciousNameCombination")
@@ -264,7 +264,8 @@ public class OSTree<K, V> implements Iterable<Tuple<K, V>>{
     else{
       throw new RuntimeException("not possible error.");
     }
-    setLeaf(z);
+    z.left = sentinel;
+    z.right = sentinel;
     z.color = RED;
     z.size = 1;
     insertFixUp(z);
@@ -320,7 +321,8 @@ public class OSTree<K, V> implements Iterable<Tuple<K, V>>{
     }
     var n = search(root, key);
     if(n != sentinel){
-      delete(n);
+//      delete(n);
+      template.delete(n);
     }
   }
 
@@ -357,7 +359,7 @@ public class OSTree<K, V> implements Iterable<Tuple<K, V>>{
     if(y.right != sentinel){
       y = minimumNodeOf(y.right);
     }
-    while(y != sentinel){
+    while(y != sentinel) {
       y.size = y.right.size + y.left.size + 1;
       y = y.parent;
     }
@@ -648,7 +650,7 @@ public class OSTree<K, V> implements Iterable<Tuple<K, V>>{
   static final boolean RED = false;
   static final boolean BLACK = true;
 
-  static class Node<key, val>{
+  static final class Node<key, val> implements RBNode<key>{
     key key;
     val value;
     boolean color;
@@ -674,6 +676,52 @@ public class OSTree<K, V> implements Iterable<Tuple<K, V>>{
               ", value=" + value +
               ", size=" + size +
               '}';
+    }
+
+    @Override
+    public key getKey(){
+      return key;
+    }
+
+    @Override
+    public RBNode<key> getParent(){
+      return parent;
+    }
+
+    @Override
+    public void setParent(RBNode<key> p){
+      parent = (Node<key, val>) p;
+    }
+
+    @Override
+    public RBNode<key> getLeft(){
+      return left;
+    }
+
+    @Override
+    public void setLeft(RBNode<key> l){
+      left = (Node<key, val>) l;
+    }
+
+    @Override
+    public RBNode<key> getRight(){
+      return right;
+    }
+
+    @Override
+    public void setRight(RBNode<key> r){
+      right = (Node<key, val>) r;
+    }
+
+
+    @Override
+    public boolean getColor(){
+      return color;
+    }
+
+    @Override
+    public void setColor(boolean color){
+      this.color = color;
     }
   }
 }

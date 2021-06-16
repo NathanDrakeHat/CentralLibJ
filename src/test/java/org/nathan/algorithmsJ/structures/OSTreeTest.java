@@ -109,7 +109,7 @@ class OSTreeTest{
     for(int t = 0; t < 10; t++){
       OSTree<Integer, Integer> tree;
       tree = new OSTree<>(Comparator.comparingInt(o -> o));
-      int len = rand.nextInt(128,256);
+      int len = rand.nextInt(128,512);
       List<Integer> shuffle = ArrayUtils.shuffledSequence(0, len);
       for(int i = 0; i < len; i++){
         tree.insert(shuffle.get(i), shuffle.get(i));
@@ -188,7 +188,7 @@ class OSTreeTest{
        return;
 
      int floor = maxLevel - level;
-     int endgeLines = (int) Math.pow(2, (Math.max(floor - 1, 0)));
+     int edgeLines = (int) Math.pow(2, (Math.max(floor - 1, 0)));
      int firstSpaces = (int) Math.pow(2, (floor)) - 1;
      int betweenSpaces = (int) Math.pow(2, (floor + 1)) - 1;
 
@@ -199,7 +199,7 @@ class OSTreeTest{
      for (OSTree.Node<T,T> node : nodes) {
        if (node != null) {
          System.out.print("\b".repeat(backs));
-         String data = String.format("%s,%d",node.key != null ? node.key:"N",node.size);
+         String data = String.format("%s,%s",node.key != null ? node.key:"N",node.color? "b":"r");
          backs = data.length() - 1;
          System.out.print(data);
          newNodes.add(node.left);
@@ -214,11 +214,11 @@ class OSTreeTest{
      }
      System.out.println();
 
-     for (int i = 1; i <= endgeLines; i++) {
+     for (int i = 1; i <= edgeLines; i++) {
        for (int j = 0; j < nodes.size(); j++) {
          BTreePrinter.printWhitespaces(firstSpaces - i);
          if (nodes.get(j) == null) {
-           BTreePrinter.printWhitespaces(endgeLines + endgeLines + i + 1);
+           BTreePrinter.printWhitespaces(edgeLines + edgeLines + i + 1);
            continue;
          }
 
@@ -234,7 +234,7 @@ class OSTreeTest{
          else
            BTreePrinter.printWhitespaces(1);
 
-         BTreePrinter.printWhitespaces(endgeLines + endgeLines - i);
+         BTreePrinter.printWhitespaces(edgeLines + edgeLines - i);
        }
 
        System.out.println();
