@@ -2,14 +2,26 @@ package org.nathan.algorithmsJ.structures;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Target;
 import java.util.Comparator;
 import java.util.concurrent.Callable;
 import java.util.function.Consumer;
-import static org.nathan.centralUtils.utils.LambdaUtils.*;
+
+import static org.nathan.centralUtils.utils.LambdaUtils.stripCE;
+
+/**
+ * where to add new operation
+ */
+@Target(ElementType.METHOD)
+@interface Template{
+
+}
+
 /**
  * red black tree code template
  *
- * @param <Key>  key of node
+ * @param <Key> key of node
  */
 record RBTreeTemplate<Key>(@NotNull RBNode<Key> sentinel,
                            @NotNull Comparator<Key> comparator,
@@ -25,14 +37,26 @@ record RBTreeTemplate<Key>(@NotNull RBNode<Key> sentinel,
     this.setRoot = setRoot;
   }
 
+  /**
+   * insert a node <b>WITHOUT</b> duplicate key
+   *
+   * @param z node or sentinel
+   */
+  @Template
   @SuppressWarnings("SuspiciousNameCombination")
   void insert(RBNode<Key> z){
     var y = sentinel;
     var x = stripCE(getRoot);
     while(x != sentinel) {
       y = x;
-      if(x instanceof OSTree.Node<?, ?> xo){
-        xo.size++;
+      {//
+        if(x instanceof OSTree.Node<?, ?> xo){
+          xo.size++;
+        }
+        else if(x instanceof ISTree.Node<Key> xi){
+          var zi = (ISTree.Node<Key>) z;
+          xi.max = comparator.compare(xi.max, zi.max) < 0 ? zi.max : xi.max;
+        }
       }
       if(comparator.compare(z.getKey(), x.getKey()) < 0){
         x = x.getLeft();
@@ -60,8 +84,10 @@ record RBTreeTemplate<Key>(@NotNull RBNode<Key> sentinel,
     z.setLeft(sentinel);
     z.setRight(sentinel);
     z.setRed();
-    if(z instanceof OSTree.Node<?, ?> zo){
-      zo.size = 1;
+    {//
+      if(z instanceof OSTree.Node<?, ?> zo){
+        zo.size = 1;
+      }
     }
     insertFixUp(z);
   }
@@ -108,6 +134,7 @@ record RBTreeTemplate<Key>(@NotNull RBNode<Key> sentinel,
     stripCE(getRoot).setBlack();
   }
 
+  @Template
   void delete(RBNode<Key> z){
     var y = z;
     var y_origin_color = y.getColor();
@@ -138,12 +165,33 @@ record RBTreeTemplate<Key>(@NotNull RBNode<Key> sentinel,
       y.setColor(z.getColor());
     }
 
-    if(y.getRight() != sentinel){
-      y = minimumNodeOf(y.getRight());
-    }
-    while(y != sentinel && y instanceof OSTree.Node<?, ?> yo) {
-      yo.size = yo.right.size + yo.left.size + 1;
-      y = y.getParent();
+    {//
+      if(y instanceof OSTree.Node<?, ?>){
+        if(y.getRight() != sentinel){
+          y = minimumNodeOf(y.getRight());
+        }
+        //noinspection PatternVariableCanBeUsed
+        var yo = (OSTree.Node<?,?>)y;
+        while(yo != sentinel) {
+          yo.size = yo.right.size + yo.left.size + 1;
+          yo = yo.parent;
+        }
+      }
+      else if(y instanceof ISTree.Node<Key> yi){
+        while(yi != sentinel) {
+          if(yi.left != sentinel && yi.right != sentinel){
+            yi.max = comparator.compare(yi.max, yi.left.max) < 0 ? yi.left.max : yi.max;
+            yi.max = comparator.compare(yi.max, yi.right.max) < 0 ? yi.right.max : yi.max;
+          }
+          else if(yi.left != sentinel){
+            yi.max = comparator.compare(yi.max, yi.left.max) < 0 ? yi.left.max : yi.max;
+          }
+          else if(yi.right != sentinel){
+            yi.max = comparator.compare(yi.max, yi.right.max) < 0 ? yi.right.max : yi.max;
+          }
+          yi = yi.parent;
+        }
+      }
     }
 
     if(y_origin_color == RBNode.BLACK){
@@ -229,6 +277,7 @@ record RBTreeTemplate<Key>(@NotNull RBNode<Key> sentinel,
     v.setParent(u.getParent());
   }
 
+  @Template
   private void leftRotate(RBNode<Key> x){
     var y = x.getRight();
 
@@ -250,12 +299,36 @@ record RBTreeTemplate<Key>(@NotNull RBNode<Key> sentinel,
 
     y.setLeft(x);
     x.setParent(y);
-    if(x instanceof OSTree.Node<?, ?> xo && y instanceof OSTree.Node<?, ?> yo){
-      yo.size = xo.size;
-      xo.size = xo.left.size + xo.right.size + 1;
+    {//
+      if(x instanceof OSTree.Node<?, ?> xo && y instanceof OSTree.Node<?, ?> yo){
+        yo.size = xo.size;
+        xo.size = xo.left.size + xo.right.size + 1;
+      }
+      else if(x instanceof ISTree.Node<Key> xi){
+        while(xi != sentinel){
+          if(xi.left != sentinel && xi.right != sentinel){
+            xi.max = comparator.compare(xi.max, xi.left.max) < 0 ? xi.left.max : xi.max;
+            xi.max = comparator.compare(xi.max, xi.right.max) < 0 ? xi.right.max : xi.max;
+          }
+          else if(xi.left != sentinel){
+            xi.max = comparator.compare(xi.max, xi.left.max) < 0 ? xi.left.max : xi.max;
+          }
+          else if(xi.right != sentinel){
+            xi.max = comparator.compare(xi.max, xi.right.max) < 0 ? xi.right.max : xi.max;
+          }
+          else if(xi.left == sentinel && xi.right == sentinel){
+            xi.max = xi.high;
+          }
+          else {
+            throw new RuntimeException("not impossible error.");
+          }
+          xi = xi.parent;
+        }
+      }
     }
   }
 
+  @Template
   private void rightRotate(RBNode<Key> x){
     var y = x.getLeft();
 
@@ -277,10 +350,51 @@ record RBTreeTemplate<Key>(@NotNull RBNode<Key> sentinel,
 
     y.setRight(x);
     x.setParent(y);
-
-    if(x instanceof OSTree.Node<?, ?> xo && y instanceof OSTree.Node<?, ?> yo){
-      yo.size = xo.size;
-      xo.size = xo.left.size + xo.right.size + 1;
+    {//
+      if(x instanceof OSTree.Node<?, ?> xo && y instanceof OSTree.Node<?, ?> yo){
+        yo.size = xo.size;
+        xo.size = xo.left.size + xo.right.size + 1;
+      }
+      else if(x instanceof ISTree.Node<Key> xi){
+        while(xi != sentinel){
+          if(xi.left != sentinel && xi.right != sentinel){
+            xi.max = comparator.compare(xi.max, xi.left.max) < 0 ? xi.left.max : xi.max;
+            xi.max = comparator.compare(xi.max, xi.right.max) < 0 ? xi.right.max : xi.max;
+          }
+          else if(xi.left != sentinel){
+            xi.max = comparator.compare(xi.max, xi.left.max) < 0 ? xi.left.max : xi.max;
+          }
+          else if(xi.right != sentinel){
+            xi.max = comparator.compare(xi.max, xi.right.max) < 0 ? xi.right.max : xi.max;
+          }
+          else if(xi.left == sentinel && xi.right == sentinel){
+            xi.max = xi.high;
+          }
+          else {
+            throw new RuntimeException("not impossible error.");
+          }
+          xi = xi.parent;
+        }
+      }
     }
+  }
+
+  /**
+   *
+   * @param n node
+   * @param key key
+   * @return node with key or sentinel
+   */
+  RBNode<Key> getNodeOfKey(RBNode<Key> n, Key key){
+    if(comparator.compare(n.getKey(), key) == 0){
+      return n;
+    }
+    else if(n.getLeft() != sentinel && comparator.compare(n.getKey(), key) > 0){
+      return getNodeOfKey(n.getLeft(), key);
+    }
+    else if(n.getRight() != sentinel && comparator.compare(n.getKey(), key) < 0){
+      return getNodeOfKey(n.getRight(), key);
+    }
+    return sentinel;
   }
 }

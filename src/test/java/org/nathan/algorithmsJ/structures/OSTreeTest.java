@@ -15,15 +15,15 @@ class OSTreeTest{
 
   {
     fixUpTree = new OSTree<>(Comparator.comparingInt(o -> o));
-    fixUpTree.insert(11, 0);
-    fixUpTree.insert(2, 0);
-    fixUpTree.insert(14, 0);
-    fixUpTree.insert(1, 0);
-    fixUpTree.insert(7, 0);
-    fixUpTree.insert(15, 0);
-    fixUpTree.insert(5, 0);
-    fixUpTree.insert(8, 0);
-    fixUpTree.insert(4, 0);
+    fixUpTree.insertKV(11, 0);
+    fixUpTree.insertKV(2, 0);
+    fixUpTree.insertKV(14, 0);
+    fixUpTree.insertKV(1, 0);
+    fixUpTree.insertKV(7, 0);
+    fixUpTree.insertKV(15, 0);
+    fixUpTree.insertKV(5, 0);
+    fixUpTree.insertKV(8, 0);
+    fixUpTree.insertKV(4, 0);
   }
 
   @Test
@@ -44,7 +44,7 @@ class OSTreeTest{
     int black = 0;
     var x = tree.root;
     while(x != null) {
-      if(x.color == OSTree.BLACK){ black++; }
+      if(x.color == RBNode.BLACK){ black++; }
       x = x.left;
     }
     var func = new Object(){
@@ -52,7 +52,7 @@ class OSTreeTest{
         if(x == null){
           return black == 0;
         }
-        if(x.color == OSTree.BLACK){
+        if(x.color == RBNode.BLACK){
           black--;
         }
         return apply(x.left, black) && apply(x.right, black);
@@ -65,7 +65,7 @@ class OSTreeTest{
     var func = new Object(){
       private boolean is23(OSTree.Node<Integer,Integer> x) {
         if (x == null) return true;
-        if (x != tree.root && ((x.color == OSTree.RED && x.left.color == OSTree.RED || (x.color == OSTree.RED && x.right.color == OSTree.RED))))
+        if (x != tree.root && ((x.color == RBNode.RED && x.left.color == RBNode.RED || (x.color == RBNode.RED && x.right.color == RBNode.RED))))
           return false;
         return is23(x.left) && is23(x.right);
       }
@@ -106,13 +106,13 @@ class OSTreeTest{
   @Test
   public void implementationTest(){
     var rand = new SplittableRandom();
-    for(int t = 0; t < 10; t++){
+    for(int t = 0; t < 5; t++){
       OSTree<Integer, Integer> tree;
       tree = new OSTree<>(Comparator.comparingInt(o -> o));
-      int len = rand.nextInt(128,512);
+      int len = rand.nextInt(16,64);
       List<Integer> shuffle = ArrayUtils.shuffledSequence(0, len);
       for(int i = 0; i < len; i++){
-        tree.insert(shuffle.get(i), shuffle.get(i));
+        tree.insertKV(shuffle.get(i), shuffle.get(i));
         assertTrue(isBalanced(tree));
         assertTrue(is23(tree));
         assertTrue(tree.getHeight() <= (2 * Math.log(tree.size() + 1) / Math.log(2)));
@@ -123,7 +123,27 @@ class OSTreeTest{
       Collections.shuffle(shuffle);
 
       for(int i = 0; i < len; i++){
-        tree.delete(shuffle.get(i));
+        tree.deleteKey(shuffle.get(i));
+        assertTrue(isBalanced(tree));
+        assertTrue(is23(tree));
+        assertTrue(tree.getHeight() <= (2 * Math.log(tree.size() + 1) / Math.log(2)));
+        assertTrue(isSizeConsistent(tree));
+        assertTrue(isRankConsistent(tree));
+      }
+
+      for(int i = 0; i < len; i++){
+        tree.insertKV(shuffle.get(i), shuffle.get(i));
+        assertTrue(isBalanced(tree));
+        assertTrue(is23(tree));
+        assertTrue(tree.getHeight() <= (2 * Math.log(tree.size() + 1) / Math.log(2)));
+        assertTrue(isSizeConsistent(tree));
+        assertTrue(isRankConsistent(tree));
+      }
+
+      Collections.shuffle(shuffle);
+
+      for(int i = 0; i < len; i++){
+        tree.deleteKey(shuffle.get(i));
         assertTrue(isBalanced(tree));
         assertTrue(is23(tree));
         assertTrue(tree.getHeight() <= (2 * Math.log(tree.size() + 1) / Math.log(2)));
@@ -141,7 +161,7 @@ class OSTreeTest{
     List<Double> shuffle = DoubleStream.iterate(0, d->d<16,d->++d).boxed().collect(Collectors.toList());
     Collections.shuffle(shuffle);
     for(int i = 0; i < 16; i++){
-      funcTestTree.insert(shuffle.get(i), String.valueOf(shuffle.get(i)));
+      funcTestTree.insertKV(shuffle.get(i), String.valueOf(shuffle.get(i)));
       funcTestAnswer.add((double)i);
     }
   }
@@ -157,26 +177,28 @@ class OSTreeTest{
     assertEquals(16, funcTestTree.size());
     assertEquals(0, funcTestTree.getMinKey());
     assertEquals(15, funcTestTree.getMaxKey());
-    assertEquals(15, funcTestTree.floor(16.));
-    assertEquals(0, funcTestTree.ceiling(-1.));
-    assertEquals(5, funcTestTree.ceiling(4.5));
-    assertEquals(8, funcTestTree.floor(8.5));
+    assertEquals(15, funcTestTree.floorOfKey(16.));
+    assertEquals(0, funcTestTree.ceilingOfKey(-1.));
+    assertEquals(5, funcTestTree.ceilingOfKey(4.5));
+    assertEquals(8, funcTestTree.floorOfKey(8.5));
     assertEquals("15.0", funcTestTree.getValueOfMaxKey());
     assertEquals("0.0", funcTestTree.getValueOfMinKey());
     for(var kv : funcTestTree){
       l2.add(kv.first());
     }
     assertEquals(l2, funcTestAnswer);
-    assertEquals("5.0", funcTestTree.search(5.));
+    assertEquals("5.0", funcTestTree.getValOfKey(5.));
+    funcTestTree.updateKV(15.,"test");
+    assertEquals("test", funcTestTree.getValOfKey(15.));
     assertThrows(IllegalStateException.class, () -> {
       for(var ignored : funcTestTree){
-        funcTestTree.insert(-1., "i");
+        funcTestTree.insertKV(-1., "i");
       }
     });
   }
 
   @SuppressWarnings("unused")
- static class BTreePrinter {
+ private static class BTreePrinter {
    public static <T extends Comparable<?>> void printNode(OSTree.Node<T,T> root) {
      int maxLevel = BTreePrinter.maxLevel(root);
 
@@ -263,6 +285,5 @@ class OSTreeTest{
 
      return true;
    }
-
  }
 }

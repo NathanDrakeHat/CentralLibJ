@@ -66,7 +66,7 @@ public class OrthoLineIntersect{
     var funcRmFromTree = new Object(){
       void apply(P h_p){
         inTree.remove(otherEndPoint.get(h_p));
-        HYToHL_tree.delete(getY.applyAsDouble(h_p));
+        HYToHL_tree.deleteKey(getY.applyAsDouble(h_p));
       }
     };
 
@@ -106,7 +106,7 @@ public class OrthoLineIntersect{
         }
         else{
           inTree.add(p);
-          HYToHL_tree.insert(getY.applyAsDouble(p), pointsToLine.get(p));
+          HYToHL_tree.insertKV(getY.applyAsDouble(p), pointsToLine.get(p));
         }
       }
       else{

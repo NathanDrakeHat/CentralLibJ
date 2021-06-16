@@ -1,10 +1,9 @@
 package org.nathan;
 
 import org.nathan.centralUtils.utils.IOUtils;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.ThreadLocalRandom;
 
 
 class Main{
@@ -23,8 +22,7 @@ class Main{
       GitPush.gitPush(args);
     }
     else{
-      String t = "ab";
-
+      Map<Integer,Void> currentSet = new ConcurrentHashMap<>();
     }
   }
 }

@@ -5,11 +5,16 @@ import org.nathan.centralUtils.tuples.Tuple;
 
 import java.util.*;
 
+/**
+ * order statistic tree
+ * @param <K> key
+ * @param <V> value
+ */
 public class OSTree<K, V> implements Iterable<Tuple<K, V>>{
   @NotNull
   final Comparator<K> comparator;
   @NotNull
-  final Node<K, V> sentinel = new Node<>(BLACK);
+  final Node<K, V> sentinel = new Node<>(RBNode.BLACK);
   @NotNull Node<K, V> root = sentinel;
   private boolean iterating = false;
   @NotNull
@@ -90,7 +95,7 @@ public class OSTree<K, V> implements Iterable<Tuple<K, V>>{
     }
   }
 
-  public K floor(K key){
+  public K floorOfKey(K key){
     if(root == sentinel){
       throw new NoSuchElementException("calls floor() with empty symbol table");
     }
@@ -124,7 +129,7 @@ public class OSTree<K, V> implements Iterable<Tuple<K, V>>{
     }
   }
 
-  public K ceiling(K key){
+  public K ceilingOfKey(K key){
     if(root == sentinel){
       throw new NoSuchElementException("calls ceiling() with empty symbol table");
     }
@@ -184,7 +189,7 @@ public class OSTree<K, V> implements Iterable<Tuple<K, V>>{
   }
 
   public int getRankOfKey(K key){
-    Node<K, V> n = search(root, key);
+    Node<K, V> n = (Node<K,V>)template.getNodeOfKey(root, key);
     if(n == sentinel){
       throw new NoSuchElementException();
     }
@@ -227,45 +232,41 @@ public class OSTree<K, V> implements Iterable<Tuple<K, V>>{
     }
   }
 
-  public void insert(@NotNull K key, V val){
+  public void insertKV(@NotNull K key, V val){
     modified();
     var n = new Node<>(key, val);
     template.insert(n);
   }
 
-  public void delete(@NotNull K key){
+  public void updateKV(@NotNull K key, V val){
     modified();
-    if(root == sentinel){
-      return;
+    var n = (Node<K,V>)template.getNodeOfKey(root,key);
+    if(n == sentinel){
+      throw new NoSuchElementException();
     }
-    var n = search(root, key);
+    n.value = val;
+  }
+
+  public void deleteKey(@NotNull K key){
+    modified();
+    var n = (Node<K,V>)template.getNodeOfKey(root, key);
     if(n != sentinel){
       template.delete(n);
     }
+    else {
+      throw new NoSuchElementException();
+    }
   }
 
-  public V search(@NotNull K key){
+  public V getValOfKey(@NotNull K key){
     if(root == sentinel){
       throw new NoSuchElementException();
     }
-    var res = search(root, key).value;
+    var res = ((Node<K,V>)template.getNodeOfKey(root, key)).value;
     if(res == sentinel){
       throw new NoSuchElementException();
     }
     return res;
-  }
-
-  private Node<K, V> search(Node<K, V> n, K key){
-    if(comparator.compare(n.key, key) == 0){
-      return n;
-    }
-    else if(comparator.compare(n.key, key) > 0 && n.left != sentinel){
-      return search(n.left, key);
-    }
-    else if(comparator.compare(n.key, key) < 0 && n.right != sentinel){
-      return search(n.right, key);
-    }
-    return sentinel;
   }
 
   private Node<K, V> minimumNodeOf(Node<K, V> x){
@@ -398,9 +399,6 @@ public class OSTree<K, V> implements Iterable<Tuple<K, V>>{
       throw new NoSuchElementException("Iterate finish.");
     }
   }
-
-  static final boolean RED = false;
-  static final boolean BLACK = true;
 
   static final class Node<key, val> implements RBNode<key>{
     key key;
