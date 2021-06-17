@@ -44,7 +44,7 @@ class OrderStatTreeTest{
     int black = 0;
     var x = tree.root;
     while(x != null) {
-      if(x.color == RBNode.BLACK){ black++; }
+      if(x.color == RBTreeTemplate.BLACK){ black++; }
       x = x.left;
     }
     var func = new Object(){
@@ -52,7 +52,7 @@ class OrderStatTreeTest{
         if(x == null){
           return black == 0;
         }
-        if(x.color == RBNode.BLACK){
+        if(x.color == RBTreeTemplate.BLACK){
           black--;
         }
         return apply(x.left, black) && apply(x.right, black);
@@ -65,7 +65,7 @@ class OrderStatTreeTest{
     var func = new Object(){
       private boolean is23(OrderStatTree.Node<Integer,Integer> x) {
         if (x == null) return true;
-        if (x != tree.root && ((x.color == RBNode.RED && x.left.color == RBNode.RED || (x.color == RBNode.RED && x.right.color == RBNode.RED))))
+        if (x != tree.root && ((x.color == RBTreeTemplate.RED && x.left.color == RBTreeTemplate.RED || (x.color == RBTreeTemplate.RED && x.right.color == RBTreeTemplate.RED))))
           return false;
         return is23(x.left) && is23(x.right);
       }

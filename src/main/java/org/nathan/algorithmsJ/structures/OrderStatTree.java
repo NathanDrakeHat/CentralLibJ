@@ -5,8 +5,11 @@ import org.nathan.centralUtils.tuples.Tuple;
 
 import java.util.*;
 
+import static org.nathan.algorithmsJ.structures.RBTreeTemplate.RED;
+
 /**
  * order statistic tree
+ *
  * @param <K> key
  * @param <V> value
  */
@@ -14,27 +17,27 @@ public class OrderStatTree<K, V> implements Iterable<Tuple<K, V>>{
   @NotNull
   final Comparator<K> comparator;
   @NotNull
-  final Node<K, V> sentinel = new Node<>(RBNode.BLACK);
+  final Node<K, V> sentinel = new Node<>(RBTreeTemplate.BLACK);
   @NotNull Node<K, V> root = sentinel;
   private boolean iterating = false;
   @NotNull
-  private final RBTreeTemplate<K, Node<K,V>> template;
+  private final RBTreeTemplate<K, Node<K, V>> template;
 
   public OrderStatTree(@NotNull Comparator<K> comparator){
     this.comparator = comparator;
     template = new RBTreeTemplate<>(
             sentinel, comparator,
-            n->n.key,
-            ()->this.root,
-            r->this.root = r,
-            n->n.parent,
-            (n,p)->n.parent = p,
-            n->n.left,
-            (n,l)->n.left=l,
-            n->n.right,
-            (n,r)->n.right = r,
-            n->n.color,
-            (n,c)->n.color=c);
+            n -> n.key,
+            () -> this.root,
+            r -> this.root = r,
+            n -> n.parent,
+            (n, p) -> n.parent = p,
+            n -> n.left,
+            (n, l) -> n.left = l,
+            n -> n.right,
+            (n, r) -> n.right = r,
+            n -> n.color,
+            (n, c) -> n.color = c);
   }
 
   /**
@@ -252,7 +255,7 @@ public class OrderStatTree<K, V> implements Iterable<Tuple<K, V>>{
 
   public void updateKV(@NotNull K key, V val){
     modified();
-    var n = (Node<K,V>)template.getNodeOfKey(root,key);
+    var n = (Node<K, V>) template.getNodeOfKey(root, key);
     if(n == sentinel){
       throw new NoSuchElementException();
     }
@@ -261,11 +264,11 @@ public class OrderStatTree<K, V> implements Iterable<Tuple<K, V>>{
 
   public void deleteKey(@NotNull K key){
     modified();
-    var n = (Node<K,V>)template.getNodeOfKey(root, key);
+    var n = (Node<K, V>) template.getNodeOfKey(root, key);
     if(n != sentinel){
       template.delete(n);
     }
-    else {
+    else{
       throw new NoSuchElementException();
     }
   }
@@ -297,7 +300,8 @@ public class OrderStatTree<K, V> implements Iterable<Tuple<K, V>>{
 
   @Override
   public @NotNull Iterator<Tuple<K, V>> iterator(){
-    return new BSTIterator();
+    iterating = true;
+    return new BSTIterator<>(sentinel, n->new Tuple<>(n.key,n.value),()->this.root, n->n.right, n->n.left,()->this.iterating);
   }
 
   public Iterator<Tuple<K, V>> reverseIterator(){
@@ -306,58 +310,6 @@ public class OrderStatTree<K, V> implements Iterable<Tuple<K, V>>{
 
   private void modified(){
     iterating = false;
-  }
-
-  private final class BSTIterator implements Iterator<Tuple<K, V>>{
-    private final Deque<Node<K, V>> stack = new LinkedList<>();
-    private Node<K, V> ptr;
-    private boolean poppedBefore = false;
-    private boolean finish = false;
-
-    public BSTIterator(){
-      iterating = true;
-      ptr = root;
-      if(ptr == sentinel){
-        finish = true;
-      }
-    }
-
-    @Override
-    public boolean hasNext(){
-      if(!iterating){
-        throw new IllegalStateException("concurrent modification");
-      }
-      return !finish && ptr != null;
-    }
-
-    @Override
-    public Tuple<K, V> next(){
-      while(ptr != null) {
-        if(ptr.left != sentinel && !poppedBefore){
-          stack.push(ptr);
-          ptr = ptr.left;
-        }
-        else{
-          var t = ptr;
-          if(ptr.right != sentinel){
-            ptr = ptr.right;
-            poppedBefore = false;
-          }
-          else{
-            if(stack.size() != 0){
-              ptr = stack.pop();
-              poppedBefore = true;
-            }
-            else{
-              ptr = null;
-            }
-          }
-          return new Tuple<>(t.key, t.value);
-        }
-      }
-      finish = true;
-      throw new NoSuchElementException("Iterate finish.");
-    }
   }
 
   private final class ReverseBSTIterator implements Iterator<Tuple<K, V>>{
@@ -412,7 +364,7 @@ public class OrderStatTree<K, V> implements Iterable<Tuple<K, V>>{
     }
   }
 
-  static final class Node<key, val> implements RBNode<key>{
+  static final class Node<key, val>{
     key key;
     val value;
     boolean color;
@@ -438,52 +390,6 @@ public class OrderStatTree<K, V> implements Iterable<Tuple<K, V>>{
               ", value=" + value +
               ", size=" + size +
               '}';
-    }
-
-    @Override
-    public key getKey(){
-      return key;
-    }
-
-    @Override
-    public RBNode<key> getParent(){
-      return parent;
-    }
-
-    @Override
-    public void setParent(RBNode<key> p){
-      parent = (Node<key, val>) p;
-    }
-
-    @Override
-    public RBNode<key> getLeft(){
-      return left;
-    }
-
-    @Override
-    public void setLeft(RBNode<key> l){
-      left = (Node<key, val>) l;
-    }
-
-    @Override
-    public RBNode<key> getRight(){
-      return right;
-    }
-
-    @Override
-    public void setRight(RBNode<key> r){
-      right = (Node<key, val>) r;
-    }
-
-
-    @Override
-    public boolean getColor(){
-      return color;
-    }
-
-    @Override
-    public void setColor(boolean color){
-      this.color = color;
     }
   }
 }

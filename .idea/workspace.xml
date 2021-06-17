@@ -22,9 +22,19 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="change test len">
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="add ignore">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/BSTIterator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/KdTree.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algs4/KdTree.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algs4/PointSET.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AlgorithmsJava.iml" beforeDir="false" afterPath="$PROJECT_DIR$/AlgorithmsJava.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/IntvalSerchTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/IntvalSerchTree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/OrderStatTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/OrderStatTree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/RBNode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/structures/OrderStatTreeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/structures/OrderStatTreeTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CentralUtils/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../CentralUtils/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +81,7 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Libs/algs4.jar" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/org/nathan/algs4" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -79,10 +89,11 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.45428157" />
-    <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.repository.indices" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.build" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Nathan\IdeaProjects\AlgorithmsJava\src\main\java\org\nathan\algs4" />
       <recent name="C:\Users\Nathan\IdeaProjects\AlgorithmsJava\src\main\java\org\nathan\algorithmsJ\structures" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
@@ -102,6 +113,15 @@
       <recent name="org.nathan.algorithmsJ.structures" />
       <recent name="org.nathan.algorithmsJ.misc" />
     </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="mvn install:install-file -Dfile=C:\Users\Nathan\Libs -DgroupId=algs4 -DartifcatId=algs4 -Dversion=1.0 -Dpackagin=jar -DgeneratePom=true" />
+      <command value="mvn install:install-file -Dfile=&quot;C:\Users\Nathan\Libs&quot; -DgroupId=algs4 -DartifcatId=algs4 -Dversion=1.0 -Dpackagin=jar -DgeneratePom=true " />
+      <command value="mvn install:install-file -Dfile=algs4.jar -DgroupId=algs4 -DartifcatId=algs4 -Dversion=1.0 -Dpackagin=jar -DgeneratePom=true " />
+      <command value="mvn install:install-file -Dfile=algs4.jar -DgroupId=algs4 -DartifactId=algs4 -Dversion=1.0 -Dpackaging=jar -DgeneratePom=true " />
+      <command value="mvn install:install-file -Dfile=algs4.jar -DgroupId=edu.princeton.cs -DartifactId=algs4 -Dversion=1.0 -Dpackaging=jar -DgeneratePom=true " />
+    </option>
   </component>
   <component name="RunManager" selected="JUnit.All in AlgorithmsJava">
     <configuration name="Main" type="Application" factoryName="Application">
@@ -138,21 +158,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="IntvalSerchTreeTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="AlgorithmsJava" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.nathan.algorithmsJ.structures.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.nathan.algorithmsJ.structures" />
-      <option name="MAIN_CLASS_NAME" value="org.nathan.algorithmsJ.structures.IntvalSerchTreeTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="IntvalSerchTreeTest.isISTreeTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AlgorithmsJava" />
       <extension name="coverage">
@@ -169,54 +174,98 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="OrderStatTreeTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="AlgorithmsJava" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.nathan.algorithmsJ.structures.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.nathan.algorithmsJ.structures" />
-      <option name="MAIN_CLASS_NAME" value="org.nathan.algorithmsJ.structures.OrderStatTreeTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
+    <configuration name="AlgorithmsJava [compile]" type="MavenRunConfiguration" factoryName="Maven" temporary="true">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="compile" />
+              </list>
+            </option>
+            <option name="pomFileName" value="pom.xml" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
     </configuration>
-    <configuration name="OrderStatTreeTest.implementationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="AlgorithmsJava" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.nathan.algorithmsJ.structures.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.nathan.algorithmsJ.structures" />
-      <option name="MAIN_CLASS_NAME" value="org.nathan.algorithmsJ.structures.OrderStatTreeTest" />
-      <option name="METHOD_NAME" value="implementationTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
+    <configuration name="AlgorithmsJava [install]" type="MavenRunConfiguration" factoryName="Maven" temporary="true">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="install" />
+              </list>
+            </option>
+            <option name="pomFileName" value="pom.xml" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
+    </configuration>
+    <configuration name="AlgorithmsJava [validate]" type="MavenRunConfiguration" factoryName="Maven" temporary="true">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="validate" />
+              </list>
+            </option>
+            <option name="pomFileName" value="pom.xml" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
     </configuration>
     <list>
       <item itemvalue="Application.pushThis" />
       <item itemvalue="Application.pushUtils" />
       <item itemvalue="Application.Main" />
       <item itemvalue="JUnit.All in AlgorithmsJava" />
-      <item itemvalue="JUnit.OrderStatTreeTest.implementationTest" />
       <item itemvalue="JUnit.IntvalSerchTreeTest.isISTreeTest" />
-      <item itemvalue="JUnit.IntvalSerchTreeTest" />
-      <item itemvalue="JUnit.OrderStatTreeTest" />
+      <item itemvalue="Maven.AlgorithmsJava [validate]" />
+      <item itemvalue="Maven.AlgorithmsJava [compile]" />
+      <item itemvalue="Maven.AlgorithmsJava [install]" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.All in AlgorithmsJava" />
+        <item itemvalue="Maven.AlgorithmsJava [install]" />
+        <item itemvalue="Maven.AlgorithmsJava [compile]" />
+        <item itemvalue="Maven.AlgorithmsJava [validate]" />
         <item itemvalue="JUnit.IntvalSerchTreeTest.isISTreeTest" />
-        <item itemvalue="JUnit.OrderStatTreeTest.implementationTest" />
-        <item itemvalue="JUnit.OrderStatTreeTest" />
-        <item itemvalue="JUnit.IntvalSerchTreeTest" />
       </list>
     </recent_temporary>
   </component>
@@ -415,14 +464,7 @@
       <workItem from="1623654077799" duration="598000" />
       <workItem from="1623655422172" duration="57041000" />
       <workItem from="1623810793813" duration="20320000" />
-      <workItem from="1623847673960" duration="8754000" />
-    </task>
-    <task id="LOCAL-00212" summary="add lsd">
-      <created>1623500376785</created>
-      <option name="number" value="00212" />
-      <option name="presentableId" value="LOCAL-00212" />
-      <option name="project" value="LOCAL" />
-      <updated>1623500376785</updated>
+      <workItem from="1623847673960" duration="12874000" />
     </task>
     <task id="LOCAL-00213" summary="remove redundant methods">
       <created>1623500629460</created>
@@ -760,7 +802,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623906527632</updated>
     </task>
-    <option name="localTasksCounter" value="261" />
+    <task id="LOCAL-00261" summary="add ignore">
+      <created>1623907631176</created>
+      <option name="number" value="00261" />
+      <option name="presentableId" value="LOCAL-00261" />
+      <option name="project" value="LOCAL" />
+      <updated>1623907631176</updated>
+    </task>
+    <option name="localTasksCounter" value="262" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -789,7 +838,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="move some methods outer" />
     <MESSAGE value="add quickSort3Way" />
     <MESSAGE value="move functions to inner" />
     <MESSAGE value="set OrderStatisticTree.java generic" />
@@ -814,17 +862,11 @@
     <MESSAGE value="fix bug!" />
     <MESSAGE value="save" />
     <MESSAGE value="change test len" />
-    <option name="LAST_COMMIT_MESSAGE" value="change test len" />
+    <MESSAGE value="add ignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="add ignore" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/RBTreeTemplate.java</url>
-          <line>128</line>
-          <option name="timeStamp" value="24" />
-        </line-breakpoint>
-      </breakpoints>
       <default-breakpoints>
         <breakpoint enabled="true" type="java-exception">
           <properties>
