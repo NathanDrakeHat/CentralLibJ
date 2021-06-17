@@ -28,7 +28,7 @@ public class OrthoLineIntersect{
           @NotNull Function<L, Tuple<P, P>> toPoints,
           @NotNull ToDoubleFunction<P> getX,
           @NotNull ToDoubleFunction<P> getY){
-    Map<P, L> pointsToLine = new HashMap<>();
+    Map<P, L> lineOfPoint = new HashMap<>();
     List<P> scanPointList = new ArrayList<>();
     Set<P> hPoints = new HashSet<>();
     Map<P, P> otherLineEnd = new HashMap<>();
@@ -41,11 +41,11 @@ public class OrthoLineIntersect{
       var x1 = getX.applyAsDouble(point_pair.first());
       var x2 = getX.applyAsDouble(point_pair.second());
 
-      pointsToLine.put(point_pair.first(), line);
+      lineOfPoint.put(point_pair.first(), line);
       scanPointList.add(point_pair.first());
 
       if(x1 != x2){
-        pointsToLine.put(point_pair.second(), line);
+        lineOfPoint.put(point_pair.second(), line);
         scanPointList.add(point_pair.second());
 
         hPoints.add(point_pair.first());
@@ -63,7 +63,7 @@ public class OrthoLineIntersect{
 
     var funcAddIntersect = new Object(){
       void apply(P v_p){
-        var vl = pointsToLine.get(v_p);
+        var vl = lineOfPoint.get(v_p);
         var ap = otherLineEnd.get(v_p);
         var y1 = getY.applyAsDouble(ap);
         var y2 = getY.applyAsDouble(v_p);
@@ -84,7 +84,7 @@ public class OrthoLineIntersect{
     var funcAddToTree = new Object(){
       void apply(P h_p){
         inTree.add(h_p);
-        HYToHL_tree.insertKV(getY.applyAsDouble(h_p), pointsToLine.get(h_p));
+        HYToHL_tree.insertKV(getY.applyAsDouble(h_p), lineOfPoint.get(h_p));
       }
     };
 
