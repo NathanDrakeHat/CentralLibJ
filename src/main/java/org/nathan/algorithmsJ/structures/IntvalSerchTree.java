@@ -54,6 +54,33 @@ public class IntvalSerchTree<Key> implements Iterable<Tuple<Key,Key>>{
     template.delete(n);
   }
 
+  public List<Tuple<Key, Key>> intersects(@NotNull Key lo, @NotNull Key high){
+    List<Tuple<Key, Key>> res = new ArrayList<>();
+    var funcIntersect = new Object(){
+      boolean apply(Key lo, Key hi, Key k){
+        return comparator.compare(lo, k) <= 0 && comparator.compare(hi,k)>=0;
+      }
+    };
+    var func = new Object(){
+      void apply(Node<Key> n){
+        if(n == sentinel) {
+          return;
+        }
+        else if(funcIntersect.apply(n.low, n.high, lo) || funcIntersect.apply(n.low, n.high, high)){
+          res.add(new Tuple<>(n.low, n.high));
+        }
+        else if(n.left == sentinel || comparator.compare(n.left.max, lo) < 0){
+          apply(n.right);
+        }
+        else{
+          apply(n.left);
+        }
+      }
+    };
+    func.apply(root);
+    return res;
+  }
+
   @NotNull
   @Override
   public Iterator<Tuple<Key,Key>> iterator(){

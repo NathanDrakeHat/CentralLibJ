@@ -1,11 +1,10 @@
 package org.nathan.algorithmsJ.structures;
 
 import org.junit.jupiter.api.Test;
+import static org.nathan.algorithmsJ.misc.OrthoLineIntersectTest.*;
 import org.nathan.centralUtils.utils.ArrayUtils;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.SplittableRandom;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -76,6 +75,40 @@ class IntvalSerchTreeTest{
         t.deleteInterval(item);
         assertTrue(isISTree(t));
       }
+    }
+  }
+  List<Point> intervals = new ArrayList<>();
+  Point sect;
+  Set<Point> answers = new HashSet<>();
+  int len = 64;
+  {
+    var rand = new SplittableRandom();
+    List<Integer> shuffle = ArrayUtils.shuffledSequence(0, len);
+    for(var s : shuffle){
+      intervals.add(new Point(s, s + rand.nextInt(1,len/2)));
+    }
+    sect = intervals.get(intervals.size()-1);
+    intervals.remove(intervals.size()-1);
+    for(var it : intervals){
+      if(it.first() >= sect.first() && it.first() <= sect.second()){
+        answers.add(it);
+      }
+      else if(it.second() >= sect.first() && it.second() <= sect.second()){
+        answers.add(it);
+      }
+    }
+  }
+
+  @Test
+  void intersectsTest(){
+    IntvalSerchTree<Integer> t = new IntvalSerchTree<>(Integer::compareTo);
+    for(var it : intervals){
+      t.intersects(it.first(), it.second());
+    }
+    var res = t.intersects(sect.first(), sect.second());
+    for(var r : res){
+      var p = new Point(r.first(), r.second());
+      assertTrue(answers.contains(p));
     }
   }
 }

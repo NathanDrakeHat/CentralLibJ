@@ -22,9 +22,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="add bst iterator, add algs4 answer">
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="format">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/RBTreeTemplate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/RBTreeTemplate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/IntvalSerchTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/IntvalSerchTree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/misc/OrthoLineIntersectTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/misc/OrthoLineIntersectTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/structures/IntvalSerchTreeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/structures/IntvalSerchTreeTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -149,7 +150,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="IntvalSerchTreeTest.isISTreeTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="IntvalSerchTreeTest.intersectsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AlgorithmsJava" />
       <extension name="coverage">
         <pattern>
@@ -159,7 +160,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="org.nathan.algorithmsJ.structures" />
       <option name="MAIN_CLASS_NAME" value="org.nathan.algorithmsJ.structures.IntvalSerchTreeTest" />
-      <option name="METHOD_NAME" value="isISTreeTest" />
+      <option name="METHOD_NAME" value="intersectsTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -245,18 +246,18 @@
       <item itemvalue="Application.pushUtils" />
       <item itemvalue="Application.Main" />
       <item itemvalue="JUnit.All in AlgorithmsJava" />
-      <item itemvalue="JUnit.IntvalSerchTreeTest.isISTreeTest" />
       <item itemvalue="Maven.AlgorithmsJava [validate]" />
       <item itemvalue="Maven.AlgorithmsJava [compile]" />
       <item itemvalue="Maven.AlgorithmsJava [install]" />
+      <item itemvalue="JUnit.IntvalSerchTreeTest.intersectsTest" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.All in AlgorithmsJava" />
+        <item itemvalue="JUnit.IntvalSerchTreeTest.intersectsTest" />
         <item itemvalue="Maven.AlgorithmsJava [install]" />
         <item itemvalue="Maven.AlgorithmsJava [compile]" />
         <item itemvalue="Maven.AlgorithmsJava [validate]" />
-        <item itemvalue="JUnit.IntvalSerchTreeTest.isISTreeTest" />
       </list>
     </recent_temporary>
   </component>
@@ -455,14 +456,9 @@
       <workItem from="1623654077799" duration="598000" />
       <workItem from="1623655422172" duration="57041000" />
       <workItem from="1623810793813" duration="20320000" />
-      <workItem from="1623847673960" duration="13569000" />
-    </task>
-    <task id="LOCAL-00215" summary="add todo, add tests">
-      <created>1623569247265</created>
-      <option name="number" value="00215" />
-      <option name="presentableId" value="LOCAL-00215" />
-      <option name="project" value="LOCAL" />
-      <updated>1623569247265</updated>
+      <workItem from="1623847673960" duration="13649000" />
+      <workItem from="1623912801370" duration="6000" />
+      <workItem from="1623916313970" duration="2538000" />
     </task>
     <task id="LOCAL-00216" summary="move">
       <created>1623569294439</created>
@@ -800,7 +796,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623912006992</updated>
     </task>
-    <option name="localTasksCounter" value="264" />
+    <task id="LOCAL-00264" summary="format">
+      <created>1623912387429</created>
+      <option name="number" value="00264" />
+      <option name="presentableId" value="LOCAL-00264" />
+      <option name="project" value="LOCAL" />
+      <updated>1623912387429</updated>
+    </task>
+    <option name="localTasksCounter" value="265" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -829,7 +832,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="move functions to inner" />
     <MESSAGE value="set OrderStatisticTree.java generic" />
     <MESSAGE value="save data" />
     <MESSAGE value="pass test" />
@@ -854,7 +856,8 @@
     <MESSAGE value="change test len" />
     <MESSAGE value="add ignore" />
     <MESSAGE value="add bst iterator, add algs4 answer" />
-    <option name="LAST_COMMIT_MESSAGE" value="add bst iterator, add algs4 answer" />
+    <MESSAGE value="format" />
+    <option name="LAST_COMMIT_MESSAGE" value="format" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

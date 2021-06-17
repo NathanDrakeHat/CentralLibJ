@@ -9,14 +9,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-class OrthoLineIntersectTest{
-  static class Point extends Tuple<Integer,Integer>{
+public class OrthoLineIntersectTest{
+  public static class Point extends Tuple<Integer,Integer>{
     public Point(Integer f, Integer s){
       super(f, s);
     }
   }
 
-  static class Line extends Tuple<Point, Point>{
+  public static class Line extends Tuple<Point, Point>{
 
     public Line(Point f, Point s){
       super(f, s);
