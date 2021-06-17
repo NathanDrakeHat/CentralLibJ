@@ -13,13 +13,23 @@ import java.util.stream.Collectors;
  * orthogonal line segment intersection
  */
 public class OrthoLineIntersect{
+  /**
+   * intersects of orthogonal lines which do not intersect at end
+   * @param lines lines
+   * @param toPoints get points of line
+   * @param getX get x of point
+   * @param getY get y of point
+   * @param <L> Line type
+   * @param <P> Point type
+   * @return intersection result
+   */
   public static @NotNull <L, P> Map<L, List<L>> intersects(
           @NotNull List<L> lines,
           @NotNull Function<L, Tuple<P, P>> toPoints,
           @NotNull ToDoubleFunction<P> getX,
           @NotNull ToDoubleFunction<P> getY){
     Map<P, L> pointsToLine = new HashMap<>();
-    List<P> scanPoints = new ArrayList<>();
+    List<P> scanPointList = new ArrayList<>();
     Set<P> hPoints = new HashSet<>();
     Map<P, P> otherLineEnd = new HashMap<>();
 
@@ -32,11 +42,11 @@ public class OrthoLineIntersect{
       var x2 = getX.applyAsDouble(point_pair.second());
 
       pointsToLine.put(point_pair.first(), line);
-      scanPoints.add(point_pair.first());
+      scanPointList.add(point_pair.first());
 
       if(x1 != x2){
         pointsToLine.put(point_pair.second(), line);
-        scanPoints.add(point_pair.second());
+        scanPointList.add(point_pair.second());
 
         hPoints.add(point_pair.first());
         hPoints.add(point_pair.second());
@@ -46,7 +56,7 @@ public class OrthoLineIntersect{
       }
     }
 
-    scanPoints.sort(Comparator.comparing(getX::applyAsDouble));
+    scanPointList.sort(Comparator.comparing(getX::applyAsDouble));
     Set<P> inTree = new HashSet<>();
     OrderStatTree<Double, L> HYToHL_tree = new OrderStatTree<>(Double::compareTo);
     Map<L, List<L>> res = new HashMap<>();
@@ -58,7 +68,7 @@ public class OrthoLineIntersect{
         var y1 = getY.applyAsDouble(ap);
         var y2 = getY.applyAsDouble(v_p);
         var hls = HYToHL_tree.keyRangeSearch(Math.min(y1, y2), Math.max(y1, y2));
-        if(hls.size() > 0){
+        if(hls.size() > 0 && !res.containsKey(vl)){
           res.put(vl, hls.stream().map(Tuple::second).collect(Collectors.toList()));
         }
       }
@@ -78,8 +88,8 @@ public class OrthoLineIntersect{
       }
     };
 
-    for(int i = 0; i < scanPoints.size(); i++){
-      var p = scanPoints.get(i);
+    for(int i = 0; i < scanPointList.size(); i++){
+      var p = scanPointList.get(i);
       if(hPoints.contains(p)){
         // horizontal point
         if(inTree.contains(otherLineEnd.get(p))){
