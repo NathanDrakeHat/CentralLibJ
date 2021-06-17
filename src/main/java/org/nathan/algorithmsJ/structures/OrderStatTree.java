@@ -18,11 +18,23 @@ public class OrderStatTree<K, V> implements Iterable<Tuple<K, V>>{
   @NotNull Node<K, V> root = sentinel;
   private boolean iterating = false;
   @NotNull
-  private final RBTreeTemplate<K> template;
+  private final RBTreeTemplate<K, Node<K,V>> template;
 
   public OrderStatTree(@NotNull Comparator<K> comparator){
     this.comparator = comparator;
-    template = new RBTreeTemplate<>(sentinel, comparator, ()->this.root, (r)->this.root = (Node<K, V>) r);
+    template = new RBTreeTemplate<>(
+            sentinel, comparator,
+            n->n.key,
+            ()->this.root,
+            r->this.root = r,
+            n->n.parent,
+            (n,p)->n.parent = p,
+            n->n.left,
+            (n,l)->n.left=l,
+            n->n.right,
+            (n,r)->n.right = r,
+            n->n.color,
+            (n,c)->n.color=c);
   }
 
   /**
@@ -189,7 +201,7 @@ public class OrderStatTree<K, V> implements Iterable<Tuple<K, V>>{
   }
 
   public int getRankOfKey(K key){
-    Node<K, V> n = (Node<K,V>)template.getNodeOfKey(root, key);
+    Node<K, V> n = template.getNodeOfKey(root, key);
     if(n == sentinel){
       throw new NoSuchElementException();
     }
@@ -262,7 +274,7 @@ public class OrderStatTree<K, V> implements Iterable<Tuple<K, V>>{
     if(root == sentinel){
       throw new NoSuchElementException();
     }
-    var res = ((Node<K,V>)template.getNodeOfKey(root, key)).value;
+    var res = template.getNodeOfKey(root, key).value;
     if(res == sentinel){
       throw new NoSuchElementException();
     }

@@ -6,17 +6,14 @@ import java.lang.annotation.ElementType;
 import java.lang.annotation.Target;
 import java.util.Comparator;
 import java.util.concurrent.Callable;
+import java.util.function.BiConsumer;
 import java.util.function.Consumer;
+import java.util.function.Function;
 
 import static org.nathan.centralUtils.utils.LambdaUtils.stripCE;
 
-/**
- * annotate which function to augment new operation
- */
-@Target(ElementType.METHOD)
-@interface Template{
 
-}
+
 
 /**
  * red black tree code template
@@ -24,20 +21,56 @@ import static org.nathan.centralUtils.utils.LambdaUtils.stripCE;
  * @param <Key> key of node
  */
 @SuppressWarnings("ClassCanBeRecord")
-class RBTreeTemplate<Key>{
-  final @NotNull RBNode<Key> sentinel;
-  final @NotNull Comparator<Key> comparator;
-  final @NotNull Callable<RBNode<Key>> getRoot;
-  final @NotNull Consumer<RBNode<Key>> setRoot;
+class RBTreeTemplate<Key, Node>{
+  /**
+   * annotate which function to augment new operation
+   */
+  @Target(ElementType.METHOD)
+  @interface Template{
 
-  RBTreeTemplate(@NotNull RBNode<Key> sentinel,
+  }
+
+  final @NotNull Node sentinel;
+  final @NotNull Comparator<Key> comparator;
+  final @NotNull Callable<Node> getRoot;
+  final @NotNull Consumer<Node> setRoot;
+  static final boolean RED = false;
+  static final boolean BLACK = true;
+   @NotNull final Function<Node, Node> getParent;
+  @NotNull final BiConsumer<Node, Node> setParent;
+  @NotNull final Function<Node, Node> getLeft;
+  @NotNull final BiConsumer<Node, Node> setLeft;
+  @NotNull final Function<Node, Node> getRight;
+  @NotNull final BiConsumer<Node, Node> setRight;
+  @NotNull final Function<Node, Boolean> getColor;
+  @NotNull final BiConsumer<Node, Boolean> setColor;
+  @NotNull final Function<Node, Key> getKey;
+  RBTreeTemplate(@NotNull Node sentinel,
                  @NotNull Comparator<Key> comparator,
-                 @NotNull Callable<RBNode<Key>> getRoot,
-                 @NotNull Consumer<RBNode<Key>> setRoot){
+                 @NotNull Function<Node, Key> getKey,
+                 @NotNull Callable<Node> getRoot,
+                 @NotNull Consumer<Node> setRoot,
+                 @NotNull Function<Node, Node> getParent,
+                 @NotNull BiConsumer<Node, Node> setParent,
+                 @NotNull Function<Node, Node> getLeft,
+                 @NotNull BiConsumer<Node, Node> setLeft,
+                 @NotNull Function<Node, Node> getRight,
+                 @NotNull BiConsumer<Node, Node> setRight,
+                 @NotNull Function<Node, Boolean> getColor,
+                 @NotNull BiConsumer<Node, Boolean> setColor){
     this.sentinel = sentinel;
     this.comparator = comparator;
     this.getRoot = getRoot;
     this.setRoot = setRoot;
+    this.getParent = getParent;
+    this.setParent = setParent;
+    this.getRight = getRight;
+    this.setRight = setRight;
+    this.getLeft = getLeft;
+    this.setLeft = setLeft;
+    this.getColor = getColor;
+    this.setColor = setColor;
+    this.getKey = getKey;
   }
 
   /**
@@ -46,8 +79,8 @@ class RBTreeTemplate<Key>{
    * @param z node or sentinel
    */
   @Template
-  @SuppressWarnings("SuspiciousNameCombination")
-  void insert(RBNode<Key> z){
+  @SuppressWarnings({"SuspiciousNameCombination", "unchecked"})
+  void insert(Node z){
     var y = sentinel;
     var x = stripCE(getRoot);
     while(x != sentinel) {
@@ -56,37 +89,38 @@ class RBTreeTemplate<Key>{
         if(x instanceof OrderStatTree.Node<?, ?> xo){
           xo.size++;
         }
-        else if(x instanceof IntvalSerchTree.Node<Key> xi){
+        else if(x instanceof IntvalSerchTree.Node<?>){
+          var xi = (IntvalSerchTree.Node<Key>)x;
           var zi = (IntvalSerchTree.Node<Key>) z;
           xi.max = comparator.compare(xi.max, zi.max) < 0 ? zi.max : xi.max;
         }
       }
-      if(comparator.compare(z.getKey(), x.getKey()) < 0){
-        x = x.getLeft();
+      if(comparator.compare(getKey.apply(z), getKey.apply(x)) < 0){
+        x = getLeft.apply(x);
       }
-      else if(comparator.compare(z.getKey(), x.getKey()) > 0){
-        x = x.getRight();
+      else if(comparator.compare(getKey.apply(z), getKey.apply(x)) > 0){
+        x = getRight.apply(x);
       }
       else{
         throw new IllegalArgumentException("duplicate key.");
       }
     }
-    z.setParent(y);
+    setParent.accept(z,y);
     if(y == sentinel){
       setRoot.accept(z);
     }
-    else if(comparator.compare(z.getKey(), y.getKey()) < 0){
-      y.setLeft(z);
+    else if(comparator.compare(getKey.apply(z), getKey.apply(y)) < 0){
+      setLeft.accept(y, z);
     }
-    else if(comparator.compare(z.getKey(), y.getKey()) > 0){
-      y.setRight(z);
+    else if(comparator.compare(getKey.apply(z), getKey.apply(y)) > 0){
+      setRight.accept(y, z);
     }
     else{
       throw new RuntimeException("impossible error.");
     }
-    z.setLeft(sentinel);
-    z.setRight(sentinel);
-    z.setRed();
+    setLeft.accept(z, sentinel);
+    setRight.accept(z, sentinel);
+    setColor.accept(z,RED);
     {//
       if(z instanceof OrderStatTree.Node<?, ?> zo){
         zo.size = 1;
@@ -95,83 +129,84 @@ class RBTreeTemplate<Key>{
     insertFixUp(z);
   }
 
-  private void insertFixUp(RBNode<Key> z){
-    while(z.getParent().isRed()) {
-      if(z.getParent() == z.getParent().getParent().getLeft()){
-        var y = z.getParent().getParent().getRight();
-        if(y.isRed()){
-          z.getParent().setBlack();
-          y.setBlack();
-          z.getParent().getParent().setRed();
-          z = z.getParent().getParent();
+  private void insertFixUp(Node z){
+    while(getColor.apply(getParent.apply(z)) == RED) {
+      if(getParent.apply(z) == getLeft.apply(getParent.apply(getParent.apply(z)))){
+        var y = getRight.apply(getParent.apply(getParent.apply(z)));
+        if(getColor.apply(y) == RED){
+          setColor.accept(getParent.apply(z), BLACK);
+          setColor.accept(y, BLACK);
+          setColor.accept(getParent.apply(getParent.apply(z)), RED);
+          z = getParent.apply(getParent.apply(z));
         }
         else{
-          if(z == z.getParent().getRight()){
-            z = z.getParent();
+          if(z == getRight.apply(getParent.apply(z))){
+            z = getParent.apply(z);
             leftRotate(z);
           }
-          z.getParent().setBlack();
-          z.getParent().getParent().setRed();
-          rightRotate(z.getParent().getParent());
+          setColor.accept(getParent.apply(z), BLACK);
+          setColor.accept(getParent.apply(getParent.apply(z)), RED);
+          rightRotate(getParent.apply(getParent.apply(z)));
         }
       }
       else{
-        var y = z.getParent().getParent().getLeft();
-        if(y.isRed()){
-          z.getParent().setBlack();
-          y.setBlack();
-          z.getParent().getParent().setRed();
-          z = z.getParent().getParent();
+        var y = getLeft.apply(getParent.apply(getParent.apply(z)));
+        if(getColor.apply(y) == RED){
+          setColor.accept(getParent.apply(z), BLACK);
+          setColor.accept(y, BLACK);
+          setColor.accept(getParent.apply(getParent.apply(z)), RED);
+          z = getParent.apply(getParent.apply(z));
         }
         else{
-          if(z == z.getParent().getLeft()){
-            z = z.getParent();
+          if(z == getLeft.apply(getParent.apply(z))){
+            z = getParent.apply(z);
             rightRotate(z);
           }
-          z.getParent().setBlack();
-          z.getParent().getParent().setRed();
-          leftRotate(z.getParent().getParent());
+          setColor.accept(getParent.apply(z), BLACK);
+          setColor.accept(getParent.apply(getParent.apply(z)), RED);
+          leftRotate(getParent.apply(getParent.apply(z)));
         }
       }
     }
-    stripCE(getRoot).setBlack();
+    setColor.accept(stripCE(getRoot), BLACK);
   }
 
+  @SuppressWarnings("unchecked")
   @Template
-  void delete(RBNode<Key> z){
+  void delete(Node z){
     var y = z;
-    var y_origin_color = y.getColor();
-    RBNode<Key> x;
-    if(z.getLeft() == sentinel){
-      x = z.getRight();
-      RBTransplant(z, z.getRight());
+    var y_origin_color = getColor.apply(y);
+    Node x;
+    if(getLeft.apply(z) == sentinel){
+      x = getRight.apply(z);
+      RBTransplant(z, getRight.apply(z));
     }
-    else if(z.getRight() == sentinel){
-      x = z.getLeft();
-      RBTransplant(z, z.getLeft());
+    else if(getRight.apply(z) == sentinel){
+      x = getLeft.apply(z);
+      RBTransplant(z, getLeft.apply(z));
     }
     else{
-      y = minimumNodeOf(z.getRight());
-      y_origin_color = y.getColor();
-      x = y.getRight();
-      if(y.getParent() == z){
-        x.setParent(y);
+      y = minimumNodeOf(getRight.apply(z));
+      y_origin_color = getColor.apply(y);
+      x = getRight.apply(y);
+      if(getParent.apply(y) == z){
+        setParent.accept(x,y);
       }
       else{
-        RBTransplant(y, y.getRight());
-        y.setRight(z.getRight());
-        y.getRight().setParent(y);
+        RBTransplant(y, getRight.apply(y));
+        setRight.accept(y, getRight.apply(z));
+        setParent.accept(getRight.apply(y), y);
       }
       RBTransplant(z, y);
-      y.setLeft(z.getLeft());
-      y.getLeft().setParent(y);
-      y.setColor(z.getColor());
+      setLeft.accept(y, getLeft.apply(z));
+      setParent.accept(getLeft.apply(y),y);
+      setColor.accept(y, getColor.apply(z));
     }
 
     {//
       if(y instanceof OrderStatTree.Node<?, ?>){
-        if(y.getRight() != sentinel){
-          y = minimumNodeOf(y.getRight());
+        if(getRight.apply(y) != sentinel){
+          y = minimumNodeOf(getRight.apply(y));
         }
         //noinspection PatternVariableCanBeUsed
         var yo = (OrderStatTree.Node<?, ?>) y;
@@ -180,130 +215,132 @@ class RBTreeTemplate<Key>{
           yo = yo.parent;
         }
       }
-      else if(y instanceof IntvalSerchTree.Node<Key>){
+      else if(y instanceof IntvalSerchTree.Node<?>){
         var p = y;
-        if(p.getRight() != sentinel){
-          p = minimumNodeOf(p.getRight());
+        if(getRight.apply(p) != sentinel){
+          p = minimumNodeOf(getRight.apply(p));
         }
-        var pi = (IntvalSerchTree.Node<Key>)p;
-        while(pi != sentinel){
+        var pi = (IntvalSerchTree.Node<Key>) p;
+        while(pi != sentinel) {
           updateIntvalSerchNode(pi);
           pi = pi.parent;
         }
       }
     }
 
-    if(y_origin_color == RBNode.BLACK){
+    if(y_origin_color == BLACK){
       deleteFixUp(x);
     }
   }
 
-  private void deleteFixUp(RBNode<Key> x){
-    while(x != stripCE(getRoot) && x.isBlack()) {
-      if(x == x.getParent().getLeft()){
-        var w = x.getParent().getRight();
-        if(w.isRed()){
-          w.setBlack();
-          x.getParent().setRed();
-          leftRotate(x.getParent());
-          w = x.getParent().getRight();
+  private void deleteFixUp(Node x){
+    while(x != stripCE(getRoot) && getColor.apply(x) == BLACK) {
+      if(x == getLeft.apply(getParent.apply(x))){
+        var w = getRight.apply(getParent.apply(x));
+        if(getColor.apply(w) == RED){
+          setColor.accept(w, BLACK);
+          setColor.accept(getParent.apply(x), RED);
+          leftRotate(getParent.apply(x));
+          w = getRight.apply(getParent.apply(x));
         }
-        if(w.getLeft().isBlack() && w.getRight().isBlack()){
-          w.setRed();
-          x = x.getParent();
+        if(getColor.apply(getLeft.apply(w)) == BLACK && getColor.apply(getRight.apply(w)) == BLACK){
+          setColor.accept(w, RED);
+          x = getParent.apply(x);
         }
         else{
-          if(w.getRight().isBlack()){
-            w.getLeft().setBlack();
-            w.setRed();
+          if(getColor.apply(getRight.apply(w)) == BLACK){
+            setColor.accept(getLeft.apply(w), BLACK);
+            setColor.accept(w, RED);
             rightRotate(w);
-            w = x.getParent().getRight();
+            w = getRight.apply(getParent.apply(x));
           }
-          w.setColor(x.getParent().getColor());
-          x.getParent().setBlack();
-          w.getRight().setBlack();
-          leftRotate(x.getParent());
+          setColor.accept(w, getColor.apply(getParent.apply(x)));
+          setColor.accept(getParent.apply(x), BLACK);
+          setColor.accept(getRight.apply(w), BLACK);
+          leftRotate(getParent.apply(x));
           x = stripCE(getRoot);
         }
       }
       else{
-        var w = x.getParent().getLeft();
-        if(w.isRed()){
-          w.setBlack();
-          x.getParent().setRed();
-          rightRotate(x.getParent());
-          w = x.getParent().getLeft();
+        var w = getLeft.apply(getParent.apply(x));
+        if(getColor.apply(w) == RED){
+          setColor.accept(w, BLACK);
+          setColor.accept(getParent.apply(x), RED);
+          rightRotate(getParent.apply(x));
+          w = getLeft.apply(getParent.apply(x));
         }
-        if(w.getLeft().isBlack() && w.getRight().isBlack()){
-          w.setRed();
-          x = x.getParent();
+        if(getColor.apply(getLeft.apply(w)) == BLACK && getColor.apply(getRight.apply(w)) == BLACK){
+          setColor.accept(w, RED);
+          x = getParent.apply(x);
         }
         else{
-          if(w.getLeft().isBlack()){
-            w.getRight().setBlack();
-            w.setRed();
+          if(getColor.apply(getLeft.apply(w)) == BLACK){
+            setColor.accept(getRight.apply(w), BLACK);
+            setColor.accept(w, RED);
             leftRotate(w);
-            w = x.getParent().getLeft();
+            w = getLeft.apply(getParent.apply(x));
           }
-          w.setColor(x.getParent().getColor());
-          x.getParent().setBlack();
-          w.getLeft().setBlack();
-          rightRotate(x.getParent());
+          setColor.accept(w, getColor.apply(getParent.apply(x)));
+          setColor.accept(getParent.apply(x), BLACK);
+          setColor.accept(getLeft.apply(w), BLACK);
+          rightRotate(getParent.apply(x));
           x = stripCE(getRoot);
         }
       }
     }
-    x.setBlack();
+    setColor.accept(x, BLACK);
   }
 
-  private RBNode<Key> minimumNodeOf(RBNode<Key> x){
-    while(x.getLeft() != sentinel) {
-      x = x.getLeft();
+  private Node minimumNodeOf(Node x){
+    while(getLeft.apply(x) != sentinel) {
+      x = getLeft.apply(x);
     }
     return x;
   }
 
-  private void RBTransplant(RBNode<Key> u, RBNode<Key> v){
-    if(u.getParent() == sentinel){
+  private void RBTransplant(Node u, Node v){
+    if(getParent.apply(u) == sentinel){
       setRoot.accept(v);
     }
-    else if(u == u.getParent().getLeft()){
-      u.getParent().setLeft(v);
+    else if(u == getLeft.apply(getParent.apply(u))){
+      setLeft.accept(getParent.apply(u), v);
     }
     else{
-      u.getParent().setRight(v);
+      setRight.accept(getParent.apply(u), v);
     }
-    v.setParent(u.getParent());
+    setParent.accept(v, getParent.apply(u));
   }
 
+  @SuppressWarnings("unchecked")
   @Template
-  private void leftRotate(RBNode<Key> x){
-    var y = x.getRight();
+  private void leftRotate(Node x){
+    var y = getRight.apply(x);
 
-    x.setRight(y.getLeft());
-    if(y.getLeft() != sentinel){
-      y.getLeft().setParent(x);
+    setRight.accept(x, getLeft.apply(y));
+    if(getLeft.apply(y) != sentinel){
+      setParent.accept(getLeft.apply(y), x);
     }
 
-    y.setParent(x.getParent());
-    if(x.getParent() == sentinel){
+    setParent.accept(y, getParent.apply(x));
+    if(getParent.apply(x) == sentinel){
       setRoot.accept(y);
     }
-    else if(x == x.getParent().getLeft()){
-      x.getParent().setLeft(y);
+    else if(x == getLeft.apply(getParent.apply(x))){
+      setLeft.accept(getParent.apply(x), y);
     }
     else{
-      x.getParent().setRight(y);
+      setRight.accept(getParent.apply(x), y);
     }
 
-    y.setLeft(x);
-    x.setParent(y);
+    setLeft.accept(y, x);
+    setParent.accept(x, y);
     {//
       if(x instanceof OrderStatTree.Node<?, ?> xo && y instanceof OrderStatTree.Node<?, ?> yo){
         yo.size = xo.size;
         xo.size = xo.left.size + xo.right.size + 1;
       }
-      else if(x instanceof IntvalSerchTree.Node<Key> xi){
+      else if(x instanceof IntvalSerchTree.Node<?>){
+        var xi = (IntvalSerchTree.Node<Key>) x;
         updateIntvalSerchNode(xi);
         xi = xi.parent;
         if(xi != sentinel){
@@ -313,34 +350,36 @@ class RBTreeTemplate<Key>{
     }
   }
 
+  @SuppressWarnings("unchecked")
   @Template
-  private void rightRotate(RBNode<Key> x){
-    var y = x.getLeft();
+  private void rightRotate(Node x){
+    var y = getLeft.apply(x);
 
-    x.setLeft(y.getRight());
-    if(y.getRight() != sentinel){
-      y.getRight().setParent(x);
+    setLeft.accept(x, getRight.apply(y));
+    if(getRight.apply(y) != sentinel){
+      setParent.accept(getRight.apply(y), x);
     }
 
-    y.setParent(x.getParent());
-    if(x.getParent() == sentinel){
+    setParent.accept(y, getParent.apply(x));
+    if(getParent.apply(x) == sentinel){
       setRoot.accept(y);
     }
-    else if(x == x.getParent().getRight()){
-      x.getParent().setRight(y);
+    else if(x ==getRight.apply( getParent.apply(x))){
+      setRight.accept(getParent.apply(x), y);
     }
     else{
-      x.getParent().setLeft(y);
+      setLeft.accept(getParent.apply(x), y);
     }
 
-    y.setRight(x);
-    x.setParent(y);
+    setRight.accept(y, x);
+    setParent.accept(x, y);
     {//
       if(x instanceof OrderStatTree.Node<?, ?> xo && y instanceof OrderStatTree.Node<?, ?> yo){
         yo.size = xo.size;
         xo.size = xo.left.size + xo.right.size + 1;
       }
-      else if(x instanceof IntvalSerchTree.Node<Key> xi){
+      else if(x instanceof IntvalSerchTree.Node<?>){
+        var xi = (IntvalSerchTree.Node<Key>)x;
         updateIntvalSerchNode(xi);
         xi = xi.parent;
         if(xi != sentinel){
@@ -371,15 +410,15 @@ class RBTreeTemplate<Key>{
    * @param key key
    * @return node with key or sentinel
    */
-  RBNode<Key> getNodeOfKey(RBNode<Key> n, Key key){
-    if(comparator.compare(n.getKey(), key) == 0){
+  Node getNodeOfKey(Node n, Key key){
+    if(comparator.compare(getKey.apply(n), key) == 0){
       return n;
     }
-    else if(n.getLeft() != sentinel && comparator.compare(n.getKey(), key) > 0){
-      return getNodeOfKey(n.getLeft(), key);
+    else if(getLeft.apply(n) != sentinel && comparator.compare(getKey.apply(n), key) > 0){
+      return getNodeOfKey(getLeft.apply(n), key);
     }
-    else if(n.getRight() != sentinel && comparator.compare(n.getKey(), key) < 0){
-      return getNodeOfKey(n.getRight(), key);
+    else if(getRight.apply(n) != sentinel && comparator.compare(getKey.apply(n), key) < 0){
+      return getNodeOfKey(getRight.apply(n), key);
     }
     return sentinel;
   }

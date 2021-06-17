@@ -21,21 +21,5 @@ interface RBNode<Key>{
 
   boolean getColor();
 
-  default boolean isBlack(){
-    return getColor() == BLACK;
-  }
-
-  default boolean isRed(){
-    return getColor() == RED;
-  }
-
-  default void setRed(){
-    setColor(RED);
-  }
-
-  default void setBlack(){
-    setColor(BLACK);
-  }
-
   void setColor(boolean color);
 }

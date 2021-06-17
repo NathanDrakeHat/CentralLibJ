@@ -9,7 +9,7 @@ import java.util.NoSuchElementException;
  * interval search tree
  */
 public class IntvalSerchTree<Key>{
-  static class Node<Key> implements RBNode<Key>{
+  static class Node<Key>{
     Node<Key> parent;
     Node<Key> left;
     Node<Key> right;
@@ -27,61 +27,28 @@ public class IntvalSerchTree<Key>{
       high = hi;
       max = high;
     }
-
-    @Override
-    public Key getKey(){
-      return low;
-    }
-
-    @Override
-    public RBNode<Key> getParent(){
-      return parent;
-    }
-
-    @Override
-    public void setParent(RBNode<Key> p){
-      parent = (Node<Key>) p;
-    }
-
-    @Override
-    public RBNode<Key> getLeft(){
-      return left;
-    }
-
-    @Override
-    public void setLeft(RBNode<Key> l){
-      left = (Node<Key>) l;
-    }
-
-    @Override
-    public RBNode<Key> getRight(){
-      return right;
-    }
-
-    @Override
-    public void setRight(RBNode<Key> r){
-      right = (Node<Key>) r;
-    }
-
-    @Override
-    public boolean getColor(){
-      return color;
-    }
-
-    @Override
-    public void setColor(boolean color){
-      this.color = color;
-    }
   }
 
   @NotNull final Node<Key> sentinel = new Node<>(RBNode.BLACK);
   @NotNull Node<Key> root = sentinel;
   @NotNull final Comparator<Key> comparator;
-  @NotNull final RBTreeTemplate<Key> template;
+  @NotNull final RBTreeTemplate<Key, Node<Key>> template;
 
   public IntvalSerchTree(@NotNull Comparator<Key> comparator){
     this.comparator = comparator;
-    template = new RBTreeTemplate<>(sentinel,comparator,()->this.root, (r)->this.root= (Node<Key>) r);
+    template = new RBTreeTemplate<>(
+            sentinel,comparator,
+            n->n.low,
+            ()->this.root,
+            r->this.root=r,
+            n->n.parent,
+            (n,p)->n.parent=p,
+            n->n.left,
+            (n,l)->n.left=l,
+            n->n.right,
+            (n,r)->n.right=r,
+            n->n.color,
+            (n,c)->n.color=c);
   }
 
   public void insertInterval(@NotNull Key low, @NotNull Key high){

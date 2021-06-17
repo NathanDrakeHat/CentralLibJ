@@ -22,14 +22,17 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="fix is insert bug">
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="rename">
+      <change afterPath="$PROJECT_DIR$/../CentralUtils/src/main/java/org/nathan/centralUtils/misc/BTreePrinter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/misc/OrthoLineIntersect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/misc/OrthoLineIntersect.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/ISTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/IntvalSerchTree.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/OSTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/OrderStatTree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/IntvalSerchTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/IntvalSerchTree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/OrderStatTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/OrderStatTree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/RBNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/RBNode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/RBTreeTemplate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/RBTreeTemplate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/structures/ISTreeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/structures/IntvalSerchTreeTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/structures/OSTreeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/structures/OrderStatTreeTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/structures/IntvalSerchTreeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/structures/IntvalSerchTreeTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/structures/OrderStatTreeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/structures/OrderStatTreeTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CentralUtils/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../CentralUtils/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,8 +46,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Class" />
         <option value="JUnit5 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -108,7 +111,7 @@
       <recent name="org.nathan.algorithmsJ.misc" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.OrderStatTreeTest.implementationTest">
+  <component name="RunManager" selected="JUnit.All in AlgorithmsJava">
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.nathan.Main" />
       <module name="AlgorithmsJava" />
@@ -139,6 +142,21 @@
       <option name="MAIN_CLASS_NAME" value="" />
       <option name="METHOD_NAME" value="" />
       <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="IntvalSerchTreeTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AlgorithmsJava" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.nathan.algorithmsJ.structures.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.nathan.algorithmsJ.structures" />
+      <option name="MAIN_CLASS_NAME" value="org.nathan.algorithmsJ.structures.IntvalSerchTreeTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -174,22 +192,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="OrderStatTreeTest.functionsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="AlgorithmsJava" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.nathan.algorithmsJ.structures.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.nathan.algorithmsJ.structures" />
-      <option name="MAIN_CLASS_NAME" value="org.nathan.algorithmsJ.structures.OrderStatTreeTest" />
-      <option name="METHOD_NAME" value="functionsTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="OrderStatTreeTest.implementationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AlgorithmsJava" />
       <extension name="coverage">
@@ -211,18 +213,18 @@
       <item itemvalue="Application.pushUtils" />
       <item itemvalue="Application.Main" />
       <item itemvalue="JUnit.All in AlgorithmsJava" />
-      <item itemvalue="JUnit.OrderStatTreeTest.functionsTest" />
       <item itemvalue="JUnit.OrderStatTreeTest.implementationTest" />
-      <item itemvalue="JUnit.OrderStatTreeTest" />
       <item itemvalue="JUnit.IntvalSerchTreeTest.isISTreeTest" />
+      <item itemvalue="JUnit.IntvalSerchTreeTest" />
+      <item itemvalue="JUnit.OrderStatTreeTest" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.OrderStatTreeTest.implementationTest" />
-        <item itemvalue="JUnit.IntvalSerchTreeTest.isISTreeTest" />
         <item itemvalue="JUnit.All in AlgorithmsJava" />
-        <item itemvalue="JUnit.OrderStatTreeTest.functionsTest" />
         <item itemvalue="JUnit.OrderStatTreeTest" />
+        <item itemvalue="JUnit.OrderStatTreeTest.implementationTest" />
+        <item itemvalue="JUnit.IntvalSerchTreeTest" />
+        <item itemvalue="JUnit.IntvalSerchTreeTest.isISTreeTest" />
       </list>
     </recent_temporary>
   </component>
@@ -420,35 +422,8 @@
       <workItem from="1623639756028" duration="227000" />
       <workItem from="1623654077799" duration="598000" />
       <workItem from="1623655422172" duration="57041000" />
-      <workItem from="1623810793813" duration="19313000" />
-    </task>
-    <task id="LOCAL-00205" summary="save">
-      <created>1623379042018</created>
-      <option name="number" value="00205" />
-      <option name="presentableId" value="LOCAL-00205" />
-      <option name="project" value="LOCAL" />
-      <updated>1623379042018</updated>
-    </task>
-    <task id="LOCAL-00206" summary="delete UnionEdge.java">
-      <created>1623379095601</created>
-      <option name="number" value="00206" />
-      <option name="presentableId" value="LOCAL-00206" />
-      <option name="project" value="LOCAL" />
-      <updated>1623379095601</updated>
-    </task>
-    <task id="LOCAL-00207" summary="save">
-      <created>1623401907528</created>
-      <option name="number" value="00207" />
-      <option name="presentableId" value="LOCAL-00207" />
-      <option name="project" value="LOCAL" />
-      <updated>1623401907528</updated>
-    </task>
-    <task id="LOCAL-00208" summary="refactor">
-      <created>1623402550090</created>
-      <option name="number" value="00208" />
-      <option name="presentableId" value="LOCAL-00208" />
-      <option name="project" value="LOCAL" />
-      <updated>1623402550090</updated>
+      <workItem from="1623810793813" duration="20320000" />
+      <workItem from="1623847673960" duration="6470000" />
     </task>
     <task id="LOCAL-00209" summary="add max flow">
       <created>1623469562779</created>
@@ -765,7 +740,35 @@
       <option name="project" value="LOCAL" />
       <updated>1623841864594</updated>
     </task>
-    <option name="localTasksCounter" value="254" />
+    <task id="LOCAL-00254" summary="IntvalSerchTree augment!!">
+      <created>1623846226145</created>
+      <option name="number" value="00254" />
+      <option name="presentableId" value="LOCAL-00254" />
+      <option name="project" value="LOCAL" />
+      <updated>1623846226145</updated>
+    </task>
+    <task id="LOCAL-00255" summary="doc">
+      <created>1623846279364</created>
+      <option name="number" value="00255" />
+      <option name="presentableId" value="LOCAL-00255" />
+      <option name="project" value="LOCAL" />
+      <updated>1623846279364</updated>
+    </task>
+    <task id="LOCAL-00256" summary="doc">
+      <created>1623846290953</created>
+      <option name="number" value="00256" />
+      <option name="presentableId" value="LOCAL-00256" />
+      <option name="project" value="LOCAL" />
+      <updated>1623846290953</updated>
+    </task>
+    <task id="LOCAL-00257" summary="rename">
+      <created>1623846330215</created>
+      <option name="number" value="00257" />
+      <option name="presentableId" value="LOCAL-00257" />
+      <option name="project" value="LOCAL" />
+      <updated>1623846330215</updated>
+    </task>
+    <option name="localTasksCounter" value="258" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -794,9 +797,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fix OrderStatisticTreeTest bug" />
-    <MESSAGE value="rename FibonacciHeap.java" />
-    <MESSAGE value="add shell sort" />
     <MESSAGE value="add knuth shuffle" />
     <MESSAGE value="add ConvexHull.java Graham Scan" />
     <MESSAGE value="move some methods outer" />
@@ -819,15 +819,28 @@
     <MESSAGE value="save template" />
     <MESSAGE value="better template" />
     <MESSAGE value="fix is insert bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix is insert bug" />
+    <MESSAGE value="IntvalSerchTree augment!!" />
+    <MESSAGE value="doc" />
+    <MESSAGE value="rename" />
+    <option name="LAST_COMMIT_MESSAGE" value="rename" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/structures/IntvalSerchTreeTest.java</url>
-          <line>47</line>
-          <option name="timeStamp" value="17" />
+          <url>file://$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/structures/OrderStatTreeTest.java</url>
+          <line>163</line>
+          <option name="timeStamp" value="23" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/RBTreeTemplate.java</url>
+          <line>128</line>
+          <option name="timeStamp" value="24" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/RBTreeTemplate.java</url>
+          <line>85</line>
+          <option name="timeStamp" value="28" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -838,10 +851,5 @@
         </breakpoint>
       </default-breakpoints>
     </breakpoint-manager>
-    <watches-manager>
-      <configuration name="JUnit">
-        <watch expression="tree.root.right.right.right" />
-      </configuration>
-    </watches-manager>
   </component>
 </project>
