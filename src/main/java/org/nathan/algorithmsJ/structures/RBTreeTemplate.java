@@ -20,7 +20,6 @@ import static org.nathan.centralUtils.utils.LambdaUtils.stripCE;
  *
  * @param <Key> key of node
  */
-@SuppressWarnings("ClassCanBeRecord")
 class RBTreeTemplate<Key, Node>{
   /**
    * annotate which function to augment new operation

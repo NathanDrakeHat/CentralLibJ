@@ -56,29 +56,25 @@ class IntvalSerchTreeTest{
       List<Integer> shuffle = ArrayUtils.shuffledSequence(0, rand.nextInt(16, len));
       IntvalSerchTree<Integer> t = new IntvalSerchTree<>(Integer::compareTo);
       for(var item : shuffle){
-        t.insertInterval(item, item + rand.nextInt(8, 64));
+        t.insertInterval(item, item + rand.nextInt(8,  len/2));
         assertTrue(isISTree(t));
       }
 
       Collections.shuffle(shuffle);
       for(var item : shuffle){
         t.deleteInterval(item);
-        if(!isISTree(t)){
-          fail();
-        }
+        assertTrue(isISTree(t));
       }
 
       for(var item : shuffle){
-        t.insertInterval(item, item + rand.nextInt(8, 64));
+        t.insertInterval(item, item + rand.nextInt(8, len/2));
         assertTrue(isISTree(t));
       }
 
       Collections.shuffle(shuffle);
       for(var item : shuffle){
         t.deleteInterval(item);
-        if(!isISTree(t)){
-          fail();
-        }
+        assertTrue(isISTree(t));
       }
     }
   }

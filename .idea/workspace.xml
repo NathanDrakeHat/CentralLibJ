@@ -22,19 +22,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="add ignore">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/BSTIterator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/KdTree.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algs4/KdTree.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algs4/PointSET.java" afterDir="false" />
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="add bst iterator, add algs4 answer">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AlgorithmsJava.iml" beforeDir="false" afterPath="$PROJECT_DIR$/AlgorithmsJava.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/IntvalSerchTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/IntvalSerchTree.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/OrderStatTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/OrderStatTree.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/RBNode.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/structures/OrderStatTreeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/structures/OrderStatTreeTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CentralUtils/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../CentralUtils/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/RBTreeTemplate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/RBTreeTemplate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/structures/IntvalSerchTreeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/structures/IntvalSerchTreeTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -464,21 +455,7 @@
       <workItem from="1623654077799" duration="598000" />
       <workItem from="1623655422172" duration="57041000" />
       <workItem from="1623810793813" duration="20320000" />
-      <workItem from="1623847673960" duration="12874000" />
-    </task>
-    <task id="LOCAL-00213" summary="remove redundant methods">
-      <created>1623500629460</created>
-      <option name="number" value="00213" />
-      <option name="presentableId" value="LOCAL-00213" />
-      <option name="project" value="LOCAL" />
-      <updated>1623500629460</updated>
-    </task>
-    <task id="LOCAL-00214" summary="add two sort">
-      <created>1623507397210</created>
-      <option name="number" value="00214" />
-      <option name="presentableId" value="LOCAL-00214" />
-      <option name="project" value="LOCAL" />
-      <updated>1623507397210</updated>
+      <workItem from="1623847673960" duration="13569000" />
     </task>
     <task id="LOCAL-00215" summary="add todo, add tests">
       <created>1623569247265</created>
@@ -809,7 +786,21 @@
       <option name="project" value="LOCAL" />
       <updated>1623907631176</updated>
     </task>
-    <option name="localTasksCounter" value="262" />
+    <task id="LOCAL-00262" summary="add bst iterator, add algs4 answer">
+      <created>1623912000954</created>
+      <option name="number" value="00262" />
+      <option name="presentableId" value="LOCAL-00262" />
+      <option name="project" value="LOCAL" />
+      <updated>1623912000954</updated>
+    </task>
+    <task id="LOCAL-00263" summary="add bst iterator, add algs4 answer">
+      <created>1623912006992</created>
+      <option name="number" value="00263" />
+      <option name="presentableId" value="LOCAL-00263" />
+      <option name="project" value="LOCAL" />
+      <updated>1623912006992</updated>
+    </task>
+    <option name="localTasksCounter" value="264" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -838,7 +829,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add quickSort3Way" />
     <MESSAGE value="move functions to inner" />
     <MESSAGE value="set OrderStatisticTree.java generic" />
     <MESSAGE value="save data" />
@@ -863,7 +853,8 @@
     <MESSAGE value="save" />
     <MESSAGE value="change test len" />
     <MESSAGE value="add ignore" />
-    <option name="LAST_COMMIT_MESSAGE" value="add ignore" />
+    <MESSAGE value="add bst iterator, add algs4 answer" />
+    <option name="LAST_COMMIT_MESSAGE" value="add bst iterator, add algs4 answer" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
