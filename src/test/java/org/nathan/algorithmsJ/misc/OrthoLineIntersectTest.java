@@ -77,4 +77,6 @@ public class OrthoLineIntersectTest{
             OrthoLineIntersect.intersects(linesData, l->new Tuple<>(l.first(),l.second()), Tuple::first, Tuple::second);
     assertEquals(intersectAnswer, res);
   }
+
+  // TODO random test
 }

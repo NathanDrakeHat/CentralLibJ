@@ -22,11 +22,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="format">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/IntvalSerchTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/IntvalSerchTree.java" afterDir="false" />
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="delete algs4">
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/misc/OrthoLineIntersect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/misc/OrthoLineIntersect.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/misc/OrthoLineIntersectTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/misc/OrthoLineIntersectTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/structures/IntvalSerchTreeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/structures/IntvalSerchTreeTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -458,28 +456,7 @@
       <workItem from="1623810793813" duration="20320000" />
       <workItem from="1623847673960" duration="13649000" />
       <workItem from="1623912801370" duration="6000" />
-      <workItem from="1623916313970" duration="2538000" />
-    </task>
-    <task id="LOCAL-00216" summary="move">
-      <created>1623569294439</created>
-      <option name="number" value="00216" />
-      <option name="presentableId" value="LOCAL-00216" />
-      <option name="project" value="LOCAL" />
-      <updated>1623569294439</updated>
-    </task>
-    <task id="LOCAL-00217" summary="add new function to OrderStatisticTree, remove RedBlackBST.java">
-      <created>1623570579329</created>
-      <option name="number" value="00217" />
-      <option name="presentableId" value="LOCAL-00217" />
-      <option name="project" value="LOCAL" />
-      <updated>1623570579329</updated>
-    </task>
-    <task id="LOCAL-00218" summary="move SimpleDate.java to inner">
-      <created>1623570723245</created>
-      <option name="number" value="00218" />
-      <option name="presentableId" value="LOCAL-00218" />
-      <option name="project" value="LOCAL" />
-      <updated>1623570723245</updated>
+      <workItem from="1623916313970" duration="10780000" />
     </task>
     <task id="LOCAL-00219" summary="add todo">
       <created>1623570823793</created>
@@ -803,7 +780,28 @@
       <option name="project" value="LOCAL" />
       <updated>1623912387429</updated>
     </task>
-    <option name="localTasksCounter" value="265" />
+    <task id="LOCAL-00265" summary="add intersects of IntvalSerchTree">
+      <created>1623918951912</created>
+      <option name="number" value="00265" />
+      <option name="presentableId" value="LOCAL-00265" />
+      <option name="project" value="LOCAL" />
+      <updated>1623918951912</updated>
+    </task>
+    <task id="LOCAL-00266" summary="delete algs4">
+      <created>1623926609466</created>
+      <option name="number" value="00266" />
+      <option name="presentableId" value="LOCAL-00266" />
+      <option name="project" value="LOCAL" />
+      <updated>1623926609466</updated>
+    </task>
+    <task id="LOCAL-00267" summary="delete algs4">
+      <created>1623926647371</created>
+      <option name="number" value="00267" />
+      <option name="presentableId" value="LOCAL-00267" />
+      <option name="project" value="LOCAL" />
+      <updated>1623926647371</updated>
+    </task>
+    <option name="localTasksCounter" value="268" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -832,8 +830,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="set OrderStatisticTree.java generic" />
-    <MESSAGE value="save data" />
     <MESSAGE value="pass test" />
     <MESSAGE value="set tuples inheritable class" />
     <MESSAGE value="add input check" />
@@ -857,7 +853,9 @@
     <MESSAGE value="add ignore" />
     <MESSAGE value="add bst iterator, add algs4 answer" />
     <MESSAGE value="format" />
-    <option name="LAST_COMMIT_MESSAGE" value="format" />
+    <MESSAGE value="add intersects of IntvalSerchTree" />
+    <MESSAGE value="delete algs4" />
+    <option name="LAST_COMMIT_MESSAGE" value="delete algs4" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

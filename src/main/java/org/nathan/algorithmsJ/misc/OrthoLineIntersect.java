@@ -21,12 +21,12 @@ public class OrthoLineIntersect{
     Map<P, L> pointsToLine = new HashMap<>();
     List<P> scanPoints = new ArrayList<>();
     Set<P> hPoints = new HashSet<>();
-    Map<P, P> otherEndPoint = new HashMap<>();
+    Map<P, P> otherLineEnd = new HashMap<>();
 
     for(var line : lines){
       var point_pair = toPoints.apply(line);
-      otherEndPoint.put(point_pair.first(), point_pair.second());
-      otherEndPoint.put(point_pair.second(), point_pair.first());
+      otherLineEnd.put(point_pair.first(), point_pair.second());
+      otherLineEnd.put(point_pair.second(), point_pair.first());
 
       var x1 = getX.applyAsDouble(point_pair.first());
       var x2 = getX.applyAsDouble(point_pair.second());
@@ -50,10 +50,11 @@ public class OrthoLineIntersect{
     Set<P> inTree = new HashSet<>();
     OrderStatTree<Double, L> HYToHL_tree = new OrderStatTree<>(Double::compareTo);
     Map<L, List<L>> res = new HashMap<>();
+
     var funcAddIntersect = new Object(){
       void apply(P v_p){
         var vl = pointsToLine.get(v_p);
-        var ap = otherEndPoint.get(v_p);
+        var ap = otherLineEnd.get(v_p);
         var y1 = getY.applyAsDouble(ap);
         var y2 = getY.applyAsDouble(v_p);
         var hls = HYToHL_tree.keyRangeSearch(Math.min(y1, y2), Math.max(y1, y2));
@@ -65,57 +66,34 @@ public class OrthoLineIntersect{
 
     var funcRmFromTree = new Object(){
       void apply(P h_p){
-        inTree.remove(otherEndPoint.get(h_p));
+        inTree.remove(otherLineEnd.get(h_p));
         HYToHL_tree.deleteKey(getY.applyAsDouble(h_p));
+      }
+    };
+
+    var funcAddToTree = new Object(){
+      void apply(P h_p){
+        inTree.add(h_p);
+        HYToHL_tree.insertKV(getY.applyAsDouble(h_p), pointsToLine.get(h_p));
       }
     };
 
     for(int i = 0; i < scanPoints.size(); i++){
       var p = scanPoints.get(i);
-
       if(hPoints.contains(p)){
-        if(inTree.contains(otherEndPoint.get(p))){
-          if(i + 1 < scanPoints.size() && getX.applyAsDouble(p) == getX.applyAsDouble(scanPoints.get(i+1))){
-            // lines with the same x
-            var ti = i + 1;
-            while(getX.applyAsDouble(p) == getX.applyAsDouble(scanPoints.get(ti)) && hPoints.contains(scanPoints.get(ti))){
-              ti++; // degeneration when lots of horizon lines end in the same x value
-            }
-            if(getX.applyAsDouble(p) == getX.applyAsDouble(scanPoints.get(ti))){
-              // exchange vertical point first encountered with current horizontal point
-              var op = p;
-              p = scanPoints.get(ti);
-              scanPoints.set(ti, op);
-              funcAddIntersect.apply(p);
-            }
-            else {
-              // no vertical point left
-              funcRmFromTree.apply(otherEndPoint.get(p));
-              var np = scanPoints.get(i+1);
-              do{
-                funcRmFromTree.apply(np);
-                np = scanPoints.get(++i);
-              }
-              while(getX.applyAsDouble(p) == getX.applyAsDouble(np) && hPoints.contains(np));
-              --i;
-            }
-          }
-          else{
-            funcRmFromTree.apply(otherEndPoint.get(p));
-          }
+        // horizontal point
+        if(inTree.contains(otherLineEnd.get(p))){
+          funcRmFromTree.apply(p);
         }
         else{
-          inTree.add(p);
-          HYToHL_tree.insertKV(getY.applyAsDouble(p), pointsToLine.get(p));
+          funcAddToTree.apply(p);
         }
       }
       else{
-        // TODO maybe bug
-        // check first
+        // vertical point
         funcAddIntersect.apply(p);
       }
     }
-
     return res;
   }
 }
