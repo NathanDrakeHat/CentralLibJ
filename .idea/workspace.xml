@@ -105,7 +105,7 @@
       <recent name="org.nathan.algorithmsJ.misc" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.IntvalSerchTreeTest.isISTreeTest">
+  <component name="RunManager" selected="JUnit.All in AlgorithmsJava">
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.nathan.Main" />
       <module name="AlgorithmsJava" />
@@ -214,9 +214,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.All in AlgorithmsJava" />
         <item itemvalue="JUnit.IntvalSerchTreeTest.isISTreeTest" />
         <item itemvalue="JUnit.OrderStatTreeTest.implementationTest" />
-        <item itemvalue="JUnit.All in AlgorithmsJava" />
         <item itemvalue="JUnit.OrderStatTreeTest" />
         <item itemvalue="JUnit.IntvalSerchTreeTest" />
       </list>

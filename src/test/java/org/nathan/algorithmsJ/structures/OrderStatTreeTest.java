@@ -109,7 +109,7 @@ class OrderStatTreeTest{
     for(int t = 0; t < 5; t++){
       OrderStatTree<Integer, Integer> tree;
       tree = new OrderStatTree<>(Comparator.comparingInt(o -> o));
-      int len = rand.nextInt(8,128);
+      int len = rand.nextInt(16,128);
       List<Integer> shuffle = ArrayUtils.shuffledSequence(0, len);
       for(int i = 0; i < len; i++){
         tree.insertKV(shuffle.get(i), shuffle.get(i));

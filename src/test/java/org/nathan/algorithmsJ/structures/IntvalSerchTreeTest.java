@@ -1,11 +1,8 @@
 package org.nathan.algorithmsJ.structures;
 
 import org.junit.jupiter.api.Test;
-import org.nathan.centralUtils.misc.BTreePrinter;
 import org.nathan.centralUtils.utils.ArrayUtils;
 
-import java.io.PrintStream;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.SplittableRandom;
@@ -56,7 +53,7 @@ class IntvalSerchTreeTest{
     var rand = new SplittableRandom();
     int len = 128;
     for(int i = 0; i < 5; i++){
-      List<Integer> shuffle = ArrayUtils.shuffledSequence(0, rand.nextInt(8, len));
+      List<Integer> shuffle = ArrayUtils.shuffledSequence(0, rand.nextInt(16, len));
       IntvalSerchTree<Integer> t = new IntvalSerchTree<>(Integer::compareTo);
       for(var item : shuffle){
         t.insertInterval(item, item + rand.nextInt(8, 64));
