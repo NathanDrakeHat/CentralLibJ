@@ -7,7 +7,7 @@ import org.nathan.centralUtils.tuples.Tuple;
 import java.util.*;
 import java.util.function.Function;
 import java.util.function.ToDoubleFunction;
-import java.util.stream.Collectors;
+
 
 /**
  * orthogonal line segment intersection
@@ -23,87 +23,127 @@ public class OrthoLineIntersect{
    * @param <P> Point type
    * @return intersection result
    */
-  public static @NotNull <L, P> Map<L, List<L>> intersects(
+  public static @NotNull <L, P> Map<L, Set<L>> intersects(
           @NotNull List<L> lines,
           @NotNull Function<L, Tuple<P, P>> toPoints,
           @NotNull ToDoubleFunction<P> getX,
           @NotNull ToDoubleFunction<P> getY){
-    Map<P, L> lineOfPoint = new HashMap<>();
-    List<P> scanPointList = new ArrayList<>();
-    Set<P> hPoints = new HashSet<>();
-    Map<P, P> otherLineEnd = new HashMap<>();
+    Map<Double, Set<L>> lineOfX = new HashMap<>();
+    List<Double> scanX = new ArrayList<>();
 
     for(var line : lines){
-      var point_pair = toPoints.apply(line);
-      otherLineEnd.put(point_pair.first(), point_pair.second());
-      otherLineEnd.put(point_pair.second(), point_pair.first());
+      var points_tuple = toPoints.apply(line);
+      var x1 = getX.applyAsDouble(points_tuple.first());
+      var x2 = getX.applyAsDouble(points_tuple.second());
+      var y1 = getY.applyAsDouble(points_tuple.first());
+      var y2 = getY.applyAsDouble(points_tuple.second());
+      if(x1 == x2 && y1 == y2){
+        throw new IllegalArgumentException("line cannot be a point.");
+      }
 
-      var x1 = getX.applyAsDouble(point_pair.first());
-      var x2 = getX.applyAsDouble(point_pair.second());
-
-      lineOfPoint.put(point_pair.first(), line);
-      scanPointList.add(point_pair.first());
+      if(lineOfX.containsKey(getX.applyAsDouble(points_tuple.first()))){
+        lineOfX.get(getX.applyAsDouble(points_tuple.first())).add(line);
+      }
+      else{
+        Set<L> set = new HashSet<>();
+        set.add(line);
+        lineOfX.put(getX.applyAsDouble(points_tuple.first()), set);
+      }
+      scanX.add(getX.applyAsDouble(points_tuple.first()));
 
       if(x1 != x2){
-        lineOfPoint.put(point_pair.second(), line);
-        scanPointList.add(point_pair.second());
+        if(lineOfX.containsKey(getX.applyAsDouble(points_tuple.second()))){
+          lineOfX.get(getX.applyAsDouble(points_tuple.second())).add(line);
+        }
+        else{
+          Set<L> set = new HashSet<>();
+          set.add(line);
+          lineOfX.put(getX.applyAsDouble(points_tuple.second()), set);
+        }
+        scanX.add(getX.applyAsDouble(points_tuple.second()));
 
-        hPoints.add(point_pair.first());
-        hPoints.add(point_pair.second());
-        if(getY.applyAsDouble(point_pair.first()) != getY.applyAsDouble(point_pair.second())){
+        if(y1 != y2){
           throw new IllegalArgumentException("lines are not orthogonal.");
         }
       }
     }
 
-    scanPointList.sort(Comparator.comparing(getX::applyAsDouble));
-    Set<P> inTree = new HashSet<>();
-    OrderStatTree<Double, L> HYToHL_tree = new OrderStatTree<>(Double::compareTo);
-    Map<L, List<L>> res = new HashMap<>();
+    scanX = scanX.stream().sorted().distinct().toList();
 
-    var funcAddIntersect = new Object(){
-      void apply(P v_p){
-        var vl = lineOfPoint.get(v_p);
-        var ap = otherLineEnd.get(v_p);
-        var y1 = getY.applyAsDouble(ap);
-        var y2 = getY.applyAsDouble(v_p);
-        var hls = HYToHL_tree.keyRangeSearch(Math.min(y1, y2), Math.max(y1, y2));
-        if(hls.size() > 0 && !res.containsKey(vl)){
-          res.put(vl, hls.stream().map(Tuple::second).collect(Collectors.toList()));
-        }
+    var funcIsVertical = new Object(){
+      boolean apply(L line){
+        var points_tuple = toPoints.apply(line);
+        var x1 = getX.applyAsDouble(points_tuple.first());
+        var x2 = getX.applyAsDouble(points_tuple.second());
+        return x1 == x2;
       }
     };
 
-    var funcRmFromTree = new Object(){
-      void apply(P h_p){
-        inTree.remove(otherLineEnd.get(h_p));
-        HYToHL_tree.deleteKey(getY.applyAsDouble(h_p));
+    var funcIsEnd = new Object(){
+      boolean apply(Double x, L line){
+        var points_tuple = toPoints.apply(line);
+        var x1 = getX.applyAsDouble(points_tuple.first());
+        var x2 = getX.applyAsDouble(points_tuple.second());
+        return x == Math.max(x1, x2);
       }
     };
+    Map<L, Set<L>> res = new HashMap<>();
+    Queue<L> h_rm_queue = new ArrayDeque<>();
+    Queue<L> v_queue = new ArrayDeque<>();
+    OrderStatTree<Double, Set<L>> HYToHL_tree = new OrderStatTree<>(Double::compareTo);
 
-    var funcAddToTree = new Object(){
-      void apply(P h_p){
-        inTree.add(h_p);
-        HYToHL_tree.insertKV(getY.applyAsDouble(h_p), lineOfPoint.get(h_p));
-      }
-    };
-
-    for(int i = 0; i < scanPointList.size(); i++){
-      var p = scanPointList.get(i);
-      if(hPoints.contains(p)){
-        // horizontal point
-        if(inTree.contains(otherLineEnd.get(p))){
-          funcRmFromTree.apply(p);
+    for(var x : scanX){
+      for(var line : lineOfX.get(x)){
+        if(funcIsVertical.apply(line)){
+          v_queue.add(line);
         }
         else{
-          funcAddToTree.apply(p);
+          if(funcIsEnd.apply(x, line)){
+            h_rm_queue.add(line);
+          }
+          else {
+            var yp = getY.applyAsDouble(toPoints.apply(line).first());
+            if(HYToHL_tree.containKey(yp)){
+              var l = HYToHL_tree.getValOfKey(yp);
+              l.add(line);
+            }
+            else {
+              Set<L> set = new HashSet<>();
+              set.add(line);
+              HYToHL_tree.insertKV(yp, set);
+            }
+          }
         }
       }
-      else{
-        // vertical point
-        funcAddIntersect.apply(p);
+
+      while(!v_queue.isEmpty()){
+        var vl = v_queue.remove();
+        var vly1 = getY.applyAsDouble(toPoints.apply(vl).first());
+        var vly2 = getY.applyAsDouble(toPoints.apply(vl).second());
+        var hls = HYToHL_tree.keyRangeSearch(Math.min(vly1, vly2), Math.max(vly1,vly2));
+        for(var t : hls){
+          if(res.containsKey(vl)){
+            res.get(vl).addAll(t.second());
+          }
+          else {
+            res.put(vl, new HashSet<>(t.second()));
+          }
+
+        }
+      }
+      while(!h_rm_queue.isEmpty()){
+        var hl = h_rm_queue.remove();
+        var y = getY.applyAsDouble(toPoints.apply(hl).first());
+        var set = HYToHL_tree.getValOfKey(y);
+        if(set != null && set.size() <= 1){
+          HYToHL_tree.deleteKey(y);
+        }
+        else {
+          set.remove(hl);
+        }
       }
     }
+
     return res;
   }
 }

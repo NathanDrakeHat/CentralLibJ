@@ -273,6 +273,13 @@ public class OrderStatTree<K, V> implements Iterable<Tuple<K, V>>{
     }
   }
 
+  public boolean containKey(@NotNull K key){
+    if(root == sentinel){
+      return false;
+    }
+    else return sentinel != template.getNodeOfKey(root, key);
+  }
+
   public V getValOfKey(@NotNull K key){
     if(root == sentinel){
       throw new NoSuchElementException();

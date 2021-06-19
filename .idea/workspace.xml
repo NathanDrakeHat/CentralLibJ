@@ -22,11 +22,12 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="save OrthoLineIntersect normal solve">
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="remove corner case test">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/misc/RectIntersect.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/misc/OrthoLineIntersect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/misc/OrthoLineIntersect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/OrderStatTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/OrderStatTree.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/misc/OrthoLineIntersectTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/misc/OrthoLineIntersectTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CentralUtils/src/main/java/org/nathan/centralUtils/tuples/Tuple.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CentralUtils/src/main/java/org/nathan/centralUtils/tuples/Tuple.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,7 +82,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.45428157" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.build" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -115,7 +116,7 @@
       <command value="mvn install:install-file -Dfile=algs4.jar -DgroupId=edu.princeton.cs -DartifactId=algs4 -Dversion=1.0 -Dpackaging=jar -DgeneratePom=true " />
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.All in AlgorithmsJava">
+  <component name="RunManager" selected="JUnit.OrthoLineIntersectTest.intersectsTest">
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.nathan.Main" />
       <module name="AlgorithmsJava" />
@@ -166,6 +167,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="OrthoLineIntersectTest.cornerCaseTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AlgorithmsJava" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.nathan.algorithmsJ.misc.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.nathan.algorithmsJ.misc" />
+      <option name="MAIN_CLASS_NAME" value="org.nathan.algorithmsJ.misc.OrthoLineIntersectTest" />
+      <option name="METHOD_NAME" value="cornerCaseTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="OrthoLineIntersectTest.intersectsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AlgorithmsJava" />
       <extension name="coverage">
@@ -177,22 +194,6 @@
       <option name="PACKAGE_NAME" value="org.nathan.algorithmsJ.misc" />
       <option name="MAIN_CLASS_NAME" value="org.nathan.algorithmsJ.misc.OrthoLineIntersectTest" />
       <option name="METHOD_NAME" value="intersectsTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="OrthoLineIntersectTest.randomIntersectTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="AlgorithmsJava" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.nathan.algorithmsJ.misc.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.nathan.algorithmsJ.misc" />
-      <option name="MAIN_CLASS_NAME" value="org.nathan.algorithmsJ.misc.OrthoLineIntersectTest" />
-      <option name="METHOD_NAME" value="randomIntersectTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -228,16 +229,16 @@
       <item itemvalue="Application.pushUtils" />
       <item itemvalue="Application.Main" />
       <item itemvalue="JUnit.All in AlgorithmsJava" />
-      <item itemvalue="Maven.AlgorithmsJava [install]" />
       <item itemvalue="JUnit.IntvalSerchTreeTest.intersectsTest" />
-      <item itemvalue="JUnit.OrthoLineIntersectTest.randomIntersectTest" />
       <item itemvalue="JUnit.OrthoLineIntersectTest.intersectsTest" />
+      <item itemvalue="JUnit.OrthoLineIntersectTest.cornerCaseTest" />
+      <item itemvalue="Maven.AlgorithmsJava [install]" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.All in AlgorithmsJava" />
         <item itemvalue="JUnit.OrthoLineIntersectTest.intersectsTest" />
-        <item itemvalue="JUnit.OrthoLineIntersectTest.randomIntersectTest" />
+        <item itemvalue="JUnit.OrthoLineIntersectTest.cornerCaseTest" />
+        <item itemvalue="JUnit.All in AlgorithmsJava" />
         <item itemvalue="JUnit.IntvalSerchTreeTest.intersectsTest" />
         <item itemvalue="Maven.AlgorithmsJava [install]" />
       </list>
@@ -440,21 +441,10 @@
       <workItem from="1623810793813" duration="20320000" />
       <workItem from="1623847673960" duration="13649000" />
       <workItem from="1623912801370" duration="6000" />
-      <workItem from="1623916313970" duration="14819000" />
-    </task>
-    <task id="LOCAL-00220" summary="delete Bag.java">
-      <created>1623570863013</created>
-      <option name="number" value="00220" />
-      <option name="presentableId" value="LOCAL-00220" />
-      <option name="project" value="LOCAL" />
-      <updated>1623570863013</updated>
-    </task>
-    <task id="LOCAL-00221" summary="rename package">
-      <created>1623570893232</created>
-      <option name="number" value="00221" />
-      <option name="presentableId" value="LOCAL-00221" />
-      <option name="project" value="LOCAL" />
-      <updated>1623570893232</updated>
+      <workItem from="1623916313970" duration="15740000" />
+      <workItem from="1623936969465" duration="51000" />
+      <workItem from="1623937036213" duration="6625000" />
+      <workItem from="1624091938174" duration="4128000" />
     </task>
     <task id="LOCAL-00222" summary="fix OrderStatisticTreeTest bug">
       <created>1623571508670</created>
@@ -785,7 +775,21 @@
       <option name="project" value="LOCAL" />
       <updated>1623932057460</updated>
     </task>
-    <option name="localTasksCounter" value="269" />
+    <task id="LOCAL-00269" summary="remove corner case test">
+      <created>1623936259318</created>
+      <option name="number" value="00269" />
+      <option name="presentableId" value="LOCAL-00269" />
+      <option name="project" value="LOCAL" />
+      <updated>1623936259318</updated>
+    </task>
+    <task id="LOCAL-00270" summary="remove corner case test">
+      <created>1623936745092</created>
+      <option name="number" value="00270" />
+      <option name="presentableId" value="LOCAL-00270" />
+      <option name="project" value="LOCAL" />
+      <updated>1623936745092</updated>
+    </task>
+    <option name="localTasksCounter" value="271" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -814,7 +818,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="set tuples inheritable class" />
     <MESSAGE value="add input check" />
     <MESSAGE value="change README.md" />
     <MESSAGE value="add comments" />
@@ -839,24 +842,7 @@
     <MESSAGE value="add intersects of IntvalSerchTree" />
     <MESSAGE value="delete algs4" />
     <MESSAGE value="save OrthoLineIntersect normal solve" />
-    <option name="LAST_COMMIT_MESSAGE" value="save OrthoLineIntersect normal solve" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/RBTreeTemplate.java</url>
-          <line>103</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-      </breakpoints>
-      <default-breakpoints>
-        <breakpoint enabled="true" type="java-exception">
-          <properties>
-            <option name="NOTIFY_CAUGHT" value="false" />
-          </properties>
-        </breakpoint>
-      </default-breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="remove corner case test" />
+    <option name="LAST_COMMIT_MESSAGE" value="remove corner case test" />
   </component>
 </project>

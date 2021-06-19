@@ -4,10 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.nathan.centralUtils.tuples.Tuple;
 import org.nathan.centralUtils.utils.ArrayUtils;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -32,6 +29,11 @@ public class OrthoLineIntersectTest{
     }
 
     @Override
+    public int hashCode(){
+      return super.hashCode();
+    }
+
+    @Override
     public String toString(){
       return super.toString();
     }
@@ -52,10 +54,15 @@ public class OrthoLineIntersectTest{
     public String toString(){
       return super.toString();
     }
+
+    @Override
+    public int hashCode(){
+      return super.hashCode();
+    }
   }
 
   List<Line> linesData = new ArrayList<>();
-  Map<Line, List<Line>> intersectAnswer = new HashMap<>();
+  Map<Line, Set<Line>> intersectAnswer = new HashMap<>();
 
   {
     List<Point> pointsData = new ArrayList<>();
@@ -98,9 +105,9 @@ public class OrthoLineIntersectTest{
     for(int i = 0; i < 24; i += 2){
       linesData.add(new Line(pointsData.get(i), pointsData.get(i + 1)));
     }
-    intersectAnswer.put(linesData.get(4), List.of(linesData.get(1)));
-    intersectAnswer.put(linesData.get(5), List.of(linesData.get(0)));
-    intersectAnswer.put(linesData.get(10), List.of(linesData.get(8), linesData.get(9)));
+    intersectAnswer.put(linesData.get(4), Set.of(linesData.get(1)));
+    intersectAnswer.put(linesData.get(5), Set.of(linesData.get(0)));
+    intersectAnswer.put(linesData.get(10), Set.of(linesData.get(8), linesData.get(9)));
   }
 
   @Test
@@ -109,6 +116,35 @@ public class OrthoLineIntersectTest{
             OrthoLineIntersect.intersects(linesData, l -> new Tuple<>(l.first(), l.second()), Tuple::first,
                     Tuple::second);
     assertEquals(intersectAnswer, res);
+  }
+
+
+  List<Line> cornerCaseData = new ArrayList<>();
+  Map<Line, Set<Line>> cornerCaseAnswer = new HashMap<>();
+  {
+    cornerCaseData.add(new Line(new Point(-1, 0), new Point(0,0)));
+    cornerCaseData.add(new Line(new Point(-1, 1), new Point(0,1)));
+    cornerCaseData.add(new Line(new Point(-1, 2), new Point(0,2)));
+    cornerCaseData.add(new Line(new Point(0, 0), new Point(0,5)));
+    cornerCaseData.add(new Line(new Point(0, 3), new Point(1,3)));
+    cornerCaseData.add(new Line(new Point(0, 4), new Point(1,4)));
+    cornerCaseData.add(new Line(new Point(0, 5), new Point(1,5)));
+
+    cornerCaseAnswer.put(new Line(new Point(0, 0), new Point(0,5)),
+            Set.of(new Line(new Point(-1, 0), new Point(0,0)),
+                    new Line(new Point(-1, 1), new Point(0,1)),
+                    new Line(new Point(-1, 2), new Point(0,2)),
+                    new Line(new Point(0, 3), new Point(1,3)),
+                    new Line(new Point(0, 4), new Point(1,4)),
+                    new Line(new Point(0, 5), new Point(1,5))));
+  }
+
+  @Test
+  void cornerCaseTest(){
+    var res =
+            OrthoLineIntersect.intersects(cornerCaseData, l -> new Tuple<>(l.first(), l.second()), Tuple::first,
+                    Tuple::second);
+    assertEquals(cornerCaseAnswer, res);
   }
 
 }
