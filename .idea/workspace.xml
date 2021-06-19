@@ -22,10 +22,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="corner case test pass">
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="pass msd sort test">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/misc/Sort.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/misc/Sort.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/misc/SortTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/misc/SortTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -434,14 +433,7 @@
       <workItem from="1623936969465" duration="51000" />
       <workItem from="1623937036213" duration="6625000" />
       <workItem from="1624091938174" duration="8859000" />
-      <workItem from="1624107390159" duration="2594000" />
-    </task>
-    <task id="LOCAL-00223" summary="rename FibonacciHeap.java">
-      <created>1623571559932</created>
-      <option name="number" value="00223" />
-      <option name="presentableId" value="LOCAL-00223" />
-      <option name="project" value="LOCAL" />
-      <updated>1623571559932</updated>
+      <workItem from="1624107390159" duration="3765000" />
     </task>
     <task id="LOCAL-00224" summary="add shell sort">
       <created>1623572385976</created>
@@ -779,7 +771,14 @@
       <option name="project" value="LOCAL" />
       <updated>1624099330520</updated>
     </task>
-    <option name="localTasksCounter" value="272" />
+    <task id="LOCAL-00272" summary="pass msd sort test">
+      <created>1624110142982</created>
+      <option name="number" value="00272" />
+      <option name="presentableId" value="LOCAL-00272" />
+      <option name="project" value="LOCAL" />
+      <updated>1624110142982</updated>
+    </task>
+    <option name="localTasksCounter" value="273" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -808,7 +807,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="change README.md" />
     <MESSAGE value="add comments" />
     <MESSAGE value="small fix" />
     <MESSAGE value="color enum to boolean" />
@@ -833,21 +831,7 @@
     <MESSAGE value="save OrthoLineIntersect normal solve" />
     <MESSAGE value="remove corner case test" />
     <MESSAGE value="corner case test pass" />
-    <option name="LAST_COMMIT_MESSAGE" value="corner case test pass" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <condition expression="s == null" language="JAVA" />
-          <url>file://$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/misc/Sort.java</url>
-          <line>395</line>
-          <properties>
-            <option name="lambda-ordinal" value="0" />
-          </properties>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="pass msd sort test" />
+    <option name="LAST_COMMIT_MESSAGE" value="pass msd sort test" />
   </component>
 </project>

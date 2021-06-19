@@ -12,6 +12,12 @@ public final class Sort{
     array[i] = array[j];
     array[j] = t;
   }
+  private static <T> void exchange(T[] array, int i, int j){
+    var t = array[i];
+    array[i] = array[j];
+    array[j] = t;
+  }
+
 
   public static void selectionSort(double[] array){
     for(int i = 0; i < array.length; i++){
@@ -409,9 +415,7 @@ public final class Sort{
           for (int j = i;
                j > lo && strings[j].substring(d).compareTo(strings[j-1].substring(d)) < 0;
                j--){
-            var t = strings[j];
-            strings[j] = strings[j-1];
-            strings[j-1] = t;
+            exchange(strings, j, j-1);
           }
         }
       }
@@ -444,9 +448,26 @@ public final class Sort{
     funcSort.apply(0, strings.length -1, 0);
   }
 
-  // TODO string quicksort
   public static void string3WayQuicksort(String[] strings){
-
+    var funcSort = new Object(){
+      void apply(int lo, int hi, int d){
+        if (hi <= lo) return;
+        int lt = lo, gt = hi;
+        int v = d < strings[lo].length() ? strings[lo].charAt(d) : -1;
+        int i = lo + 1;
+        while (i <= gt)
+        {
+          int t = d < strings[i].length() ? strings[i].charAt(d) : -1;
+          if (t < v) exchange(strings, lt++, i++);
+          else if (t > v) exchange(strings, i, gt--);
+          else i++;
+        }
+        apply(lo, lt-1, d);
+        if (v >= 0) apply(lt, gt, d+1);
+        apply(gt+1, hi, d);
+      }
+    };
+    funcSort.apply(0, strings.length - 1, 0);
   }
 
   static final class SimpleDate{
