@@ -22,12 +22,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="remove corner case test">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/misc/RectIntersect.java" afterDir="false" />
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="corner case test pass">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/misc/OrthoLineIntersect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/misc/OrthoLineIntersect.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/OrderStatTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/OrderStatTree.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/misc/OrthoLineIntersectTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/misc/OrthoLineIntersectTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/misc/Sort.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/misc/Sort.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/misc/SortTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/misc/SortTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +80,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.45428157" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="profiler.jvm" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -116,7 +114,7 @@
       <command value="mvn install:install-file -Dfile=algs4.jar -DgroupId=edu.princeton.cs -DartifactId=algs4 -Dversion=1.0 -Dpackaging=jar -DgeneratePom=true " />
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.OrthoLineIntersectTest.intersectsTest">
+  <component name="RunManager" selected="JUnit.SortTest.MSDTest">
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.nathan.Main" />
       <module name="AlgorithmsJava" />
@@ -147,22 +145,6 @@
       <option name="MAIN_CLASS_NAME" value="" />
       <option name="METHOD_NAME" value="" />
       <option name="TEST_OBJECT" value="package" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="IntvalSerchTreeTest.intersectsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="AlgorithmsJava" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.nathan.algorithmsJ.structures.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.nathan.algorithmsJ.structures" />
-      <option name="MAIN_CLASS_NAME" value="org.nathan.algorithmsJ.structures.IntvalSerchTreeTest" />
-      <option name="METHOD_NAME" value="intersectsTest" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -199,48 +181,55 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AlgorithmsJava [install]" type="MavenRunConfiguration" factoryName="Maven" temporary="true">
-      <MavenSettings>
-        <option name="myGeneralSettings" />
-        <option name="myRunnerSettings" />
-        <option name="myRunnerParameters">
-          <MavenRunnerParameters>
-            <option name="profiles">
-              <set />
-            </option>
-            <option name="goals">
-              <list>
-                <option value="install" />
-              </list>
-            </option>
-            <option name="pomFileName" value="pom.xml" />
-            <option name="profilesMap">
-              <map />
-            </option>
-            <option name="resolveToWorkspace" value="false" />
-            <option name="workingDirPath" value="$PROJECT_DIR$" />
-          </MavenRunnerParameters>
-        </option>
-      </MavenSettings>
-      <method v="2" />
+    <configuration name="SortTest.LSDTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AlgorithmsJava" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.nathan.algorithmsJ.misc.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.nathan.algorithmsJ.misc" />
+      <option name="MAIN_CLASS_NAME" value="org.nathan.algorithmsJ.misc.SortTest" />
+      <option name="METHOD_NAME" value="LSDTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SortTest.MSDTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AlgorithmsJava" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.nathan.algorithmsJ.misc.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.nathan.algorithmsJ.misc" />
+      <option name="MAIN_CLASS_NAME" value="org.nathan.algorithmsJ.misc.SortTest" />
+      <option name="METHOD_NAME" value="MSDTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <list>
       <item itemvalue="Application.pushThis" />
       <item itemvalue="Application.pushUtils" />
       <item itemvalue="Application.Main" />
       <item itemvalue="JUnit.All in AlgorithmsJava" />
-      <item itemvalue="JUnit.IntvalSerchTreeTest.intersectsTest" />
       <item itemvalue="JUnit.OrthoLineIntersectTest.intersectsTest" />
       <item itemvalue="JUnit.OrthoLineIntersectTest.cornerCaseTest" />
-      <item itemvalue="Maven.AlgorithmsJava [install]" />
+      <item itemvalue="JUnit.SortTest.MSDTest" />
+      <item itemvalue="JUnit.SortTest.LSDTest" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.SortTest.MSDTest" />
+        <item itemvalue="JUnit.SortTest.LSDTest" />
+        <item itemvalue="JUnit.All in AlgorithmsJava" />
         <item itemvalue="JUnit.OrthoLineIntersectTest.intersectsTest" />
         <item itemvalue="JUnit.OrthoLineIntersectTest.cornerCaseTest" />
-        <item itemvalue="JUnit.All in AlgorithmsJava" />
-        <item itemvalue="JUnit.IntvalSerchTreeTest.intersectsTest" />
-        <item itemvalue="Maven.AlgorithmsJava [install]" />
       </list>
     </recent_temporary>
   </component>
@@ -444,14 +433,8 @@
       <workItem from="1623916313970" duration="15740000" />
       <workItem from="1623936969465" duration="51000" />
       <workItem from="1623937036213" duration="6625000" />
-      <workItem from="1624091938174" duration="4128000" />
-    </task>
-    <task id="LOCAL-00222" summary="fix OrderStatisticTreeTest bug">
-      <created>1623571508670</created>
-      <option name="number" value="00222" />
-      <option name="presentableId" value="LOCAL-00222" />
-      <option name="project" value="LOCAL" />
-      <updated>1623571508670</updated>
+      <workItem from="1624091938174" duration="8859000" />
+      <workItem from="1624107390159" duration="2594000" />
     </task>
     <task id="LOCAL-00223" summary="rename FibonacciHeap.java">
       <created>1623571559932</created>
@@ -789,7 +772,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623936745092</updated>
     </task>
-    <option name="localTasksCounter" value="271" />
+    <task id="LOCAL-00271" summary="corner case test pass">
+      <created>1624099330520</created>
+      <option name="number" value="00271" />
+      <option name="presentableId" value="LOCAL-00271" />
+      <option name="project" value="LOCAL" />
+      <updated>1624099330520</updated>
+    </task>
+    <option name="localTasksCounter" value="272" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -818,7 +808,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add input check" />
     <MESSAGE value="change README.md" />
     <MESSAGE value="add comments" />
     <MESSAGE value="small fix" />
@@ -843,6 +832,22 @@
     <MESSAGE value="delete algs4" />
     <MESSAGE value="save OrthoLineIntersect normal solve" />
     <MESSAGE value="remove corner case test" />
-    <option name="LAST_COMMIT_MESSAGE" value="remove corner case test" />
+    <MESSAGE value="corner case test pass" />
+    <option name="LAST_COMMIT_MESSAGE" value="corner case test pass" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <condition expression="s == null" language="JAVA" />
+          <url>file://$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/misc/Sort.java</url>
+          <line>395</line>
+          <properties>
+            <option name="lambda-ordinal" value="0" />
+          </properties>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

@@ -315,22 +315,22 @@ public final class Sort{
    *
    * @param <E> element
    */
-  public static class KeyIndexedCountingSorter<E>{
-    private final int[] count;
+  static class KeyIndexedCountingSorter<E>{
+    final int[] count;
     private boolean clear = false;
     public final int RADIX;
 
     public KeyIndexedCountingSorter(){
-      count = new int[256 + 1];
+      count = new int[256 + 2];
       RADIX = 256;
     }
 
     public KeyIndexedCountingSorter(int radix){
-      count = new int[radix + 1];
+      count = new int[radix + 2];
       RADIX = radix;
     }
 
-    public void sort(List<E> array, ToIntFunction<E> toKey){
+    public void sort(List<E> array, int lo, int hi, ToIntFunction<E> toKey){
       if(clear){
         Arrays.fill(count, 0);
       }
@@ -339,28 +339,39 @@ public final class Sort{
         aux.add(null);
       }
 
-      for(var item : array){
-        var a = toKey.applyAsInt(item);
+      for(int i = lo; i <= hi; i++){
+        var a = toKey.applyAsInt(array.get(i));
         if(a >= RADIX){
           throw new IllegalArgumentException("key >= radix");
         }
-        count[a + 1]++;
+        count[a + 2]++;
       }
 
-      for(int i = 0; i < RADIX; i++){
-        count[i + 1] += count[i];
+      for(int r = 0; r < RADIX+1; r++){
+        count[r + 1] += count[r];
       }
 
-      for(var item : array){
-        var a = toKey.applyAsInt(item);
+      for(int i = lo; i <= hi; i++){
+        var a = toKey.applyAsInt(array.get(i));
         if(a >= RADIX){
           throw new IllegalArgumentException("key >= radix");
         }
-        aux.set(count[a]++, item);
+        aux.set(count[a+1]++, array.get(i));
       }
-      array.clear();
-      array.addAll(aux);
+      for(int i = lo; i <= hi; i++){
+        array.set(i, aux.get(i - lo));
+      }
+
       clear = true;
+    }
+
+    /**
+     *
+     * @param array data array
+     * @param toKey key of data (-1 if at end)
+     */
+    public void sort(List<E> array, ToIntFunction<E> toKey){
+      sort(array, 0, array.size() -1 ,toKey);
     }
   }
 
@@ -374,7 +385,7 @@ public final class Sort{
     }
 
     var len = strings[0].length();
-    if(!Arrays.stream(strings).parallel().allMatch(s -> s.length() == len)){
+    if(Arrays.stream(strings).parallel().anyMatch(s -> s.length() != len)){
       throw new IllegalArgumentException("strings do not have the same length.");
     }
 
@@ -387,9 +398,50 @@ public final class Sort{
     System.arraycopy(l.toArray(new String[0]), 0, strings, 0, strings.length);
   }
 
-  // TODO msd radix sort
   public static void MSDRadixSort(String[] strings){
+    if(strings.length == 0){
+      return;
+    }
 
+    var funcSmallSort = new Object(){
+      void apply(int lo, int hi, int d){
+        for (int i = lo; i <= hi; i++){
+          for (int j = i;
+               j > lo && strings[j].substring(d).compareTo(strings[j-1].substring(d)) < 0;
+               j--){
+            var t = strings[j];
+            strings[j] = strings[j-1];
+            strings[j-1] = t;
+          }
+        }
+      }
+    };
+
+    var funcSort = new Object(){
+      void apply(int lo, int hi, int d){
+        if(hi <= lo) return;
+        if(hi - lo == 2){
+          funcSmallSort.apply(lo, hi, d);
+        }
+        else {
+          KeyIndexedCountingSorter<String> sorter = new KeyIndexedCountingSorter<>();
+          List<String> l = new ArrayList<>(Arrays.asList(strings));
+          sorter.sort(l, lo, hi, s->{
+            if(d < s.length()){
+              return s.charAt(d);
+            }
+            else return -1;
+          });
+          for(int i = 0; i < strings.length; i++){
+            strings[i] = l.get(i);
+          }
+          for(int r = 0; r < sorter.RADIX; r++){
+            apply(lo + sorter.count[r], lo + sorter.count[r+1]-1, d+1);
+          }
+        }
+      }
+    };
+    funcSort.apply(0, strings.length -1, 0);
   }
 
   // TODO string quicksort

@@ -334,4 +334,13 @@ class SortTest{
       assertEquals(LSDAnswer[i], LSDData[i]);
     }
   }
+
+  String[] MSDData = "she,sells,seashells,by,the,sea,shore,the,shells,she,sells,are,surely,seashells".split(",");
+  String[] MSDAnswer = "are,by,sea,seashells,seashells,sells,sells,she,she,shells,shore,surely,the,the".split(",");
+
+  @Test
+  void MSDTest(){
+    Sort.MSDRadixSort(MSDData);
+    assertEquals(MSDAnswer, MSDAnswer);
+  }
 }
