@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="GitProxy:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
@@ -22,10 +27,13 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="add func">
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="change func signature">
+      <change afterPath="$PROJECT_DIR$/../CentralUtils/src/main/java/org/nathan/centralUtils/utils/NativeUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/IntroductionToAlgorithm_jar.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/misc/Sort.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/misc/Sort.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/misc/SortTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/misc/SortTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AlgorithmsJava.iml" beforeDir="false" afterPath="$PROJECT_DIR$/AlgorithmsJava.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CentralUtils/src/main/java/org/nathan/centralUtils/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CentralUtils/src/main/java/org/nathan/centralUtils/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CentralUtils/src/main/java/org/nathan/centralUtils/MainUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CentralUtils/src/main/java/org/nathan/centralUtils/MainUtils.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +53,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../CentralUtils" />
     <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="GitSEFilterConfiguration">
@@ -77,10 +85,10 @@
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.45428157" />
-    <property name="settings.editor.selected.configurable" value="profiler.jvm" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -114,7 +122,7 @@
       <command value="mvn install:install-file -Dfile=algs4.jar -DgroupId=edu.princeton.cs -DartifactId=algs4 -Dversion=1.0 -Dpackaging=jar -DgeneratePom=true " />
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.SortTest.MSDTest">
+  <component name="RunManager" selected="Application.pushUtils">
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.nathan.Main" />
       <module name="AlgorithmsJava" />
@@ -125,7 +133,7 @@
     <configuration name="pushThis" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.nathan.Main" />
       <module name="AlgorithmsJava" />
-      <option name="PROGRAM_PARAMETERS" value="7890" />
+      <option name="PROGRAM_PARAMETERS" value="&quot;git push&quot;" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -133,7 +141,7 @@
     <configuration name="pushUtils" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.nathan.centralUtils.Main" />
       <module name="CentralUtils" />
-      <option name="PROGRAM_PARAMETERS" value="7890" />
+      <option name="PROGRAM_PARAMETERS" value="&quot;git push&quot;" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../CentralUtils" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -434,14 +442,11 @@
       <workItem from="1623936969465" duration="51000" />
       <workItem from="1623937036213" duration="6625000" />
       <workItem from="1624091938174" duration="8859000" />
-      <workItem from="1624107390159" duration="4401000" />
-    </task>
-    <task id="LOCAL-00225" summary="add knuth shuffle">
-      <created>1623572824152</created>
-      <option name="number" value="00225" />
-      <option name="presentableId" value="LOCAL-00225" />
-      <option name="project" value="LOCAL" />
-      <updated>1623572824152</updated>
+      <workItem from="1624107390159" duration="5059000" />
+      <workItem from="1624189471438" duration="379000" />
+      <workItem from="1624189868437" duration="1777000" />
+      <workItem from="1624191742790" duration="152000" />
+      <workItem from="1624191912896" duration="122000" />
     </task>
     <task id="LOCAL-00226" summary="add ConvexHull.java Graham Scan">
       <created>1623590095860</created>
@@ -779,7 +784,14 @@
       <option name="project" value="LOCAL" />
       <updated>1624112208716</updated>
     </task>
-    <option name="localTasksCounter" value="274" />
+    <task id="LOCAL-00274" summary="change func signature">
+      <created>1624184598491</created>
+      <option name="number" value="00274" />
+      <option name="presentableId" value="LOCAL-00274" />
+      <option name="project" value="LOCAL" />
+      <updated>1624184598491</updated>
+    </task>
+    <option name="localTasksCounter" value="275" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -808,7 +820,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="small fix" />
     <MESSAGE value="color enum to boolean" />
     <MESSAGE value="fix RedBlackTree" />
     <MESSAGE value="delete size bug" />
@@ -833,6 +844,7 @@
     <MESSAGE value="corner case test pass" />
     <MESSAGE value="pass msd sort test" />
     <MESSAGE value="add func" />
-    <option name="LAST_COMMIT_MESSAGE" value="add func" />
+    <MESSAGE value="change func signature" />
+    <option name="LAST_COMMIT_MESSAGE" value="change func signature" />
   </component>
 </project>
