@@ -1,6 +1,8 @@
 package org.nathan;
 
 import org.nathan.centralUtils.utils.IOUtils;
+import org.nathan.centralUtils.utils.NativeUtils;
+
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -9,10 +11,7 @@ import java.util.concurrent.ConcurrentHashMap;
 class Main{
   static class GitPush{
     public static void gitPush(String[] args){
-      if(args.length == 1){
-        var i = Integer.valueOf(args[0]);
-        IOUtils.system(String.format("git_proxy \"git push\" %s", args[0]));
-      }
+      NativeUtils.GitProxy(args);
     }
   }
 
