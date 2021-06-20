@@ -27,13 +27,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="change func signature">
-      <change afterPath="$PROJECT_DIR$/../CentralUtils/src/main/java/org/nathan/centralUtils/utils/NativeUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/IntroductionToAlgorithm_jar.xml" beforeDir="false" />
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="save">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AlgorithmsJava.iml" beforeDir="false" afterPath="$PROJECT_DIR$/AlgorithmsJava.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CentralUtils/src/main/java/org/nathan/centralUtils/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CentralUtils/src/main/java/org/nathan/centralUtils/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CentralUtils/src/main/java/org/nathan/centralUtils/MainUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CentralUtils/src/main/java/org/nathan/centralUtils/MainUtils.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +48,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../CentralUtils" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="GitSEFilterConfiguration">
@@ -122,7 +117,7 @@
       <command value="mvn install:install-file -Dfile=algs4.jar -DgroupId=edu.princeton.cs -DartifactId=algs4 -Dversion=1.0 -Dpackaging=jar -DgeneratePom=true " />
     </option>
   </component>
-  <component name="RunManager" selected="Application.pushUtils">
+  <component name="RunManager" selected="JUnit.SortTest.stringQuickSort3WayTest">
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.nathan.Main" />
       <module name="AlgorithmsJava" />
@@ -133,7 +128,7 @@
     <configuration name="pushThis" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.nathan.Main" />
       <module name="AlgorithmsJava" />
-      <option name="PROGRAM_PARAMETERS" value="&quot;git push&quot;" />
+      <option name="PROGRAM_PARAMETERS" value="7890" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -153,22 +148,6 @@
       <option name="MAIN_CLASS_NAME" value="" />
       <option name="METHOD_NAME" value="" />
       <option name="TEST_OBJECT" value="package" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="OrthoLineIntersectTest.cornerCaseTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="AlgorithmsJava" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.nathan.algorithmsJ.misc.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.nathan.algorithmsJ.misc" />
-      <option name="MAIN_CLASS_NAME" value="org.nathan.algorithmsJ.misc.OrthoLineIntersectTest" />
-      <option name="METHOD_NAME" value="cornerCaseTest" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -221,23 +200,39 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="SortTest.stringQuickSort3WayTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AlgorithmsJava" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.nathan.algorithmsJ.misc.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.nathan.algorithmsJ.misc" />
+      <option name="MAIN_CLASS_NAME" value="org.nathan.algorithmsJ.misc.SortTest" />
+      <option name="METHOD_NAME" value="stringQuickSort3WayTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="Application.pushThis" />
       <item itemvalue="Application.pushUtils" />
       <item itemvalue="Application.Main" />
       <item itemvalue="JUnit.All in AlgorithmsJava" />
       <item itemvalue="JUnit.OrthoLineIntersectTest.intersectsTest" />
-      <item itemvalue="JUnit.OrthoLineIntersectTest.cornerCaseTest" />
       <item itemvalue="JUnit.SortTest.MSDTest" />
       <item itemvalue="JUnit.SortTest.LSDTest" />
+      <item itemvalue="JUnit.SortTest.stringQuickSort3WayTest" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.SortTest.stringQuickSort3WayTest" />
         <item itemvalue="JUnit.SortTest.MSDTest" />
         <item itemvalue="JUnit.SortTest.LSDTest" />
         <item itemvalue="JUnit.All in AlgorithmsJava" />
         <item itemvalue="JUnit.OrthoLineIntersectTest.intersectsTest" />
-        <item itemvalue="JUnit.OrthoLineIntersectTest.cornerCaseTest" />
       </list>
     </recent_temporary>
   </component>
@@ -446,14 +441,7 @@
       <workItem from="1624189471438" duration="379000" />
       <workItem from="1624189868437" duration="1777000" />
       <workItem from="1624191742790" duration="152000" />
-      <workItem from="1624191912896" duration="122000" />
-    </task>
-    <task id="LOCAL-00226" summary="add ConvexHull.java Graham Scan">
-      <created>1623590095860</created>
-      <option name="number" value="00226" />
-      <option name="presentableId" value="LOCAL-00226" />
-      <option name="project" value="LOCAL" />
-      <updated>1623590095860</updated>
+      <workItem from="1624191912896" duration="551000" />
     </task>
     <task id="LOCAL-00227" summary="move some methods outer">
       <created>1623590540003</created>
@@ -791,7 +779,14 @@
       <option name="project" value="LOCAL" />
       <updated>1624184598491</updated>
     </task>
-    <option name="localTasksCounter" value="275" />
+    <task id="LOCAL-00275" summary="save">
+      <created>1624192068982</created>
+      <option name="number" value="00275" />
+      <option name="presentableId" value="LOCAL-00275" />
+      <option name="project" value="LOCAL" />
+      <updated>1624192068982</updated>
+    </task>
+    <option name="localTasksCounter" value="276" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -832,7 +827,6 @@
     <MESSAGE value="doc" />
     <MESSAGE value="rename" />
     <MESSAGE value="fix bug!" />
-    <MESSAGE value="save" />
     <MESSAGE value="change test len" />
     <MESSAGE value="add ignore" />
     <MESSAGE value="add bst iterator, add algs4 answer" />
@@ -845,6 +839,7 @@
     <MESSAGE value="pass msd sort test" />
     <MESSAGE value="add func" />
     <MESSAGE value="change func signature" />
-    <option name="LAST_COMMIT_MESSAGE" value="change func signature" />
+    <MESSAGE value="save" />
+    <option name="LAST_COMMIT_MESSAGE" value="save" />
   </component>
 </project>

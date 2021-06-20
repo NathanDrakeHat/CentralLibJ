@@ -342,4 +342,19 @@ class SortTest{
   }
 
   // TODO add string 3way quicksort test
+  List<String> q3Data1 = new ArrayList<>(Arrays.stream("she,sells,seashells,by,the,sea,shore,the,shells,she,sells,are,surely,seashells".split(",")).toList());
+  List<String> q3Answer1 = Arrays.stream("are,by,sea,seashells,seashells,sells,sells,she,she,shells,shore,surely,the,the".split(",")).toList();
+  List<String> q3Data2 = new ArrayList<>(Arrays.stream("dab,add,cab,fad,fee,bad,dad,bee,fed,bed,ebb,ace".split(",")).toList());
+  List<String> q3Answer2 = Arrays.stream("ace,add,bad,bed,bee,cab,dab,dad,ebb,fad,fed,fee".split(",")).toList();
+
+
+  @Test
+  void stringQuickSort3WayTest(){
+    Sort.string3WayQuicksort(q3Data1);
+    assertEquals(q3Answer1, q3Data1);
+
+    Sort.string3WayQuicksort(q3Data2);
+    assertEquals(q3Answer2, q3Data2);
+  }
+
 }
