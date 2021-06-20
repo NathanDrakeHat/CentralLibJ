@@ -2,10 +2,7 @@ package org.nathan.algorithmsJ.misc;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 
@@ -323,20 +320,20 @@ class SortTest{
     assertEquals(nameSortAnswer, l);
   }
 
-  String[] LSDData = "dab,add,cab,fad,fee,bad,dad,bee,fed,bed,ebb,ace".split(",");
-  String[] LSDAnswer = "ace,add,bad,bed,bee,cab,dab,dad,ebb,fad,fed,fee".split(",");
+  List<String> LSDData = new ArrayList<>(Arrays.stream("dab,add,cab,fad,fee,bad,dad,bee,fed,bed,ebb,ace".split(",")).toList());
+  List<String> LSDAnswer = Arrays.stream("ace,add,bad,bed,bee,cab,dab,dad,ebb,fad,fed,fee".split(",")).toList();
 
   @Test
   void LSDTest(){
     Sort.LSDRadixSort(LSDData);
-    assertEquals(LSDAnswer.length, LSDData.length);
-    for(int i = 0; i < LSDData.length; i++){
-      assertEquals(LSDAnswer[i], LSDData[i]);
+    assertEquals(LSDAnswer.size(), LSDData.size());
+    for(int i = 0; i < LSDData.size(); i++){
+      assertEquals(LSDAnswer.get(i), LSDData.get(i));
     }
   }
 
-  String[] MSDData = "she,sells,seashells,by,the,sea,shore,the,shells,she,sells,are,surely,seashells".split(",");
-  String[] MSDAnswer = "are,by,sea,seashells,seashells,sells,sells,she,she,shells,shore,surely,the,the".split(",");
+  List<String> MSDData = new ArrayList<>(Arrays.stream("she,sells,seashells,by,the,sea,shore,the,shells,she,sells,are,surely,seashells".split(",")).toList());
+  List<String> MSDAnswer = Arrays.stream("are,by,sea,seashells,seashells,sells,sells,she,she,shells,shore,surely,the,the".split(",")).toList();
 
   @Test
   void MSDTest(){

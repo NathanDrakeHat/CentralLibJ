@@ -12,10 +12,10 @@ public final class Sort{
     array[i] = array[j];
     array[j] = t;
   }
-  private static <T> void exchange(T[] array, int i, int j){
-    var t = array[i];
-    array[i] = array[j];
-    array[j] = t;
+  private static <T> void exchange(List<T> array, int i, int j){
+    var t = array.get(i);
+    array.set(i, array.get(j));
+    array.set(j,t);
   }
 
 
@@ -385,27 +385,24 @@ public final class Sort{
    * least significant digit radix sort
    * @param strings strings
    */
-  public static void LSDRadixSort(String[] strings){
-    if(strings.length == 0){
+  public static void LSDRadixSort(List<String> strings){
+    if(strings.size() == 0){
       return;
     }
 
-    var len = strings[0].length();
-    if(Arrays.stream(strings).parallel().anyMatch(s -> s.length() != len)){
+    var len = strings.get(0).length();
+    if(strings.stream().parallel().anyMatch(s -> s.length() != len)){
       throw new IllegalArgumentException("strings do not have the same length.");
     }
-
-    List<String> l = Arrays.stream(strings).collect(Collectors.toList());
     var sorter = new KeyIndexedCountingSorter<String>();
     for(int i = len - 1; i >= 0; i--){
       int finalI = i;
-      sorter.sort(l, s -> s.charAt(finalI));
+      sorter.sort(strings, s -> s.charAt(finalI));
     }
-    System.arraycopy(l.toArray(new String[0]), 0, strings, 0, strings.length);
   }
 
-  public static void MSDRadixSort(String[] strings){
-    if(strings.length == 0){
+  public static void MSDRadixSort(List<String> strings){
+    if(strings.size() == 0){
       return;
     }
 
@@ -413,7 +410,7 @@ public final class Sort{
       void apply(int lo, int hi, int d){
         for (int i = lo; i <= hi; i++){
           for (int j = i;
-               j > lo && strings[j].substring(d).compareTo(strings[j-1].substring(d)) < 0;
+               j > lo && strings.get(j).substring(d).compareTo(strings.get(j-1).substring(d)) < 0;
                j--){
             exchange(strings, j, j-1);
           }
@@ -429,35 +426,31 @@ public final class Sort{
         }
         else {
           KeyIndexedCountingSorter<String> sorter = new KeyIndexedCountingSorter<>();
-          List<String> l = new ArrayList<>(Arrays.asList(strings));
-          sorter.sort(l, lo, hi, s->{
+          sorter.sort(strings, lo, hi, s->{
             if(d < s.length()){
               return s.charAt(d);
             }
             else return -1;
           });
-          for(int i = 0; i < strings.length; i++){
-            strings[i] = l.get(i);
-          }
           for(int r = 0; r < sorter.RADIX; r++){
             apply(lo + sorter.count[r], lo + sorter.count[r+1]-1, d+1);
           }
         }
       }
     };
-    funcSort.apply(0, strings.length -1, 0);
+    funcSort.apply(0, strings.size() -1, 0);
   }
 
-  public static void string3WayQuicksort(String[] strings){
+  public static void string3WayQuicksort(List<String> strings){
     var funcSort = new Object(){
       void apply(int lo, int hi, int d){
         if (hi <= lo) return;
         int lt = lo, gt = hi;
-        int v = d < strings[lo].length() ? strings[lo].charAt(d) : -1;
+        int v = d < strings.get(lo).length() ? strings.get(lo).charAt(d) : -1;
         int i = lo + 1;
         while (i <= gt)
         {
-          int t = d < strings[i].length() ? strings[i].charAt(d) : -1;
+          int t = d < strings.get(i).length() ? strings.get(i).charAt(d) : -1;
           if (t < v) exchange(strings, lt++, i++);
           else if (t > v) exchange(strings, i, gt--);
           else i++;
@@ -467,7 +460,7 @@ public final class Sort{
         apply(gt+1, hi, d);
       }
     };
-    funcSort.apply(0, strings.length - 1, 0);
+    funcSort.apply(0, strings.size() - 1, 0);
   }
 
   static final class SimpleDate{

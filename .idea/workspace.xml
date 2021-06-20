@@ -22,9 +22,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="pass msd sort test">
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="add func">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/misc/Sort.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/misc/Sort.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/misc/SortTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algorithmsJ/misc/SortTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -433,14 +434,7 @@
       <workItem from="1623936969465" duration="51000" />
       <workItem from="1623937036213" duration="6625000" />
       <workItem from="1624091938174" duration="8859000" />
-      <workItem from="1624107390159" duration="3765000" />
-    </task>
-    <task id="LOCAL-00224" summary="add shell sort">
-      <created>1623572385976</created>
-      <option name="number" value="00224" />
-      <option name="presentableId" value="LOCAL-00224" />
-      <option name="project" value="LOCAL" />
-      <updated>1623572385976</updated>
+      <workItem from="1624107390159" duration="4401000" />
     </task>
     <task id="LOCAL-00225" summary="add knuth shuffle">
       <created>1623572824152</created>
@@ -778,7 +772,14 @@
       <option name="project" value="LOCAL" />
       <updated>1624110142982</updated>
     </task>
-    <option name="localTasksCounter" value="273" />
+    <task id="LOCAL-00273" summary="add func">
+      <created>1624112208716</created>
+      <option name="number" value="00273" />
+      <option name="presentableId" value="LOCAL-00273" />
+      <option name="project" value="LOCAL" />
+      <updated>1624112208716</updated>
+    </task>
+    <option name="localTasksCounter" value="274" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -807,7 +808,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add comments" />
     <MESSAGE value="small fix" />
     <MESSAGE value="color enum to boolean" />
     <MESSAGE value="fix RedBlackTree" />
@@ -832,6 +832,7 @@
     <MESSAGE value="remove corner case test" />
     <MESSAGE value="corner case test pass" />
     <MESSAGE value="pass msd sort test" />
-    <option name="LAST_COMMIT_MESSAGE" value="pass msd sort test" />
+    <MESSAGE value="add func" />
+    <option name="LAST_COMMIT_MESSAGE" value="add func" />
   </component>
 </project>
