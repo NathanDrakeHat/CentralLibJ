@@ -27,10 +27,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="add test">
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CentralUtils/src/main/java/org/nathan/centralUtils/MainUtils.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CentralUtils/src/main/java/org/nathan/centralUtils/utils/IOUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CentralUtils/src/main/java/org/nathan/centralUtils/utils/IOUtils.java" afterDir="false" />
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="move system function to Native.class">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/misc/LRS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/misc/LRS.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -443,14 +442,7 @@
       <workItem from="1624189471438" duration="379000" />
       <workItem from="1624189868437" duration="1777000" />
       <workItem from="1624191742790" duration="152000" />
-      <workItem from="1624191912896" duration="802000" />
-    </task>
-    <task id="LOCAL-00228" summary="add quickSort3Way">
-      <created>1623655950273</created>
-      <option name="number" value="00228" />
-      <option name="presentableId" value="LOCAL-00228" />
-      <option name="project" value="LOCAL" />
-      <updated>1623655950273</updated>
+      <workItem from="1624191912896" duration="1857000" />
     </task>
     <task id="LOCAL-00229" summary="move functions to inner">
       <created>1623657009212</created>
@@ -788,7 +780,14 @@
       <option name="project" value="LOCAL" />
       <updated>1624192622436</updated>
     </task>
-    <option name="localTasksCounter" value="277" />
+    <task id="LOCAL-00277" summary="move system function to Native.class">
+      <created>1624192753156</created>
+      <option name="number" value="00277" />
+      <option name="presentableId" value="LOCAL-00277" />
+      <option name="project" value="LOCAL" />
+      <updated>1624192753156</updated>
+    </task>
+    <option name="localTasksCounter" value="278" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -817,7 +816,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="color enum to boolean" />
     <MESSAGE value="fix RedBlackTree" />
     <MESSAGE value="delete size bug" />
     <MESSAGE value="fix bug finally!" />
@@ -842,6 +840,7 @@
     <MESSAGE value="change func signature" />
     <MESSAGE value="save" />
     <MESSAGE value="add test" />
-    <option name="LAST_COMMIT_MESSAGE" value="add test" />
+    <MESSAGE value="move system function to Native.class" />
+    <option name="LAST_COMMIT_MESSAGE" value="move system function to Native.class" />
   </component>
 </project>
