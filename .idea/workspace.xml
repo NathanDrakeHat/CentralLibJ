@@ -27,7 +27,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="rm todo" />
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="rename package">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -58,7 +60,7 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/structures/FibonacciMinHeap.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/org/nathan/algsJ/structures/FibonacciMinHeap.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="1frQbN17KMrYLWgoSMIuH1vYjss" />
   <component name="ProjectViewState">
@@ -115,7 +117,7 @@
       <command value="mvn install:install-file -Dfile=algs4.jar -DgroupId=edu.princeton.cs -DartifactId=algs4 -Dversion=1.0 -Dpackaging=jar -DgeneratePom=true " />
     </option>
   </component>
-  <component name="RunManager" selected="Application.pushThis">
+  <component name="RunManager" selected="JUnit.All in AlgorithmsJava">
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.nathan.Main" />
       <module name="AlgorithmsJava" />
@@ -154,12 +156,12 @@
       <module name="AlgorithmsJava" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.nathan.algorithmsJ.misc.*" />
+          <option name="PATTERN" value="org.nathan.algsJ.misc.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="org.nathan.algorithmsJ.misc" />
-      <option name="MAIN_CLASS_NAME" value="org.nathan.algorithmsJ.misc.OrthoLineIntersectTest" />
+      <option name="PACKAGE_NAME" value="org.nathan.algsJ.misc" />
+      <option name="MAIN_CLASS_NAME" value="org.nathan.algsJ.misc.OrthoLineIntersectTest" />
       <option name="METHOD_NAME" value="intersectsTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
@@ -170,12 +172,12 @@
       <module name="AlgorithmsJava" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.nathan.algorithmsJ.misc.*" />
+          <option name="PATTERN" value="org.nathan.algsJ.misc.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="org.nathan.algorithmsJ.misc" />
-      <option name="MAIN_CLASS_NAME" value="org.nathan.algorithmsJ.misc.SortTest" />
+      <option name="PACKAGE_NAME" value="org.nathan.algsJ.misc" />
+      <option name="MAIN_CLASS_NAME" value="org.nathan.algsJ.misc.SortTest" />
       <option name="METHOD_NAME" value="LSDTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
@@ -186,12 +188,12 @@
       <module name="AlgorithmsJava" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.nathan.algorithmsJ.misc.*" />
+          <option name="PATTERN" value="org.nathan.algsJ.misc.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="org.nathan.algorithmsJ.misc" />
-      <option name="MAIN_CLASS_NAME" value="org.nathan.algorithmsJ.misc.SortTest" />
+      <option name="PACKAGE_NAME" value="org.nathan.algsJ.misc" />
+      <option name="MAIN_CLASS_NAME" value="org.nathan.algsJ.misc.SortTest" />
       <option name="METHOD_NAME" value="MSDTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
@@ -202,12 +204,12 @@
       <module name="AlgorithmsJava" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.nathan.algorithmsJ.misc.*" />
+          <option name="PATTERN" value="org.nathan.algsJ.misc.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="org.nathan.algorithmsJ.misc" />
-      <option name="MAIN_CLASS_NAME" value="org.nathan.algorithmsJ.misc.SortTest" />
+      <option name="PACKAGE_NAME" value="org.nathan.algsJ.misc" />
+      <option name="MAIN_CLASS_NAME" value="org.nathan.algsJ.misc.SortTest" />
       <option name="METHOD_NAME" value="stringQuickSort3WayTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
@@ -226,10 +228,10 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.All in AlgorithmsJava" />
         <item itemvalue="JUnit.SortTest.stringQuickSort3WayTest" />
         <item itemvalue="JUnit.SortTest.MSDTest" />
         <item itemvalue="JUnit.SortTest.LSDTest" />
-        <item itemvalue="JUnit.All in AlgorithmsJava" />
         <item itemvalue="JUnit.OrthoLineIntersectTest.intersectsTest" />
       </list>
     </recent_temporary>
@@ -439,14 +441,7 @@
       <workItem from="1624189471438" duration="379000" />
       <workItem from="1624189868437" duration="1777000" />
       <workItem from="1624191742790" duration="152000" />
-      <workItem from="1624191912896" duration="4691000" />
-    </task>
-    <task id="LOCAL-00233" summary="save data">
-      <created>1623668286673</created>
-      <option name="number" value="00233" />
-      <option name="presentableId" value="LOCAL-00233" />
-      <option name="project" value="LOCAL" />
-      <updated>1623668286673</updated>
+      <workItem from="1624191912896" duration="5493000" />
     </task>
     <task id="LOCAL-00234" summary="pass test">
       <created>1623670682126</created>
@@ -784,7 +779,14 @@
       <option name="project" value="LOCAL" />
       <updated>1624196733751</updated>
     </task>
-    <option name="localTasksCounter" value="282" />
+    <task id="LOCAL-00282" summary="rename package">
+      <created>1624197009284</created>
+      <option name="number" value="00282" />
+      <option name="presentableId" value="LOCAL-00282" />
+      <option name="project" value="LOCAL" />
+      <updated>1624197009284</updated>
+    </task>
+    <option name="localTasksCounter" value="283" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -813,7 +815,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fix bug finally!" />
     <MESSAGE value="save template" />
     <MESSAGE value="better template" />
     <MESSAGE value="fix is insert bug" />
@@ -838,6 +839,7 @@
     <MESSAGE value="add" />
     <MESSAGE value="save" />
     <MESSAGE value="rm todo" />
-    <option name="LAST_COMMIT_MESSAGE" value="rm todo" />
+    <MESSAGE value="rename package" />
+    <option name="LAST_COMMIT_MESSAGE" value="rename package" />
   </component>
 </project>

@@ -1,4 +1,4 @@
 package org.nathan.algsJ.structures;
 
-public class KdTree{
+public class KdTree {
 }
