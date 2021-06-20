@@ -1,8 +1,6 @@
 package org.nathan.algorithmsJ.misc;
 
 
-// TODO implement LRS
-
 import java.util.Arrays;
 
 /**

@@ -27,8 +27,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="move system function to Native.class">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="add">
       <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/misc/LRS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algorithmsJ/misc/LRS.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -442,14 +441,7 @@
       <workItem from="1624189471438" duration="379000" />
       <workItem from="1624189868437" duration="1777000" />
       <workItem from="1624191742790" duration="152000" />
-      <workItem from="1624191912896" duration="1857000" />
-    </task>
-    <task id="LOCAL-00229" summary="move functions to inner">
-      <created>1623657009212</created>
-      <option name="number" value="00229" />
-      <option name="presentableId" value="LOCAL-00229" />
-      <option name="project" value="LOCAL" />
-      <updated>1623657009212</updated>
+      <workItem from="1624191912896" duration="2188000" />
     </task>
     <task id="LOCAL-00230" summary="set OrderStatisticTree.java generic">
       <created>1623658733833</created>
@@ -787,7 +779,14 @@
       <option name="project" value="LOCAL" />
       <updated>1624192753156</updated>
     </task>
-    <option name="localTasksCounter" value="278" />
+    <task id="LOCAL-00278" summary="add">
+      <created>1624194206335</created>
+      <option name="number" value="00278" />
+      <option name="presentableId" value="LOCAL-00278" />
+      <option name="project" value="LOCAL" />
+      <updated>1624194206335</updated>
+    </task>
+    <option name="localTasksCounter" value="279" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -816,7 +815,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fix RedBlackTree" />
     <MESSAGE value="delete size bug" />
     <MESSAGE value="fix bug finally!" />
     <MESSAGE value="save template" />
@@ -841,6 +839,7 @@
     <MESSAGE value="save" />
     <MESSAGE value="add test" />
     <MESSAGE value="move system function to Native.class" />
-    <option name="LAST_COMMIT_MESSAGE" value="move system function to Native.class" />
+    <MESSAGE value="add" />
+    <option name="LAST_COMMIT_MESSAGE" value="add" />
   </component>
 </project>
