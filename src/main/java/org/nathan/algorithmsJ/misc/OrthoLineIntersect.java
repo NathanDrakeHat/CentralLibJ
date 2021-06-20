@@ -28,8 +28,8 @@ public class OrthoLineIntersect{
           @NotNull Function<L, Tuple<P, P>> toPoints,
           @NotNull ToDoubleFunction<P> getX,
           @NotNull ToDoubleFunction<P> getY){
-    Map<Double, Set<L>> lineOfX = new HashMap<>();
-    List<Double> scanX = new ArrayList<>();
+    Map<Double, Set<L>> lineOfX = new HashMap<>(lines.size() * 2);
+    List<Double> scanX = new ArrayList<>(lines.size() * 2);
 
     for(var line : lines){
       var points_tuple = toPoints.apply(line);
