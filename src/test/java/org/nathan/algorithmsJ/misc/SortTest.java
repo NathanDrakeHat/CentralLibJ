@@ -341,7 +341,6 @@ class SortTest{
     assertEquals(MSDAnswer, MSDAnswer);
   }
 
-  // TODO add string 3way quicksort test
   List<String> q3Data1 = new ArrayList<>(Arrays.stream("she,sells,seashells,by,the,sea,shore,the,shells,she,sells,are,surely,seashells".split(",")).toList());
   List<String> q3Answer1 = Arrays.stream("are,by,sea,seashells,seashells,sells,sells,she,she,shells,shore,surely,the,the".split(",")).toList();
   List<String> q3Data2 = new ArrayList<>(Arrays.stream("dab,add,cab,fad,fee,bad,dad,bee,fed,bed,ebb,ace".split(",")).toList());

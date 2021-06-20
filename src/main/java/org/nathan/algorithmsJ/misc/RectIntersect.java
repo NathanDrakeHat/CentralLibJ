@@ -5,11 +5,9 @@ import org.nathan.centralUtils.tuples.Quaternion;
 import org.nathan.centralUtils.tuples.Tuple;
 
 import java.util.*;
-import java.util.concurrent.Callable;
 import java.util.function.Function;
 import java.util.function.ToDoubleFunction;
 
-import static org.nathan.centralUtils.utils.LambdaUtils.stripCE;
 
 // TODO rectangle intersection
 public class RectIntersect{
