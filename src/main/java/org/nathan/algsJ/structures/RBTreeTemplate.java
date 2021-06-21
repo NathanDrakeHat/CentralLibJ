@@ -1,6 +1,7 @@
 package org.nathan.algsJ.structures;
 
 import org.jetbrains.annotations.NotNull;
+import org.nathan.centralUtils.utils.LambdaUtils;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Target;
@@ -29,7 +30,7 @@ class RBTreeTemplate<Key, Node> {
 
   final @NotNull Node sentinel;
   final @NotNull Comparator<Key> comparator;
-  final @NotNull Callable<Node> getRoot;
+  final @NotNull LambdaUtils.Gettable<Node> getRoot;
   final @NotNull Consumer<Node> setRoot;
   static final boolean RED = false;
   static final boolean BLACK = true;
@@ -55,7 +56,7 @@ class RBTreeTemplate<Key, Node> {
   RBTreeTemplate(@NotNull Node sentinel,
                  @NotNull Comparator<Key> comparator,
                  @NotNull Function<Node, Key> getKey,
-                 @NotNull Callable<Node> getRoot,
+                 @NotNull LambdaUtils.Gettable<Node> getRoot,
                  @NotNull Consumer<Node> setRoot,
                  @NotNull Function<Node, Node> getParent,
                  @NotNull BiConsumer<Node, Node> setParent,
@@ -89,7 +90,7 @@ class RBTreeTemplate<Key, Node> {
   @SuppressWarnings({"SuspiciousNameCombination", "unchecked"})
   void insert(Node z) {
     var y = sentinel;
-    var x = stripCE(getRoot);
+    var x = getRoot.get();
     while (x != sentinel) {
       y = x;
       {//
@@ -166,7 +167,7 @@ class RBTreeTemplate<Key, Node> {
         }
       }
     }
-    setColor.accept(stripCE(getRoot), BLACK);
+    setColor.accept(getRoot.get(), BLACK);
   }
 
   @SuppressWarnings("unchecked")
@@ -228,7 +229,7 @@ class RBTreeTemplate<Key, Node> {
   }
 
   private void deleteFixUp(Node x) {
-    while (x != stripCE(getRoot) && getColor.apply(x) == BLACK) {
+    while (x != getRoot.get() && getColor.apply(x) == BLACK) {
       if (x == getLeft.apply(getParent.apply(x))) {
         var w = getRight.apply(getParent.apply(x));
         if (getColor.apply(w) == RED) {
@@ -251,7 +252,7 @@ class RBTreeTemplate<Key, Node> {
           setColor.accept(getParent.apply(x), BLACK);
           setColor.accept(getRight.apply(w), BLACK);
           leftRotate(getParent.apply(x));
-          x = stripCE(getRoot);
+          x = getRoot.get();
         }
       } else {
         var w = getLeft.apply(getParent.apply(x));
@@ -275,7 +276,7 @@ class RBTreeTemplate<Key, Node> {
           setColor.accept(getParent.apply(x), BLACK);
           setColor.accept(getLeft.apply(w), BLACK);
           rightRotate(getParent.apply(x));
-          x = stripCE(getRoot);
+          x = getRoot.get();
         }
       }
     }
