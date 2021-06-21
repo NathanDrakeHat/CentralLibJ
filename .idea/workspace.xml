@@ -30,6 +30,7 @@
     <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="format">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CentralUtils/src/main/java/org/nathan/centralUtils/classes/CEStripper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CentralUtils/src/main/java/org/nathan/centralUtils/classes/CEStripper.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,7 +50,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../CentralUtils" />
     <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="GitSEFilterConfiguration">
@@ -84,7 +85,7 @@
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.45428157" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Java" />
+    <property name="settings.editor.selected.configurable" value="build.tools" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -118,7 +119,7 @@
       <command value="mvn install:install-file -Dfile=algs4.jar -DgroupId=edu.princeton.cs -DartifactId=algs4 -Dversion=1.0 -Dpackaging=jar -DgeneratePom=true " />
     </option>
   </component>
-  <component name="RunManager" selected="Application.pushThis">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.nathan.Main" />
       <module name="AlgorithmsJava" />
@@ -447,14 +448,7 @@
       <workItem from="1624262506887" duration="16000" />
       <workItem from="1624264476155" duration="185000" />
       <workItem from="1624267131602" duration="3502000" />
-      <workItem from="1624277060900" duration="65000" />
-    </task>
-    <task id="LOCAL-00235" summary="pass test">
-      <created>1623670735802</created>
-      <option name="number" value="00235" />
-      <option name="presentableId" value="LOCAL-00235" />
-      <option name="project" value="LOCAL" />
-      <updated>1623670735802</updated>
+      <workItem from="1624277060900" duration="3162000" />
     </task>
     <task id="LOCAL-00236" summary="set tuples inheritable class">
       <created>1623671657196</created>
@@ -792,7 +786,14 @@
       <option name="project" value="LOCAL" />
       <updated>1624197605972</updated>
     </task>
-    <option name="localTasksCounter" value="284" />
+    <task id="LOCAL-00284" summary="format">
+      <created>1624277219576</created>
+      <option name="number" value="00284" />
+      <option name="presentableId" value="LOCAL-00284" />
+      <option name="project" value="LOCAL" />
+      <updated>1624277219576</updated>
+    </task>
+    <option name="localTasksCounter" value="285" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
