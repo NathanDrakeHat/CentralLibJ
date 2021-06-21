@@ -27,8 +27,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="rename package">
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="format">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,7 +84,7 @@
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.45428157" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Java" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -117,7 +118,7 @@
       <command value="mvn install:install-file -Dfile=algs4.jar -DgroupId=edu.princeton.cs -DartifactId=algs4 -Dversion=1.0 -Dpackaging=jar -DgeneratePom=true " />
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.All in AlgorithmsJava">
+  <component name="RunManager" selected="Application.pushThis">
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.nathan.Main" />
       <module name="AlgorithmsJava" />
@@ -441,14 +442,12 @@
       <workItem from="1624189471438" duration="379000" />
       <workItem from="1624189868437" duration="1777000" />
       <workItem from="1624191742790" duration="152000" />
-      <workItem from="1624191912896" duration="5493000" />
-    </task>
-    <task id="LOCAL-00234" summary="pass test">
-      <created>1623670682126</created>
-      <option name="number" value="00234" />
-      <option name="presentableId" value="LOCAL-00234" />
-      <option name="project" value="LOCAL" />
-      <updated>1623670682126</updated>
+      <workItem from="1624191912896" duration="5599000" />
+      <workItem from="1624260565903" duration="140000" />
+      <workItem from="1624262506887" duration="16000" />
+      <workItem from="1624264476155" duration="185000" />
+      <workItem from="1624267131602" duration="3502000" />
+      <workItem from="1624277060900" duration="65000" />
     </task>
     <task id="LOCAL-00235" summary="pass test">
       <created>1623670735802</created>
@@ -786,7 +785,14 @@
       <option name="project" value="LOCAL" />
       <updated>1624197009284</updated>
     </task>
-    <option name="localTasksCounter" value="283" />
+    <task id="LOCAL-00283" summary="format">
+      <created>1624197605972</created>
+      <option name="number" value="00283" />
+      <option name="presentableId" value="LOCAL-00283" />
+      <option name="project" value="LOCAL" />
+      <updated>1624197605972</updated>
+    </task>
+    <option name="localTasksCounter" value="284" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -825,7 +831,6 @@
     <MESSAGE value="change test len" />
     <MESSAGE value="add ignore" />
     <MESSAGE value="add bst iterator, add algs4 answer" />
-    <MESSAGE value="format" />
     <MESSAGE value="add intersects of IntvalSerchTree" />
     <MESSAGE value="delete algs4" />
     <MESSAGE value="save OrthoLineIntersect normal solve" />
@@ -840,6 +845,7 @@
     <MESSAGE value="save" />
     <MESSAGE value="rm todo" />
     <MESSAGE value="rename package" />
-    <option name="LAST_COMMIT_MESSAGE" value="rename package" />
+    <MESSAGE value="format" />
+    <option name="LAST_COMMIT_MESSAGE" value="format" />
   </component>
 </project>
