@@ -53,7 +53,8 @@ public class FibonacciMinHeap<K, V> {
         if (z.right != z) {
           z.parent.childList = z.right;
           z.right.parent = z.parent;
-        } else {
+        }
+        else {
           z.parent.childList = null;
           z.right = z;
           z.left = z;
@@ -76,7 +77,8 @@ public class FibonacciMinHeap<K, V> {
     if (m.childList == null) {
       m.childList = l;
       l.parent = m;
-    } else {
+    }
+    else {
       addNodeToList(l, m.childList);
     }
     l.mark = false;
@@ -95,7 +97,8 @@ public class FibonacciMinHeap<K, V> {
     value_Node_map.put(x.value, x);
     if (rootList == null) {
       rootList = x;
-    } else {
+    }
+    else {
       addNodeToList(x, rootList); // add x to root list
       if (keyComparator.compare(x.key, rootList.key) < 0) {
         rootList = x;
@@ -128,11 +131,13 @@ public class FibonacciMinHeap<K, V> {
       removeNodeFromList(z);
       if (z == rootList) {
         rootList = null;
-      } else {
+      }
+      else {
         consolidate();
       }
       count--;
-    } else {
+    }
+    else {
       throw new NoSuchElementException();
     }
     value_Node_map.remove(z.value);
@@ -180,7 +185,8 @@ public class FibonacciMinHeap<K, V> {
           t.right = t;
           t.left = t;
           rootList = t;
-        } else {
+        }
+        else {
           addNodeToList(t, rootList);
           if (keyComparator.compare(t.key, rootList.key) < 0) {
             rootList = t;
@@ -194,7 +200,8 @@ public class FibonacciMinHeap<K, V> {
     var x = value_Node_map.get(val);
     if (keyComparator.compare(new_key, x.key) > 0) {
       throw new IllegalArgumentException("New key should smaller than old key.");
-    } else {
+    }
+    else {
       x.key = new_key;
       var y = x.parent;
       if (y != null) {
@@ -238,7 +245,8 @@ public class FibonacciMinHeap<K, V> {
     if (z != null) {
       if (!y.mark) {
         y.mark = true;
-      } else {
+      }
+      else {
         cut(y, z);
         cascadingCut(z);
       }

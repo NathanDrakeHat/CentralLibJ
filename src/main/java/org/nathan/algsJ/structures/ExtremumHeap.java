@@ -47,7 +47,8 @@ public class ExtremumHeap<K, V> implements Iterable<Tuple<K, V>> {
     array.remove(heapSize() - 1);
     if (isMinHeap) {
       minHeapify(0);
-    } else {
+    }
+    else {
       maxHeapify(0);
     }
     value_node_map.remove(res.value);
@@ -64,7 +65,8 @@ public class ExtremumHeap<K, V> implements Iterable<Tuple<K, V>> {
     value_node_map.put(value, n);
     if (isMinHeap) {
       decreaseKey(heapSize() - 1);
-    } else {
+    }
+    else {
       increaseKey(heapSize() - 1);
     }
   }
@@ -87,15 +89,18 @@ public class ExtremumHeap<K, V> implements Iterable<Tuple<K, V>> {
       if (key_comparer.compare(new_key, node.key) < 0) {
         node.key = new_key;
         decreaseKey(node.index);
-      } else if (key_comparer.compare(new_key, node.key) > 0) {
+      }
+      else if (key_comparer.compare(new_key, node.key) > 0) {
         node.key = new_key;
         minHeapify(node.index);
       }
-    } else {
+    }
+    else {
       if (key_comparer.compare(new_key, node.key) < 0) {
         node.key = new_key;
         maxHeapify(node.index);
-      } else if (key_comparer.compare(new_key, node.key) > 0) {
+      }
+      else if (key_comparer.compare(new_key, node.key) > 0) {
         node.key = new_key;
         increaseKey(node.index);
       }
@@ -177,7 +182,8 @@ public class ExtremumHeap<K, V> implements Iterable<Tuple<K, V>> {
     for (int i = parentIndex(heapSize() - 1); i >= 0; i--) {
       if (isMinHeap) {
         minHeapify(i);
-      } else {
+      }
+      else {
         maxHeapify(i);
       }
     }

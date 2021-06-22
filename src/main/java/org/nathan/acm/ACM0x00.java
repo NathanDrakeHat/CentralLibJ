@@ -72,7 +72,8 @@ public class ACM0x00 {
     long ans = a * b - c * m;
     if (ans < 0) {
       ans += m;
-    } else if (ans >= m) {
+    }
+    else if (ans >= m) {
       ans -= m;
     }
     return ans;
@@ -172,14 +173,18 @@ public class ACM0x00 {
 
           if (left_min < 0 && right_min < 0) {
             return -1;
-          } else if (left_min < 0) {
+          }
+          else if (left_min < 0) {
             return right_min;
-          } else if (right_min < 0) {
+          }
+          else if (right_min < 0) {
             return left_min;
-          } else {
+          }
+          else {
             return Math.min(left_min, right_min);
           }
-        } else {
+        }
+        else {
           while (!(r >= switches.length)) {
             if (switches[r - 1][c].equals("o")) {
               flipNeighbor(r, c, switches);
@@ -215,9 +220,11 @@ public class ACM0x00 {
       private void apply(int r, int c) {
         if (switches[r][c].equals("x")) {
           switches[r][c] = "o";
-        } else if (switches[r][c].equals("o")) {
+        }
+        else if (switches[r][c].equals("o")) {
           switches[r][c] = "x";
-        } else {
+        }
+        else {
           throw new RuntimeException("input format error.");
         }
       }
@@ -251,7 +258,8 @@ public class ACM0x00 {
         rSum += targets[r][c];
         if (r >= 1) {
           sums[r][c] = rSum + sums[r - 1][c];
-        } else {
+        }
+        else {
           sums[r][c] = rSum;
         }
       }
@@ -268,11 +276,14 @@ public class ACM0x00 {
         int cost;
         if (r - radius >= 0 && c - radius >= 0) {
           cost = sums[r][c] - sums[r - radius][c] - sums[r][c - radius] + sums[r - radius][c - radius];
-        } else if (r - radius >= 0) {
+        }
+        else if (r - radius >= 0) {
           cost = sums[r][c] - sums[r - radius][c];
-        } else if (c - radius >= 0) {
+        }
+        else if (c - radius >= 0) {
           cost = sums[r][c] - sums[r][c - radius];
-        } else {
+        }
+        else {
           cost = sums[r][c];
         }
         max = Math.max(cost, max);
@@ -316,7 +327,8 @@ public class ACM0x00 {
 
     if (n % 2 == 1) {
       return (int) ((1 + Math.pow(p, (double) (n + 1) / 2)) * geometricSequenceSum(p, (n - 1) / 2));
-    } else {
+    }
+    else {
       return (int) (((1 + Math.pow(p, (double) n / 2))) * geometricSequenceSum(p, n / 2 - 1) + Math.pow(p, n));
     }
   }
@@ -337,9 +349,11 @@ public class ACM0x00 {
       var r_m = nums.get(mid + 1);
       if (l_m.compareTo(r_m) < 0) {
         l = mid;
-      } else if (l_m.compareTo(r_m) > 0) {
+      }
+      else if (l_m.compareTo(r_m) > 0) {
         r = mid + 1;
-      } else {
+      }
+      else {
         l = mid;
         r = mid + 1;
       }
@@ -390,7 +404,8 @@ public class ACM0x00 {
       }
       if (t_max_sum >= 0) {
         min = mid;
-      } else {
+      }
+      else {
         max = mid;
       }
     }
@@ -407,7 +422,8 @@ public class ACM0x00 {
         var gt = greater[i][res.get(mid)];
         if (gt) {
           l = mid + 1;
-        } else {
+        }
+        else {
           r = mid;
         }
       }
@@ -430,9 +446,11 @@ public class ACM0x00 {
       int c = comp.compare(elem, mid_e);
       if (c > 0) {
         l = mid + 1;
-      } else if (c < 0) {
+      }
+      else if (c < 0) {
         r = mid;
-      } else {
+      }
+      else {
         return mid;
       }
     }

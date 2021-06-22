@@ -39,7 +39,8 @@ public final class MST {
     for (var u : vertices) {
       if (u != r) {
         u.key = Double.POSITIVE_INFINITY;
-      } else {
+      }
+      else {
         u.key = 0.0;
       }
       Q.insert(u.key, u);
@@ -65,7 +66,8 @@ public final class MST {
     for (var u : vertices) {
       if (u != r) {
         u.key = Double.POSITIVE_INFINITY;
-      } else {
+      }
+      else {
         u.key = 0.0;
       }
       u.parent = null;

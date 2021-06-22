@@ -81,7 +81,8 @@ final class CutRod {
     int q;
     if (rod_len <= 10) {
       q = p[(rod_len - 1)];
-    } else {
+    }
+    else {
       q = 0;
     }
 
@@ -94,7 +95,8 @@ final class CutRod {
     int sum = res.getSum();
     if (sum == 0) {
       res.insert(rod_len);
-    } else {
+    }
+    else {
       res.insert(rod_len - sum);
     }
     res.setPrice(q);
@@ -119,7 +121,8 @@ final class CutRod {
     int q;
     if (rod_len <= 10) {
       q = p[rod_len - 1];
-    } else {
+    }
+    else {
       q = 0;
     }
 
@@ -132,7 +135,8 @@ final class CutRod {
     int sum = res.getSum();
     if (sum == 0) {
       res.insert(rod_len);
-    } else {
+    }
+    else {
       res.insert(rod_len - sum);
     }
     res.setPrice(q);
@@ -159,7 +163,8 @@ final class CutRod {
       int sum = res.getSum();
       if (sum == 0) {
         res.insert(rod_len);
-      } else {
+      }
+      else {
         res.insert(rod_len - sum);
       }
       res.setPrice(max_price);

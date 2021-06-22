@@ -4,8 +4,6 @@ package org.nathan;
 import org.nathan.centralUtils.utils.NativeUtils;
 
 
-
-
 class Main {
   static class GitPush {
     public static void gitPush(String[] args) {

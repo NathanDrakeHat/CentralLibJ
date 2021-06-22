@@ -51,7 +51,8 @@ public final class VEBTree {
     // recursive strip x into cluster index and array index
     if (V.min == NONE) {
       emptyInsert(V, x);
-    } else {
+    }
+    else {
       if (x < V.min) {
         var t = x;
         x = V.min;
@@ -62,7 +63,8 @@ public final class VEBTree {
           //                System.out.println(String.format("enter summary, cluster index %d", V.high(x)));
           insert(V.summary, V.high(x));
           emptyInsert(V.cluster[V.high(x)], V.low(x));
-        } else {
+        }
+        else {
           //                System.out.println(String.format("enter cluster %d, index %d", V.high(x), V.low(x)));
           insert(V.cluster[V.high(x)], V.low(x));
         }
@@ -110,14 +112,17 @@ public final class VEBTree {
     if (V.min == V.max) {
       V.min = NONE;
       V.max = NONE;
-    } else if (V.u == 2) {
+    }
+    else if (V.u == 2) {
       if (x == 0) {
         V.min = 1;
-      } else {
+      }
+      else {
         V.min = 0;
       }
       V.max = V.min;
-    } else {
+    }
+    else {
       if (x == V.min) {
         var first_cluster = minimum(V.summary);
         x = V.index(first_cluster, minimum(V.cluster[first_cluster]));
@@ -130,11 +135,13 @@ public final class VEBTree {
           var summary_max = maximum(V.summary);
           if (summary_max == NONE) {
             V.max = V.min;
-          } else {
+          }
+          else {
             V.max = V.index(summary_max, maximum(V.cluster[summary_max]));
           }
         }
-      } else if (x == V.max) {
+      }
+      else if (x == V.max) {
         V.max = V.index(V.high(x), maximum(V.cluster[V.high(x)]));
       }
     }
@@ -152,7 +159,8 @@ public final class VEBTree {
     var res = maximum(this);
     if (res != NONE) {
       return res;
-    } else {
+    }
+    else {
       throw new NoSuchElementException();
     }
   }
@@ -173,7 +181,8 @@ public final class VEBTree {
     var res = minimum(this);
     if (res != NONE) {
       return res;
-    } else {
+    }
+    else {
       throw new NoSuchElementException();
     }
   }
@@ -189,9 +198,11 @@ public final class VEBTree {
   private boolean hasMember(VEBTree V, int x) {
     if (x == V.min || x == V.max) {
       return true;
-    } else if (V.u == 2) {
+    }
+    else if (V.u == 2) {
       return false;
-    } else {
+    }
+    else {
       return hasMember(V.cluster[V.high(x)], V.low((x)));
     }
   }
@@ -208,7 +219,8 @@ public final class VEBTree {
     var res = successor(this, x);
     if (res != NONE) {
       return res;
-    } else {
+    }
+    else {
       throw new NoSuchElementException();
     }
   }
@@ -218,17 +230,21 @@ public final class VEBTree {
     if (V.u == 2) {
       if (x == 0 && V.max == 1) {
         return 1; // have x and successor
-      } else {
+      }
+      else {
         return NONE;
       }
-    } else if (V.min != NONE && x < V.min) {
+    }
+    else if (V.min != NONE && x < V.min) {
       return V.min; // dose not have x but have successor
-    } else {// recursive
+    }
+    else {// recursive
       var max_low = maximum(V.cluster[V.high(x)]);
       if (max_low != NONE && V.low(x) < max_low) {
         var offset = successor(V.cluster[V.high(x)], V.low(x));
         return V.index(V.high(x), offset);
-      } else {
+      }
+      else {
         var succ_cluster = successor(V.summary, V.high(x));
         if (succ_cluster == NONE) {
           return NONE;
@@ -251,7 +267,8 @@ public final class VEBTree {
     var res = predecessor(this, x);
     if (res != NONE) {
       return res;
-    } else {
+    }
+    else {
       throw new NoSuchElementException();
     }
   }
@@ -260,25 +277,31 @@ public final class VEBTree {
     if (V.u == 2) {
       if (x == 1 && V.min == 0) {
         return 0;
-      } else {
+      }
+      else {
         return NONE;
       }
-    } else if (V.max != NONE && x > V.max) {
+    }
+    else if (V.max != NONE && x > V.max) {
       return V.max;
-    } else {
+    }
+    else {
       var min_low = minimum(V.cluster[V.high(x)]);
       if (min_low != NONE && V.low(x) > min_low) {//and
         var offset = predecessor(V.cluster[V.high(x)], V.low(x));
         return V.index(V.high(x), offset);
-      } else {
+      }
+      else {
         var pred_cluster = predecessor(V.summary, V.high(x));
         if (pred_cluster == NONE) {
           if (V.min != NONE && x > V.min) {
             return V.min;
-          } else {
+          }
+          else {
             return NONE;
           }
-        } else {
+        }
+        else {
           var offset = maximum(V.cluster[pred_cluster]);
           return V.index(pred_cluster, offset);
         }

@@ -120,7 +120,8 @@ class SSSPathTest {
     }
     if (is_fib) {
       targetDijkstraFib = vertices.get(0);
-    } else {
+    }
+    else {
       targetDijkstraMinHeap = vertices.get(0);
     }
     return graph;

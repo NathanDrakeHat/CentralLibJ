@@ -18,9 +18,11 @@ public final class ProtoVEBTree {
       for (int i = 0; i < cluster.length; i++) {
         cluster[i] = new ProtoVEBTree((int) Math.pow(u, 1 / 2.0), "universe");
       }
-    } else if (u == 2) {
+    }
+    else if (u == 2) {
       array = new boolean[2];
-    } else {
+    }
+    else {
       throw new IllegalArgumentException("Bug found, Check your implementation!");
     }
   }
@@ -47,7 +49,8 @@ public final class ProtoVEBTree {
   private boolean hasMember(ProtoVEBTree T, int x) {
     if (T.u == 2) {
       return T.array[x];
-    } else {
+    }
+    else {
       return hasMember(T.cluster[T.high(x)], T.low(x));
     }
   }
@@ -64,7 +67,8 @@ public final class ProtoVEBTree {
     if (T.u == 2) {
 //            System.out.printf("set true at: %d\n",x);
       T.array[x] = true;
-    } else {
+    }
+    else {
 //            System.out.printf("enter cluster: %d, index is %d\n",T.high(x), T.low(x));
       insert(T.cluster[T.high(x)], T.low(x));
 //            System.out.printf("enter summary: %d\n", T.high(x));
@@ -76,7 +80,8 @@ public final class ProtoVEBTree {
     var res = maximum(this);
     if (res == null) {
       throw new NullPointerException();
-    } else {
+    }
+    else {
       return res;
     }
   }
@@ -85,16 +90,20 @@ public final class ProtoVEBTree {
     if (T.u == 2) {
       if (T.array[1]) {
         return 1;
-      } else if (T.array[0]) {
+      }
+      else if (T.array[0]) {
         return 0;
-      } else {
+      }
+      else {
         return null;
       }
-    } else {
+    }
+    else {
       var max_cluster = maximum(T.summary);
       if (max_cluster == null) {
         throw new NullPointerException();
-      } else {
+      }
+      else {
         var offset = maximum(T.cluster[max_cluster]);
         return T.index(max_cluster, offset);
       }
@@ -105,7 +114,8 @@ public final class ProtoVEBTree {
     var res = minimum(this);
     if (res == null) {
       throw new NullPointerException();
-    } else {
+    }
+    else {
       return res;
     }
   }
@@ -114,16 +124,20 @@ public final class ProtoVEBTree {
     if (T.u == 2) {
       if (T.array[0]) {
         return 0;
-      } else if (T.array[1]) {
+      }
+      else if (T.array[1]) {
         return 1;
-      } else {
+      }
+      else {
         return null;
       }
-    } else {
+    }
+    else {
       var min_cluster = minimum(T.summary);
       if (min_cluster == null) {
         return null;
-      } else {
+      }
+      else {
         var offset = minimum(T.cluster[min_cluster]);
         return T.index(min_cluster, offset);
       }
@@ -137,7 +151,8 @@ public final class ProtoVEBTree {
     var res = successor(this, x);
     if (res == null) {
       throw new NullPointerException();
-    } else {
+    }
+    else {
       return res;
     }
   }
@@ -146,18 +161,22 @@ public final class ProtoVEBTree {
     if (T.u == 2) {
       if (x == 0 && T.array[1]) {
         return 1;
-      } else {
+      }
+      else {
         return null;
       }
-    } else {
+    }
+    else {
       var offset = successor(T.cluster[T.high(x)], T.low(x));
       if (offset != null) {
         return T.index(T.high(x), offset);
-      } else {
+      }
+      else {
         var succ_cluster = successor(T.summary, T.high(x));
         if (succ_cluster == null) {
           return null;
-        } else {
+        }
+        else {
           offset = maximum(T.cluster[succ_cluster]);
           return T.index(succ_cluster, offset);
         }
@@ -172,7 +191,8 @@ public final class ProtoVEBTree {
     var res = predecessor(this, x);
     if (res == null) {
       throw new NullPointerException();
-    } else {
+    }
+    else {
       return res;
     }
   }
@@ -181,18 +201,22 @@ public final class ProtoVEBTree {
     if (T.u == 2) {
       if (x == 1 && T.array[0]) {
         return 0;
-      } else {
+      }
+      else {
         return null;
       }
-    } else {
+    }
+    else {
       var offset = predecessor(T.cluster[T.high(x)], T.low(x)); // search same cluster
       if (offset != null) {
         return T.index(T.high(x), offset); // it isn't first item
-      } else {
+      }
+      else {
         var pre_cluster = predecessor(T.summary, T.high(x));
         if (pre_cluster == null) {
           return null;
-        } else {
+        }
+        else {
           offset = maximum(T.cluster[pre_cluster]);
           return T.index(pre_cluster, offset);
         }

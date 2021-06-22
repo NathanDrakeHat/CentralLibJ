@@ -34,9 +34,11 @@ public final class RankSearch {
     int left_total = pivot_idx - start;
     if (ith == left_total) {
       return a[pivot_idx];
-    } else if (ith < left_total + 1) {
+    }
+    else if (ith < left_total + 1) {
       return rankSearch(a, start, pivot_idx, ith);
-    } else {
+    }
+    else {
       return rankSearch(a, pivot_idx + 1, end, ith - left_total - 1);
     }
   }

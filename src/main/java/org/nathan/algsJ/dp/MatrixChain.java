@@ -73,7 +73,8 @@ final class MatrixChain {
           m[s][e].res = new MatrixChainResult.PairNode();
           m[s][e].res.left = m[s][s].res;
           m[s][e].res.right = m[e][e].res;
-        } else {
+        }
+        else {
           m[s][e].min_cost =
                   p.get(s).first() * p.get(s).second() * p.get(e).second() + m[s][s].min_cost + m[s + 1][e].min_cost;
           m[s][e].res = new MatrixChainResult.PairNode();

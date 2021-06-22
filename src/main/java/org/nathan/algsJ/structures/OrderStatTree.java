@@ -77,7 +77,8 @@ public class OrderStatTree<K, V> implements Iterable<Tuple<K, V>> {
   public V getValueOfMinKey() {
     if (sentinel != root) {
       return minimumNodeOf(root).value;
-    } else {
+    }
+    else {
       throw new NoSuchElementException("null tree");
     }
   }
@@ -85,7 +86,8 @@ public class OrderStatTree<K, V> implements Iterable<Tuple<K, V>> {
   public K getMinKey() {
     if (sentinel != root) {
       return minimumNodeOf(root).key;
-    } else {
+    }
+    else {
       throw new NoSuchElementException("null tree");
     }
   }
@@ -93,7 +95,8 @@ public class OrderStatTree<K, V> implements Iterable<Tuple<K, V>> {
   public V getValueOfMaxKey() {
     if (root != sentinel) {
       return maximumNodeOf(root).value;
-    } else {
+    }
+    else {
       throw new NoSuchElementException("null tree");
     }
   }
@@ -101,7 +104,8 @@ public class OrderStatTree<K, V> implements Iterable<Tuple<K, V>> {
   public K getMaxKey() {
     if (root != sentinel) {
       return maximumNodeOf(root).key;
-    } else {
+    }
+    else {
       throw new NoSuchElementException("null tree");
     }
   }
@@ -109,11 +113,13 @@ public class OrderStatTree<K, V> implements Iterable<Tuple<K, V>> {
   public K floorOfKey(K key) {
     if (root == sentinel) {
       throw new NoSuchElementException("calls floor() with empty symbol table");
-    } else {
+    }
+    else {
       Node<K, V> x = floor(root, key);
       if (x == sentinel) {
         throw new NoSuchElementException("argument to floor() is too small");
-      } else {
+      }
+      else {
         return x.key;
       }
     }
@@ -122,13 +128,16 @@ public class OrderStatTree<K, V> implements Iterable<Tuple<K, V>> {
   private Node<K, V> floor(Node<K, V> x, K key) {
     if (x == sentinel) {
       return sentinel;
-    } else {
+    }
+    else {
       int cmp = comparator.compare(key, x.key);
       if (cmp == 0) {
         return x;
-      } else if (cmp < 0) {
+      }
+      else if (cmp < 0) {
         return floor(x.left, key);
-      } else {
+      }
+      else {
         var t = floor(x.right, key);
         return t != sentinel ? t : x;
       }
@@ -138,11 +147,13 @@ public class OrderStatTree<K, V> implements Iterable<Tuple<K, V>> {
   public K ceilingOfKey(K key) {
     if (root == sentinel) {
       throw new NoSuchElementException("calls ceiling() with empty symbol table");
-    } else {
+    }
+    else {
       var x = ceiling(root, key);
       if (x == sentinel) {
         throw new NoSuchElementException("argument to ceiling() is too small");
-      } else {
+      }
+      else {
         return x.key;
       }
     }
@@ -151,13 +162,16 @@ public class OrderStatTree<K, V> implements Iterable<Tuple<K, V>> {
   private Node<K, V> ceiling(Node<K, V> x, K key) {
     if (x == sentinel) {
       return sentinel;
-    } else {
+    }
+    else {
       int cmp = comparator.compare(key, x.key);
       if (cmp == 0) {
         return x;
-      } else if (cmp > 0) {
+      }
+      else if (cmp > 0) {
         return ceiling(x.right, key);
-      } else {
+      }
+      else {
         var t = ceiling(x.left, key);
         return t != sentinel ? t : x;
       }
@@ -180,9 +194,11 @@ public class OrderStatTree<K, V> implements Iterable<Tuple<K, V>> {
     int rank = current.left.size + 1;
     if (rank == ith) {
       return current;
-    } else if (ith < rank) {
+    }
+    else if (ith < rank) {
       return getNodeOfRank(current.left, ith);
-    } else {
+    }
+    else {
       return getNodeOfRank(current.right, ith - rank);
     }
   }
@@ -225,7 +241,8 @@ public class OrderStatTree<K, V> implements Iterable<Tuple<K, V>> {
       int left_max = getHeight(n.left, height + 1);
       int right_max = getHeight(n.right, height + 1);
       return Math.max(left_max, right_max);
-    } else {
+    }
+    else {
       return height;
     }
   }
@@ -250,7 +267,8 @@ public class OrderStatTree<K, V> implements Iterable<Tuple<K, V>> {
     var n = (Node<K, V>) template.getNodeOfKey(root, key);
     if (n != sentinel) {
       template.delete(n);
-    } else {
+    }
+    else {
       throw new NoSuchElementException();
     }
   }
@@ -258,7 +276,8 @@ public class OrderStatTree<K, V> implements Iterable<Tuple<K, V>> {
   public boolean containKey(@NotNull K key) {
     if (root == sentinel) {
       return false;
-    } else return sentinel != template.getNodeOfKey(root, key);
+    }
+    else return sentinel != template.getNodeOfKey(root, key);
   }
 
   public V getValOfKey(@NotNull K key) {
@@ -328,16 +347,19 @@ public class OrderStatTree<K, V> implements Iterable<Tuple<K, V>> {
         if (ptr.right != sentinel && !poppedBefore) {
           stack.push(ptr);
           ptr = ptr.right;
-        } else {
+        }
+        else {
           var t = ptr;
           if (ptr.left != sentinel) {
             ptr = ptr.left;
             poppedBefore = false;
-          } else {
+          }
+          else {
             if (stack.size() != 0) {
               ptr = stack.pop();
               poppedBefore = true;
-            } else {
+            }
+            else {
               ptr = null;
             }
           }

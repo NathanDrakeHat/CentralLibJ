@@ -37,10 +37,12 @@ public class ConvexHull {
       if (ccw(head, last, current, getX, getY) == 0) {
         if (distance(last, head, getX, getY) > distance(head, current, getX, getY)) {
           points_stack.addLast(last);
-        } else {
+        }
+        else {
           points_stack.addLast(current);
         }
-      } else {
+      }
+      else {
         points_stack.addLast(last);
         break;
       }
@@ -53,9 +55,11 @@ public class ConvexHull {
       if (ccw > 0) {
         points_stack.addLast(last);
         points_stack.addLast(p);
-      } else if (ccw == 0) {
+      }
+      else if (ccw == 0) {
         points_stack.addLast(last);
-      } else {
+      }
+      else {
         do {
           last = points_stack.removeLast();
         }
@@ -101,9 +105,11 @@ public class ConvexHull {
     double area = (bx - ax) * (cy - ay) - (by - ay) * (cx - ax);
     if (area < 0) {
       return -1;
-    } else if (area > 0) {
+    }
+    else if (area > 0) {
       return 1;
-    } else {
+    }
+    else {
       return 0;
     }
   }

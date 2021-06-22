@@ -37,7 +37,8 @@ class ExtremumHeapTest {
       for (int j = 0; j < res.size() - 1; j++) {
         if (res.get(j).compareTo(res.get(j + 1)) < 0) {
           assertTrue(true);
-        } else {
+        }
+        else {
           fail();
         }
       }
@@ -67,7 +68,8 @@ class ExtremumHeapTest {
       for (int j = 0; j < res.size() - 1; j++) {
         if (res.get(j).compareTo(res.get(j + 1)) > 0) {
           assertTrue(true);
-        } else {
+        }
+        else {
           fail();
         }
       }

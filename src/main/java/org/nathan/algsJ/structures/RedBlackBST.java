@@ -71,9 +71,11 @@ public class RedBlackBST<Key, Value> {
       int cmp = comparator.compare(key, x.key);
       if (cmp < 0) {
         x = x.left;
-      } else if (cmp > 0) {
+      }
+      else if (cmp > 0) {
         x = x.right;
-      } else {
+      }
+      else {
         return x.val;
       }
     }
@@ -103,9 +105,11 @@ public class RedBlackBST<Key, Value> {
     int cmp = comparator.compare(key, h.key);
     if (cmp < 0) {
       h.left = put(h.left, key, val);
-    } else if (cmp > 0) {
+    }
+    else if (cmp > 0) {
       h.right = put(h.right, key, val);
-    } else {
+    }
+    else {
       h.val = val;
     }
     if (isRed(h.right) && !isRed(h.left)) {
@@ -200,7 +204,8 @@ public class RedBlackBST<Key, Value> {
         h = moveRedLeft(h);
       }
       h.left = delete(h.left, key);
-    } else {
+    }
+    else {
       if (isRed(h.left)) {
         h = rotateRight(h);
       }
@@ -215,7 +220,8 @@ public class RedBlackBST<Key, Value> {
         h.key = x.key;
         h.val = x.val;
         h.right = deleteMin(h.right);
-      } else {
+      }
+      else {
         h.right = delete(h.right, key);
       }
     }
@@ -314,7 +320,8 @@ public class RedBlackBST<Key, Value> {
 
     if (x.left == null) {
       return x;
-    } else {
+    }
+    else {
       return min(x.left);
     }
   }
@@ -331,7 +338,8 @@ public class RedBlackBST<Key, Value> {
   private Node max(Node x) {
     if (x.right == null) {
       return x;
-    } else {
+    }
+    else {
       return max(x.right);
     }
   }
@@ -344,7 +352,8 @@ public class RedBlackBST<Key, Value> {
     Node x = floor(root, key);
     if (x == null) {
       throw new NoSuchElementException("argument to floor() is too small");
-    } else {
+    }
+    else {
       return x.key;
     }
   }
@@ -364,7 +373,8 @@ public class RedBlackBST<Key, Value> {
     Node t = floor(x.right, key);
     if (t != null) {
       return t;
-    } else {
+    }
+    else {
       return x;
     }
   }
@@ -377,7 +387,8 @@ public class RedBlackBST<Key, Value> {
     Node x = ceiling(root, key);
     if (x == null) {
       throw new NoSuchElementException("argument to ceiling() is too small");
-    } else {
+    }
+    else {
       return x.key;
     }
   }
@@ -397,7 +408,8 @@ public class RedBlackBST<Key, Value> {
     Node t = ceiling(x.left, key);
     if (t != null) {
       return t;
-    } else {
+    }
+    else {
       return x;
     }
   }
@@ -417,9 +429,11 @@ public class RedBlackBST<Key, Value> {
     int leftSize = size(x.left);
     if (leftSize > rank) {
       return select(x.left, rank);
-    } else if (leftSize < rank) {
+    }
+    else if (leftSize < rank) {
       return select(x.right, rank - leftSize - 1);
-    } else {
+    }
+    else {
       return x.key;
     }
   }
@@ -436,9 +450,11 @@ public class RedBlackBST<Key, Value> {
     int cmp = comparator.compare(key, x.key);
     if (cmp < 0) {
       return rank(key, x.left);
-    } else if (cmp > 0) {
+    }
+    else if (cmp > 0) {
       return 1 + size(x.left) + rank(key, x.right);
-    } else {
+    }
+    else {
       return size(x.left);
     }
   }
@@ -450,7 +466,8 @@ public class RedBlackBST<Key, Value> {
     }
     if (contains(hi)) {
       return rank(hi) - rank(lo) + 1;
-    } else {
+    }
+    else {
       return rank(hi) - rank(lo);
     }
   }

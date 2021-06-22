@@ -43,10 +43,12 @@ class SortTest {
       if (res[i - 1].year > res[i].year) {
         is_sorted = false;
         break;
-      } else if ((res[i - 1].year == res[i].year) && (res[i - 1].month > res[i].month)) {
+      }
+      else if ((res[i - 1].year == res[i].year) && (res[i - 1].month > res[i].month)) {
         is_sorted = false;
         break;
-      } else if ((res[i - 1].year == res[i].year) && (res[i - 1].month == res[i].month) && (res[i - 1].day > res[i].day)) {
+      }
+      else if ((res[i - 1].year == res[i].year) && (res[i - 1].month == res[i].month) && (res[i - 1].day > res[i].day)) {
         is_sorted = false;
         break;
       }

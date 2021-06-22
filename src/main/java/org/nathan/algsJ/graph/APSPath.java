@@ -121,7 +121,8 @@ public class APSPath {
     var new_graph = buildGraph(graph, vertices_new, s);
     if (!SSSPath.BellmanFord(new_graph, s)) {
       return Optional.empty();
-    } else {
+    }
+    else {
       var edges_new = new_graph.getAllEdges();
       for (var vertex : vertices_new) {
         h.put(vertex, vertex.distance);

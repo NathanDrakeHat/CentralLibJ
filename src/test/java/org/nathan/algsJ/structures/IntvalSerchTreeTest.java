@@ -23,17 +23,21 @@ class IntvalSerchTreeTest {
           var c = tree.comparator.compare(n.left.max, n.right.max) < 0 ? n.right.max : n.left.max;
           var m = tree.comparator.compare(n.max, c) < 0 ? c : n.max;
           b = (n.max == m);
-        } else if (n.left != tree.sentinel) {
+        }
+        else if (n.left != tree.sentinel) {
           var c = n.left.max;
           var m = tree.comparator.compare(n.max, c) < 0 ? c : n.max;
           b = (n.max == m);
-        } else if (n.right != tree.sentinel) {
+        }
+        else if (n.right != tree.sentinel) {
           var c = n.right.max;
           var m = tree.comparator.compare(n.max, c) < 0 ? c : n.max;
           b = (n.max == m);
-        } else if (n.left == tree.sentinel && n.right == tree.sentinel) {
+        }
+        else if (n.left == tree.sentinel && n.right == tree.sentinel) {
           b = (n.high == n.max);
-        } else {
+        }
+        else {
           throw new RuntimeException();
         }
 
@@ -93,7 +97,8 @@ class IntvalSerchTreeTest {
     for (var it : intervals) {
       if (it.first() >= sect.first() && it.first() <= sect.second()) {
         answers.add(it);
-      } else if (it.second() >= sect.first() && it.second() <= sect.second()) {
+      }
+      else if (it.second() >= sect.first() && it.second() <= sect.second()) {
         answers.add(it);
       }
     }

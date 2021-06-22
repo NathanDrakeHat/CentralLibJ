@@ -41,7 +41,8 @@ public class MaxFlowTest {
       var vert = FordFulkersonVerts.get(i);
       if (i != 2 && i != 4 && i != 5 && i != 6) {
         assertFalse(solver.inMinCut(vert));
-      } else {
+      }
+      else {
         assertTrue(solver.inMinCut(vert));
       }
     }

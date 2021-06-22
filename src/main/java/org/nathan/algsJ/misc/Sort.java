@@ -67,13 +67,15 @@ public final class Sort {
     for (int i = start; (i < start + cache1.length + cache2.length) && (right_idx < cache2.length) && (left_idx < cache1.length); i++) {
       if (cache1[left_idx] <= cache2[right_idx]) {
         array[i] = cache1[left_idx++];
-      } else {
+      }
+      else {
         array[i] = cache2[right_idx++];
       }
     }
     if (left_idx < cache1.length) {
       System.arraycopy(cache1, left_idx, array, start + left_idx + right_idx, cache1.length - left_idx);
-    } else if (right_idx < cache2.length) {
+    }
+    else if (right_idx < cache2.length) {
       System.arraycopy(cache2, right_idx, array, start + left_idx + right_idx, cache2.length - right_idx);
     }
   }
@@ -206,9 +208,11 @@ public final class Sort {
         while (i <= gt) {
           if (array[i] < val) {
             exchange(array, i++, lt++);
-          } else if (array[i] > val) {
+          }
+          else if (array[i] > val) {
             exchange(array, i, gt--);
-          } else {
+          }
+          else {
             i++;
           }
         }
@@ -420,12 +424,14 @@ public final class Sort {
         if (hi <= lo) return;
         if (hi - lo == 2) {
           funcSmallSort.apply(lo, hi, d);
-        } else {
+        }
+        else {
           KeyIndexedCountingSorter<String> sorter = new KeyIndexedCountingSorter<>();
           sorter.sort(strings, lo, hi, s -> {
             if (d < s.length()) {
               return s.charAt(d);
-            } else return -1;
+            }
+            else return -1;
           });
           for (int r = 0; r < sorter.RADIX; r++) {
             apply(lo + sorter.count[r], lo + sorter.count[r + 1] - 1, d + 1);

@@ -35,7 +35,8 @@ public final class DisjointSet {
   private static void link(DisjointSet x, DisjointSet y) {
     if (x.rank > y.rank) {
       y.parent = x;
-    } else {
+    }
+    else {
       x.parent = y;
       if (x.rank == y.rank) {
         y.rank = y.rank + 1;

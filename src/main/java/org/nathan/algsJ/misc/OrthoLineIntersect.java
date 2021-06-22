@@ -44,7 +44,8 @@ public class OrthoLineIntersect {
 
       if (lineOfX.containsKey(getX.applyAsDouble(points_tuple.first()))) {
         lineOfX.get(getX.applyAsDouble(points_tuple.first())).add(line);
-      } else {
+      }
+      else {
         Set<L> set = new HashSet<>();
         set.add(line);
         lineOfX.put(getX.applyAsDouble(points_tuple.first()), set);
@@ -54,7 +55,8 @@ public class OrthoLineIntersect {
       if (x1 != x2) {
         if (lineOfX.containsKey(getX.applyAsDouble(points_tuple.second()))) {
           lineOfX.get(getX.applyAsDouble(points_tuple.second())).add(line);
-        } else {
+        }
+        else {
           Set<L> set = new HashSet<>();
           set.add(line);
           lineOfX.put(getX.applyAsDouble(points_tuple.second()), set);
@@ -95,15 +97,18 @@ public class OrthoLineIntersect {
       for (var line : lineOfX.get(x)) {
         if (funcIsVertical.apply(line)) {
           v_queue.add(line);
-        } else {
+        }
+        else {
           if (funcIsEnd.apply(x, line)) {
             h_rm_queue.add(line);
-          } else {
+          }
+          else {
             var yp = getY.applyAsDouble(toPoints.apply(line).first());
             if (HYToHL_tree.containKey(yp)) {
               var l = HYToHL_tree.getValOfKey(yp);
               l.add(line);
-            } else {
+            }
+            else {
               Set<L> set = new HashSet<>();
               set.add(line);
               HYToHL_tree.insertKV(yp, set);
@@ -120,7 +125,8 @@ public class OrthoLineIntersect {
         for (var t : hls) {
           if (res.containsKey(vl)) {
             res.get(vl).addAll(t.second());
-          } else {
+          }
+          else {
             res.put(vl, new HashSet<>(t.second()));
           }
 
@@ -132,7 +138,8 @@ public class OrthoLineIntersect {
         var set = HYToHL_tree.getValOfKey(y);
         if (set != null && set.size() <= 1) {
           HYToHL_tree.deleteKey(y);
-        } else {
+        }
+        else {
           set.remove(hl);
         }
       }

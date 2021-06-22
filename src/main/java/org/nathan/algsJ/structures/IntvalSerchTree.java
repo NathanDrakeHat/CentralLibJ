@@ -65,11 +65,14 @@ public class IntvalSerchTree<Key> implements Iterable<Tuple<Key, Key>> {
       void apply(Node<Key> n) {
         if (n == sentinel) {
           return;
-        } else if (funcIntersect.apply(n.low, n.high, lo) || funcIntersect.apply(n.low, n.high, high)) {
+        }
+        else if (funcIntersect.apply(n.low, n.high, lo) || funcIntersect.apply(n.low, n.high, high)) {
           res.add(new Tuple<>(n.low, n.high));
-        } else if (n.left == sentinel || comparator.compare(n.left.max, lo) < 0) {
+        }
+        else if (n.left == sentinel || comparator.compare(n.left.max, lo) < 0) {
           apply(n.right);
-        } else {
+        }
+        else {
           apply(n.left);
         }
       }

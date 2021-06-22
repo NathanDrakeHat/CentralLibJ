@@ -24,9 +24,11 @@ public class BaseEdge<V> {
   public @NotNull V another(V vertex) {
     if (vertex.equals(former)) {
       return latter;
-    } else if (vertex.equals(latter)) {
+    }
+    else if (vertex.equals(latter)) {
       return former;
-    } else {
+    }
+    else {
       throw new IllegalArgumentException();
     }
   }

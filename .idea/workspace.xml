@@ -27,11 +27,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="add new interface">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/structures/KdTree.java" beforeDir="false" />
-    </list>
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="rm prime gen cache, rm KdTree.java" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -50,7 +46,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../CentralUtils" />
     <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="GitSEFilterConfiguration">
@@ -85,7 +81,7 @@
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.45428157" />
-    <property name="settings.editor.selected.configurable" value="build.tools" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Java" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -449,14 +445,7 @@
       <workItem from="1624264476155" duration="185000" />
       <workItem from="1624267131602" duration="3502000" />
       <workItem from="1624277060900" duration="4575000" />
-      <workItem from="1624361281270" duration="1245000" />
-    </task>
-    <task id="LOCAL-00238" summary="add input check">
-      <created>1623674312777</created>
-      <option name="number" value="00238" />
-      <option name="presentableId" value="LOCAL-00238" />
-      <option name="project" value="LOCAL" />
-      <updated>1623674312777</updated>
+      <workItem from="1624361281270" duration="1966000" />
     </task>
     <task id="LOCAL-00239" summary="change README.md">
       <created>1623674580605</created>
@@ -794,7 +783,14 @@
       <option name="project" value="LOCAL" />
       <updated>1624283839197</updated>
     </task>
-    <option name="localTasksCounter" value="287" />
+    <task id="LOCAL-00287" summary="rm prime gen cache, rm KdTree.java">
+      <created>1624364173746</created>
+      <option name="number" value="00287" />
+      <option name="presentableId" value="LOCAL-00287" />
+      <option name="project" value="LOCAL" />
+      <updated>1624364173746</updated>
+    </task>
+    <option name="localTasksCounter" value="288" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -823,7 +819,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fix is insert bug" />
     <MESSAGE value="IntvalSerchTree augment!!" />
     <MESSAGE value="doc" />
     <MESSAGE value="rename" />
@@ -848,6 +843,7 @@
     <MESSAGE value="format" />
     <MESSAGE value="better CEStripper" />
     <MESSAGE value="add new interface" />
-    <option name="LAST_COMMIT_MESSAGE" value="add new interface" />
+    <MESSAGE value="rm prime gen cache, rm KdTree.java" />
+    <option name="LAST_COMMIT_MESSAGE" value="rm prime gen cache, rm KdTree.java" />
   </component>
 </project>

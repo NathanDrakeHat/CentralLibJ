@@ -86,20 +86,23 @@ class DFSTest {
         assertEquals(5, l.get(3).finish);
         assertEquals(3, l.get(4).discover);
         assertEquals(6, l.get(4).finish);
-      } else {
+      }
+      else {
         assertEquals(3, l.get(3).discover);
         assertEquals(6, l.get(3).finish);
         assertEquals(4, l.get(4).discover);
         assertEquals(5, l.get(4).finish);
       }
-    } else {
+    }
+    else {
       assertEquals(2, l.get(3).discover);
       assertEquals(7, l.get(3).finish);
       if (3 == l.get(4).discover) {
         assertEquals(6, l.get(4).finish);
         assertEquals(4, l.get(1).discover);
         assertEquals(5, l.get(1).finish);
-      } else {
+      }
+      else {
         assertEquals(4, l.get(4).discover);
         assertEquals(5, l.get(4).finish);
         assertEquals(3, l.get(1).discover);
@@ -112,7 +115,8 @@ class DFSTest {
       assertEquals(12, l.get(2).finish);
       assertEquals(10, l.get(5).discover);
       assertEquals(11, l.get(5).finish);
-    } else {
+    }
+    else {
       assertEquals(11, l.get(2).discover);
       assertEquals(12, l.get(2).finish);
       assertEquals(9, l.get(5).discover);
@@ -180,7 +184,8 @@ class DFSTest {
     var edges = G.adjacentEdgesOf(current);
     if (edges.isEmpty()) {
       return true;
-    } else {
+    }
+    else {
       boolean t = true;
       for (var edge : edges) {
         var i = edge.another(current);

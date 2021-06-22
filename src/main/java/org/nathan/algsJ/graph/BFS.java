@@ -56,7 +56,8 @@ public final class BFS {
   private static <T> void traverse(Vert<T> s, Vert<T> v, List<T> res) {
     if (v == s) {
       res.add(s.identity);
-    } else if (v.parent != null) {
+    }
+    else if (v.parent != null) {
       traverse(s, v.parent, res);
       res.add(v.identity);
     }

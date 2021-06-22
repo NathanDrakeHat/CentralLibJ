@@ -58,16 +58,19 @@ public class BSTIterator<Node, Target> implements Iterator<Target> {
       if (getLeft.apply(ptr) != sentinel && !poppedBefore) {
         stack.push(ptr);
         ptr = getLeft.apply(ptr);
-      } else {
+      }
+      else {
         var t = ptr;
         if (getRight.apply(ptr) != sentinel) {
           ptr = getRight.apply(ptr);
           poppedBefore = false;
-        } else {
+        }
+        else {
           if (stack.size() != 0) {
             ptr = stack.pop();
             poppedBefore = true;
-          } else {
+          }
+          else {
             ptr = null;
           }
         }

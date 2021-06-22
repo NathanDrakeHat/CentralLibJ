@@ -23,9 +23,11 @@ public class FlowEdge<V> extends BaseEdge<V> {
   public double residualCapacityTo(@NotNull V v) {
     if (v == latter) {
       return capacity - flow;
-    } else if (v == former) {
+    }
+    else if (v == former) {
       return flow;
-    } else {
+    }
+    else {
       throw new IllegalArgumentException("edge dose not contain this vertex.");
     }
   }
@@ -33,9 +35,11 @@ public class FlowEdge<V> extends BaseEdge<V> {
   public void addFlowTo(@NotNull V v, double delta) {
     if (v == latter) {
       flow += delta;
-    } else if (v == former) {
+    }
+    else if (v == former) {
       flow -= delta;
-    } else {
+    }
+    else {
       throw new IllegalArgumentException("edge dose not contain this vertex.");
     }
 

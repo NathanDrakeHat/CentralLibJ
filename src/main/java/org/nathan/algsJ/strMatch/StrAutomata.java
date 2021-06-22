@@ -58,7 +58,8 @@ public class StrAutomata {
       if (other instanceof TransitionEntry) {
         return (integer == ((TransitionEntry) other).integer) &&
                 (character == ((TransitionEntry) other).character);
-      } else {
+      }
+      else {
         return false;
       }
     }

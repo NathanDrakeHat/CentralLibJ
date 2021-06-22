@@ -30,11 +30,13 @@ public final class MaxSubArray {
         middle_low = left_p;
         middle_high = right_p + 1;
         max_middle_sum = middle_sum;
-      } else if (middle_sum <= max_left_sum && max_left_sum >= max_right_sum) {
+      }
+      else if (middle_sum <= max_left_sum && max_left_sum >= max_right_sum) {
         middle_low = left_p;
         middle_high = middle;
         max_middle_sum = max_left_sum;
-      } else {
+      }
+      else {
         middle_low = middle;
         middle_high = right_p + 1;
         max_middle_sum = max_right_sum;
