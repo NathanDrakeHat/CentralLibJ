@@ -27,10 +27,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="better CEStripper">
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="add new interface">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/structures/RBTreeTemplate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/structures/RBTreeTemplate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CentralUtils/src/main/java/org/nathan/centralUtils/utils/LambdaUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CentralUtils/src/main/java/org/nathan/centralUtils/utils/LambdaUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/structures/KdTree.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -119,7 +119,7 @@
       <command value="mvn install:install-file -Dfile=algs4.jar -DgroupId=edu.princeton.cs -DartifactId=algs4 -Dversion=1.0 -Dpackaging=jar -DgeneratePom=true " />
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.All in AlgorithmsJava">
+  <component name="RunManager" selected="Application.pushThis">
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.nathan.Main" />
       <module name="AlgorithmsJava" />
@@ -448,14 +448,8 @@
       <workItem from="1624262506887" duration="16000" />
       <workItem from="1624264476155" duration="185000" />
       <workItem from="1624267131602" duration="3502000" />
-      <workItem from="1624277060900" duration="4490000" />
-    </task>
-    <task id="LOCAL-00237" summary="save">
-      <created>1623671896715</created>
-      <option name="number" value="00237" />
-      <option name="presentableId" value="LOCAL-00237" />
-      <option name="project" value="LOCAL" />
-      <updated>1623671896715</updated>
+      <workItem from="1624277060900" duration="4575000" />
+      <workItem from="1624361281270" duration="1245000" />
     </task>
     <task id="LOCAL-00238" summary="add input check">
       <created>1623674312777</created>
@@ -793,7 +787,14 @@
       <option name="project" value="LOCAL" />
       <updated>1624282725529</updated>
     </task>
-    <option name="localTasksCounter" value="286" />
+    <task id="LOCAL-00286" summary="add new interface">
+      <created>1624283839197</created>
+      <option name="number" value="00286" />
+      <option name="presentableId" value="LOCAL-00286" />
+      <option name="project" value="LOCAL" />
+      <updated>1624283839197</updated>
+    </task>
+    <option name="localTasksCounter" value="287" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -822,7 +823,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="better template" />
     <MESSAGE value="fix is insert bug" />
     <MESSAGE value="IntvalSerchTree augment!!" />
     <MESSAGE value="doc" />
@@ -847,6 +847,7 @@
     <MESSAGE value="rename package" />
     <MESSAGE value="format" />
     <MESSAGE value="better CEStripper" />
-    <option name="LAST_COMMIT_MESSAGE" value="better CEStripper" />
+    <MESSAGE value="add new interface" />
+    <option name="LAST_COMMIT_MESSAGE" value="add new interface" />
   </component>
 </project>
