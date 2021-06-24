@@ -24,7 +24,7 @@ public final class SSSPath {
    * @param <T>   id
    * @return has shortest path
    */
-  public static <T> boolean BellmanFord(@NotNull LinkGraph<BFS.Vert<T>, WeightEdge<BFS.Vert<T>>> graph, @NotNull BFS.Vert<T> s) {
+  public static <T> boolean BellmanFord(@NotNull LinkedGraph<BFS.Vert<T>, WeightEdge<BFS.Vert<T>>> graph, @NotNull BFS.Vert<T> s) {
     initializeSingleSource(graph, s);
     int vertices_count = graph.verticesCount();
     var edges = graph.getAllEdges();
@@ -41,7 +41,7 @@ public final class SSSPath {
     return true;
   }
 
-  private static <T> void initializeSingleSource(LinkGraph<BFS.Vert<T>, WeightEdge<BFS.Vert<T>>> G, BFS.Vert<T> s) {
+  private static <T> void initializeSingleSource(LinkedGraph<BFS.Vert<T>, WeightEdge<BFS.Vert<T>>> G, BFS.Vert<T> s) {
     var vertices = G.allVertices();
     for (var v : vertices) {
       v.distance = Double.POSITIVE_INFINITY;
@@ -70,7 +70,7 @@ public final class SSSPath {
    * @param BFS_Linked_graph linked graph with bfs vertex wrapper
    * @param s                start
    */
-  public static <T> void ssDAG(@NotNull LinkGraph<BFS.Vert<T>, WeightEdge<BFS.Vert<T>>> BFS_Linked_graph, @NotNull BFS.Vert<T> s) {
+  public static <T> void ssDAG(@NotNull LinkedGraph<BFS.Vert<T>, WeightEdge<BFS.Vert<T>>> BFS_Linked_graph, @NotNull BFS.Vert<T> s) {
     var DFS_Linked_graph = transform(BFS_Linked_graph);
     var DFS_list = topologicalSort(DFS_Linked_graph);
     initializeSingleSource(BFS_Linked_graph, s);
@@ -84,9 +84,9 @@ public final class SSSPath {
     }
   }
 
-  private static <T> LinkGraph<DFS.Vert<BFS.Vert<T>>, BaseEdge<DFS.Vert<BFS.Vert<T>>>> transform(
-          LinkGraph<BFS.Vert<T>, WeightEdge<BFS.Vert<T>>> other_graph) {
-    LinkGraph<DFS.Vert<BFS.Vert<T>>, BaseEdge<DFS.Vert<BFS.Vert<T>>>> res = new LinkGraph<>(other_graph.verticesCount(), other_graph.directed);
+  private static <T> LinkedGraph<DFS.Vert<BFS.Vert<T>>, BaseEdge<DFS.Vert<BFS.Vert<T>>>> transform(
+          LinkedGraph<BFS.Vert<T>, WeightEdge<BFS.Vert<T>>> other_graph) {
+    LinkedGraph<DFS.Vert<BFS.Vert<T>>, BaseEdge<DFS.Vert<BFS.Vert<T>>>> res = new LinkedGraph<>(other_graph.verticesCount(), other_graph.directed);
     Map<BFS.Vert<T>, DFS.Vert<BFS.Vert<T>>> mapRecord = new HashMap<>(res.verticesCount());
     other_graph.allVertices().forEach(otherV -> {
       var mapped = new DFS.Vert<>(otherV);
@@ -113,7 +113,7 @@ public final class SSSPath {
    * @param s   start
    * @param <T> id
    */
-  public static <T> void DijkstraFibonacciHeap(@NotNull LinkGraph<BFS.Vert<T>, WeightEdge<BFS.Vert<T>>> G, @NotNull BFS.Vert<T> s) {
+  public static <T> void DijkstraFibonacciHeap(@NotNull LinkedGraph<BFS.Vert<T>, WeightEdge<BFS.Vert<T>>> G, @NotNull BFS.Vert<T> s) {
     initializeSingleSource(G, s);
     var vertices = G.allVertices();
     FibonacciMinHeap<Double, BFS.Vert<T>> Q = new FibonacciMinHeap<>(Comparator.comparingDouble(a -> a));
@@ -141,7 +141,7 @@ public final class SSSPath {
    * @param s   start
    * @param <T> id
    */
-  public static <T> void DijkstraMinHeap(@NotNull LinkGraph<BFS.Vert<T>, WeightEdge<BFS.Vert<T>>> G, @NotNull BFS.Vert<T> s) {
+  public static <T> void DijkstraMinHeap(@NotNull LinkedGraph<BFS.Vert<T>, WeightEdge<BFS.Vert<T>>> G, @NotNull BFS.Vert<T> s) {
     initializeSingleSource(G, s);
     var vertices = G.allVertices();
     ExtremumHeap<Double, BFS.Vert<T>> Q = new ExtremumHeap<>(true, vertices, BFS.Vert::getDistance, Double::compare);

@@ -12,7 +12,7 @@ class BFSTest {
 
 
   List<BFS.Vert<Character>> vertices;
-  LinkGraph<BFS.Vert<Character>, BaseEdge<BFS.Vert<Character>>> graph;
+  LinkedGraph<BFS.Vert<Character>, BaseEdge<BFS.Vert<Character>>> graph;
 
   {
     vertices = Data.makeVertexes();
@@ -36,8 +36,9 @@ class BFSTest {
       return vs;
     }
 
-    public static LinkGraph<BFS.Vert<Character>, BaseEdge<BFS.Vert<Character>>> makeGraph(List<BFS.Vert<Character>> vs) {
-      LinkGraph<BFS.Vert<Character>, BaseEdge<BFS.Vert<Character>>> G = new LinkGraph<>(false, vs);
+    public static LinkedGraph<BFS.Vert<Character>, BaseEdge<BFS.Vert<Character>>> makeGraph(List<BFS.Vert<Character>> vs) {
+      var c = BFS.Vert.class;
+      LinkedGraph<BFS.Vert<Character>, BaseEdge<BFS.Vert<Character>>> G = new LinkedGraph<>(false, vs);
       G.addEdge(new BaseEdge<>(vs.get(0), vs.get(1)));
       G.addEdge(new BaseEdge<>(vs.get(0), vs.get(4)));
 

@@ -14,13 +14,13 @@ class SSSPathTest {
   static BFS.Vert<String> targetBellmanFordCase_s;
   static BFS.Vert<String> targetBellmanFordCase_z;
 
-  static LinkGraph<BFS.Vert<String>, WeightEdge<BFS.Vert<String>>> buildBellmanFordCase() {
+  static LinkedGraph<BFS.Vert<String>, WeightEdge<BFS.Vert<String>>> buildBellmanFordCase() {
     String[] names = "s,t,x,y,z".split(",");
     List<BFS.Vert<String>> vertices = new ArrayList<>();
     for (var n : names) {
       vertices.add(new BFS.Vert<>(n));
     }
-    LinkGraph<BFS.Vert<String>, WeightEdge<BFS.Vert<String>>> res = new LinkGraph<>(true, vertices);
+    LinkedGraph<BFS.Vert<String>, WeightEdge<BFS.Vert<String>>> res = new LinkedGraph<>(true, vertices);
     int[] index1 = new int[]{0, 0, 1, 1, 1, 2, 3, 3, 4, 4};
     int[] index2 = new int[]{1, 3, 2, 3, 4, 1, 2, 4, 0, 2};
     double[] weights = new double[]{6, 7, 5, 8, -4, -2, -3, 9, 2, 7};
@@ -32,7 +32,7 @@ class SSSPathTest {
     return res;
   }
 
-  LinkGraph<BFS.Vert<String>, WeightEdge<BFS.Vert<String>>> BellmanGraph = buildBellmanFordCase();
+  LinkedGraph<BFS.Vert<String>, WeightEdge<BFS.Vert<String>>> BellmanGraph = buildBellmanFordCase();
 
   @Test
   void BellmanFordTest() {
@@ -57,7 +57,7 @@ class SSSPathTest {
 
   static BFS.Vert<String> targetShortestPathOfDAGForBFS;
 
-  static LinkGraph<BFS.Vert<String>, WeightEdge<BFS.Vert<String>>> buildShortestPathOfDAGForBFS() {
+  static LinkedGraph<BFS.Vert<String>, WeightEdge<BFS.Vert<String>>> buildShortestPathOfDAGForBFS() {
     String[] names = "r,s,t,x,y,z".split(",");
     List<BFS.Vert<String>> BFS_vertex = new ArrayList<>();
     for (String name : names) {
@@ -65,7 +65,7 @@ class SSSPathTest {
     }
 
 
-    LinkGraph<BFS.Vert<String>, WeightEdge<BFS.Vert<String>>> BFS_G = new LinkGraph<>(true, BFS_vertex);
+    LinkedGraph<BFS.Vert<String>, WeightEdge<BFS.Vert<String>>> BFS_G = new LinkedGraph<>(true, BFS_vertex);
     int[] index1 = new int[]{0, 0, 1, 1, 2, 2, 2, 3, 3, 4};
     int[] index2 = new int[]{1, 2, 2, 3, 3, 4, 5, 4, 5, 5};
     double[] weights = new double[]{5, 3, 2, 6, 7, 4, 2, -1, 1, -2};
@@ -78,7 +78,7 @@ class SSSPathTest {
     return BFS_G;
   }
 
-  LinkGraph<BFS.Vert<String>, WeightEdge<BFS.Vert<String>>> ssDAGGraph = buildShortestPathOfDAGForBFS();
+  LinkedGraph<BFS.Vert<String>, WeightEdge<BFS.Vert<String>>> ssDAGGraph = buildShortestPathOfDAGForBFS();
 
   @Test
   void shortestPathOfDAGTest() {
@@ -105,13 +105,13 @@ class SSSPathTest {
   static BFS.Vert<String> targetDijkstraFib;
 
 
-  static LinkGraph<BFS.Vert<String>, WeightEdge<BFS.Vert<String>>> buildDijkstraCase(boolean is_fib) {
+  static LinkedGraph<BFS.Vert<String>, WeightEdge<BFS.Vert<String>>> buildDijkstraCase(boolean is_fib) {
     String[] names = "s,t,x,y,z".split(",");
     List<BFS.Vert<String>> vertices = new ArrayList<>();
     for (var n : names) {
       vertices.add(new BFS.Vert<>(n));
     }
-    LinkGraph<BFS.Vert<String>, WeightEdge<BFS.Vert<String>>> graph = new LinkGraph<>(true, vertices);
+    LinkedGraph<BFS.Vert<String>, WeightEdge<BFS.Vert<String>>> graph = new LinkedGraph<>(true, vertices);
     int[] indices1 = new int[]{0, 0, 1, 1, 2, 3, 3, 3, 4, 4};
     int[] indices2 = new int[]{1, 3, 2, 3, 4, 1, 2, 4, 0, 2};
     double[] weights = new double[]{10, 5, 1, 2, 4, 3, 9, 2, 7, 6};
@@ -127,7 +127,7 @@ class SSSPathTest {
     return graph;
   }
 
-  LinkGraph<BFS.Vert<String>, WeightEdge<BFS.Vert<String>>> dijkstraFibGraph = buildDijkstraCase(true);
+  LinkedGraph<BFS.Vert<String>, WeightEdge<BFS.Vert<String>>> dijkstraFibGraph = buildDijkstraCase(true);
 
   @Test
   void DijkstraFibonacciHeapTest() {
@@ -151,7 +151,7 @@ class SSSPathTest {
   }
 
 
-  LinkGraph<BFS.Vert<String>, WeightEdge<BFS.Vert<String>>> dijkstraMinHeapGraph = buildDijkstraCase(false);
+  LinkedGraph<BFS.Vert<String>, WeightEdge<BFS.Vert<String>>> dijkstraMinHeapGraph = buildDijkstraCase(false);
   static BFS.Vert<String> targetDijkstraMinHeap;
 
   @Test

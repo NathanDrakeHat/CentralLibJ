@@ -11,7 +11,7 @@ import java.util.List;
  * depth first search
  */
 public final class DFS {
-  public static <T> void depthFirstSearch(@NotNull LinkGraph<Vert<T>, BaseEdge<Vert<T>>> G) {
+  public static <T> void depthFirstSearch(@NotNull LinkedGraph<Vert<T>, BaseEdge<Vert<T>>> G) {
     var vertices = G.allVertices();
     vertices.parallelStream().forEach(v -> {
       v.color = COLOR.WHITE;
@@ -25,7 +25,7 @@ public final class DFS {
     }
   }
 
-  private static <T> int DFSVisit(LinkGraph<Vert<T>, BaseEdge<Vert<T>>> G, Vert<T> u, int time) {
+  private static <T> int DFSVisit(LinkedGraph<Vert<T>, BaseEdge<Vert<T>>> G, Vert<T> u, int time) {
     time++;
     u.discover = time;
     u.color = COLOR.GRAY;
@@ -43,20 +43,20 @@ public final class DFS {
     return time;
   }
 
-  public static <T> List<Vert<T>> topologicalSort(@NotNull LinkGraph<Vert<T>, BaseEdge<Vert<T>>> G) {
+  public static <T> List<Vert<T>> topologicalSort(@NotNull LinkedGraph<Vert<T>, BaseEdge<Vert<T>>> G) {
     depthFirstSearch(G);
     List<Vert<T>> l = new ArrayList<>(G.allVertices());
     l.sort((o1, o2) -> o2.finish - o1.finish); // descend order
     return l;
   }
 
-  public static <T> void stronglyConnectedComponents(@NotNull LinkGraph<Vert<T>, BaseEdge<Vert<T>>> G) {
+  public static <T> void stronglyConnectedComponents(@NotNull LinkedGraph<Vert<T>, BaseEdge<Vert<T>>> G) {
     var l = topologicalSort(G);
     var G_T = transposeGraph(G);
     depthFirstSearchOrderly(G_T, l);
   }
 
-  private static <T> void depthFirstSearchOrderly(LinkGraph<Vert<T>, BaseEdge<Vert<T>>> G, List<Vert<T>> order) {
+  private static <T> void depthFirstSearchOrderly(LinkedGraph<Vert<T>, BaseEdge<Vert<T>>> G, List<Vert<T>> order) {
     var vertices = G.allVertices();
     for (var v : vertices) {
       v.color = COLOR.WHITE;
@@ -70,8 +70,8 @@ public final class DFS {
     }
   }
 
-  private static <T> LinkGraph<Vert<T>, BaseEdge<Vert<T>>> transposeGraph(LinkGraph<Vert<T>, BaseEdge<Vert<T>>> graph) {
-    LinkGraph<Vert<T>, BaseEdge<Vert<T>>> new_graph = new LinkGraph<>(true, graph.allVertices());
+  private static <T> LinkedGraph<Vert<T>, BaseEdge<Vert<T>>> transposeGraph(LinkedGraph<Vert<T>, BaseEdge<Vert<T>>> graph) {
+    LinkedGraph<Vert<T>, BaseEdge<Vert<T>>> new_graph = new LinkedGraph<>(true, graph.allVertices());
     var vertices = graph.allVertices();
     for (var v : vertices) {
       var edges = graph.adjacentEdgesOf(v);

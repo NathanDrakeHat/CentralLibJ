@@ -15,7 +15,7 @@ import java.util.Set;
  */
 public final class MST {
   public static <T>
-  @NotNull Set<WeightEdge<VertKruskal<T>>> Kruskal(@NotNull LinkGraph<VertKruskal<T>, WeightEdge<VertKruskal<T>>> graph) {
+  @NotNull Set<WeightEdge<VertKruskal<T>>> Kruskal(@NotNull LinkedGraph<VertKruskal<T>, WeightEdge<VertKruskal<T>>> graph) {
     Set<WeightEdge<VertKruskal<T>>> res = new HashSet<>();
     var edges_set = graph.getAllEdges();
     var edges_list = new ArrayList<>(edges_set);
@@ -32,7 +32,7 @@ public final class MST {
   }
 
   public static <T> void MSTPrimFibonacciHeap(
-          @NotNull LinkGraph<VertPrim<T>, WeightEdge<VertPrim<T>>> graph,
+          @NotNull LinkedGraph<VertPrim<T>, WeightEdge<VertPrim<T>>> graph,
           @NotNull MST.VertPrim<T> r) {
     FibonacciMinHeap<Double, VertPrim<T>> Q = new FibonacciMinHeap<>(Comparator.comparingDouble(a -> a));
     var vertices = graph.allVertices();
@@ -60,7 +60,7 @@ public final class MST {
     }
   }
 
-  public static <T> void MSTPrimMinHeap(@NotNull LinkGraph<VertPrim<T>, WeightEdge<VertPrim<T>>> graph,
+  public static <T> void MSTPrimMinHeap(@NotNull LinkedGraph<VertPrim<T>, WeightEdge<VertPrim<T>>> graph,
                                         @NotNull MST.VertPrim<T> r) {
     var vertices = graph.allVertices();
     for (var u : vertices) {

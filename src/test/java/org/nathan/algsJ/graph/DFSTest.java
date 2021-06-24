@@ -11,14 +11,14 @@ import static org.junit.jupiter.api.Assertions.*;
 class DFSTest {
 
 
-  static LinkGraph<DFS.Vert<String>, BaseEdge<DFS.Vert<String>>> makeStronglyConnectedComponentsDemo() {
+  static LinkedGraph<DFS.Vert<String>, BaseEdge<DFS.Vert<String>>> makeStronglyConnectedComponentsDemo() {
     String t = "a,b,c,d,e,f,g,h";
     var names = t.split(",");
     var A = new ArrayList<DFS.Vert<String>>(names.length);
     for (int i = 0; i < names.length; i++) {
       A.add(i, new DFS.Vert<>(names[i]));
     }
-    LinkGraph<DFS.Vert<String>, BaseEdge<DFS.Vert<String>>> G = new LinkGraph<>(true, A);
+    LinkedGraph<DFS.Vert<String>, BaseEdge<DFS.Vert<String>>> G = new LinkedGraph<>(true, A);
     G.addEdge(new BaseEdge<>(A.get(0), A.get(1)));
 
     G.addEdge(new BaseEdge<>(A.get(1), A.get(2)));
@@ -44,14 +44,14 @@ class DFSTest {
     return G;
   }
 
-  static LinkGraph<DFS.Vert<String>, BaseEdge<DFS.Vert<String>>> makeGraph() {
+  static LinkedGraph<DFS.Vert<String>, BaseEdge<DFS.Vert<String>>> makeGraph() {
     String names = "uvwxyz";
     var vs = new ArrayList<DFS.Vert<String>>(6);
 
     for (int i = 0; i < 6; i++) {
       vs.add(i, new DFS.Vert<>(String.valueOf(names.charAt(i))));
     }
-    var G = new LinkGraph<>(true, vs);
+    var G = new LinkedGraph<>(true, vs);
     G.addEdge(new BaseEdge<>(vs.get(0), vs.get(1)));
     G.addEdge(new BaseEdge<>(vs.get(0), vs.get(3)));
 
@@ -69,7 +69,7 @@ class DFSTest {
     return G;
   }
 
-  LinkGraph<DFS.Vert<String>, BaseEdge<DFS.Vert<String>>> dfsGraph = makeGraph();
+  LinkedGraph<DFS.Vert<String>, BaseEdge<DFS.Vert<String>>> dfsGraph = makeGraph();
 
   @Test
   void depthFirstSearchTest() {
@@ -126,14 +126,14 @@ class DFSTest {
 
   }
 
-  static LinkGraph<DFS.Vert<String>, BaseEdge<DFS.Vert<String>>> makeTopographicalDemo() {
+  static LinkedGraph<DFS.Vert<String>, BaseEdge<DFS.Vert<String>>> makeTopographicalDemo() {
     var A = new ArrayList<DFS.Vert<String>>(9);
     String t = "undershorts,pants,belt,shirt,tie,jacket,socks,shoes,watch";
     var names = t.split(",");
     for (int i = 0; i < 9; i++) {
       A.add(i, new DFS.Vert<>(names[i]));
     }
-    LinkGraph<DFS.Vert<String>, BaseEdge<DFS.Vert<String>>> G = new LinkGraph<>(true, A);
+    LinkedGraph<DFS.Vert<String>, BaseEdge<DFS.Vert<String>>> G = new LinkedGraph<>(true, A);
     G.addEdge(new BaseEdge<>(A.get(0), A.get(1)));
     G.addEdge(new BaseEdge<>(A.get(0), A.get(6)));
 
@@ -153,7 +153,7 @@ class DFSTest {
   }
 
 
-  LinkGraph<DFS.Vert<String>, BaseEdge<DFS.Vert<String>>> topologicalGraph = makeTopographicalDemo();
+  LinkedGraph<DFS.Vert<String>, BaseEdge<DFS.Vert<String>>> topologicalGraph = makeTopographicalDemo();
 
   @Test
   void topologicalSortTest() {
@@ -177,7 +177,7 @@ class DFSTest {
   boolean topologicalSorted(
           DFS.Vert<String> target,
           DFS.Vert<String> current,
-          LinkGraph<DFS.Vert<String>, BaseEdge<DFS.Vert<String>>> G) {
+          LinkedGraph<DFS.Vert<String>, BaseEdge<DFS.Vert<String>>> G) {
     if (current.equals(target)) {
       return false;
     }
@@ -198,7 +198,7 @@ class DFSTest {
     }
   }
 
-  LinkGraph<DFS.Vert<String>, BaseEdge<DFS.Vert<String>>> sortedTestGraph = makeTopographicalDemo();
+  LinkedGraph<DFS.Vert<String>, BaseEdge<DFS.Vert<String>>> sortedTestGraph = makeTopographicalDemo();
 
   @Test
   void topologicalSortedTest() {

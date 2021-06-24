@@ -7,7 +7,6 @@ import java.util.Deque;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.NoSuchElementException;
-import java.util.concurrent.Callable;
 import java.util.function.Function;
 
 public class BSTIterator<Node, Target> implements Iterator<Target> {
@@ -24,18 +23,18 @@ public class BSTIterator<Node, Target> implements Iterator<Target> {
   @NotNull
   private final Function<Node, Node> getRight;
   @NotNull
-  private final Callable<Boolean> iterating;
+  private final LambdaUtils.Gettable<Boolean> iterating;
 
   public BSTIterator(
           @NotNull Node sentinel,
           @NotNull Function<Node, Target> getTarget,
-          @NotNull Callable<Node> getRoot,
+          @NotNull LambdaUtils.Gettable<Node> getRoot,
           @NotNull Function<Node, Node> getRight,
           @NotNull Function<Node, Node> getLeft,
-          @NotNull Callable<Boolean> getIterating) {
+          @NotNull LambdaUtils.Gettable<Boolean> getIterating) {
     this.getTarget = getTarget;
     this.sentinel = sentinel;
-    ptr = LambdaUtils.stripCE(getRoot);
+    ptr = getRoot.get();
     this.getRight = getRight;
     this.getLeft = getLeft;
     this.iterating = getIterating;
@@ -46,7 +45,7 @@ public class BSTIterator<Node, Target> implements Iterator<Target> {
 
   @Override
   public boolean hasNext() {
-    if (!LambdaUtils.stripCE(iterating)) {
+    if (iterating.get()) {
       throw new IllegalStateException("concurrent modification");
     }
     return !finish && ptr != null;

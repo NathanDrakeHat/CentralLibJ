@@ -10,13 +10,13 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class APSPathTest {
 
-  static LinkGraph<BFS.Vert<String>, WeightEdge<BFS.Vert<String>>> buildJohnsonTestCase() {
+  static LinkedGraph<BFS.Vert<String>, WeightEdge<BFS.Vert<String>>> buildJohnsonTestCase() {
     String[] names = "1,2,3,4,5".split(",");
     List<BFS.Vert<String>> vertices = new ArrayList<>();
     for (var name : names) {
       vertices.add(new BFS.Vert<>(name));
     }
-    LinkGraph<BFS.Vert<String>, WeightEdge<BFS.Vert<String>>> res = new LinkGraph<>(true, vertices);
+    LinkedGraph<BFS.Vert<String>, WeightEdge<BFS.Vert<String>>> res = new LinkedGraph<>(true, vertices);
     res.addEdge(new WeightEdge<>(vertices.get(0), vertices.get(1), 3));
     res.addEdge(new WeightEdge<>(vertices.get(0), vertices.get(2), 8));
     res.addEdge(new WeightEdge<>(vertices.get(0), vertices.get(4), -4));
@@ -117,8 +117,8 @@ class APSPathTest {
     assertArrayEquals(transitiveClosureAnswer, res);
   }
 
-  LinkGraph<BFS.Vert<String>, WeightEdge<BFS.Vert<String>>> JohnsonFibTest = buildJohnsonTestCase();
-  LinkGraph<BFS.Vert<String>, WeightEdge<BFS.Vert<String>>> JohnsonMinHeapTest = buildJohnsonTestCase();
+  LinkedGraph<BFS.Vert<String>, WeightEdge<BFS.Vert<String>>> JohnsonFibTest = buildJohnsonTestCase();
+  LinkedGraph<BFS.Vert<String>, WeightEdge<BFS.Vert<String>>> JohnsonMinHeapTest = buildJohnsonTestCase();
   double[][] JohnsonAnswer = new double[][]{
           {0.0, 1.0, -3.0, 2.0, -4.0},
           {3.0, 0.0, -4.0, 1.0, -1.0},

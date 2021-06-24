@@ -111,8 +111,8 @@ public class APSPath {
    * @return all shortest path
    */
   public static <T>
-  Optional<double[][]> Johnson(@NotNull LinkGraph<BFS.Vert<T>, WeightEdge<BFS.Vert<T>>> graph,
-                               @NotNull BiConsumer<LinkGraph<BFS.Vert<T>, WeightEdge<BFS.Vert<T>>>, BFS.Vert<T>> algoDijkstra) {
+  Optional<double[][]> Johnson(@NotNull LinkedGraph<BFS.Vert<T>, WeightEdge<BFS.Vert<T>>> graph,
+                               @NotNull BiConsumer<LinkedGraph<BFS.Vert<T>, WeightEdge<BFS.Vert<T>>>, BFS.Vert<T>> algoDijkstra) {
     Map<BFS.Vert<T>, Double> h = new HashMap<>();
     var n = graph.verticesCount();
     var vertices_new = new ArrayList<>(graph.allVertices());
@@ -149,11 +149,11 @@ public class APSPath {
     }
   }
 
-  private static <T> LinkGraph<BFS.Vert<T>, WeightEdge<BFS.Vert<T>>> buildGraph(
-          @NotNull LinkGraph<BFS.Vert<T>, WeightEdge<BFS.Vert<T>>> graph,
+  private static <T> LinkedGraph<BFS.Vert<T>, WeightEdge<BFS.Vert<T>>> buildGraph(
+          @NotNull LinkedGraph<BFS.Vert<T>, WeightEdge<BFS.Vert<T>>> graph,
           @NotNull List<BFS.Vert<T>> vertices,
           @NotNull BFS.Vert<T> s) {
-    var new_graph = new LinkGraph<>(graph);
+    var new_graph = new LinkedGraph<>(graph);
     new_graph.addVertex(s);
     for (var vertex : vertices) {
       if (vertex != s) {

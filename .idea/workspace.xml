@@ -27,7 +27,23 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="rm prime gen cache, rm KdTree.java" />
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="reformat">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/graph/APSPath.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/graph/APSPath.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/graph/BFS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/graph/BFS.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/graph/DFS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/graph/DFS.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/graph/LinkGraph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/graph/LinkedGraph.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/graph/MST.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/graph/MST.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/graph/MaxFlow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/graph/MaxFlow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/graph/SSSPath.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/graph/SSSPath.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/structures/BSTIterator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/structures/BSTIterator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/algsJ/graph/APSPathTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algsJ/graph/APSPathTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/algsJ/graph/BFSTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algsJ/graph/BFSTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/algsJ/graph/DFSTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algsJ/graph/DFSTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/algsJ/graph/MSTTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algsJ/graph/MSTTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/algsJ/graph/MaxFlowTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algsJ/graph/MaxFlowTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/algsJ/graph/SSSPathTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algsJ/graph/SSSPathTest.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -46,7 +62,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../CentralUtils" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="GitSEFilterConfiguration">
@@ -81,7 +97,7 @@
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.45428157" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Java" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -445,14 +461,9 @@
       <workItem from="1624264476155" duration="185000" />
       <workItem from="1624267131602" duration="3502000" />
       <workItem from="1624277060900" duration="4575000" />
-      <workItem from="1624361281270" duration="1966000" />
-    </task>
-    <task id="LOCAL-00239" summary="change README.md">
-      <created>1623674580605</created>
-      <option name="number" value="00239" />
-      <option name="presentableId" value="LOCAL-00239" />
-      <option name="project" value="LOCAL" />
-      <updated>1623674580605</updated>
+      <workItem from="1624361281270" duration="5028000" />
+      <workItem from="1624506415745" duration="493000" />
+      <workItem from="1624507956122" duration="1226000" />
     </task>
     <task id="LOCAL-00240" summary="add comments">
       <created>1623676207645</created>
@@ -790,7 +801,14 @@
       <option name="project" value="LOCAL" />
       <updated>1624364173746</updated>
     </task>
-    <option name="localTasksCounter" value="288" />
+    <task id="LOCAL-00288" summary="reformat">
+      <created>1624364369081</created>
+      <option name="number" value="00288" />
+      <option name="presentableId" value="LOCAL-00288" />
+      <option name="project" value="LOCAL" />
+      <updated>1624364369081</updated>
+    </task>
+    <option name="localTasksCounter" value="289" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -819,7 +837,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="IntvalSerchTree augment!!" />
     <MESSAGE value="doc" />
     <MESSAGE value="rename" />
     <MESSAGE value="fix bug!" />
@@ -844,6 +861,7 @@
     <MESSAGE value="better CEStripper" />
     <MESSAGE value="add new interface" />
     <MESSAGE value="rm prime gen cache, rm KdTree.java" />
-    <option name="LAST_COMMIT_MESSAGE" value="rm prime gen cache, rm KdTree.java" />
+    <MESSAGE value="reformat" />
+    <option name="LAST_COMMIT_MESSAGE" value="reformat" />
   </component>
 </project>

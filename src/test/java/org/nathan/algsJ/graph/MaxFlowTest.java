@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class MaxFlowTest {
 
-  LinkGraph<BaseVert<Character>, FlowEdge<BaseVert<Character>>> FordFulkersonGraph;
+  LinkedGraph<BaseVert<Character>, FlowEdge<BaseVert<Character>>> FordFulkersonGraph;
   BaseVert<Character> FordFulkersonSource;
   BaseVert<Character> FordFulkersonDestination;
   List<BaseVert<Character>> FordFulkersonVerts;
@@ -19,7 +19,7 @@ public class MaxFlowTest {
     String names = "m,n,o,p,q,r,s,t";
     List<BaseVert<Character>> verts =
             Arrays.stream(names.split(",")).map(s -> new BaseVert<>(s.charAt(0))).collect(Collectors.toList());
-    LinkGraph<BaseVert<Character>, FlowEdge<BaseVert<Character>>> g = new LinkGraph<>(false, verts);
+    LinkedGraph<BaseVert<Character>, FlowEdge<BaseVert<Character>>> g = new LinkedGraph<>(false, verts);
     int[] s = new int[]{6, 0, 0, 0, 1, 1, 3, 5, 3, 5, 4, 2, 6, 6, 2};
     int[] t = new int[]{0, 2, 3, 1, 3, 7, 7, 7, 5, 2, 5, 4, 4, 2, 3};
     int[] c = new int[]{10, 4, 15, 9, 15, 10, 10, 10, 15, 6, 16, 4, 15, 5, 8};

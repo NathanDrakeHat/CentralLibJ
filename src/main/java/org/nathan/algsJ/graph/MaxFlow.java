@@ -10,13 +10,13 @@ public class MaxFlow {
     private double maxFlow;
     private final Map<BaseVert<Id>, Boolean> marked;
     private final Map<BaseVert<Id>, FlowEdge<BaseVert<Id>>> edgeOf;
-    private final LinkGraph<BaseVert<Id>, FlowEdge<BaseVert<Id>>> graph;
+    private final LinkedGraph<BaseVert<Id>, FlowEdge<BaseVert<Id>>> graph;
     private BaseVert<Id> s;
     private BaseVert<Id> t;
     private final Deque<BaseVert<Id>> queue = new ArrayDeque<>();
 
 
-    public ForFulkersonSolver(@NotNull LinkGraph<BaseVert<Id>, FlowEdge<BaseVert<Id>>> graph) {
+    public ForFulkersonSolver(@NotNull LinkedGraph<BaseVert<Id>, FlowEdge<BaseVert<Id>>> graph) {
       this.graph = graph;
       var vertices = graph.allVertices();
       marked = new HashMap<>(vertices.size());
