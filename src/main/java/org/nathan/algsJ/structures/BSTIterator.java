@@ -45,7 +45,7 @@ public class BSTIterator<Node, Target> implements Iterator<Target> {
 
   @Override
   public boolean hasNext() {
-    if (iterating.get()) {
+    if (!iterating.get()) {
       throw new IllegalStateException("concurrent modification");
     }
     return !finish && ptr != null;

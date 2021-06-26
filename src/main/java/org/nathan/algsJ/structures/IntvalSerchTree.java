@@ -1,6 +1,7 @@
 package org.nathan.algsJ.structures;
 
 import org.jetbrains.annotations.NotNull;
+import org.nathan.centralUtils.tuples.Triad;
 import org.nathan.centralUtils.tuples.Tuple;
 
 import java.util.*;
@@ -8,14 +9,14 @@ import java.util.*;
 /**
  * interval search tree
  */
-public class IntvalSerchTree<Key> implements Iterable<Tuple<Key, Key>> {
+public class IntvalSerchTree<Key, Val> implements Iterable<Triad<Key, Key, Val>> {
   @NotNull
-  final Node<Key> sentinel = new Node<>(RBTreeTemplate.BLACK);
-  @NotNull Node<Key> root = sentinel;
+  final Node<Key, Val> sentinel = new Node<>(RBTreeTemplate.BLACK);
+  @NotNull Node<Key, Val> root = sentinel;
   @NotNull
   final Comparator<Key> comparator;
   @NotNull
-  final RBTreeTemplate<Key, Node<Key>> template;
+  final RBTreeTemplate<Key, Node<Key, Val>> template;
   private boolean iterating;
 
   private void modified() {
@@ -39,9 +40,9 @@ public class IntvalSerchTree<Key> implements Iterable<Tuple<Key, Key>> {
             (n, c) -> n.color = c);
   }
 
-  public void insertInterval(@NotNull Key low, @NotNull Key high) {
+  public void insertInterval(@NotNull Key low, @NotNull Key high, Val val) {
     modified();
-    var n = new Node<>(low, high);
+    Node<Key, Val> n = new Node<>(low, high, val);
     template.insert(n);
   }
 
@@ -54,20 +55,20 @@ public class IntvalSerchTree<Key> implements Iterable<Tuple<Key, Key>> {
     template.delete(n);
   }
 
-  public List<Tuple<Key, Key>> intersects(@NotNull Key lo, @NotNull Key high) {
-    List<Tuple<Key, Key>> res = new ArrayList<>();
+  public List<Triad<Key, Key, Val>> intersects(@NotNull Key lo, @NotNull Key high) {
+    List<Triad<Key, Key, Val>> res = new ArrayList<>();
     var funcIntersect = new Object() {
       boolean apply(Key lo, Key hi, Key k) {
         return comparator.compare(lo, k) <= 0 && comparator.compare(hi, k) >= 0;
       }
     };
     var func = new Object() {
-      void apply(Node<Key> n) {
+      void apply(Node<Key, Val> n) {
         if (n == sentinel) {
           return;
         }
         else if (funcIntersect.apply(n.low, n.high, lo) || funcIntersect.apply(n.low, n.high, high)) {
-          res.add(new Tuple<>(n.low, n.high));
+          res.add(new Triad<>(n.low, n.high, n.value));
         }
         else if (n.left == sentinel || comparator.compare(n.left.max, lo) < 0) {
           apply(n.right);
@@ -83,28 +84,30 @@ public class IntvalSerchTree<Key> implements Iterable<Tuple<Key, Key>> {
 
   @NotNull
   @Override
-  public Iterator<Tuple<Key, Key>> iterator() {
+  public Iterator<Triad<Key, Key, Val>> iterator() {
     iterating = true;
-    return new BSTIterator<>(sentinel, n -> new Tuple<>(n.low, n.high), () -> this.root, n -> n.right, n -> n.left, () -> this.iterating);
+    return new BSTIterator<>(sentinel, n -> new Triad<>(n.low, n.high, n.value), () -> this.root, n -> n.right, n -> n.left, () -> this.iterating);
   }
 
-  static class Node<Key> {
-    Node<Key> parent;
-    Node<Key> left;
-    Node<Key> right;
+  static class Node<Key, Val> {
+    Node<Key, Val> parent;
+    Node<Key, Val> left;
+    Node<Key, Val> right;
     Key low;
     Key high;
     Key max;
+    Val value;
     boolean color;
 
     public Node(boolean c) {
       color = c;
     }
 
-    public Node(Key lo, Key hi) {
+    public Node(Key lo, Key hi, Val val) {
       low = lo;
       high = hi;
       max = high;
+      value = val;
     }
   }
 }

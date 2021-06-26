@@ -10,11 +10,11 @@ import static org.nathan.algsJ.misc.OrthoLineIntersectTest.Point;
 
 class IntvalSerchTreeTest {
 
-  static <Key> boolean isISTree(IntvalSerchTree<Key> tree) {
+  static <Key, Val> boolean isISTree(IntvalSerchTree<Key, Val> tree) {
     var funcWalk = new Object() {
       boolean b = true;
 
-      void apply(IntvalSerchTree.Node<Key> n) {
+      void apply(IntvalSerchTree.Node<Key, Val> n) {
         if (n == null) throw new RuntimeException();
         if (!b || n == tree.sentinel) {
           return;
@@ -56,9 +56,9 @@ class IntvalSerchTreeTest {
     int len = 128;
     for (int i = 0; i < 5; i++) {
       List<Integer> shuffle = ArrayUtils.shuffledSequence(0, rand.nextInt(16, len));
-      IntvalSerchTree<Integer> t = new IntvalSerchTree<>(Integer::compareTo);
+      IntvalSerchTree<Integer,Void> t = new IntvalSerchTree<>(Integer::compareTo);
       for (var item : shuffle) {
-        t.insertInterval(item, item + rand.nextInt(8, len / 2));
+        t.insertInterval(item, item + rand.nextInt(8, len / 2), null);
         assertTrue(isISTree(t));
       }
 
@@ -69,7 +69,7 @@ class IntvalSerchTreeTest {
       }
 
       for (var item : shuffle) {
-        t.insertInterval(item, item + rand.nextInt(8, len / 2));
+        t.insertInterval(item, item + rand.nextInt(8, len / 2), null);
         assertTrue(isISTree(t));
       }
 
@@ -106,7 +106,7 @@ class IntvalSerchTreeTest {
 
   @Test
   void intersectsTest() {
-    IntvalSerchTree<Integer> t = new IntvalSerchTree<>(Integer::compareTo);
+    IntvalSerchTree<Integer,Void> t = new IntvalSerchTree<>(Integer::compareTo);
     for (var it : intervals) {
       t.intersects(it.first(), it.second());
     }

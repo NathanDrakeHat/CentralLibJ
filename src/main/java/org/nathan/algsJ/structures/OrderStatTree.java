@@ -311,64 +311,9 @@ public class OrderStatTree<K, V> implements Iterable<Tuple<K, V>> {
     return new BSTIterator<>(sentinel, n -> new Tuple<>(n.key, n.value), () -> this.root, n -> n.right, n -> n.left, () -> this.iterating);
   }
 
-  public Iterator<Tuple<K, V>> reverseIterator() {
-    return new ReverseBSTIterator();
-  }
 
   private void modified() {
     iterating = false;
-  }
-
-  private final class ReverseBSTIterator implements Iterator<Tuple<K, V>> {
-    private final Deque<Node<K, V>> stack = new LinkedList<>();
-    private Node<K, V> ptr;
-    private boolean poppedBefore = false;
-    private boolean finish = false;
-
-    public ReverseBSTIterator() {
-      iterating = true;
-      ptr = root;
-      if (ptr == sentinel) {
-        finish = true;
-      }
-    }
-
-    @Override
-    public boolean hasNext() {
-      if (!iterating) {
-        throw new IllegalStateException("concurrent modification");
-      }
-      return !finish && ptr != null;
-    }
-
-    @Override
-    public Tuple<K, V> next() {
-      while (ptr != null) {
-        if (ptr.right != sentinel && !poppedBefore) {
-          stack.push(ptr);
-          ptr = ptr.right;
-        }
-        else {
-          var t = ptr;
-          if (ptr.left != sentinel) {
-            ptr = ptr.left;
-            poppedBefore = false;
-          }
-          else {
-            if (stack.size() != 0) {
-              ptr = stack.pop();
-              poppedBefore = true;
-            }
-            else {
-              ptr = null;
-            }
-          }
-          return new Tuple<>(t.key, t.value);
-        }
-      }
-      finish = true;
-      throw new NoSuchElementException("Iterate finish.");
-    }
   }
 
   static final class Node<key, val> {

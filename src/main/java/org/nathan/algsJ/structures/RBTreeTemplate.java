@@ -94,9 +94,9 @@ class RBTreeTemplate<Key, Node> {
         if (x instanceof OrderStatTree.Node<?, ?> xo) {
           xo.size++;
         }
-        else if (x instanceof IntvalSerchTree.Node<?>) {
-          var xi = (IntvalSerchTree.Node<Key>) x;
-          var zi = (IntvalSerchTree.Node<Key>) z;
+        else if (x instanceof IntvalSerchTree.Node<?,?>) {
+          var xi = (IntvalSerchTree.Node<Key,?>) x;
+          var zi = (IntvalSerchTree.Node<Key,?>) z;
           xi.max = comparator.compare(xi.max, zi.max) < 0 ? zi.max : xi.max;
         }
       }
@@ -220,12 +220,12 @@ class RBTreeTemplate<Key, Node> {
           yo = yo.parent;
         }
       }
-      else if (y instanceof IntvalSerchTree.Node<?>) {
+      else if (y instanceof IntvalSerchTree.Node<?,?>) {
         var p = y;
         if (getRight.apply(p) != sentinel) {
           p = minimumNodeOf(getRight.apply(p));
         }
-        var pi = (IntvalSerchTree.Node<Key>) p;
+        var pi = (IntvalSerchTree.Node<Key,?>) p;
         while (pi != sentinel) {
           updateIntvalSerchNode(pi);
           pi = pi.parent;
@@ -344,8 +344,8 @@ class RBTreeTemplate<Key, Node> {
         yo.size = xo.size;
         xo.size = xo.left.size + xo.right.size + 1;
       }
-      else if (x instanceof IntvalSerchTree.Node<?>) {
-        var xi = (IntvalSerchTree.Node<Key>) x;
+      else if (x instanceof IntvalSerchTree.Node<?, ?>) {
+        var xi = (IntvalSerchTree.Node<Key, ?>) x;
         updateIntvalSerchNode(xi);
         xi = xi.parent;
         if (xi != sentinel) {
@@ -383,8 +383,8 @@ class RBTreeTemplate<Key, Node> {
         yo.size = xo.size;
         xo.size = xo.left.size + xo.right.size + 1;
       }
-      else if (x instanceof IntvalSerchTree.Node<?>) {
-        var xi = (IntvalSerchTree.Node<Key>) x;
+      else if (x instanceof IntvalSerchTree.Node<?,?>) {
+        var xi = (IntvalSerchTree.Node<Key,?>) x;
         updateIntvalSerchNode(xi);
         xi = xi.parent;
         if (xi != sentinel) {
@@ -394,7 +394,7 @@ class RBTreeTemplate<Key, Node> {
     }
   }
 
-  private void updateIntvalSerchNode(IntvalSerchTree.Node<Key> n) {
+  private void updateIntvalSerchNode(IntvalSerchTree.Node<Key,?> n) {
     if (n.left != sentinel && n.right != sentinel) {
       n.max = comparator.compare(n.right.max, n.left.max) < 0 ? n.left.max : n.right.max;
       n.max = comparator.compare(n.max, n.high) < 0 ? n.high : n.max;

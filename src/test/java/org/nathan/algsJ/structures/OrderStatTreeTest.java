@@ -171,9 +171,6 @@ class OrderStatTreeTest {
   @Test
   public void functionsTest() {
     List<Double> l2 = new ArrayList<>();
-    var ri = funcTestTree.reverseIterator();
-    assertEquals(15, ri.next().first());
-
     assertEquals(5 + 1 - 2, funcTestTree.keyRangeSearch(2., 5.).size());
     assertTrue(funcTestTree.getHeight() <= 2 * Math.log(funcTestTree.size() + 1) / Math.log(2));
     assertEquals(16, funcTestTree.size());
