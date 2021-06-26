@@ -27,8 +27,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="add IntvalSerchTree value generic, fix BSTIterator bug">
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/structures/TernaryTries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/structures/TernaryTries.java" afterDir="false" />
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="add @NotNull">
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algsJ/strMatch/FiniteAutomaTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/strMatch/StrAutomata.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/strMatch/FiniteAutoma.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/algsJ/strMatch/StrAutomataTest.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,7 +121,7 @@
       <command value="mvn install:install-file -Dfile=algs4.jar -DgroupId=edu.princeton.cs -DartifactId=algs4 -Dversion=1.0 -Dpackaging=jar -DgeneratePom=true " />
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.All in AlgorithmsJava">
+  <component name="RunManager" selected="JUnit.FiniteAutomaTest.caseTest">
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.nathan.Main" />
       <module name="AlgorithmsJava" />
@@ -153,17 +156,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="OrthoLineIntersectTest.intersectsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="FiniteAutomaTest.caseTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AlgorithmsJava" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.nathan.algsJ.misc.*" />
+          <option name="PATTERN" value="org.nathan.algsJ.strMatch.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="org.nathan.algsJ.misc" />
-      <option name="MAIN_CLASS_NAME" value="org.nathan.algsJ.misc.OrthoLineIntersectTest" />
-      <option name="METHOD_NAME" value="intersectsTest" />
+      <option name="PACKAGE_NAME" value="org.nathan.algsJ.strMatch" />
+      <option name="MAIN_CLASS_NAME" value="org.nathan.algsJ.strMatch.FiniteAutomaTest" />
+      <option name="METHOD_NAME" value="caseTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -222,18 +225,18 @@
       <item itemvalue="Application.pushUtils" />
       <item itemvalue="Application.Main" />
       <item itemvalue="JUnit.All in AlgorithmsJava" />
-      <item itemvalue="JUnit.OrthoLineIntersectTest.intersectsTest" />
       <item itemvalue="JUnit.SortTest.MSDTest" />
       <item itemvalue="JUnit.SortTest.LSDTest" />
       <item itemvalue="JUnit.SortTest.stringQuickSort3WayTest" />
+      <item itemvalue="JUnit.FiniteAutomaTest.caseTest" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.FiniteAutomaTest.caseTest" />
         <item itemvalue="JUnit.All in AlgorithmsJava" />
         <item itemvalue="JUnit.SortTest.stringQuickSort3WayTest" />
         <item itemvalue="JUnit.SortTest.MSDTest" />
         <item itemvalue="JUnit.SortTest.LSDTest" />
-        <item itemvalue="JUnit.OrthoLineIntersectTest.intersectsTest" />
       </list>
     </recent_temporary>
   </component>
@@ -453,14 +456,7 @@
       <workItem from="1624507956122" duration="2436000" />
       <workItem from="1624597898190" duration="2216000" />
       <workItem from="1624679633619" duration="2493000" />
-      <workItem from="1624693929857" duration="2381000" />
-    </task>
-    <task id="LOCAL-00242" summary="color enum to boolean">
-      <created>1623678663873</created>
-      <option name="number" value="00242" />
-      <option name="presentableId" value="LOCAL-00242" />
-      <option name="project" value="LOCAL" />
-      <updated>1623678663873</updated>
+      <workItem from="1624693929857" duration="6606000" />
     </task>
     <task id="LOCAL-00243" summary="color enum to boolean">
       <created>1623679413353</created>
@@ -798,7 +794,14 @@
       <option name="project" value="LOCAL" />
       <updated>1624695607439</updated>
     </task>
-    <option name="localTasksCounter" value="291" />
+    <task id="LOCAL-00291" summary="add @NotNull">
+      <created>1624697742307</created>
+      <option name="number" value="00291" />
+      <option name="presentableId" value="LOCAL-00291" />
+      <option name="project" value="LOCAL" />
+      <updated>1624697742307</updated>
+    </task>
+    <option name="localTasksCounter" value="292" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -827,7 +830,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fix bug!" />
     <MESSAGE value="change test len" />
     <MESSAGE value="add ignore" />
     <MESSAGE value="add bst iterator, add algs4 answer" />
@@ -852,6 +854,7 @@
     <MESSAGE value="reformat" />
     <MESSAGE value="rename" />
     <MESSAGE value="add IntvalSerchTree value generic, fix BSTIterator bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="add IntvalSerchTree value generic, fix BSTIterator bug" />
+    <MESSAGE value="add @NotNull" />
+    <option name="LAST_COMMIT_MESSAGE" value="add @NotNull" />
   </component>
 </project>

@@ -4,49 +4,54 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
 
-public class StrAutomata {
-  public static
+public class FiniteAutoma{
+  private static
   @NotNull Map<TransitionEntry, Integer> computeTransitionPattern(
           @NotNull String pattern,
-          char[] char_set) {
+          char[] input_char_set){
     int m = pattern.length();
     Map<TransitionEntry, Integer> map = new HashMap<>();
-    for (int q = 0; q <= m; q++) {
-      for (var a : char_set) {
+    for(int q = 0; q <= m; q++){
+      for(var a : input_char_set){
         int k = Math.min(m + 1, q + 2);
-        do {
+        do{
           k--;
         }
-        while (!(pattern.substring(0, q).concat(String.valueOf(a)).endsWith(pattern.substring(0, k))));
+        while(!(pattern.substring(0, q).concat(String.valueOf(a)).endsWith(pattern.substring(0, k))));
         map.put(new TransitionEntry(q, a), k);
       }
     }
     return map;
   }
 
-  public static List<Integer> finiteAutomationMatcher(
+  private static List<Integer> finiteAutomationSearch(
           @NotNull String T,
           @NotNull Map<TransitionEntry, Integer> delta,
-          int m) {
+          int states_count){
     List<Integer> res = new ArrayList<>();
     int n = T.length();
     int q = 0;
-    for (int i = 0; i < n; i++) {
+    for(int i = 0; i < n; i++){
       q = delta.get(new TransitionEntry(q, T.charAt(i)));
-      if (q == m) {
-        res.add(i - m);
+      if(q == states_count){
+        res.add(i - states_count);
       }
     }
     return res;
   }
 
-  private static class TransitionEntry {
+  public static List<Integer> search(@NotNull String data, @NotNull String pat, char[] input_char_set){
+    var delta = computeTransitionPattern(pat, input_char_set);
+    return finiteAutomationSearch(data, delta, pat.length());
+  }
+
+  private static class TransitionEntry{
     private final int integer;
     private final char character;
     private final int hash;
     private final String string;
 
-    public TransitionEntry(int i, char c) {
+    public TransitionEntry(int i, char c){
       integer = i;
       character = c;
       hash = Objects.hash(integer, character);
@@ -54,23 +59,23 @@ public class StrAutomata {
     }
 
     @Override
-    public boolean equals(Object other) {
-      if (other instanceof TransitionEntry) {
+    public boolean equals(Object other){
+      if(other instanceof TransitionEntry){
         return (integer == ((TransitionEntry) other).integer) &&
                 (character == ((TransitionEntry) other).character);
       }
-      else {
+      else{
         return false;
       }
     }
 
     @Override
-    public int hashCode() {
+    public int hashCode(){
       return hash;
     }
 
     @Override
-    public String toString() {
+    public String toString(){
       return string;
     }
   }
