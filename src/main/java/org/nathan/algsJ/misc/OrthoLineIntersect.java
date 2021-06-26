@@ -1,7 +1,7 @@
 package org.nathan.algsJ.misc;
 
 import org.jetbrains.annotations.NotNull;
-import org.nathan.algsJ.structures.OrderStatTree;
+import org.nathan.algsJ.dataStruc.OrderStatTree;
 import org.nathan.centralUtils.tuples.Tuple;
 
 import java.util.*;

@@ -1,4 +1,4 @@
-package org.nathan.algsJ.structures;
+package org.nathan.algsJ.dataStruc;
 
 /**
  * to use union() and findSet(),

@@ -1,4 +1,4 @@
-package org.nathan.algsJ.dp;
+package org.nathan.algsJ.DP;
 
 import org.junit.jupiter.api.Test;
 

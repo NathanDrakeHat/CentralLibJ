@@ -1,4 +1,4 @@
-package org.nathan.algsJ.structures;
+package org.nathan.algsJ.dataStruc;
 
 import java.util.NoSuchElementException;
 import java.util.Objects;

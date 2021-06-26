@@ -1,4 +1,4 @@
-package org.nathan.algsJ.structures;
+package org.nathan.algsJ.dataStruc;
 
 public final class ProtoVEBTree {
   //keys are not duplicate and confined in a range

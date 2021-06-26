@@ -1,5 +1,5 @@
 
-package org.nathan.algsJ.structures;
+package org.nathan.algsJ.dataStruc;
 
 import org.jetbrains.annotations.NotNull;
 

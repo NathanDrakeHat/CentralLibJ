@@ -1,10 +1,10 @@
-package org.nathan.algsJ.dp;
+package org.nathan.algsJ.DP;
 
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static org.nathan.algsJ.dp.ActivitySelection.greedyActivitySelector;
-import static org.nathan.algsJ.dp.ActivitySelection.recursiveActivitySelector;
+import static org.nathan.algsJ.DP.ActivitySelection.greedyActivitySelector;
+import static org.nathan.algsJ.DP.ActivitySelection.recursiveActivitySelector;
 
 class ActivitySelectionTest {
 

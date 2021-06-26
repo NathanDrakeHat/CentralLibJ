@@ -1,8 +1,7 @@
-package org.nathan.algsJ.structures;
+package org.nathan.algsJ.dataStruc;
 
 import org.jetbrains.annotations.NotNull;
 import org.nathan.centralUtils.tuples.Triad;
-import org.nathan.centralUtils.tuples.Tuple;
 
 import java.util.*;
 

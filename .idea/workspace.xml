@@ -27,16 +27,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="save">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/strMatch/BoyerMoore.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/strMatch/RabinKarp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algsJ/strMatch/BoyerMooreTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algsJ/strMatch/RabinKarpTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algsJ/structures/TernaryTriesTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/strMatch/FiniteAutoma.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/strMatch/FiniteAutomata.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/algsJ/strMatch/FiniteAutomaTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algsJ/strMatch/FiniteAutomataTest.java" afterDir="false" />
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="add tests">
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/structures/StringST.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/structures/SymbolTable.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,7 +121,7 @@
       <command value="mvn install:install-file -Dfile=algs4.jar -DgroupId=edu.princeton.cs -DartifactId=algs4 -Dversion=1.0 -Dpackaging=jar -DgeneratePom=true " />
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.All in AlgorithmsJava">
+  <component name="RunManager" selected="Application.pushThis">
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.nathan.Main" />
       <module name="AlgorithmsJava" />
@@ -461,14 +454,7 @@
       <workItem from="1624507956122" duration="2436000" />
       <workItem from="1624597898190" duration="2216000" />
       <workItem from="1624679633619" duration="2493000" />
-      <workItem from="1624693929857" duration="14561000" />
-    </task>
-    <task id="LOCAL-00244" summary="save">
-      <created>1623745594694</created>
-      <option name="number" value="00244" />
-      <option name="presentableId" value="LOCAL-00244" />
-      <option name="project" value="LOCAL" />
-      <updated>1623745594694</updated>
+      <workItem from="1624693929857" duration="14949000" />
     </task>
     <task id="LOCAL-00245" summary="save">
       <created>1623745679696</created>
@@ -806,7 +792,14 @@
       <option name="project" value="LOCAL" />
       <updated>1624704314134</updated>
     </task>
-    <option name="localTasksCounter" value="293" />
+    <task id="LOCAL-00293" summary="add tests">
+      <created>1624722063845</created>
+      <option name="number" value="00293" />
+      <option name="presentableId" value="LOCAL-00293" />
+      <option name="project" value="LOCAL" />
+      <updated>1624722063845</updated>
+    </task>
+    <option name="localTasksCounter" value="294" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -835,7 +828,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="change test len" />
     <MESSAGE value="add ignore" />
     <MESSAGE value="add bst iterator, add algs4 answer" />
     <MESSAGE value="add intersects of IntvalSerchTree" />
@@ -860,6 +852,7 @@
     <MESSAGE value="add IntvalSerchTree value generic, fix BSTIterator bug" />
     <MESSAGE value="add @NotNull" />
     <MESSAGE value="save" />
-    <option name="LAST_COMMIT_MESSAGE" value="save" />
+    <MESSAGE value="add tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="add tests" />
   </component>
 </project>

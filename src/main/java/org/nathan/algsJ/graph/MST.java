@@ -1,9 +1,9 @@
 package org.nathan.algsJ.graph;
 
 import org.jetbrains.annotations.NotNull;
-import org.nathan.algsJ.structures.DisjointSet;
-import org.nathan.algsJ.structures.ExtremumHeap;
-import org.nathan.algsJ.structures.FibonacciMinHeap;
+import org.nathan.algsJ.dataStruc.DisjointSet;
+import org.nathan.algsJ.dataStruc.ExtremumHeap;
+import org.nathan.algsJ.dataStruc.FibonacciMinHeap;
 
 import java.util.ArrayList;
 import java.util.Comparator;

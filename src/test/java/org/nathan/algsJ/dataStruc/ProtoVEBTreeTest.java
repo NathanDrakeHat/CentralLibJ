@@ -1,4 +1,4 @@
-package org.nathan.algsJ.structures;
+package org.nathan.algsJ.dataStruc;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;

@@ -1,11 +1,11 @@
-package org.nathan.algsJ.structures;
+package org.nathan.algsJ.dataStruc;
 
 import org.jetbrains.annotations.NotNull;
 import org.nathan.centralUtils.tuples.Tuple;
 
 import java.util.*;
 
-import static org.nathan.algsJ.structures.RBTreeTemplate.RED;
+import static org.nathan.algsJ.dataStruc.RBTreeTemplate.RED;
 
 /**
  * order statistic tree
