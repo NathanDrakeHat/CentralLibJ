@@ -1,6 +1,8 @@
 
 package org.nathan.algsJ.structures;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayDeque;
 import java.util.Queue;
 
@@ -18,17 +20,11 @@ public class TernaryTries<Value>{
     return n;
   }
 
-  public boolean contains(String key){
-    if(key == null){
-      throw new IllegalArgumentException("argument to contains() is null");
-    }
+  public boolean contains(@NotNull String key){
     return get(key) != null;
   }
   
-  public Value get(String key){
-    if(key == null){
-      throw new IllegalArgumentException("calls get() with null argument");
-    }
+  public Value get(@NotNull String key){
     if(key.length() == 0) throw new IllegalArgumentException("key must have length >= 1");
     Node<Value> x = get(root, key, 0);
     if(x == null) return null;
@@ -45,10 +41,7 @@ public class TernaryTries<Value>{
     else return x;
   }
   
-  public void put(String key, Value val){
-    if(key == null){
-      throw new IllegalArgumentException("calls put() with null key");
-    }
+  public void put(@NotNull String key, Value val){
     if(!contains(key)) n++;
     else if(val == null) n--;       
     root = put(root, key, val, 0);
@@ -67,10 +60,7 @@ public class TernaryTries<Value>{
     return x;
   }
   
-  public String longestPrefixOf(String query){
-    if(query == null){
-      throw new IllegalArgumentException("calls longestPrefixOf() with null argument");
-    }
+  public String longestPrefixOf(@NotNull String query){
     if(query.length() == 0) return null;
     int length = 0;
     Node<Value> x = root;
@@ -94,10 +84,7 @@ public class TernaryTries<Value>{
     return queue;
   }
   
-  public Iterable<String> keysWithPrefix(String prefix){
-    if(prefix == null){
-      throw new IllegalArgumentException("calls keysWithPrefix() with null argument");
-    }
+  public Iterable<String> keysWithPrefix(@NotNull String prefix){
     Queue<String> queue = new ArrayDeque<>();
     Node<Value> x = get(root, prefix, 0);
     if(x == null) return queue;

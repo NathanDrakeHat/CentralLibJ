@@ -17,8 +17,7 @@ class Main {
     if (args.length > 0) {
       GitPush.gitPush(args);
     }
-    TernaryTries<Void> nullTST = new TernaryTries<>();
-    nullTST.put("a",null);
+
   }
 }
 

@@ -27,16 +27,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="rename">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/structures/IntvalSerchTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/structures/IntvalSerchTree.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/structures/OrderStatTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/structures/OrderStatTree.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/structures/RBTreeTemplate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/structures/RBTreeTemplate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/structures/RWayTries.java" beforeDir="false" />
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="add IntvalSerchTree value generic, fix BSTIterator bug">
       <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/structures/TernaryTries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/structures/TernaryTries.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/algsJ/structures/IntvalSerchTreeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algsJ/structures/IntvalSerchTreeTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/algsJ/structures/OrderStatTreeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algsJ/structures/OrderStatTreeTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -461,14 +453,7 @@
       <workItem from="1624507956122" duration="2436000" />
       <workItem from="1624597898190" duration="2216000" />
       <workItem from="1624679633619" duration="2493000" />
-      <workItem from="1624693929857" duration="1531000" />
-    </task>
-    <task id="LOCAL-00241" summary="small fix">
-      <created>1623676630563</created>
-      <option name="number" value="00241" />
-      <option name="presentableId" value="LOCAL-00241" />
-      <option name="project" value="LOCAL" />
-      <updated>1623676630563</updated>
+      <workItem from="1624693929857" duration="2381000" />
     </task>
     <task id="LOCAL-00242" summary="color enum to boolean">
       <created>1623678663873</created>
@@ -806,7 +791,14 @@
       <option name="project" value="LOCAL" />
       <updated>1624546417674</updated>
     </task>
-    <option name="localTasksCounter" value="290" />
+    <task id="LOCAL-00290" summary="add IntvalSerchTree value generic, fix BSTIterator bug">
+      <created>1624695607439</created>
+      <option name="number" value="00290" />
+      <option name="presentableId" value="LOCAL-00290" />
+      <option name="project" value="LOCAL" />
+      <updated>1624695607439</updated>
+    </task>
+    <option name="localTasksCounter" value="291" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -835,7 +827,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="doc" />
     <MESSAGE value="fix bug!" />
     <MESSAGE value="change test len" />
     <MESSAGE value="add ignore" />
@@ -860,6 +851,7 @@
     <MESSAGE value="rm prime gen cache, rm KdTree.java" />
     <MESSAGE value="reformat" />
     <MESSAGE value="rename" />
-    <option name="LAST_COMMIT_MESSAGE" value="rename" />
+    <MESSAGE value="add IntvalSerchTree value generic, fix BSTIterator bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="add IntvalSerchTree value generic, fix BSTIterator bug" />
   </component>
 </project>
