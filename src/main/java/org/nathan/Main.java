@@ -1,7 +1,6 @@
 package org.nathan;
 
 
-import org.nathan.algsJ.structures.TernaryTries;
 import org.nathan.centralUtils.utils.NativeUtils;
 
 
@@ -17,7 +16,7 @@ class Main {
     if (args.length > 0) {
       GitPush.gitPush(args);
     }
-
+    Void t;
   }
 }
 

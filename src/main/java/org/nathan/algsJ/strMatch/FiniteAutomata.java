@@ -4,7 +4,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
 
-public class FiniteAutoma{
+public class FiniteAutomata{
   private static
   @NotNull Map<TransitionEntry, Integer> computeTransitionPattern(
           @NotNull String pattern,
@@ -32,7 +32,12 @@ public class FiniteAutoma{
     int n = T.length();
     int q = 0;
     for(int i = 0; i < n; i++){
-      q = delta.get(new TransitionEntry(q, T.charAt(i)));
+      try{
+        q = delta.get(new TransitionEntry(q, T.charAt(i)));
+      }
+      catch(NullPointerException p){
+        throw new IllegalArgumentException("input char set less than real input char set.");
+      }
       if(q == states_count){
         res.add(i - states_count);
       }
@@ -40,6 +45,13 @@ public class FiniteAutoma{
     return res;
   }
 
+  /**
+   *
+   * @param data string
+   * @param pat pattern
+   * @param input_char_set all char set of data
+   * @return list of end index(matched start index - 1)
+   */
   public static List<Integer> search(@NotNull String data, @NotNull String pat, char[] input_char_set){
     var delta = computeTransitionPattern(pat, input_char_set);
     return finiteAutomationSearch(data, delta, pat.length());

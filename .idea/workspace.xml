@@ -27,11 +27,16 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="add @NotNull">
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algsJ/strMatch/FiniteAutomaTest.java" afterDir="false" />
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="save">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/strMatch/BoyerMoore.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/strMatch/RabinKarp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algsJ/strMatch/BoyerMooreTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algsJ/strMatch/RabinKarpTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algsJ/structures/TernaryTriesTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/strMatch/StrAutomata.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/strMatch/FiniteAutoma.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/algsJ/strMatch/StrAutomataTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/strMatch/FiniteAutoma.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/strMatch/FiniteAutomata.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/algsJ/strMatch/FiniteAutomaTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algsJ/strMatch/FiniteAutomataTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,8 +50,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="JUnit5 Test Class" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -108,6 +113,8 @@
       <recent name="org.nathan.algorithmsJava.graph" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="org.nathan.algsJ.strMatch" />
+      <recent name="org.nathan.algsJ.structures" />
       <recent name="org.nathan.algorithmsJ.structures" />
       <recent name="org.nathan.algorithmsJ.misc" />
     </key>
@@ -121,7 +128,7 @@
       <command value="mvn install:install-file -Dfile=algs4.jar -DgroupId=edu.princeton.cs -DartifactId=algs4 -Dversion=1.0 -Dpackaging=jar -DgeneratePom=true " />
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.FiniteAutomaTest.caseTest">
+  <component name="RunManager" selected="JUnit.All in AlgorithmsJava">
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.nathan.Main" />
       <module name="AlgorithmsJava" />
@@ -149,14 +156,12 @@
     <configuration name="All in AlgorithmsJava" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AlgorithmsJava" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="" />
-      <option name="METHOD_NAME" value="" />
       <option name="TEST_OBJECT" value="package" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="FiniteAutomaTest.caseTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="RabinKarpTest.searchTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AlgorithmsJava" />
       <extension name="coverage">
         <pattern>
@@ -165,56 +170,56 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="org.nathan.algsJ.strMatch" />
-      <option name="MAIN_CLASS_NAME" value="org.nathan.algsJ.strMatch.FiniteAutomaTest" />
-      <option name="METHOD_NAME" value="caseTest" />
+      <option name="MAIN_CLASS_NAME" value="org.nathan.algsJ.strMatch.RabinKarpTest" />
+      <option name="METHOD_NAME" value="searchTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SortTest.LSDTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TernaryTriesTest.keysTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AlgorithmsJava" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.nathan.algsJ.misc.*" />
+          <option name="PATTERN" value="org.nathan.algsJ.structures.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="org.nathan.algsJ.misc" />
-      <option name="MAIN_CLASS_NAME" value="org.nathan.algsJ.misc.SortTest" />
-      <option name="METHOD_NAME" value="LSDTest" />
+      <option name="PACKAGE_NAME" value="org.nathan.algsJ.structures" />
+      <option name="MAIN_CLASS_NAME" value="org.nathan.algsJ.structures.TernaryTriesTest" />
+      <option name="METHOD_NAME" value="keysTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SortTest.MSDTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TernaryTriesTest.keysWithPrefixTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AlgorithmsJava" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.nathan.algsJ.misc.*" />
+          <option name="PATTERN" value="org.nathan.algsJ.structures.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="org.nathan.algsJ.misc" />
-      <option name="MAIN_CLASS_NAME" value="org.nathan.algsJ.misc.SortTest" />
-      <option name="METHOD_NAME" value="MSDTest" />
+      <option name="PACKAGE_NAME" value="org.nathan.algsJ.structures" />
+      <option name="MAIN_CLASS_NAME" value="org.nathan.algsJ.structures.TernaryTriesTest" />
+      <option name="METHOD_NAME" value="keysWithPrefixTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SortTest.stringQuickSort3WayTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TernaryTriesTest.longestPrefixOfTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AlgorithmsJava" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.nathan.algsJ.misc.*" />
+          <option name="PATTERN" value="org.nathan.algsJ.structures.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="org.nathan.algsJ.misc" />
-      <option name="MAIN_CLASS_NAME" value="org.nathan.algsJ.misc.SortTest" />
-      <option name="METHOD_NAME" value="stringQuickSort3WayTest" />
+      <option name="PACKAGE_NAME" value="org.nathan.algsJ.structures" />
+      <option name="MAIN_CLASS_NAME" value="org.nathan.algsJ.structures.TernaryTriesTest" />
+      <option name="METHOD_NAME" value="longestPrefixOfTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -224,19 +229,19 @@
       <item itemvalue="Application.pushThis" />
       <item itemvalue="Application.pushUtils" />
       <item itemvalue="Application.Main" />
+      <item itemvalue="JUnit.RabinKarpTest.searchTest" />
+      <item itemvalue="JUnit.TernaryTriesTest.keysWithPrefixTest" />
+      <item itemvalue="JUnit.TernaryTriesTest.keysTest" />
+      <item itemvalue="JUnit.TernaryTriesTest.longestPrefixOfTest" />
       <item itemvalue="JUnit.All in AlgorithmsJava" />
-      <item itemvalue="JUnit.SortTest.MSDTest" />
-      <item itemvalue="JUnit.SortTest.LSDTest" />
-      <item itemvalue="JUnit.SortTest.stringQuickSort3WayTest" />
-      <item itemvalue="JUnit.FiniteAutomaTest.caseTest" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.FiniteAutomaTest.caseTest" />
         <item itemvalue="JUnit.All in AlgorithmsJava" />
-        <item itemvalue="JUnit.SortTest.stringQuickSort3WayTest" />
-        <item itemvalue="JUnit.SortTest.MSDTest" />
-        <item itemvalue="JUnit.SortTest.LSDTest" />
+        <item itemvalue="JUnit.TernaryTriesTest.longestPrefixOfTest" />
+        <item itemvalue="JUnit.TernaryTriesTest.keysTest" />
+        <item itemvalue="JUnit.TernaryTriesTest.keysWithPrefixTest" />
+        <item itemvalue="JUnit.RabinKarpTest.searchTest" />
       </list>
     </recent_temporary>
   </component>
@@ -456,14 +461,7 @@
       <workItem from="1624507956122" duration="2436000" />
       <workItem from="1624597898190" duration="2216000" />
       <workItem from="1624679633619" duration="2493000" />
-      <workItem from="1624693929857" duration="6606000" />
-    </task>
-    <task id="LOCAL-00243" summary="color enum to boolean">
-      <created>1623679413353</created>
-      <option name="number" value="00243" />
-      <option name="presentableId" value="LOCAL-00243" />
-      <option name="project" value="LOCAL" />
-      <updated>1623679413353</updated>
+      <workItem from="1624693929857" duration="14561000" />
     </task>
     <task id="LOCAL-00244" summary="save">
       <created>1623745594694</created>
@@ -801,7 +799,14 @@
       <option name="project" value="LOCAL" />
       <updated>1624697742307</updated>
     </task>
-    <option name="localTasksCounter" value="292" />
+    <task id="LOCAL-00292" summary="save">
+      <created>1624704314134</created>
+      <option name="number" value="00292" />
+      <option name="presentableId" value="LOCAL-00292" />
+      <option name="project" value="LOCAL" />
+      <updated>1624704314134</updated>
+    </task>
+    <option name="localTasksCounter" value="293" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -844,7 +849,6 @@
     <MESSAGE value="add test" />
     <MESSAGE value="move system function to Native.class" />
     <MESSAGE value="add" />
-    <MESSAGE value="save" />
     <MESSAGE value="rm todo" />
     <MESSAGE value="rename package" />
     <MESSAGE value="format" />
@@ -855,6 +859,7 @@
     <MESSAGE value="rename" />
     <MESSAGE value="add IntvalSerchTree value generic, fix BSTIterator bug" />
     <MESSAGE value="add @NotNull" />
-    <option name="LAST_COMMIT_MESSAGE" value="add @NotNull" />
+    <MESSAGE value="save" />
+    <option name="LAST_COMMIT_MESSAGE" value="save" />
   </component>
 </project>

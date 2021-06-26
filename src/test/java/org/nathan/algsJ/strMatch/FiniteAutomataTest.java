@@ -4,14 +4,14 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class FiniteAutomaTest{
+class FiniteAutomataTest{
 
   @Test
   void caseTest(){
-    var res = FiniteAutoma.search("abbbbbba", "ba", new char[]{'a', 'b'});
+    var res = FiniteAutomata.search("abbbbbba", "ba", new char[]{'a','b'});
     assertEquals(5, res.get(0));
 
-    res = FiniteAutoma.search("abbbbbba", "bbb", new char[]{'a', 'b'});
+    res = FiniteAutomata.search("abbbbbba", "bbb", new char[]{'a', 'b'});
     assertEquals(0, res.get(0));
   }
 }
