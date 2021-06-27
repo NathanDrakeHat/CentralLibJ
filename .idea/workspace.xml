@@ -122,7 +122,7 @@
       <command value="mvn install:install-file -Dfile=algs4.jar -DgroupId=edu.princeton.cs -DartifactId=algs4 -Dversion=1.0 -Dpackaging=jar -DgeneratePom=true " />
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.TernaryTriesTest">
+  <component name="RunManager" selected="JUnit.TernaryTriesTest.removeTest">
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.nathan.Main" />
       <module name="AlgorithmsJava" />
@@ -230,8 +230,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.TernaryTriesTest" />
         <item itemvalue="JUnit.TernaryTriesTest.removeTest" />
+        <item itemvalue="JUnit.TernaryTriesTest" />
         <item itemvalue="JUnit.All in AlgorithmsJava" />
         <item itemvalue="JUnit.KMPTest.searchTest" />
         <item itemvalue="JUnit.TernaryTriesTest.longestPrefixOfTest" />

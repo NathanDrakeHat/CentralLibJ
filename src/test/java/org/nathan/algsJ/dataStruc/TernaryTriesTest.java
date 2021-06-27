@@ -101,6 +101,8 @@ class TernaryTriesTest{
     assertTrue(data.contains("the"));
     assertEquals(4, data.size());
 
+    assertFalse(data.remove("aaaa"));
+
     assertTrue(data.remove("sea"));
     assertFalse(data.contains("sea"));
     assertTrue(data.contains("sells"));
