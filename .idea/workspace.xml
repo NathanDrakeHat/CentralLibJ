@@ -27,11 +27,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="rename package">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/strMatch/KMP.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algsJ/strMatch/KMPTest.java" afterDir="false" />
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="reformat">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/misc/LRS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/misc/LRS.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,7 +121,7 @@
       <command value="mvn install:install-file -Dfile=algs4.jar -DgroupId=edu.princeton.cs -DartifactId=algs4 -Dversion=1.0 -Dpackaging=jar -DgeneratePom=true " />
     </option>
   </component>
-  <component name="RunManager" selected="Application.pushThis">
+  <component name="RunManager" selected="JUnit.All in AlgorithmsJava">
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.nathan.Main" />
       <module name="AlgorithmsJava" />
@@ -232,8 +230,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.KMPTest.searchTest" />
         <item itemvalue="JUnit.All in AlgorithmsJava" />
+        <item itemvalue="JUnit.KMPTest.searchTest" />
         <item itemvalue="JUnit.TernaryTriesTest.longestPrefixOfTest" />
         <item itemvalue="JUnit.TernaryTriesTest.keysTest" />
         <item itemvalue="JUnit.TernaryTriesTest.keysWithPrefixTest" />
@@ -456,21 +454,7 @@
       <workItem from="1624507956122" duration="2436000" />
       <workItem from="1624597898190" duration="2216000" />
       <workItem from="1624679633619" duration="2493000" />
-      <workItem from="1624693929857" duration="18875000" />
-    </task>
-    <task id="LOCAL-00247" summary="delete size bug">
-      <created>1623761147062</created>
-      <option name="number" value="00247" />
-      <option name="presentableId" value="LOCAL-00247" />
-      <option name="project" value="LOCAL" />
-      <updated>1623761147062</updated>
-    </task>
-    <task id="LOCAL-00248" summary="fix bug finally!">
-      <created>1623770902616</created>
-      <option name="number" value="00248" />
-      <option name="presentableId" value="LOCAL-00248" />
-      <option name="project" value="LOCAL" />
-      <updated>1623770902616</updated>
+      <workItem from="1624693929857" duration="20107000" />
     </task>
     <task id="LOCAL-00249" summary="save">
       <created>1623805558801</created>
@@ -801,7 +785,21 @@
       <option name="project" value="LOCAL" />
       <updated>1624722215865</updated>
     </task>
-    <option name="localTasksCounter" value="296" />
+    <task id="LOCAL-00296" summary="add kmp and test">
+      <created>1624771273460</created>
+      <option name="number" value="00296" />
+      <option name="presentableId" value="LOCAL-00296" />
+      <option name="project" value="LOCAL" />
+      <updated>1624771273460</updated>
+    </task>
+    <task id="LOCAL-00297" summary="reformat">
+      <created>1624772117602</created>
+      <option name="number" value="00297" />
+      <option name="presentableId" value="LOCAL-00297" />
+      <option name="project" value="LOCAL" />
+      <updated>1624772117602</updated>
+    </task>
+    <option name="localTasksCounter" value="298" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -830,7 +828,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add bst iterator, add algs4 answer" />
     <MESSAGE value="add intersects of IntvalSerchTree" />
     <MESSAGE value="delete algs4" />
     <MESSAGE value="save OrthoLineIntersect normal solve" />
@@ -847,7 +844,6 @@
     <MESSAGE value="better CEStripper" />
     <MESSAGE value="add new interface" />
     <MESSAGE value="rm prime gen cache, rm KdTree.java" />
-    <MESSAGE value="reformat" />
     <MESSAGE value="rename" />
     <MESSAGE value="add IntvalSerchTree value generic, fix BSTIterator bug" />
     <MESSAGE value="add @NotNull" />
@@ -855,17 +851,8 @@
     <MESSAGE value="add tests" />
     <MESSAGE value="delete unused" />
     <MESSAGE value="rename package" />
-    <option name="LAST_COMMIT_MESSAGE" value="rename package" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/org/nathan/algsJ/strMatch/KMPTest.java</url>
-          <line>12</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="add kmp and test" />
+    <MESSAGE value="reformat" />
+    <option name="LAST_COMMIT_MESSAGE" value="reformat" />
   </component>
 </project>
