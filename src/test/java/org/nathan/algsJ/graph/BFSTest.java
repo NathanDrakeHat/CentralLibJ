@@ -8,7 +8,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class BFSTest {
+class BFSTest{
 
 
   List<BFS.Vert<Character>> vertices;
@@ -20,23 +20,23 @@ class BFSTest {
   }
 
   @Test
-  void breathFirstSearch() {
+  void breathFirstSearch(){
     BFS.breathFirstSearch(graph, vertices.get(1));
     assertEquals(List.of('s', 'w', 'x', 'y'), BFS.getPath(vertices.get(1), vertices.get(7)));
   }
 
-  public static class Data {
+  public static class Data{
     public static String names = "rstuvwxy";
 
-    public static List<BFS.Vert<Character>> makeVertexes() {
+    public static List<BFS.Vert<Character>> makeVertexes(){
       List<BFS.Vert<Character>> vs = new ArrayList<>(8);
-      for (int i = 0; i < 8; i++) {
+      for(int i = 0; i < 8; i++){
         vs.add(i, new BFS.Vert<>(names.charAt(i)));
       }
       return vs;
     }
 
-    public static LinkedGraph<BFS.Vert<Character>, BaseEdge<BFS.Vert<Character>>> makeGraph(List<BFS.Vert<Character>> vs) {
+    public static LinkedGraph<BFS.Vert<Character>, BaseEdge<BFS.Vert<Character>>> makeGraph(List<BFS.Vert<Character>> vs){
       var c = BFS.Vert.class;
       LinkedGraph<BFS.Vert<Character>, BaseEdge<BFS.Vert<Character>>> G = new LinkedGraph<>(false, vs);
       G.addEdge(new BaseEdge<>(vs.get(0), vs.get(1)));

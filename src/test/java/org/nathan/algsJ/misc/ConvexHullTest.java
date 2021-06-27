@@ -10,7 +10,7 @@ import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class ConvexHullTest {
+public class ConvexHullTest{
   List<Tuple<Integer, Integer>> points = new ArrayList<>(13);
   Set<Tuple<Integer, Integer>> convexHullAnswer = new HashSet<>(5);
 
@@ -37,7 +37,7 @@ public class ConvexHullTest {
   }
 
   @Test
-  void GrahamScanTest() {
+  void GrahamScanTest(){
     var res = ConvexHull.GrahamScan(points, Tuple::first, Tuple::second);
     assertEquals(convexHullAnswer, new HashSet<>(res));
   }

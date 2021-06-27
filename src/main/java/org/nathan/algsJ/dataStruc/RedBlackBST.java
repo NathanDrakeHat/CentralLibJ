@@ -6,7 +6,7 @@ import java.util.Comparator;
 import java.util.NoSuchElementException;
 
 @SuppressWarnings("unused")
-public class RedBlackBST<Key, Value> {
+public class RedBlackBST<Key, Value>{
   private static final boolean RED = true;
   private static final boolean BLACK = false;
   Node root;
@@ -14,14 +14,14 @@ public class RedBlackBST<Key, Value> {
   final Comparator<Key> comparator;
 
 
-  private class Node {
+  private class Node{
     private @NotNull Key key;
     private Value val;
     private Node left, right;
     private boolean color;
     private int size;
 
-    public Node(@NotNull Key key, Value val, boolean color, int size) {
+    public Node(@NotNull Key key, Value val, boolean color, int size){
       this.key = key;
       this.val = val;
       this.color = color;
@@ -30,52 +30,52 @@ public class RedBlackBST<Key, Value> {
   }
 
 
-  public RedBlackBST(@NotNull Comparator<Key> comparator) {
+  public RedBlackBST(@NotNull Comparator<Key> comparator){
     this.comparator = comparator;
   }
 
 
-  private boolean isRed(Node x) {
-    if (x == null) {
+  private boolean isRed(Node x){
+    if(x == null){
       return false;
     }
     return x.color == RED;
   }
 
 
-  private int size(Node x) {
-    if (x == null) {
+  private int size(Node x){
+    if(x == null){
       return 0;
     }
     return x.size;
   }
 
 
-  public int size() {
+  public int size(){
     return size(root);
   }
 
 
-  public boolean isEmpty() {
+  public boolean isEmpty(){
     return root == null;
   }
 
 
-  public Value get(@NotNull Key key) {
+  public Value get(@NotNull Key key){
     return get(root, key);
   }
 
 
-  private Value get(Node x, Key key) {
-    while (x != null) {
+  private Value get(Node x, Key key){
+    while(x != null) {
       int cmp = comparator.compare(key, x.key);
-      if (cmp < 0) {
+      if(cmp < 0){
         x = x.left;
       }
-      else if (cmp > 0) {
+      else if(cmp > 0){
         x = x.right;
       }
-      else {
+      else{
         return x.val;
       }
     }
@@ -83,13 +83,13 @@ public class RedBlackBST<Key, Value> {
   }
 
 
-  public boolean contains(@NotNull Key key) {
+  public boolean contains(@NotNull Key key){
     return get(key) != null;
   }
 
 
-  public void put(@NotNull Key key, Value val) {
-    if (val == null) {
+  public void put(@NotNull Key key, Value val){
+    if(val == null){
       delete(key);
       return;
     }
@@ -98,27 +98,27 @@ public class RedBlackBST<Key, Value> {
   }
 
 
-  private Node put(Node h, Key key, Value val) {
-    if (h == null) {
+  private Node put(Node h, Key key, Value val){
+    if(h == null){
       return new Node(key, val, RED, 1);
     }
     int cmp = comparator.compare(key, h.key);
-    if (cmp < 0) {
+    if(cmp < 0){
       h.left = put(h.left, key, val);
     }
-    else if (cmp > 0) {
+    else if(cmp > 0){
       h.right = put(h.right, key, val);
     }
-    else {
+    else{
       h.val = val;
     }
-    if (isRed(h.right) && !isRed(h.left)) {
+    if(isRed(h.right) && !isRed(h.left)){
       h = rotateLeft(h);
     }
-    if (isRed(h.left) && isRed(h.left.left)) {
+    if(isRed(h.left) && isRed(h.left.left)){
       h = rotateRight(h);
     }
-    if (isRed(h.left) && isRed(h.right)) {
+    if(isRed(h.left) && isRed(h.right)){
       flipColors(h);
     }
     h.size = size(h.left) + size(h.right) + 1;
@@ -127,26 +127,26 @@ public class RedBlackBST<Key, Value> {
   }
 
 
-  public void deleteMin() {
-    if (isEmpty()) {
+  public void deleteMin(){
+    if(isEmpty()){
       throw new NoSuchElementException("BST underflow");
     }
-    if (!isRed(root.left) && !isRed(root.right)) {
+    if(!isRed(root.left) && !isRed(root.right)){
       root.color = RED;
     }
     root = deleteMin(root);
-    if (!isEmpty()) {
+    if(!isEmpty()){
       root.color = BLACK;
     }
 
   }
 
 
-  private Node deleteMin(Node h) {
-    if (h.left == null) {
+  private Node deleteMin(Node h){
+    if(h.left == null){
       return null;
     }
-    if (!isRed(h.left) && !isRed(h.left.left)) {
+    if(!isRed(h.left) && !isRed(h.left.left)){
       h = moveRedLeft(h);
     }
     h.left = deleteMin(h.left);
@@ -154,29 +154,29 @@ public class RedBlackBST<Key, Value> {
   }
 
 
-  public void deleteMax() {
-    if (isEmpty()) {
+  public void deleteMax(){
+    if(isEmpty()){
       throw new NoSuchElementException("BST underflow");
     }
-    if (!isRed(root.left) && !isRed(root.right)) {
+    if(!isRed(root.left) && !isRed(root.right)){
       root.color = RED;
     }
     root = deleteMax(root);
-    if (!isEmpty()) {
+    if(!isEmpty()){
       root.color = BLACK;
     }
 
   }
 
 
-  private Node deleteMax(Node h) {
-    if (isRed(h.left)) {
+  private Node deleteMax(Node h){
+    if(isRed(h.left)){
       h = rotateRight(h);
     }
-    if (h.right == null) {
+    if(h.right == null){
       return null;
     }
-    if (!isRed(h.right) && !isRed(h.right.left)) {
+    if(!isRed(h.right) && !isRed(h.right.left)){
       h = moveRedRight(h);
     }
     h.right = deleteMax(h.right);
@@ -184,44 +184,44 @@ public class RedBlackBST<Key, Value> {
   }
 
 
-  public void delete(@NotNull Key key) {
-    if (!contains(key)) {
+  public void delete(@NotNull Key key){
+    if(!contains(key)){
       return;
     }
-    if (!isRed(root.left) && !isRed(root.right)) {
+    if(!isRed(root.left) && !isRed(root.right)){
       root.color = RED;
     }
     root = delete(root, key);
-    if (!isEmpty()) {
+    if(!isEmpty()){
       root.color = BLACK;
     }
   }
 
 
-  private Node delete(Node h, Key key) {
-    if (comparator.compare(key, h.key) < 0) {
-      if (!isRed(h.left) && !isRed(h.left.left)) {
+  private Node delete(Node h, Key key){
+    if(comparator.compare(key, h.key) < 0){
+      if(!isRed(h.left) && !isRed(h.left.left)){
         h = moveRedLeft(h);
       }
       h.left = delete(h.left, key);
     }
-    else {
-      if (isRed(h.left)) {
+    else{
+      if(isRed(h.left)){
         h = rotateRight(h);
       }
-      if (comparator.compare(key, h.key) == 0 && (h.right == null)) {
+      if(comparator.compare(key, h.key) == 0 && (h.right == null)){
         return null;
       }
-      if (!isRed(h.right) && !isRed(h.right.left)) {
+      if(!isRed(h.right) && !isRed(h.right.left)){
         h = moveRedRight(h);
       }
-      if (comparator.compare(key, h.key) == 0) {
+      if(comparator.compare(key, h.key) == 0){
         Node x = min(h.right);
         h.key = x.key;
         h.val = x.val;
         h.right = deleteMin(h.right);
       }
-      else {
+      else{
         h.right = delete(h.right, key);
       }
     }
@@ -229,7 +229,7 @@ public class RedBlackBST<Key, Value> {
   }
 
 
-  private Node rotateRight(Node h) {
+  private Node rotateRight(Node h){
     Node x = h.left;
     h.left = x.right;
     x.right = h;
@@ -241,7 +241,7 @@ public class RedBlackBST<Key, Value> {
   }
 
 
-  private Node rotateLeft(Node h) {
+  private Node rotateLeft(Node h){
     Node x = h.right;
     h.right = x.left;
     x.left = h;
@@ -253,16 +253,16 @@ public class RedBlackBST<Key, Value> {
   }
 
 
-  private void flipColors(Node h) {
+  private void flipColors(Node h){
     h.color = !h.color;
     h.left.color = !h.left.color;
     h.right.color = !h.right.color;
   }
 
 
-  private Node moveRedLeft(Node h) {
+  private Node moveRedLeft(Node h){
     flipColors(h);
-    if (isRed(h.right.left)) {
+    if(isRed(h.right.left)){
       h.right = rotateRight(h.right);
       h = rotateLeft(h);
       flipColors(h);
@@ -271,9 +271,9 @@ public class RedBlackBST<Key, Value> {
   }
 
 
-  private Node moveRedRight(Node h) {
+  private Node moveRedRight(Node h){
     flipColors(h);
-    if (isRed(h.left.left)) {
+    if(isRed(h.left.left)){
       h = rotateRight(h);
       flipColors(h);
     }
@@ -281,14 +281,14 @@ public class RedBlackBST<Key, Value> {
   }
 
 
-  private Node balance(Node h) {
-    if (isRed(h.right)) {
+  private Node balance(Node h){
+    if(isRed(h.right)){
       h = rotateLeft(h);
     }
-    if (isRed(h.left) && isRed(h.left.left)) {
+    if(isRed(h.left) && isRed(h.left.left)){
       h = rotateRight(h);
     }
-    if (isRed(h.left) && isRed(h.right)) {
+    if(isRed(h.left) && isRed(h.right)){
       flipColors(h);
     }
     h.size = size(h.left) + size(h.right) + 1;
@@ -296,178 +296,178 @@ public class RedBlackBST<Key, Value> {
   }
 
 
-  public int height() {
+  public int height(){
     return height(root);
   }
 
-  private int height(Node x) {
-    if (x == null) {
+  private int height(Node x){
+    if(x == null){
       return -1;
     }
     return 1 + Math.max(height(x.left), height(x.right));
   }
 
 
-  public @NotNull Key min() {
-    if (isEmpty()) {
+  public @NotNull Key min(){
+    if(isEmpty()){
       throw new NoSuchElementException("calls min() with empty symbol table");
     }
     return min(root).key;
   }
 
 
-  private Node min(Node x) {
+  private Node min(Node x){
 
-    if (x.left == null) {
+    if(x.left == null){
       return x;
     }
-    else {
+    else{
       return min(x.left);
     }
   }
 
 
-  public @NotNull Key max() {
-    if (isEmpty()) {
+  public @NotNull Key max(){
+    if(isEmpty()){
       throw new NoSuchElementException("calls max() with empty symbol table");
     }
     return max(root).key;
   }
 
 
-  private Node max(Node x) {
-    if (x.right == null) {
+  private Node max(Node x){
+    if(x.right == null){
       return x;
     }
-    else {
+    else{
       return max(x.right);
     }
   }
 
 
-  public @NotNull Key floor(@NotNull Key key) {
-    if (isEmpty()) {
+  public @NotNull Key floor(@NotNull Key key){
+    if(isEmpty()){
       throw new NoSuchElementException("calls floor() with empty symbol table");
     }
     Node x = floor(root, key);
-    if (x == null) {
+    if(x == null){
       throw new NoSuchElementException("argument to floor() is too small");
     }
-    else {
+    else{
       return x.key;
     }
   }
 
 
-  private Node floor(Node x, Key key) {
-    if (x == null) {
+  private Node floor(Node x, Key key){
+    if(x == null){
       return null;
     }
     int cmp = comparator.compare(key, x.key);
-    if (cmp == 0) {
+    if(cmp == 0){
       return x;
     }
-    if (cmp < 0) {
+    if(cmp < 0){
       return floor(x.left, key);
     }
     Node t = floor(x.right, key);
-    if (t != null) {
+    if(t != null){
       return t;
     }
-    else {
+    else{
       return x;
     }
   }
 
 
-  public @NotNull Key ceiling(@NotNull Key key) {
-    if (isEmpty()) {
+  public @NotNull Key ceiling(@NotNull Key key){
+    if(isEmpty()){
       throw new NoSuchElementException("calls ceiling() with empty symbol table");
     }
     Node x = ceiling(root, key);
-    if (x == null) {
+    if(x == null){
       throw new NoSuchElementException("argument to ceiling() is too small");
     }
-    else {
+    else{
       return x.key;
     }
   }
 
 
-  private Node ceiling(Node x, Key key) {
-    if (x == null) {
+  private Node ceiling(Node x, Key key){
+    if(x == null){
       return null;
     }
     int cmp = comparator.compare(key, x.key);
-    if (cmp == 0) {
+    if(cmp == 0){
       return x;
     }
-    if (cmp > 0) {
+    if(cmp > 0){
       return ceiling(x.right, key);
     }
     Node t = ceiling(x.left, key);
-    if (t != null) {
+    if(t != null){
       return t;
     }
-    else {
+    else{
       return x;
     }
   }
 
 
-  public @NotNull Key select(int rank) {
-    if (rank < 0 || rank >= size()) {
+  public @NotNull Key select(int rank){
+    if(rank < 0 || rank >= size()){
       throw new IllegalArgumentException("argument to select() is invalid: " + rank);
     }
     return select(root, rank);
   }
 
-  private Key select(Node x, int rank) {
-    if (x == null) {
+  private Key select(Node x, int rank){
+    if(x == null){
       return null;
     }
     int leftSize = size(x.left);
-    if (leftSize > rank) {
+    if(leftSize > rank){
       return select(x.left, rank);
     }
-    else if (leftSize < rank) {
+    else if(leftSize < rank){
       return select(x.right, rank - leftSize - 1);
     }
-    else {
+    else{
       return x.key;
     }
   }
 
 
-  public int rank(@NotNull Key key) {
+  public int rank(@NotNull Key key){
     return rank(key, root);
   }
 
-  private int rank(Key key, Node x) {
-    if (x == null) {
+  private int rank(Key key, Node x){
+    if(x == null){
       return 0;
     }
     int cmp = comparator.compare(key, x.key);
-    if (cmp < 0) {
+    if(cmp < 0){
       return rank(key, x.left);
     }
-    else if (cmp > 0) {
+    else if(cmp > 0){
       return 1 + size(x.left) + rank(key, x.right);
     }
-    else {
+    else{
       return size(x.left);
     }
   }
 
 
-  public int size(@NotNull Key lo, @NotNull Key hi) {
-    if (comparator.compare(lo, hi) > 0) {
+  public int size(@NotNull Key lo, @NotNull Key hi){
+    if(comparator.compare(lo, hi) > 0){
       return 0;
     }
-    if (contains(hi)) {
+    if(contains(hi)){
       return rank(hi) - rank(lo) + 1;
     }
-    else {
+    else{
       return rank(hi) - rank(lo);
     }
   }

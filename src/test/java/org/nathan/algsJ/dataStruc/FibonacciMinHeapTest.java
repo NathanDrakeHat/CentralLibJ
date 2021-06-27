@@ -8,16 +8,16 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class FibonacciMinHeapTest {
+class FibonacciMinHeapTest{
 
-  private static FibonacciMinHeap.Node<Integer, Integer> buildNode(Integer key, boolean mark) {
+  private static FibonacciMinHeap.Node<Integer, Integer> buildNode(Integer key, boolean mark){
     var res = new FibonacciMinHeap.Node<>(key, key);
     res.mark = mark;
     return res;
   }
 
-  static void addChildren(FibonacciMinHeap.Node<Integer, Integer> n, int... t) {
-    for (var i : t) {
+  static void addChildren(FibonacciMinHeap.Node<Integer, Integer> n, int... t){
+    for(var i : t){
       var x = new FibonacciMinHeap.Node<>(i, i);
       x.mark = false;
       var listLeft = n.left;
@@ -29,7 +29,7 @@ class FibonacciMinHeapTest {
     }
   }
 
-  private static FibonacciMinHeap<Integer, Integer> buildExample() {
+  private static FibonacciMinHeap<Integer, Integer> buildExample(){
     var H = new FibonacciMinHeap<Integer, Integer>(Comparator.comparingInt(a -> a));
     H.insert(3, 3);
     var m = H.rootList;
@@ -73,20 +73,20 @@ class FibonacciMinHeapTest {
     return H;
   }
 
-  private static List<Integer> bcl(FibonacciMinHeap.Node<Integer, Integer> t) {
+  private static List<Integer> bcl(FibonacciMinHeap.Node<Integer, Integer> t){
     List<Integer> res = new ArrayList<>();
     var p = t;
-    do {
+    do{
       res.add(p.key);
       p = p.right;
     }
-    while (p != t);
+    while(p != t);
     p = t;
-    do {
+    do{
       res.add(p.key);
       p = p.left;
     }
-    while (p != t);
+    while(p != t);
     return res;
   }
 
@@ -94,7 +94,7 @@ class FibonacciMinHeapTest {
   FibonacciMinHeap<Integer, Integer> fibHeap = buildExample();
 
   @Test
-  void case1() {
+  void case1(){
 
     var o = fibHeap.extractMin();
     assertEquals(o, 3);

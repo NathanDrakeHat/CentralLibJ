@@ -9,7 +9,7 @@ import java.util.LinkedList;
 import java.util.NoSuchElementException;
 import java.util.function.Function;
 
-public class BSTIterator<Node, Target> implements Iterator<Target> {
+public class BSTIterator<Node, Target> implements Iterator<Target>{
   private final Deque<Node> stack = new LinkedList<>();
   private Node ptr;
   private boolean poppedBefore = false;
@@ -31,45 +31,45 @@ public class BSTIterator<Node, Target> implements Iterator<Target> {
           @NotNull LambdaUtils.Gettable<Node> getRoot,
           @NotNull Function<Node, Node> getRight,
           @NotNull Function<Node, Node> getLeft,
-          @NotNull LambdaUtils.Gettable<Boolean> getIterating) {
+          @NotNull LambdaUtils.Gettable<Boolean> getIterating){
     this.getTarget = getTarget;
     this.sentinel = sentinel;
     ptr = getRoot.get();
     this.getRight = getRight;
     this.getLeft = getLeft;
     this.iterating = getIterating;
-    if (ptr == sentinel) {
+    if(ptr == sentinel){
       finish = true;
     }
   }
 
   @Override
-  public boolean hasNext() {
-    if (!iterating.get()) {
+  public boolean hasNext(){
+    if(!iterating.get()){
       throw new IllegalStateException("concurrent modification");
     }
     return !finish && ptr != null;
   }
 
   @Override
-  public Target next() {
-    while (ptr != null) {
-      if (getLeft.apply(ptr) != sentinel && !poppedBefore) {
+  public Target next(){
+    while(ptr != null) {
+      if(getLeft.apply(ptr) != sentinel && !poppedBefore){
         stack.push(ptr);
         ptr = getLeft.apply(ptr);
       }
-      else {
+      else{
         var t = ptr;
-        if (getRight.apply(ptr) != sentinel) {
+        if(getRight.apply(ptr) != sentinel){
           ptr = getRight.apply(ptr);
           poppedBefore = false;
         }
-        else {
-          if (stack.size() != 0) {
+        else{
+          if(stack.size() != 0){
             ptr = stack.pop();
             poppedBefore = true;
           }
-          else {
+          else{
             ptr = null;
           }
         }

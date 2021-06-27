@@ -13,17 +13,17 @@ import java.util.Set;
 /**
  * minimum spanning tree
  */
-public final class MST {
+public final class MST{
   public static <T>
-  @NotNull Set<WeightEdge<VertKruskal<T>>> Kruskal(@NotNull LinkedGraph<VertKruskal<T>, WeightEdge<VertKruskal<T>>> graph) {
+  @NotNull Set<WeightEdge<VertKruskal<T>>> Kruskal(@NotNull LinkedGraph<VertKruskal<T>, WeightEdge<VertKruskal<T>>> graph){
     Set<WeightEdge<VertKruskal<T>>> res = new HashSet<>();
     var edges_set = graph.getAllEdges();
     var edges_list = new ArrayList<>(edges_set);
     edges_list.sort(Comparator.comparingDouble(WeightEdge::weight));
-    for (var edge : edges_list) {
+    for(var edge : edges_list){
       var v1 = edge.from();
       var v2 = edge.to();
-      if (v1.setId.findGroupId() != v2.setId.findGroupId()) {
+      if(v1.setId.findGroupId() != v2.setId.findGroupId()){
         res.add(edge);
         v1.setId.union(v2.setId);
       }
@@ -33,25 +33,25 @@ public final class MST {
 
   public static <T> void MSTPrimFibonacciHeap(
           @NotNull LinkedGraph<VertPrim<T>, WeightEdge<VertPrim<T>>> graph,
-          @NotNull MST.VertPrim<T> r) {
+          @NotNull MST.VertPrim<T> r){
     FibonacciMinHeap<Double, VertPrim<T>> Q = new FibonacciMinHeap<>(Comparator.comparingDouble(a -> a));
     var vertices = graph.allVertices();
-    for (var u : vertices) {
-      if (u != r) {
+    for(var u : vertices){
+      if(u != r){
         u.key = Double.POSITIVE_INFINITY;
       }
-      else {
+      else{
         u.key = 0.0;
       }
       Q.insert(u.key, u);
       u.parent = null;
     }
-    while (Q.count() > 0) {
+    while(Q.count() > 0) {
       var u = Q.extractMin();
       var u_edges = graph.adjacentEdgesOf(u);
-      for (var edge : u_edges) {
+      for(var edge : u_edges){
         var v = edge.another(u);
-        if (Q.contains(v) && edge.weight() < v.key) {
+        if(Q.contains(v) && edge.weight() < v.key){
           v.parent = u;
           v.key = edge.weight();
           Q.decreaseKey(v, v.key);
@@ -61,24 +61,24 @@ public final class MST {
   }
 
   public static <T> void MSTPrimMinHeap(@NotNull LinkedGraph<VertPrim<T>, WeightEdge<VertPrim<T>>> graph,
-                                        @NotNull MST.VertPrim<T> r) {
+                                        @NotNull MST.VertPrim<T> r){
     var vertices = graph.allVertices();
-    for (var u : vertices) {
-      if (u != r) {
+    for(var u : vertices){
+      if(u != r){
         u.key = Double.POSITIVE_INFINITY;
       }
-      else {
+      else{
         u.key = 0.0;
       }
       u.parent = null;
     }
     ExtremumHeap<Double, VertPrim<T>> Q = new ExtremumHeap<>(true, vertices, VertPrim::getKey, Double::compare);
-    while (Q.length() > 0) {
+    while(Q.length() > 0) {
       var u = Q.extractExtremum();
       var u_edges = graph.adjacentEdgesOf(u);
-      for (var edge : u_edges) {
+      for(var edge : u_edges){
         var v = edge.another(u);
-        if (Q.contains(v) && edge.weight() < v.key) {
+        if(Q.contains(v) && edge.weight() < v.key){
           v.parent = u;
           v.key = edge.weight();
           Q.updateKey(v, v.key);
@@ -87,41 +87,41 @@ public final class MST {
     }
   }
 
-  public static class VertKruskal<Id> {
+  public static class VertKruskal<Id>{
     @NotNull
     private final Id identity;
     final DisjointSet setId = new DisjointSet();
 
-    VertKruskal(@NotNull Id n) {
+    VertKruskal(@NotNull Id n){
       identity = n;
     }
 
     @SuppressWarnings("unused")
-    public @NotNull Id identity() {
+    public @NotNull Id identity(){
       return identity;
     }
 
     @Override
-    public String toString() {
+    public String toString(){
       return String.format("KruskalVertex: %s", identity);
     }
 
   }
 
-  public static class VertPrim<Id> extends BaseVert<Id> {
+  public static class VertPrim<Id> extends BaseVert<Id>{
     VertPrim<Id> parent;
     double key = 0;
 
-    VertPrim(@NotNull Id name) {
+    VertPrim(@NotNull Id name){
       super(name);
     }
 
-    public double getKey() {
+    public double getKey(){
       return key;
     }
 
     @Override
-    public String toString() {
+    public String toString(){
       return String.format("PrimVertex: (%s)", identity);
     }
   }

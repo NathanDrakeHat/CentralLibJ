@@ -1,18 +1,18 @@
 package org.nathan.algsJ.graph;
 
-public class BaseVert<Id> {
+public class BaseVert<Id>{
   final Id identity;
 
-  public BaseVert(Id id) {
+  public BaseVert(Id id){
     identity = id;
   }
 
-  public Id identity() {
+  public Id identity(){
     return identity;
   }
 
   @Override
-  public String toString() {
+  public String toString(){
     return String.format("vertex<%s>", identity);
   }
 }

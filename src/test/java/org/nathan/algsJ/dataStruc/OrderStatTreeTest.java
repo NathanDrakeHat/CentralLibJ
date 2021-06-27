@@ -9,7 +9,7 @@ import java.util.stream.DoubleStream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class OrderStatTreeTest {
+class OrderStatTreeTest{
 
   OrderStatTree<Integer, Integer> fixUpTree;
 
@@ -27,7 +27,7 @@ class OrderStatTreeTest {
   }
 
   @Test
-  public void insertFixUpTest() {
+  public void insertFixUpTest(){
     var root = fixUpTree.root;
     assertEquals(7, root.key); // 7
     assertEquals(2, root.left.key); // 2
@@ -40,21 +40,21 @@ class OrderStatTreeTest {
     assertEquals(15, root.right.right.right.key); // 15
   }
 
-  private static boolean isBalanced(OrderStatTree<Integer, Integer> tree) {
+  private static boolean isBalanced(OrderStatTree<Integer, Integer> tree){
     int black = 0;
     var x = tree.root;
-    while (x != null) {
-      if (x.color == RBTreeTemplate.BLACK) {
+    while(x != null) {
+      if(x.color == RBTreeTemplate.BLACK){
         black++;
       }
       x = x.left;
     }
-    var func = new Object() {
-      private boolean apply(OrderStatTree.Node<Integer, Integer> x, int black) {
-        if (x == null) {
+    var func = new Object(){
+      private boolean apply(OrderStatTree.Node<Integer, Integer> x, int black){
+        if(x == null){
           return black == 0;
         }
-        if (x.color == RBTreeTemplate.BLACK) {
+        if(x.color == RBTreeTemplate.BLACK){
           black--;
         }
         return apply(x.left, black) && apply(x.right, black);
@@ -63,25 +63,26 @@ class OrderStatTreeTest {
     return func.apply(tree.root, black);
   }
 
-  private static boolean is23(OrderStatTree<Integer, Integer> tree) {
-    var func = new Object() {
-      private boolean is23(OrderStatTree.Node<Integer, Integer> x) {
-        if (x == null) return true;
-        if (x != tree.root && ((x.color == RBTreeTemplate.RED && x.left.color == RBTreeTemplate.RED || (x.color == RBTreeTemplate.RED && x.right.color == RBTreeTemplate.RED))))
+  private static boolean is23(OrderStatTree<Integer, Integer> tree){
+    var func = new Object(){
+      private boolean is23(OrderStatTree.Node<Integer, Integer> x){
+        if(x == null){ return true; }
+        if(x != tree.root && ((x.color == RBTreeTemplate.RED && x.left.color == RBTreeTemplate.RED || (x.color == RBTreeTemplate.RED && x.right.color == RBTreeTemplate.RED)))){
           return false;
+        }
         return is23(x.left) && is23(x.right);
       }
     };
     return func.is23(tree.root);
   }
 
-  private static boolean isSizeConsistent(OrderStatTree<Integer, Integer> tree) {
-    var func = new Object() {
-      private boolean apply(OrderStatTree.Node<Integer, Integer> x) {
-        if (x == tree.sentinel) {
+  private static boolean isSizeConsistent(OrderStatTree<Integer, Integer> tree){
+    var func = new Object(){
+      private boolean apply(OrderStatTree.Node<Integer, Integer> x){
+        if(x == tree.sentinel){
           return true;
         }
-        if (x.size != x.left.size + x.right.size + 1) {
+        if(x.size != x.left.size + x.right.size + 1){
           return false;
         }
         return apply(x.left) && apply(x.right);
@@ -90,15 +91,15 @@ class OrderStatTreeTest {
     return func.apply(tree.root);
   }
 
-  private static boolean isRankConsistent(OrderStatTree<Integer, Integer> tree) {
-    for (int i = 0; i < tree.root.size; i++) {
-      if (i + 1 != tree.getRankOfNode(tree.getNodeOfRank(i + 1))) {
+  private static boolean isRankConsistent(OrderStatTree<Integer, Integer> tree){
+    for(int i = 0; i < tree.root.size; i++){
+      if(i + 1 != tree.getRankOfNode(tree.getNodeOfRank(i + 1))){
         return false;
       }
     }
 
-    for (var kv : tree) {
-      if (tree.comparator.compare(kv.first(), tree.getKeyOfRank(tree.getRankOfKey(kv.first()))) != 0) {
+    for(var kv : tree){
+      if(tree.comparator.compare(kv.first(), tree.getKeyOfRank(tree.getRankOfKey(kv.first()))) != 0){
         return false;
       }
     }
@@ -106,14 +107,14 @@ class OrderStatTreeTest {
   }
 
   @Test
-  public void implementationTest() {
+  public void implementationTest(){
     var rand = new SplittableRandom();
-    for (int t = 0; t < 5; t++) {
+    for(int t = 0; t < 5; t++){
       OrderStatTree<Integer, Integer> tree;
       tree = new OrderStatTree<>(Comparator.comparingInt(o -> o));
       int len = rand.nextInt(16, 128);
       List<Integer> shuffle = ArrayUtils.shuffledSequence(0, len);
-      for (int i = 0; i < len; i++) {
+      for(int i = 0; i < len; i++){
         tree.insertKV(shuffle.get(i), shuffle.get(i));
         assertTrue(isBalanced(tree));
         assertTrue(is23(tree));
@@ -124,7 +125,7 @@ class OrderStatTreeTest {
 
       Collections.shuffle(shuffle);
 
-      for (int i = 0; i < len; i++) {
+      for(int i = 0; i < len; i++){
         tree.deleteKey(shuffle.get(i));
         assertTrue(isBalanced(tree));
         assertTrue(is23(tree));
@@ -133,7 +134,7 @@ class OrderStatTreeTest {
         assertTrue(isRankConsistent(tree));
       }
 
-      for (int i = 0; i < len; i++) {
+      for(int i = 0; i < len; i++){
         tree.insertKV(shuffle.get(i), shuffle.get(i));
         assertTrue(isBalanced(tree));
         assertTrue(is23(tree));
@@ -144,7 +145,7 @@ class OrderStatTreeTest {
 
       Collections.shuffle(shuffle);
 
-      for (int i = 0; i < len; i++) {
+      for(int i = 0; i < len; i++){
         tree.deleteKey(shuffle.get(i));
         assertTrue(isBalanced(tree));
         assertTrue(is23(tree));
@@ -162,14 +163,14 @@ class OrderStatTreeTest {
     funcTestTree = new OrderStatTree<>(Comparator.comparingDouble(o -> o));
     List<Double> shuffle = DoubleStream.iterate(0, d -> d < 16, d -> ++d).boxed().collect(Collectors.toList());
     Collections.shuffle(shuffle);
-    for (int i = 0; i < 16; i++) {
+    for(int i = 0; i < 16; i++){
       funcTestTree.insertKV(shuffle.get(i), String.valueOf(shuffle.get(i)));
       funcTestAnswer.add((double) i);
     }
   }
 
   @Test
-  public void functionsTest() {
+  public void functionsTest(){
     List<Double> l2 = new ArrayList<>();
     assertEquals(5 + 1 - 2, funcTestTree.keyRangeSearch(2., 5.).size());
     assertTrue(funcTestTree.getHeight() <= 2 * Math.log(funcTestTree.size() + 1) / Math.log(2));
@@ -182,7 +183,7 @@ class OrderStatTreeTest {
     assertEquals(8, funcTestTree.floorOfKey(8.5));
     assertEquals("15.0", funcTestTree.getValueOfMaxKey());
     assertEquals("0.0", funcTestTree.getValueOfMinKey());
-    for (var kv : funcTestTree) {
+    for(var kv : funcTestTree){
       l2.add(kv.first());
     }
     assertEquals(l2, funcTestAnswer);
@@ -190,7 +191,7 @@ class OrderStatTreeTest {
     funcTestTree.updateKV(15., "test");
     assertEquals("test", funcTestTree.getValOfKey(15.));
     assertThrows(IllegalStateException.class, () -> {
-      for (var ignored : funcTestTree) {
+      for(var ignored : funcTestTree){
         funcTestTree.insertKV(-1., "i");
       }
     });

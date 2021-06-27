@@ -8,7 +8,7 @@ import java.util.*;
 /**
  * interval search tree
  */
-public class IntvalSerchTree<Key, Val> implements Iterable<Triad<Key, Key, Val>> {
+public class IntvalSerchTree<Key, Val> implements Iterable<Triad<Key, Key, Val>>{
   @NotNull
   final Node<Key, Val> sentinel = new Node<>(RBTreeTemplate.BLACK);
   @NotNull Node<Key, Val> root = sentinel;
@@ -18,11 +18,11 @@ public class IntvalSerchTree<Key, Val> implements Iterable<Triad<Key, Key, Val>>
   final RBTreeTemplate<Key, Node<Key, Val>> template;
   private boolean iterating;
 
-  private void modified() {
+  private void modified(){
     iterating = false;
   }
 
-  public IntvalSerchTree(@NotNull Comparator<Key> comparator) {
+  public IntvalSerchTree(@NotNull Comparator<Key> comparator){
     this.comparator = comparator;
     template = new RBTreeTemplate<>(
             sentinel, comparator,
@@ -39,40 +39,40 @@ public class IntvalSerchTree<Key, Val> implements Iterable<Triad<Key, Key, Val>>
             (n, c) -> n.color = c);
   }
 
-  public void insertInterval(@NotNull Key low, @NotNull Key high, Val val) {
+  public void insertInterval(@NotNull Key low, @NotNull Key high, Val val){
     modified();
     Node<Key, Val> n = new Node<>(low, high, val);
     template.insert(n);
   }
 
-  public void deleteInterval(@NotNull Key low) {
+  public void deleteInterval(@NotNull Key low){
     modified();
     var n = template.getNodeOfKey(root, low);
-    if (n == sentinel) {
+    if(n == sentinel){
       throw new NoSuchElementException();
     }
     template.delete(n);
   }
 
-  public List<Triad<Key, Key, Val>> intersects(@NotNull Key lo, @NotNull Key high) {
+  public List<Triad<Key, Key, Val>> intersects(@NotNull Key lo, @NotNull Key high){
     List<Triad<Key, Key, Val>> res = new ArrayList<>();
-    var funcIntersect = new Object() {
-      boolean apply(Key lo, Key hi, Key k) {
+    var funcIntersect = new Object(){
+      boolean apply(Key lo, Key hi, Key k){
         return comparator.compare(lo, k) <= 0 && comparator.compare(hi, k) >= 0;
       }
     };
-    var func = new Object() {
-      void apply(Node<Key, Val> n) {
-        if (n == sentinel) {
+    var func = new Object(){
+      void apply(Node<Key, Val> n){
+        if(n == sentinel){
           return;
         }
-        else if (funcIntersect.apply(n.low, n.high, lo) || funcIntersect.apply(n.low, n.high, high)) {
+        else if(funcIntersect.apply(n.low, n.high, lo) || funcIntersect.apply(n.low, n.high, high)){
           res.add(new Triad<>(n.low, n.high, n.value));
         }
-        else if (n.left == sentinel || comparator.compare(n.left.max, lo) < 0) {
+        else if(n.left == sentinel || comparator.compare(n.left.max, lo) < 0){
           apply(n.right);
         }
-        else {
+        else{
           apply(n.left);
         }
       }
@@ -83,12 +83,13 @@ public class IntvalSerchTree<Key, Val> implements Iterable<Triad<Key, Key, Val>>
 
   @NotNull
   @Override
-  public Iterator<Triad<Key, Key, Val>> iterator() {
+  public Iterator<Triad<Key, Key, Val>> iterator(){
     iterating = true;
-    return new BSTIterator<>(sentinel, n -> new Triad<>(n.low, n.high, n.value), () -> this.root, n -> n.right, n -> n.left, () -> this.iterating);
+    return new BSTIterator<>(sentinel, n -> new Triad<>(n.low, n.high, n.value), () -> this.root, n -> n.right,
+            n -> n.left, () -> this.iterating);
   }
 
-  static class Node<Key, Val> {
+  static class Node<Key, Val>{
     Node<Key, Val> parent;
     Node<Key, Val> left;
     Node<Key, Val> right;
@@ -98,11 +99,11 @@ public class IntvalSerchTree<Key, Val> implements Iterable<Triad<Key, Key, Val>>
     Val value;
     boolean color;
 
-    public Node(boolean c) {
+    public Node(boolean c){
       color = c;
     }
 
-    public Node(Key lo, Key hi, Val val) {
+    public Node(Key lo, Key hi, Val val){
       low = lo;
       high = hi;
       max = high;

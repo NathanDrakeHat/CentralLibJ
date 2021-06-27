@@ -9,7 +9,7 @@ import java.util.function.BiConsumer;
 /**
  * all pair shortest path
  */
-public class APSPath {
+public class APSPath{
 
   /**
    * O(V^4)
@@ -17,23 +17,23 @@ public class APSPath {
    * @param W weights
    * @return all shortest path
    */
-  public static double[][] slowAllPairsShortestPaths(double[][] W) {
+  public static double[][] slowAllPairsShortestPaths(double[][] W){
     var n = W.length;
     var L = W;
-    for (int m = 2; m <= n - 1; m++) {
+    for(int m = 2; m <= n - 1; m++){
       L = extendedShortestPath(L, W);
     }
     // L^(n-1)
     return L;
   }
 
-  private static double[][] extendedShortestPath(double[][] L_origin, double[][] W) {
+  private static double[][] extendedShortestPath(double[][] L_origin, double[][] W){
     var n = W.length;
     var L_next = new double[n][n];
-    for (int i = 0; i < n; i++) {
-      for (int j = 0; j < n; j++) {
+    for(int i = 0; i < n; i++){
+      for(int j = 0; j < n; j++){
         L_next[i][j] = Double.POSITIVE_INFINITY;
-        for (int k = 0; k < n; k++) {
+        for(int k = 0; k < n; k++){
           L_next[i][j] = Math.min(L_next[i][j], L_origin[i][k] + W[k][j]);
         }
       }
@@ -47,11 +47,11 @@ public class APSPath {
    * @param W weights
    * @return all shortest path
    */
-  public static double[][] fasterAllPairsShortestPaths(double[][] W) {
+  public static double[][] fasterAllPairsShortestPaths(double[][] W){
     var n = W.length;
     var L = W;
     int m = 1;
-    for (; m < n - 1; m *= 2) {
+    for(; m < n - 1; m *= 2){
       L = extendedShortestPath(L, L);
     }
     return L;
@@ -63,13 +63,13 @@ public class APSPath {
    * @param W weights
    * @return all shortest path
    */
-  public static double[][] FloydWarshall(double[][] W) {
+  public static double[][] FloydWarshall(double[][] W){
     var n = W.length;
     var D_origin = W;
-    for (int k = 0; k < n; k++) {
+    for(int k = 0; k < n; k++){
       var D_current = new double[n][n];
-      for (int i = 0; i < n; i++) {
-        for (int j = 0; j < n; j++) {
+      for(int i = 0; i < n; i++){
+        for(int j = 0; j < n; j++){
           D_current[i][j] = Math.min(D_origin[i][j], D_origin[i][k] + D_origin[k][j]);
         }
       }
@@ -79,18 +79,18 @@ public class APSPath {
   }
 
 
-  public static boolean[][] transitiveClosure(double[][] W) {
+  public static boolean[][] transitiveClosure(double[][] W){
     var n = W.length;
     var T = new boolean[n][n];
-    for (int i = 0; i < n; i++) {
-      for (int j = 0; j < n; j++) {
+    for(int i = 0; i < n; i++){
+      for(int j = 0; j < n; j++){
         T[i][j] = (i == j) || (W[i][j] != Double.POSITIVE_INFINITY);
       }
     }
-    for (int k = 0; k < n; k++) {
+    for(int k = 0; k < n; k++){
       var T_k = new boolean[n][n];
-      for (int i = 0; i < n; i++) {
-        for (int j = 0; j < n; j++) {
+      for(int i = 0; i < n; i++){
+        for(int j = 0; j < n; j++){
           T_k[i][j] = T[i][j] || (T[i][k] && T[k][j]);
         }
       }
@@ -112,32 +112,32 @@ public class APSPath {
    */
   public static <T>
   Optional<double[][]> Johnson(@NotNull LinkedGraph<BFS.Vert<T>, WeightEdge<BFS.Vert<T>>> graph,
-                               @NotNull BiConsumer<LinkedGraph<BFS.Vert<T>, WeightEdge<BFS.Vert<T>>>, BFS.Vert<T>> algoDijkstra) {
+                               @NotNull BiConsumer<LinkedGraph<BFS.Vert<T>, WeightEdge<BFS.Vert<T>>>, BFS.Vert<T>> algoDijkstra){
     Map<BFS.Vert<T>, Double> h = new HashMap<>();
     var n = graph.verticesCount();
     var vertices_new = new ArrayList<>(graph.allVertices());
     var s = new BFS.Vert<T>();
     vertices_new.add(s);
     var new_graph = buildGraph(graph, vertices_new, s);
-    if (!SSSPath.BellmanFord(new_graph, s)) {
+    if(!SSSPath.BellmanFord(new_graph, s)){
       return Optional.empty();
     }
-    else {
+    else{
       var edges_new = new_graph.getAllEdges();
-      for (var vertex : vertices_new) {
+      for(var vertex : vertices_new){
         h.put(vertex, vertex.distance);
       }
-      for (var edge : edges_new) {
+      for(var edge : edges_new){
         edge.weight = edge.weight + edge.from().distance - edge.to().distance;
       }
       var D = new double[n][n];
       int idx_u = 0;
-      for (var u : vertices_new) {
-        if (u != s) {
+      for(var u : vertices_new){
+        if(u != s){
           int idx_v = 0;
           algoDijkstra.accept(graph, u);
-          for (var v : vertices_new) {
-            if (v != s) {
+          for(var v : vertices_new){
+            if(v != s){
               D[idx_u][idx_v] = v.distance + h.get(v) - h.get(u);
               idx_v++;
             }
@@ -152,11 +152,11 @@ public class APSPath {
   private static <T> LinkedGraph<BFS.Vert<T>, WeightEdge<BFS.Vert<T>>> buildGraph(
           @NotNull LinkedGraph<BFS.Vert<T>, WeightEdge<BFS.Vert<T>>> graph,
           @NotNull List<BFS.Vert<T>> vertices,
-          @NotNull BFS.Vert<T> s) {
+          @NotNull BFS.Vert<T> s){
     var new_graph = new LinkedGraph<>(graph);
     new_graph.addVertex(s);
-    for (var vertex : vertices) {
-      if (vertex != s) {
+    for(var vertex : vertices){
+      if(vertex != s){
         new_graph.addEdge(new WeightEdge<>(s, vertex, 0));
       }
     }

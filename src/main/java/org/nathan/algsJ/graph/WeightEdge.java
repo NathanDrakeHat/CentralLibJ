@@ -2,16 +2,16 @@ package org.nathan.algsJ.graph;
 
 import org.jetbrains.annotations.NotNull;
 
-public class WeightEdge<V> extends BaseEdge<V> {
+public class WeightEdge<V> extends BaseEdge<V>{
 
   double weight;
 
-  public WeightEdge(@NotNull V f, @NotNull V l, double weight) {
+  public WeightEdge(@NotNull V f, @NotNull V l, double weight){
     super(f, l);
     this.weight = weight;
   }
 
-  double weight() {
+  double weight(){
     return weight;
   }
 }

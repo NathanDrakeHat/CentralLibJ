@@ -11,7 +11,7 @@ import java.util.*;
  *
  * @param <V>
  */
-public class LinkedGraph<V, E extends BaseEdge<V>> {
+public class LinkedGraph<V, E extends BaseEdge<V>>{
   final boolean directed;
   final List<V> vertices;
   final Map<V, List<E>> edges_map;
@@ -22,7 +22,7 @@ public class LinkedGraph<V, E extends BaseEdge<V>> {
    * @param size        vertices size
    * @param is_directed bool
    */
-  LinkedGraph(int size, boolean is_directed) {
+  LinkedGraph(int size, boolean is_directed){
     directed = is_directed;
     vertices = new ArrayList<>(size);
     edges_map = new HashMap<>(size);
@@ -34,9 +34,9 @@ public class LinkedGraph<V, E extends BaseEdge<V>> {
    * @param is_directed bool
    * @param vertices    all vertices
    */
-  public LinkedGraph(boolean is_directed, @NotNull List<? extends V> vertices) {
+  public LinkedGraph(boolean is_directed, @NotNull List<? extends V> vertices){
     this(vertices.size(), is_directed);
-    for (var vertex : vertices) {
+    for(var vertex : vertices){
       Objects.requireNonNull(vertex);
       this.edges_map.put(vertex, new ArrayList<>());
       this.vertices.add(vertex);
@@ -49,40 +49,40 @@ public class LinkedGraph<V, E extends BaseEdge<V>> {
    *
    * @param other_graph other
    */
-  public LinkedGraph(@NotNull LinkedGraph<V, E> other_graph) {
+  public LinkedGraph(@NotNull LinkedGraph<V, E> other_graph){
     this(other_graph.verticesCount(), other_graph.directed);
     this.edges_map.putAll(other_graph.edges_map);
     this.vertices.addAll(other_graph.vertices);
   }
 
-  public void addEdge(@NotNull E edge) {
+  public void addEdge(@NotNull E edge){
     edges_map.get(edge.former).add(edge);
-    if (!directed) {
+    if(!directed){
       edges_map.get(edge.latter).add(edge);
     }
   }
 
-  public void addEdges(@NotNull List<E> edges) {
-    for (var edge : edges) {
+  public void addEdges(@NotNull List<E> edges){
+    for(var edge : edges){
       addEdge(edge);
     }
   }
 
-  public void addVertex(@NotNull V vertex) {
-    if (edges_map.containsKey(vertex)) {
+  public void addVertex(@NotNull V vertex){
+    if(edges_map.containsKey(vertex)){
       throw new IllegalArgumentException("repeated vertex");
     }
     vertices.add(vertex);
     edges_map.put(vertex, new ArrayList<>());
   }
 
-  public int verticesCount() {
+  public int verticesCount(){
     return vertices.size();
   }
 
-  public @NotNull List<E> getAllEdges() {
+  public @NotNull List<E> getAllEdges(){
     List<E> res = new ArrayList<>();
-    for (var vertex : vertices) {
+    for(var vertex : vertices){
       res.addAll(edges_map.get(vertex));
     }
     return res;
@@ -91,7 +91,7 @@ public class LinkedGraph<V, E extends BaseEdge<V>> {
   /**
    * @return unmodifiable list
    */
-  public @NotNull List<V> allVertices() {
+  public @NotNull List<V> allVertices(){
     return Collections.unmodifiableList(vertices);
   }
 
@@ -99,11 +99,11 @@ public class LinkedGraph<V, E extends BaseEdge<V>> {
    * @param vertex vertex
    * @return unmodifiable list
    */
-  public @NotNull List<E> adjacentEdgesOf(V vertex) {
+  public @NotNull List<E> adjacentEdgesOf(V vertex){
     return Collections.unmodifiableList(edges_map.get(vertex));
   }
 
-  public boolean isDirected() {
+  public boolean isDirected(){
     return directed;
   }
 }

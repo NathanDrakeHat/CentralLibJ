@@ -8,14 +8,14 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class DFSTest {
+class DFSTest{
 
 
-  static LinkedGraph<DFS.Vert<String>, BaseEdge<DFS.Vert<String>>> makeStronglyConnectedComponentsDemo() {
+  static LinkedGraph<DFS.Vert<String>, BaseEdge<DFS.Vert<String>>> makeStronglyConnectedComponentsDemo(){
     String t = "a,b,c,d,e,f,g,h";
     var names = t.split(",");
     var A = new ArrayList<DFS.Vert<String>>(names.length);
-    for (int i = 0; i < names.length; i++) {
+    for(int i = 0; i < names.length; i++){
       A.add(i, new DFS.Vert<>(names[i]));
     }
     LinkedGraph<DFS.Vert<String>, BaseEdge<DFS.Vert<String>>> G = new LinkedGraph<>(true, A);
@@ -44,11 +44,11 @@ class DFSTest {
     return G;
   }
 
-  static LinkedGraph<DFS.Vert<String>, BaseEdge<DFS.Vert<String>>> makeGraph() {
+  static LinkedGraph<DFS.Vert<String>, BaseEdge<DFS.Vert<String>>> makeGraph(){
     String names = "uvwxyz";
     var vs = new ArrayList<DFS.Vert<String>>(6);
 
-    for (int i = 0; i < 6; i++) {
+    for(int i = 0; i < 6; i++){
       vs.add(i, new DFS.Vert<>(String.valueOf(names.charAt(i))));
     }
     var G = new LinkedGraph<>(true, vs);
@@ -72,7 +72,7 @@ class DFSTest {
   LinkedGraph<DFS.Vert<String>, BaseEdge<DFS.Vert<String>>> dfsGraph = makeGraph();
 
   @Test
-  void depthFirstSearchTest() {
+  void depthFirstSearchTest(){
     DFS.depthFirstSearch(dfsGraph);
     var vertices = dfsGraph.allVertices();
     List<DFS.Vert<String>> l = new ArrayList<>(vertices);
@@ -80,29 +80,29 @@ class DFSTest {
     assertEquals(1, l.get(0).discover);
     assertEquals(8, l.get(0).finish);
 
-    if (2 == l.get(1).discover) {
+    if(2 == l.get(1).discover){
       assertEquals(7, l.get(1).finish);
-      if (l.get(3).discover == 4) {
+      if(l.get(3).discover == 4){
         assertEquals(5, l.get(3).finish);
         assertEquals(3, l.get(4).discover);
         assertEquals(6, l.get(4).finish);
       }
-      else {
+      else{
         assertEquals(3, l.get(3).discover);
         assertEquals(6, l.get(3).finish);
         assertEquals(4, l.get(4).discover);
         assertEquals(5, l.get(4).finish);
       }
     }
-    else {
+    else{
       assertEquals(2, l.get(3).discover);
       assertEquals(7, l.get(3).finish);
-      if (3 == l.get(4).discover) {
+      if(3 == l.get(4).discover){
         assertEquals(6, l.get(4).finish);
         assertEquals(4, l.get(1).discover);
         assertEquals(5, l.get(1).finish);
       }
-      else {
+      else{
         assertEquals(4, l.get(4).discover);
         assertEquals(5, l.get(4).finish);
         assertEquals(3, l.get(1).discover);
@@ -111,12 +111,12 @@ class DFSTest {
 
     }
 
-    if (l.get(2).discover == 9) {
+    if(l.get(2).discover == 9){
       assertEquals(12, l.get(2).finish);
       assertEquals(10, l.get(5).discover);
       assertEquals(11, l.get(5).finish);
     }
-    else {
+    else{
       assertEquals(11, l.get(2).discover);
       assertEquals(12, l.get(2).finish);
       assertEquals(9, l.get(5).discover);
@@ -126,11 +126,11 @@ class DFSTest {
 
   }
 
-  static LinkedGraph<DFS.Vert<String>, BaseEdge<DFS.Vert<String>>> makeTopographicalDemo() {
+  static LinkedGraph<DFS.Vert<String>, BaseEdge<DFS.Vert<String>>> makeTopographicalDemo(){
     var A = new ArrayList<DFS.Vert<String>>(9);
     String t = "undershorts,pants,belt,shirt,tie,jacket,socks,shoes,watch";
     var names = t.split(",");
-    for (int i = 0; i < 9; i++) {
+    for(int i = 0; i < 9; i++){
       A.add(i, new DFS.Vert<>(names[i]));
     }
     LinkedGraph<DFS.Vert<String>, BaseEdge<DFS.Vert<String>>> G = new LinkedGraph<>(true, A);
@@ -156,18 +156,18 @@ class DFSTest {
   LinkedGraph<DFS.Vert<String>, BaseEdge<DFS.Vert<String>>> topologicalGraph = makeTopographicalDemo();
 
   @Test
-  void topologicalSortTest() {
+  void topologicalSortTest(){
 
     var l = DFS.topologicalSort(topologicalGraph);
     boolean flag = true;
-    for (int i = 1; i < l.size(); i++) {
-      for (int j = 0; j < i; j++) {
+    for(int i = 1; i < l.size(); i++){
+      for(int j = 0; j < i; j++){
         flag = topologicalSorted(l.get(j), l.get(i), topologicalGraph);
-        if (!flag) {
+        if(!flag){
           break;
         }
       }
-      if (!flag) {
+      if(!flag){
         break;
       }
     }
@@ -177,20 +177,20 @@ class DFSTest {
   boolean topologicalSorted(
           DFS.Vert<String> target,
           DFS.Vert<String> current,
-          LinkedGraph<DFS.Vert<String>, BaseEdge<DFS.Vert<String>>> G) {
-    if (current.equals(target)) {
+          LinkedGraph<DFS.Vert<String>, BaseEdge<DFS.Vert<String>>> G){
+    if(current.equals(target)){
       return false;
     }
     var edges = G.adjacentEdgesOf(current);
-    if (edges.isEmpty()) {
+    if(edges.isEmpty()){
       return true;
     }
-    else {
+    else{
       boolean t = true;
-      for (var edge : edges) {
+      for(var edge : edges){
         var i = edge.another(current);
         t = topologicalSorted(target, i, G);
-        if (!t) {
+        if(!t){
           break;
         }
       }
@@ -201,18 +201,18 @@ class DFSTest {
   LinkedGraph<DFS.Vert<String>, BaseEdge<DFS.Vert<String>>> sortedTestGraph = makeTopographicalDemo();
 
   @Test
-  void topologicalSortedTest() {
+  void topologicalSortedTest(){
 
     boolean flag = true;
     List<DFS.Vert<String>> t = new ArrayList<>(sortedTestGraph.allVertices());
-    for (int i = 1; i < t.size(); i++) {
-      for (int j = 0; j < i; j++) {
+    for(int i = 1; i < t.size(); i++){
+      for(int j = 0; j < i; j++){
         flag = topologicalSorted(t.get(j), t.get(i), sortedTestGraph);
-        if (!flag) {
+        if(!flag){
           break;
         }
       }
-      if (!flag) {
+      if(!flag){
         break;
       }
     }
@@ -220,7 +220,7 @@ class DFSTest {
   }
 
   @Test
-  void stronglyConnectedComponentsTest() {
+  void stronglyConnectedComponentsTest(){
     var G = makeStronglyConnectedComponentsDemo();
     DFS.stronglyConnectedComponents(G);
     var vertices = G.allVertices();
@@ -232,9 +232,9 @@ class DFSTest {
 
   }
 
-  DFS.Vert<String> getRoot(DFS.Vert<String> v) {
+  DFS.Vert<String> getRoot(DFS.Vert<String> v){
     var t = v;
-    while (t.parent != null) {
+    while(t.parent != null) {
       t = t.parent;
     }
     return t;

@@ -7,54 +7,54 @@ import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class OrthoLineIntersectTest {
-  public static class Point extends Tuple<Integer, Integer> {
-    public Point(Integer f, Integer s) {
+public class OrthoLineIntersectTest{
+  public static class Point extends Tuple<Integer, Integer>{
+    public Point(Integer f, Integer s){
       super(f, s);
     }
 
-    Integer x() {
+    Integer x(){
       return first();
     }
 
-    Integer y() {
+    Integer y(){
       return second();
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(Object o){
       return super.equals(o);
     }
 
     @Override
-    public int hashCode() {
+    public int hashCode(){
       return super.hashCode();
     }
 
     @Override
-    public String toString() {
+    public String toString(){
       return super.toString();
     }
   }
 
-  public static class Line extends Tuple<Point, Point> {
+  public static class Line extends Tuple<Point, Point>{
 
-    public Line(Point f, Point s) {
+    public Line(Point f, Point s){
       super(f, s);
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(Object o){
       return super.equals(o);
     }
 
     @Override
-    public String toString() {
+    public String toString(){
       return super.toString();
     }
 
     @Override
-    public int hashCode() {
+    public int hashCode(){
       return super.hashCode();
     }
   }
@@ -100,7 +100,7 @@ public class OrthoLineIntersectTest {
     pointsData.add(new Point(691, 448 - 71));
     pointsData.add(new Point(691, 448 - 421));
 
-    for (int i = 0; i < 24; i += 2) {
+    for(int i = 0; i < 24; i += 2){
       linesData.add(new Line(pointsData.get(i), pointsData.get(i + 1)));
     }
     intersectAnswer.put(linesData.get(4), Set.of(linesData.get(1)));
@@ -109,7 +109,7 @@ public class OrthoLineIntersectTest {
   }
 
   @Test
-  void intersectsTest() {
+  void intersectsTest(){
     var res =
             OrthoLineIntersect.intersects(linesData, l -> new Tuple<>(l.first(), l.second()), Tuple::first,
                     Tuple::second);
@@ -139,7 +139,7 @@ public class OrthoLineIntersectTest {
   }
 
   @Test
-  void cornerCaseTest() {
+  void cornerCaseTest(){
     var res =
             OrthoLineIntersect.intersects(cornerCaseData, l -> new Tuple<>(l.first(), l.second()), Tuple::first,
                     Tuple::second);

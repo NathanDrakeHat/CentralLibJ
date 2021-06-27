@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class MaxFlowTest {
+public class MaxFlowTest{
 
   LinkedGraph<BaseVert<Character>, FlowEdge<BaseVert<Character>>> FordFulkersonGraph;
   BaseVert<Character> FordFulkersonSource;
@@ -23,7 +23,7 @@ public class MaxFlowTest {
     int[] s = new int[]{6, 0, 0, 0, 1, 1, 3, 5, 3, 5, 4, 2, 6, 6, 2};
     int[] t = new int[]{0, 2, 3, 1, 3, 7, 7, 7, 5, 2, 5, 4, 4, 2, 3};
     int[] c = new int[]{10, 4, 15, 9, 15, 10, 10, 10, 15, 6, 16, 4, 15, 5, 8};
-    for (int idx = 0; idx < s.length; idx++) {
+    for(int idx = 0; idx < s.length; idx++){
       g.addEdge(new FlowEdge<>(verts.get(s[idx]), verts.get(t[idx]), c[idx], 0));
     }
     FordFulkersonGraph = g;
@@ -33,16 +33,16 @@ public class MaxFlowTest {
   }
 
   @Test
-  public void FordFulkersonTest() {
+  public void FordFulkersonTest(){
     var solver = new MaxFlow.ForFulkersonSolver<>(FordFulkersonGraph);
     solver.solve(FordFulkersonSource, FordFulkersonDestination);
     assertEquals(28, solver.maxFlow());
-    for (int i = 0; i < FordFulkersonVerts.size(); i++) {
+    for(int i = 0; i < FordFulkersonVerts.size(); i++){
       var vert = FordFulkersonVerts.get(i);
-      if (i != 2 && i != 4 && i != 5 && i != 6) {
+      if(i != 2 && i != 4 && i != 5 && i != 6){
         assertFalse(solver.inMinCut(vert));
       }
-      else {
+      else{
         assertTrue(solver.inMinCut(vert));
       }
     }

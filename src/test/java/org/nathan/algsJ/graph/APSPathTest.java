@@ -8,12 +8,12 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-class APSPathTest {
+class APSPathTest{
 
-  static LinkedGraph<BFS.Vert<String>, WeightEdge<BFS.Vert<String>>> buildJohnsonTestCase() {
+  static LinkedGraph<BFS.Vert<String>, WeightEdge<BFS.Vert<String>>> buildJohnsonTestCase(){
     String[] names = "1,2,3,4,5".split(",");
     List<BFS.Vert<String>> vertices = new ArrayList<>();
-    for (var name : names) {
+    for(var name : names){
       vertices.add(new BFS.Vert<>(name));
     }
     LinkedGraph<BFS.Vert<String>, WeightEdge<BFS.Vert<String>>> res = new LinkedGraph<>(true, vertices);
@@ -44,7 +44,7 @@ class APSPathTest {
 
 
   @Test
-  void slowAllPairsShortestPaths() {
+  void slowAllPairsShortestPaths(){
     var res = APSPath.slowAllPairsShortestPaths(new double[][]{
             {0, Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY, 2, Double.POSITIVE_INFINITY},
             {3, 0, 4, Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY},
@@ -66,7 +66,7 @@ class APSPathTest {
   };
 
   @Test
-  void fasterAllPairsShortestPaths() {
+  void fasterAllPairsShortestPaths(){
     var res = APSPath.fasterAllPairsShortestPaths(new double[][]{
             {0, Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY, 2, Double.POSITIVE_INFINITY},
             {3, 0, 4, Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY},
@@ -87,7 +87,7 @@ class APSPathTest {
   };
 
   @Test
-  void FloydWarshallTest() {
+  void FloydWarshallTest(){
     var res = APSPath.FloydWarshall(new double[][]{
             {0, Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY, 2, Double.POSITIVE_INFINITY},
             {3, 0, 4, Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY},
@@ -107,7 +107,7 @@ class APSPathTest {
   };
 
   @Test
-  void transitiveClosureTest() {
+  void transitiveClosureTest(){
     var res = APSPath.transitiveClosure(new double[][]{
             {0, Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY, 1},
             {Double.POSITIVE_INFINITY, 0, 1, Double.POSITIVE_INFINITY},
@@ -128,14 +128,14 @@ class APSPathTest {
   };
 
   @Test
-  void JohnsonFibonacciHeapTest() {
+  void JohnsonFibonacciHeapTest(){
     var res = APSPath.Johnson(JohnsonFibTest, SSSPath::DijkstraFibonacciHeap);
     assertTrue(res.isPresent());
     assertArrayEquals(JohnsonAnswer, res.get());
   }
 
   @Test
-  void JohnsonMinHeapTest() {
+  void JohnsonMinHeapTest(){
     var res = APSPath.Johnson(JohnsonMinHeapTest, SSSPath::DijkstraMinHeap);
     assertTrue(res.isPresent());
     assertArrayEquals(JohnsonAnswer, res.get());

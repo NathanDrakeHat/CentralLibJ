@@ -46,9 +46,8 @@ public class FiniteAutomata{
   }
 
   /**
-   *
-   * @param data string
-   * @param pat pattern
+   * @param data           string
+   * @param pat            pattern
    * @param input_char_set all char set of data
    * @return list of end index(matched start index - 1)
    */

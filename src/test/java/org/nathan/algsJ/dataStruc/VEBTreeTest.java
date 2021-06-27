@@ -6,11 +6,11 @@ import java.util.NoSuchElementException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class VEBTreeTest {
+class VEBTreeTest{
 
-  private static boolean has(VEBTree V, int[] a) {
-    for (var i : a) {
-      if (!V.hasMember(i)) {
+  private static boolean has(VEBTree V, int[] a){
+    for(var i : a){
+      if(!V.hasMember(i)){
         return false;
       }
     }
@@ -18,7 +18,7 @@ class VEBTreeTest {
   }
 
   @Test
-  void testCase1() {
+  void testCase1(){
     var V = new VEBTree(4);
     assertTrue(V.tryGetMaximum().isEmpty());
     assertTrue(V.tryGetMinimum().isEmpty());

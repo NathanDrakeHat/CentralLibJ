@@ -6,12 +6,12 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ProtoVEBTreeTest {
+class ProtoVEBTreeTest{
 
   public ProtoVEBTree T;
 
   @BeforeEach
-  void setUp() {
+  void setUp(){
     T = new ProtoVEBTree(2);
     T.insert(1);
     T.insert(3);
@@ -22,37 +22,37 @@ class ProtoVEBTreeTest {
   }
 
   @AfterEach
-  void clean() {
+  void clean(){
     T = null;
   }
 
   @Test
-  void hasMemberTest() {
+  void hasMemberTest(){
     assertTrue(T.hasMember(3));
   }
 
   @Test
-  void predecessorTest() {
+  void predecessorTest(){
     assertEquals(1, T.predecessor(3));
   }
 
   @Test
-  void successorTest() {
+  void successorTest(){
     assertEquals(5, T.successor(3));
   }
 
   @Test
-  void maximumTest() {
+  void maximumTest(){
     assertEquals(15, T.maximum());
   }
 
   @Test
-  void minimumTest() {
+  void minimumTest(){
     assertEquals(1, T.minimum());
   }
 
   @Test
-  void exceptionTest() {
+  void exceptionTest(){
     assertThrows(NullPointerException.class, () -> T.successor(15));
   }
 }
