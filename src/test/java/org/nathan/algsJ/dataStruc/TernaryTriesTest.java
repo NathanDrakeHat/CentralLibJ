@@ -6,21 +6,20 @@ import java.util.ArrayDeque;
 import java.util.HashSet;
 import java.util.Set;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 class TernaryTriesTest{
 
   TernaryTries<Byte> case1 = new TernaryTries<>();
 
   {
-    case1.put("by", (byte) 0);
-    case1.put("she", (byte) 0);
-    case1.put("shells", (byte) 0);
-    case1.put("sea", (byte) 0);
-    case1.put("sells", (byte) 0);
-    case1.put("shore", (byte) 0);
-    case1.put("the", (byte) 0);
+    case1.put("by", null);
+    case1.put("she", null);
+    case1.put("shells", null);
+    case1.put("sea", null);
+    case1.put("sells", null);
+    case1.put("shore", null);
+    case1.put("the", null);
   }
 
   Set<String> keys = new HashSet<>();
@@ -33,7 +32,6 @@ class TernaryTriesTest{
     keys.add("sells");
     keys.add("shore");
     keys.add("the");
-
   }
 
   @Test
@@ -61,5 +59,70 @@ class TernaryTriesTest{
     for(var i : res){
       assertTrue(d.contains(i));
     }
+  }
+
+  @Test
+  void removeTest(){
+    TernaryTries<Byte> data = new TernaryTries<>();
+    data.put("shells", null);
+    data.put("by", null);
+    data.put("the", null);
+    data.put("sells", null);
+    data.put("shore", null);
+    data.put("she", null);
+    data.put("sea", null);
+    assertEquals(7, data.size());
+
+
+    assertTrue(data.remove("by"));
+    assertFalse(data.contains("by"));
+    assertTrue(data.contains("she"));
+    assertTrue(data.contains("shells"));
+    assertTrue(data.contains("sea"));
+    assertTrue(data.contains("sells"));
+    assertTrue(data.contains("shore"));
+    assertTrue(data.contains("the"));
+    assertEquals(6, data.size());
+
+    assertTrue(data.remove("she"));
+    assertFalse(data.contains("she"));
+    assertTrue(data.contains("shells"));
+    assertTrue(data.contains("sea"));
+    assertTrue(data.contains("sells"));
+    assertTrue(data.contains("shore"));
+    assertTrue(data.contains("the"));
+    assertEquals(5, data.size());
+
+    assertTrue(data.remove("shells"));
+    assertFalse(data.contains("shells"));
+    assertTrue(data.contains("sea"));
+    assertTrue(data.contains("sells"));
+    assertTrue(data.contains("shore"));
+    assertTrue(data.contains("the"));
+    assertEquals(4, data.size());
+
+    assertTrue(data.remove("sea"));
+    assertFalse(data.contains("sea"));
+    assertTrue(data.contains("sells"));
+    assertTrue(data.contains("shore"));
+    assertTrue(data.contains("the"));
+    assertEquals(3, data.size());
+
+    assertTrue(data.remove("sells"));
+    assertFalse(data.contains("sells"));
+    assertTrue(data.contains("shore"));
+    assertTrue(data.contains("the"));
+    assertEquals(2, data.size());
+
+    assertTrue(data.remove("shore"));
+    assertFalse(data.contains("shore"));
+    assertTrue(data.contains("the"));
+    assertEquals(1, data.size());
+
+    assertTrue(data.remove("the"));
+    assertFalse(data.contains("the"));
+
+    assertNull(data.root);
+    assertEquals(0, data.size());
   }
 }
