@@ -27,9 +27,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="add tests">
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/structures/StringST.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/structures/SymbolTable.java" beforeDir="false" />
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="rename package">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/strMatch/KMP.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algsJ/strMatch/KMPTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,7 +63,7 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/main/java/org/nathan/algsJ/structures/FibonacciMinHeap.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/org/nathan/algsJ/dataStruc/FibonacciMinHeap.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="1frQbN17KMrYLWgoSMIuH1vYjss" />
   <component name="ProjectViewState">
@@ -121,7 +123,7 @@
       <command value="mvn install:install-file -Dfile=algs4.jar -DgroupId=edu.princeton.cs -DartifactId=algs4 -Dversion=1.0 -Dpackaging=jar -DgeneratePom=true " />
     </option>
   </component>
-  <component name="RunManager" selected="Application.pushThis">
+  <component name="RunManager" selected="JUnit.KMPTest.searchTest">
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.nathan.Main" />
       <module name="AlgorithmsJava" />
@@ -154,7 +156,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RabinKarpTest.searchTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="KMPTest.searchTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AlgorithmsJava" />
       <extension name="coverage">
         <pattern>
@@ -163,7 +165,7 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="org.nathan.algsJ.strMatch" />
-      <option name="MAIN_CLASS_NAME" value="org.nathan.algsJ.strMatch.RabinKarpTest" />
+      <option name="MAIN_CLASS_NAME" value="org.nathan.algsJ.strMatch.KMPTest" />
       <option name="METHOD_NAME" value="searchTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
@@ -174,12 +176,12 @@
       <module name="AlgorithmsJava" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.nathan.algsJ.structures.*" />
+          <option name="PATTERN" value="org.nathan.algsJ.dataStruc.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="org.nathan.algsJ.structures" />
-      <option name="MAIN_CLASS_NAME" value="org.nathan.algsJ.structures.TernaryTriesTest" />
+      <option name="PACKAGE_NAME" value="org.nathan.algsJ.dataStruc" />
+      <option name="MAIN_CLASS_NAME" value="org.nathan.algsJ.dataStruc.TernaryTriesTest" />
       <option name="METHOD_NAME" value="keysTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
@@ -190,12 +192,12 @@
       <module name="AlgorithmsJava" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.nathan.algsJ.structures.*" />
+          <option name="PATTERN" value="org.nathan.algsJ.dataStruc.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="org.nathan.algsJ.structures" />
-      <option name="MAIN_CLASS_NAME" value="org.nathan.algsJ.structures.TernaryTriesTest" />
+      <option name="PACKAGE_NAME" value="org.nathan.algsJ.dataStruc" />
+      <option name="MAIN_CLASS_NAME" value="org.nathan.algsJ.dataStruc.TernaryTriesTest" />
       <option name="METHOD_NAME" value="keysWithPrefixTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
@@ -206,12 +208,12 @@
       <module name="AlgorithmsJava" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.nathan.algsJ.structures.*" />
+          <option name="PATTERN" value="org.nathan.algsJ.dataStruc.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="org.nathan.algsJ.structures" />
-      <option name="MAIN_CLASS_NAME" value="org.nathan.algsJ.structures.TernaryTriesTest" />
+      <option name="PACKAGE_NAME" value="org.nathan.algsJ.dataStruc" />
+      <option name="MAIN_CLASS_NAME" value="org.nathan.algsJ.dataStruc.TernaryTriesTest" />
       <option name="METHOD_NAME" value="longestPrefixOfTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
@@ -222,19 +224,19 @@
       <item itemvalue="Application.pushThis" />
       <item itemvalue="Application.pushUtils" />
       <item itemvalue="Application.Main" />
-      <item itemvalue="JUnit.RabinKarpTest.searchTest" />
       <item itemvalue="JUnit.TernaryTriesTest.keysWithPrefixTest" />
       <item itemvalue="JUnit.TernaryTriesTest.keysTest" />
       <item itemvalue="JUnit.TernaryTriesTest.longestPrefixOfTest" />
       <item itemvalue="JUnit.All in AlgorithmsJava" />
+      <item itemvalue="JUnit.KMPTest.searchTest" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.KMPTest.searchTest" />
         <item itemvalue="JUnit.All in AlgorithmsJava" />
         <item itemvalue="JUnit.TernaryTriesTest.longestPrefixOfTest" />
         <item itemvalue="JUnit.TernaryTriesTest.keysTest" />
         <item itemvalue="JUnit.TernaryTriesTest.keysWithPrefixTest" />
-        <item itemvalue="JUnit.RabinKarpTest.searchTest" />
       </list>
     </recent_temporary>
   </component>
@@ -454,21 +456,7 @@
       <workItem from="1624507956122" duration="2436000" />
       <workItem from="1624597898190" duration="2216000" />
       <workItem from="1624679633619" duration="2493000" />
-      <workItem from="1624693929857" duration="14949000" />
-    </task>
-    <task id="LOCAL-00245" summary="save">
-      <created>1623745679696</created>
-      <option name="number" value="00245" />
-      <option name="presentableId" value="LOCAL-00245" />
-      <option name="project" value="LOCAL" />
-      <updated>1623745679696</updated>
-    </task>
-    <task id="LOCAL-00246" summary="fix RedBlackTree">
-      <created>1623746165407</created>
-      <option name="number" value="00246" />
-      <option name="presentableId" value="LOCAL-00246" />
-      <option name="project" value="LOCAL" />
-      <updated>1623746165407</updated>
+      <workItem from="1624693929857" duration="18875000" />
     </task>
     <task id="LOCAL-00247" summary="delete size bug">
       <created>1623761147062</created>
@@ -799,7 +787,21 @@
       <option name="project" value="LOCAL" />
       <updated>1624722063845</updated>
     </task>
-    <option name="localTasksCounter" value="294" />
+    <task id="LOCAL-00294" summary="delete unused">
+      <created>1624722102593</created>
+      <option name="number" value="00294" />
+      <option name="presentableId" value="LOCAL-00294" />
+      <option name="project" value="LOCAL" />
+      <updated>1624722102593</updated>
+    </task>
+    <task id="LOCAL-00295" summary="rename package">
+      <created>1624722215865</created>
+      <option name="number" value="00295" />
+      <option name="presentableId" value="LOCAL-00295" />
+      <option name="project" value="LOCAL" />
+      <updated>1624722215865</updated>
+    </task>
+    <option name="localTasksCounter" value="296" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -828,7 +830,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add ignore" />
     <MESSAGE value="add bst iterator, add algs4 answer" />
     <MESSAGE value="add intersects of IntvalSerchTree" />
     <MESSAGE value="delete algs4" />
@@ -842,7 +843,6 @@
     <MESSAGE value="move system function to Native.class" />
     <MESSAGE value="add" />
     <MESSAGE value="rm todo" />
-    <MESSAGE value="rename package" />
     <MESSAGE value="format" />
     <MESSAGE value="better CEStripper" />
     <MESSAGE value="add new interface" />
@@ -853,6 +853,19 @@
     <MESSAGE value="add @NotNull" />
     <MESSAGE value="save" />
     <MESSAGE value="add tests" />
-    <option name="LAST_COMMIT_MESSAGE" value="add tests" />
+    <MESSAGE value="delete unused" />
+    <MESSAGE value="rename package" />
+    <option name="LAST_COMMIT_MESSAGE" value="rename package" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/org/nathan/algsJ/strMatch/KMPTest.java</url>
+          <line>12</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

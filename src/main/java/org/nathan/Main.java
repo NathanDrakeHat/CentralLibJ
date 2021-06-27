@@ -16,7 +16,7 @@ class Main {
     if (args.length > 0) {
       GitPush.gitPush(args);
     }
-    Void t;
+    String t = "a";
   }
 }
 
