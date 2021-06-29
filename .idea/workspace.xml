@@ -27,10 +27,12 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="remove RectIntersect.java">
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="move simplex to algorithms">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/misc/Simplex.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algsJ/misc/SimplexTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/dataStruc/TernaryTries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/dataStruc/TernaryTries.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/algsJ/dataStruc/TernaryTriesTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algsJ/dataStruc/TernaryTriesTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CentralUtils/src/main/java/org/nathan/centralUtils/misc/Simplex.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CentralUtils/src/test/java/org/nathan/centralUtils/misc/SimplexTest.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,11 +99,11 @@
       <recent name="" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="org.nathan.algsJ.misc" />
       <recent name="org.nathan.algorithmsJ.misc" />
       <recent name="org.nathan.algorithmsJava.miscellaneous" />
       <recent name="org.nathan" />
       <recent name="org.nathan.algorithmsJava" />
-      <recent name="org.nathan.centralUtils" />
     </key>
     <key name="MoveInnerDialog.RECENTS_KEY">
       <recent name="org.nathan.algorithmsJava.graph" />
@@ -122,7 +124,7 @@
       <command value="mvn install:install-file -Dfile=algs4.jar -DgroupId=edu.princeton.cs -DartifactId=algs4 -Dversion=1.0 -Dpackaging=jar -DgeneratePom=true " />
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.TernaryTriesTest.removeTest">
+  <component name="RunManager" selected="JUnit.All in AlgorithmsJava">
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.nathan.Main" />
       <module name="AlgorithmsJava" />
@@ -230,9 +232,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.All in AlgorithmsJava" />
         <item itemvalue="JUnit.TernaryTriesTest.removeTest" />
         <item itemvalue="JUnit.TernaryTriesTest" />
-        <item itemvalue="JUnit.All in AlgorithmsJava" />
         <item itemvalue="JUnit.KMPTest.searchTest" />
         <item itemvalue="JUnit.TernaryTriesTest.longestPrefixOfTest" />
       </list>
@@ -454,21 +456,9 @@
       <workItem from="1624507956122" duration="2436000" />
       <workItem from="1624597898190" duration="2216000" />
       <workItem from="1624679633619" duration="2493000" />
-      <workItem from="1624693929857" duration="25300000" />
-    </task>
-    <task id="LOCAL-00251" summary="save template">
-      <created>1623827679673</created>
-      <option name="number" value="00251" />
-      <option name="presentableId" value="LOCAL-00251" />
-      <option name="project" value="LOCAL" />
-      <updated>1623827679673</updated>
-    </task>
-    <task id="LOCAL-00252" summary="better template">
-      <created>1623828185073</created>
-      <option name="number" value="00252" />
-      <option name="presentableId" value="LOCAL-00252" />
-      <option name="project" value="LOCAL" />
-      <updated>1623828185073</updated>
+      <workItem from="1624693929857" duration="26072000" />
+      <workItem from="1624957943912" duration="7000" />
+      <workItem from="1624970288364" duration="78000" />
     </task>
     <task id="LOCAL-00253" summary="fix is insert bug">
       <created>1623841864594</created>
@@ -799,7 +789,21 @@
       <option name="project" value="LOCAL" />
       <updated>1624782061012</updated>
     </task>
-    <option name="localTasksCounter" value="300" />
+    <task id="LOCAL-00300" summary="add remove to TernaryTries">
+      <created>1624787307410</created>
+      <option name="number" value="00300" />
+      <option name="presentableId" value="LOCAL-00300" />
+      <option name="project" value="LOCAL" />
+      <updated>1624787307410</updated>
+    </task>
+    <task id="LOCAL-00301" summary="add remove to TernaryTries">
+      <created>1624787348314</created>
+      <option name="number" value="00301" />
+      <option name="presentableId" value="LOCAL-00301" />
+      <option name="project" value="LOCAL" />
+      <updated>1624787348314</updated>
+    </task>
+    <option name="localTasksCounter" value="302" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -828,8 +832,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="delete algs4" />
-    <MESSAGE value="save OrthoLineIntersect normal solve" />
     <MESSAGE value="remove corner case test" />
     <MESSAGE value="corner case test pass" />
     <MESSAGE value="pass msd sort test" />
@@ -853,23 +855,11 @@
     <MESSAGE value="reformat" />
     <MESSAGE value="save" />
     <MESSAGE value="remove RectIntersect.java" />
-    <option name="LAST_COMMIT_MESSAGE" value="remove RectIntersect.java" />
+    <MESSAGE value="add remove to TernaryTries" />
+    <MESSAGE value="move simplex to algorithms" />
+    <option name="LAST_COMMIT_MESSAGE" value="move simplex to algorithms" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/org/nathan/algsJ/dataStruc/TernaryTriesTest.java</url>
-          <line>77</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/org/nathan/algsJ/dataStruc/TernaryTriesTest.java</url>
-          <line>75</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="org.nathan.algsJ.dataStruc.TernaryTries$Node" memberName="mid" />
