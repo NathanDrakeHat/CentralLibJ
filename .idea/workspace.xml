@@ -27,10 +27,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="save">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="better api">
       <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/misc/Simplex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/misc/Simplex.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/algsJ/misc/SimplexTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algsJ/misc/SimplexTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -456,21 +454,7 @@
       <workItem from="1624679633619" duration="2493000" />
       <workItem from="1624693929857" duration="26072000" />
       <workItem from="1624957943912" duration="7000" />
-      <workItem from="1624970288364" duration="2620000" />
-    </task>
-    <task id="LOCAL-00255" summary="doc">
-      <created>1623846279364</created>
-      <option name="number" value="00255" />
-      <option name="presentableId" value="LOCAL-00255" />
-      <option name="project" value="LOCAL" />
-      <updated>1623846279364</updated>
-    </task>
-    <task id="LOCAL-00256" summary="doc">
-      <created>1623846290953</created>
-      <option name="number" value="00256" />
-      <option name="presentableId" value="LOCAL-00256" />
-      <option name="project" value="LOCAL" />
-      <updated>1623846290953</updated>
+      <workItem from="1624970288364" duration="3444000" />
     </task>
     <task id="LOCAL-00257" summary="rename">
       <created>1623846330215</created>
@@ -801,7 +785,21 @@
       <option name="project" value="LOCAL" />
       <updated>1624970388952</updated>
     </task>
-    <option name="localTasksCounter" value="304" />
+    <task id="LOCAL-00304" summary="add result array">
+      <created>1625016135556</created>
+      <option name="number" value="00304" />
+      <option name="presentableId" value="LOCAL-00304" />
+      <option name="project" value="LOCAL" />
+      <updated>1625016135556</updated>
+    </task>
+    <task id="LOCAL-00305" summary="better api">
+      <created>1625016193481</created>
+      <option name="number" value="00305" />
+      <option name="presentableId" value="LOCAL-00305" />
+      <option name="project" value="LOCAL" />
+      <updated>1625016193481</updated>
+    </task>
+    <option name="localTasksCounter" value="306" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -830,8 +828,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="remove corner case test" />
-    <MESSAGE value="corner case test pass" />
     <MESSAGE value="pass msd sort test" />
     <MESSAGE value="add func" />
     <MESSAGE value="change func signature" />
@@ -855,7 +851,9 @@
     <MESSAGE value="add remove to TernaryTries" />
     <MESSAGE value="move simplex to algorithms" />
     <MESSAGE value="save" />
-    <option name="LAST_COMMIT_MESSAGE" value="save" />
+    <MESSAGE value="add result array" />
+    <MESSAGE value="better api" />
+    <option name="LAST_COMMIT_MESSAGE" value="better api" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>

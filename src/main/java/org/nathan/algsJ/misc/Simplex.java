@@ -85,10 +85,12 @@ public class Simplex {
     var I_len = a.length - 1;
     var var_len = a[0].length - 1 - I_len;
     double[] res = new double[var_len + 1];
-    for(int r = 0; r < a.length - 1; r++){
-      for(int c = 0; c < var_len; c++){
+    int var_count = 0;
+    for(int r = 0; r < a.length - 1 && var_count < var_len; r++){
+      for(int c = 0; c < var_len && var_count < var_len; c++){
         if(a[r][c] == 1){
           res[c] = a[r][a[r].length - 1];
+          var_count++;
         }
       }
     }
