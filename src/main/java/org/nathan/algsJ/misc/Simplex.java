@@ -63,7 +63,7 @@ public class Simplex {
     a[p][q] = 1.0;
   }
 
-  public void solve() {
+  public double[] solve() {
     while (true) {
       int q = bland();
       if (q == -1) break;
@@ -73,13 +73,15 @@ public class Simplex {
       }
       pivot(p, q);
     }
+
+    return resultArray();
   }
 
   /**
    *
    * @return variable answer and maximum answer(last element of array)
    */
-  public double[] resultArray() {
+  private double[] resultArray() {
     var I_len = a.length - 1;
     var var_len = a[0].length - 1 - I_len;
     double[] res = new double[var_len + 1];
