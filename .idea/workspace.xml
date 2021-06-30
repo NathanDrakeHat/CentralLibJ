@@ -27,12 +27,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="move simplex to algorithms">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/misc/Simplex.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algsJ/misc/SimplexTest.java" afterDir="false" />
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="save">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CentralUtils/src/main/java/org/nathan/centralUtils/misc/Simplex.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CentralUtils/src/test/java/org/nathan/centralUtils/misc/SimplexTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/misc/Simplex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/misc/Simplex.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/algsJ/misc/SimplexTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algsJ/misc/SimplexTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,7 +122,7 @@
       <command value="mvn install:install-file -Dfile=algs4.jar -DgroupId=edu.princeton.cs -DartifactId=algs4 -Dversion=1.0 -Dpackaging=jar -DgeneratePom=true " />
     </option>
   </component>
-  <component name="RunManager" selected="Application.pushThis">
+  <component name="RunManager" selected="JUnit.SimplexTest.solveTest">
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.nathan.Main" />
       <module name="AlgorithmsJava" />
@@ -173,6 +171,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="SimplexTest.solveTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AlgorithmsJava" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.nathan.algsJ.misc.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.nathan.algsJ.misc" />
+      <option name="MAIN_CLASS_NAME" value="org.nathan.algsJ.misc.SimplexTest" />
+      <option name="METHOD_NAME" value="solveTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="TernaryTriesTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AlgorithmsJava" />
       <extension name="coverage">
@@ -184,22 +198,6 @@
       <option name="PACKAGE_NAME" value="org.nathan.algsJ.dataStruc" />
       <option name="MAIN_CLASS_NAME" value="org.nathan.algsJ.dataStruc.TernaryTriesTest" />
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TernaryTriesTest.longestPrefixOfTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="AlgorithmsJava" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.nathan.algsJ.dataStruc.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.nathan.algsJ.dataStruc" />
-      <option name="MAIN_CLASS_NAME" value="org.nathan.algsJ.dataStruc.TernaryTriesTest" />
-      <option name="METHOD_NAME" value="longestPrefixOfTest" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -224,19 +222,19 @@
       <item itemvalue="Application.pushThis" />
       <item itemvalue="Application.pushUtils" />
       <item itemvalue="Application.Main" />
-      <item itemvalue="JUnit.TernaryTriesTest.longestPrefixOfTest" />
       <item itemvalue="JUnit.All in AlgorithmsJava" />
       <item itemvalue="JUnit.KMPTest.searchTest" />
       <item itemvalue="JUnit.TernaryTriesTest" />
       <item itemvalue="JUnit.TernaryTriesTest.removeTest" />
+      <item itemvalue="JUnit.SimplexTest.solveTest" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.SimplexTest.solveTest" />
         <item itemvalue="JUnit.All in AlgorithmsJava" />
         <item itemvalue="JUnit.TernaryTriesTest.removeTest" />
         <item itemvalue="JUnit.TernaryTriesTest" />
         <item itemvalue="JUnit.KMPTest.searchTest" />
-        <item itemvalue="JUnit.TernaryTriesTest.longestPrefixOfTest" />
       </list>
     </recent_temporary>
   </component>
@@ -458,21 +456,7 @@
       <workItem from="1624679633619" duration="2493000" />
       <workItem from="1624693929857" duration="26072000" />
       <workItem from="1624957943912" duration="7000" />
-      <workItem from="1624970288364" duration="78000" />
-    </task>
-    <task id="LOCAL-00253" summary="fix is insert bug">
-      <created>1623841864594</created>
-      <option name="number" value="00253" />
-      <option name="presentableId" value="LOCAL-00253" />
-      <option name="project" value="LOCAL" />
-      <updated>1623841864594</updated>
-    </task>
-    <task id="LOCAL-00254" summary="IntvalSerchTree augment!!">
-      <created>1623846226145</created>
-      <option name="number" value="00254" />
-      <option name="presentableId" value="LOCAL-00254" />
-      <option name="project" value="LOCAL" />
-      <updated>1623846226145</updated>
+      <workItem from="1624970288364" duration="2620000" />
     </task>
     <task id="LOCAL-00255" summary="doc">
       <created>1623846279364</created>
@@ -803,7 +787,21 @@
       <option name="project" value="LOCAL" />
       <updated>1624787348314</updated>
     </task>
-    <option name="localTasksCounter" value="302" />
+    <task id="LOCAL-00302" summary="move simplex to algorithms">
+      <created>1624970369323</created>
+      <option name="number" value="00302" />
+      <option name="presentableId" value="LOCAL-00302" />
+      <option name="project" value="LOCAL" />
+      <updated>1624970369323</updated>
+    </task>
+    <task id="LOCAL-00303" summary="save">
+      <created>1624970388952</created>
+      <option name="number" value="00303" />
+      <option name="presentableId" value="LOCAL-00303" />
+      <option name="project" value="LOCAL" />
+      <updated>1624970388952</updated>
+    </task>
+    <option name="localTasksCounter" value="304" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -853,11 +851,11 @@
     <MESSAGE value="rename package" />
     <MESSAGE value="add kmp and test" />
     <MESSAGE value="reformat" />
-    <MESSAGE value="save" />
     <MESSAGE value="remove RectIntersect.java" />
     <MESSAGE value="add remove to TernaryTries" />
     <MESSAGE value="move simplex to algorithms" />
-    <option name="LAST_COMMIT_MESSAGE" value="move simplex to algorithms" />
+    <MESSAGE value="save" />
+    <option name="LAST_COMMIT_MESSAGE" value="save" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>
