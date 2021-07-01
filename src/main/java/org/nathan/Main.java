@@ -1,7 +1,10 @@
 package org.nathan;
 
 
+import org.nathan.centralUtils.utils.ArrayUtils;
 import org.nathan.centralUtils.utils.NativeUtils;
+
+import java.util.Arrays;
 
 
 class Main{
@@ -16,8 +19,8 @@ class Main{
     if(args.length > 0){
       GitPush.gitPush(args);
     }
-    String t = "a";
   }
+
 }
 
 
