@@ -151,7 +151,7 @@ public final class SSSPath{
     var vertices = G.allVertices();
     ExtremumHeap<Double, BFS.Vert<T>> Q = new ExtremumHeap<>(true, vertices, BFS.Vert::getDistance, Double::compare);
     while(Q.length() > 0) {
-      var u = Q.extractExtremum();
+      var u = Q.extractExtremum().second();
       var u_edges = G.adjacentEdgesOf(u);
       for(var edge : u_edges){
         var v = edge.another(u);

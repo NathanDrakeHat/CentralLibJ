@@ -5,9 +5,9 @@ import org.nathan.centralUtils.utils.ArrayUtils;
 import org.nathan.centralUtils.utils.LambdaUtils;
 import org.nathan.centralUtils.utils.NumericUtils;
 
-import java.util.List;
-import java.util.Random;
-import java.util.SplittableRandom;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
@@ -192,6 +192,35 @@ public class ACM0x00Test{
       if(ibCases[list.get(i)][list.get(i + 1)]){
         fail();
       }
+    }
+  }
+
+  int[][] runningMedianCases;
+  IntStream[] runningMedianAnswers;
+  {
+    runningMedianCases = new int[size][];
+    runningMedianAnswers = new IntStream[size];
+    var rand = new SplittableRandom();
+    for(int i = 0; i < size; i++){
+      int len = rand.nextInt(30,50);
+      runningMedianCases[i] = ArrayUtils.shuffledIntArray(-len,len,1);
+      var b = IntStream.builder();
+      for(int j = 1; j <= runningMedianCases[i].length; j += 2){
+          int[] temp_array = Arrays.copyOf(runningMedianCases[i], j);
+          Arrays.sort(temp_array);
+          b.add(temp_array[temp_array.length/2]);
+      }
+      runningMedianAnswers[i] = b.build();
+    }
+  }
+
+  @Test
+  public void runningMedianTest(){
+
+    for(int i = 0; i < size; i++){
+      var rand_int_stream = Arrays.stream(runningMedianCases[i]);
+      var res = runningMedian(rand_int_stream);
+      assertEquals(runningMedianAnswers[i].boxed().collect(Collectors.toList()), res.boxed().collect(Collectors.toList()));
     }
   }
 }

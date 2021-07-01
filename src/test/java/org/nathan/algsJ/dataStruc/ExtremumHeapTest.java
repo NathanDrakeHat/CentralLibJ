@@ -9,7 +9,7 @@ import java.util.SplittableRandom;
 import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.nathan.centralUtils.utils.ArrayUtils.shuffledSequence;
+import static org.nathan.centralUtils.utils.ArrayUtils.shuffledRangeList;
 
 
 class ExtremumHeapTest{
@@ -18,7 +18,7 @@ class ExtremumHeapTest{
 
   {
     for(int i = 0; i < iter; i++){
-      minRandomAddTestCase.add(shuffledSequence(1, 63));
+      minRandomAddTestCase.add(shuffledRangeList(1, 63));
     }
   }
 
@@ -32,7 +32,7 @@ class ExtremumHeapTest{
       }
       List<Integer> res = new ArrayList<>();
       while(m.heapSize() > 0) {
-        res.add(Integer.valueOf(m.extractExtremum()));
+        res.add(Integer.valueOf(m.extractExtremum().second()));
       }
       for(int j = 0; j < res.size() - 1; j++){
         if(res.get(j).compareTo(res.get(j + 1)) < 0){
@@ -49,7 +49,7 @@ class ExtremumHeapTest{
 
   {
     for(int i = 0; i < iter; i++){
-      maxRandomAddTestCase.add(shuffledSequence(1, 63));
+      maxRandomAddTestCase.add(shuffledRangeList(1, 63));
     }
   }
 
@@ -63,7 +63,7 @@ class ExtremumHeapTest{
       }
       List<Integer> res = new ArrayList<>();
       while(m.heapSize() > 0) {
-        res.add(Integer.valueOf(m.extractExtremum()));
+        res.add(Integer.valueOf(m.extractExtremum().second()));
       }
       for(int j = 0; j < res.size() - 1; j++){
         if(res.get(j).compareTo(res.get(j + 1)) > 0){
@@ -81,7 +81,7 @@ class ExtremumHeapTest{
 
   {
     for(int i = 0; i < iter; i++){
-      minRandUpdateKeyCase.add(shuffledSequence(1, 63));
+      minRandUpdateKeyCase.add(shuffledRangeList(1, 63));
     }
   }
 
@@ -100,7 +100,7 @@ class ExtremumHeapTest{
         heap.updateKey(String.valueOf(elem), elem);
       }
       while(heap.heapSize() > 0) {
-        res.add(Integer.valueOf(heap.extractExtremum()));
+        res.add(Integer.valueOf(heap.extractExtremum().second()));
       }
       for(int j = 0; j < res.size() - 1; j++){
         if(!(res.get(j).compareTo(res.get(j + 1)) < 0)){
@@ -114,7 +114,7 @@ class ExtremumHeapTest{
 
   {
     for(int i = 0; i < iter; i++){
-      maxRandUpdateKeyCase.add(shuffledSequence(1, 63));
+      maxRandUpdateKeyCase.add(shuffledRangeList(1, 63));
     }
   }
 
@@ -133,7 +133,7 @@ class ExtremumHeapTest{
         heap.updateKey(String.valueOf(elem), elem);
       }
       while(heap.heapSize() > 0) {
-        res.add(Integer.valueOf(heap.extractExtremum()));
+        res.add(Integer.valueOf(heap.extractExtremum().second()));
       }
       for(int j = 0; j < res.size() - 1; j++){
         if(!(res.get(j).compareTo(res.get(j + 1)) > 0)){

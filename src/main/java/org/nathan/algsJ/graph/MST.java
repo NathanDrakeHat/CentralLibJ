@@ -74,7 +74,7 @@ public final class MST{
     }
     ExtremumHeap<Double, VertPrim<T>> Q = new ExtremumHeap<>(true, vertices, VertPrim::getKey, Double::compare);
     while(Q.length() > 0) {
-      var u = Q.extractExtremum();
+      var u = Q.extractExtremum().second();
       var u_edges = graph.adjacentEdgesOf(u);
       for(var edge : u_edges){
         var v = edge.another(u);

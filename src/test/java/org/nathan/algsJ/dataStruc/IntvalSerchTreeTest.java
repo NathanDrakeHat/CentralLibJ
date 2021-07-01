@@ -55,7 +55,7 @@ class IntvalSerchTreeTest{
     var rand = new SplittableRandom();
     int len = 128;
     for(int i = 0; i < 5; i++){
-      List<Integer> shuffle = ArrayUtils.shuffledSequence(0, rand.nextInt(16, len));
+      List<Integer> shuffle = ArrayUtils.shuffledRangeList(0, rand.nextInt(16, len));
       IntvalSerchTree<Integer, Void> t = new IntvalSerchTree<>(Integer::compareTo);
       for(var item : shuffle){
         t.insertInterval(item, item + rand.nextInt(8, len / 2), null);
@@ -88,7 +88,7 @@ class IntvalSerchTreeTest{
 
   {
     var rand = new SplittableRandom();
-    List<Integer> shuffle = ArrayUtils.shuffledSequence(0, len);
+    List<Integer> shuffle = ArrayUtils.shuffledRangeList(0, len);
     for(var s : shuffle){
       intervals.add(new Point(s, s + rand.nextInt(1, len / 2)));
     }

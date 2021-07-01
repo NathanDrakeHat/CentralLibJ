@@ -37,7 +37,7 @@ public class ExtremumHeap<K, V> implements Iterable<Tuple<K, V>>{
     buildHeap();
   }
 
-  public V extractExtremum(){
+  public Tuple<K,V> extractExtremum(){
     modified();
     if(heapSize() == 0){
       throw new NoSuchElementException();
@@ -52,10 +52,18 @@ public class ExtremumHeap<K, V> implements Iterable<Tuple<K, V>>{
       maxHeapify(0);
     }
     value_node_map.remove(res.value);
-    return res.value;
+    return new Tuple<>(res.key,res.value);
   }
 
-  public void add(@NotNull V value, @NotNull K key){
+  public Tuple<K,V> head(){
+    if(heapSize() == 0){
+      throw new NoSuchElementException();
+    }
+    var head = array.get(0);
+    return new Tuple<>(head.key, head.value);
+  }
+
+  public void add(V value, @NotNull K key){
     modified();
     if(value_node_map.containsKey(value)){
       throw new IllegalArgumentException("value should be unique");
@@ -230,7 +238,7 @@ public class ExtremumHeap<K, V> implements Iterable<Tuple<K, V>>{
     @Override
     public Tuple<K, V> next(){
       var key = array.get(0).key;
-      return new Tuple<>(key, extractExtremum());
+      return new Tuple<>(key, extractExtremum().second());
     }
   }
 
