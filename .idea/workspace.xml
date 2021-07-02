@@ -27,13 +27,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="add ArrayUtils">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="finish ultraQuickSort">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/acm/ACM0x00.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/acm/ACM0x00.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/misc/Sort.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/misc/Sort.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/acm/ACM0x00Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/acm/ACM0x00Test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/algsJ/misc/SortTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algsJ/misc/SortTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,7 +122,7 @@
       <command value="mvn install:install-file -Dfile=algs4.jar -DgroupId=edu.princeton.cs -DartifactId=algs4 -Dversion=1.0 -Dpackaging=jar -DgeneratePom=true " />
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.ACM0x00Test.ultraQuickSortTest">
+  <component name="RunManager" selected="JUnit.ACM0x00Test.geniusACMTest">
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.nathan.Main" />
       <module name="AlgorithmsJava" />
@@ -146,6 +143,22 @@
       <module name="CentralUtils" />
       <option name="PROGRAM_PARAMETERS" value="&quot;git push&quot;" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../CentralUtils" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ACM0x00Test.geniusACMTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AlgorithmsJava" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.nathan.acm.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.nathan.acm" />
+      <option name="MAIN_CLASS_NAME" value="org.nathan.acm.ACM0x00Test" />
+      <option name="METHOD_NAME" value="geniusACMTest" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -206,39 +219,23 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TernaryTriesTest.removeTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="AlgorithmsJava" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.nathan.algsJ.dataStruc.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.nathan.algsJ.dataStruc" />
-      <option name="MAIN_CLASS_NAME" value="org.nathan.algsJ.dataStruc.TernaryTriesTest" />
-      <option name="METHOD_NAME" value="removeTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <list>
       <item itemvalue="Application.pushThis" />
       <item itemvalue="Application.pushUtils" />
       <item itemvalue="Application.Main" />
       <item itemvalue="JUnit.All in AlgorithmsJava" />
-      <item itemvalue="JUnit.TernaryTriesTest.removeTest" />
       <item itemvalue="JUnit.SimplexTest.solveTest" />
       <item itemvalue="JUnit.ACM0x00Test.runningMedianTest" />
       <item itemvalue="JUnit.ACM0x00Test.ultraQuickSortTest" />
+      <item itemvalue="JUnit.ACM0x00Test.geniusACMTest" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ACM0x00Test.geniusACMTest" />
         <item itemvalue="JUnit.ACM0x00Test.ultraQuickSortTest" />
         <item itemvalue="JUnit.All in AlgorithmsJava" />
         <item itemvalue="JUnit.ACM0x00Test.runningMedianTest" />
         <item itemvalue="JUnit.SimplexTest.solveTest" />
-        <item itemvalue="JUnit.TernaryTriesTest.removeTest" />
       </list>
     </recent_temporary>
   </component>
@@ -461,21 +458,7 @@
       <workItem from="1624693929857" duration="26072000" />
       <workItem from="1624957943912" duration="7000" />
       <workItem from="1624970288364" duration="5224000" />
-      <workItem from="1625058806921" duration="20454000" />
-    </task>
-    <task id="LOCAL-00261" summary="add ignore">
-      <created>1623907631176</created>
-      <option name="number" value="00261" />
-      <option name="presentableId" value="LOCAL-00261" />
-      <option name="project" value="LOCAL" />
-      <updated>1623907631176</updated>
-    </task>
-    <task id="LOCAL-00262" summary="add bst iterator, add algs4 answer">
-      <created>1623912000954</created>
-      <option name="number" value="00262" />
-      <option name="presentableId" value="LOCAL-00262" />
-      <option name="project" value="LOCAL" />
-      <updated>1623912000954</updated>
+      <workItem from="1625058806921" duration="27816000" />
     </task>
     <task id="LOCAL-00263" summary="add bst iterator, add algs4 answer">
       <created>1623912006992</created>
@@ -806,7 +789,21 @@
       <option name="project" value="LOCAL" />
       <updated>1625133480301</updated>
     </task>
-    <option name="localTasksCounter" value="310" />
+    <task id="LOCAL-00310" summary="finish ultraQuickSort">
+      <created>1625202318387</created>
+      <option name="number" value="00310" />
+      <option name="presentableId" value="LOCAL-00310" />
+      <option name="project" value="LOCAL" />
+      <updated>1625202318387</updated>
+    </task>
+    <task id="LOCAL-00311" summary="finish ultraQuickSort">
+      <created>1625214516033</created>
+      <option name="number" value="00311" />
+      <option name="presentableId" value="LOCAL-00311" />
+      <option name="project" value="LOCAL" />
+      <updated>1625214516033</updated>
+    </task>
+    <option name="localTasksCounter" value="312" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -835,7 +832,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add test" />
     <MESSAGE value="move system function to Native.class" />
     <MESSAGE value="add" />
     <MESSAGE value="rm todo" />
@@ -860,23 +856,10 @@
     <MESSAGE value="add array utils" />
     <MESSAGE value="add running median" />
     <MESSAGE value="add ArrayUtils" />
-    <option name="LAST_COMMIT_MESSAGE" value="add ArrayUtils" />
+    <MESSAGE value="finish ultraQuickSort" />
+    <option name="LAST_COMMIT_MESSAGE" value="finish ultraQuickSort" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/org/nathan/acm/ACM0x00Test.java</url>
-          <line>270</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/org/nathan/acm/ACM0x00Test.java</url>
-          <line>269</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="org.nathan.algsJ.dataStruc.TernaryTries$Node" memberName="mid" />

@@ -2,6 +2,7 @@ package org.nathan.acm;
 
 
 import org.nathan.algsJ.dataStruc.ExtremumHeap;
+import org.nathan.centralUtils.classes.Ref;
 import org.nathan.centralUtils.tuples.Tuple;
 import org.nathan.centralUtils.utils.ArrayUtils;
 import org.nathan.centralUtils.utils.NumericUtils;
@@ -483,7 +484,7 @@ public class ACM0x00 {
         maxHeap.add(kv.second(), kv.first());
       }
 
-      if(minHeap.heapSize() - maxHeap.heapSize() == 1) {
+      if (minHeap.heapSize() - maxHeap.heapSize() == 1) {
         b.add(minHeap.head().first());
       }
     });
@@ -492,13 +493,14 @@ public class ACM0x00 {
 
   /**
    * compute exchange count of bubble sort/count of decent order pairs
+   *
    * @return count
    */
-  public static int ultraQuickSort(double[] array){
-    var funcMergeSort = new Object(){
+  public static int ultraQuickSort(double[] array) {
+    var funcMergeSort = new Object() {
       public int count = 0;
 
-      public void apply(double[] array, int start, int end){
+      public void apply(double[] array, int start, int end) {
         if ((end - start) > 1) {
           int middle = (start + end) / 2;
           apply(array, start, middle);
@@ -511,24 +513,24 @@ public class ACM0x00 {
         }
       }
 
-      private void merge(double[] array, int start, double[] cache1, double[] cache2){
+      private void merge(double[] array, int start, double[] cache1, double[] cache2) {
         int right_idx = 0;
         int left_idx = 0;
         System.arraycopy(array, start, cache1, 0, cache1.length);
         System.arraycopy(array, start + cache1.length, cache2, 0, cache2.length);
-        for(int i = start; (i < start + cache1.length + cache2.length) && (right_idx < cache2.length) && (left_idx < cache1.length); i++){
-          if(cache1[left_idx] <= cache2[right_idx]){
+        for (int i = start; (i < start + cache1.length + cache2.length) && (right_idx < cache2.length) && (left_idx < cache1.length); i++) {
+          if (cache1[left_idx] <= cache2[right_idx]) {
             array[i] = cache1[left_idx++];
           }
-          else{
+          else {
             array[i] = cache2[right_idx++];
             count += cache1.length - left_idx;
           }
         }
-        if(left_idx < cache1.length){
+        if (left_idx < cache1.length) {
           System.arraycopy(cache1, left_idx, array, start + left_idx + right_idx, cache1.length - left_idx);
         }
-        else if(right_idx < cache2.length){
+        else if (right_idx < cache2.length) {
           System.arraycopy(cache2, right_idx, array, start + left_idx + right_idx, cache2.length - right_idx);
         }
       }
@@ -536,4 +538,82 @@ public class ACM0x00 {
     funcMergeSort.apply(array, 0, array.length);
     return funcMergeSort.count;
   }
+
+  /**
+   * array must have answer
+   *
+   * @param array array
+   * @param T     limit
+   * @return segment count
+   */
+  public static int geniusACM(int[] array, int T) {
+    if (array.length < 2) {
+      throw new IllegalArgumentException();
+    }
+    var funcComputeCheckValue = new Object() {
+      int apply(int[] sorted) {
+        int i = 0, j = sorted.length - 1;
+        int res = 0;
+        while (i < j) {
+          res += Math.pow(sorted[j--] - sorted[i++], 2);
+        }
+        return res;
+      }
+    };
+
+
+    var funcMerge = new Object() {
+      int[] apply(int[] a1, int[] a2) {
+        int[] res = new int[a1.length + a2.length];
+        int i = 0, j = 0;
+        for (int k = 0; k < res.length; k++) {
+          if (j >= a2.length || (i < a1.length && a1[i] < a2[j])) {
+            res[k] = a1[i++];
+          }
+          else {
+            res[k] = a2[j++];
+          }
+        }
+        return res;
+      }
+    };
+
+    var resRef = new Ref<>(0);
+    var funcLongestCheckArray = new Object() {
+      int apply(int start) {
+        int len = 2;
+        int[] inLimitArray = new int[0];
+        int[] incArray;
+
+        while (len != 0) {
+          incArray = new int[len];
+          System.arraycopy(array, inLimitArray.length, incArray, 0, len);
+          Arrays.sort(incArray);
+          var mergeArray = funcMerge.apply(inLimitArray, incArray);
+          int checkValue = funcComputeCheckValue.apply(mergeArray);
+          if (checkValue <= T) {
+            inLimitArray = mergeArray;
+            len *= 2;
+          }
+          else {
+            len /= 2;
+          }
+          while (inLimitArray.length + len > array.length) {
+            len /= 2;
+          }
+        }
+
+        resRef.deRef++;
+        return start + inLimitArray.length;
+      }
+    };
+
+    int start = 0;
+    while (start < array.length) {
+      start = funcLongestCheckArray.apply(start);
+    }
+
+    return resRef.deRef;
+  }
+
 }

@@ -249,7 +249,7 @@ public class ACM0x00Test {
               if (array[j] > array[j + 1]) {
                 var t = array[j];
                 array[j] = array[j + 1];
-                array[j+1] = t;
+                array[j + 1] = t;
                 count++;
               }
             }
@@ -268,5 +268,13 @@ public class ACM0x00Test {
       var res = ultraQuickSort(ultraQuickSortCases[i]);
       assertEquals(ultraQuickSortAnswers[i], res);
     }
+  }
+
+  @Test
+  public void geniusACMTest() {
+    var a = new int[]{1, 2, 3, 4, 5, 6, 7, 8};
+    assertEquals(4, geniusACM(a, 1));
+    assertEquals(2, geniusACM(a, 10));
+    assertEquals(1, geniusACM(a, 84));
   }
 }
