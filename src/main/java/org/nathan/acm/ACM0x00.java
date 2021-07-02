@@ -491,8 +491,8 @@ public class ACM0x00 {
   }
 
   /**
-   * compute exchange count of bubble sort
-   * @return exchange count
+   * compute exchange count of bubble sort/count of decent order pairs
+   * @return count
    */
   public static int ultraQuickSort(double[] array){
     var funcMergeSort = new Object(){
