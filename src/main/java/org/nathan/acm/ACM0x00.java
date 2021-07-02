@@ -489,4 +489,51 @@ public class ACM0x00 {
     });
     return b.build();
   }
+
+  /**
+   * compute exchange count of bubble sort
+   * @return exchange count
+   */
+  public static int ultraQuickSort(double[] array){
+    var funcMergeSort = new Object(){
+      public int count = 0;
+
+      public void apply(double[] array, int start, int end){
+        if ((end - start) > 1) {
+          int middle = (start + end) / 2;
+          apply(array, start, middle);
+          apply(array, middle, end);
+          int left_len = middle - start;
+          int right_len = end - middle;
+          var left_cache = new double[left_len];
+          var right_cache = new double[right_len];
+          merge(array, start, left_cache, right_cache);
+        }
+      }
+
+      private void merge(double[] array, int start, double[] cache1, double[] cache2){
+        int right_idx = 0;
+        int left_idx = 0;
+        System.arraycopy(array, start, cache1, 0, cache1.length);
+        System.arraycopy(array, start + cache1.length, cache2, 0, cache2.length);
+        for(int i = start; (i < start + cache1.length + cache2.length) && (right_idx < cache2.length) && (left_idx < cache1.length); i++){
+          if(cache1[left_idx] <= cache2[right_idx]){
+            array[i] = cache1[left_idx++];
+          }
+          else{
+            array[i] = cache2[right_idx++];
+            count += cache1.length - left_idx;
+          }
+        }
+        if(left_idx < cache1.length){
+          System.arraycopy(cache1, left_idx, array, start + left_idx + right_idx, cache1.length - left_idx);
+        }
+        else if(right_idx < cache2.length){
+          System.arraycopy(cache2, right_idx, array, start + left_idx + right_idx, cache2.length - right_idx);
+        }
+      }
+    };
+    funcMergeSort.apply(array, 0, array.length);
+    return funcMergeSort.count;
+  }
 }

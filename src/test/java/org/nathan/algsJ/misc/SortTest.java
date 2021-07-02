@@ -12,7 +12,7 @@ import static org.nathan.centralUtils.utils.ArrayUtils.randomDoubleArray;
 import static org.nathan.centralUtils.utils.ArrayUtils.randomIntArray;
 
 
-class SortTest{
+public class SortTest{
   static int iteration = 20;
 
   static boolean isSorted(int[] res){
@@ -26,7 +26,7 @@ class SortTest{
     return is_sorted;
   }
 
-  static boolean isSorted(double[] res){
+  public static boolean isSorted(double[] res){
     boolean is_sorted = true;
     for(int i = 1; i < res.length; i++){
       if(res[i - 1] > res[i]){

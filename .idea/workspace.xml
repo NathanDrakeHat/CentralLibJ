@@ -27,11 +27,13 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="add running median">
-      <change afterPath="$PROJECT_DIR$/../CentralUtils/src/main/java/org/nathan/centralUtils/misc/misc.java" afterDir="false" />
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="add ArrayUtils">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CentralUtils/src/main/java/org/nathan/centralUtils/utils/ArrayUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CentralUtils/src/main/java/org/nathan/centralUtils/utils/ArrayUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/acm/ACM0x00.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/acm/ACM0x00.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/misc/Sort.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/misc/Sort.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/acm/ACM0x00Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/acm/ACM0x00Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/algsJ/misc/SortTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algsJ/misc/SortTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,7 +125,7 @@
       <command value="mvn install:install-file -Dfile=algs4.jar -DgroupId=edu.princeton.cs -DartifactId=algs4 -Dversion=1.0 -Dpackaging=jar -DgeneratePom=true " />
     </option>
   </component>
-  <component name="RunManager" selected="Application.pushUtils">
+  <component name="RunManager" selected="JUnit.ACM0x00Test.ultraQuickSortTest">
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.nathan.Main" />
       <module name="AlgorithmsJava" />
@@ -164,6 +166,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ACM0x00Test.ultraQuickSortTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AlgorithmsJava" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.nathan.acm.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.nathan.acm" />
+      <option name="MAIN_CLASS_NAME" value="org.nathan.acm.ACM0x00Test" />
+      <option name="METHOD_NAME" value="ultraQuickSortTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="All in AlgorithmsJava" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AlgorithmsJava" />
       <option name="PACKAGE_NAME" value="" />
@@ -184,21 +202,6 @@
       <option name="MAIN_CLASS_NAME" value="org.nathan.algsJ.misc.SimplexTest" />
       <option name="METHOD_NAME" value="solveTest" />
       <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TernaryTriesTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="AlgorithmsJava" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.nathan.algsJ.dataStruc.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.nathan.algsJ.dataStruc" />
-      <option name="MAIN_CLASS_NAME" value="org.nathan.algsJ.dataStruc.TernaryTriesTest" />
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -224,18 +227,18 @@
       <item itemvalue="Application.pushUtils" />
       <item itemvalue="Application.Main" />
       <item itemvalue="JUnit.All in AlgorithmsJava" />
-      <item itemvalue="JUnit.TernaryTriesTest" />
       <item itemvalue="JUnit.TernaryTriesTest.removeTest" />
       <item itemvalue="JUnit.SimplexTest.solveTest" />
       <item itemvalue="JUnit.ACM0x00Test.runningMedianTest" />
+      <item itemvalue="JUnit.ACM0x00Test.ultraQuickSortTest" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ACM0x00Test.ultraQuickSortTest" />
         <item itemvalue="JUnit.All in AlgorithmsJava" />
         <item itemvalue="JUnit.ACM0x00Test.runningMedianTest" />
         <item itemvalue="JUnit.SimplexTest.solveTest" />
         <item itemvalue="JUnit.TernaryTriesTest.removeTest" />
-        <item itemvalue="JUnit.TernaryTriesTest" />
       </list>
     </recent_temporary>
   </component>
@@ -458,14 +461,7 @@
       <workItem from="1624693929857" duration="26072000" />
       <workItem from="1624957943912" duration="7000" />
       <workItem from="1624970288364" duration="5224000" />
-      <workItem from="1625058806921" duration="8227000" />
-    </task>
-    <task id="LOCAL-00260" summary="change test len">
-      <created>1623906527632</created>
-      <option name="number" value="00260" />
-      <option name="presentableId" value="LOCAL-00260" />
-      <option name="project" value="LOCAL" />
-      <updated>1623906527632</updated>
+      <workItem from="1625058806921" duration="20454000" />
     </task>
     <task id="LOCAL-00261" summary="add ignore">
       <created>1623907631176</created>
@@ -803,7 +799,14 @@
       <option name="project" value="LOCAL" />
       <updated>1625130949706</updated>
     </task>
-    <option name="localTasksCounter" value="309" />
+    <task id="LOCAL-00309" summary="add ArrayUtils">
+      <created>1625133480301</created>
+      <option name="number" value="00309" />
+      <option name="presentableId" value="LOCAL-00309" />
+      <option name="project" value="LOCAL" />
+      <updated>1625133480301</updated>
+    </task>
+    <option name="localTasksCounter" value="310" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -832,7 +835,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="change func signature" />
     <MESSAGE value="add test" />
     <MESSAGE value="move system function to Native.class" />
     <MESSAGE value="add" />
@@ -857,9 +859,24 @@
     <MESSAGE value="save" />
     <MESSAGE value="add array utils" />
     <MESSAGE value="add running median" />
-    <option name="LAST_COMMIT_MESSAGE" value="add running median" />
+    <MESSAGE value="add ArrayUtils" />
+    <option name="LAST_COMMIT_MESSAGE" value="add ArrayUtils" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/org/nathan/acm/ACM0x00Test.java</url>
+          <line>270</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/org/nathan/acm/ACM0x00Test.java</url>
+          <line>269</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="org.nathan.algsJ.dataStruc.TernaryTries$Node" memberName="mid" />
@@ -867,12 +884,5 @@
         <PinnedItemInfo parentTag="org.nathan.algsJ.dataStruc.TernaryTries$Node" memberName="left" />
       </pinned-members>
     </pin-to-top-manager>
-    <watches-manager>
-      <configuration name="JUnit">
-        <watch expression="runningMedianAnswers[0].toArray()" language="JAVA" />
-        <watch expression="runningMedianCases[0]" language="JAVA" />
-        <watch expression="res.toArray()" language="JAVA" />
-      </configuration>
-    </watches-manager>
   </component>
 </project>
