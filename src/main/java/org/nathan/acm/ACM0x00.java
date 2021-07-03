@@ -642,6 +642,9 @@ public class ACM0x00 {
     return resRef.deRef;
   }
 
+  /**
+   * get max number of range
+   */
   public static class ST {
     private final double[][] store; // max of [i, i + 2^j)
 
