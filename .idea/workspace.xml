@@ -27,10 +27,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="add ACM">
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="add ST algorithm doc">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/acm/ACM0x00.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/acm/ACM0x00.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/acm/ACM0x00Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/acm/ACM0x00Test.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,7 +120,7 @@
       <command value="mvn install:install-file -Dfile=algs4.jar -DgroupId=edu.princeton.cs -DartifactId=algs4 -Dversion=1.0 -Dpackaging=jar -DgeneratePom=true " />
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.ACM0x00Test.STTest">
+  <component name="RunManager" selected="Application.pushThis">
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.nathan.Main" />
       <module name="AlgorithmsJava" />
@@ -458,21 +456,7 @@
       <workItem from="1624693929857" duration="26072000" />
       <workItem from="1624957943912" duration="7000" />
       <workItem from="1624970288364" duration="5224000" />
-      <workItem from="1625058806921" duration="37287000" />
-    </task>
-    <task id="LOCAL-00264" summary="format">
-      <created>1623912387429</created>
-      <option name="number" value="00264" />
-      <option name="presentableId" value="LOCAL-00264" />
-      <option name="project" value="LOCAL" />
-      <updated>1623912387429</updated>
-    </task>
-    <task id="LOCAL-00265" summary="add intersects of IntvalSerchTree">
-      <created>1623918951912</created>
-      <option name="number" value="00265" />
-      <option name="presentableId" value="LOCAL-00265" />
-      <option name="project" value="LOCAL" />
-      <updated>1623918951912</updated>
+      <workItem from="1625058806921" duration="38006000" />
     </task>
     <task id="LOCAL-00266" summary="delete algs4">
       <created>1623926609466</created>
@@ -803,7 +787,21 @@
       <option name="project" value="LOCAL" />
       <updated>1625236737648</updated>
     </task>
-    <option name="localTasksCounter" value="313" />
+    <task id="LOCAL-00313" summary="add ST algorithm">
+      <created>1625307431636</created>
+      <option name="number" value="00313" />
+      <option name="presentableId" value="LOCAL-00313" />
+      <option name="project" value="LOCAL" />
+      <updated>1625307431636</updated>
+    </task>
+    <task id="LOCAL-00314" summary="add ST algorithm doc">
+      <created>1625307473544</created>
+      <option name="number" value="00314" />
+      <option name="presentableId" value="LOCAL-00314" />
+      <option name="project" value="LOCAL" />
+      <updated>1625307473544</updated>
+    </task>
+    <option name="localTasksCounter" value="315" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -832,8 +830,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add" />
-    <MESSAGE value="rm todo" />
     <MESSAGE value="format" />
     <MESSAGE value="better CEStripper" />
     <MESSAGE value="add new interface" />
@@ -857,7 +853,9 @@
     <MESSAGE value="add ArrayUtils" />
     <MESSAGE value="finish ultraQuickSort" />
     <MESSAGE value="add ACM" />
-    <option name="LAST_COMMIT_MESSAGE" value="add ACM" />
+    <MESSAGE value="add ST algorithm" />
+    <MESSAGE value="add ST algorithm doc" />
+    <option name="LAST_COMMIT_MESSAGE" value="add ST algorithm doc" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>

@@ -656,12 +656,12 @@ public class ACM0x00 {
         store[i][0] = array[i];
       }
 
-      for (int index = 1; index <= log_len; index++) {
-        int len = (int) Math.pow(2, index);
-        for (int start = 0; start + len <= array.length; start++) {
-          store[start][index] = Math.max(
-                  store[start][index - 1],
-                  store[(int) (start + Math.pow(2, index - 1))][index - 1]);
+      for (int p = 1; p <= log_len; p++) {
+        int len = (int) Math.pow(2, p);
+        for (int s = 0; s + len <= array.length; s++) {
+          store[s][p] = Math.max(
+                  store[s][p - 1],
+                  store[(int) (s + Math.pow(2, p - 1))][p - 1]);
         }
       }
     }
@@ -670,8 +670,8 @@ public class ACM0x00 {
       if (l >= r || l < 0 || l >= store.length || r < 0 || r >= store.length) {
         throw new IllegalArgumentException();
       }
-      int index = (int) Math.floor(Math.log(r - l) / Math.log(2));
-      return Math.max(store[l][index], store[(int) (r - Math.pow(2, index))][index]);
+      int p = (int) Math.floor(Math.log(r - l) / Math.log(2));
+      return Math.max(store[l][p], store[(int) (r - Math.pow(2, p))][p]);
     }
   }
 }
