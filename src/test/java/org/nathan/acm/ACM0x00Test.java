@@ -63,7 +63,7 @@ public class ACM0x00Test {
 
   @Test
   public void solveHamiltonTest() {
-    assertEquals(8, solve_hamilton(5, hamiltonCase));
+    assertEquals(8, solveHamilton(5, hamiltonCase));
   }
 
   String[][] ssCase1 = new String[][]{
@@ -276,5 +276,29 @@ public class ACM0x00Test {
     assertEquals(4, geniusACM(a, 1));
     assertEquals(2, geniusACM(a, 10));
     assertEquals(1, geniusACM(a, 84));
+  }
+
+  double[][] STCases;
+  double[] STAnswers;
+
+  {
+    STCases = new double[iteration][];
+    STAnswers = new double[iteration];
+    var rand = new SplittableRandom();
+    for (int i = 0; i < iteration; i++) {
+      STCases[i] = ArrayUtils.randomDoubleArray(-30, 30, rand.nextInt(30, 40));
+      var temp = new double[10];
+      System.arraycopy(STCases[i], 10, temp, 0, 10);
+      Arrays.sort(temp);
+      STAnswers[i] = temp[temp.length - 1];
+    }
+  }
+
+  @Test
+  public void STTest() {
+    for(int i = 0; i < iteration; i++){
+      var st = new ST(STCases[i]);
+      assertEquals(STAnswers[i], st.maxOfRange(10,20));
+    }
   }
 }

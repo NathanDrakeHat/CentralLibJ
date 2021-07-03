@@ -114,7 +114,7 @@ public class ACM0x00 {
    * @param weights undirected graph weights
    * @return shortest path length
    */
-  public static double solve_hamilton(int n, double[][] weights) {
+  public static double solveHamilton(int n, double[][] weights) {
     if (!ArrayUtils.isMatrix(weights)) {
       throw new IllegalArgumentException();
     }
@@ -142,6 +142,12 @@ public class ACM0x00 {
     return path_vert_dist[(1 << n) - 1][4];
   }
 
+  /**
+   * a switch and its neighbor must be flip at the same time, how many flips to reach all-zero state
+   *
+   * @param switches switch state
+   * @return min switch count
+   */
   public static int strangeSwitch(String[][] switches) {
     if (!ArrayUtils.isMatrix(switches)) {
       throw new IllegalArgumentException();
@@ -248,6 +254,13 @@ public class ACM0x00 {
     funcFlipSingle.apply(r, c);
   }
 
+  /**
+   * compute max sum in a square of targets under radius
+   *
+   * @param targets int matrix
+   * @param radius  square length
+   * @return max sum
+   */
   public static int laserBomb(int[][] targets, int radius) {
     if (!ArrayUtils.isMatrix(targets)) {
       throw new IllegalArgumentException();
@@ -415,6 +428,12 @@ public class ACM0x00 {
     return min;
   }
 
+  /**
+   * non-propagate order sort
+   *
+   * @param greater relation
+   * @return sorted
+   */
   public static List<Integer> innovativeBusiness(boolean[][] greater) {
     List<Integer> res = new ArrayList<>();
 
@@ -460,6 +479,12 @@ public class ACM0x00 {
     return l;
   }
 
+  /**
+   * compute median in a stream
+   *
+   * @param intStream int stream
+   * @return median when receive odd count of number
+   */
   public static IntStream runningMedian(IntStream intStream) {
     var b = IntStream.builder();
     ExtremumHeap<Integer, Integer> minHeap = new ExtremumHeap<>(true, Integer::compare);
@@ -540,6 +565,7 @@ public class ACM0x00 {
   }
 
   /**
+   * given check value <= T, how many slice can array have.
    * array must have answer
    *
    * @param array array
@@ -616,4 +642,33 @@ public class ACM0x00 {
     return resRef.deRef;
   }
 
+  public static class ST {
+    private final double[][] store; // max of [i, i + 2^j)
+
+    public ST(double[] array) {
+      store = new double[array.length][];
+      int log_len = (int) Math.floor(Math.log(array.length) / Math.log(2));
+      for (int i = 0; i < array.length; i++) {
+        store[i] = new double[(int) Math.floor(Math.log(array.length - i) / Math.log(2)) + 1];
+        store[i][0] = array[i];
+      }
+
+      for (int index = 1; index <= log_len; index++) {
+        int len = (int) Math.pow(2, index);
+        for (int start = 0; start + len <= array.length; start++) {
+          store[start][index] = Math.max(
+                  store[start][index - 1],
+                  store[(int) (start + Math.pow(2, index - 1))][index - 1]);
+        }
+      }
+    }
+
+    public double maxOfRange(int l, int r) {
+      if (l >= r || l < 0 || l >= store.length || r < 0 || r >= store.length) {
+        throw new IllegalArgumentException();
+      }
+      int index = (int) Math.floor(Math.log(r - l) / Math.log(2));
+      return Math.max(store[l][index], store[(int) (r - Math.pow(2, index))][index]);
+    }
+  }
 }
