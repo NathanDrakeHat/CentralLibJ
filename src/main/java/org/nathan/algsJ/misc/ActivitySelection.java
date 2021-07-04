@@ -1,4 +1,4 @@
-package org.nathan.algsJ.DP;
+package org.nathan.algsJ.misc;
 
 import java.util.ArrayList;
 

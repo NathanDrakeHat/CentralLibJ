@@ -27,8 +27,12 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="add ST algorithm doc">
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="refactor">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/nathan/acm/ACM0x10.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/DP/ActivitySelection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/misc/ActivitySelection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/algsJ/DP/ActivitySelectionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algsJ/DP/ActivitySelectionTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,7 +124,7 @@
       <command value="mvn install:install-file -Dfile=algs4.jar -DgroupId=edu.princeton.cs -DartifactId=algs4 -Dversion=1.0 -Dpackaging=jar -DgeneratePom=true " />
     </option>
   </component>
-  <component name="RunManager" selected="Application.pushThis">
+  <component name="RunManager" selected="JUnit.All in AlgorithmsJava">
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.nathan.Main" />
       <module name="AlgorithmsJava" />
@@ -229,10 +233,10 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.All in AlgorithmsJava" />
         <item itemvalue="JUnit.ACM0x00Test.STTest" />
         <item itemvalue="JUnit.ACM0x00Test.geniusACMTest" />
         <item itemvalue="JUnit.ACM0x00Test.ultraQuickSortTest" />
-        <item itemvalue="JUnit.All in AlgorithmsJava" />
         <item itemvalue="JUnit.ACM0x00Test.runningMedianTest" />
       </list>
     </recent_temporary>
@@ -456,14 +460,7 @@
       <workItem from="1624693929857" duration="26072000" />
       <workItem from="1624957943912" duration="7000" />
       <workItem from="1624970288364" duration="5224000" />
-      <workItem from="1625058806921" duration="38006000" />
-    </task>
-    <task id="LOCAL-00266" summary="delete algs4">
-      <created>1623926609466</created>
-      <option name="number" value="00266" />
-      <option name="presentableId" value="LOCAL-00266" />
-      <option name="project" value="LOCAL" />
-      <updated>1623926609466</updated>
+      <workItem from="1625058806921" duration="40433000" />
     </task>
     <task id="LOCAL-00267" summary="delete algs4">
       <created>1623926647371</created>
@@ -801,7 +798,14 @@
       <option name="project" value="LOCAL" />
       <updated>1625307473544</updated>
     </task>
-    <option name="localTasksCounter" value="315" />
+    <task id="LOCAL-00315" summary="refactor">
+      <created>1625308828530</created>
+      <option name="number" value="00315" />
+      <option name="presentableId" value="LOCAL-00315" />
+      <option name="project" value="LOCAL" />
+      <updated>1625308828530</updated>
+    </task>
+    <option name="localTasksCounter" value="316" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -830,7 +834,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="format" />
     <MESSAGE value="better CEStripper" />
     <MESSAGE value="add new interface" />
     <MESSAGE value="rm prime gen cache, rm KdTree.java" />
@@ -855,9 +858,15 @@
     <MESSAGE value="add ACM" />
     <MESSAGE value="add ST algorithm" />
     <MESSAGE value="add ST algorithm doc" />
-    <option name="LAST_COMMIT_MESSAGE" value="add ST algorithm doc" />
+    <MESSAGE value="refactor" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <default-breakpoints>
+        <breakpoint enabled="true" type="java-exception" />
+      </default-breakpoints>
+    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="org.nathan.algsJ.dataStruc.TernaryTries$Node" memberName="mid" />
