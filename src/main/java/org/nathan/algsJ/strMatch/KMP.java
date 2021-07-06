@@ -40,7 +40,7 @@ public class KMP {
       while (k > 0 && P.charAt(k) != P.charAt(q - 1)) {
         k = pi[k];
       }
-      if (P.charAt(k) == P.charAt(q-1)) {
+      if (P.charAt(k) == P.charAt(q - 1)) {
         k++;
       }
       pi[q] = k;
