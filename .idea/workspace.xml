@@ -28,9 +28,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="add new acm">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/strMatch/Manacher.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/acm/ACM0x10.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/acm/ACM0x10.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/acm/ACM0x10Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/acm/ACM0x10Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CentralUtils/src/main/java/org/nathan/centralUtils/utils/NativeUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CentralUtils/src/main/java/org/nathan/centralUtils/utils/NativeUtils.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,13 +45,13 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Class" />
         <option value="JUnit5 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../CentralUtils" />
     <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="GitSEFilterConfiguration">
@@ -123,7 +124,7 @@
       <command value="mvn install:install-file -Dfile=algs4.jar -DgroupId=edu.princeton.cs -DartifactId=algs4 -Dversion=1.0 -Dpackaging=jar -DgeneratePom=true " />
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.ACM0x10Test.monotonousQueueTest">
+  <component name="RunManager" selected="Application.pushUtils">
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.nathan.Main" />
       <module name="AlgorithmsJava" />
@@ -134,7 +135,7 @@
     <configuration name="pushThis" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.nathan.Main" />
       <module name="AlgorithmsJava" />
-      <option name="PROGRAM_PARAMETERS" value="&quot;git push&quot;" />
+      <option name="PROGRAM_PARAMETERS" value="&quot;git push&quot; 7890" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -142,7 +143,7 @@
     <configuration name="pushUtils" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.nathan.centralUtils.Main" />
       <module name="CentralUtils" />
-      <option name="PROGRAM_PARAMETERS" value="&quot;git push&quot;" />
+      <option name="PROGRAM_PARAMETERS" value="&quot;git push&quot; 7890" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../CentralUtils" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -459,14 +460,8 @@
       <workItem from="1624693929857" duration="26072000" />
       <workItem from="1624957943912" duration="7000" />
       <workItem from="1624970288364" duration="5224000" />
-      <workItem from="1625058806921" duration="51087000" />
-    </task>
-    <task id="LOCAL-00269" summary="remove corner case test">
-      <created>1623936259318</created>
-      <option name="number" value="00269" />
-      <option name="presentableId" value="LOCAL-00269" />
-      <option name="project" value="LOCAL" />
-      <updated>1623936259318</updated>
+      <workItem from="1625058806921" duration="53122000" />
+      <workItem from="1625491855060" duration="3380000" />
     </task>
     <task id="LOCAL-00270" summary="remove corner case test">
       <created>1623936745092</created>
@@ -804,7 +799,14 @@
       <option name="project" value="LOCAL" />
       <updated>1625395547784</updated>
     </task>
-    <option name="localTasksCounter" value="318" />
+    <task id="LOCAL-00318" summary="add new acm">
+      <created>1625489020981</created>
+      <option name="number" value="00318" />
+      <option name="presentableId" value="LOCAL-00318" />
+      <option name="project" value="LOCAL" />
+      <updated>1625489020981</updated>
+    </task>
+    <option name="localTasksCounter" value="319" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -861,15 +863,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="add new acm" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/nathan/acm/ACM0x10.java</url>
-          <line>55</line>
-          <option name="timeStamp" value="30" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="org.nathan.algsJ.dataStruc.TernaryTries$Node" memberName="mid" />

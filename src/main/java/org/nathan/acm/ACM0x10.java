@@ -1,5 +1,6 @@
 package org.nathan.acm;
 
+import org.jetbrains.annotations.NotNull;
 import org.nathan.centralUtils.tuples.Tuple;
 
 import java.util.ArrayDeque;
@@ -67,5 +68,9 @@ public class ACM0x10 {
       deque.addLast(i);
     }
     return ans;
+  }
+
+  public static String Manacher(@NotNull String txt){
+    return null;
   }
 }
