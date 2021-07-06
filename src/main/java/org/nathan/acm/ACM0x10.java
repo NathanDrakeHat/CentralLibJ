@@ -3,9 +3,7 @@ package org.nathan.acm;
 import org.jetbrains.annotations.NotNull;
 import org.nathan.centralUtils.tuples.Tuple;
 
-import java.util.ArrayDeque;
-import java.util.Deque;
-import java.util.List;
+import java.util.*;
 
 public class ACM0x10 {
   /**
@@ -70,7 +68,36 @@ public class ACM0x10 {
     return ans;
   }
 
-  public static String Manacher(@NotNull String txt){
+  /**
+   * min iterate cell and its max iterate count of every prefix txt
+   *
+   * @param txt string
+   * @return prefix string to its min iterate cell and max iterate count
+   */
+  public static @NotNull Map<String, Tuple<String, Integer>> period(@NotNull String txt) {
+    var next = org.nathan.algsJ.strMatch.KMP.computePrefixFunction(txt);
+    Map<String, Tuple<String, Integer>> ans = new HashMap<>();
+    for (int i = 2; i < txt.length(); i++) {
+      if (i % (i - next[i]) == 0 && i / (i - next[i]) > 1) {
+        var prefix = txt.substring(0, i);
+        var cell = txt.substring(0, i - next[i]);
+        var repeat = i / (i - next[i]);
+        ans.put(prefix, new Tuple<>(cell, repeat));
+      }
+    }
+    return ans;
+  }
+
+  /**
+   * <pre>
+   * bca -> abc
+   * cab -> abc
+   * </pre>
+   *
+   * @param s string
+   * @return min cyclic representation
+   */
+  public static @NotNull String minCyclicRep(@NotNull String s) {
     return null;
   }
 }

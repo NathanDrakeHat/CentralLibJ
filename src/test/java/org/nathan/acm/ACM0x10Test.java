@@ -4,13 +4,10 @@ import org.junit.jupiter.api.Test;
 import org.nathan.centralUtils.tuples.Tuple;
 import org.nathan.centralUtils.utils.ArrayUtils;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.SplittableRandom;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.nathan.acm.ACM0x10.largestRectInHist;
-import static org.nathan.acm.ACM0x10.monotonousQueue;
+import static org.nathan.acm.ACM0x10.*;
 
 class ACM0x10Test {
   final int iteration = 20;
@@ -64,5 +61,19 @@ class ACM0x10Test {
       var ans = monotonousQueue(mqCases[i], mqCases[i].length / 2);
       assertEquals(mqAnswers[i], ans);
     }
+  }
+
+  String periodCase = "abababab";
+  Map<String, Tuple<String, Integer>> periodAnswer;
+
+  {
+    periodAnswer = new HashMap<>();
+    periodAnswer.put("ababab", new Tuple<>("ab", 3));
+    periodAnswer.put("abab", new Tuple<>("ab", 2));
+  }
+
+  @Test
+  void periodTest(){
+    assertEquals(periodAnswer, period(periodCase));
   }
 }
