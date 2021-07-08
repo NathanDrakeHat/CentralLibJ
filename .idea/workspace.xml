@@ -27,9 +27,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="add new acm, test not pass">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="add new acm, test not pass" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -48,7 +46,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../CentralUtils" />
     <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="GitSEFilterConfiguration">
@@ -459,14 +457,7 @@
       <workItem from="1624970288364" duration="5224000" />
       <workItem from="1625058806921" duration="53122000" />
       <workItem from="1625491855060" duration="13515000" />
-      <workItem from="1625723566137" duration="11887000" />
-    </task>
-    <task id="LOCAL-00275" summary="save">
-      <created>1624192068982</created>
-      <option name="number" value="00275" />
-      <option name="presentableId" value="LOCAL-00275" />
-      <option name="project" value="LOCAL" />
-      <updated>1624192068982</updated>
+      <workItem from="1625723566137" duration="12547000" />
     </task>
     <task id="LOCAL-00276" summary="add test">
       <created>1624192622436</created>
@@ -804,7 +795,14 @@
       <option name="project" value="LOCAL" />
       <updated>1625755737167</updated>
     </task>
-    <option name="localTasksCounter" value="324" />
+    <task id="LOCAL-00324" summary="add new acm, test not pass">
+      <created>1625756956621</created>
+      <option name="number" value="00324" />
+      <option name="presentableId" value="LOCAL-00324" />
+      <option name="project" value="LOCAL" />
+      <updated>1625756956622</updated>
+    </task>
+    <option name="localTasksCounter" value="325" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
