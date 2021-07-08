@@ -76,4 +76,14 @@ class ACM0x10Test {
   void periodTest(){
     assertEquals(periodAnswer, period(periodCase));
   }
+
+  @Test
+  void minCyclicShiftTest(){
+    assertEquals("abcdef", minCyclicShift("abcdef"));
+    assertEquals("abcdef", minCyclicShift("fabcde"));
+    assertEquals("abcdef", minCyclicShift("efabcd"));
+    assertEquals("abcdef", minCyclicShift("defabc"));
+    assertEquals("abcdef", minCyclicShift("cdefab"));
+    assertEquals("abcdef", minCyclicShift("bcdefa"));
+  }
 }

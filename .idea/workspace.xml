@@ -27,8 +27,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="add new acm">
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="reformat">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/acm/ACM0x10.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/acm/ACM0x10.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/acm/ACM0x10Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/acm/ACM0x10Test.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,7 +123,7 @@
       <command value="mvn install:install-file -Dfile=algs4.jar -DgroupId=edu.princeton.cs -DartifactId=algs4 -Dversion=1.0 -Dpackaging=jar -DgeneratePom=true " />
     </option>
   </component>
-  <component name="RunManager" selected="Application.pushUtils">
+  <component name="RunManager" selected="JUnit.ACM0x10Test.minCyclicShiftTest">
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.nathan.Main" />
       <module name="AlgorithmsJava" />
@@ -146,22 +148,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ACM0x00Test.STTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="AlgorithmsJava" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.nathan.acm.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.nathan.acm" />
-      <option name="MAIN_CLASS_NAME" value="org.nathan.acm.ACM0x00Test" />
-      <option name="METHOD_NAME" value="STTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="ACM0x10Test.largestRectInHistTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AlgorithmsJava" />
       <extension name="coverage">
@@ -173,6 +159,22 @@
       <option name="PACKAGE_NAME" value="org.nathan.acm" />
       <option name="MAIN_CLASS_NAME" value="org.nathan.acm.ACM0x10Test" />
       <option name="METHOD_NAME" value="largestRectInHistTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ACM0x10Test.minCyclicShiftTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AlgorithmsJava" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.nathan.acm.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.nathan.acm" />
+      <option name="MAIN_CLASS_NAME" value="org.nathan.acm.ACM0x10Test" />
+      <option name="METHOD_NAME" value="minCyclicShiftTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -223,18 +225,18 @@
       <item itemvalue="Application.pushUtils" />
       <item itemvalue="Application.Main" />
       <item itemvalue="JUnit.All in AlgorithmsJava" />
-      <item itemvalue="JUnit.ACM0x00Test.STTest" />
       <item itemvalue="JUnit.ACM0x10Test.largestRectInHistTest" />
       <item itemvalue="JUnit.ACM0x10Test.monotonousQueueTest" />
       <item itemvalue="JUnit.ACM0x10Test.periodTest" />
+      <item itemvalue="JUnit.ACM0x10Test.minCyclicShiftTest" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ACM0x10Test.minCyclicShiftTest" />
         <item itemvalue="JUnit.ACM0x10Test.periodTest" />
         <item itemvalue="JUnit.All in AlgorithmsJava" />
         <item itemvalue="JUnit.ACM0x10Test.monotonousQueueTest" />
         <item itemvalue="JUnit.ACM0x10Test.largestRectInHistTest" />
-        <item itemvalue="JUnit.ACM0x00Test.STTest" />
       </list>
     </recent_temporary>
   </component>
@@ -458,14 +460,8 @@
       <workItem from="1624957943912" duration="7000" />
       <workItem from="1624970288364" duration="5224000" />
       <workItem from="1625058806921" duration="53122000" />
-      <workItem from="1625491855060" duration="11562000" />
-    </task>
-    <task id="LOCAL-00272" summary="pass msd sort test">
-      <created>1624110142982</created>
-      <option name="number" value="00272" />
-      <option name="presentableId" value="LOCAL-00272" />
-      <option name="project" value="LOCAL" />
-      <updated>1624110142982</updated>
+      <workItem from="1625491855060" duration="13515000" />
+      <workItem from="1625723566137" duration="1505000" />
     </task>
     <task id="LOCAL-00273" summary="add func">
       <created>1624112208716</created>
@@ -803,7 +799,14 @@
       <option name="project" value="LOCAL" />
       <updated>1625576142428</updated>
     </task>
-    <option name="localTasksCounter" value="321" />
+    <task id="LOCAL-00321" summary="reformat">
+      <created>1625578857258</created>
+      <option name="number" value="00321" />
+      <option name="presentableId" value="LOCAL-00321" />
+      <option name="project" value="LOCAL" />
+      <updated>1625578857258</updated>
+    </task>
+    <option name="localTasksCounter" value="322" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -839,7 +842,6 @@
     <MESSAGE value="delete unused" />
     <MESSAGE value="rename package" />
     <MESSAGE value="add kmp and test" />
-    <MESSAGE value="reformat" />
     <MESSAGE value="remove RectIntersect.java" />
     <MESSAGE value="add remove to TernaryTries" />
     <MESSAGE value="move simplex to algorithms" />
@@ -857,18 +859,10 @@
     <MESSAGE value="add new chapter of acm, move greedy algo to misc" />
     <MESSAGE value="add Manacher, change git push" />
     <MESSAGE value="add new acm" />
-    <option name="LAST_COMMIT_MESSAGE" value="add new acm" />
+    <MESSAGE value="reformat" />
+    <option name="LAST_COMMIT_MESSAGE" value="reformat" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/nathan/acm/ACM0x10.java</url>
-          <line>87</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="org.nathan.algsJ.dataStruc.TernaryTries$Node" memberName="mid" />
