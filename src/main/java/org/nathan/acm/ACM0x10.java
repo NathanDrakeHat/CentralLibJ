@@ -1,6 +1,7 @@
 package org.nathan.acm;
 
 import org.jetbrains.annotations.NotNull;
+import org.nathan.algsJ.dataStruc.TernaryTries;
 import org.nathan.centralUtils.tuples.Tuple;
 
 import java.util.*;
@@ -144,5 +145,82 @@ public class ACM0x10{
       }
     }
     return ss.substring(min, min + s_len);
+  }
+
+  public static @NotNull Tuple<Integer, Integer> largestXORPair(int[] integers){
+    var funcReversedBinStr = new Object(){
+      String apply(int i){
+        var s = Integer.toBinaryString(i);
+        var b = new StringBuilder();
+        if(s.length() != 32){
+          b.append("0".repeat(32 - s.length()));
+        }
+        b.append(s);
+        return b.reverse().toString();
+      }
+    };
+    var funcGetTargetInTries = new Object(){
+
+      String apply(TernaryTries.Node<Void> node, String integer){
+        var b = new StringBuilder();
+        int idx = 0;
+
+        while(idx < 32){
+          var node_c = node.getChar();
+          var str_c = integer.charAt(idx);
+          if(node_c == '0'){
+            if(str_c == '0'){
+              if(node.getRight() != null){
+                b.append('1');
+                node = node.getRight();
+              }
+              else{
+                b.append('0');
+                node = node.getMid();
+              }
+            }
+            else{
+              b.append('0');
+              node = node.getMid();
+            }
+          }
+          else{
+            if(str_c == '0'){
+              b.append('1');
+              node = node.getMid();
+            }
+            else{
+              if(node.getLeft() != null){
+                b.append('0');
+                node = node.getLeft();
+              }
+              else{
+                b.append('1');
+                node = node.getMid();
+              }
+            }
+          }
+          idx++;
+        }
+
+        return b.reverse().toString();
+      }
+    };
+    var tries = new TernaryTries<Void>();
+    int max = -1;
+    Tuple<Integer,Integer> res = null;
+    for(int i : integers){
+      var s = funcReversedBinStr.apply(i);
+      if(tries.size() > 0){
+        var xor_s = funcGetTargetInTries.apply(tries.getRoot(), s);
+        int xor_i = Integer.parseUnsignedInt(xor_s,2);
+        if((xor_i ^ i) > max){
+          max = xor_i ^ i ;
+          res = new Tuple<>(xor_i, i);
+        }
+      }
+      tries.put(s, null);
+    }
+    return res;
   }
 }

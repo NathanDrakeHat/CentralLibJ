@@ -9,11 +9,15 @@ public class TernaryTries<Value>{
   private int n;
   Node<Value> root;
 
-  private static class Node<Value>{
+  public static class Node<Value>{
     private char c;
     private boolean contain;
     private Node<Value> left, mid, right;
     private Value val;
+
+    public char getChar(){
+      return c;
+    }
 
     @Override
     public String toString(){
@@ -23,6 +27,30 @@ public class TernaryTries<Value>{
               ", val=" + val +
               '}';
     }
+
+    public boolean isContain(){
+      return contain;
+    }
+
+    public Node<Value> getLeft(){
+      return left;
+    }
+
+    public Node<Value> getMid(){
+      return mid;
+    }
+
+    public Node<Value> getRight(){
+      return right;
+    }
+
+    public Value getVal(){
+      return val;
+    }
+  }
+
+  public Node<Value> getRoot(){
+    return root;
   }
 
   public int size(){

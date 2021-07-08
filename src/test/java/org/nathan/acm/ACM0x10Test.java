@@ -86,4 +86,31 @@ class ACM0x10Test {
     assertEquals("abcdef", minCyclicShift("cdefab"));
     assertEquals("abcdef", minCyclicShift("bcdefa"));
   }
+
+  int[][] xorCases;
+  int[] xorAnswers;
+  {
+    xorCases = new int[iteration][];
+    xorAnswers = new int[iteration];
+    var rand = new SplittableRandom();
+    for(int i = 0; i < iteration; i++){
+      int len = rand.nextInt(5,10);
+      xorCases[i] = ArrayUtils.randomIntArray(1,256, len);
+      int max = Integer.MIN_VALUE;
+      for(int j = 0; j < xorCases[i].length; j++){
+        for(int k = j + 1; k < xorCases[i].length; k++){
+          max = Math.max(xorCases[i][j] ^ xorCases[i][k], max);
+        }
+      }
+      xorAnswers[i] = max;
+    }
+  }
+
+  @Test
+  void largestXORPairTest(){
+    for(int i = 0; i < iteration; i++){
+      var ans = largestXORPair(xorCases[i]);
+      assertEquals(xorAnswers[i], ans.first() ^ ans.second());
+    }
+  }
 }
