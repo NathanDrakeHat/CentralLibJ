@@ -94,7 +94,7 @@ class ACM0x10Test {
     xorAnswers = new int[iteration];
     var rand = new SplittableRandom();
     for(int i = 0; i < iteration; i++){
-      int len = rand.nextInt(5,10);
+      int len = rand.nextInt(2,4);
       xorCases[i] = ArrayUtils.randomIntArray(1,256, len);
       int max = Integer.MIN_VALUE;
       for(int j = 0; j < xorCases[i].length; j++){
