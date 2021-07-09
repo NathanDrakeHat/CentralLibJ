@@ -6,10 +6,11 @@ import org.nathan.centralUtils.utils.ArrayUtils;
 
 import java.util.*;
 
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.nathan.acm.ACM0x10.*;
 
-class ACM0x10Test {
+class ACM0x10Test{
   final int iteration = 20;
 
   List<Tuple<Integer, Integer>> LRITCases = new ArrayList<>(7);
@@ -25,7 +26,7 @@ class ACM0x10Test {
   }
 
   @Test
-  void largestRectInHistTest() {
+  void largestRectInHistTest(){
     assertEquals(8, largestRectInHist(LRITCases));
   }
 
@@ -36,18 +37,18 @@ class ACM0x10Test {
     mqCases = new double[iteration][];
     mqAnswers = new double[iteration];
     var rand = new SplittableRandom();
-    for (int i = 0; i < iteration; i++) {
+    for(int i = 0; i < iteration; i++){
       int len = rand.nextInt(3, 6);
       mqCases[i] = ArrayUtils.randomDoubleArray(-5, 10, len);
       int m = len / 2;
       double[] temp = new double[mqCases[i].length + 1];
-      System.arraycopy(mqCases[i], 0, temp, 1, temp.length-1);
-      for (int t = 2; t < temp.length; t++) {
+      System.arraycopy(mqCases[i], 0, temp, 1, temp.length - 1);
+      for(int t = 2; t < temp.length; t++){
         temp[t] += temp[t - 1];
       }
       double ans = Double.NEGATIVE_INFINITY;
-      for (int j = 0; j < temp.length; j++) {
-        for (int k = j + 1; k < temp.length && k - j <= m; k++) {
+      for(int j = 0; j < temp.length; j++){
+        for(int k = j + 1; k < temp.length && k - j <= m; k++){
           ans = Math.max(ans, temp[k] - temp[j]);
         }
       }
@@ -56,8 +57,8 @@ class ACM0x10Test {
   }
 
   @Test
-  void monotonousQueueTest() {
-    for (int i = 0; i < iteration; i++) {
+  void monotonousQueueTest(){
+    for(int i = 0; i < iteration; i++){
       var ans = monotonousQueue(mqCases[i], mqCases[i].length / 2);
       assertEquals(mqAnswers[i], ans);
     }
@@ -89,13 +90,14 @@ class ACM0x10Test {
 
   int[][] xorCases;
   int[] xorAnswers;
+
   {
     xorCases = new int[iteration][];
     xorAnswers = new int[iteration];
     var rand = new SplittableRandom();
     for(int i = 0; i < iteration; i++){
-      int len = rand.nextInt(2,4);
-      xorCases[i] = ArrayUtils.randomIntArray(1,256, len);
+      int len = rand.nextInt(2, 4);
+      xorCases[i] = ArrayUtils.randomIntArray(1, 256, len);
       int max = Integer.MIN_VALUE;
       for(int j = 0; j < xorCases[i].length; j++){
         for(int k = j + 1; k < xorCases[i].length; k++){
@@ -112,5 +114,16 @@ class ACM0x10Test {
       var ans = largestXORPair(xorCases[i]);
       assertEquals(xorAnswers[i], ans.first() ^ ans.second());
     }
+  }
+
+  @Test
+  void sequenceTest(){
+    var res = new int[]{0, 1, 2, 2, 3};
+    var ans = sequence(new int[][]{
+            new int[]{1, 2, 3, 4, 5},
+            new int[]{2, 4, 6, 8, 10},
+            new int[]{-3, -1, 1, 3, 5}
+    });
+    assertArrayEquals(ans, res);
   }
 }

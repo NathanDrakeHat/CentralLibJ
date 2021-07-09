@@ -1,8 +1,11 @@
 package org.nathan.acm;
 
 import org.jetbrains.annotations.NotNull;
+import org.nathan.algsJ.dataStruc.ExtremumHeap;
 import org.nathan.algsJ.dataStruc.TernaryTries;
+import org.nathan.centralUtils.tuples.Triad;
 import org.nathan.centralUtils.tuples.Tuple;
+import org.nathan.centralUtils.utils.ArrayUtils;
 
 import java.util.*;
 
@@ -212,5 +215,44 @@ public class ACM0x10{
       tries.put(s, null);
     }
     return res;
+  }
+
+  public static int[] sequence(int[][] sequences){
+    int seq_len = sequences[0].length;
+    if(!Arrays.stream(sequences).allMatch(a->a.length == seq_len)){
+      throw new IllegalArgumentException();
+    }
+    int[][] two_seq = new int[2][];
+    two_seq[0] = sequences[0];
+    int[] min_seq = new int[seq_len];
+
+    ExtremumHeap<Integer, Triad<Integer, Integer, Boolean>> minHeap = new ExtremumHeap<>(true, Integer::compare);
+    Arrays.sort(two_seq[0]);
+    for(int i = 1; i < sequences.length; i++){
+      two_seq[1] = sequences[i];
+      Arrays.sort(two_seq[1]);
+      minHeap.add(new Triad<>(0, 0, false), two_seq[0][0] + two_seq[1][0]);
+      for(int j = 0; j < seq_len; j++){
+        var info = minHeap.extractExtremum();
+        var a = info.second().first();
+        var b = info.second().second();
+        var c = info.second().third();
+        var new_triad = new Triad<>(a, b + 1, true);
+        if(!minHeap.contains(new_triad)){
+          minHeap.add(new_triad, two_seq[0][a] + two_seq[1][b + 1]);
+        }
+        if(!c){
+          new_triad = new Triad<>(a + 1, b, false);
+          if(!minHeap.contains(new_triad)){
+            minHeap.add(new_triad, two_seq[0][a + 1] + two_seq[1][b]);
+          }
+        }
+        min_seq[j] = info.first();
+      }
+
+      two_seq[0] = min_seq;
+    }
+
+    return two_seq[0];
   }
 }
