@@ -2,7 +2,7 @@ package org.nathan.algsJ.dataStruc;
 
 public final class ProtoVEBTree{
   //keys are not duplicate and confined in a range
-  private int u; //universe size
+  private final int u; //universe size
   private boolean[] array = null;
   private ProtoVEBTree summary = null;
   private ProtoVEBTree[] cluster = null;

@@ -150,6 +150,11 @@ public class ACM0x10{
     return ss.substring(min, min + s_len);
   }
 
+  /**
+   *
+   * @param integers array of int
+   * @return largest xor pair
+   */
   public static @NotNull Tuple<Integer, Integer> largestXORPair(int[] integers){
     var funcBinStr = new Object(){
       String apply(int i){
@@ -217,6 +222,11 @@ public class ACM0x10{
     return res;
   }
 
+  /**
+   * min sum of subarray length tuple
+   * @param sequences M array of length N
+   * @return N min sum of M element
+   */
   public static int[] sequence(int[][] sequences){
     int seq_len = sequences[0].length;
     if(!Arrays.stream(sequences).allMatch(a->a.length == seq_len)){
@@ -254,5 +264,9 @@ public class ACM0x10{
     }
 
     return two_seq[0];
+  }
+
+  public static List<Tuple<Integer,Integer>> dataBackup(int[] length){
+    return null;
   }
 }
