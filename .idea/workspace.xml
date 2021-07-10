@@ -29,6 +29,8 @@
   <component name="ChangeListManager">
     <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="change README.md">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/graph/DFS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/graph/DFS.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/graph/SSSPath.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/graph/SSSPath.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,7 +123,7 @@
       <command value="mvn install:install-file -Dfile=algs4.jar -DgroupId=edu.princeton.cs -DartifactId=algs4 -Dversion=1.0 -Dpackaging=jar -DgeneratePom=true " />
     </option>
   </component>
-  <component name="RunManager" selected="Application.pushThis">
+  <component name="RunManager" selected="JUnit.All in AlgorithmsJava">
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.nathan.Main" />
       <module name="AlgorithmsJava" />
@@ -178,22 +180,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ACM0x10Test.periodTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="AlgorithmsJava" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.nathan.acm.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.nathan.acm" />
-      <option name="MAIN_CLASS_NAME" value="org.nathan.acm.ACM0x10Test" />
-      <option name="METHOD_NAME" value="periodTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="ACM0x10Test.sequenceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AlgorithmsJava" />
       <extension name="coverage">
@@ -206,6 +192,14 @@
       <option name="MAIN_CLASS_NAME" value="org.nathan.acm.ACM0x10Test" />
       <option name="METHOD_NAME" value="sequenceTest" />
       <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="All in AlgorithmsJava" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AlgorithmsJava" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -230,19 +224,19 @@
       <item itemvalue="Application.pushThis" />
       <item itemvalue="Application.pushUtils" />
       <item itemvalue="Application.Main" />
-      <item itemvalue="JUnit.ACM0x10Test.periodTest" />
       <item itemvalue="JUnit.ACM0x10Test.minCyclicShiftTest" />
       <item itemvalue="JUnit.ACM0x10Test.largestXORPairTest" />
       <item itemvalue="JUnit.ACM0x10Test.sequenceTest" />
       <item itemvalue="JUnit.HuffmanTest.encodeTest" />
+      <item itemvalue="JUnit.All in AlgorithmsJava" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.All in AlgorithmsJava" />
         <item itemvalue="JUnit.HuffmanTest.encodeTest" />
         <item itemvalue="JUnit.ACM0x10Test.sequenceTest" />
         <item itemvalue="JUnit.ACM0x10Test.largestXORPairTest" />
         <item itemvalue="JUnit.ACM0x10Test.minCyclicShiftTest" />
-        <item itemvalue="JUnit.ACM0x10Test.periodTest" />
       </list>
     </recent_temporary>
   </component>
@@ -467,14 +461,7 @@
       <workItem from="1624970288364" duration="5224000" />
       <workItem from="1625058806921" duration="53122000" />
       <workItem from="1625491855060" duration="13515000" />
-      <workItem from="1625723566137" duration="33946000" />
-    </task>
-    <task id="LOCAL-00283" summary="format">
-      <created>1624197605972</created>
-      <option name="number" value="00283" />
-      <option name="presentableId" value="LOCAL-00283" />
-      <option name="project" value="LOCAL" />
-      <updated>1624197605972</updated>
+      <workItem from="1625723566137" duration="35437000" />
     </task>
     <task id="LOCAL-00284" summary="format">
       <created>1624277219576</created>
@@ -812,7 +799,14 @@
       <option name="project" value="LOCAL" />
       <updated>1625910701944</updated>
     </task>
-    <option name="localTasksCounter" value="332" />
+    <task id="LOCAL-00332" summary="change README.md">
+      <created>1625915235155</created>
+      <option name="number" value="00332" />
+      <option name="presentableId" value="LOCAL-00332" />
+      <option name="project" value="LOCAL" />
+      <updated>1625915235155</updated>
+    </task>
+    <option name="localTasksCounter" value="333" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

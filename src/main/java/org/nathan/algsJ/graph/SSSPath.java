@@ -99,7 +99,7 @@ public final class SSSPath{
     other_graph.edges_map.forEach(((otherV, edges) ->
             res.edges_map.put(
                     mapRecord.get(otherV),
-                    edges.parallelStream().map(edge ->
+                    edges.stream().map(edge ->
                             new BaseEdge<>(
                                     mapRecord.get(edge.from()),
                                     mapRecord.get(edge.to())))

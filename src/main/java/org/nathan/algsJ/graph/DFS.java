@@ -13,7 +13,7 @@ import java.util.List;
 public final class DFS{
   public static <T> void depthFirstSearch(@NotNull LinkedGraph<Vert<T>, BaseEdge<Vert<T>>> G){
     var vertices = G.allVertices();
-    vertices.parallelStream().forEach(v -> {
+    vertices.forEach(v -> {
       v.color = COLOR.WHITE;
       v.parent = null;
     });
