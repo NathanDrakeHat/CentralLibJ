@@ -27,7 +27,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="add Huffman.java">
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="change README.md">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -467,14 +467,7 @@
       <workItem from="1624970288364" duration="5224000" />
       <workItem from="1625058806921" duration="53122000" />
       <workItem from="1625491855060" duration="13515000" />
-      <workItem from="1625723566137" duration="32695000" />
-    </task>
-    <task id="LOCAL-00282" summary="rename package">
-      <created>1624197009284</created>
-      <option name="number" value="00282" />
-      <option name="presentableId" value="LOCAL-00282" />
-      <option name="project" value="LOCAL" />
-      <updated>1624197009284</updated>
+      <workItem from="1625723566137" duration="33946000" />
     </task>
     <task id="LOCAL-00283" summary="format">
       <created>1624197605972</created>
@@ -812,7 +805,14 @@
       <option name="project" value="LOCAL" />
       <updated>1625901059472</updated>
     </task>
-    <option name="localTasksCounter" value="331" />
+    <task id="LOCAL-00331" summary="change README.md">
+      <created>1625910701943</created>
+      <option name="number" value="00331" />
+      <option name="presentableId" value="LOCAL-00331" />
+      <option name="project" value="LOCAL" />
+      <updated>1625910701944</updated>
+    </task>
+    <option name="localTasksCounter" value="332" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -841,7 +841,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="rename package" />
     <MESSAGE value="add kmp and test" />
     <MESSAGE value="remove RectIntersect.java" />
     <MESSAGE value="add remove to TernaryTries" />
@@ -866,7 +865,8 @@
     <MESSAGE value="add new acm" />
     <MESSAGE value="add doc" />
     <MESSAGE value="add Huffman.java" />
-    <option name="LAST_COMMIT_MESSAGE" value="add Huffman.java" />
+    <MESSAGE value="change README.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="change README.md" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>
