@@ -5,7 +5,6 @@ import org.nathan.algsJ.dataStruc.ExtremumHeap;
 import org.nathan.algsJ.dataStruc.TernaryTries;
 import org.nathan.centralUtils.tuples.Triad;
 import org.nathan.centralUtils.tuples.Tuple;
-import org.nathan.centralUtils.utils.ArrayUtils;
 
 import java.util.*;
 
@@ -151,7 +150,6 @@ public class ACM0x10{
   }
 
   /**
-   *
    * @param integers array of int
    * @return largest xor pair
    */
@@ -224,12 +222,13 @@ public class ACM0x10{
 
   /**
    * min sum of subarray length tuple
+   *
    * @param sequences M array of length N
    * @return N min sum of M element
    */
   public static int[] sequence(int[][] sequences){
     int seq_len = sequences[0].length;
-    if(!Arrays.stream(sequences).allMatch(a->a.length == seq_len)){
+    if(!Arrays.stream(sequences).allMatch(a -> a.length == seq_len)){
       throw new IllegalArgumentException();
     }
     int[][] two_seq = new int[2][];
@@ -266,7 +265,4 @@ public class ACM0x10{
     return two_seq[0];
   }
 
-  public static List<Tuple<Integer,Integer>> dataBackup(int[] length){
-    return null;
-  }
 }
