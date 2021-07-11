@@ -11,7 +11,8 @@ import java.util.List;
  * depth first search
  */
 public final class DFS{
-  public static <T> void depthFirstSearch(@NotNull LinkedGraph<Vert<T>, BaseEdge<Vert<T>>> G){
+  public static <ID, V extends Vert<ID>, E extends BaseEdge<V>>
+  void depthFirstSearch(@NotNull LinkedGraph<V, E> G){
     var vertices = G.allVertices();
     vertices.forEach(v -> {
       v.color = COLOR.WHITE;
@@ -25,7 +26,8 @@ public final class DFS{
     }
   }
 
-  private static <T> int DFSVisit(LinkedGraph<Vert<T>, BaseEdge<Vert<T>>> G, Vert<T> u, int time){
+  private static <ID, V extends Vert<ID>, E extends BaseEdge<V>>
+  int DFSVisit(LinkedGraph<V, E> G, V u, int time){
     time++;
     u.discover = time;
     u.color = COLOR.GRAY;
@@ -44,12 +46,13 @@ public final class DFS{
   }
 
 
-  public static <T> List<Vert<T>> topologicalSort(@NotNull LinkedGraph<Vert<T>, BaseEdge<Vert<T>>> G){
+  public static <ID, V extends Vert<ID>, E extends BaseEdge<V>>
+  List<V> topologicalSort(@NotNull LinkedGraph<V, E> G){
     if(!G.isDirected()){
       throw new IllegalArgumentException();
     }
     depthFirstSearch(G);
-    List<Vert<T>> l = new ArrayList<>(G.allVertices());
+    List<V> l = new ArrayList<>(G.allVertices());
     l.sort((o1, o2) -> o2.finish - o1.finish); // descend order
     return l;
   }
@@ -89,6 +92,7 @@ public final class DFS{
       var edges = graph.adjacentEdgesOf(v);
       for(var edge : edges){
         var n = edge.another(v);
+        // TODO cannot generic below
         new_graph.addEdge(new BaseEdge<>(n, v));
       }
     }

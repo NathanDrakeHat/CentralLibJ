@@ -268,18 +268,17 @@ public class ACM0x10{
     return two_seq[0];
   }
 
-  // TODO reachability check
-
-  public static <ID> @NotNull List<BaseVert<ID>> topologicalSort(@NotNull LinkedGraph<BaseVert<ID>, BaseEdge<BaseVert<ID>>> graph){
+  public static <ID, Vert extends BaseVert<ID>, Edge extends BaseEdge<Vert>>
+  @NotNull List<Vert> topologicalSort(@NotNull LinkedGraph<Vert, Edge> graph){
     if(!graph.isDirected()){
       throw new IllegalArgumentException();
     }
     var edges = graph.getAllEdges();
-    Map<BaseVert<ID>, Integer> inCount = new HashMap<>(graph.verticesCount());
+    Map<Vert, Integer> inCount = new HashMap<>(graph.verticesCount());
     for(var edge : edges){
       inCount.put(edge.to(), inCount.getOrDefault(edge.to(), 0) + 1);
     }
-    Queue<BaseVert<ID>> queue = new ArrayDeque<>(graph.verticesCount());
+    Queue<Vert> queue = new ArrayDeque<>(graph.verticesCount());
     var vs = graph.allVertices();
     for(var v : vs){
       if(!inCount.containsKey(v)){
@@ -287,7 +286,7 @@ public class ACM0x10{
       }
     }
 
-    List<BaseVert<ID>> ans = new ArrayList<>(graph.verticesCount());
+    List<Vert> ans = new ArrayList<>(graph.verticesCount());
     while(!queue.isEmpty()){
       var head = queue.poll();
       ans.add(head);
@@ -303,5 +302,11 @@ public class ACM0x10{
     }
 
     return ans;
+  }
+
+  // TODO reachability check
+
+  public static <ID> Map<BaseVert<ID>, Integer> reachabilityCheck(){
+    return null;
   }
 }

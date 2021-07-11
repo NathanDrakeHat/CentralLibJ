@@ -14,12 +14,12 @@ import java.util.Set;
  * minimum spanning tree
  */
 public final class MST{
-  public static <T>
-  @NotNull Set<WeightEdge<VertKruskal<T>>> Kruskal(@NotNull LinkedGraph<VertKruskal<T>, WeightEdge<VertKruskal<T>>> graph){
+  public static <ID, V extends VertKruskal<ID>, E extends WeightEdge<V>>
+  @NotNull Set<E> Kruskal(@NotNull LinkedGraph<V, E> graph){
     if(graph.directed){
       throw new IllegalArgumentException();
     }
-    Set<WeightEdge<VertKruskal<T>>> res = new HashSet<>();
+    Set<E> res = new HashSet<>();
     var edges_set = graph.getAllEdges();
     var edges_list = new ArrayList<>(edges_set);
     edges_list.sort(Comparator.comparingDouble(WeightEdge::weight));
@@ -34,13 +34,12 @@ public final class MST{
     return res;
   }
 
-  public static <T> void MSTPrimFibonacciHeap(
-          @NotNull LinkedGraph<VertPrim<T>, WeightEdge<VertPrim<T>>> graph,
-          @NotNull MST.VertPrim<T> r){
+  public static <ID, V extends VertPrim<ID>, E extends WeightEdge<V>>
+  void MSTPrimFibonacciHeap(@NotNull LinkedGraph<V, E> graph, @NotNull V r){
     if(graph.directed){
       throw new IllegalArgumentException();
     }
-    FibonacciMinHeap<Double, VertPrim<T>> Q = new FibonacciMinHeap<>(Comparator.comparingDouble(a -> a));
+    FibonacciMinHeap<Double, V> Q = new FibonacciMinHeap<>(Comparator.comparingDouble(a -> a));
     var vertices = graph.allVertices();
     for(var u : vertices){
       if(u != r){
@@ -66,8 +65,8 @@ public final class MST{
     }
   }
 
-  public static <T> void MSTPrimMinHeap(@NotNull LinkedGraph<VertPrim<T>, WeightEdge<VertPrim<T>>> graph,
-                                        @NotNull MST.VertPrim<T> r){
+  public static <ID, V extends VertPrim<ID>, E extends WeightEdge<V>>
+  void MSTPrimMinHeap(@NotNull LinkedGraph<V, E> graph, @NotNull V r){
     if(graph.directed){
       throw new IllegalArgumentException();
     }
@@ -81,7 +80,7 @@ public final class MST{
       }
       u.parent = null;
     }
-    ExtremumHeap<Double, VertPrim<T>> Q = new ExtremumHeap<>(true, vertices, VertPrim::getKey, Double::compare);
+    ExtremumHeap<Double, V> Q = new ExtremumHeap<>(true, vertices, VertPrim::getKey, Double::compare);
     while(Q.length() > 0) {
       var u = Q.extractExtremum().second();
       var u_edges = graph.adjacentEdgesOf(u);

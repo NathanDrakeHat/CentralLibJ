@@ -6,17 +6,17 @@ import java.util.*;
 
 public class MaxFlow{
 
-  public static class ForFulkersonSolver<Id>{
+  public static class ForFulkersonSolver<ID, V extends BaseVert<ID>, E extends FlowEdge<V>>{
     private double maxFlow;
-    private final Map<BaseVert<Id>, Boolean> marked;
-    private final Map<BaseVert<Id>, FlowEdge<BaseVert<Id>>> edgeOf;
-    private final LinkedGraph<BaseVert<Id>, FlowEdge<BaseVert<Id>>> graph;
-    private BaseVert<Id> s;
-    private BaseVert<Id> t;
-    private final Deque<BaseVert<Id>> queue = new ArrayDeque<>();
+    private final Map<V, Boolean> marked;
+    private final Map<V, E> edgeOf;
+    private final LinkedGraph<V, E> graph;
+    private V s;
+    private V t;
+    private final Deque<V> queue = new ArrayDeque<>();
 
 
-    public ForFulkersonSolver(@NotNull LinkedGraph<BaseVert<Id>, FlowEdge<BaseVert<Id>>> graph){
+    public ForFulkersonSolver(@NotNull LinkedGraph<V, E> graph){
       if(graph.directed){
         throw new IllegalArgumentException();
       }
@@ -24,13 +24,12 @@ public class MaxFlow{
       var vertices = graph.allVertices();
       marked = new HashMap<>(vertices.size());
       edgeOf = new HashMap<>(vertices.size());
-      int i = 0;
       for(var v : vertices){
         Objects.requireNonNull(v);
       }
     }
 
-    public void solve(@NotNull BaseVert<Id> source, @NotNull BaseVert<Id> destination){
+    public void solve(@NotNull V source, @NotNull V destination){
       s = source;
       t = destination;
       double flow = Double.POSITIVE_INFINITY;
@@ -85,7 +84,7 @@ public class MaxFlow{
      * @param vert vert
      * @return in the source cut
      */
-    public boolean inMinCut(@NotNull BaseVert<Id> vert){
+    public boolean inMinCut(@NotNull V vert){
       if(!marked.containsKey(vert)){
         return false;
       }

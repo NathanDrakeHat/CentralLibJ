@@ -12,7 +12,8 @@ import java.util.Queue;
  * breath first search
  */
 public final class BFS{
-  public static <T> void breathFirstSearch(@NotNull LinkedGraph<Vert<T>, BaseEdge<Vert<T>>> G, @NotNull BFS.Vert<T> s){
+  public static <ID, V extends Vert<ID>, E extends BaseEdge<V>>
+  void breathFirstSearch(@NotNull LinkedGraph<V, E> G, @NotNull V s){
     var vs = G.allVertices();
     for(var v : vs){
       if(!v.equals(s)){
@@ -24,7 +25,7 @@ public final class BFS{
     s.color = COLOR.GRAY;
     s.distance = 0;
     s.parent = null;
-    Queue<Vert<T>> Q = new LinkedList<>();
+    Queue<V> Q = new LinkedList<>();
     Q.add(s);
     while(!Q.isEmpty()) {
       var u = Q.remove();

@@ -21,11 +21,11 @@ public final class SSSPath{
    *
    * @param graph graph
    * @param s     start
-   * @param <T>   id
+   * @param <ID>   id
    * @return has shortest path
    */
-  public static <T> boolean BellmanFord(@NotNull LinkedGraph<BFS.Vert<T>, WeightEdge<BFS.Vert<T>>> graph,
-                                        @NotNull BFS.Vert<T> s){
+  public static <ID, V extends BFS.Vert<ID>, E extends WeightEdge<V>>
+  boolean BellmanFord(@NotNull LinkedGraph<V, E> graph, @NotNull V s){
     if(!graph.directed){
       throw new IllegalArgumentException();
     }
@@ -45,7 +45,8 @@ public final class SSSPath{
     return true;
   }
 
-  private static <T> void initializeSingleSource(LinkedGraph<BFS.Vert<T>, WeightEdge<BFS.Vert<T>>> G, BFS.Vert<T> s){
+  private static <ID, V extends BFS.Vert<ID>, E extends WeightEdge<V>>
+  void initializeSingleSource(LinkedGraph<V, E> G, V s){
     var vertices = G.allVertices();
     for(var v : vertices){
       v.distance = Double.POSITIVE_INFINITY;
@@ -56,7 +57,8 @@ public final class SSSPath{
     }
   }
 
-  private static <T> void relax(WeightEdge<BFS.Vert<T>> edge){
+  private static <ID, V extends BFS.Vert<ID>, E extends WeightEdge<V>>
+  void relax(E edge){
     var weight = edge.weight();
     var u = edge.from();
     var v = edge.to();
@@ -69,13 +71,14 @@ public final class SSSPath{
 
   /**
    * shortest paths of directed acyclic graph
-   *
-   * @param <T>              id
-   * @param BFS_Linked_graph linked graph with bfs vertex wrapper
-   * @param s                start
+   * @param BFS_Linked_graph bfs graph
+   * @param s source
+   * @param <ID> Id
+   * @param <V> vertex
+   * @param <E> edge
    */
-  public static <T> void ssDAG(@NotNull LinkedGraph<BFS.Vert<T>, WeightEdge<BFS.Vert<T>>> BFS_Linked_graph,
-                               @NotNull BFS.Vert<T> s){
+  public static <ID, V extends BFS.Vert<ID>, E extends WeightEdge<V>>
+  void ssDAG(@NotNull LinkedGraph<V, E> BFS_Linked_graph, @NotNull V s){
     if(!BFS_Linked_graph.directed){
       throw new IllegalArgumentException();
     }
@@ -92,11 +95,11 @@ public final class SSSPath{
     }
   }
 
-  private static <T> LinkedGraph<DFS.Vert<BFS.Vert<T>>, BaseEdge<DFS.Vert<BFS.Vert<T>>>> transform(
-          LinkedGraph<BFS.Vert<T>, WeightEdge<BFS.Vert<T>>> other_graph){
-    LinkedGraph<DFS.Vert<BFS.Vert<T>>, BaseEdge<DFS.Vert<BFS.Vert<T>>>> res =
+  private static <ID, V extends BFS.Vert<ID>, E extends WeightEdge<V>>
+  LinkedGraph<DFS.Vert<V>, BaseEdge<DFS.Vert<V>>> transform(LinkedGraph<V,E> other_graph){
+    LinkedGraph<DFS.Vert<V>, BaseEdge<DFS.Vert<V>>> res =
             new LinkedGraph<>(other_graph.verticesCount(), other_graph.directed);
-    Map<BFS.Vert<T>, DFS.Vert<BFS.Vert<T>>> mapRecord = new HashMap<>(res.verticesCount());
+    Map<V, DFS.Vert<V>> mapRecord = new HashMap<>(res.verticesCount());
     other_graph.allVertices().forEach(otherV -> {
       var mapped = new DFS.Vert<>(otherV);
       res.vertices.add(mapped);
@@ -117,19 +120,20 @@ public final class SSSPath{
 
   /**
    * fibonacci heap, time complexity: O(V^2*lgV + V*E)
-   *
-   * @param G   graph
-   * @param s   start
-   * @param <T> id
+   * @param G graph
+   * @param s source
+   * @param <ID> id
+   * @param <V> vertex
+   * @param <E> edge
    */
-  public static <T> void DijkstraFibonacciHeap(@NotNull LinkedGraph<BFS.Vert<T>, WeightEdge<BFS.Vert<T>>> G,
-                                               @NotNull BFS.Vert<T> s){
+  public static <ID, V extends BFS.Vert<ID>, E extends WeightEdge<V>>
+  void DijkstraFibonacciHeap(@NotNull LinkedGraph<V, E> G, @NotNull V s){
     if(!G.directed){
       throw new IllegalArgumentException();
     }
     initializeSingleSource(G, s);
     var vertices = G.allVertices();
-    FibonacciMinHeap<Double, BFS.Vert<T>> Q = new FibonacciMinHeap<>(Comparator.comparingDouble(a -> a));
+    FibonacciMinHeap<Double, V> Q = new FibonacciMinHeap<>(Comparator.comparingDouble(a -> a));
     for(var vertex : vertices){
       Q.insert(vertex.distance, vertex);
     }
@@ -149,19 +153,20 @@ public final class SSSPath{
 
   /**
    * min heap, time complexity: O(V*E*lgV)
-   *
-   * @param G   graph
-   * @param s   start
-   * @param <T> id
+   * @param G graph
+   * @param s source
+   * @param <ID> id
+   * @param <V> vertex
+   * @param <E> edge
    */
-  public static <T> void DijkstraMinHeap(@NotNull LinkedGraph<BFS.Vert<T>, WeightEdge<BFS.Vert<T>>> G,
-                                         @NotNull BFS.Vert<T> s){
+  public static<ID, V extends BFS.Vert<ID>, E extends WeightEdge<V>>
+  void DijkstraMinHeap(@NotNull LinkedGraph<V, E> G, @NotNull V s){
     if(!G.directed){
       throw new IllegalArgumentException();
     }
     initializeSingleSource(G, s);
     var vertices = G.allVertices();
-    ExtremumHeap<Double, BFS.Vert<T>> Q = new ExtremumHeap<>(true, vertices, BFS.Vert::getDistance, Double::compare);
+    ExtremumHeap<Double, V> Q = new ExtremumHeap<>(true, vertices, BFS.Vert::getDistance, Double::compare);
     while(Q.length() > 0) {
       var u = Q.extractExtremum().second();
       var u_edges = G.adjacentEdgesOf(u);
