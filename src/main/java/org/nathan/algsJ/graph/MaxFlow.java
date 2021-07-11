@@ -17,6 +17,9 @@ public class MaxFlow{
 
 
     public ForFulkersonSolver(@NotNull LinkedGraph<BaseVert<Id>, FlowEdge<BaseVert<Id>>> graph){
+      if(graph.directed){
+        throw new IllegalArgumentException();
+      }
       this.graph = graph;
       var vertices = graph.allVertices();
       marked = new HashMap<>(vertices.size());

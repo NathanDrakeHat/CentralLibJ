@@ -26,6 +26,9 @@ public final class SSSPath{
    */
   public static <T> boolean BellmanFord(@NotNull LinkedGraph<BFS.Vert<T>, WeightEdge<BFS.Vert<T>>> graph,
                                         @NotNull BFS.Vert<T> s){
+    if(!graph.directed){
+      throw new IllegalArgumentException();
+    }
     initializeSingleSource(graph, s);
     int vertices_count = graph.verticesCount();
     var edges = graph.getAllEdges();
@@ -73,6 +76,9 @@ public final class SSSPath{
    */
   public static <T> void ssDAG(@NotNull LinkedGraph<BFS.Vert<T>, WeightEdge<BFS.Vert<T>>> BFS_Linked_graph,
                                @NotNull BFS.Vert<T> s){
+    if(!BFS_Linked_graph.directed){
+      throw new IllegalArgumentException();
+    }
     var DFS_Linked_graph = transform(BFS_Linked_graph);
     var DFS_list = topologicalSort(DFS_Linked_graph);
     initializeSingleSource(BFS_Linked_graph, s);
@@ -118,6 +124,9 @@ public final class SSSPath{
    */
   public static <T> void DijkstraFibonacciHeap(@NotNull LinkedGraph<BFS.Vert<T>, WeightEdge<BFS.Vert<T>>> G,
                                                @NotNull BFS.Vert<T> s){
+    if(!G.directed){
+      throw new IllegalArgumentException();
+    }
     initializeSingleSource(G, s);
     var vertices = G.allVertices();
     FibonacciMinHeap<Double, BFS.Vert<T>> Q = new FibonacciMinHeap<>(Comparator.comparingDouble(a -> a));
@@ -147,6 +156,9 @@ public final class SSSPath{
    */
   public static <T> void DijkstraMinHeap(@NotNull LinkedGraph<BFS.Vert<T>, WeightEdge<BFS.Vert<T>>> G,
                                          @NotNull BFS.Vert<T> s){
+    if(!G.directed){
+      throw new IllegalArgumentException();
+    }
     initializeSingleSource(G, s);
     var vertices = G.allVertices();
     ExtremumHeap<Double, BFS.Vert<T>> Q = new ExtremumHeap<>(true, vertices, BFS.Vert::getDistance, Double::compare);

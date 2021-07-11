@@ -43,14 +43,26 @@ public final class DFS{
     return time;
   }
 
+
   public static <T> List<Vert<T>> topologicalSort(@NotNull LinkedGraph<Vert<T>, BaseEdge<Vert<T>>> G){
+    if(!G.isDirected()){
+      throw new IllegalArgumentException();
+    }
     depthFirstSearch(G);
     List<Vert<T>> l = new ArrayList<>(G.allVertices());
     l.sort((o1, o2) -> o2.finish - o1.finish); // descend order
     return l;
   }
 
+  /**
+   * in a set of vertex, for every pair has bi-directed path
+   * @param G graph
+   * @param <T> id
+   */
   public static <T> void stronglyConnectedComponents(@NotNull LinkedGraph<Vert<T>, BaseEdge<Vert<T>>> G){
+    if(!G.isDirected()){
+      throw new IllegalArgumentException();
+    }
     var l = topologicalSort(G);
     var G_T = transposeGraph(G);
     depthFirstSearchOrderly(G_T, l);
