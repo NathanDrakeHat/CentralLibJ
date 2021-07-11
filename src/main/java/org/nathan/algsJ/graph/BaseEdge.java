@@ -4,29 +4,29 @@ import org.jetbrains.annotations.NotNull;
 
 public class BaseEdge<V>{
   @NotNull
-  final V former;
+  final V vert_from;
   @NotNull
-  final V latter;
+  final V vert_to;
 
   public BaseEdge(@NotNull V f, @NotNull V l){
-    former = f;
-    latter = l;
+    vert_from = f;
+    vert_to = l;
   }
 
   public @NotNull V from(){
-    return former;
+    return vert_from;
   }
 
   public @NotNull V to(){
-    return latter;
+    return vert_to;
   }
 
   public @NotNull V another(V vertex){
-    if(vertex.equals(former)){
-      return latter;
+    if(vertex.equals(vert_from)){
+      return vert_to;
     }
-    else if(vertex.equals(latter)){
-      return former;
+    else if(vertex.equals(vert_to)){
+      return vert_from;
     }
     else{
       throw new IllegalArgumentException();

@@ -21,10 +21,10 @@ public class FlowEdge<V> extends BaseEdge<V>{
   }
 
   public double residualCapacityTo(@NotNull V v){
-    if(v == latter){
+    if(v == vert_to){
       return capacity - flow;
     }
-    else if(v == former){
+    else if(v == vert_from){
       return flow;
     }
     else{
@@ -33,10 +33,10 @@ public class FlowEdge<V> extends BaseEdge<V>{
   }
 
   public void addFlowTo(@NotNull V v, double delta){
-    if(v == latter){
+    if(v == vert_to){
       flow += delta;
     }
-    else if(v == former){
+    else if(v == vert_from){
       flow -= delta;
     }
     else{
@@ -50,6 +50,6 @@ public class FlowEdge<V> extends BaseEdge<V>{
 
   @Override
   public String toString(){
-    return String.format("FlowEdge[%s--f:%f/c:%f-->%s]", former, flow, capacity, latter);
+    return String.format("FlowEdge[%s--f:%f/c:%f-->%s]", vert_from, flow, capacity, vert_to);
   }
 }

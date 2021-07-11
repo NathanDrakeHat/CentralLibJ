@@ -306,7 +306,8 @@ public class ACM0x10{
 
   // TODO reachability check
 
-  public static <ID> Map<BaseVert<ID>, Integer> reachabilityCheck(){
+  public static <ID, V extends BaseVert<ID>, E extends BaseEdge<V>>
+  Map<V, Integer> reachabilityCheck(){
     return null;
   }
 }

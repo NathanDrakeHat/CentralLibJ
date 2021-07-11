@@ -56,9 +56,12 @@ public class LinkedGraph<V, E extends BaseEdge<V>>{
   }
 
   public void addEdge(@NotNull E edge){
-    edges_map.get(edge.former).add(edge);
+    if(!edges_map.containsKey(edge.vert_from) || !edges_map.containsKey(edge.vert_to)){
+      throw new IllegalArgumentException();
+    }
+    edges_map.get(edge.vert_from).add(edge);
     if(!directed){
-      edges_map.get(edge.latter).add(edge);
+      edges_map.get(edge.vert_to).add(edge);
     }
   }
 
@@ -103,6 +106,7 @@ public class LinkedGraph<V, E extends BaseEdge<V>>{
     return Collections.unmodifiableList(edges_map.get(vertex));
   }
 
+  @SuppressWarnings("BooleanMethodIsAlwaysInverted")
   public boolean isDirected(){
     return directed;
   }
