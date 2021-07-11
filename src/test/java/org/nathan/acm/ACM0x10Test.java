@@ -1,13 +1,15 @@
 package org.nathan.acm;
 
 import org.junit.jupiter.api.Test;
+import org.nathan.algsJ.graph.BaseEdge;
+import org.nathan.algsJ.graph.BaseVert;
+import org.nathan.algsJ.graph.LinkedGraph;
 import org.nathan.centralUtils.tuples.Tuple;
 import org.nathan.centralUtils.utils.ArrayUtils;
 
 import java.util.*;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.nathan.acm.ACM0x10.*;
 
 class ACM0x10Test{
@@ -125,5 +127,36 @@ class ACM0x10Test{
             new int[]{-3, -1, 1, 3, 5}
     });
     assertArrayEquals(ans, res);
+  }
+
+  LinkedGraph<BaseVert<Integer>, BaseEdge<BaseVert<Integer>>> tsCase;
+  {
+    List<BaseVert<Integer>> vs = new ArrayList<>(4);
+    vs.add(new BaseVert<>(1));
+    vs.add(new BaseVert<>(2));
+    vs.add(new BaseVert<>(3));
+    vs.add(new BaseVert<>(4));
+    tsCase = new LinkedGraph<>(true, vs);
+    tsCase.addEdge(new BaseEdge<>(vs.get(0), vs.get(1)));
+    tsCase.addEdge(new BaseEdge<>(vs.get(1), vs.get(2)));
+    tsCase.addEdge(new BaseEdge<>(vs.get(2), vs.get(3)));
+
+    tsCase.addEdge(new BaseEdge<>(vs.get(0), vs.get(2)));
+    tsCase.addEdge(new BaseEdge<>(vs.get(0), vs.get(3)));
+
+    tsCase.addEdge(new BaseEdge<>(vs.get(1), vs.get(3)));
+  }
+
+
+  @Test
+  void topologicalSortTest(){
+    var ans = topologicalSort(tsCase);
+    assertEquals(4, ans.size());
+    var vs = tsCase.allVertices();
+    assertEquals(vs, ans);
+
+    tsCase.addEdge(new BaseEdge<>(vs.get(3), vs.get(0)));
+    var ans1 = topologicalSort(tsCase);
+    assertNotEquals(4, ans1.size());
   }
 }

@@ -3,6 +3,9 @@ package org.nathan.acm;
 import org.jetbrains.annotations.NotNull;
 import org.nathan.algsJ.dataStruc.ExtremumHeap;
 import org.nathan.algsJ.dataStruc.TernaryTries;
+import org.nathan.algsJ.graph.BaseEdge;
+import org.nathan.algsJ.graph.BaseVert;
+import org.nathan.algsJ.graph.LinkedGraph;
 import org.nathan.centralUtils.tuples.Triad;
 import org.nathan.centralUtils.tuples.Tuple;
 
@@ -265,4 +268,40 @@ public class ACM0x10{
     return two_seq[0];
   }
 
+  // TODO reachability check
+
+  public static <ID> @NotNull List<BaseVert<ID>> topologicalSort(@NotNull LinkedGraph<BaseVert<ID>, BaseEdge<BaseVert<ID>>> graph){
+    if(!graph.isDirected()){
+      throw new IllegalArgumentException();
+    }
+    var edges = graph.getAllEdges();
+    Map<BaseVert<ID>, Integer> inCount = new HashMap<>(graph.verticesCount());
+    for(var edge : edges){
+      inCount.put(edge.to(), inCount.getOrDefault(edge.to(), 0) + 1);
+    }
+    Queue<BaseVert<ID>> queue = new ArrayDeque<>(graph.verticesCount());
+    var vs = graph.allVertices();
+    for(var v : vs){
+      if(!inCount.containsKey(v)){
+        queue.add(v);
+      }
+    }
+
+    List<BaseVert<ID>> ans = new ArrayList<>(graph.verticesCount());
+    while(!queue.isEmpty()){
+      var head = queue.poll();
+      ans.add(head);
+      var adjEdgesOfHead = graph.adjacentEdgesOf(head);
+      for(var edge : adjEdgesOfHead){
+        var count = inCount.get(edge.to());
+        count--;
+        inCount.put(edge.to(), count);
+        if(count == 0){
+          queue.add(edge.to());
+        }
+      }
+    }
+
+    return ans;
+  }
 }
