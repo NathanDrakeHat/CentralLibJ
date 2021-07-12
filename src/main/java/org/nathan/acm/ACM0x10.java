@@ -13,6 +13,7 @@ import java.util.*;
 
 public class ACM0x10{
   /**
+   * <br/>(POJ2559)
    * @param floatRects list of width and height of rectangle
    * @return range of largest inner connection of rectangles(left inclusive and right exclusive)
    */
@@ -47,7 +48,7 @@ public class ACM0x10{
 
   /**
    * subarray of max sum
-   *
+   * <br/>(TYVJ1305)
    * @param array array
    * @param M     max length of subarray
    * @return subarray
@@ -76,7 +77,7 @@ public class ACM0x10{
 
   /**
    * min iterate cell and its max iterate count of every prefix txt
-   *
+   * <br/>(POJ1961)
    * @param txt string
    * @return prefix string to its min iterate cell and max iterate count
    */
@@ -225,7 +226,7 @@ public class ACM0x10{
 
   /**
    * min sum of subarray length tuple
-   *
+   * <br/>(POJ2442)
    * @param sequences M array of length N
    * @return N min sum of M element
    */
@@ -268,73 +269,4 @@ public class ACM0x10{
     return two_seq[0];
   }
 
-  public static <ID, Vert extends BaseVert<ID>, Edge extends BaseEdge<Vert>>
-  @NotNull List<Vert> topologicalSort(@NotNull LinkedGraph<Vert, Edge> graph){
-    if(!graph.isDirected()){
-      throw new IllegalArgumentException();
-    }
-    var edges = graph.getAllEdges();
-    Map<Vert, Integer> inCount = new HashMap<>(graph.verticesCount());
-    for(var edge : edges){
-      inCount.put(edge.to(), inCount.getOrDefault(edge.to(), 0) + 1);
-    }
-    Queue<Vert> queue = new ArrayDeque<>(graph.verticesCount());
-    var vs = graph.allVertices();
-    for(var v : vs){
-      if(!inCount.containsKey(v)){
-        queue.add(v);
-      }
-    }
-
-    List<Vert> ans = new ArrayList<>(graph.verticesCount());
-    while(!queue.isEmpty()) {
-      var head = queue.poll();
-      ans.add(head);
-      var adjEdgesOfHead = graph.adjacentEdgesOf(head);
-      for(var edge : adjEdgesOfHead){
-        var count = inCount.get(edge.to());
-        count--;
-        inCount.put(edge.to(), count);
-        if(count == 0){
-          queue.add(edge.to());
-        }
-      }
-    }
-
-    return ans;
-  }
-
-  public static <ID, V extends BaseVert<ID>, E extends BaseEdge<V>>
-  @NotNull Map<V, Integer> reachabilityCount(@NotNull LinkedGraph<V, E> graph){
-    if(!graph.isDirected()){
-      throw new IllegalArgumentException();
-    }
-    var sort_vs = topologicalSort(graph);
-    if(sort_vs.size() != graph.verticesCount()){
-      throw new RuntimeException("cyclic graph error.");
-    }
-    Map<V, BitSet> reach = new HashMap<>(sort_vs.size());
-    var vs = graph.allVertices();
-    for(int i = 0; i < vs.size(); i++){
-      var v = vs.get(i);
-      var b = new BitSet(vs.size());
-      b.set(i, true);
-      reach.put(v, b);
-    }
-    for(int i = sort_vs.size() - 1; i >= 0; i--){
-      var v = sort_vs.get(i);
-      var b = reach.get(v);
-      for(var e : graph.adjacentEdgesOf(v)){
-        var t_b = reach.get(e.to());
-        b.or(t_b);
-      }
-    }
-
-    Map<V, Integer> ans = new HashMap<>(sort_vs.size());
-    for(var kv : reach.entrySet()){
-      ans.put(kv.getKey(),  kv.getValue().cardinality());
-    }
-
-    return ans;
-  }
 }

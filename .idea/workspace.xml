@@ -27,12 +27,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="add acm">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="add new acm">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/acm/ACM0x00.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/acm/ACM0x00.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/acm/ACM0x10.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/acm/ACM0x10.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/graph/LinkedGraph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/graph/LinkedGraph.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/acm/ACM0x10Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/acm/ACM0x10Test.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -126,7 +124,7 @@
       <command value="mvn install:install-file -Dfile=algs4.jar -DgroupId=edu.princeton.cs -DartifactId=algs4 -Dversion=1.0 -Dpackaging=jar -DgeneratePom=true " />
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.ACM0x10Test.reachabilityCountTest">
+  <component name="RunManager" selected="JUnit.All in AlgorithmsJava">
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.nathan.Main" />
       <module name="AlgorithmsJava" />
@@ -151,6 +149,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ACM0x10Test.additionChainsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AlgorithmsJava" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.nathan.acm.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.nathan.acm" />
+      <option name="MAIN_CLASS_NAME" value="org.nathan.acm.ACM0x10Test" />
+      <option name="METHOD_NAME" value="additionChainsTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ACM0x10Test.reachabilityCountTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AlgorithmsJava" />
       <extension name="coverage">
@@ -162,22 +176,6 @@
       <option name="PACKAGE_NAME" value="org.nathan.acm" />
       <option name="MAIN_CLASS_NAME" value="org.nathan.acm.ACM0x10Test" />
       <option name="METHOD_NAME" value="reachabilityCountTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ACM0x10Test.sequenceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="AlgorithmsJava" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.nathan.acm.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.nathan.acm" />
-      <option name="MAIN_CLASS_NAME" value="org.nathan.acm.ACM0x10Test" />
-      <option name="METHOD_NAME" value="sequenceTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -227,19 +225,19 @@
       <item itemvalue="Application.pushThis" />
       <item itemvalue="Application.pushUtils" />
       <item itemvalue="Application.Main" />
-      <item itemvalue="JUnit.ACM0x10Test.sequenceTest" />
       <item itemvalue="JUnit.HuffmanTest.encodeTest" />
       <item itemvalue="JUnit.All in AlgorithmsJava" />
       <item itemvalue="JUnit.ACM0x10Test.topologicalSortTest" />
       <item itemvalue="JUnit.ACM0x10Test.reachabilityCountTest" />
+      <item itemvalue="JUnit.ACM0x10Test.additionChainsTest" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.ACM0x10Test.reachabilityCountTest" />
         <item itemvalue="JUnit.All in AlgorithmsJava" />
+        <item itemvalue="JUnit.ACM0x10Test.additionChainsTest" />
+        <item itemvalue="JUnit.ACM0x10Test.reachabilityCountTest" />
         <item itemvalue="JUnit.ACM0x10Test.topologicalSortTest" />
         <item itemvalue="JUnit.HuffmanTest.encodeTest" />
-        <item itemvalue="JUnit.ACM0x10Test.sequenceTest" />
       </list>
     </recent_temporary>
   </component>
@@ -464,21 +462,7 @@
       <workItem from="1624970288364" duration="5224000" />
       <workItem from="1625058806921" duration="53122000" />
       <workItem from="1625491855060" duration="13515000" />
-      <workItem from="1625723566137" duration="49103000" />
-    </task>
-    <task id="LOCAL-00289" summary="rename">
-      <created>1624546417674</created>
-      <option name="number" value="00289" />
-      <option name="presentableId" value="LOCAL-00289" />
-      <option name="project" value="LOCAL" />
-      <updated>1624546417674</updated>
-    </task>
-    <task id="LOCAL-00290" summary="add IntvalSerchTree value generic, fix BSTIterator bug">
-      <created>1624695607439</created>
-      <option name="number" value="00290" />
-      <option name="presentableId" value="LOCAL-00290" />
-      <option name="project" value="LOCAL" />
-      <updated>1624695607439</updated>
+      <workItem from="1625723566137" duration="55776000" />
     </task>
     <task id="LOCAL-00291" summary="add @NotNull">
       <created>1624697742307</created>
@@ -809,7 +793,21 @@
       <option name="project" value="LOCAL" />
       <updated>1626013728794</updated>
     </task>
-    <option name="localTasksCounter" value="338" />
+    <task id="LOCAL-00338" summary="add acm">
+      <created>1626069813516</created>
+      <option name="number" value="00338" />
+      <option name="presentableId" value="LOCAL-00338" />
+      <option name="project" value="LOCAL" />
+      <updated>1626069813516</updated>
+    </task>
+    <task id="LOCAL-00339" summary="add acm">
+      <created>1626069816847</created>
+      <option name="number" value="00339" />
+      <option name="presentableId" value="LOCAL-00339" />
+      <option name="project" value="LOCAL" />
+      <updated>1626069816847</updated>
+    </task>
+    <option name="localTasksCounter" value="340" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -854,7 +852,6 @@
     <MESSAGE value="add new acm, test not pass" />
     <MESSAGE value="test" />
     <MESSAGE value="pass test" />
-    <MESSAGE value="add new acm" />
     <MESSAGE value="add doc" />
     <MESSAGE value="add Huffman.java" />
     <MESSAGE value="change README.md" />
@@ -863,18 +860,10 @@
     <MESSAGE value="add extends to graph algo" />
     <MESSAGE value="refactor" />
     <MESSAGE value="add acm" />
-    <option name="LAST_COMMIT_MESSAGE" value="add acm" />
+    <MESSAGE value="add new acm" />
+    <option name="LAST_COMMIT_MESSAGE" value="add new acm" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/org/nathan/acm/ACM0x10Test.java</url>
-          <line>154</line>
-          <option name="timeStamp" value="24" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="org.nathan.algsJ.dataStruc.TernaryTries$Node" memberName="mid" />

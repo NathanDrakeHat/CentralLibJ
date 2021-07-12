@@ -20,7 +20,7 @@ public class ACM0x00 {
    * a ^ b % m <br/>
    * b = 101... = c_k*2^(k-1) + ... <br/>
    * a^b = a^(2^(k-1)) * 1 * a^(2^(k-3)) * ...<br/>
-   *
+   * (POJ1995)<br/>
    * @param a a
    * @param b b >= 0
    * @param m m
@@ -144,7 +144,7 @@ public class ACM0x00 {
 
   /**
    * a switch and its neighbor must be flip at the same time, how many flips to reach all-zero state
-   *
+   * <br/>(TYVJ1266)
    * @param switches switch state
    * @return min switch count
    */
@@ -256,7 +256,7 @@ public class ACM0x00 {
 
   /**
    * compute max sum in a square of targets under radius
-   *
+   * <br/>(BZOJ1218)
    * @param targets int matrix
    * @param radius  square length
    * @return max sum
@@ -311,7 +311,7 @@ public class ACM0x00 {
 
   /**
    * sum of (a^b)'s divisors mod 9901
-   *
+   * <br/>(POJ1845)
    * @param a a
    * @param b b
    * @return int
@@ -391,7 +391,7 @@ public class ACM0x00 {
   /**
    * binary search on (small) answer range
    * discrete max average[-10, 10]
-   *
+   * <br/>(POJ2018)
    * @param nums  int array
    * @param limit low limit
    * @return max average
@@ -481,7 +481,7 @@ public class ACM0x00 {
 
   /**
    * compute median in a stream
-   *
+   * <br/>(POJ3784)
    * @param intStream int stream
    * @return median when receive odd count of number
    */
@@ -518,7 +518,7 @@ public class ACM0x00 {
 
   /**
    * compute exchange count of bubble sort/count of decent order pairs
-   *
+   * <br/>(POJ2299)
    * @return count
    */
   public static int ultraQuickSort(double[] array) {
@@ -567,7 +567,7 @@ public class ACM0x00 {
   /**
    * given check value <= T, how many slice can array have.
    * array must have answer
-   *
+   * <br/>hihocoder#1384
    * @param array array
    * @param T     limit
    * @return segment count
