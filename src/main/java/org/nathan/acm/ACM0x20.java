@@ -154,4 +154,13 @@ public class ACM0x20{
 
     throw new RuntimeException();
   }
+
+  /**
+   * <br/> (TYVJ1340)
+   * @param gift weights of gift
+   * @return max number of carried gift
+   */
+  public static int sendGift(int[] gift){
+    return 0;
+  }
 }
