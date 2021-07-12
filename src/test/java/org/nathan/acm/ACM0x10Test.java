@@ -130,6 +130,7 @@ class ACM0x10Test{
   }
 
   LinkedGraph<BaseVert<Integer>, BaseEdge<BaseVert<Integer>>> tsCase;
+
   {
     List<BaseVert<Integer>> vs = new ArrayList<>(4);
     vs.add(new BaseVert<>(1));
@@ -158,5 +159,34 @@ class ACM0x10Test{
     tsCase.addEdge(new BaseEdge<>(vs.get(3), vs.get(0)));
     var ans1 = topologicalSort(tsCase);
     assertNotEquals(4, ans1.size());
+  }
+
+  LinkedGraph<BaseVert<Integer>, BaseEdge<BaseVert<Integer>>> reCase;
+
+  {
+    List<BaseVert<Integer>> vs = new ArrayList<>(4);
+    vs.add(new BaseVert<>(1));
+    vs.add(new BaseVert<>(2));
+    vs.add(new BaseVert<>(3));
+    vs.add(new BaseVert<>(4));
+    reCase = new LinkedGraph<>(true, vs);
+    reCase.addEdge(new BaseEdge<>(vs.get(0), vs.get(1)));
+    reCase.addEdge(new BaseEdge<>(vs.get(1), vs.get(2)));
+    reCase.addEdge(new BaseEdge<>(vs.get(2), vs.get(3)));
+
+    reCase.addEdge(new BaseEdge<>(vs.get(0), vs.get(2)));
+    reCase.addEdge(new BaseEdge<>(vs.get(0), vs.get(3)));
+
+    reCase.addEdge(new BaseEdge<>(vs.get(1), vs.get(3)));
+  }
+
+  @Test
+  void reachabilityCountTest(){
+    var ans = reachabilityCount(reCase);
+    var vs = reCase.allVertices();
+    assertEquals(4, ans.get(vs.get(0)));
+    assertEquals(3, ans.get(vs.get(1)));
+    assertEquals(2, ans.get(vs.get(2)));
+    assertEquals(1, ans.get(vs.get(3)));
   }
 }

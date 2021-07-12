@@ -287,7 +287,7 @@ public class ACM0x10{
     }
 
     List<Vert> ans = new ArrayList<>(graph.verticesCount());
-    while(!queue.isEmpty()){
+    while(!queue.isEmpty()) {
       var head = queue.poll();
       ans.add(head);
       var adjEdgesOfHead = graph.adjacentEdgesOf(head);
@@ -304,10 +304,37 @@ public class ACM0x10{
     return ans;
   }
 
-  // TODO reachability check
-
   public static <ID, V extends BaseVert<ID>, E extends BaseEdge<V>>
-  Map<V, Integer> reachabilityCheck(){
-    return null;
+  @NotNull Map<V, Integer> reachabilityCount(@NotNull LinkedGraph<V, E> graph){
+    if(!graph.isDirected()){
+      throw new IllegalArgumentException();
+    }
+    var sort_vs = topologicalSort(graph);
+    if(sort_vs.size() != graph.verticesCount()){
+      throw new RuntimeException("cyclic graph error.");
+    }
+    Map<V, BitSet> reach = new HashMap<>(sort_vs.size());
+    var vs = graph.allVertices();
+    for(int i = 0; i < vs.size(); i++){
+      var v = vs.get(i);
+      var b = new BitSet(vs.size());
+      b.set(i, true);
+      reach.put(v, b);
+    }
+    for(int i = sort_vs.size() - 1; i >= 0; i--){
+      var v = sort_vs.get(i);
+      var b = reach.get(v);
+      for(var e : graph.adjacentEdgesOf(v)){
+        var t_b = reach.get(e.to());
+        b.or(t_b);
+      }
+    }
+
+    Map<V, Integer> ans = new HashMap<>(sort_vs.size());
+    for(var kv : reach.entrySet()){
+      ans.put(kv.getKey(),  kv.getValue().cardinality());
+    }
+
+    return ans;
   }
 }

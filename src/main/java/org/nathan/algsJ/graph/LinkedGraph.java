@@ -106,7 +106,6 @@ public class LinkedGraph<V, E extends BaseEdge<V>>{
     return Collections.unmodifiableList(edges_map.get(vertex));
   }
 
-  @SuppressWarnings("BooleanMethodIsAlwaysInverted")
   public boolean isDirected(){
     return directed;
   }
