@@ -204,6 +204,4 @@ public class ACM0x20{
 
     return max;
   }
-
-
 }
