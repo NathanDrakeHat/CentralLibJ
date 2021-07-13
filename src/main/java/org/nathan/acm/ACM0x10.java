@@ -13,6 +13,7 @@ import java.util.*;
 
 public class ACM0x10{
   /**
+   * monotonous stack
    * <br/>(POJ2559)
    * @param floatRects list of width and height of rectangle
    * @return range of largest inner connection of rectangles(left inclusive and right exclusive)
@@ -47,7 +48,8 @@ public class ACM0x10{
   }
 
   /**
-   * subarray of max sum
+   * monotonous queue
+   * <br/>range of max sum
    * <br/>(TYVJ1305)
    * @param array array
    * @param M     max length of subarray
@@ -76,7 +78,8 @@ public class ACM0x10{
   }
 
   /**
-   * min iterate cell and its max iterate count of every prefix txt
+   * <br/> pattern prefix NEXT Function
+   * <br/>min iterate cell and its max iterate count of every prefix txt
    * <br/>(POJ1961)
    * @param txt string
    * @return prefix string to its min iterate cell and max iterate count
@@ -154,6 +157,7 @@ public class ACM0x10{
   }
 
   /**
+   * Tries data structure
    * @param integers array of int
    * @return largest xor pair
    */
