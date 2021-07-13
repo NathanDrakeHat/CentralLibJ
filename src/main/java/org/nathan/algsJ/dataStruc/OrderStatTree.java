@@ -110,14 +110,29 @@ public class OrderStatTree<K, V> implements Iterable<Tuple<K, V>>{
     }
   }
 
-  public K floorOfKey(K key){
+  public Optional<K> floorOfKey(K key){
     if(root == sentinel){
-      throw new NoSuchElementException("calls floor() with empty symbol table");
+      return Optional.empty();
     }
     else{
       Node<K, V> x = floor(root, key);
       if(x == sentinel){
-        throw new NoSuchElementException("argument to floor() is too small");
+        return Optional.empty();
+      }
+      else{
+        return Optional.of(x.key);
+      }
+    }
+  }
+
+  public K forceGetFloorOfKey(K key){
+    if(root == sentinel){
+      throw new NoSuchElementException();
+    }
+    else{
+      Node<K, V> x = floor(root, key);
+      if(x == sentinel){
+        throw new NoSuchElementException();
       }
       else{
         return x.key;
@@ -144,14 +159,29 @@ public class OrderStatTree<K, V> implements Iterable<Tuple<K, V>>{
     }
   }
 
-  public K ceilingOfKey(K key){
+  public Optional<K> ceilingOfKey(K key){
     if(root == sentinel){
-      throw new NoSuchElementException("calls ceiling() with empty symbol table");
+      return Optional.empty();
     }
     else{
       var x = ceiling(root, key);
       if(x == sentinel){
-        throw new NoSuchElementException("argument to ceiling() is too small");
+        return Optional.empty();
+      }
+      else{
+        return Optional.of(x.key);
+      }
+    }
+  }
+
+  public K forceGetCeilingOfKey(K key){
+    if(root == sentinel){
+      throw new NoSuchElementException();
+    }
+    else{
+      var x = ceiling(root, key);
+      if(x == sentinel){
+        throw new NoSuchElementException();
       }
       else{
         return x.key;
@@ -267,9 +297,6 @@ public class OrderStatTree<K, V> implements Iterable<Tuple<K, V>>{
     var n = (Node<K, V>) template.getNodeOfKey(root, key);
     if(n != sentinel){
       template.delete(n);
-    }
-    else{
-      throw new NoSuchElementException();
     }
   }
 

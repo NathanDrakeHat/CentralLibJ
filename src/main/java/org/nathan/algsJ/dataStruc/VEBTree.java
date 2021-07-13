@@ -148,15 +148,16 @@ public final class VEBTree{
   }
 
   public Optional<Integer> tryGetMaximum(){
-    try{
-      return Optional.of(forceGetMaximum());
+    var res = maximum(this);
+    if(res != NONE){
+      return Optional.of(res);
     }
-    catch(NoSuchElementException e){
+    else{
       return Optional.empty();
     }
   }
 
-  public Integer forceGetMaximum(){
+  public int forceGetMaximum(){
     var res = maximum(this);
     if(res != NONE){
       return res;
@@ -171,15 +172,16 @@ public final class VEBTree{
   }
 
   public Optional<Integer> tryGetMinimum(){
-    try{
-      return Optional.of(forceGetMinimum());
+    var res = minimum(this);
+    if(res != NONE){
+      return Optional.of(res);
     }
-    catch(NoSuchElementException e){
+    else{
       return Optional.empty();
     }
   }
 
-  public Integer forceGetMinimum(){
+  public int forceGetMinimum(){
     var res = minimum(this);
     if(res != NONE){
       return res;
@@ -210,15 +212,16 @@ public final class VEBTree{
   }
 
   public Optional<Integer> tryGetSuccessor(int x){
-    try{
-      return Optional.of(forceGetSuccessor(x));
+    var res = successor(this, x);
+    if(res != NONE){
+      return Optional.of(res);
     }
-    catch(NoSuchElementException e){
+    else{
       return Optional.empty();
     }
   }
 
-  public Integer forceGetSuccessor(int x){
+  public int forceGetSuccessor(int x){
     var res = successor(this, x);
     if(res != NONE){
       return res;
@@ -259,15 +262,16 @@ public final class VEBTree{
   }
 
   public Optional<Integer> tryGetPredecessor(int x){
-    try{
-      return Optional.of(forceGetPredecessor(x));
+    var res = predecessor(this, x);
+    if(res != NONE){
+      return Optional.of(res);
     }
-    catch(NoSuchElementException e){
+    else{
       return Optional.empty();
     }
   }
 
-  public Integer forceGetPredecessor(int x){
+  public int forceGetPredecessor(int x){
     var res = predecessor(this, x);
     if(res != NONE){
       return res;

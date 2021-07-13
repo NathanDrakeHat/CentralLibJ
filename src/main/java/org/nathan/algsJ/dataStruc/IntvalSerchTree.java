@@ -48,10 +48,9 @@ public class IntvalSerchTree<Key, Val> implements Iterable<Triad<Key, Key, Val>>
   public void deleteInterval(@NotNull Key low){
     modified();
     var n = template.getNodeOfKey(root, low);
-    if(n == sentinel){
-      throw new NoSuchElementException();
+    if(n != sentinel){
+      template.delete(n);
     }
-    template.delete(n);
   }
 
   public List<Triad<Key, Key, Val>> intersects(@NotNull Key lo, @NotNull Key high){
