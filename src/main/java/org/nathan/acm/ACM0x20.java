@@ -4,6 +4,7 @@ import org.jetbrains.annotations.NotNull;
 import org.nathan.algsJ.graph.BaseEdge;
 import org.nathan.algsJ.graph.BaseVert;
 import org.nathan.algsJ.graph.LinkedGraph;
+import org.nathan.centralUtils.utils.NumericUtils;
 
 import java.util.*;
 
@@ -80,6 +81,7 @@ public class ACM0x20{
 
   /**
    * <br/>POJ2248
+   *
    * @param n limit
    * @return array
    */
@@ -157,10 +159,48 @@ public class ACM0x20{
 
   /**
    * <br/> (TYVJ1340)
+   *
    * @param gift weights of gift
    * @return max number of carried gift
    */
   public static int sendGift(int[] gift){
-    return 0;
+    int[] weights = new int[gift.length];
+    System.arraycopy(gift, 0, weights, 0, weights.length);
+    weights = Arrays.stream(weights).boxed().sorted(Comparator.reverseOrder()).mapToInt(Integer::intValue).toArray();
+    int len = weights.length;
+    Set<Integer> half = new HashSet<>(1);
+    half.add(0);
+    for(int i = 0; i < len / 2; i++){
+      Set<Integer> next = new HashSet<>(half.size() * 2);
+      for(var t : half){
+        next.add(t);
+        if(NumericUtils.addNotOverflow(t, weights[i])){
+          next.add(t + weights[i]);
+        }
+      }
+      half = next;
+    }
+
+    TreeSet<Integer> tree = new TreeSet<>(half);
+
+    int max = 0;
+    half = new HashSet<>(1);
+    half.add(0);
+    for(int i = len / 2; i < len; i++){
+      Set<Integer> next = new HashSet<>(half.size() * 2);
+      for(var t : half){
+        next.add(t);
+        if(NumericUtils.addNotOverflow(t, weights[i])){
+          next.add(t + weights[i]);
+        }
+      }
+      half = next;
+    }
+    for(var i : half){
+      var f = tree.floor(Integer.MAX_VALUE - i);
+      max = Math.max(max, i + f);
+    }
+
+    return max;
   }
 }

@@ -233,7 +233,7 @@ public class ACM0x00Test {
   int[] ultraQuickSortAnswers = new int[iteration];
 
   {
-    var rand = ThreadLocalRandom.current();
+    var rand = new SplittableRandom();
     for (int i = 0; i < iteration; i++) {
       int len = rand.nextInt(3) + 3;
       int bound = rand.nextInt(5) + 10;
