@@ -158,6 +158,7 @@ public class ACM0x20{
   }
 
   /**
+   * bi-direction BFS
    * <br/> (TYVJ1340)
    *
    * @param gift weights of gift
@@ -203,4 +204,6 @@ public class ACM0x20{
 
     return max;
   }
+
+
 }
