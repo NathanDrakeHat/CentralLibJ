@@ -97,8 +97,8 @@ public class ACM0x20Test{
       set.add(0);
       for(int j = 0; j < sgCases[i].length; j++){
         Set<Integer> next = new HashSet<>(set.size() * 2);
+        next.addAll(set);
         for(var t : set){
-          next.add(t);
           if(NumericUtils.addNotOverflow(t, sgCases[i][j])){
             next.add(t + sgCases[i][j]);
           }

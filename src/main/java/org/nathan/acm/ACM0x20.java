@@ -172,8 +172,8 @@ public class ACM0x20{
     half.add(0);
     for(int i = 0; i < len / 2; i++){
       Set<Integer> next = new HashSet<>(half.size() * 2);
+      next.addAll(half);
       for(var t : half){
-        next.add(t);
         if(NumericUtils.addNotOverflow(t, weights[i])){
           next.add(t + weights[i]);
         }
@@ -188,8 +188,8 @@ public class ACM0x20{
     half.add(0);
     for(int i = len / 2; i < len; i++){
       Set<Integer> next = new HashSet<>(half.size() * 2);
+      next.addAll(half);
       for(var t : half){
-        next.add(t);
         if(NumericUtils.addNotOverflow(t, weights[i])){
           next.add(t + weights[i]);
         }
