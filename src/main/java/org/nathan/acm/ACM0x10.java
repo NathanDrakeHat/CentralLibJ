@@ -240,7 +240,7 @@ public class ACM0x10{
     two_seq[0] = sequences[0];
     int[] min_seq = new int[seq_len];
 
-    DynamicPriQueue<Integer, Triad<Integer, Integer, Boolean>> minHeap = new DynamicPriQueue<>(true, Integer::compare);
+    DynamicPriQueue<Integer, Triad<Integer, Integer, Boolean>> minHeap = new DynamicPriQueue<>(Integer::compare);
     Arrays.sort(two_seq[0]);
     for(int i = 1; i < sequences.length; i++){
       two_seq[1] = sequences[i];

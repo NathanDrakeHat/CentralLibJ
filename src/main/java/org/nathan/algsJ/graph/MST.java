@@ -80,7 +80,7 @@ public final class MST{
       }
       u.parent = null;
     }
-    DynamicPriQueue<Double, V> Q = new DynamicPriQueue<>(true, vertices, VertPrim::getKey, Double::compare);
+    DynamicPriQueue<Double, V> Q = new DynamicPriQueue<>(vertices, VertPrim::getKey, Double::compare);
     while(Q.length() > 0) {
       var u = Q.extractExtremum().second();
       var u_edges = graph.adjacentEdgesOf(u);

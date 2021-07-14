@@ -166,7 +166,7 @@ public final class SSSPath{
     }
     initializeSingleSource(G, s);
     var vertices = G.allVertices();
-    DynamicPriQueue<Double, V> Q = new DynamicPriQueue<>(true, vertices, BFS.Vert::getDistance, Double::compare);
+    DynamicPriQueue<Double, V> Q = new DynamicPriQueue<>(vertices, BFS.Vert::getDistance, Double::compare);
     while(Q.length() > 0) {
       var u = Q.extractExtremum().second();
       var u_edges = G.adjacentEdgesOf(u);

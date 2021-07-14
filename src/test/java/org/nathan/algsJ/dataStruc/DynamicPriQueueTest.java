@@ -26,7 +26,7 @@ class DynamicPriQueueTest{
   void minRandomAddTest(){
     for(int i = 0; i < iter; i++){
       List<Integer> l = minRandomAddTestCase.get(i);
-      DynamicPriQueue<Integer, String> m = new DynamicPriQueue<>(true, Integer::compare);
+      DynamicPriQueue<Integer, String> m = new DynamicPriQueue<>(Integer::compare);
       for(Integer integer : l){
         m.add(String.valueOf(integer), integer);
       }
@@ -36,37 +36,6 @@ class DynamicPriQueueTest{
       }
       for(int j = 0; j < res.size() - 1; j++){
         if(res.get(j).compareTo(res.get(j + 1)) < 0){
-          assertTrue(true);
-        }
-        else{
-          fail();
-        }
-      }
-    }
-  }
-
-  List<List<Integer>> maxRandomAddTestCase = new ArrayList<>();
-
-  {
-    for(int i = 0; i < iter; i++){
-      maxRandomAddTestCase.add(shuffledRangeList(1, 63));
-    }
-  }
-
-  @Test
-  void maxRandomAddTest(){
-    for(int i = 0; i < iter; i++){
-      List<Integer> l = maxRandomAddTestCase.get(i);
-      DynamicPriQueue<Integer, String> m = new DynamicPriQueue<>(false, Integer::compare);
-      for(Integer integer : l){
-        m.add(String.valueOf(integer), integer);
-      }
-      List<Integer> res = new ArrayList<>();
-      while(m.heapSize() > 0) {
-        res.add(Integer.valueOf(m.extractExtremum().second()));
-      }
-      for(int j = 0; j < res.size() - 1; j++){
-        if(res.get(j).compareTo(res.get(j + 1)) > 0){
           assertTrue(true);
         }
         else{
@@ -91,7 +60,6 @@ class DynamicPriQueueTest{
       List<Integer> l = minRandUpdateKeyCase.get(i);
       var rand = new SplittableRandom();
       DynamicPriQueue<Integer, String> heap = new DynamicPriQueue<>(
-              true,
               l.stream().map(String::valueOf).collect(Collectors.toList()),
               s -> rand.nextInt(127 - 1) + 1,
               Integer::compareTo);
@@ -110,42 +78,10 @@ class DynamicPriQueueTest{
     }
   }
 
-  List<List<Integer>> maxRandUpdateKeyCase = new ArrayList<>(iter);
-
-  {
-    for(int i = 0; i < iter; i++){
-      maxRandUpdateKeyCase.add(shuffledRangeList(1, 63));
-    }
-  }
-
-  @Test
-  void maxRandomUpdateKeyTest(){
-    for(int i = 0; i < iter; i++){
-      List<Integer> l = maxRandUpdateKeyCase.get(i);
-      var rand = new SplittableRandom();
-      DynamicPriQueue<Integer, String> heap = new DynamicPriQueue<>(
-              false,
-              l.stream().map(String::valueOf).collect(Collectors.toList()),
-              s -> rand.nextInt(127 - 1) + 1,
-              Integer::compareTo);
-      List<Integer> res = new ArrayList<>();
-      for(var elem : l){
-        heap.updateKey(String.valueOf(elem), elem);
-      }
-      while(heap.heapSize() > 0) {
-        res.add(Integer.valueOf(heap.extractExtremum().second()));
-      }
-      for(int j = 0; j < res.size() - 1; j++){
-        if(!(res.get(j).compareTo(res.get(j + 1)) > 0)){
-          fail();
-        }
-      }
-    }
-  }
 
   @Test
   void modificationTest(){
-    var m = new DynamicPriQueue<Integer, Integer>(true, Integer::compareTo);
+    var m = new DynamicPriQueue<Integer, Integer>(Integer::compareTo);
     m.add(1, 1);
     m.add(2, 2);
     assertThrows(IllegalStateException.class, () -> {

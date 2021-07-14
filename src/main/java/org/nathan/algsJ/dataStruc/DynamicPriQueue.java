@@ -11,19 +11,15 @@ public class DynamicPriQueue<K, V> implements Iterable<Tuple<K, V>>{
   private final Map<V, Node<K, V>> value_node_map = new HashMap<>();
   private final Comparator<K> key_comparer;
   private boolean iterating = false;
-  private final boolean isMinHeap;
 
-  public DynamicPriQueue(boolean isMinHeap, @NotNull Comparator<K> comparer){
-    this.isMinHeap = isMinHeap;
+  public DynamicPriQueue(@NotNull Comparator<K> comparer){
     key_comparer = comparer;
   }
 
   public DynamicPriQueue(
-          boolean isMinHeap,
           @NotNull Iterable<V> values,
           @NotNull Function<V, K> getKey,
           @NotNull Comparator<K> comparer){
-    this.isMinHeap = isMinHeap;
     key_comparer = comparer;
     for(var value : values){
       Objects.requireNonNull(value);
@@ -37,7 +33,7 @@ public class DynamicPriQueue<K, V> implements Iterable<Tuple<K, V>>{
     buildHeap();
   }
 
-  public Tuple<K,V> extractExtremum(){
+  public Tuple<K, V> extractExtremum(){
     modified();
     if(heapSize() == 0){
       throw new NoSuchElementException();
@@ -45,17 +41,12 @@ public class DynamicPriQueue<K, V> implements Iterable<Tuple<K, V>>{
     var res = array.get(0);
     updateArrayAndNode(0, array.get(heapSize() - 1));
     array.remove(heapSize() - 1);
-    if(isMinHeap){
-      minHeapify(0);
-    }
-    else{
-      maxHeapify(0);
-    }
+    minHeapify(0);
     value_node_map.remove(res.value);
-    return new Tuple<>(res.key,res.value);
+    return new Tuple<>(res.key, res.value);
   }
 
-  public Tuple<K,V> head(){
+  public Tuple<K, V> head(){
     if(heapSize() == 0){
       throw new NoSuchElementException();
     }
@@ -71,12 +62,8 @@ public class DynamicPriQueue<K, V> implements Iterable<Tuple<K, V>>{
     Node<K, V> n = new Node<>(key, value, heapSize());
     array.add(n);
     value_node_map.put(value, n);
-    if(isMinHeap){
-      decreaseKey(heapSize() - 1);
-    }
-    else{
-      increaseKey(heapSize() - 1);
-    }
+    decreaseKey(heapSize() - 1);
+
   }
 
   public boolean contains(@NotNull V value){
@@ -93,26 +80,16 @@ public class DynamicPriQueue<K, V> implements Iterable<Tuple<K, V>>{
     if(node == null){
       throw new NoSuchElementException("No such value.");
     }
-    if(isMinHeap){
-      if(key_comparer.compare(new_key, node.key) < 0){
-        node.key = new_key;
-        decreaseKey(node.index);
-      }
-      else if(key_comparer.compare(new_key, node.key) > 0){
-        node.key = new_key;
-        minHeapify(node.index);
-      }
+
+    if(key_comparer.compare(new_key, node.key) < 0){
+      node.key = new_key;
+      decreaseKey(node.index);
     }
-    else{
-      if(key_comparer.compare(new_key, node.key) < 0){
-        node.key = new_key;
-        maxHeapify(node.index);
-      }
-      else if(key_comparer.compare(new_key, node.key) > 0){
-        node.key = new_key;
-        increaseKey(node.index);
-      }
+    else if(key_comparer.compare(new_key, node.key) > 0){
+      node.key = new_key;
+      minHeapify(node.index);
     }
+
   }
 
   public int heapSize(){
@@ -139,17 +116,6 @@ public class DynamicPriQueue<K, V> implements Iterable<Tuple<K, V>>{
     }
   }
 
-  private void increaseKey(int idx){
-    while(idx > 0 &&
-            key_comparer.compare(array.get(parentIndex(idx)).key, array.get(idx).key) < 0) {
-      int p_index = parentIndex(idx);
-      var t = array.get(idx);
-      updateArrayAndNode(idx, array.get(p_index));
-      updateArrayAndNode(p_index, t);
-      idx = p_index;
-    }
-  }
-
   private void minHeapify(int idx){
     int l_idx = leftIndex(idx);
     int r_idx = rightIndex(idx);
@@ -168,32 +134,9 @@ public class DynamicPriQueue<K, V> implements Iterable<Tuple<K, V>>{
     }
   }
 
-  private void maxHeapify(int idx){
-    int l_idx = leftIndex(idx);
-    int r_idx = rightIndex(idx);
-    int max_idx = idx;
-    if((l_idx < heapSize()) && key_comparer.compare(array.get(l_idx).key, array.get(max_idx).key) > 0){
-      max_idx = l_idx;
-    }
-    if((r_idx < heapSize()) && key_comparer.compare(array.get(r_idx).key, array.get(max_idx).key) > 0){
-      max_idx = r_idx;
-    }
-    if(max_idx != idx){
-      var t = array.get(max_idx);
-      updateArrayAndNode(max_idx, array.get(idx));
-      updateArrayAndNode(idx, t);
-      maxHeapify(max_idx);
-    }
-  }
-
   private void buildHeap(){
     for(int i = parentIndex(heapSize() - 1); i >= 0; i--){
-      if(isMinHeap){
-        minHeapify(i);
-      }
-      else{
-        maxHeapify(i);
-      }
+      minHeapify(i);
     }
   }
 
