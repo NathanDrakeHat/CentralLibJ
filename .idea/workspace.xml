@@ -27,12 +27,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="rename">
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/acm/ACM0x10.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/acm/ACM0x10.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/dataStruc/DynamicPriQueue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/dataStruc/DynamicPriQueue.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/graph/MST.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/graph/MST.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/graph/SSSPath.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/graph/SSSPath.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/algsJ/dataStruc/DynamicPriQueueTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algsJ/dataStruc/DynamicPriQueueTest.java" afterDir="false" />
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="refactor DynamicPriQueue to min heap only">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/acm/ACM0x20.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/acm/ACM0x20.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -466,14 +463,7 @@
       <workItem from="1624970288364" duration="5224000" />
       <workItem from="1625058806921" duration="53122000" />
       <workItem from="1625491855060" duration="13515000" />
-      <workItem from="1625723566137" duration="76265000" />
-    </task>
-    <task id="LOCAL-00301" summary="add remove to TernaryTries">
-      <created>1624787348314</created>
-      <option name="number" value="00301" />
-      <option name="presentableId" value="LOCAL-00301" />
-      <option name="project" value="LOCAL" />
-      <updated>1624787348314</updated>
+      <workItem from="1625723566137" duration="77197000" />
     </task>
     <task id="LOCAL-00302" summary="move simplex to algorithms">
       <created>1624970369323</created>
@@ -811,7 +801,14 @@
       <option name="project" value="LOCAL" />
       <updated>1626240900425</updated>
     </task>
-    <option name="localTasksCounter" value="350" />
+    <task id="LOCAL-00350" summary="refactor DynamicPriQueue to min heap only">
+      <created>1626241243042</created>
+      <option name="number" value="00350" />
+      <option name="presentableId" value="LOCAL-00350" />
+      <option name="project" value="LOCAL" />
+      <updated>1626241243042</updated>
+    </task>
+    <option name="localTasksCounter" value="351" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -840,7 +837,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add array utils" />
     <MESSAGE value="add running median" />
     <MESSAGE value="add ArrayUtils" />
     <MESSAGE value="finish ultraQuickSort" />
@@ -865,7 +861,8 @@
     <MESSAGE value="refactor" />
     <MESSAGE value="refactor ExtremumHeap to PriorityQueue" />
     <MESSAGE value="rename" />
-    <option name="LAST_COMMIT_MESSAGE" value="rename" />
+    <MESSAGE value="refactor DynamicPriQueue to min heap only" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor DynamicPriQueue to min heap only" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>

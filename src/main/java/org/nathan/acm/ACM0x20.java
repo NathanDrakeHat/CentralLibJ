@@ -203,6 +203,17 @@ public class ACM0x20{
     return max;
   }
 
+  /**
+   * POJ2449
+   * <br/> A* algorithm
+   * @param graph graph
+   * @param source source
+   * @param destination destination
+   * @param <ID> id
+   * @param <V> vertex
+   * @param <E> edge
+   * @return k th minimum path
+   */
   public static <ID, V extends BFS.Vert<ID>, E extends WeightEdge<V>>
   int kthMinPath(@NotNull LinkedGraph<V,E> graph, V source, V destination){
     if(!SSSPath.BellmanFord(graph, source)){
