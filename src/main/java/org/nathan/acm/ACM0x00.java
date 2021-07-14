@@ -1,7 +1,6 @@
 package org.nathan.acm;
 
 
-import org.nathan.algsJ.dataStruc.ExtremumHeap;
 import org.nathan.centralUtils.classes.Ref;
 import org.nathan.centralUtils.tuples.Tuple;
 import org.nathan.centralUtils.utils.ArrayUtils;

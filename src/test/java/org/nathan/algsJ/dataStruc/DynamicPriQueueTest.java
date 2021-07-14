@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.nathan.centralUtils.utils.ArrayUtils.shuffledRangeList;
 
 
-class ExtremumHeapTest{
+class DynamicPriQueueTest{
 
   List<List<Integer>> minRandomAddTestCase = new ArrayList<>();
 
@@ -26,7 +26,7 @@ class ExtremumHeapTest{
   void minRandomAddTest(){
     for(int i = 0; i < iter; i++){
       List<Integer> l = minRandomAddTestCase.get(i);
-      ExtremumHeap<Integer, String> m = new ExtremumHeap<>(true, Integer::compare);
+      DynamicPriQueue<Integer, String> m = new DynamicPriQueue<>(true, Integer::compare);
       for(Integer integer : l){
         m.add(String.valueOf(integer), integer);
       }
@@ -57,7 +57,7 @@ class ExtremumHeapTest{
   void maxRandomAddTest(){
     for(int i = 0; i < iter; i++){
       List<Integer> l = maxRandomAddTestCase.get(i);
-      ExtremumHeap<Integer, String> m = new ExtremumHeap<>(false, Integer::compare);
+      DynamicPriQueue<Integer, String> m = new DynamicPriQueue<>(false, Integer::compare);
       for(Integer integer : l){
         m.add(String.valueOf(integer), integer);
       }
@@ -90,7 +90,7 @@ class ExtremumHeapTest{
     for(int i = 0; i < iter; i++){
       List<Integer> l = minRandUpdateKeyCase.get(i);
       var rand = new SplittableRandom();
-      ExtremumHeap<Integer, String> heap = new ExtremumHeap<>(
+      DynamicPriQueue<Integer, String> heap = new DynamicPriQueue<>(
               true,
               l.stream().map(String::valueOf).collect(Collectors.toList()),
               s -> rand.nextInt(127 - 1) + 1,
@@ -123,7 +123,7 @@ class ExtremumHeapTest{
     for(int i = 0; i < iter; i++){
       List<Integer> l = maxRandUpdateKeyCase.get(i);
       var rand = new SplittableRandom();
-      ExtremumHeap<Integer, String> heap = new ExtremumHeap<>(
+      DynamicPriQueue<Integer, String> heap = new DynamicPriQueue<>(
               false,
               l.stream().map(String::valueOf).collect(Collectors.toList()),
               s -> rand.nextInt(127 - 1) + 1,
@@ -145,7 +145,7 @@ class ExtremumHeapTest{
 
   @Test
   void modificationTest(){
-    var m = new ExtremumHeap<Integer, Integer>(true, Integer::compareTo);
+    var m = new DynamicPriQueue<Integer, Integer>(true, Integer::compareTo);
     m.add(1, 1);
     m.add(2, 2);
     assertThrows(IllegalStateException.class, () -> {

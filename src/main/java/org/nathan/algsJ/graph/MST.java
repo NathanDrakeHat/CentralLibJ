@@ -2,7 +2,7 @@ package org.nathan.algsJ.graph;
 
 import org.jetbrains.annotations.NotNull;
 import org.nathan.algsJ.dataStruc.DisjointSet;
-import org.nathan.algsJ.dataStruc.ExtremumHeap;
+import org.nathan.algsJ.dataStruc.DynamicPriQueue;
 import org.nathan.algsJ.dataStruc.FibonacciMinHeap;
 
 import java.util.ArrayList;
@@ -80,7 +80,7 @@ public final class MST{
       }
       u.parent = null;
     }
-    ExtremumHeap<Double, V> Q = new ExtremumHeap<>(true, vertices, VertPrim::getKey, Double::compare);
+    DynamicPriQueue<Double, V> Q = new DynamicPriQueue<>(true, vertices, VertPrim::getKey, Double::compare);
     while(Q.length() > 0) {
       var u = Q.extractExtremum().second();
       var u_edges = graph.adjacentEdgesOf(u);

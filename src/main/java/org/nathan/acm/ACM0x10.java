@@ -1,11 +1,8 @@
 package org.nathan.acm;
 
 import org.jetbrains.annotations.NotNull;
-import org.nathan.algsJ.dataStruc.ExtremumHeap;
+import org.nathan.algsJ.dataStruc.DynamicPriQueue;
 import org.nathan.algsJ.dataStruc.TernaryTries;
-import org.nathan.algsJ.graph.BaseEdge;
-import org.nathan.algsJ.graph.BaseVert;
-import org.nathan.algsJ.graph.LinkedGraph;
 import org.nathan.centralUtils.tuples.Triad;
 import org.nathan.centralUtils.tuples.Tuple;
 
@@ -243,7 +240,7 @@ public class ACM0x10{
     two_seq[0] = sequences[0];
     int[] min_seq = new int[seq_len];
 
-    ExtremumHeap<Integer, Triad<Integer, Integer, Boolean>> minHeap = new ExtremumHeap<>(true, Integer::compare);
+    DynamicPriQueue<Integer, Triad<Integer, Integer, Boolean>> minHeap = new DynamicPriQueue<>(true, Integer::compare);
     Arrays.sort(two_seq[0]);
     for(int i = 1; i < sequences.length; i++){
       two_seq[1] = sequences[i];

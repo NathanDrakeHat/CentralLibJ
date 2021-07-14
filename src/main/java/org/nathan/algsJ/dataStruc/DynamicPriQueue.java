@@ -6,19 +6,19 @@ import org.nathan.centralUtils.tuples.Tuple;
 import java.util.*;
 import java.util.function.Function;
 
-public class ExtremumHeap<K, V> implements Iterable<Tuple<K, V>>{
+public class DynamicPriQueue<K, V> implements Iterable<Tuple<K, V>>{
   private final List<Node<K, V>> array = new ArrayList<>();
   private final Map<V, Node<K, V>> value_node_map = new HashMap<>();
   private final Comparator<K> key_comparer;
   private boolean iterating = false;
   private final boolean isMinHeap;
 
-  public ExtremumHeap(boolean isMinHeap, @NotNull Comparator<K> comparer){
+  public DynamicPriQueue(boolean isMinHeap, @NotNull Comparator<K> comparer){
     this.isMinHeap = isMinHeap;
     key_comparer = comparer;
   }
 
-  public ExtremumHeap(
+  public DynamicPriQueue(
           boolean isMinHeap,
           @NotNull Iterable<V> values,
           @NotNull Function<V, K> getKey,

@@ -2,7 +2,7 @@ package org.nathan.algsJ.graph;
 
 
 import org.jetbrains.annotations.NotNull;
-import org.nathan.algsJ.dataStruc.ExtremumHeap;
+import org.nathan.algsJ.dataStruc.DynamicPriQueue;
 import org.nathan.algsJ.dataStruc.FibonacciMinHeap;
 
 import java.util.Comparator;
@@ -166,7 +166,7 @@ public final class SSSPath{
     }
     initializeSingleSource(G, s);
     var vertices = G.allVertices();
-    ExtremumHeap<Double, V> Q = new ExtremumHeap<>(true, vertices, BFS.Vert::getDistance, Double::compare);
+    DynamicPriQueue<Double, V> Q = new DynamicPriQueue<>(true, vertices, BFS.Vert::getDistance, Double::compare);
     while(Q.length() > 0) {
       var u = Q.extractExtremum().second();
       var u_edges = G.adjacentEdgesOf(u);
