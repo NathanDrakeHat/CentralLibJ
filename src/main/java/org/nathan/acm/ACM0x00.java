@@ -515,30 +515,30 @@ public class ACM0x00{
    */
   public static IntStream runningMedian(IntStream intStream){
     var b = IntStream.builder();
-    ExtremumHeap<Integer, Integer> minHeap = new ExtremumHeap<>(true, Integer::compare);
-    ExtremumHeap<Integer, Integer> maxHeap = new ExtremumHeap<>(false, Integer::compare);
+    PriorityQueue<Integer> minHeap = new PriorityQueue<>();
+    PriorityQueue<Integer> maxHeap = new PriorityQueue<>(Comparator.reverseOrder());
     intStream.forEach(i -> {
-      if(minHeap.heapSize() == 0){
-        minHeap.add(i, i);
+      if(minHeap.size() == 0){
+        minHeap.add(i);
       }
-      else if(i <= minHeap.head().first()){
-        maxHeap.add(i, i);
+      else if(i <= minHeap.peek()){
+        maxHeap.add(i);
       }
       else{
-        minHeap.add(i, i);
+        minHeap.add(i);
       }
 
-      if(minHeap.heapSize() - maxHeap.heapSize() <= -1){
-        var kv = maxHeap.extractExtremum();
-        minHeap.add(kv.second(), kv.first());
+      if(minHeap.size() - maxHeap.size() <= -1){
+        var v = maxHeap.poll();
+        minHeap.add(v);
       }
-      else if(minHeap.heapSize() - maxHeap.heapSize() >= 2){
-        var kv = minHeap.extractExtremum();
-        maxHeap.add(kv.second(), kv.first());
+      else if(minHeap.size() - maxHeap.size() >= 2){
+        var v = minHeap.poll();
+        maxHeap.add(v);
       }
 
-      if(minHeap.heapSize() - maxHeap.heapSize() == 1){
-        b.add(minHeap.head().first());
+      if(minHeap.size() - maxHeap.size() == 1){
+        b.add(minHeap.peek());
       }
     });
     return b.build();

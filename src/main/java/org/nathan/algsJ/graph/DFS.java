@@ -108,6 +108,14 @@ public final class DFS{
     int finish; // f
     COLOR color;
 
+    public int getDiscover(){
+      return discover;
+    }
+
+    public int getFinish(){
+      return finish;
+    }
+
     Vert(@NotNull V name){
       super(name);
     }

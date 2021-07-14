@@ -1,16 +1,13 @@
 package org.nathan.algsJ.misc;
 
 import org.jetbrains.annotations.NotNull;
-import org.nathan.algsJ.dataStruc.ExtremumHeap;
 
-import java.util.ArrayDeque;
-import java.util.Deque;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class Huffman{
 
   static class KNode{
+    double weight;
     String sym;
     final KNode[] children;
 
@@ -19,9 +16,10 @@ public class Huffman{
       children = new KNode[radix];
     }
 
-    KNode(String sym){
+    KNode(String sym, double w){
       children = null;
       this.sym = sym;
+      weight = w;
     }
   }
 
@@ -30,26 +28,27 @@ public class Huffman{
       throw new IllegalArgumentException();
     }
     var pad = freq.size() - 1 % (radix - 1);
-    ExtremumHeap<Double, KNode> freqSymHeap = new ExtremumHeap<>(true, Double::compare);
+    PriorityQueue<KNode> nodeHeap = new PriorityQueue<>(Comparator.comparing((n)->n.weight));
     for(int i = 0; i < pad; i++){
-      freqSymHeap.add(new KNode("pad" + pad), 0.);
+      nodeHeap.add(new KNode("pad" + pad, 0.));
     }
     for(var kv : freq.entrySet()){
-      freqSymHeap.add(new KNode(kv.getKey()), kv.getValue());
+      nodeHeap.add(new KNode(kv.getKey(),kv.getValue()));
     }
 
-    while(freqSymHeap.heapSize() > 1) {
+    while(nodeHeap.size() > 1) {
       double acc = 0;
       KNode parent = new KNode(radix);
       for(int i = 0; i < radix; i++){
-        var freqSym = freqSymHeap.extractExtremum();
-        acc += freqSym.first();
-        parent.children[i] = freqSym.second();
+        var n = nodeHeap.poll();
+        acc += n.weight;
+        parent.children[i] = n;
       }
-      freqSymHeap.add(parent, acc);
+      parent.weight = acc;
+      nodeHeap.add(parent);
     }
 
-    var freqTree = freqSymHeap.extractExtremum();
+    var freqTree = nodeHeap.poll();
     Map<String, String> ans = new HashMap<>();
     var funcGetEncode = new Object(){
       void apply(KNode node, Deque<String> strings){
@@ -75,7 +74,7 @@ public class Huffman{
       }
     };
 
-    funcGetEncode.apply(freqTree.second(), new ArrayDeque<>());
+    funcGetEncode.apply(freqTree, new ArrayDeque<>());
     return ans;
   }
 }

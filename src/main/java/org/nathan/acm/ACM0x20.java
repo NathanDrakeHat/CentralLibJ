@@ -1,9 +1,7 @@
 package org.nathan.acm;
 
 import org.jetbrains.annotations.NotNull;
-import org.nathan.algsJ.graph.BaseEdge;
-import org.nathan.algsJ.graph.BaseVert;
-import org.nathan.algsJ.graph.LinkedGraph;
+import org.nathan.algsJ.graph.*;
 import org.nathan.centralUtils.utils.NumericUtils;
 
 import java.util.*;
@@ -203,5 +201,14 @@ public class ACM0x20{
     }
 
     return max;
+  }
+
+  public static <ID, V extends BFS.Vert<ID>, E extends WeightEdge<V>>
+  int kthMinPath(@NotNull LinkedGraph<V,E> graph, V source, V destination){
+    if(!SSSPath.BellmanFord(graph, source)){
+      throw new IllegalArgumentException("negative cyclic graph.");
+    }
+
+    return 0;
   }
 }
