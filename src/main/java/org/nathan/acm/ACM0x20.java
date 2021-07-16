@@ -239,23 +239,28 @@ public class ACM0x20{
 
   static class NPuzzle{
     private final String[] data;
+    private final String[] origin;
     private int sr = 2, sc = 2;
+    private final List<int[][]> exchangeHistory = new ArrayList<>();
 
-    public NPuzzle(){
+    public NPuzzle(int shuffle){
       data = new String[]{"1", "2", "3", "4", "5", "6", "7", "8", "_"};
+      shuffle(shuffle);
+      origin = new String[9];
+      System.arraycopy(data, 0, origin, 0, origin.length);
     }
 
-    public NPuzzle(@NotNull String[][] n){
-      data = new String[9];
-      if(n.length != 3){
-        throw new IllegalArgumentException();
-      }
-      for(int i = 0; i < 3; i++){
-        if(n[i].length != 3){
-          throw new IllegalArgumentException();
-        }
-        System.arraycopy(n[i], 0, this.data, i * 3, 3);
-      }
+    public NPuzzle(NPuzzle nPuzzle){
+      this.data = new String[9];
+      System.arraycopy(nPuzzle.data, 0, this.data, 0, this.data.length);
+      this.sr = nPuzzle.sr;
+      this.sc = nPuzzle.sc;
+      this.exchangeHistory.addAll(nPuzzle.exchangeHistory);
+      this.origin = Arrays.copyOf(nPuzzle.origin, 9);
+    }
+
+    public int[] spaceIndex(){
+      return new int[]{sr, sc};
     }
 
     public String get(int r, int c){
@@ -295,9 +300,10 @@ public class ACM0x20{
       var t = get(r1, c1);
       set(r1, c1, get(r2, c2));
       set(r2, c2, t);
+      exchangeHistory.add(new int[][]{new int[]{r1, c1}, new int[]{r2, c2}});
     }
 
-    public void shuffle(int times){
+    private void shuffle(int times){
       for(int i = 0; i < times; i++){
         var ns = neighbors(sr, sc);
         Shuffle.KnuthShuffle(ns);
@@ -308,7 +314,7 @@ public class ACM0x20{
       }
     }
 
-    private static int[][] neighbors(int r, int c){
+    static int[][] neighbors(int r, int c){
       switch(r){
         case 0 -> {
           switch(c){
@@ -353,13 +359,6 @@ public class ACM0x20{
       throw new ArrayIndexOutOfBoundsException();
     }
 
-    public void reset(){
-      for(int i = 0; i < 8; i++){
-        data[i] = String.valueOf(i);
-      }
-      data[8] = "_";
-    }
-
     public boolean solved(){
       for(int i = 0; i < 8; i++){
         if(!(data[i].equals(String.valueOf(i)))){
@@ -367,6 +366,11 @@ public class ACM0x20{
         }
       }
       return data[8].equals("_");
+    }
+
+    public @NotNull String[] exchangeHistory(){
+      // TODO finish it
+      return null;
     }
 
     @Override
@@ -390,7 +394,20 @@ public class ACM0x20{
    * @param nPuzzle eight
    * @return min answer
    */
-  public static @NotNull Deque<NPuzzle> eight(@NotNull NPuzzle nPuzzle){
+  public static @NotNull String[] eight(@NotNull NPuzzle nPuzzle){
     return null;
+  }
+
+  private static int estimate(NPuzzle nPuzzle){
+    int ans = 0;
+    for(int i = 0; i < 3; i++){
+      for(int j = 0; j < 3; j++){
+        var num = Integer.parseInt(nPuzzle.get(i, j));
+        var r = num / 3;
+        var c = num % 3;
+        ans += Math.abs(i - r) + Math.abs(j - c);
+      }
+    }
+    return ans;
   }
 }
