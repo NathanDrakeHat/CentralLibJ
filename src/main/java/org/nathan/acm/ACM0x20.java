@@ -80,6 +80,7 @@ public class ACM0x20{
   }
 
   /**
+   * iterative deepen DFS
    * <br/>POJ2248
    *
    * @param n limit
@@ -96,62 +97,47 @@ public class ACM0x20{
       throw new IllegalArgumentException();
     }
 
-    List<Integer> list = List.of(1, 2);
-    List<List<Integer>> layer = new ArrayList<>(1);
-    layer.add(list);
+    List<Integer> list = new ArrayList<>(2);
+    list.add(1);
+    list.add(2);
 
-    while(layer.size() > 0) {
-      var size = layer.get(0).size();
-      List<List<Integer>> nextLayer = new ArrayList<>((size + (size - 1) * size / 2) * layer.size());
-      for(var l : layer){
-        Set<Integer> next_item = new HashSet<>();
-        for(int i = 0; i < l.size() - 1; i++){
-          var i1 = l.get(i);
-          var i2 = l.get(i + 1);
-          int sum1 = i1 * 2, sum2 = i1 + i2;
-          if(!next_item.contains(sum1)){
-            var nl = new ArrayList<>(l);
-            nl.add(sum1);
-            if(sum1 == n){
-              return nl;
-            }
-            else if(sum1 > n){
-              break;
-            }
-            nextLayer.add(nl);
-            next_item.add(sum1);
-          }
-          if(!next_item.contains(sum2)){
-            var nl = new ArrayList<>(l);
-            nl.add(sum2);
-            if(sum2 == n){
-              return nl;
-            }
-            else if(sum2 > n){
-              break;
-            }
-            nextLayer.add(nl);
-            next_item.add(sum2);
-          }
+    var funcSolve = new Object(){
+      boolean apply(int depth, int limit){
+        if(depth > limit){
+          return false;
         }
-        {
-          int i = l.size() - 1;
-          var i1 = l.get(i);
-          int sum1 = i1 * 2;
-          if(!next_item.contains(sum1)){
-            var nl = new ArrayList<>(l);
-            nl.add(sum1);
-            if(sum1 == n){
-              return nl;
+
+        Set<Integer> sum = new HashSet<>((int) Math.pow(2, list.size()));
+        for(int i = list.size() - 1; i >= 0; i--){
+          for(int j = i; j >= 0; j--){
+            var t = list.get(i) + list.get(j);
+            if(t == n){
+              list.add(t);
+              return true;
             }
-            else if(sum1 < n){
-              nextLayer.add(nl);
-              next_item.add(sum1);
+            else{
+              if(!sum.contains(t)){
+                sum.add(t);
+                list.add(t);
+                var res = apply(depth + 1, limit);
+                if(res){
+                  return true;
+                }
+                else{
+                  list.remove(list.size() - 1);
+                }
+              }
             }
           }
         }
+        return false;
       }
-      layer = nextLayer;
+    };
+
+    for(int i = 3; i < 20; i++){
+      if(funcSolve.apply(3, i)){
+        return list;
+      }
     }
 
     throw new RuntimeException();
@@ -259,6 +245,19 @@ public class ACM0x20{
       data = new String[]{"1", "2", "3", "4", "5", "6", "7", "8", "_"};
     }
 
+    public NPuzzle(@NotNull String[][] n){
+      data = new String[9];
+      if(n.length != 3){
+        throw new IllegalArgumentException();
+      }
+      for(int i = 0; i < 3; i++){
+        if(n[i].length != 3){
+          throw new IllegalArgumentException();
+        }
+        System.arraycopy(n[i], 0, this.data, i * 3, 3);
+      }
+    }
+
     public String get(int r, int c){
       if(!(r >= 0 && r < 3) || !(c >= 0 && c < 3)){
         throw new ArrayIndexOutOfBoundsException();
@@ -303,6 +302,7 @@ public class ACM0x20{
         var ns = neighbors(sr, sc);
         Shuffle.KnuthShuffle(ns);
         var first = ns[0];
+        exchange(sr, sc, first[0], first[1]);
         sr = first[0];
         sc = first[1];
       }
@@ -353,6 +353,22 @@ public class ACM0x20{
       throw new ArrayIndexOutOfBoundsException();
     }
 
+    public void reset(){
+      for(int i = 0; i < 8; i++){
+        data[i] = String.valueOf(i);
+      }
+      data[8] = "_";
+    }
+
+    public boolean solved(){
+      for(int i = 0; i < 8; i++){
+        if(!(data[i].equals(String.valueOf(i)))){
+          return false;
+        }
+      }
+      return data[8].equals("_");
+    }
+
     @Override
     public String toString(){
       var b = new StringBuilder();
@@ -374,7 +390,7 @@ public class ACM0x20{
    * @param nPuzzle eight
    * @return min answer
    */
-  public static @NotNull NPuzzle[] eight(@NotNull NPuzzle nPuzzle){
+  public static @NotNull Deque<NPuzzle> eight(@NotNull NPuzzle nPuzzle){
     return null;
   }
 }

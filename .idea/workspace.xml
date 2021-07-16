@@ -27,13 +27,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="add doc">
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="add new acm">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/acm/ACM0x20.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/acm/ACM0x20.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/graph/BFS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/graph/BFS.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/graph/BaseVert.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/graph/BaseVert.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/graph/WeightEdge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/graph/WeightEdge.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/misc/Shuffle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/misc/Shuffle.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/org/nathan/acm/ACM0x20Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/nathan/acm/ACM0x20Test.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -130,7 +126,7 @@
       <command value="mvn install:install-file -Dfile=algs4.jar -DgroupId=edu.princeton.cs -DartifactId=algs4 -Dversion=1.0 -Dpackaging=jar -DgeneratePom=true " />
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.ACM0x20Test.kthMinPathTest">
+  <component name="RunManager" selected="JUnit.ACM0x20Test.additionChainsTest">
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.nathan.Main" />
       <module name="AlgorithmsJava" />
@@ -171,7 +167,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ACM0x10Test.reachabilityCountTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ACM0x20Test.additionChainsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AlgorithmsJava" />
       <extension name="coverage">
         <pattern>
@@ -180,8 +176,8 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="org.nathan.acm" />
-      <option name="MAIN_CLASS_NAME" value="org.nathan.acm.ACM0x10Test" />
-      <option name="METHOD_NAME" value="reachabilityCountTest" />
+      <option name="MAIN_CLASS_NAME" value="org.nathan.acm.ACM0x20Test" />
+      <option name="METHOD_NAME" value="additionChainsTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -232,18 +228,18 @@
       <item itemvalue="Application.pushUtils" />
       <item itemvalue="Application.Main" />
       <item itemvalue="JUnit.All in AlgorithmsJava" />
-      <item itemvalue="JUnit.ACM0x10Test.reachabilityCountTest" />
       <item itemvalue="JUnit.ACM0x10Test.additionChainsTest" />
       <item itemvalue="JUnit.ACM0x20Test.sendGiftTest" />
       <item itemvalue="JUnit.ACM0x20Test.kthMinPathTest" />
+      <item itemvalue="JUnit.ACM0x20Test.additionChainsTest" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ACM0x20Test.additionChainsTest" />
         <item itemvalue="JUnit.ACM0x20Test.kthMinPathTest" />
         <item itemvalue="JUnit.All in AlgorithmsJava" />
         <item itemvalue="JUnit.ACM0x20Test.sendGiftTest" />
         <item itemvalue="JUnit.ACM0x10Test.additionChainsTest" />
-        <item itemvalue="JUnit.ACM0x10Test.reachabilityCountTest" />
       </list>
     </recent_temporary>
   </component>
@@ -469,14 +465,7 @@
       <workItem from="1625058806921" duration="53122000" />
       <workItem from="1625491855060" duration="13515000" />
       <workItem from="1625723566137" duration="92331000" />
-      <workItem from="1626430852651" duration="1074000" />
-    </task>
-    <task id="LOCAL-00303" summary="save">
-      <created>1624970388952</created>
-      <option name="number" value="00303" />
-      <option name="presentableId" value="LOCAL-00303" />
-      <option name="project" value="LOCAL" />
-      <updated>1624970388952</updated>
+      <workItem from="1626430852651" duration="5555000" />
     </task>
     <task id="LOCAL-00304" summary="add result array">
       <created>1625016135556</created>
@@ -814,7 +803,14 @@
       <option name="project" value="LOCAL" />
       <updated>1626242480038</updated>
     </task>
-    <option name="localTasksCounter" value="352" />
+    <task id="LOCAL-00352" summary="add new acm">
+      <created>1626432408088</created>
+      <option name="number" value="00352" />
+      <option name="presentableId" value="LOCAL-00352" />
+      <option name="project" value="LOCAL" />
+      <updated>1626432408088</updated>
+    </task>
+    <option name="localTasksCounter" value="353" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -861,14 +857,14 @@
     <MESSAGE value="add topological sort" />
     <MESSAGE value="add extends to graph algo" />
     <MESSAGE value="add acm" />
-    <MESSAGE value="add new acm" />
     <MESSAGE value="add new acm, add new utils" />
     <MESSAGE value="refactor" />
     <MESSAGE value="refactor ExtremumHeap to PriorityQueue" />
     <MESSAGE value="rename" />
     <MESSAGE value="refactor DynamicPriQueue to min heap only" />
     <MESSAGE value="add doc" />
-    <option name="LAST_COMMIT_MESSAGE" value="add doc" />
+    <MESSAGE value="add new acm" />
+    <option name="LAST_COMMIT_MESSAGE" value="add new acm" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>

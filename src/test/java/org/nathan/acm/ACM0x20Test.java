@@ -78,11 +78,25 @@ public class ACM0x20Test{
 
   @Test
   void additionChainsTest(){
-    assertEquals(5, ACM0x20.additionChains(12).size());
-    assertEquals(6, ACM0x20.additionChains(13).size());
-    assertEquals(6, ACM0x20.additionChains(14).size());
-    assertEquals(6, ACM0x20.additionChains(15).size());
-    assertEquals(5, ACM0x20.additionChains(16).size());
+    var ans1 = ACM0x20.additionChains(12);
+    assertEquals(12, ans1.get(ans1.size() - 1));
+    assertEquals(5, ans1.size());
+
+    var ans2 = ACM0x20.additionChains(13);
+    assertEquals(13, ans2.get(ans2.size() - 1));
+    assertEquals(6, ans2.size());
+
+    var ans3 = ACM0x20.additionChains(14);
+    assertEquals(14, ans3.get(ans3.size() - 1));
+    assertEquals(6, ans3.size());
+
+    var ans4 = ACM0x20.additionChains(15);
+    assertEquals(15, ans4.get(ans4.size() - 1));
+    assertEquals(6, ans4.size());
+
+    var ans5 = ACM0x20.additionChains(16);
+    assertEquals(16, ans5.get(ans5.size() - 1));
+    assertEquals(5, ans5.size());
   }
 
   int[][] sgCases = new int[iteration][];
