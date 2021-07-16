@@ -72,7 +72,7 @@ public final class BFS{
     double distance; // d
     COLOR color;
 
-    Vert(@NotNull ID name){
+    public Vert(@NotNull ID name){
       super(name);
     }
 
@@ -86,6 +86,12 @@ public final class BFS{
 
     public double getDistance(){
       return distance;
+    }
+
+    public void refresh(){
+      parent = null;
+      distance = 0;
+      color = null;
     }
 
     @Override

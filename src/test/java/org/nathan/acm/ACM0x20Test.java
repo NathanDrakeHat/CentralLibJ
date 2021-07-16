@@ -1,11 +1,7 @@
 package org.nathan.acm;
 
 import org.junit.jupiter.api.Test;
-import org.nathan.algsJ.graph.BaseEdge;
-import org.nathan.algsJ.graph.BaseVert;
-import org.nathan.algsJ.graph.LinkedGraph;
-import static org.nathan.acm.ACM0x20.*;
-
+import org.nathan.algsJ.graph.*;
 import org.nathan.centralUtils.utils.ArrayUtils;
 import org.nathan.centralUtils.utils.NumericUtils;
 
@@ -13,6 +9,8 @@ import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.nathan.acm.ACM0x20.kthMinPath;
+import static org.nathan.acm.ACM0x20.sendGift;
 
 public class ACM0x20Test{
   static final int iteration = 20;
@@ -89,10 +87,11 @@ public class ACM0x20Test{
 
   int[][] sgCases = new int[iteration][];
   int[] sgAnswers = new int[iteration];
+
   {
     var rand = new SplittableRandom();
     for(int i = 0; i < iteration; i++){
-      sgCases[i] = ArrayUtils.randomIntArray(0, Integer.MAX_VALUE - 1, rand.nextInt(10,45));
+      sgCases[i] = ArrayUtils.randomIntArray(0, Integer.MAX_VALUE - 1, rand.nextInt(10, 45));
       Set<Integer> set = new HashSet<>(1);
       set.add(0);
       for(int j = 0; j < sgCases[i].length; j++){
@@ -115,5 +114,44 @@ public class ACM0x20Test{
     for(int i = 0; i < iteration; i++){
       assertEquals(sgAnswers[i], sendGift(sgCases[i]));
     }
+  }
+
+  LinkedGraph<BFS.Vert<Integer>, WeightEdge<BFS.Vert<Integer>>> kmpCase;
+  List<BFS.Vert<Integer>> kmpVs;
+  LinkedGraph<BFS.Vert<Integer>, WeightEdge<BFS.Vert<Integer>>> kmpCaseReverse;
+
+  {
+    kmpVs = new ArrayList<>(4);
+    kmpVs.add(new BFS.Vert<>(1));
+    kmpVs.add(new BFS.Vert<>(2));
+    kmpVs.add(new BFS.Vert<>(3));
+    kmpVs.add(new BFS.Vert<>(4));
+    kmpCase = new LinkedGraph<>(true, kmpVs);
+    kmpCase.addEdge(new WeightEdge<>(kmpVs.get(0), kmpVs.get(1), 1));
+    kmpCase.addEdge(new WeightEdge<>(kmpVs.get(1), kmpVs.get(0), 2));
+    kmpCase.addEdge(new WeightEdge<>(kmpVs.get(1), kmpVs.get(2), 3));
+    kmpCase.addEdge(new WeightEdge<>(kmpVs.get(2), kmpVs.get(1), 4));
+    kmpCase.addEdge(new WeightEdge<>(kmpVs.get(2), kmpVs.get(3), 5));
+    kmpCase.addEdge(new WeightEdge<>(kmpVs.get(3), kmpVs.get(2), 6));
+
+    kmpCaseReverse = new LinkedGraph<>(true, kmpVs);
+    kmpCaseReverse.addEdge(new WeightEdge<>(kmpVs.get(1), kmpVs.get(0), 1));
+    kmpCaseReverse.addEdge(new WeightEdge<>(kmpVs.get(0), kmpVs.get(1), 2));
+    kmpCaseReverse.addEdge(new WeightEdge<>(kmpVs.get(2), kmpVs.get(1), 3));
+    kmpCaseReverse.addEdge(new WeightEdge<>(kmpVs.get(1), kmpVs.get(2), 4));
+    kmpCaseReverse.addEdge(new WeightEdge<>(kmpVs.get(3), kmpVs.get(2), 5));
+    kmpCaseReverse.addEdge(new WeightEdge<>(kmpVs.get(2), kmpVs.get(3), 6));
+
+  }
+
+  @Test
+  void kthMinPathTest(){
+    assertEquals(9., kthMinPath(kmpCase, kmpCaseReverse, kmpVs.get(0), kmpVs.get(3), 1));
+    kmpVs.forEach(BFS.Vert::refresh);
+    assertEquals(12., kthMinPath(kmpCase, kmpCaseReverse, kmpVs.get(0), kmpVs.get(3), 2));
+    kmpVs.forEach(BFS.Vert::refresh);
+    assertEquals(15., kthMinPath(kmpCase, kmpCaseReverse, kmpVs.get(0), kmpVs.get(3), 3));
+    kmpVs.forEach(BFS.Vert::refresh);
+    assertEquals(16., kthMinPath(kmpCase, kmpCaseReverse, kmpVs.get(0), kmpVs.get(3), 4));
   }
 }

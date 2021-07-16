@@ -11,7 +11,7 @@ public class WeightEdge<V> extends BaseEdge<V>{
     this.weight = weight;
   }
 
-  double weight(){
+  public double weight(){
     return weight;
   }
 }

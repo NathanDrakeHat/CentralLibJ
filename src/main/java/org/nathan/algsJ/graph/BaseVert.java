@@ -1,6 +1,6 @@
 package org.nathan.algsJ.graph;
 
-public class BaseVert<Id>{
+public class BaseVert<Id> {
   final Id identity;
 
   public BaseVert(Id id){
