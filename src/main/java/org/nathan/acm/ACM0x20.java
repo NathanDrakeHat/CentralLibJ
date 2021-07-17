@@ -255,7 +255,7 @@ public class ACM0x20{
       sc = nPuzzle.sc;
     }
 
-    public Tuple<Integer, Integer> spaceIndex(){
+    public Tuple<Integer, Integer> getSpaceIndex(){
       return new Tuple<>(sr, sc);
     }
 
@@ -384,24 +384,24 @@ public class ACM0x20{
    * @param nPuzzle eight
    * @return min answer
    */
-  public static @NotNull String[] eight(@NotNull NPuzzle nPuzzle){
+  public static @NotNull NPuzzle[] eight(@NotNull NPuzzle nPuzzle){
     // step, estimate, n-puzzle, last space
     PriorityQueue<Quaternion<Integer, Integer, NPuzzle, FinalSharedTreeList<Tuple<Integer,Integer>>>> queue =
             new PriorityQueue<>(Comparator.comparing(t -> t.first() + t.second()));
-    queue.add(new Quaternion<>(0, estimate(nPuzzle), nPuzzle, new FinalSharedTreeList<>(nPuzzle.spaceIndex())));
+    queue.add(new Quaternion<>(0, estimate(nPuzzle), nPuzzle, new FinalSharedTreeList<>(nPuzzle.getSpaceIndex())));
     while(queue.size() > 0) {
       var quaternion = queue.poll();
       var np = quaternion.third();
       if(np.solved()){
         var history = quaternion.fourth().toDeque();
         history.removeFirst();
-        var ans = new String[history.size() + 1];
-        ans[ans.length - 1] = np.toString();
+        var ans = new NPuzzle[history.size() + 1];
+        ans[ans.length - 1] = new NPuzzle(np);
         int i = ans.length - 2;
         while(history.size() > 0){
           var s = history.removeLast();
           np.exchangeWith(s.first(), s.second());
-          ans[i--] = np.toString();
+          ans[i--] = new NPuzzle(np);
         }
         return ans;
       }
@@ -413,7 +413,7 @@ public class ACM0x20{
         var nb = neighbors.get(i);
         if(!nb.equals(quaternion.fourth().Data)){
           var nnp = new NPuzzle(np);
-          var currentSpace = nnp.spaceIndex();
+          var currentSpace = nnp.getSpaceIndex();
           var sl = new FinalSharedTreeList<>(currentSpace);
           sl.setParent(quaternion.fourth());
           nnp.exchangeWith(nb.first(), nb.second());
@@ -422,7 +422,7 @@ public class ACM0x20{
       }
       var nb = neighbors.get(neighbors.size() - 1);
       if(!nb.equals(quaternion.fourth().Data)){
-        var currentSpace = np.spaceIndex();
+        var currentSpace = np.getSpaceIndex();
         var sl = new FinalSharedTreeList<>(currentSpace);
         sl.setParent(quaternion.fourth());
         np.exchangeWith(nb.first(), nb.second());

@@ -7,8 +7,7 @@ import org.nathan.centralUtils.utils.NumericUtils;
 
 import java.util.*;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.nathan.acm.ACM0x20.*;
 
 public class ACM0x20Test{
@@ -168,21 +167,39 @@ public class ACM0x20Test{
     assertEquals(16., kthMinPath(kmpCase, kmpCaseReverse, kmpVs.get(0), kmpVs.get(3), 4));
   }
 
-  ACM0x20.NPuzzle[] nPuzzleCases;
+  ACM0x20.NPuzzle nPuzzleCase;
 
   {
-    nPuzzleCases = new ACM0x20.NPuzzle[iteration];
-    for(int i = 0; i < nPuzzleCases.length; i++){
-      nPuzzleCases[i] = new ACM0x20.NPuzzle(200);
+    nPuzzleCase = new ACM0x20.NPuzzle(200);
+  }
+
+  private static boolean checkNPuzzle(NPuzzle[] ans){
+    for(int i = 0; i < ans.length - 1; i++){
+      var a = ans[i];
+      var b = ans[i + 1];
+      var ap = a.getSpaceIndex();
+      var bp = b.getSpaceIndex();
+      int apr = ap.first();
+      int apc = ap.second();
+      int bpr = bp.first();
+      int bpc = bp.second();
+
+      if(apr == bpr && !(Math.abs(apc - bpc) == 1)){
+        return false;
+      }
+      else if(apc == bpc && !(Math.abs(apr - bpr) == 1)){
+        return false;
+      }
     }
+    return ans[ans.length - 1].solved();
   }
 
   @Test
   void nPuzzleTest(){
-    var ans = eight(nPuzzleCases[0]);
-    for(var i : ans){
-      System.out.println(i);
-      System.out.println();
+    while(nPuzzleCase.solved()){
+      nPuzzleCase = new ACM0x20.NPuzzle(200);
     }
+    var ans = eight(nPuzzleCase);
+    assertTrue(checkNPuzzle(ans));
   }
 }
