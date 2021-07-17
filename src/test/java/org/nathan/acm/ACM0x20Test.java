@@ -9,8 +9,7 @@ import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.nathan.acm.ACM0x20.kthMinPath;
-import static org.nathan.acm.ACM0x20.sendGift;
+import static org.nathan.acm.ACM0x20.*;
 
 public class ACM0x20Test{
   static final int iteration = 20;
@@ -167,5 +166,23 @@ public class ACM0x20Test{
     assertEquals(15., kthMinPath(kmpCase, kmpCaseReverse, kmpVs.get(0), kmpVs.get(3), 3));
     kmpVs.forEach(BFS.Vert::refresh);
     assertEquals(16., kthMinPath(kmpCase, kmpCaseReverse, kmpVs.get(0), kmpVs.get(3), 4));
+  }
+
+  ACM0x20.NPuzzle[] nPuzzleCases;
+
+  {
+    nPuzzleCases = new ACM0x20.NPuzzle[iteration];
+    for(int i = 0; i < nPuzzleCases.length; i++){
+      nPuzzleCases[i] = new ACM0x20.NPuzzle(200);
+    }
+  }
+
+  @Test
+  void nPuzzleTest(){
+    var ans = eight(nPuzzleCases[0]);
+    for(var i : ans){
+      System.out.println(i);
+      System.out.println();
+    }
   }
 }

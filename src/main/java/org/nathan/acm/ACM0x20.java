@@ -1,9 +1,11 @@
 package org.nathan.acm;
 
 import org.jetbrains.annotations.NotNull;
+import org.nathan.algsJ.dataStruc.FinalSharedTreeList;
 import org.nathan.algsJ.graph.*;
-import org.nathan.algsJ.misc.Shuffle;
+import org.nathan.centralUtils.tuples.Quaternion;
 import org.nathan.centralUtils.tuples.Triad;
+import org.nathan.centralUtils.tuples.Tuple;
 import org.nathan.centralUtils.utils.NumericUtils;
 
 import java.util.*;
@@ -239,28 +241,22 @@ public class ACM0x20{
 
   static class NPuzzle{
     private final String[] data;
-    private final String[] origin;
     private int sr = 2, sc = 2;
-    private final List<int[][]> exchangeHistory = new ArrayList<>();
 
     public NPuzzle(int shuffle){
       data = new String[]{"1", "2", "3", "4", "5", "6", "7", "8", "_"};
       shuffle(shuffle);
-      origin = new String[9];
-      System.arraycopy(data, 0, origin, 0, origin.length);
     }
 
     public NPuzzle(NPuzzle nPuzzle){
-      this.data = new String[9];
+      data = new String[9];
       System.arraycopy(nPuzzle.data, 0, this.data, 0, this.data.length);
-      this.sr = nPuzzle.sr;
-      this.sc = nPuzzle.sc;
-      this.exchangeHistory.addAll(nPuzzle.exchangeHistory);
-      this.origin = Arrays.copyOf(nPuzzle.origin, 9);
+      sr = nPuzzle.sr;
+      sc = nPuzzle.sc;
     }
 
-    public int[] spaceIndex(){
-      return new int[]{sr, sc};
+    public Tuple<Integer, Integer> spaceIndex(){
+      return new Tuple<>(sr, sc);
     }
 
     public String get(int r, int c){
@@ -277,81 +273,79 @@ public class ACM0x20{
       data[r * 3 + c] = s;
     }
 
-    public void exchange(int r1, int c1, int r2, int c2){
-      if(!(r1 >= 0 && r1 < 3) || !(c1 >= 0 && c1 < 3) || !(r2 >= 0 && r2 < 3) || !(c2 >= 0 && c2 < 3)){
+    public void exchangeWith(int r, int c){
+      if(!(r >= 0 && r < 3) || !(c >= 0 && c < 3) ){
         throw new ArrayIndexOutOfBoundsException();
       }
-      if(r1 == r2){
-        if(!(Math.abs(c1 - c2) == 1)){
+      if(sr == r){
+        if(!(Math.abs(sc - c) == 1)){
           throw new IllegalArgumentException("not adjacent");
         }
       }
-      else if(c1 == c2){
-        if(!(Math.abs(r1 - r2) == 1)){
+      else if(sc == c){
+        if(!(Math.abs(sr - r) == 1)){
           throw new IllegalArgumentException("not adjacent");
         }
       }
       else{
         throw new IllegalArgumentException("not adjacent");
       }
-      if(!get(r1, c1).equals("_") && !get(r2, c2).equals("_")){
-        throw new IllegalArgumentException("not space to exchange");
-      }
-      var t = get(r1, c1);
-      set(r1, c1, get(r2, c2));
-      set(r2, c2, t);
-      exchangeHistory.add(new int[][]{new int[]{r1, c1}, new int[]{r2, c2}});
+      var t = get(r, c);
+      set(r, c, get(sr, sc));
+      set(sr, sc, t);
+      sr = r;
+      sc = c;
     }
 
     private void shuffle(int times){
       for(int i = 0; i < times; i++){
-        var ns = neighbors(sr, sc);
-        Shuffle.KnuthShuffle(ns);
-        var first = ns[0];
-        exchange(sr, sc, first[0], first[1]);
-        sr = first[0];
-        sc = first[1];
+        var neighbors = neighbors();
+        Collections.shuffle(neighbors);
+        var first = neighbors.get(0);
+        exchangeWith(first.first(), first.second());
+        sr = first.first();
+        sc = first.second();
       }
     }
 
-    static int[][] neighbors(int r, int c){
-      switch(r){
+    public List<Tuple<Integer, Integer>> neighbors(){
+      switch(sr){
         case 0 -> {
-          switch(c){
+          switch(sc){
             case 0 -> {
-              return new int[][]{new int[]{0, 1}, new int[]{1, 0}};
+              return new ArrayList<>(List.of(new Tuple<>(0, 1), new Tuple<>(1, 0)));
             }
             case 1 -> {
-              return new int[][]{new int[]{0, 0}, new int[]{0, 2}, new int[]{1, 1}};
+              return new ArrayList<>(List.of(new Tuple<>(0, 0), new Tuple<>(0, 2), new Tuple<>(1, 1)));
             }
             case 2 -> {
-              return new int[][]{new int[]{0, 1}, new int[]{1, 2}};
+              return new ArrayList<>(List.of(new Tuple<>(0, 1), new Tuple<>(1, 2)));
             }
           }
         }
         case 1 -> {
-          switch(c){
+          switch(sc){
             case 0 -> {
-              return new int[][]{new int[]{0, 0}, new int[]{1, 1}, new int[]{2, 0}};
+              return new ArrayList<>(List.of(new Tuple<>(0, 0), new Tuple<>(1, 1), new Tuple<>(2, 0)));
             }
             case 1 -> {
-              return new int[][]{new int[]{0, 1}, new int[]{1, 0}, new int[]{1, 2}, new int[]{2, 1}};
+              return new ArrayList<>(List.of(new Tuple<>(0, 1), new Tuple<>(1, 0), new Tuple<>(1, 2), new Tuple<>(2, 1)));
             }
             case 2 -> {
-              return new int[][]{new int[]{0, 2}, new int[]{1, 1}, new int[]{2, 2}};
+              return new ArrayList<>(List.of(new Tuple<>(0, 2), new Tuple<>(1, 1), new Tuple<>(2, 2)));
             }
           }
         }
         case 2 -> {
-          switch(c){
+          switch(sc){
             case 0 -> {
-              return new int[][]{new int[]{1, 0}, new int[]{2, 1}};
+              return new ArrayList<>(List.of(new Tuple<>(1, 0), new Tuple<>(2, 1)));
             }
             case 1 -> {
-              return new int[][]{new int[]{2, 0}, new int[]{1, 1}, new int[]{2, 2}};
+              return new ArrayList<>(List.of(new Tuple<>(2, 0), new Tuple<>(1, 1), new Tuple<>(2, 2)));
             }
             case 2 -> {
-              return new int[][]{new int[]{2, 1}, new int[]{1, 2}};
+              return new ArrayList<>(List.of(new Tuple<>(2, 1), new Tuple<>(1, 2)));
             }
           }
         }
@@ -361,16 +355,11 @@ public class ACM0x20{
 
     public boolean solved(){
       for(int i = 0; i < 8; i++){
-        if(!(data[i].equals(String.valueOf(i)))){
+        if(!(data[i].equals(String.valueOf(i+1)))){
           return false;
         }
       }
       return data[8].equals("_");
-    }
-
-    public @NotNull String[] exchangeHistory(){
-      // TODO finish it
-      return null;
     }
 
     @Override
@@ -378,7 +367,8 @@ public class ACM0x20{
       var b = new StringBuilder();
       for(int i = 0; i < 9; i++){
         b.append(data[i]);
-        if(i + 1 % 3 == 0){
+        b.append(" ");
+        if((i + 1) % 3 == 0){
           b.append("\n");
         }
       }
@@ -395,19 +385,75 @@ public class ACM0x20{
    * @return min answer
    */
   public static @NotNull String[] eight(@NotNull NPuzzle nPuzzle){
-    return null;
+    // step, estimate, n-puzzle, last space
+    PriorityQueue<Quaternion<Integer, Integer, NPuzzle, FinalSharedTreeList<Tuple<Integer,Integer>>>> queue =
+            new PriorityQueue<>(Comparator.comparing(t -> t.first() + t.second()));
+    queue.add(new Quaternion<>(0, estimate(nPuzzle), nPuzzle, new FinalSharedTreeList<>(nPuzzle.spaceIndex())));
+    while(queue.size() > 0) {
+      var quaternion = queue.poll();
+      var np = quaternion.third();
+      if(np.solved()){
+        var history = quaternion.fourth().toDeque();
+        history.removeFirst();
+        var ans = new String[history.size() + 1];
+        ans[ans.length - 1] = np.toString();
+        int i = ans.length - 2;
+        while(history.size() > 0){
+          var s = history.removeLast();
+          np.exchangeWith(s.first(), s.second());
+          ans[i--] = np.toString();
+        }
+        return ans;
+      }
+
+      var neighbors = np.neighbors();
+      var step = quaternion.first();
+
+      for(int i = 0; i < neighbors.size() - 1; i++){
+        var nb = neighbors.get(i);
+        if(!nb.equals(quaternion.fourth().Data)){
+          var nnp = new NPuzzle(np);
+          var currentSpace = nnp.spaceIndex();
+          var sl = new FinalSharedTreeList<>(currentSpace);
+          sl.setParent(quaternion.fourth());
+          nnp.exchangeWith(nb.first(), nb.second());
+          queue.add(new Quaternion<>(step+1, estimate(nnp), nnp, sl));
+        }
+      }
+      var nb = neighbors.get(neighbors.size() - 1);
+      if(!nb.equals(quaternion.fourth().Data)){
+        var currentSpace = np.spaceIndex();
+        var sl = new FinalSharedTreeList<>(currentSpace);
+        sl.setParent(quaternion.fourth());
+        np.exchangeWith(nb.first(), nb.second());
+        queue.add(new Quaternion<>(step+1, estimate(np), np, sl));
+      }
+
+    }
+    throw new RuntimeException("impossible error.");
   }
 
   private static int estimate(NPuzzle nPuzzle){
     int ans = 0;
     for(int i = 0; i < 3; i++){
       for(int j = 0; j < 3; j++){
-        var num = Integer.parseInt(nPuzzle.get(i, j));
-        var r = num / 3;
-        var c = num % 3;
-        ans += Math.abs(i - r) + Math.abs(j - c);
+        var s = nPuzzle.get(i, j);
+        if(!s.equals("_")){
+          var num = Integer.parseInt(s);
+          var r = num / 3;
+          var c = num % 3;
+          ans += Math.abs(i - r) + Math.abs(j - c);
+        }
+        else {
+          ans += Math.abs(i - 2) + Math.abs(j - 2);
+        }
       }
     }
     return ans;
+  }
+
+  // TODO book sort
+  public static void bookSort(){
+
   }
 }
