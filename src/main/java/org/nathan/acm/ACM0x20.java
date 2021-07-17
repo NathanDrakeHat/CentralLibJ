@@ -380,6 +380,7 @@ public class ACM0x20{
   /**
    * POJ1077
    * <br/> n-puzzle game
+   * <br/> A* algorithm
    *
    * @param nPuzzle eight
    * @return min answer
