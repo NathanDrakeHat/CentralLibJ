@@ -10,7 +10,7 @@ import java.util.*;
 
 public class ACM0x10{
   /**
-   * monotonous stack
+   * monotonous stack algorithm
    * <br/>(POJ2559)
    * @param floatRects list of width and height of rectangle
    * @return range of largest inner connection of rectangles(left inclusive and right exclusive)
@@ -45,7 +45,7 @@ public class ACM0x10{
   }
 
   /**
-   * monotonous queue
+   * monotonous queue algorithm
    * <br/>range of max sum
    * <br/>(TYVJ1305)
    * @param array array

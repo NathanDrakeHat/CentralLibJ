@@ -194,8 +194,8 @@ public class ACM0x20{
   }
 
   /**
-   * POJ2449
-   * <br/> A* algorithm
+   * A* algorithm
+   * <br/> POJ2449
    *
    * @param graph       graph
    * @param source      source
@@ -455,7 +455,12 @@ public class ACM0x20{
   }
 
   // TODO book sort
-  public static void bookSort(){
+
+  /**
+   * IDA* algorithm
+   * <br/>POJ3460
+   */
+  public static void bookSort(int[] books){
 
   }
 }
