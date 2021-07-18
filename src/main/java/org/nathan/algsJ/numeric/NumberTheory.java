@@ -72,9 +72,8 @@ public class NumberTheory{
     return (int) Math.ceil(Math.log(t) / Math.log(2));
   }
 
-  // TODO gcd
   public static int gcd(int a, int b){
-    return 0;
+    return b != 0 ? gcd(b, a % b) : a;
   }
 
   private static int rho(int N){
@@ -119,9 +118,50 @@ public class NumberTheory{
     return ans;
   }
 
-  // TODO Miller Rabin test
-  public static boolean MillerRabinTest(int i, int capacity){
-    return false;
+  public static int powerMod(int a, int b, int m){
+    int ans = 1 % m;
+    while(b != 0) {
+      if((b & 1) == 1){
+        ans = (int) ((long) a * ans % m);
+      }
+      a = (int) ((long) a * a % m);
+      b = b >>> 1;
+    }
+    return ans;
+  }
+
+  public static boolean MillerRabinTest(int n, int k){
+    var funcTest = new Object(){
+      boolean apply(int d, int n){
+        int a = 2 + (int) (sRandom.nextDouble() % (n - 4));
+        int x = powerMod(a, d, n);
+
+        if(x == 1 || x == n - 1){ return true; }
+
+        while(d != n - 1) {
+          x = (x * x) % n;
+          d *= 2;
+
+          if(x == 1){ return false; }
+          if(x == n - 1){ return true; }
+        }
+
+        return false;
+      }
+    };
+
+    if(n <= 1 || n == 4){ return false; }
+    if(n <= 3){ return true; }
+    int d = n - 1;
+
+    while(d % 2 == 0) { d /= 2; }
+
+    for(int i = 0; i < k; i++){
+      if(!funcTest.apply(d, n)){ return false; }
+    }
+
+    return true;
+
   }
 
   public static IntArrayList factor(int N){
@@ -132,7 +172,7 @@ public class NumberTheory{
     var funcFactor = new Object(){
       void apply(int N){
         if(N == 1){ return; }
-        if(MillerRabinTest(N,20)){
+        if(MillerRabinTest(N, 20)){
           ans.add(N);
           return;
         }
