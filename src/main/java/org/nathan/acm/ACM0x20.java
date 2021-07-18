@@ -376,9 +376,9 @@ public class ACM0x20{
   }
 
   /**
-   * POJ1077
+   * A* algorithm
    * <br/> n-puzzle game
-   * <br/> A* algorithm
+   * <br/> POJ1077
    *
    * @param nPuzzle eight
    * @return min answer
@@ -457,24 +457,75 @@ public class ACM0x20{
   /**
    * IDA* algorithm
    * <br/>POJ3460
+   *
+   * @param books books
+   * @return list of (old start, len ,new start)
    */
-  public static void bookSort(int[] books){
+  public static List<Triad<Integer, Integer, Integer>> bookSort(int[] books){
+    List<Triad<Integer, Integer, Integer>> ans = new ArrayList<>();
+    var funcSolve = new Object(){
+      boolean apply(int time, int limit, Deque<Triad<Integer, Integer, Integer>> exchanges){
+        if(time + estimateMoveOfBooks(books) > limit){
+          if(sorted(books)){
+            ans.addAll(exchanges);
+            return true;
+          }
+          return false;
+        }
 
+        for(int len = 1; len < books.length; len++){
+          for(int s1 = 0; s1 + len < books.length; s1++){
+            for(int s2 = s1 + 1; s2 + len <= books.length; s2++){
+              exchanges.addLast(new Triad<>(s1, len, s2));
+              backwardsExchangeBooks(books, s1, len, s2);
+              if(apply(time + 1, limit, exchanges)){
+                return true;
+              }
+              backwardsExchangeBooks(books, s1, s2 - s1, s2);
+              exchanges.removeLast();
+            }
+          }
+        }
+        return false;
+      }
+    };
+    Deque<Triad<Integer, Integer, Integer>> deque = new ArrayDeque<>();
+    for(int i = 1; i <= 4; i++){
+      if(funcSolve.apply(0, i, deque)){
+        break;
+      }
+    }
+    return ans;
   }
 
-  private static void exchange(int[] books, int s1, int e1, int s2, int e2){
-    int l1 = e1 - s1, l2 = e2 - s2;
-    if(l1 > l2){
-      int[] temp = new int[l2];
-      System.arraycopy(books, s2, temp, 0, l2);
-      System.arraycopy(books, s1, books, s1 + l2, l1);
-      System.arraycopy(temp, 0, books, s1, l2);
+  private static boolean sorted(int[] books){
+    for(int i = 0; i < books.length - 1; i++){
+      int a = books[i], b = books[i + 1];
+      if(b - a != 1){
+        return false;
+      }
     }
-    else{
-      int[] temp = new int[l1];
-      System.arraycopy(books, s1, temp, 0, l1);
-      System.arraycopy(books, s2, books, s1, l2);
-      System.arraycopy(temp, 0, books, s1 + l2, l1);
+    return true;
+  }
+
+  static int estimateMoveOfBooks(int[] books){
+    int ans = 0;
+    for(int i = 0; i < books.length - 1; i++){
+      var a = books[i];
+      var b = books[i + 1];
+      if(b - a != 1){
+        ans++;
+      }
     }
+    return (int) Math.ceil(ans / 3.);
+  }
+
+  private static void backwardsExchangeBooks(int[] books, int s1, int len, int s2){
+    int[] temp = new int[len];
+    System.arraycopy(books, s1, temp, 0, len);
+    int es = s1 + len;
+    int e2 = s2 + len;
+    System.arraycopy(books, es, books, s1, e2 - es);
+    System.arraycopy(temp, 0, books, s2, len);
   }
 }
