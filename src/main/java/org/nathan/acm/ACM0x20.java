@@ -421,15 +421,16 @@ public class ACM0x20{
           queue.add(new Quaternion<>(step+1, estimate(nnp), nnp, sl));
         }
       }
-      var nb = neighbors.get(neighbors.size() - 1);
-      if(!nb.equals(quaternion.fourth().Data)){
-        var currentSpace = np.getSpaceIndex();
-        var sl = new FinalSharedTreeList<>(currentSpace);
-        sl.setParent(quaternion.fourth());
-        np.exchangeWith(nb.first(), nb.second());
-        queue.add(new Quaternion<>(step+1, estimate(np), np, sl));
+      {
+        var nb = neighbors.get(neighbors.size() - 1);
+        if(!nb.equals(quaternion.fourth().Data)){
+          var currentSpace = np.getSpaceIndex();
+          var sl = new FinalSharedTreeList<>(currentSpace);
+          sl.setParent(quaternion.fourth());
+          np.exchangeWith(nb.first(), nb.second());
+          queue.add(new Quaternion<>(step+1, estimate(np), np, sl));
+        }
       }
-
     }
     throw new RuntimeException("impossible error.");
   }

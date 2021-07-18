@@ -27,7 +27,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="reduce test size">
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="add doc">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -463,14 +463,7 @@
       <workItem from="1625058806921" duration="53122000" />
       <workItem from="1625491855060" duration="13515000" />
       <workItem from="1625723566137" duration="92331000" />
-      <workItem from="1626430852651" duration="22669000" />
-    </task>
-    <task id="LOCAL-00308" summary="add running median">
-      <created>1625130949706</created>
-      <option name="number" value="00308" />
-      <option name="presentableId" value="LOCAL-00308" />
-      <option name="project" value="LOCAL" />
-      <updated>1625130949706</updated>
+      <workItem from="1626430852651" duration="25272000" />
     </task>
     <task id="LOCAL-00309" summary="add ArrayUtils">
       <created>1625133480301</created>
@@ -808,7 +801,14 @@
       <option name="project" value="LOCAL" />
       <updated>1626530101321</updated>
     </task>
-    <option name="localTasksCounter" value="357" />
+    <task id="LOCAL-00357" summary="add doc">
+      <created>1626532705389</created>
+      <option name="number" value="00357" />
+      <option name="presentableId" value="LOCAL-00357" />
+      <option name="project" value="LOCAL" />
+      <updated>1626532705389</updated>
+    </task>
+    <option name="localTasksCounter" value="358" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -857,12 +857,12 @@
     <MESSAGE value="refactor ExtremumHeap to PriorityQueue" />
     <MESSAGE value="rename" />
     <MESSAGE value="refactor DynamicPriQueue to min heap only" />
-    <MESSAGE value="add doc" />
     <MESSAGE value="fix iterative deepen DFS" />
     <MESSAGE value="save" />
     <MESSAGE value="add new acm" />
     <MESSAGE value="reduce test size" />
-    <option name="LAST_COMMIT_MESSAGE" value="reduce test size" />
+    <MESSAGE value="add doc" />
+    <option name="LAST_COMMIT_MESSAGE" value="add doc" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
