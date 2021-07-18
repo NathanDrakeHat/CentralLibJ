@@ -174,11 +174,8 @@ public class NumberTheory{
           ans.add(N);
           return;
         }
-//        System.out.printf("N: %d\n",N);
         int divisor = rho(N);
-//        System.out.printf("divisor: %d\n",divisor);
         apply(divisor);
-//        System.out.printf("another: %d\n",N/divisor);
         apply(N / divisor);
       }
     };
