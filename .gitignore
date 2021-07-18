@@ -4,3 +4,4 @@
 /out/
 *.txt
 *.jar
+.idea/workspace.xml
