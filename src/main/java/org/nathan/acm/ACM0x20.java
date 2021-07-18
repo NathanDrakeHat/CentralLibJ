@@ -267,14 +267,11 @@ public class ACM0x20{
     }
 
     private void set(int r, int c, String s){
-      if(!(r >= 0 && r < 3) || !(c >= 0 && c < 3)){
-        throw new ArrayIndexOutOfBoundsException();
-      }
       data[r * 3 + c] = s;
     }
 
     public void exchangeWith(int r, int c){
-      if(!(r >= 0 && r < 3) || !(c >= 0 && c < 3) ){
+      if(!(r >= 0 && r < 3) || !(c >= 0 && c < 3)){
         throw new ArrayIndexOutOfBoundsException();
       }
       if(sr == r){
@@ -329,7 +326,8 @@ public class ACM0x20{
               return new ArrayList<>(List.of(new Tuple<>(0, 0), new Tuple<>(1, 1), new Tuple<>(2, 0)));
             }
             case 1 -> {
-              return new ArrayList<>(List.of(new Tuple<>(0, 1), new Tuple<>(1, 0), new Tuple<>(1, 2), new Tuple<>(2, 1)));
+              return new ArrayList<>(List.of(new Tuple<>(0, 1), new Tuple<>(1, 0), new Tuple<>(1, 2), new Tuple<>(2,
+                      1)));
             }
             case 2 -> {
               return new ArrayList<>(List.of(new Tuple<>(0, 2), new Tuple<>(1, 1), new Tuple<>(2, 2)));
@@ -355,7 +353,7 @@ public class ACM0x20{
 
     public boolean solved(){
       for(int i = 0; i < 8; i++){
-        if(!(data[i].equals(String.valueOf(i+1)))){
+        if(!(data[i].equals(String.valueOf(i + 1)))){
           return false;
         }
       }
@@ -387,7 +385,7 @@ public class ACM0x20{
    */
   public static @NotNull NPuzzle[] eight(@NotNull NPuzzle nPuzzle){
     // step, estimate, n-puzzle, last space
-    PriorityQueue<Quaternion<Integer, Integer, NPuzzle, FinalSharedTreeList<Tuple<Integer,Integer>>>> queue =
+    PriorityQueue<Quaternion<Integer, Integer, NPuzzle, FinalSharedTreeList<Tuple<Integer, Integer>>>> queue =
             new PriorityQueue<>(Comparator.comparing(t -> t.first() + t.second()));
     queue.add(new Quaternion<>(0, estimate(nPuzzle), nPuzzle, new FinalSharedTreeList<>(nPuzzle.getSpaceIndex())));
     while(queue.size() > 0) {
@@ -399,7 +397,7 @@ public class ACM0x20{
         var ans = new NPuzzle[history.size() + 1];
         ans[ans.length - 1] = new NPuzzle(np);
         int i = ans.length - 2;
-        while(history.size() > 0){
+        while(history.size() > 0) {
           var s = history.removeLast();
           np.exchangeWith(s.first(), s.second());
           ans[i--] = new NPuzzle(np);
@@ -418,7 +416,7 @@ public class ACM0x20{
           var sl = new FinalSharedTreeList<>(currentSpace);
           sl.setParent(quaternion.fourth());
           nnp.exchangeWith(nb.first(), nb.second());
-          queue.add(new Quaternion<>(step+1, estimate(nnp), nnp, sl));
+          queue.add(new Quaternion<>(step + 1, estimate(nnp), nnp, sl));
         }
       }
       {
@@ -428,7 +426,7 @@ public class ACM0x20{
           var sl = new FinalSharedTreeList<>(currentSpace);
           sl.setParent(quaternion.fourth());
           np.exchangeWith(nb.first(), nb.second());
-          queue.add(new Quaternion<>(step+1, estimate(np), np, sl));
+          queue.add(new Quaternion<>(step + 1, estimate(np), np, sl));
         }
       }
     }
@@ -446,7 +444,7 @@ public class ACM0x20{
           var c = num % 3;
           ans += Math.abs(i - r) + Math.abs(j - c);
         }
-        else {
+        else{
           ans += Math.abs(i - 2) + Math.abs(j - 2);
         }
       }
@@ -462,5 +460,21 @@ public class ACM0x20{
    */
   public static void bookSort(int[] books){
 
+  }
+
+  private static void exchange(int[] books, int s1, int e1, int s2, int e2){
+    int l1 = e1 - s1, l2 = e2 - s2;
+    if(l1 > l2){
+      int[] temp = new int[l2];
+      System.arraycopy(books, s2, temp, 0, l2);
+      System.arraycopy(books, s1, books, s1 + l2, l1);
+      System.arraycopy(temp, 0, books, s1, l2);
+    }
+    else{
+      int[] temp = new int[l1];
+      System.arraycopy(books, s1, temp, 0, l1);
+      System.arraycopy(books, s2, books, s1, l2);
+      System.arraycopy(temp, 0, books, s1 + l2, l1);
+    }
   }
 }

@@ -27,12 +27,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="add func">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/nathan/acm/ACM0x30.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algsJ/numeric/NumberTheoryTest.java" afterDir="false" />
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="rm comment">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/numeric/NumberTheory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/numeric/NumberTheory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/acm/ACM0x20.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/acm/ACM0x20.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -467,28 +464,8 @@
       <workItem from="1625491855060" duration="13515000" />
       <workItem from="1625723566137" duration="92331000" />
       <workItem from="1626430852651" duration="25272000" />
-      <workItem from="1626595725088" duration="7834000" />
-    </task>
-    <task id="LOCAL-00312" summary="add ACM">
-      <created>1625236737648</created>
-      <option name="number" value="00312" />
-      <option name="presentableId" value="LOCAL-00312" />
-      <option name="project" value="LOCAL" />
-      <updated>1625236737648</updated>
-    </task>
-    <task id="LOCAL-00313" summary="add ST algorithm">
-      <created>1625307431636</created>
-      <option name="number" value="00313" />
-      <option name="presentableId" value="LOCAL-00313" />
-      <option name="project" value="LOCAL" />
-      <updated>1625307431636</updated>
-    </task>
-    <task id="LOCAL-00314" summary="add ST algorithm doc">
-      <created>1625307473544</created>
-      <option name="number" value="00314" />
-      <option name="presentableId" value="LOCAL-00314" />
-      <option name="project" value="LOCAL" />
-      <updated>1625307473544</updated>
+      <workItem from="1626595725088" duration="7937000" />
+      <workItem from="1626612893988" duration="1576000" />
     </task>
     <task id="LOCAL-00315" summary="refactor">
       <created>1625308828530</created>
@@ -812,7 +789,28 @@
       <option name="project" value="LOCAL" />
       <updated>1626606213684</updated>
     </task>
-    <option name="localTasksCounter" value="361" />
+    <task id="LOCAL-00361" summary="add NumberTheory test">
+      <created>1626609607098</created>
+      <option name="number" value="00361" />
+      <option name="presentableId" value="LOCAL-00361" />
+      <option name="project" value="LOCAL" />
+      <updated>1626609607098</updated>
+    </task>
+    <task id="LOCAL-00362" summary="save">
+      <created>1626609625950</created>
+      <option name="number" value="00362" />
+      <option name="presentableId" value="LOCAL-00362" />
+      <option name="project" value="LOCAL" />
+      <updated>1626609625950</updated>
+    </task>
+    <task id="LOCAL-00363" summary="rm comment">
+      <created>1626613343145</created>
+      <option name="number" value="00363" />
+      <option name="presentableId" value="LOCAL-00363" />
+      <option name="project" value="LOCAL" />
+      <updated>1626613343145</updated>
+    </task>
+    <option name="localTasksCounter" value="364" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -841,8 +839,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add ST algorithm doc" />
-    <MESSAGE value="add new chapter of acm, move greedy algo to misc" />
     <MESSAGE value="add Manacher, change git push" />
     <MESSAGE value="reformat" />
     <MESSAGE value="add new acm, test not pass" />
@@ -859,14 +855,16 @@
     <MESSAGE value="rename" />
     <MESSAGE value="refactor DynamicPriQueue to min heap only" />
     <MESSAGE value="fix iterative deepen DFS" />
-    <MESSAGE value="save" />
     <MESSAGE value="add new acm" />
     <MESSAGE value="reduce test size" />
     <MESSAGE value="add doc" />
     <MESSAGE value="refactor" />
     <MESSAGE value="add doc, add NumberTheory" />
     <MESSAGE value="add func" />
-    <option name="LAST_COMMIT_MESSAGE" value="add func" />
+    <MESSAGE value="add NumberTheory test" />
+    <MESSAGE value="save" />
+    <MESSAGE value="rm comment" />
+    <option name="LAST_COMMIT_MESSAGE" value="rm comment" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>
