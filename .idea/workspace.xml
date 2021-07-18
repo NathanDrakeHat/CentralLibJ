@@ -27,9 +27,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="add func">
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="save">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/acm/ACM0x20.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/acm/ACM0x20.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -465,14 +464,7 @@
       <workItem from="1625723566137" duration="92331000" />
       <workItem from="1626430852651" duration="25272000" />
       <workItem from="1626595725088" duration="7937000" />
-      <workItem from="1626612893988" duration="5119000" />
-    </task>
-    <task id="LOCAL-00316" summary="add new chapter of acm, move greedy algo to misc">
-      <created>1625374970469</created>
-      <option name="number" value="00316" />
-      <option name="presentableId" value="LOCAL-00316" />
-      <option name="project" value="LOCAL" />
-      <updated>1625374970469</updated>
+      <workItem from="1626612893988" duration="6887000" />
     </task>
     <task id="LOCAL-00317" summary="add new acm">
       <created>1625395547784</created>
@@ -810,7 +802,14 @@
       <option name="project" value="LOCAL" />
       <updated>1626614962458</updated>
     </task>
-    <option name="localTasksCounter" value="365" />
+    <task id="LOCAL-00365" summary="save">
+      <created>1626620806417</created>
+      <option name="number" value="00365" />
+      <option name="presentableId" value="LOCAL-00365" />
+      <option name="project" value="LOCAL" />
+      <updated>1626620806417</updated>
+    </task>
+    <option name="localTasksCounter" value="366" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -861,10 +860,10 @@
     <MESSAGE value="refactor" />
     <MESSAGE value="add doc, add NumberTheory" />
     <MESSAGE value="add NumberTheory test" />
-    <MESSAGE value="save" />
     <MESSAGE value="rm comment" />
     <MESSAGE value="add func" />
-    <option name="LAST_COMMIT_MESSAGE" value="add func" />
+    <MESSAGE value="save" />
+    <option name="LAST_COMMIT_MESSAGE" value="save" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>

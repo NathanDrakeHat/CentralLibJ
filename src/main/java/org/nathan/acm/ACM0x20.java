@@ -466,11 +466,11 @@ public class ACM0x20{
     var funcSolve = new Object(){
       boolean apply(int time, int limit, Deque<Triad<Integer, Integer, Integer>> exchanges){
         if(time + estimateMoveOfBooks(books) > limit){
-          if(sorted(books)){
-            ans.addAll(exchanges);
-            return true;
-          }
           return false;
+        }
+        if(sorted(books)){
+          ans.addAll(exchanges);
+          return true;
         }
 
         for(int len = 1; len < books.length; len++){
