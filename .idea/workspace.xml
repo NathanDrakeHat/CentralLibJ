@@ -27,8 +27,12 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="add doc">
+    <list default="true" id="81750b41-ce79-4128-906f-31ace4928ab9" name="Default Changelist" comment="add func">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/nathan/acm/ACM0x30.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/nathan/algsJ/numeric/NumberTheoryTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/numeric/NumberTheory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nathan/algsJ/numeric/NumberTheory.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,7 +128,7 @@
       <command value="mvn install:install-file -Dfile=algs4.jar -DgroupId=edu.princeton.cs -DartifactId=algs4 -Dversion=1.0 -Dpackaging=jar -DgeneratePom=true " />
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.ACM0x20Test.nPuzzleTest">
+  <component name="RunManager" selected="JUnit.NumberTheoryTest">
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.nathan.Main" />
       <module name="AlgorithmsJava" />
@@ -149,38 +153,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ACM0x20Test.additionChainsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="AlgorithmsJava" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.nathan.acm.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.nathan.acm" />
-      <option name="MAIN_CLASS_NAME" value="org.nathan.acm.ACM0x20Test" />
-      <option name="METHOD_NAME" value="additionChainsTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ACM0x20Test.kthMinPathTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="AlgorithmsJava" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.nathan.acm.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.nathan.acm" />
-      <option name="MAIN_CLASS_NAME" value="org.nathan.acm.ACM0x20Test" />
-      <option name="METHOD_NAME" value="kthMinPathTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="ACM0x20Test.nPuzzleTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AlgorithmsJava" />
       <extension name="coverage">
@@ -197,26 +169,57 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ACM0x20Test.sendGiftTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="All in AlgorithmsJava" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AlgorithmsJava" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="NumberTheoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AlgorithmsJava" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.nathan.acm.*" />
+          <option name="PATTERN" value="org.nathan.algsJ.numeric.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="org.nathan.acm" />
-      <option name="MAIN_CLASS_NAME" value="org.nathan.acm.ACM0x20Test" />
-      <option name="METHOD_NAME" value="sendGiftTest" />
+      <option name="PACKAGE_NAME" value="org.nathan.algsJ.numeric" />
+      <option name="MAIN_CLASS_NAME" value="org.nathan.algsJ.numeric.NumberTheoryTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="NumberTheoryTest.MillerRabinTestTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AlgorithmsJava" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.nathan.algsJ.numeric.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.nathan.algsJ.numeric" />
+      <option name="MAIN_CLASS_NAME" value="org.nathan.algsJ.numeric.NumberTheoryTest" />
+      <option name="METHOD_NAME" value="MillerRabinTestTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="All in AlgorithmsJava" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="NumberTheoryTest.factorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AlgorithmsJava" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.nathan.algsJ.numeric.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.nathan.algsJ.numeric" />
+      <option name="MAIN_CLASS_NAME" value="org.nathan.algsJ.numeric.NumberTheoryTest" />
+      <option name="METHOD_NAME" value="factorTest" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -226,18 +229,18 @@
       <item itemvalue="Application.pushUtils" />
       <item itemvalue="Application.Main" />
       <item itemvalue="JUnit.All in AlgorithmsJava" />
-      <item itemvalue="JUnit.ACM0x20Test.sendGiftTest" />
-      <item itemvalue="JUnit.ACM0x20Test.kthMinPathTest" />
-      <item itemvalue="JUnit.ACM0x20Test.additionChainsTest" />
       <item itemvalue="JUnit.ACM0x20Test.nPuzzleTest" />
+      <item itemvalue="JUnit.NumberTheoryTest.MillerRabinTestTest" />
+      <item itemvalue="JUnit.NumberTheoryTest.factorTest" />
+      <item itemvalue="JUnit.NumberTheoryTest" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.NumberTheoryTest" />
+        <item itemvalue="JUnit.NumberTheoryTest.factorTest" />
+        <item itemvalue="JUnit.NumberTheoryTest.MillerRabinTestTest" />
         <item itemvalue="JUnit.ACM0x20Test.nPuzzleTest" />
         <item itemvalue="JUnit.All in AlgorithmsJava" />
-        <item itemvalue="JUnit.ACM0x20Test.additionChainsTest" />
-        <item itemvalue="JUnit.ACM0x20Test.kthMinPathTest" />
-        <item itemvalue="JUnit.ACM0x20Test.sendGiftTest" />
       </list>
     </recent_temporary>
   </component>
@@ -464,27 +467,7 @@
       <workItem from="1625491855060" duration="13515000" />
       <workItem from="1625723566137" duration="92331000" />
       <workItem from="1626430852651" duration="25272000" />
-    </task>
-    <task id="LOCAL-00309" summary="add ArrayUtils">
-      <created>1625133480301</created>
-      <option name="number" value="00309" />
-      <option name="presentableId" value="LOCAL-00309" />
-      <option name="project" value="LOCAL" />
-      <updated>1625133480301</updated>
-    </task>
-    <task id="LOCAL-00310" summary="finish ultraQuickSort">
-      <created>1625202318387</created>
-      <option name="number" value="00310" />
-      <option name="presentableId" value="LOCAL-00310" />
-      <option name="project" value="LOCAL" />
-      <updated>1625202318387</updated>
-    </task>
-    <task id="LOCAL-00311" summary="finish ultraQuickSort">
-      <created>1625214516033</created>
-      <option name="number" value="00311" />
-      <option name="presentableId" value="LOCAL-00311" />
-      <option name="project" value="LOCAL" />
-      <updated>1625214516033</updated>
+      <workItem from="1626595725088" duration="7834000" />
     </task>
     <task id="LOCAL-00312" summary="add ACM">
       <created>1625236737648</created>
@@ -808,7 +791,28 @@
       <option name="project" value="LOCAL" />
       <updated>1626532705389</updated>
     </task>
-    <option name="localTasksCounter" value="358" />
+    <task id="LOCAL-00358" summary="refactor">
+      <created>1626595870898</created>
+      <option name="number" value="00358" />
+      <option name="presentableId" value="LOCAL-00358" />
+      <option name="project" value="LOCAL" />
+      <updated>1626595870899</updated>
+    </task>
+    <task id="LOCAL-00359" summary="add doc, add NumberTheory">
+      <created>1626604430572</created>
+      <option name="number" value="00359" />
+      <option name="presentableId" value="LOCAL-00359" />
+      <option name="project" value="LOCAL" />
+      <updated>1626604430572</updated>
+    </task>
+    <task id="LOCAL-00360" summary="add func">
+      <created>1626606213684</created>
+      <option name="number" value="00360" />
+      <option name="presentableId" value="LOCAL-00360" />
+      <option name="project" value="LOCAL" />
+      <updated>1626606213684</updated>
+    </task>
+    <option name="localTasksCounter" value="361" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -837,8 +841,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add ACM" />
-    <MESSAGE value="add ST algorithm" />
     <MESSAGE value="add ST algorithm doc" />
     <MESSAGE value="add new chapter of acm, move greedy algo to misc" />
     <MESSAGE value="add Manacher, change git push" />
@@ -853,7 +855,6 @@
     <MESSAGE value="add extends to graph algo" />
     <MESSAGE value="add acm" />
     <MESSAGE value="add new acm, add new utils" />
-    <MESSAGE value="refactor" />
     <MESSAGE value="refactor ExtremumHeap to PriorityQueue" />
     <MESSAGE value="rename" />
     <MESSAGE value="refactor DynamicPriQueue to min heap only" />
@@ -862,14 +863,12 @@
     <MESSAGE value="add new acm" />
     <MESSAGE value="reduce test size" />
     <MESSAGE value="add doc" />
-    <option name="LAST_COMMIT_MESSAGE" value="add doc" />
+    <MESSAGE value="refactor" />
+    <MESSAGE value="add doc, add NumberTheory" />
+    <MESSAGE value="add func" />
+    <option name="LAST_COMMIT_MESSAGE" value="add func" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <default-breakpoints>
-        <breakpoint enabled="true" type="java-exception" />
-      </default-breakpoints>
-    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="org.nathan.algsJ.dataStruc.TernaryTries$Node" memberName="mid" />

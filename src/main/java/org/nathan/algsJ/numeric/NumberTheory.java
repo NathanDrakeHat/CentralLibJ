@@ -53,7 +53,6 @@ public class NumberTheory{
     BigInteger x = new BigInteger(N.bitLength(), random);
     BigInteger xx = x;
 
-    // check divisibility by 2
     if(N.mod(TWO).compareTo(ZERO) == 0){ return TWO; }
 
     do{
@@ -76,25 +75,24 @@ public class NumberTheory{
     return b != 0 ? gcd(b, a % b) : a;
   }
 
-  private static int rho(int N){
+  public static int rho(int N){
     int divisor;
     int bLen = (int) Math.pow(2, bitLength(N));
     int c = sRandom.nextInt(bLen);
     int x = sRandom.nextInt(bLen);
     int xx = x;
 
-    // check divisibility by 2
     if(N % 2 == 0){ return 2; }
 
     do{
       x = (((x * x) % N) + c) % N;
       xx = (((xx * xx) % N) + c) % N;
       xx = (((xx * xx) % N) + c) % N;
-      divisor = gcd((x - xx), N);
+      divisor = gcd(x - xx, N);
     }
     while(divisor == 1);
 
-    return divisor;
+    return Math.abs(divisor);
   }
 
   public static List<BigInteger> factor(BigInteger N){
@@ -176,8 +174,11 @@ public class NumberTheory{
           ans.add(N);
           return;
         }
+//        System.out.printf("N: %d\n",N);
         int divisor = rho(N);
+//        System.out.printf("divisor: %d\n",divisor);
         apply(divisor);
+//        System.out.printf("another: %d\n",N/divisor);
         apply(N / divisor);
       }
     };
