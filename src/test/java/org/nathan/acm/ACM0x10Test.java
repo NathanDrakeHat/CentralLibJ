@@ -111,7 +111,6 @@ class ACM0x10Test{
   void largestXORPairTest(){
     for(int i = 0; i < iteration; i++){
       var ans = largestXORPair(xorCases[i]);
-      // TODO random fail
       assertEquals(xorAnswers[i], ans.first() ^ ans.second());
     }
   }
