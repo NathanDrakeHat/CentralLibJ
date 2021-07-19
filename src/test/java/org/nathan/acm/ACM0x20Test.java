@@ -2,8 +2,8 @@ package org.nathan.acm;
 
 import org.junit.jupiter.api.Test;
 import org.nathan.algsJ.graph.*;
+import org.nathan.algsJ.numeric.NumberTheory;
 import org.nathan.centralUtils.utils.ArrayUtils;
-import org.nathan.centralUtils.utils.NumericUtils;
 
 import java.util.*;
 import java.util.stream.IntStream;
@@ -111,7 +111,7 @@ public class ACM0x20Test{
         Set<Integer> next = new HashSet<>(set.size() * 2);
         next.addAll(set);
         for(var t : set){
-          if(NumericUtils.addNotOverflow(t, sgCases[i][j])){
+          if(NumberTheory.addNotOverflow(t, sgCases[i][j])){
             next.add(t + sgCases[i][j]);
           }
         }

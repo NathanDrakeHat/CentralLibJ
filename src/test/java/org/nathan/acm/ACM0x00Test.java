@@ -2,15 +2,14 @@ package org.nathan.acm;
 
 import org.junit.jupiter.api.Test;
 import org.nathan.algsJ.misc.SortTest;
+import org.nathan.algsJ.numeric.NumberTheory;
 import org.nathan.centralUtils.utils.ArrayUtils;
 import org.nathan.centralUtils.utils.LambdaUtils;
-import org.nathan.centralUtils.utils.NumericUtils;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 import java.util.SplittableRandom;
-import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -110,8 +109,7 @@ public class ACM0x00Test {
 
   @Test
   public void sumDivTest() {
-    //noinspection OptionalGetWithoutIsPresent
-    assertEquals((NumericUtils.getAllDivisors((int) Math.pow(6, 6)).stream().reduce(Integer::sum).get() % 9901),
+    assertEquals((NumberTheory.allDivisorsOf((int) Math.pow(6, 6)).stream().reduce(Integer::sum).get() % 9901),
             sumDiv(6, 6));
   }
 

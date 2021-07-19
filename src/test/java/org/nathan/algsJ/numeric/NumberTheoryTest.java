@@ -11,11 +11,11 @@ import static org.junit.jupiter.api.Assertions.*;
 public class NumberTheoryTest{
   private static final int iter = 20;
 
-  IntArrayList primes = NumberTheory.sieveOfEratosthenes(200);
+  IntArrayList primes = NumberTheory.primesEratosthenes(200);
   @Test
   void MillerRabinTestTest(){
     for(var i : primes){
-      assertTrue(NumberTheory.MillerRabinTest(i, 20));
+      assertTrue(NumberTheory.primeTestMillerRabin(i, 20));
     }
   }
 
@@ -35,7 +35,7 @@ public class NumberTheoryTest{
   void factorTest(){
     for(int i = 0 ; i < iter; i++){
       var f = factorCases[i];
-      var ans = NumberTheory.factor(f[0] * f[1] * f[2] * f[3]);
+      var ans = NumberTheory.factorPollardsRho(f[0] * f[1] * f[2] * f[3]);
       var sortAns = ans.toArray(new int[]{});
       Arrays.sort(sortAns);
       assertArrayEquals(f, sortAns);

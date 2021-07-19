@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.nathan.acm.ACM0x10.*;
 
 class ACM0x10Test{
-  final int iteration = 20;
+  final int iteration = 1000;
 
   List<Tuple<Integer, Integer>> LRITCases = new ArrayList<>(7);
 
@@ -111,6 +111,7 @@ class ACM0x10Test{
   void largestXORPairTest(){
     for(int i = 0; i < iteration; i++){
       var ans = largestXORPair(xorCases[i]);
+      // TODO random fail
       assertEquals(xorAnswers[i], ans.first() ^ ans.second());
     }
   }

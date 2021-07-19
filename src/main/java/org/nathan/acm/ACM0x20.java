@@ -3,6 +3,7 @@ package org.nathan.acm;
 import org.jetbrains.annotations.NotNull;
 import org.nathan.algsJ.dataStruc.FinalSharedTreeList;
 import org.nathan.algsJ.graph.*;
+import org.nathan.algsJ.numeric.NumberTheory;
 import org.nathan.centralUtils.tuples.Quaternion;
 import org.nathan.centralUtils.tuples.Triad;
 import org.nathan.centralUtils.tuples.Tuple;
@@ -163,7 +164,7 @@ public class ACM0x20{
       Set<Integer> next = new HashSet<>(half.size() * 2);
       next.addAll(half);
       for(var t : half){
-        if(NumericUtils.addNotOverflow(t, weights[i])){
+        if(NumberTheory.addNotOverflow(t, weights[i])){
           next.add(t + weights[i]);
         }
       }
@@ -179,7 +180,7 @@ public class ACM0x20{
       Set<Integer> next = new HashSet<>(half.size() * 2);
       next.addAll(half);
       for(var t : half){
-        if(NumericUtils.addNotOverflow(t, weights[i])){
+        if(NumberTheory.addNotOverflow(t, weights[i])){
           next.add(t + weights[i]);
         }
       }

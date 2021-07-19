@@ -1,13 +1,14 @@
 package org.nathan.algsJ.numeric;
 
 import it.unimi.dsi.fastutil.ints.IntArrayList;
+import org.jetbrains.annotations.NotNull;
 
 import java.math.BigInteger;
 import java.security.SecureRandom;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.SplittableRandom;
+import java.util.stream.Collectors;
 
 public class NumberTheory{
   /**
@@ -22,23 +23,46 @@ public class NumberTheory{
     return !(((x ^ r) & (y ^ r)) < 0);
   }
 
-  public static IntArrayList sieveOfEratosthenes(int limit){
-    boolean[] prime = new boolean[limit + 1];
-    Arrays.fill(prime, true);
-    for(long p = 2; p * p <= limit; p++){
-      if(prime[(int) p]){
-        for(long i = p * 2; i <= limit; i += p){
-          prime[(int) i] = false;
-        }
-      }
-    }
-    IntArrayList primeNumbers = new IntArrayList((int) (limit / Math.log(limit)));
+  // TODO better implementation
+
+  /**
+   * @param limit inclusive
+   * @return list of primes
+   */
+  public static IntArrayList primesEratosthenes(int limit){
+//    boolean[] prime = new boolean[limit + 1];
+//    Arrays.fill(prime, true);
+//    for(int p = 2; p * p <= limit; p++){
+//      if(prime[p]){
+//        for(int i = p * 2; i <= limit; i += p){
+//          prime[i] = false;
+//        }
+//      }
+//    }
+//    IntArrayList primeNumbers = new IntArrayList((int) (limit / Math.log(limit)));
+//    for(int i = 2; i <= limit; i++){
+//      if(prime[i]){
+//        primeNumbers.add(i);
+//      }
+//    }
+//    return primeNumbers;
+    IntArrayList primes = new IntArrayList((int) (limit / Math.log(limit)));
+    int[] v = new int[limit + 1];
     for(int i = 2; i <= limit; i++){
-      if(prime[i]){
-        primeNumbers.add(i);
+      if(v[i] == 0){
+        v[i] = i;
+        primes.add(i);
+      }
+      var pLen = primes.size();
+      for(int j = 0; j < pLen; j++){
+        var p = primes.getInt(j);
+        if(p > v[i] || p > (limit / i)){
+          break;
+        }
+        v[i * p] = p;
       }
     }
-    return primeNumbers;
+    return primes;
   }
 
   private final static BigInteger ZERO = new BigInteger("0");
@@ -95,7 +119,7 @@ public class NumberTheory{
     return Math.abs(divisor);
   }
 
-  public static List<BigInteger> factor(BigInteger N){
+  public static List<BigInteger> factorPollardsRho(BigInteger N){
     if(N.compareTo(ZERO) <= 0){
       throw new IllegalArgumentException();
     }
@@ -128,7 +152,7 @@ public class NumberTheory{
     return ans;
   }
 
-  public static boolean MillerRabinTest(int n, int k){
+  public static boolean primeTestMillerRabin(int n, int k){
     var funcTest = new Object(){
       boolean apply(int d, int n){
         int a = 2 + (int) (sRandom.nextDouble() % (n - 4));
@@ -162,7 +186,7 @@ public class NumberTheory{
 
   }
 
-  public static IntArrayList factor(int N){
+  public static IntArrayList factorPollardsRho(int N){
     if(N <= 0){
       throw new IllegalArgumentException();
     }
@@ -170,7 +194,7 @@ public class NumberTheory{
     var funcFactor = new Object(){
       void apply(int N){
         if(N == 1){ return; }
-        if(MillerRabinTest(N, 20)){
+        if(primeTestMillerRabin(N, 20)){
           ans.add(N);
           return;
         }
@@ -181,6 +205,42 @@ public class NumberTheory{
     };
     funcFactor.apply(N);
     return ans;
+  }
+
+  /**
+   * <pre>
+   * example:28 -> 1,2,4,7,14,28
+   * </pre>
+   *
+   * @param num number
+   * @return all divisors of number
+   */
+  public static @NotNull List<Integer> allDivisorsOf(int num) {
+    List<Integer> primeFactors = factorPollardsRho(num);
+    List<Integer> l = new ArrayList<>(16);
+    l.add(1);
+
+    l.addAll(primeFactors.stream().distinct().collect(Collectors.toList()));
+    for (int len = 2; len < primeFactors.size(); len++) {
+      for (int idx = 0; idx < primeFactors.size() - len + 1; idx++) {
+        recursiveGetDivisors(idx + 1, primeFactors.get(idx), len - 1, l, primeFactors);
+      }
+    }
+    l.add(num);
+    return l.stream().distinct().collect(Collectors.toList());
+  }
+
+  private static void recursiveGetDivisors(int idx, int mul, int len, List<Integer> l, List<Integer> primeFactors) {
+    if (len == 1) {
+      for (; idx < primeFactors.size(); idx++) {
+        l.add(mul * primeFactors.get(idx));
+      }
+    }
+    else {
+      for (; idx < primeFactors.size() - len + 1; idx++) {
+        recursiveGetDivisors(idx + 1, primeFactors.get(idx) * mul, len - 1, l, primeFactors);
+      }
+    }
   }
 
 }

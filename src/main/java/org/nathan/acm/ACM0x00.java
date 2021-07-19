@@ -1,10 +1,10 @@
 package org.nathan.acm;
 
 
+import org.nathan.algsJ.numeric.NumberTheory;
 import org.nathan.centralUtils.classes.Ref;
 import org.nathan.centralUtils.tuples.Tuple;
 import org.nathan.centralUtils.utils.ArrayUtils;
-import org.nathan.centralUtils.utils.NumericUtils;
 
 import java.util.*;
 import java.util.stream.IntStream;
@@ -322,7 +322,7 @@ public class ACM0x00{
    * @return int
    */
   public static int sumDiv(int a, int b){
-    var primesList = NumericUtils.getAllPrimeFactors(a);
+    var primesList = NumberTheory.factorPollardsRho(a);
     int res = 1;
     Map<Integer, Integer> primes = new HashMap<>();
     for(var prime : primesList){
