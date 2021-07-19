@@ -7,7 +7,6 @@ import org.nathan.algsJ.numeric.NumberTheory;
 import org.nathan.centralUtils.tuples.Quaternion;
 import org.nathan.centralUtils.tuples.Triad;
 import org.nathan.centralUtils.tuples.Tuple;
-import org.nathan.centralUtils.utils.NumericUtils;
 
 import java.util.*;
 
