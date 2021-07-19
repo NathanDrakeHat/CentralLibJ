@@ -465,12 +465,13 @@ public class ACM0x20{
     List<Triad<Integer, Integer, Integer>> ans = new ArrayList<>();
     var funcSolve = new Object(){
       boolean apply(int time, int limit, Deque<Triad<Integer, Integer, Integer>> exchanges){
-        if(time + estimateMoveOfBooks(books) > limit){
-          return false;
-        }
-        if(sorted(books)){
+        var estimate = estimateMoveOfBooks(books);
+        if(estimate == 0){
           ans.addAll(exchanges);
           return true;
+        }
+        else if(time + estimate > limit){
+          return false;
         }
 
         for(int len = 1; len < books.length; len++){
@@ -481,7 +482,7 @@ public class ACM0x20{
               if(apply(time + 1, limit, exchanges)){
                 return true;
               }
-              backwardsExchangeBooks(books, s1, s2 - s1, s2);
+              backwardsExchangeBooks(books, s1, s2 - s1, len + s1);
               exchanges.removeLast();
             }
           }
@@ -498,16 +499,6 @@ public class ACM0x20{
     return ans;
   }
 
-  private static boolean sorted(int[] books){
-    for(int i = 0; i < books.length - 1; i++){
-      int a = books[i], b = books[i + 1];
-      if(b - a != 1){
-        return false;
-      }
-    }
-    return true;
-  }
-
   static int estimateMoveOfBooks(int[] books){
     int ans = 0;
     for(int i = 0; i < books.length - 1; i++){
@@ -520,7 +511,7 @@ public class ACM0x20{
     return (int) Math.ceil(ans / 3.);
   }
 
-  private static void backwardsExchangeBooks(int[] books, int s1, int len, int s2){
+  static void backwardsExchangeBooks(int[] books, int s1, int len, int s2){
     int[] temp = new int[len];
     System.arraycopy(books, s1, temp, 0, len);
     int es = s1 + len;

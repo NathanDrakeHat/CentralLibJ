@@ -6,6 +6,7 @@ import org.nathan.centralUtils.utils.ArrayUtils;
 import org.nathan.centralUtils.utils.NumericUtils;
 
 import java.util.*;
+import java.util.stream.IntStream;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.nathan.acm.ACM0x20.*;
@@ -196,10 +197,51 @@ public class ACM0x20Test{
 
   @Test
   void nPuzzleTest(){
-    while(nPuzzleCase.solved()){
+    while(nPuzzleCase.solved()) {
       nPuzzleCase = new ACM0x20.NPuzzle(200);
     }
     var ans = eight(nPuzzleCase);
     assertTrue(checkNPuzzle(ans));
+  }
+
+  int[][] bookSortCases = new int[iteration][];
+
+  {
+    var rand = new SplittableRandom();
+    for(int i = 0; i < iteration; i++){
+      var sorted = IntStream.range(0, rand.nextInt(7, 15)).toArray();
+      for(int j = 0; j < 4; j++){
+        int len = rand.nextInt(1, sorted.length);
+        int s1 = rand.nextInt(0, sorted.length - len);
+        int s2;
+        do{
+          s2 = rand.nextInt(0, sorted.length - len + 1);
+        }
+        while(s1 >= s2);
+        backwardsExchangeBooks(sorted, s1, len, s2);
+      }
+      bookSortCases[i] = sorted;
+    }
+  }
+
+  static boolean isSorted(int[] res){
+    boolean is_sorted = true;
+    for(int i = 1; i < res.length; i++){
+      if(res[i - 1] > res[i]){
+        is_sorted = false;
+        break;
+      }
+    }
+    return is_sorted;
+  }
+
+  @Test
+  void bookSortTest(){
+    for(int i = 0; i < iteration; i++){
+      var ans = bookSort(bookSortCases[i]);
+      assertTrue(isSorted(bookSortCases[i]));
+      assertTrue(ans.size() <= 4);
+      assertTrue(ans.size() != 0);
+    }
   }
 }
