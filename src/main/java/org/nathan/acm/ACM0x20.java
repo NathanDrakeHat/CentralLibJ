@@ -499,7 +499,7 @@ public class ACM0x20{
     return ans;
   }
 
-  static int estimateMoveOfBooks(int[] books){
+  private static int estimateMoveOfBooks(int[] books){
     int ans = 0;
     for(int i = 0; i < books.length - 1; i++){
       var a = books[i];
