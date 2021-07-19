@@ -452,8 +452,6 @@ public class ACM0x20{
     return ans;
   }
 
-  // TODO book sort
-
   /**
    * IDA* algorithm
    * <br/>POJ3460
