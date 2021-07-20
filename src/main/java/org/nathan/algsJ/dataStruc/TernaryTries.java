@@ -3,6 +3,7 @@ package org.nathan.algsJ.dataStruc;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayDeque;
+import java.util.Deque;
 import java.util.Queue;
 
 public class TernaryTries<Value>{
@@ -64,7 +65,7 @@ public class TernaryTries<Value>{
 
   public Value get(@NotNull String key){
     if(key.length() == 0){ throw new IllegalArgumentException("key must have length >= 1"); }
-    Node<Value> x = get(root, key, 0);
+    var x = get(root, key, 0);
     if(x == null){ return null; }
     return x.val;
   }
@@ -157,7 +158,7 @@ public class TernaryTries<Value>{
   public String longestPrefixOf(@NotNull String query){
     if(query.length() == 0){ return null; }
     int length = 0;
-    Node<Value> x = root;
+    var x = root;
     int i = 0;
     while(x != null && i < query.length()) {
       char c = query.charAt(i);
@@ -172,14 +173,14 @@ public class TernaryTries<Value>{
     return query.substring(0, length);
   }
 
-  public Iterable<String> keys(){
-    Queue<String> queue = new ArrayDeque<>();
+  public Deque<String> keys(){
+    Deque<String> queue = new ArrayDeque<>();
     collect(root, new StringBuilder(), queue);
     return queue;
   }
 
-  public Iterable<String> keysWithPrefix(@NotNull String prefix){
-    Queue<String> queue = new ArrayDeque<>();
+  public Deque<String> keysWithPrefix(@NotNull String prefix){
+    Deque<String> queue = new ArrayDeque<>();
     Node<Value> x = get(root, prefix, 0);
     if(x == null){ return queue; }
     if(x.contain){ queue.add(prefix); }
