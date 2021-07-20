@@ -135,7 +135,6 @@ public class TernaryTries<Value>{
 
   public void put(@NotNull String key, Value val){
     if(!contains(key)){ n++; }
-    else if(val == null){ n--; }
     root = put(root, key, val, 0);
   }
 
