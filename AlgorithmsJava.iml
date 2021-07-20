@@ -34,6 +34,5 @@
     <orderEntry type="library" name="Maven: it.unimi.dsi:fastutil:8.5.4" level="project" />
     <orderEntry type="library" name="Maven: it.unimi.dsi:fastutil-extra:8.5.4" level="project" />
     <orderEntry type="library" name="Maven: it.unimi.dsi:fastutil-core:8.5.4" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.commons:commons-lang3:3.12.0" level="project" />
   </component>
 </module>
