@@ -107,6 +107,7 @@ public class ACM0x00Test {
     assertEquals(85, laserBomb(laserBombCase, 6));
   }
 
+  @SuppressWarnings("OptionalGetWithoutIsPresent")
   @Test
   public void sumDivTest() {
     assertEquals((NumberTheory.allDivisorsOf((int) Math.pow(6, 6)).stream().reduce(Integer::sum).get() % 9901),
