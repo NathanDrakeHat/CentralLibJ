@@ -22,44 +22,20 @@ public class NumberTheory{
     // HD 2-12 Overflow iff both arguments have the opposite sign of the result
     return !(((x ^ r) & (y ^ r)) < 0);
   }
-
-  // TODO better implementation
-
   /**
    * @param limit inclusive
    * @return list of primes
    */
-  public static IntArrayList primesEratosthenes(int limit){
-//    boolean[] prime = new boolean[limit + 1];
-//    Arrays.fill(prime, true);
-//    for(int p = 2; p * p <= limit; p++){
-//      if(prime[p]){
-//        for(int i = p * 2; i <= limit; i += p){
-//          prime[i] = false;
-//        }
-//      }
-//    }
-//    IntArrayList primeNumbers = new IntArrayList((int) (limit / Math.log(limit)));
-//    for(int i = 2; i <= limit; i++){
-//      if(prime[i]){
-//        primeNumbers.add(i);
-//      }
-//    }
-//    return primeNumbers;
+  public static IntArrayList primesEuler(int limit){
     IntArrayList primes = new IntArrayList((int) (limit / Math.log(limit)));
-    int[] v = new int[limit + 1];
+    boolean[] visit = new boolean[limit + 1];
     for(int i = 2; i <= limit; i++){
-      if(v[i] == 0){
-        v[i] = i;
-        primes.add(i);
-      }
-      var pLen = primes.size();
-      for(int j = 0; j < pLen; j++){
-        var p = primes.getInt(j);
-        if(p > v[i] || p > (limit / i)){
-          break;
-        }
-        v[i * p] = p;
+      if(!visit[i]){ primes.add(i); }
+      var len = primes.size();
+      for(int j = 0; j < len && i * primes.getInt(j) <= limit; j++){
+        visit[i * primes.getInt(j)] = true;
+        if(i % primes.getInt(j) == 0)//关键
+        { break; }
       }
     }
     return primes;
@@ -215,14 +191,14 @@ public class NumberTheory{
    * @param num number
    * @return all divisors of number
    */
-  public static @NotNull List<Integer> allDivisorsOf(int num) {
+  public static @NotNull List<Integer> allDivisorsOf(int num){
     List<Integer> primeFactors = factorPollardsRho(num);
     List<Integer> l = new ArrayList<>(16);
     l.add(1);
 
     l.addAll(primeFactors.stream().distinct().collect(Collectors.toList()));
-    for (int len = 2; len < primeFactors.size(); len++) {
-      for (int idx = 0; idx < primeFactors.size() - len + 1; idx++) {
+    for(int len = 2; len < primeFactors.size(); len++){
+      for(int idx = 0; idx < primeFactors.size() - len + 1; idx++){
         recursiveGetDivisors(idx + 1, primeFactors.get(idx), len - 1, l, primeFactors);
       }
     }
@@ -230,14 +206,14 @@ public class NumberTheory{
     return l.stream().distinct().collect(Collectors.toList());
   }
 
-  private static void recursiveGetDivisors(int idx, int mul, int len, List<Integer> l, List<Integer> primeFactors) {
-    if (len == 1) {
-      for (; idx < primeFactors.size(); idx++) {
+  private static void recursiveGetDivisors(int idx, int mul, int len, List<Integer> l, List<Integer> primeFactors){
+    if(len == 1){
+      for(; idx < primeFactors.size(); idx++){
         l.add(mul * primeFactors.get(idx));
       }
     }
-    else {
-      for (; idx < primeFactors.size() - len + 1; idx++) {
+    else{
+      for(; idx < primeFactors.size() - len + 1; idx++){
         recursiveGetDivisors(idx + 1, primeFactors.get(idx) * mul, len - 1, l, primeFactors);
       }
     }

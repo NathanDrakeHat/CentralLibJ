@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class NumberTheoryTest{
   private static final int iter = 20;
 
-  IntArrayList primes = NumberTheory.primesEratosthenes(200);
+  IntArrayList primes = NumberTheory.primesEuler(200);
   @Test
   void MillerRabinTestTest(){
     for(var i : primes){
@@ -29,6 +29,11 @@ public class NumberTheoryTest{
         factorCases[i][j] = primes.getInt(s + j);
       }
     }
+  }
+
+  @Test
+  void primeTest(){
+    assertEquals(664579,	 NumberTheory.primesEuler((int)Math.pow(10,7)).size());
   }
 
   @Test

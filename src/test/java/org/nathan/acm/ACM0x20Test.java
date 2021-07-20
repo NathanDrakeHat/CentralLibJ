@@ -171,7 +171,10 @@ public class ACM0x20Test{
   ACM0x20.NPuzzle nPuzzleCase;
 
   {
-    nPuzzleCase = new ACM0x20.NPuzzle(200);
+    nPuzzleCase = new ACM0x20.NPuzzle(50);
+    while(nPuzzleCase.solved()) {
+      nPuzzleCase = new ACM0x20.NPuzzle(50);
+    }
   }
 
   private static boolean checkNPuzzle(NPuzzle[] ans){
@@ -197,9 +200,6 @@ public class ACM0x20Test{
 
   @Test
   void nPuzzleTest(){
-    while(nPuzzleCase.solved()) {
-      nPuzzleCase = new ACM0x20.NPuzzle(200);
-    }
     var ans = eight(nPuzzleCase);
     assertTrue(checkNPuzzle(ans));
   }
