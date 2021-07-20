@@ -22,17 +22,23 @@ public class NumberTheory{
     // HD 2-12 Overflow iff both arguments have the opposite sign of the result
     return !(((x ^ r) & (y ^ r)) < 0);
   }
+
+  public static boolean multiplyNotOverflow(int x, int y){
+    long r = (long) x * (long) y;
+    return (int) r == r;
+  }
+
   /**
    * @param limit inclusive
    * @return list of primes
    */
-  public static IntArrayList primesEuler(int limit){
+  public static IntArrayList primesGenEulerSieve(int limit){
     IntArrayList primes = new IntArrayList((int) (limit / Math.log(limit)));
     boolean[] visit = new boolean[limit + 1];
     for(int i = 2; i <= limit; i++){
       if(!visit[i]){ primes.add(i); }
       var len = primes.size();
-      for(int j = 0; j < len && i * primes.getInt(j) <= limit; j++){
+      for(int j = 0; j < len && multiplyNotOverflow(i, primes.getInt(j)) && i * primes.getInt(j) <= limit; j++){
         visit[i * primes.getInt(j)] = true;
         if(i % primes.getInt(j) == 0)//关键
         { break; }
@@ -95,7 +101,7 @@ public class NumberTheory{
     return Math.abs(divisor);
   }
 
-  public static List<BigInteger> factorPollardsRho(BigInteger N){
+  public static List<BigInteger> primeFactorizationPollardsRho(BigInteger N){
     if(N.compareTo(ZERO) <= 0){
       throw new IllegalArgumentException();
     }
@@ -162,7 +168,7 @@ public class NumberTheory{
 
   }
 
-  public static IntArrayList factorPollardsRho(int N){
+  public static IntArrayList primeFactorizationPollardsRho(int N){
     if(N <= 0){
       throw new IllegalArgumentException();
     }
@@ -192,7 +198,7 @@ public class NumberTheory{
    * @return all divisors of number
    */
   public static @NotNull List<Integer> allDivisorsOf(int num){
-    List<Integer> primeFactors = factorPollardsRho(num);
+    List<Integer> primeFactors = primeFactorizationPollardsRho(num);
     List<Integer> l = new ArrayList<>(16);
     l.add(1);
 

@@ -18,7 +18,7 @@ import static org.nathan.acm.ACM0x00.*;
 import static org.nathan.centralUtils.utils.ArrayUtils.randomDoubleArray;
 
 public class ACM0x00Test {
-  static final int iteration = 20; // iter of for
+  static final int iteration = 100; // iter of for
 
   @Test
   public void fastPowerModTest() {
@@ -171,16 +171,15 @@ public class ACM0x00Test {
   }
 
 
-  boolean[][] ibCases = new boolean[iteration][];
+  boolean[][] ibCases = new boolean[20][];
 
   {
-    int size = 20;
-    for (int i = 0; i < iteration; i++) {
-      ibCases[i] = new boolean[size];
+    for (int i = 0; i < 20; i++) {
+      ibCases[i] = new boolean[20];
     }
     var rand = new SplittableRandom();
-    for (int i = 0; i < iteration - 1; i++) {
-      for (int j = i + 1; j < iteration; j++) {
+    for (int i = 0; i < 20 - 1; i++) {
+      for (int j = i + 1; j < 20; j++) {
         var t = rand.nextBoolean();
         ibCases[i][j] = t;
         ibCases[j][i] = !t;

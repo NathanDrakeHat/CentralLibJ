@@ -18,6 +18,8 @@ class Main {
     if (args.length > 0) {
       GitPush.gitPush(args);
     }
+
+    Math.multiplyExact(1,1);
   }
 }
 

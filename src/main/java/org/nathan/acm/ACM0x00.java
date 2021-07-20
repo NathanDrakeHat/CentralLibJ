@@ -322,7 +322,7 @@ public class ACM0x00{
    * @return int
    */
   public static int sumDiv(int a, int b){
-    var primesList = NumberTheory.factorPollardsRho(a);
+    var primesList = NumberTheory.primeFactorizationPollardsRho(a);
     int res = 1;
     Map<Integer, Integer> primes = new HashMap<>();
     for(var prime : primesList){

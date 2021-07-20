@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.nathan.acm.ACM0x20.*;
 
 public class ACM0x20Test{
-  static final int iteration = 20;
+  static final int iteration = 100;
 
   LinkedGraph<BaseVert<Integer>, BaseEdge<BaseVert<Integer>>> tsCase;
 

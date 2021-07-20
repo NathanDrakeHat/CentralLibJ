@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class NumberTheoryTest{
   private static final int iter = 20;
 
-  IntArrayList primes = NumberTheory.primesEuler(200);
+  IntArrayList primes = NumberTheory.primesGenEulerSieve(200);
   @Test
   void MillerRabinTestTest(){
     for(var i : primes){
@@ -32,15 +32,15 @@ public class NumberTheoryTest{
   }
 
   @Test
-  void primeTest(){
-    assertEquals(664579,	 NumberTheory.primesEuler((int)Math.pow(10,7)).size());
+  void primesGenTest(){
+    assertEquals(664579,	 NumberTheory.primesGenEulerSieve((int)Math.pow(10,7)).size());
   }
 
   @Test
   void factorTest(){
     for(int i = 0 ; i < iter; i++){
       var f = factorCases[i];
-      var ans = NumberTheory.factorPollardsRho(f[0] * f[1] * f[2] * f[3]);
+      var ans = NumberTheory.primeFactorizationPollardsRho(f[0] * f[1] * f[2] * f[3]);
       var sortAns = ans.toArray(new int[]{});
       Arrays.sort(sortAns);
       assertArrayEquals(f, sortAns);

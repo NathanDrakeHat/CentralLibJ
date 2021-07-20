@@ -13,7 +13,7 @@ import static org.nathan.centralUtils.utils.ArrayUtils.randomIntArray;
 
 
 public class SortTest{
-  static int iteration = 20;
+  static final int iteration = 100;
 
   static boolean isSorted(int[] res){
     boolean is_sorted = true;

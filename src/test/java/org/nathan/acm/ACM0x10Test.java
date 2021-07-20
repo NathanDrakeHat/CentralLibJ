@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.nathan.acm.ACM0x10.*;
 
 class ACM0x10Test{
-  final int iteration = 1000;
+  final int iteration = 100;
 
   List<Tuple<Integer, Integer>> LRITCases = new ArrayList<>(7);
 
