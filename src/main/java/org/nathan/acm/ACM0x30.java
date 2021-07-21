@@ -1,23 +1,24 @@
 package org.nathan.acm;
 
+import org.jetbrains.annotations.NotNull;
 import org.nathan.algsJ.numeric.NumberTheory;
-import org.nathan.centralUtils.tuples.Tuple;
 
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.stream.IntStream;
 
 public class ACM0x30{
   public static int primeDistance(int L, int R){
     var primes = NumberTheory.primesGenEulerSieve((int) Math.ceil(Math.sqrt(R)));
-    var range = IntStream.range(L, R+1).filter(i->{
+    var range = IntStream.range(L, R + 1).filter(i -> {
       for(var p : primes){
-        if(i % p == 0) return false;
+        if(i % p == 0){ return false; }
       }
       return true;
     }).toArray();
     int max = range[1] - range[0];
     for(int i = 1; i < range.length - 1; i++){
-      max = Math.max(max, range[i+1] - range[i]);
+      max = Math.max(max, range[i + 1] - range[i]);
     }
     return max;
   }
@@ -25,10 +26,19 @@ public class ACM0x30{
 
   /**
    * prime factorization of factorial(N!)
+   *
    * @param N N
    * @return prime factorization of factorial(N!)
    */
-  public static List<Tuple<Integer,Integer>> factorialPrimeFactorization(int N){
-    return null;
+  public static @NotNull Map<Integer, Integer> factorialPrimeFactorization(int N){
+    var primes = NumberTheory.primesGenEulerSieve(N);
+    Map<Integer, Integer> ans = new HashMap<>(primes.size());
+    for(var p : primes){
+      int k = (int) (Math.floor(Math.log(N) / Math.log(p)));
+      for(int i = 1; i <= k; i++){
+        ans.put(p, (int) (ans.getOrDefault(p, 0) + Math.floor(N / Math.pow(p, i))));
+      }
+    }
+    return ans;
   }
 }

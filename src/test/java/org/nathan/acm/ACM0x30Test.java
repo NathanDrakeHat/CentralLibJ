@@ -5,9 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.nathan.algsJ.numeric.NumberTheory;
 import org.nathan.centralUtils.tuples.Tuple;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.SplittableRandom;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -45,6 +43,37 @@ class ACM0x30Test{
       var b = t.second();
       var ans = ACM0x30.primeDistance(primes.getInt(a), primes.getInt(b));
       assertEquals(pdAnswers[i], ans);
+    }
+  }
+
+  int[] fpfCases = new int[iteration];
+  List<Map<Integer, Integer>> fpfAnswers = new ArrayList<>(iteration);
+  {
+    var rand = new SplittableRandom();
+    for(int i = 0; i < iteration; i++){
+      fpfCases[i] = rand.nextInt(5, 100);
+      fpfAnswers.add(fpfSolve(fpfCases[i]));
+    }
+  }
+
+  static Map<Integer, Integer> fpfSolve(int N){
+    var primes = NumberTheory.primesGenEulerSieve(N);
+    Map<Integer, Integer> ans = new HashMap<>(primes.size());
+    for(int i = 2; i <= N; i++){
+      var f = NumberTheory.primeFactorizationPollardsRho(i);
+      for(var p : f){
+        ans.put(p, ans.getOrDefault(p, 0) + 1);
+      }
+    }
+
+    return ans;
+  }
+
+  @Test
+  void factorialPrimeFactorizationTest(){
+    for(int i = 0; i < iteration; i++){
+      var ans = ACM0x30.factorialPrimeFactorization(fpfCases[i]);
+      assertEquals(fpfAnswers.get(i), ans);
     }
   }
 }
