@@ -41,4 +41,8 @@ public class ACM0x30{
     }
     return ans;
   }
+
+  public static int sumOfRemainders(int k, int n){
+    return 0;
+  }
 }

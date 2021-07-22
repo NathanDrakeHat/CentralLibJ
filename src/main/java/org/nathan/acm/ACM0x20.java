@@ -1,7 +1,7 @@
 package org.nathan.acm;
 
 import org.jetbrains.annotations.NotNull;
-import org.nathan.algsJ.dataStruc.FinalSharedTreeList;
+import org.nathan.algsJ.dataStruc.SharedList;
 import org.nathan.algsJ.graph.*;
 import org.nathan.algsJ.numeric.NumberTheory;
 import org.nathan.centralUtils.tuples.Quaternion;
@@ -385,9 +385,9 @@ public class ACM0x20{
    */
   public static @NotNull NPuzzle[] eight(@NotNull NPuzzle nPuzzle){
     // step, estimate, n-puzzle, last space
-    PriorityQueue<Quaternion<Integer, Integer, NPuzzle, FinalSharedTreeList<Tuple<Integer, Integer>>>> queue =
+    PriorityQueue<Quaternion<Integer, Integer, NPuzzle, SharedList<Tuple<Integer, Integer>>>> queue =
             new PriorityQueue<>(Comparator.comparing(t -> t.first() + t.second()));
-    queue.add(new Quaternion<>(0, estimate(nPuzzle), nPuzzle, new FinalSharedTreeList<>(nPuzzle.getSpaceIndex())));
+    queue.add(new Quaternion<>(0, estimate(nPuzzle), nPuzzle, new SharedList<>(nPuzzle.getSpaceIndex())));
     while(queue.size() > 0) {
       var quaternion = queue.poll();
       var np = quaternion.third();
@@ -413,7 +413,7 @@ public class ACM0x20{
         if(!nb.equals(quaternion.fourth().Data)){
           var nnp = new NPuzzle(np);
           var currentSpace = nnp.getSpaceIndex();
-          var sl = new FinalSharedTreeList<>(currentSpace);
+          var sl = new SharedList<>(currentSpace);
           sl.setParent(quaternion.fourth());
           nnp.exchangeWith(nb.first(), nb.second());
           queue.add(new Quaternion<>(step + 1, estimate(nnp), nnp, sl));
@@ -423,7 +423,7 @@ public class ACM0x20{
         var nb = neighbors.get(neighbors.size() - 1);
         if(!nb.equals(quaternion.fourth().Data)){
           var currentSpace = np.getSpaceIndex();
-          var sl = new FinalSharedTreeList<>(currentSpace);
+          var sl = new SharedList<>(currentSpace);
           sl.setParent(quaternion.fourth());
           np.exchangeWith(nb.first(), nb.second());
           queue.add(new Quaternion<>(step + 1, estimate(np), np, sl));
