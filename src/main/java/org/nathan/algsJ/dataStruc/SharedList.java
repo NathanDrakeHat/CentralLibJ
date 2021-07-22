@@ -5,15 +5,15 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayDeque;
 import java.util.Deque;
 
-public class FinalSharedTreeList<T>{
+public class SharedList<T>{
   public final T Data;
-  FinalSharedTreeList<T> parent;
+  SharedList<T> parent;
 
-  public FinalSharedTreeList(T data){
+  public SharedList(T data){
     this.Data = data;
   }
 
-  public void setParent(@NotNull FinalSharedTreeList<T> p){
+  public void setParent(@NotNull SharedList<T> p){
     parent = p;
   }
 
