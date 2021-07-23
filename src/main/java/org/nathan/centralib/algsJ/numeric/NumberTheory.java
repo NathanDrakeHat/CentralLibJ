@@ -92,6 +92,20 @@ public class NumberTheory{
     return a * b / gcd(a,b);
   }
 
+  /**
+   * euler function
+   * @param n number
+   * @return count of integer which prime with n
+   */
+  public static int phi(int n){
+    var primes = primeFactorizationPollardsRho(n);
+    int ans = n;
+    for(var p : primes){
+      ans /= p * (p - 1);
+    }
+    return ans;
+  }
+
   public static int rho(int N){
     int divisor;
     int bLen = (int) Math.pow(2, bitLength(N));
