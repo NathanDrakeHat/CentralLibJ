@@ -51,7 +51,7 @@ public class LambdaUtils {
   }
 
   /**
-   * just call one line of code!
+   * call on single statement
    *
    * @param runnable run
    */
@@ -64,7 +64,7 @@ public class LambdaUtils {
   }
 
   /**
-   * just call one line of code!
+   * call on single statement
    *
    * @param runnable run
    * @param cat      catch lambda
@@ -78,7 +78,7 @@ public class LambdaUtils {
   }
 
   /**
-   * just call one line of code!
+   * call on single statement
    *
    * @param callable call
    * @param <R>      return type
@@ -93,7 +93,7 @@ public class LambdaUtils {
   }
 
   /**
-   * just call one line of code!
+   * call on single statement
    *
    * @param callable call
    * @param cat      catch lambda
@@ -126,24 +126,4 @@ public class LambdaUtils {
     return func4.apply(func3.apply(func2.apply(func1.apply(input))));
   }
 
-  public static <E1, E2, E3, E4, E5, E6> E6 chain(
-          E1 input,
-          Function<E1, E2> func1,
-          Function<E2, E3> func2,
-          Function<E3, E4> func3,
-          Function<E4, E5> func4,
-          Function<E5, E6> func5) {
-    return func5.apply(func4.apply(func3.apply(func2.apply(func1.apply(input)))));
-  }
-
-  public static <E1, E2, E3, E4, E5, E6, E7> E7 chain(
-          E1 input,
-          Function<E1, E2> func1,
-          Function<E2, E3> func2,
-          Function<E3, E4> func3,
-          Function<E4, E5> func4,
-          Function<E5, E6> func5,
-          Function<E6, E7> func6) {
-    return func6.apply(func5.apply(func4.apply(func3.apply(func2.apply(func1.apply(input))))));
-  }
 }
