@@ -6,11 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="CentralLib" />
+        <module name="CentralLibJ" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="CentralLib" target="16" />
+      <module name="CentralLibJ" target="16" />
       <module name="CentralUtils" target="16" />
     </bytecodeTargetLevel>
   </component>
