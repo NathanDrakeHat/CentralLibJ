@@ -23,6 +23,13 @@ public class NumberTheory{
     return !(((x ^ r) & (y ^ r)) < 0);
   }
 
+  /**
+   *
+   * @param x x
+   * @param y y
+   * @return multiply not overflow
+   * @see Math#multiplyExact(int, int)
+   */
   public static boolean multiplyNotOverflow(int x, int y){
     long r = (long) x * (long) y;
     return (int) r == r;
