@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.nathan</groupId>
-    <artifactId>AlgorithmsJava</artifactId>
+    <artifactId>CentralLib</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
@@ -52,9 +52,14 @@
             <version>30.1-jre</version>
         </dependency>
         <dependency>
-            <groupId>org.nathan</groupId>
-            <artifactId>CentralUtils</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <groupId>it.unimi.dsi</groupId>
+            <artifactId>fastutil</artifactId>
+            <version>8.5.4</version>
+        </dependency>
+        <dependency>
+            <groupId>net.java.dev.jna</groupId>
+            <artifactId>jna</artifactId>
+            <version>5.8.0</version>
         </dependency>
     </dependencies>
 

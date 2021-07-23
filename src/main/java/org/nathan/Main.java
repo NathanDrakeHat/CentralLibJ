@@ -1,7 +1,7 @@
 package org.nathan;
 
 
-import org.nathan.centralUtils.utils.NativeUtils;
+import org.nathan.centralib.utils.NativeUtils;
 
 
 
@@ -18,8 +18,6 @@ class Main {
     if (args.length > 0) {
       GitPush.gitPush(args);
     }
-
-    Math.multiplyExact(1,1);
   }
 }
 
