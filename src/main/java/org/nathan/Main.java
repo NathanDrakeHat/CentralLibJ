@@ -1,7 +1,7 @@
 package org.nathan;
 
 
-import org.nathan.centralib.utils.NativeUtils;
+import org.nathan.centralibj.utils.NativeUtils;
 
 
 class Main{
