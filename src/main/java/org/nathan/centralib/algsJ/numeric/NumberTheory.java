@@ -81,6 +81,10 @@ public class NumberTheory{
     return b != 0 ? gcd(b, a % b) : a;
   }
 
+  public static int lcm(int a, int b){
+    return a * b / gcd(a,b);
+  }
+
   public static int rho(int N){
     int divisor;
     int bLen = (int) Math.pow(2, bitLength(N));
