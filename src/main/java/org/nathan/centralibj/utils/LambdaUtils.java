@@ -5,7 +5,7 @@ import java.util.concurrent.Callable;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
-import static org.nathan.centralibj.utils.misc.CEStripper.raise;
+import static org.nathan.centralibj.utils.ExceptionUtils.CEStripper.raise;
 
 public class LambdaUtils {
 

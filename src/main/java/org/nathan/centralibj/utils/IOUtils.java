@@ -14,7 +14,7 @@ import java.nio.file.Path;
 import java.util.function.Consumer;
 import java.util.stream.Stream;
 
-import static org.nathan.centralibj.utils.misc.CEStripper.raise;
+import static org.nathan.centralibj.utils.ExceptionUtils.CEStripper.raise;
 import static org.nathan.centralibj.utils.LambdaUtils.stripCE;
 
 @SuppressWarnings("unused")
