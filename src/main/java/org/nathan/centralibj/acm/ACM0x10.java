@@ -8,7 +8,7 @@ import org.nathan.centralibj.utils.tuples.Tuple;
 
 import java.util.*;
 
-public class ACM0x10{
+class ACM0x10{
   /**
    * monotonous stack algorithm
    * <br/>(POJ2559)

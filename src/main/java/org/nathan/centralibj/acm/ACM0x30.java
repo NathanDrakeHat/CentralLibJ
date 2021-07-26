@@ -7,7 +7,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.IntStream;
 
-public class ACM0x30{
+/**
+ * see reference for more algorithms
+ */
+class ACM0x30{
   public static int primeDistance(int L, int R){
     var primes = NumberTheory.primesGenEulerSieve((int) Math.ceil(Math.sqrt(R)));
     var range = IntStream.range(L, R + 1).filter(i -> {
@@ -40,15 +43,5 @@ public class ACM0x30{
       }
     }
     return ans;
-  }
-
-  /**
-   * k % 1 + k % 2 + ... + k % n
-   * @param k base
-   * @param n number
-   * @return sum of remainders of k from 1 to n
-   */
-  public static int sumOfRemainders(int k, int n){
-    return 0;
   }
 }
