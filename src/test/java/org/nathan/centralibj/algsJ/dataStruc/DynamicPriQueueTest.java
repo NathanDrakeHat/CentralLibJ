@@ -1,6 +1,7 @@
 package org.nathan.centralibj.algsJ.dataStruc;
 
 
+import it.unimi.dsi.util.XoRoShiRo128PlusRandom;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -58,7 +59,7 @@ class DynamicPriQueueTest{
   void minRandomUpdateKeyTest(){
     for(int i = 0; i < iter; i++){
       List<Integer> l = minRandUpdateKeyCase.get(i);
-      var rand = new SplittableRandom();
+      var rand = new XoRoShiRo128PlusRandom();
       DynamicPriQueue<Integer, String> heap = new DynamicPriQueue<>(
               l.stream().map(String::valueOf).collect(Collectors.toList()),
               s -> rand.nextInt(127 - 1) + 1,

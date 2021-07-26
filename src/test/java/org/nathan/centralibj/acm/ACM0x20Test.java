@@ -1,5 +1,6 @@
 package org.nathan.centralibj.acm;
 
+import it.unimi.dsi.util.XoRoShiRo128PlusRandom;
 import org.junit.jupiter.api.Test;
 import org.nathan.centralibj.algsJ.graph.*;
 import org.nathan.centralibj.algsJ.numeric.NumberTheory;
@@ -12,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.nathan.centralibj.acm.ACM0x20.*;
 
 public class ACM0x20Test{
-  static final int iteration = 10000;
+  static final int iteration = 100;
 
   LinkedGraph<BaseVert<Integer>, BaseEdge<BaseVert<Integer>>> tsCase;
 
@@ -102,9 +103,9 @@ public class ACM0x20Test{
   int[] sgAnswers = new int[iteration];
 
   {
-    var rand = new SplittableRandom();
+    var rand = new XoRoShiRo128PlusRandom();
     for(int i = 0; i < iteration; i++){
-      sgCases[i] = ArrayUtils.randomIntArray(0, Integer.MAX_VALUE - 1, rand.nextInt(10, 45));
+      sgCases[i] = ArrayUtils.randomIntArray(0, Integer.MAX_VALUE - 1, 10 + rand.nextInt( 45-10));
       Set<Integer> set = new HashSet<>(1);
       set.add(0);
       for(int j = 0; j < sgCases[i].length; j++){
@@ -207,16 +208,16 @@ public class ACM0x20Test{
   int[][] bookSortCases = new int[iteration][];
 
   {
-    var rand = new SplittableRandom();
+    var rand = new XoRoShiRo128PlusRandom();
     for(int i = 0; i < iteration; i++){
-      var t = IntStream.range(0, rand.nextInt(7, 15)).toArray();
+      var t = IntStream.range(0, rand.nextInt(15 - 7) + 7).toArray();
       while(isSorted(t)){
         for(int j = 0; j < 4; j++){
-          int len = rand.nextInt(1, t.length);
-          int s1 = rand.nextInt(0, t.length - len);
+          int len = rand.nextInt(t.length - 1) + 1;
+          int s1 = rand.nextInt(t.length - len);
           int s2;
           do{
-            s2 = rand.nextInt(0, t.length - len + 1);
+            s2 = rand.nextInt(t.length - len + 1);
           }
           while(s1 >= s2);
           backwardsExchangeBooks(t, s1, len, s2);

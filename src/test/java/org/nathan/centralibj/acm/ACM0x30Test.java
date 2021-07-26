@@ -1,6 +1,7 @@
 package org.nathan.centralibj.acm;
 
 import it.unimi.dsi.fastutil.ints.IntList;
+import it.unimi.dsi.util.XoRoShiRo128PlusRandom;
 import org.junit.jupiter.api.Test;
 import org.nathan.centralibj.algsJ.numeric.NumberTheory;
 import org.nathan.centralibj.utils.tuples.Tuple;
@@ -19,10 +20,10 @@ class ACM0x30Test{
   {
     primes = NumberTheory.primesGenEulerSieve((int) Math.pow(10, 4));
     pdCases = new ArrayList<>(iteration);
-    var rand = new SplittableRandom();
+    var rand = new XoRoShiRo128PlusRandom();
     for(int i = 0; i < iteration; i++){
-      var s = rand.nextInt(0, primes.size() / 2);
-      var e = rand.nextInt(primes.size() / 2, primes.size());
+      var s = rand.nextInt(primes.size() / 2);
+      var e = rand.nextInt(primes.size() - primes.size() / 2) + primes.size() / 2;
       pdCases.add(new Tuple<>(s, e));
       int max = -1;
       for(int j = s; j < e; j++){
@@ -49,9 +50,9 @@ class ACM0x30Test{
   int[] fpfCases = new int[iteration];
   List<Map<Integer, Integer>> fpfAnswers = new ArrayList<>(iteration);
   {
-    var rand = new SplittableRandom();
+    var rand = new XoRoShiRo128PlusRandom();
     for(int i = 0; i < iteration; i++){
-      fpfCases[i] = rand.nextInt(5, 100);
+      fpfCases[i] = rand.nextInt(100 - 5) + 5;
       fpfAnswers.add(fpfSolve(fpfCases[i]));
     }
   }

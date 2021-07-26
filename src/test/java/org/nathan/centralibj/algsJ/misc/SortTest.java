@@ -1,5 +1,6 @@
 package org.nathan.centralibj.algsJ.misc;
 
+import it.unimi.dsi.util.XoRoShiRo128PlusRandom;
 import org.junit.jupiter.api.Test;
 
 import java.util.*;
@@ -58,7 +59,7 @@ public class SortTest{
   double[][] quickSort3WayCase = new double[iteration][];
 
   {
-    var rand = new SplittableRandom();
+    var rand = new XoRoShiRo128PlusRandom();
     for(int i = 0; i < iteration; i++){
       int len = rand.nextInt(10) + 20;
       int bound = rand.nextInt(5) + 10;
@@ -77,7 +78,7 @@ public class SortTest{
   double[][] shellSortCase = new double[iteration][];
 
   {
-    var rand = new SplittableRandom();
+    var rand = new XoRoShiRo128PlusRandom();
     for(int i = 0; i < iteration; i++){
       int len = rand.nextInt(10) + 20;
       int bound = rand.nextInt(5) + 10;
@@ -96,7 +97,7 @@ public class SortTest{
   double[][] insertionSortCase = new double[iteration][];
 
   {
-    var rand = new SplittableRandom();
+    var rand = new XoRoShiRo128PlusRandom();
     for(int i = 0; i < iteration; i++){
       int len = rand.nextInt(10) + 20;
       int bound = rand.nextInt(5) + 10;
@@ -115,7 +116,7 @@ public class SortTest{
   double[][] selectionSortCase = new double[iteration][];
 
   {
-    var rand = new SplittableRandom();
+    var rand = new XoRoShiRo128PlusRandom();
     for(int i = 0; i < iteration; i++){
       int len = rand.nextInt(10) + 20;
       int bound = rand.nextInt(5) + 10;
@@ -135,7 +136,7 @@ public class SortTest{
   double[][] iterMergeSortCase = new double[iteration][];
 
   {
-    var rand = new SplittableRandom();
+    var rand = new XoRoShiRo128PlusRandom();
     for(int i = 0; i < iteration; i++){
       int len = rand.nextInt(10) + 20;
       int bound = rand.nextInt(5) + 10;
@@ -154,7 +155,7 @@ public class SortTest{
   double[][] recurMergeSortCase = new double[iteration][];
 
   {
-    var rand = new SplittableRandom();
+    var rand = new XoRoShiRo128PlusRandom();
     for(int i = 0; i < iteration; i++){
       int len = rand.nextInt(10) + 20;
       int bound = rand.nextInt(5) + 10;
@@ -173,7 +174,7 @@ public class SortTest{
   double[][] heapSortCase = new double[iteration][];
 
   {
-    var rand = new SplittableRandom();
+    var rand = new XoRoShiRo128PlusRandom();
 
     for(int i = 0; i < iteration; i++){
       int len = rand.nextInt(10) + 20;
@@ -193,7 +194,7 @@ public class SortTest{
   double[][] quickSortCase = new double[iteration][];
 
   {
-    var rand = new SplittableRandom();
+    var rand = new XoRoShiRo128PlusRandom();
 
     for(int i = 0; i < iteration; i++){
       int len = rand.nextInt(10) + 20;
@@ -213,7 +214,7 @@ public class SortTest{
   double[][] randQuickSortCase = new double[iteration][];
 
   {
-    var rand = new SplittableRandom();
+    var rand = new XoRoShiRo128PlusRandom();
 
     for(int i = 0; i < iteration; i++){
       int len = rand.nextInt(10) + 20;
@@ -233,7 +234,7 @@ public class SortTest{
   int[][] countingSortCase = new int[iteration][];
 
   {
-    var rand = new SplittableRandom();
+    var rand = new XoRoShiRo128PlusRandom();
     for(int i = 0; i < iteration; i++){
       int len = rand.nextInt(10) + 20;
       int bound = rand.nextInt(5) + 10;
@@ -250,7 +251,7 @@ public class SortTest{
   }
 
   static Sort.SimpleDate[] buildDate(){
-    var rand = new SplittableRandom();
+    var rand = new XoRoShiRo128PlusRandom();
     int len = rand.nextInt(20) + 20;
     Sort.SimpleDate[] res = new Sort.SimpleDate[len];
     int[] years = randomIntArray(2000, 2022, len);
@@ -281,7 +282,7 @@ public class SortTest{
   double[][] bucketSortCase = new double[iteration][];
 
   {
-    var rand = new SplittableRandom();
+    var rand = new XoRoShiRo128PlusRandom();
     for(int i = 0; i < iteration; i++){
       int len = rand.nextInt(10) + 20;
       bucketSortCase[i] = randomDoubleArray(0, 1, len);

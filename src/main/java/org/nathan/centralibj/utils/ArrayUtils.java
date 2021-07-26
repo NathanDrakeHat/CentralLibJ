@@ -1,5 +1,6 @@
 package org.nathan.centralibj.utils;
 
+import it.unimi.dsi.util.XoRoShiRo128PlusRandom;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.*;
@@ -81,22 +82,22 @@ public class ArrayUtils{
   }
 
   public static int[] randomIntArray(int low, int high, int len){
-    var rand = new SplittableRandom();
+    var rand = new XoRoShiRo128PlusRandom();
     return IntStream.generate(() -> rand.nextInt(high - low) + low).limit(len).toArray();
   }
 
   public static List<Integer> randomIntList(int low, int high, int len){
-    var rand = new SplittableRandom();
+    var rand = new XoRoShiRo128PlusRandom();
     return IntStream.generate(() -> rand.nextInt(high - low) + low).limit(len).boxed().toList();
   }
 
   public static double[] randomDoubleArray(double low, double high, int len){
-    var rand = new SplittableRandom();
+    var rand = new XoRoShiRo128PlusRandom();
     return DoubleStream.generate(() -> rand.nextDouble() * (high - low) + low).limit(len).toArray();
   }
 
   public static List<Double> randomDoubleList(double low, double high, int len){
-    var rand = new SplittableRandom();
+    var rand = new XoRoShiRo128PlusRandom();
     return DoubleStream.generate(() -> rand.nextDouble() * (high - low) + low).limit(len).boxed().toList();
   }
 
@@ -126,7 +127,7 @@ public class ArrayUtils{
   }
 
   public static void KnuthShuffle(double[] array){
-    var rand = new SplittableRandom();
+    var rand = new XoRoShiRo128PlusRandom();
     for(int i = 1; i < array.length; i++){
       int r = rand.nextInt(i + 1);
       var t = array[i];
@@ -136,7 +137,7 @@ public class ArrayUtils{
   }
 
   public static void KnuthShuffle(int[] array){
-    var rand = new SplittableRandom();
+    var rand = new XoRoShiRo128PlusRandom();
     for(int i = 1; i < array.length; i++){
       int r = rand.nextInt(i + 1);
       var t = array[i];

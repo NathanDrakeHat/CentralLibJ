@@ -1,6 +1,7 @@
 package org.nathan.centralibj.algsJ.numeric;
 
 import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.util.XoRoShiRo128PlusRandom;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -21,7 +22,7 @@ public class NumberTheoryTest{
 
   int[][] factorCases = new int[iter][];
   {
-    var rand = new SplittableRandom();
+    var rand = new XoRoShiRo128PlusRandom();
     for(int i = 0; i < iter; i++){
       factorCases[i] = new int[4];
       var s = rand.nextInt(primes.size()-4);

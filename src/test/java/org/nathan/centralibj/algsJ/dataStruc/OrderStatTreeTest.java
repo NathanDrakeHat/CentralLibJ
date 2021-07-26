@@ -1,5 +1,6 @@
 package org.nathan.centralibj.algsJ.dataStruc;
 
+import it.unimi.dsi.util.XoRoShiRo128PlusRandom;
 import org.junit.jupiter.api.Test;
 import org.nathan.centralibj.utils.ArrayUtils;
 
@@ -108,11 +109,11 @@ class OrderStatTreeTest{
 
   @Test
   public void implementationTest(){
-    var rand = new SplittableRandom();
+    var rand = new XoRoShiRo128PlusRandom();
     for(int t = 0; t < 5; t++){
       OrderStatTree<Integer, Integer> tree;
       tree = new OrderStatTree<>(Comparator.comparingInt(o -> o));
-      int len = rand.nextInt(16, 128);
+      int len = rand.nextInt(128 - 16) + 16;
       List<Integer> shuffle = ArrayUtils.shuffledRangeList(0, len);
       for(int i = 0; i < len; i++){
         tree.insertKV(shuffle.get(i), shuffle.get(i));

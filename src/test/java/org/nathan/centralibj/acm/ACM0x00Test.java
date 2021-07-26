@@ -1,5 +1,6 @@
 package org.nathan.centralibj.acm;
 
+import it.unimi.dsi.util.XoRoShiRo128PlusRandom;
 import org.junit.jupiter.api.Test;
 import org.nathan.centralibj.algsJ.misc.SortTest;
 import org.nathan.centralibj.algsJ.numeric.NumberTheory;
@@ -178,7 +179,7 @@ public class ACM0x00Test {
     for (int i = 0; i < 20; i++) {
       ibCases[i] = new boolean[20];
     }
-    var rand = new SplittableRandom();
+    var rand = new XoRoShiRo128PlusRandom();
     for (int i = 0; i < 20 - 1; i++) {
       for (int j = i + 1; j < 20; j++) {
         var t = rand.nextBoolean();
@@ -204,9 +205,9 @@ public class ACM0x00Test {
   {
     runningMedianCases = new int[iteration][];
     runningMedianAnswers = new IntStream[iteration];
-    var rand = new SplittableRandom();
+    var rand = new XoRoShiRo128PlusRandom();
     for (int i = 0; i < iteration; i++) {
-      int len = rand.nextInt(30, 50);
+      int len = rand.nextInt(50 - 30) + 30;
       runningMedianCases[i] = ArrayUtils.shuffledIntArray(-len, len, 1);
       var b = IntStream.builder();
       for (int j = 1; j <= runningMedianCases[i].length; j += 2) {
@@ -231,7 +232,7 @@ public class ACM0x00Test {
   int[] ultraQuickSortAnswers = new int[iteration];
 
   {
-    var rand = new SplittableRandom();
+    var rand = new XoRoShiRo128PlusRandom();
     for (int i = 0; i < iteration; i++) {
       int len = rand.nextInt(3) + 3;
       int bound = rand.nextInt(5) + 10;
@@ -282,9 +283,9 @@ public class ACM0x00Test {
   {
     STCases = new double[iteration][];
     STAnswers = new double[iteration];
-    var rand = new SplittableRandom();
+    var rand = new XoRoShiRo128PlusRandom();
     for (int i = 0; i < iteration; i++) {
-      STCases[i] = ArrayUtils.randomDoubleArray(-30, 30, rand.nextInt(30, 40));
+      STCases[i] = ArrayUtils.randomDoubleArray(-30, 30, rand.nextInt(40-30) + 30);
       var temp = new double[10];
       System.arraycopy(STCases[i], 10, temp, 0, 10);
       Arrays.sort(temp);

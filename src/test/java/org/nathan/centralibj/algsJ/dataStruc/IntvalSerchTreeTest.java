@@ -1,5 +1,6 @@
 package org.nathan.centralibj.algsJ.dataStruc;
 
+import it.unimi.dsi.util.XoRoShiRo128PlusRandom;
 import org.junit.jupiter.api.Test;
 import org.nathan.centralibj.utils.ArrayUtils;
 
@@ -52,13 +53,13 @@ class IntvalSerchTreeTest{
 
   @Test
   void isISTreeTest(){
-    var rand = new SplittableRandom();
+    var rand = new XoRoShiRo128PlusRandom();
     int len = 128;
     for(int i = 0; i < 5; i++){
-      List<Integer> shuffle = ArrayUtils.shuffledRangeList(0, rand.nextInt(16, len));
+      List<Integer> shuffle = ArrayUtils.shuffledRangeList(0, rand.nextInt(len - 16) + 16);
       IntvalSerchTree<Integer, Void> t = new IntvalSerchTree<>(Integer::compareTo);
       for(var item : shuffle){
-        t.insertInterval(item, item + rand.nextInt(8, len / 2), null);
+        t.insertInterval(item, item + rand.nextInt(len / 2 - 8) + 8, null);
         assertTrue(isISTree(t));
       }
 
@@ -69,7 +70,7 @@ class IntvalSerchTreeTest{
       }
 
       for(var item : shuffle){
-        t.insertInterval(item, item + rand.nextInt(8, len / 2), null);
+        t.insertInterval(item, item + rand.nextInt(len / 2 - 8) + 8, null);
         assertTrue(isISTree(t));
       }
 
@@ -87,10 +88,10 @@ class IntvalSerchTreeTest{
   int len = 64;
 
   {
-    var rand = new SplittableRandom();
+    var rand = new XoRoShiRo128PlusRandom();
     List<Integer> shuffle = ArrayUtils.shuffledRangeList(0, len);
     for(var s : shuffle){
-      intervals.add(new Point(s, s + rand.nextInt(1, len / 2)));
+      intervals.add(new Point(s, s + rand.nextInt(len / 2 - 1) + 1));
     }
     sect = intervals.get(intervals.size() - 1);
     intervals.remove(intervals.size() - 1);

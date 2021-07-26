@@ -1,5 +1,6 @@
 package org.nathan.centralibj.acm;
 
+import it.unimi.dsi.util.XoRoShiRo128PlusRandom;
 import org.junit.jupiter.api.Test;
 import org.nathan.centralibj.utils.tuples.Tuple;
 import org.nathan.centralibj.utils.ArrayUtils;
@@ -35,9 +36,9 @@ class ACM0x10Test{
   {
     mqCases = new double[iteration][];
     mqAnswers = new double[iteration];
-    var rand = new SplittableRandom();
+    var rand = new XoRoShiRo128PlusRandom();
     for(int i = 0; i < iteration; i++){
-      int len = rand.nextInt(3, 6);
+      int len = rand.nextInt(6 - 3) + 3;
       mqCases[i] = ArrayUtils.randomDoubleArray(-5, 10, len);
       int m = len / 2;
       double[] temp = new double[mqCases[i].length + 1];
@@ -93,9 +94,9 @@ class ACM0x10Test{
   {
     xorCases = new int[iteration][];
     xorAnswers = new int[iteration];
-    var rand = new SplittableRandom();
+    var rand = new XoRoShiRo128PlusRandom();
     for(int i = 0; i < iteration; i++){
-      int len = rand.nextInt(2, 4);
+      int len = rand.nextInt(4 - 2) + 2;
       xorCases[i] = ArrayUtils.randomIntArray(1, 256, len);
       int max = Integer.MIN_VALUE;
       for(int j = 0; j < xorCases[i].length; j++){
