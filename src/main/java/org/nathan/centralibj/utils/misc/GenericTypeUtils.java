@@ -3,7 +3,7 @@ package org.nathan.centralibj.utils.misc;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
-public class GenericTypes{
+public class GenericTypeUtils{
   /**
    * guava type token string processing
    * @param type_string guava type token string

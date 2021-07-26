@@ -1,7 +1,7 @@
 package org.nathan;
 
 
-import it.unimi.dsi.util.XoRoShiRo128PlusRandom;
+
 import org.nathan.centralibj.utils.NativeUtils;
 
 class Main{
@@ -16,8 +16,8 @@ class Main{
     if(args.length > 0){
       GitPush.gitPush(args);
     }
-    XoRoShiRo128PlusRandom a = new XoRoShiRo128PlusRandom();
   }
+
 }
 
 
