@@ -11,7 +11,7 @@ public class ExceptionUtils{
    * @param idx index from 0
    * @return ith frame of stack trace
    */
-  public static StackWalker.StackFrame frameOf(int idx){
+  public static StackWalker.StackFrame stackFrameOf(int idx){
     if(idx < 0){
       throw new IllegalArgumentException();
     }
@@ -51,11 +51,12 @@ public class ExceptionUtils{
   }
 
   public static class ContextFreeException extends RuntimeException{
-    public final String Message;
+    private final String detailMessage;
+    private final StackWalker.StackFrame lastFrame;
 
     public ContextFreeException(){
-      Message = null;
-
+      lastFrame = stackFrameOf(1);
+      detailMessage = null;
     }
 
     @Override
@@ -64,8 +65,22 @@ public class ExceptionUtils{
       return this;
     }
 
-    public ContextFreeException(String s){
-      Message = s;
+    public ContextFreeException(String message){
+      lastFrame = stackFrameOf(1);
+      detailMessage = message;
+    }
+
+    @Override
+    public String toString(){
+      var b = new StringBuilder(getClass().getName());
+      if(detailMessage != null){
+        b.append(": ");
+        b.append(detailMessage);
+        b.append("\n");
+      }
+      b.append("\tat ");
+      b.append(lastFrame);
+      return b.toString();
     }
   }
 }
