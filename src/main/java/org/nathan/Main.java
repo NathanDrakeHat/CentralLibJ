@@ -15,6 +15,11 @@ class Main{
     if(args.length > 0){
       GitPush.gitPush(args);
     }
+    int x = 7;
+    while(x > 0){
+      System.out.printf("%d,%d\n", x - (x & -x) + 1, x);
+      x -= x & -x;
+    }
   }
 }
 

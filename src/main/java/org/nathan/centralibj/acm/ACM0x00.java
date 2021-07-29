@@ -108,6 +108,17 @@ public class ACM0x00{
   }
 
   /**
+   * <pre>
+   * 1010100 -> 0000100 = 4
+   * </pre>
+   * @param x int
+   * @return result of low bit
+   */
+  public static int lowBit(int x){
+    return x & -x;
+  }
+
+  /**
    * state compression
    * <br/> shortest undirected path
    *
