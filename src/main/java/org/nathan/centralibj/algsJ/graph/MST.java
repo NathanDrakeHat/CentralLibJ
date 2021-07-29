@@ -26,9 +26,9 @@ public final class MST{
     for(var edge : edges_list){
       var v1 = edge.from();
       var v2 = edge.to();
-      if(v1.setId.findGroupId() != v2.setId.findGroupId()){
+      if(!DisjointSet.inSameSet(v1.setId, v2.setId)){
         res.add(edge);
-        v1.setId.union(v2.setId);
+        DisjointSet.union(v1.setId, v2.setId);
       }
     }
     return res;

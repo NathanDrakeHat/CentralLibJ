@@ -21,15 +21,12 @@ public final class DisjointSet{
     return x.parent;
   }
 
-  public DisjointSet findGroupId(){
-    if(this != this.parent){
-      this.parent = findGroupId(this.parent);
-    }
-    return this.parent;
+  public static boolean inSameSet(DisjointSet a, DisjointSet b){
+    return findGroupId(a) == findGroupId(b);
   }
 
-  public void union(DisjointSet a){
-    link(findGroupId(a), findGroupId());
+  public static void union(DisjointSet a, DisjointSet b){
+    link(findGroupId(a), findGroupId(b));
   }
 
   private static void link(DisjointSet x, DisjointSet y){
