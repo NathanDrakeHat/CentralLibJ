@@ -35,6 +35,11 @@ public class SuffixSumArray<T>{
     return new SuffixSumArray<>(array, Double::sum, (i,j)->i-j);
   }
 
+  /**
+   *
+   * @param idx start from 1
+   * @return suffix sum
+   */
   public @NotNull T sumOf(int idx){
     if(idx <= 0 || idx >= list.size()){
       throw new IllegalArgumentException();
