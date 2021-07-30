@@ -7,12 +7,12 @@ import java.util.List;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
-public class SuffixSumTreeArray<T>{
+public class SuffixSumArray<T>{
   final List<T> list;
   final BiFunction<T, T, T> addition;
   final BiFunction<T, T, T> minus;
 
-  public SuffixSumTreeArray(List<T> array, @NotNull BiFunction<T, T, T> add, @NotNull BiFunction<T, T, T> minus){
+  public SuffixSumArray(List<T> array, @NotNull BiFunction<T, T, T> add, @NotNull BiFunction<T, T, T> minus){
     int len = array.size();
     addition = add;
     this.minus = minus;

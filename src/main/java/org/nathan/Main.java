@@ -1,12 +1,9 @@
 package org.nathan;
 
 
-import org.nathan.centralibj.algsJ.dataStruc.SuffixSumTreeArray;
+import org.nathan.centralibj.algsJ.dataStruc.SuffixSumArray;
 import org.nathan.centralibj.utils.ArrayUtils;
 import org.nathan.centralibj.utils.NativeUtils;
-
-import java.util.List;
-import java.util.stream.DoubleStream;
 
 class Main{
   static class GitPush{
@@ -21,7 +18,7 @@ class Main{
       GitPush.gitPush(args);
     }
 
-    var a = new SuffixSumTreeArray<>(ArrayUtils.lineSpace(1.,16.,1), Double::sum, (i, j) -> i - j);
+    var a = new SuffixSumArray<>(ArrayUtils.lineSpace(1.,16.,1), Double::sum, (i, j) -> i - j);
     System.out.println(a);
   }
 }
