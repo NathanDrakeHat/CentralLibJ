@@ -27,6 +27,14 @@ public class SuffixSumArray<T>{
     }
   }
 
+  public static SuffixSumArray<Integer> ofInt(List<Integer> array){
+    return new SuffixSumArray<>(array, Integer::sum, (i,j)->i-j);
+  }
+
+  public static SuffixSumArray<Double> ofDouble(List<Double> array){
+    return new SuffixSumArray<>(array, Double::sum, (i,j)->i-j);
+  }
+
   public @NotNull T sumOf(int idx){
     if(idx <= 0 || idx >= list.size()){
       throw new IllegalArgumentException();

@@ -40,6 +40,14 @@ public class OrderStatTree<K, V> implements Iterable<Tuple<K, V>>{
             (n, c) -> n.color = c);
   }
 
+  public static <V> OrderStatTree<Integer, V> ofInt(){
+    return new OrderStatTree<>(Integer::compareTo);
+  }
+
+  public static <V> OrderStatTree<Double, V> ofDouble(){
+    return new OrderStatTree<>(Double::compareTo);
+  }
+
   /**
    * 1d range search
    *

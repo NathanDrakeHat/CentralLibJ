@@ -39,7 +39,7 @@ public final class MST{
     if(graph.directed){
       throw new IllegalArgumentException();
     }
-    FibonacciMinHeap<Double, V> Q = new FibonacciMinHeap<>(Comparator.comparingDouble(a -> a));
+    FibonacciMinHeap<Double, V> Q = FibonacciMinHeap.ofDouble();
     var vertices = graph.allVertices();
     for(var u : vertices){
       if(u != r){

@@ -57,7 +57,7 @@ class IntvalSerchTreeTest{
     int len = 128;
     for(int i = 0; i < 5; i++){
       List<Integer> shuffle = ArrayUtils.shuffledRangeList(0, rand.nextInt(len - 16) + 16);
-      IntvalSerchTree<Integer, Void> t = new IntvalSerchTree<>(Integer::compareTo);
+      IntvalSerchTree<Integer, Void> t = IntvalSerchTree.ofInt();
       for(var item : shuffle){
         t.insertInterval(item, item + rand.nextInt(len / 2 - 8) + 8, null);
         assertTrue(isISTree(t));
@@ -107,7 +107,7 @@ class IntvalSerchTreeTest{
 
   @Test
   void intersectsTest(){
-    IntvalSerchTree<Integer, Void> t = new IntvalSerchTree<>(Integer::compareTo);
+    IntvalSerchTree<Integer, Void> t = IntvalSerchTree.ofInt();
     for(var it : intervals){
       t.intersects(it.first(), it.second());
     }

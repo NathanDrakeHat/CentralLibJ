@@ -17,6 +17,14 @@ public class FibonacciMinHeap<K, V>{
     this.keyComparator = keyComparator;
   }
 
+  public static <V> FibonacciMinHeap<Integer, V> ofInt(){
+    return new FibonacciMinHeap<>(Integer::compareTo);
+  }
+
+  public static <V> FibonacciMinHeap<Double, V> ofDouble(){
+    return new FibonacciMinHeap<>(Double::compareTo);
+  }
+
   public static <K, V> FibonacciMinHeap<K, V> union(@NotNull FibonacciMinHeap<K, V> f1, @NotNull FibonacciMinHeap<K,
           V> f2){
     var res = new FibonacciMinHeap<K, V>(f1.keyComparator);

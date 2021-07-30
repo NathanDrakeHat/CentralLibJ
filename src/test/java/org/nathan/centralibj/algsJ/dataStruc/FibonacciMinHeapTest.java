@@ -30,7 +30,7 @@ class FibonacciMinHeapTest{
   }
 
   private static FibonacciMinHeap<Integer, Integer> buildExample(){
-    var H = new FibonacciMinHeap<Integer, Integer>(Comparator.comparingInt(a -> a));
+    FibonacciMinHeap<Integer, Integer> H = FibonacciMinHeap.ofInt();
     H.insert(3, 3);
     var m = H.rootList;
     addChildren(m, 17, 24, 23, 7, 21);

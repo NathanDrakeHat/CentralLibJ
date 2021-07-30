@@ -133,7 +133,7 @@ public final class SSSPath{
     }
     initializeSingleSource(G, s);
     var vertices = G.allVertices();
-    FibonacciMinHeap<Double, V> Q = new FibonacciMinHeap<>(Comparator.comparingDouble(a -> a));
+    FibonacciMinHeap<Double, V> Q = FibonacciMinHeap.ofDouble();
     for(var vertex : vertices){
       Q.insert(vertex.distance, vertex);
     }

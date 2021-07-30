@@ -91,7 +91,7 @@ public class OrthoLineIntersect{
     Map<L, Set<L>> res = new HashMap<>();
     Queue<L> h_rm_queue = new ArrayDeque<>();
     Queue<L> v_queue = new ArrayDeque<>();
-    OrderStatTree<Double, Set<L>> HYToHL_tree = new OrderStatTree<>(Double::compareTo);
+    OrderStatTree<Double, Set<L>> HYToHL_tree = OrderStatTree.ofDouble();
 
     for(var x : scanX){
       for(var line : lineOfX.get(x)){

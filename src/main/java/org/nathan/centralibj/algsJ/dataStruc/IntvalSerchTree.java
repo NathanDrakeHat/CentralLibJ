@@ -39,6 +39,14 @@ public class IntvalSerchTree<Key, Val> implements Iterable<Triad<Key, Key, Val>>
             (n, c) -> n.color = c);
   }
 
+  public static <V> IntvalSerchTree<Integer, V> ofInt(){
+    return new IntvalSerchTree<>(Integer::compareTo);
+  }
+
+  public static <V> IntvalSerchTree<Double, V> ofDouble(){
+    return new IntvalSerchTree<>(Double::compareTo);
+  }
+
   public void insertInterval(@NotNull Key low, @NotNull Key high, Val val){
     modified();
     Node<Key, Val> n = new Node<>(low, high, val);

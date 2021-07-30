@@ -15,7 +15,7 @@ class OrderStatTreeTest{
   OrderStatTree<Integer, Integer> fixUpTree;
 
   {
-    fixUpTree = new OrderStatTree<>(Comparator.comparingInt(o -> o));
+    fixUpTree = OrderStatTree.ofInt();
     fixUpTree.insertKV(11, 0);
     fixUpTree.insertKV(2, 0);
     fixUpTree.insertKV(14, 0);
@@ -112,7 +112,7 @@ class OrderStatTreeTest{
     var rand = new XoRoShiRo128PlusRandom();
     for(int t = 0; t < 5; t++){
       OrderStatTree<Integer, Integer> tree;
-      tree = new OrderStatTree<>(Comparator.comparingInt(o -> o));
+      tree = OrderStatTree.ofInt();
       int len = rand.nextInt(128 - 16) + 16;
       List<Integer> shuffle = ArrayUtils.shuffledRangeList(0, len);
       for(int i = 0; i < len; i++){
@@ -161,7 +161,7 @@ class OrderStatTreeTest{
   List<Double> funcTestAnswer = new ArrayList<>();
 
   {
-    funcTestTree = new OrderStatTree<>(Comparator.comparingDouble(o -> o));
+    funcTestTree = OrderStatTree.ofDouble();
     List<Double> shuffle = DoubleStream.iterate(0, d -> d < 16, d -> ++d).boxed().collect(Collectors.toList());
     Collections.shuffle(shuffle);
     for(int i = 0; i < 16; i++){

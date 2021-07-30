@@ -205,11 +205,12 @@ public class ACM0x20Test{
     assertTrue(checkNPuzzle(ans));
   }
 
-  int[][] bookSortCases = new int[iteration][];
+  static final int bookSortIteration = 30;
+  int[][] bookSortCases = new int[bookSortIteration][];
 
   {
     var rand = new XoRoShiRo128PlusRandom();
-    for(int i = 0; i < iteration; i++){
+    for(int i = 0; i < bookSortIteration; i++){
       var t = IntStream.range(0, rand.nextInt(15 - 7) + 7).toArray();
       while(isSorted(t)){
         for(int j = 0; j < 4; j++){
@@ -240,7 +241,7 @@ public class ACM0x20Test{
 
   @Test
   void bookSortTest(){
-    for(int i = 0; i < iteration; i++){
+    for(int i = 0; i < bookSortIteration; i++){
       var c = bookSortCases[i];
       var ans = bookSort(c);
       assertTrue(isSorted(c));
