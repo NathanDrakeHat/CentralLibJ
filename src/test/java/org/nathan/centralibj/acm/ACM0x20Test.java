@@ -172,9 +172,9 @@ public class ACM0x20Test{
   ACM0x20.NPuzzle nPuzzleCase;
 
   {
-    nPuzzleCase = new ACM0x20.NPuzzle(50);
+    nPuzzleCase = new ACM0x20.NPuzzle(10);
     while(nPuzzleCase.solved()) {
-      nPuzzleCase = new ACM0x20.NPuzzle(50);
+      nPuzzleCase = new ACM0x20.NPuzzle(10);
     }
   }
 
