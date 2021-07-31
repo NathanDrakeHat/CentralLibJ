@@ -2,6 +2,7 @@ package org.nathan.centralibj.acm;
 
 import org.jetbrains.annotations.NotNull;
 import org.nathan.centralibj.algsJ.dataStruc.DisjointSet;
+import org.nathan.centralibj.algsJ.dataStruc.SuffixSumArray;
 import org.nathan.centralibj.utils.tuples.Triad;
 
 import java.util.ArrayList;
@@ -113,5 +114,42 @@ class ACM0x40{
       }
     }
     return ans;
+  }
+
+  /**
+   * POJ3468
+   */
+  public static class RangeAddRangeSumQuery{
+
+    private final SuffixSumArray c0;
+    private final SuffixSumArray c1;
+    private final int[] sum;
+
+    public RangeAddRangeSumQuery(int[] array){
+      var len = array.length;
+      c0 = new SuffixSumArray(len);
+      c1 = new SuffixSumArray(len);
+
+      sum = new int[array.length + 1];
+      for(int i = 1; i < len; i++){
+        sum[i] += sum[i - 1];
+      }
+    }
+
+    public void addRange(int l, int r, int diff){
+      c0.prefixSumAdd(l, diff);
+      if(r + 1 <= c0.ArrayLength){
+        c0.prefixSumAdd(r + 1, -diff);
+      }
+      c1.prefixSumAdd(l, l * diff);
+      if(r + 1 <= c1.ArrayLength){
+        c1.prefixSumAdd(r + 1, -(r + 1) * diff);
+      }
+    }
+
+    public int sumOfRange(int l, int r){
+      return (sum[r] + (r + 1) * c0.prefixSumOf(r) - c1.prefixSumOf(r)) -
+              (sum[l - 1] + l * c1.prefixSumOf(l - 1) - c1.prefixSumOf(l - 1));
+    }
   }
 }

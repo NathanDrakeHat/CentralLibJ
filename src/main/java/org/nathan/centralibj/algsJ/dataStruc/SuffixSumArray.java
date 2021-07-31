@@ -16,7 +16,7 @@ public class SuffixSumArray{
   /**
    * zero initialization
    *
-   * @param N     number
+   * @param N number
    */
   public SuffixSumArray(int N){
     ArrayLength = N;
@@ -28,7 +28,7 @@ public class SuffixSumArray{
    * @return suffix sum
    */
   public int prefixSumOf(int idx){
-    if(idx <= 0 || idx >= arr.length){
+    if(idx < 0 || idx >= arr.length){
       throw new IllegalArgumentException();
     }
     int ans = 0;
@@ -40,20 +40,16 @@ public class SuffixSumArray{
   }
 
   /**
-   * @param l inclusive >= 1
-   * @param h inclusive >= 1
+   * @param l inclusive
+   * @param h inclusive
    * @return sum of range
    */
   public int prefixSumOfRange(int l, int h){
-    if(l <= 0 || l >= arr.length || h <= 0 || h >= arr.length || h < l){
+    if(l < 0 || l >= arr.length || h < 0 || h >= arr.length || h < l){
       throw new IllegalArgumentException();
     }
-    int a = prefixSumOf(h);
-    if(l > 0){
-      int b = prefixSumOf(l - 1);
-      return a - b;
-    }
-    else{return a;}
+    return prefixSumOf(h) - prefixSumOf(l - 1);
+
   }
 
   public void prefixSumAdd(int idx, int diff){
