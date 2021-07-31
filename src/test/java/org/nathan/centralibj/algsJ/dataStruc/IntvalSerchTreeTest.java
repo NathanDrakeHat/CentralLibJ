@@ -16,7 +16,7 @@ class IntvalSerchTreeTest{
       boolean b = true;
 
       void apply(IntvalSerchTree.Node<Key, Val> n){
-        if(n == null){ throw new RuntimeException(); }
+        Objects.requireNonNull(n);
         if(!b || n == tree.sentinel){
           return;
         }

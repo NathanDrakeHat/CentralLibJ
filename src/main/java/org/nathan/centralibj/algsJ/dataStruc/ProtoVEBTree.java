@@ -1,5 +1,7 @@
 package org.nathan.centralibj.algsJ.dataStruc;
 
+import java.util.Objects;
+
 public final class ProtoVEBTree{
   //keys are not duplicate and confined in a range
   private final int u; //universe size
@@ -65,25 +67,18 @@ public final class ProtoVEBTree{
 
   private void insert(ProtoVEBTree T, int x){
     if(T.u == 2){
-//            System.out.printf("set true at: %d\n",x);
       T.array[x] = true;
     }
     else{
-//            System.out.printf("enter cluster: %d, index is %d\n",T.high(x), T.low(x));
       insert(T.cluster[T.high(x)], T.low(x));
-//            System.out.printf("enter summary: %d\n", T.high(x));
       insert(T.summary, T.high(x));
     }
   }
 
   public int maximum(){
     var res = maximum(this);
-    if(res == null){
-      throw new NullPointerException();
-    }
-    else{
-      return res;
-    }
+    Objects.requireNonNull(res);
+    return res;
   }
 
   private Integer maximum(ProtoVEBTree T){
@@ -100,24 +95,16 @@ public final class ProtoVEBTree{
     }
     else{
       var max_cluster = maximum(T.summary);
-      if(max_cluster == null){
-        throw new NullPointerException();
-      }
-      else{
-        var offset = maximum(T.cluster[max_cluster]);
-        return T.index(max_cluster, offset);
-      }
+      Objects.requireNonNull(max_cluster);
+      var offset = maximum(T.cluster[max_cluster]);
+      return T.index(max_cluster, offset);
     }
   }
 
   public int minimum(){
     var res = minimum(this);
-    if(res == null){
-      throw new NullPointerException();
-    }
-    else{
-      return res;
-    }
+    Objects.requireNonNull(res);
+    return res;
   }
 
   private Integer minimum(ProtoVEBTree T){
@@ -149,12 +136,8 @@ public final class ProtoVEBTree{
       throw new IllegalArgumentException("Input out of range.");
     }
     var res = successor(this, x);
-    if(res == null){
-      throw new NullPointerException();
-    }
-    else{
-      return res;
-    }
+    Objects.requireNonNull(res);
+    return res;
   }
 
   private Integer successor(ProtoVEBTree T, int x){
@@ -189,12 +172,8 @@ public final class ProtoVEBTree{
       throw new IllegalArgumentException("Input out of range.");
     }
     var res = predecessor(this, x);
-    if(res == null){
-      throw new NullPointerException();
-    }
-    else{
-      return res;
-    }
+    Objects.requireNonNull(res);
+    return res;
   }
 
   private Integer predecessor(ProtoVEBTree T, int x){
@@ -238,9 +217,7 @@ public final class ProtoVEBTree{
 
   // global index:
   private int index(int h, Integer l){
-    if(l == null){
-      throw new NullPointerException();
-    }
+    Objects.requireNonNull(l);
     return (int) (h * Math.pow(u, 1 / 2.0) + l);
   }
 }

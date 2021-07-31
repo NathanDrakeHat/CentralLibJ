@@ -4,6 +4,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
@@ -22,8 +23,9 @@ public class SuffixSumArray<T>{
     }
 
     for(int i = 1; i <= len; i++){
-      int finalI = i;
-      update(i, n -> addOrSelf(n, array.get(finalI-1)));
+      var t = array.get(i -1);
+      Objects.requireNonNull(t);
+      update(i, n -> addOrSelf(n, t));
     }
   }
 
