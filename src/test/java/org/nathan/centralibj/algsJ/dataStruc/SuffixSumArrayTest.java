@@ -19,7 +19,7 @@ class SuffixSumArrayTest{
       ds[i] =  acc;
     }
     for(int i = 0; i < ds.length; i++){
-      assertEquals(ds[i], ta.sumOf(i+1));
+      assertEquals(ds[i], ta.prefixSumOf(i+1));
     }
   }
 }
