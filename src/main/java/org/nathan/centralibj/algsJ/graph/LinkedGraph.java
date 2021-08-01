@@ -6,11 +6,6 @@ import org.jetbrains.annotations.NotNull;
 import java.util.*;
 
 
-/**
- * static object (non-value) graph
- *
- * @param <V>
- */
 public class LinkedGraph<V, E extends BaseEdge<V>>{
   final boolean directed;
   final List<V> vertices;
