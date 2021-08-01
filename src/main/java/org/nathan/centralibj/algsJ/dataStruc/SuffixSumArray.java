@@ -24,17 +24,18 @@ public class SuffixSumArray{
   }
 
   /**
-   * @param idx start from 1
+   * sum of i items
+   * @param count count
    * @return suffix sum
    */
-  public int prefixSumOf(int idx){
-    if(idx < 0 || idx >= arr.length){
+  public int prefixSumOf(int count){
+    if(count < 0 || count >= arr.length){
       throw new IllegalArgumentException();
     }
     int ans = 0;
-    while(idx != 0) {
-      ans += arr[idx];
-      idx -= lowBit(idx);
+    while(count != 0) {
+      ans += arr[count];
+      count -= lowBit(count);
     }
     return ans;
   }

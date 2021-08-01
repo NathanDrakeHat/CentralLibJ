@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import org.nathan.centralibj.utils.tuples.Triad;
 
 import java.util.List;
-import java.util.stream.IntStream;
 
 class ACM0x40Test{
 
