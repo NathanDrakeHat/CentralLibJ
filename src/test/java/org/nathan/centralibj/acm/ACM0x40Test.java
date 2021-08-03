@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.nathan.centralibj.utils.tuples.Triad;
 
 import java.util.List;
+import java.util.stream.IntStream;
 
 class ACM0x40Test{
 
@@ -29,6 +30,20 @@ class ACM0x40Test{
                     new Triad<>(1, 0, 3),
                     new Triad<>(2, 1, 3),
                     new Triad<>(2, 0, 3))));
+  }
+
+  @Test
+  void treelikeArrayTest(){
+    var ds = IntStream.range(1,17).toArray();
+    var ta = new ACM0x40.TreelikeArray(ds);
+    var acc = ds[0];
+    for(int i = 1; i < ds.length; i++){
+      acc += ds[i];
+      ds[i] =  acc;
+    }
+    for(int i = 0; i < ds.length; i++){
+      assertEquals(ds[i], ta.prefixSumOf(i+1));
+    }
   }
 
   @Test

@@ -2,7 +2,6 @@ package org.nathan.centralibj.acm;
 
 import org.jetbrains.annotations.NotNull;
 import org.nathan.centralibj.algsJ.dataStruc.DisjointSet;
-import org.nathan.centralibj.algsJ.dataStruc.SuffixSumArray;
 import org.nathan.centralibj.utils.tuples.Triad;
 
 import java.util.ArrayList;
@@ -121,14 +120,14 @@ class ACM0x40{
    */
   public static class RangeAddRangeSumQuery{
 
-    private final SuffixSumArray c0;
-    private final SuffixSumArray c1;
+    private final TreelikeArray c0;
+    private final TreelikeArray c1;
     private final int[] sum;
 
     public RangeAddRangeSumQuery(int[] array){
       var len = array.length;
-      c0 = new SuffixSumArray(len);
-      c1 = new SuffixSumArray(len);
+      c0 = new TreelikeArray(len);
+      c1 = new TreelikeArray(len);
 
       sum = new int[array.length + 1];
       for(int i = 1; i < len; i++){
@@ -150,6 +149,78 @@ class ACM0x40{
     public int sumOfRange(int l, int r){
       return (sum[r] + (r + 1) * c0.prefixSumOf(r) - c1.prefixSumOf(r)) -
               (sum[l - 1] + l * c1.prefixSumOf(l - 1) - c1.prefixSumOf(l - 1));
+    }
+  }
+
+  /**
+   * suffix sum query
+   */
+  public static class TreelikeArray {
+    final int[] arr;
+    public final int ArrayLength;
+
+    public TreelikeArray(int[] array){
+      ArrayLength = array.length;
+      arr = new int[ArrayLength + 1];
+
+      for(int i = 1; i <= ArrayLength; i++){
+        prefixSumAdd(i, array[i - 1]);
+      }
+    }
+
+    /**
+     * zero initialization
+     *
+     * @param N number
+     */
+    public TreelikeArray(int N){
+      ArrayLength = N;
+      arr = new int[N + 1];
+    }
+
+    /**
+     * sum of i items
+     * @param count count
+     * @return suffix sum
+     */
+    public int prefixSumOf(int count){
+      if(count < 0 || count >= arr.length){
+        throw new IllegalArgumentException();
+      }
+      int ans = 0;
+      while(count != 0) {
+        ans += arr[count];
+        count -= lowBit(count);
+      }
+      return ans;
+    }
+
+    /**
+     * @param l inclusive
+     * @param h inclusive
+     * @return sum of range
+     */
+    public int prefixSumOfRange(int l, int h){
+      if(l < 0 || l >= arr.length || h < 0 || h >= arr.length || h < l){
+        throw new IllegalArgumentException();
+      }
+      return prefixSumOf(h) - prefixSumOf(l - 1);
+
+    }
+
+    public void prefixSumAdd(int idx, int diff){
+      if(idx <= 0 || idx >= arr.length){
+        throw new IllegalArgumentException();
+      }
+      int len = arr.length;
+      while(idx < len) {
+        arr[idx] += diff;
+        idx += lowBit(idx);
+      }
+    }
+
+    private static int lowBit(int x){
+      return x & -x;
     }
   }
 }
