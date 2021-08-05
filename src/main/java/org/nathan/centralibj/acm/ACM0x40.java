@@ -231,6 +231,7 @@ class ACM0x40 {
     }
   }
 
+  // TODO template
   /**
    * range addable query, maintain node info to augment tree, delay update for better performance
    * @param <T>
@@ -326,9 +327,12 @@ class ACM0x40 {
       NT data;
     }
 
+    // TODO sum segment tree
     public static class SumNode<NT>{
       int l,r;
       NT data,rMax,lMax;
     }
   }
+
+  // TODO 点分治
 }

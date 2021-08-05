@@ -5,6 +5,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.BiFunction;
 
 
 /**
@@ -60,18 +61,20 @@ public final class DFS{
   /**
    * in a set of vertex, for every pair has bi-directed path
    * @param G graph
-   * @param <T> id
+   * @param <Id> id
    */
-  public static <T> void stronglyConnectedComponents(@NotNull LinkedGraph<Vert<T>, BaseEdge<Vert<T>>> G){
+  public static <Id, V extends Vert<Id>, E extends BaseEdge<V>>
+  void stronglyConnectedComponents(@NotNull LinkedGraph<V, E> G, @NotNull BiFunction<V,V,E> newEdge){
     if(!G.isDirected()){
       throw new IllegalArgumentException();
     }
     var l = topologicalSort(G);
-    var G_T = transposeGraph(G);
+    var G_T = transposeGraph(G,newEdge);
     depthFirstSearchOrderly(G_T, l);
   }
 
-  private static <T> void depthFirstSearchOrderly(LinkedGraph<Vert<T>, BaseEdge<Vert<T>>> G, List<Vert<T>> order){
+  private static <Id, V extends Vert<Id>, E extends BaseEdge<V>>
+  void depthFirstSearchOrderly(LinkedGraph<V, E> G, List<V> order){
     var vertices = G.allVertices();
     for(var v : vertices){
       v.color = COLOR.WHITE;
@@ -85,15 +88,19 @@ public final class DFS{
     }
   }
 
-  private static <T> LinkedGraph<Vert<T>, BaseEdge<Vert<T>>> transposeGraph(LinkedGraph<Vert<T>, BaseEdge<Vert<T>>> graph){
-    LinkedGraph<Vert<T>, BaseEdge<Vert<T>>> new_graph = new LinkedGraph<>(true, graph.allVertices());
+  private static <Id, V extends Vert<Id>, E extends BaseEdge<V>>
+  LinkedGraph<V, E> transposeGraph(LinkedGraph<V, E> graph,BiFunction<V,V,E> newEdge){
+    LinkedGraph<V, E> new_graph = new LinkedGraph<>(true, graph.allVertices());
     var vertices = graph.allVertices();
     for(var v : vertices){
       var edges = graph.adjacentEdgesOf(v);
       for(var edge : edges){
         var n = edge.another(v);
-        // TODO cannot generic below
-        new_graph.addEdge(new BaseEdge<>(n, v));
+        var ne = newEdge.apply(n,v);
+        if(ne.vert_from != n || ne.vert_to != v){
+          throw new IllegalArgumentException("edge build function error.");
+        }
+        new_graph.addEdge(ne);
       }
     }
     return new_graph;

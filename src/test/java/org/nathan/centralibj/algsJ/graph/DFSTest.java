@@ -222,7 +222,7 @@ class DFSTest{
   @Test
   void stronglyConnectedComponentsTest(){
     var G = makeStronglyConnectedComponentsDemo();
-    DFS.stronglyConnectedComponents(G);
+    DFS.stronglyConnectedComponents(G, BaseEdge::new);
     var vertices = G.allVertices();
     List<DFS.Vert<String>> vs = new ArrayList<>(vertices);
     assertTrue((getRoot(vs.get(0)) == getRoot(vs.get(1))) & (getRoot(vs.get(1)) == getRoot(vs.get(4))));
