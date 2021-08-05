@@ -25,29 +25,20 @@ class RBTreeTemplate<Key, Node>{
 
   }
 
-  final @NotNull Node sentinel;
-  final @NotNull Comparator<Key> comparator;
-  final @NotNull LambdaUtils.Gettable<Node> getRoot;
-  final @NotNull Consumer<Node> setRoot;
+  final Node sentinel;
+  final Comparator<Key> comparator;
+  final LambdaUtils.Gettable<Node> getRoot;
+  final Consumer<Node> setRoot;
   static final boolean RED = false;
   static final boolean BLACK = true;
-  @NotNull
   final Function<Node, Node> getParent;
-  @NotNull
   final BiConsumer<Node, Node> setParent;
-  @NotNull
   final Function<Node, Node> getLeft;
-  @NotNull
   final BiConsumer<Node, Node> setLeft;
-  @NotNull
   final Function<Node, Node> getRight;
-  @NotNull
   final BiConsumer<Node, Node> setRight;
-  @NotNull
   final Function<Node, Boolean> getColor;
-  @NotNull
   final BiConsumer<Node, Boolean> setColor;
-  @NotNull
   final Function<Node, Key> getKey;
 
   RBTreeTemplate(@NotNull Node sentinel,
