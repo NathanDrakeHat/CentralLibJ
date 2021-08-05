@@ -6,7 +6,9 @@ import org.nathan.centralibj.utils.LambdaUtils;
 import org.nathan.centralibj.utils.tuples.Triad;
 
 import java.util.*;
+import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
+import java.util.function.Function;
 import java.util.stream.IntStream;
 
 class ACM0x40 {
@@ -231,60 +233,140 @@ class ACM0x40 {
     }
   }
 
-  // TODO template
   /**
    * range addable query, maintain node info to augment tree, delay update for better performance
-   * @param <T>
+   *
+   * @param <Data>
    */
-  public static class SegmentTree<T> {
+  public static class SegmentTreeTemplate<Data, Node> {
 
-    private final List<MaxNode<T>> array;
-    private final BiFunction<T, T, T> op;
+    private final List<Node> array;
+    private final BiFunction<Data, Data, Data> op;
+    final Function<Node, Integer> getLeft;
+    final BiConsumer<Node, Integer> setLeft;
+    final Function<Node, Integer> getRight;
+    final BiConsumer<Node, Integer> setRight;
+    final BiConsumer<List<Node>, Integer> update;
+    final Function<Node, Data> getData;
+    final BiConsumer<Node, Data> setData;
+
+    public static SegmentTreeTemplate<Integer, MaxNode<Integer>> maxSegmentTree(@NotNull List<Integer> a) {
+      return new SegmentTreeTemplate<>(
+              a,
+              (i,j)->{
+                if(i == null){
+                  return j;
+                }
+                else if(j == null){
+                  return i;
+                }
+                else {
+                  return Math.max(i,j);
+                }
+              },
+              MaxNode::new,
+              n -> n.l,
+              (n, i) -> n.l = i,
+              n -> n.r,
+              (n, i) -> n.r = i,
+              n -> n.data,
+              (n, i) -> n.data = i,
+              (l, p) -> l.get(p).data = Math.max(l.get(2 * p).data, l.get(2 * p + 1).data));
+    }
+
+    public static SegmentTreeTemplate<Integer, SumNode<Integer>> maxContinuousSumSegmentTree(@NotNull List<Integer> a) {
+      return new SegmentTreeTemplate<>(
+              a,
+              (i,j)->{
+                if(i == null){
+                  return j;
+                }
+                else if(j == null){
+                  return i;
+                }
+                else {
+                  return Math.max(i,j);
+                }
+              },
+              SumNode::new,
+              n -> n.l,
+              (n, i) -> n.l = i,
+              n -> n.r,
+              (n, i) -> n.r = i,
+              n -> n.data,
+              (n, i) -> n.data = i,
+              (l, p) -> {
+                var ap = l.get(p);
+                var left = l.get(2 * p);
+                var right = l.get(2 * p + 1);
+                ap.sum = left.sum + right.sum;
+                ap.lMax = Arrays.stream(new int[]{left.lMax, right.lMax, left.sum}).max().getAsInt();
+                ap.rMax = Arrays.stream(new int[]{left.rMax, right.rMax, right.sum}).max().getAsInt();
+                ap.data = Arrays.stream(new int[]{left.data, right.data, left.rMax, right.lMax}).max().getAsInt();
+              }
+      );
+    }
 
     /**
      * @param a  array
      * @param op null compatible operation
      */
-    public SegmentTree(
-            @NotNull List<T> a,
-            @NotNull BiFunction<T, T, T> op) {
+    public SegmentTreeTemplate(
+            @NotNull List<Data> a,
+            @NotNull BiFunction<Data, Data, Data> op,
+            @NotNull LambdaUtils.Gettable<Node> nodeInit,
+            @NotNull Function<Node, Integer> getLeft,
+            @NotNull BiConsumer<Node, Integer> setLeft,
+            @NotNull Function<Node, Integer> getRight,
+            @NotNull BiConsumer<Node, Integer> setRight,
+            @NotNull Function<Node, Data> getData,
+            @NotNull BiConsumer<Node, Data> setData,
+            @NotNull BiConsumer<List<Node>, Integer> update) {
+      this.getLeft = getLeft;
+      this.getRight = getRight;
+      this.setLeft = setLeft;
+      this.setRight = setRight;
+      this.update = update;
+      this.getData = getData;
+      this.setData = setData;
+
       int size = a.size();
       int len = size * 4;
       array = new ArrayList<>(len);
       for (int i = 0; i < len; i++) {
-        array.add(new MaxNode<>());
+        array.add(nodeInit.get());
       }
       this.op = op;
 
       var funcBuild = new Object() {
         void apply(int p, int l, int r) {
           var al = array.get(p);
-          al.l = l;
-          al.r = r;
+          setLeft.accept(al, l);
+          setRight.accept(al, r);
           if (l == r) {
-            al.data = Objects.requireNonNull(a.get(l));
+            setData.accept(al, Objects.requireNonNull(a.get(l-1)));
             return;
           }
           int mid = (l + r) / 2;
           apply(2 * p, l, mid);
           apply(2 * p + 1, mid + 1, r);
-          al.data = op.apply(array.get(2 * p).data, array.get(2 * p + 1).data);
+          update.accept(array, p);
         }
       };
       funcBuild.apply(1, 1, size);
     }
 
 
-    public void update(int x, T v) {
+    public void update(int x, Data v) {
       update(1, x, v);
     }
 
-    private void update(int p, int x, T v) {
+    private void update(int p, int x, Data v) {
       var ap = array.get(p);
-      int l = ap.l, r = ap.r;
+      int l = getLeft.apply(ap), r = getRight.apply(ap);
       int mid = (l + r) / 2;
       if (l == r) {
-        ap.data = v;
+        setData.accept(ap, v);
         return;
       }
       if (x <= mid) {
@@ -293,10 +375,10 @@ class ACM0x40 {
       else {
         update(2 * p + 1, x, v);
       }
-      ap.data = op.apply(array.get(2 * p).data, array.get(2 * p + 1).data);
+      update.accept(array, p);
     }
 
-    public @NotNull Optional<T> query(int l, int r) {
+    public @NotNull Optional<Data> query(int l, int r) {
       var ans = query(1, l, r);
       if (ans == null) {
         return Optional.empty();
@@ -306,13 +388,15 @@ class ACM0x40 {
       }
     }
 
-    private T query(int p, int l, int r) {
+    private Data query(int p, int l, int r) {
       var ap = array.get(p);
-      if (l <= ap.l && r >= ap.r) {
-        return ap.data;
+      int al = getLeft.apply(ap), ar = getRight.apply(ap);
+      int mid = (ar + al) / 2;
+      if (l <= al && r >= ar) {
+        return getData.apply(ap);
       }
-      int mid = (ap.r + ap.l) / 2;
-      T ans = null;
+
+      Data ans = null;
       if (l <= mid) {
         ans = op.apply(ans, query(2 * p, l, r));
       }
@@ -322,15 +406,14 @@ class ACM0x40 {
       return ans;
     }
 
-    public static class MaxNode<NT> {
+    public static class MaxNode<T1> {
       int l, r;
-      NT data;
+      T1 data;
     }
 
-    // TODO sum segment tree
-    public static class SumNode<NT>{
-      int l,r;
-      NT data,rMax,lMax;
+    public static class SumNode<T1> {
+      int l, r;
+      T1 data, sum, rMax, lMax;
     }
   }
 

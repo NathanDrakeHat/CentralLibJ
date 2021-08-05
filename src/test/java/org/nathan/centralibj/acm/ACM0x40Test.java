@@ -1,26 +1,27 @@
 package org.nathan.centralibj.acm;
 
-import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import org.nathan.centralibj.utils.tuples.Triad;
 
 import java.util.List;
 import java.util.stream.IntStream;
 
-class ACM0x40Test{
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+class ACM0x40Test {
 
   @Test
-  void legendOfGalaxyHeroTest(){
+  void legendOfGalaxyHeroTest() {
     var le = new ACM0x40.LegendOfGalaxyHero(4);
-    assertEquals(-1, le.distance(0,1));
-    le.concatenate(1,0);
-    le.concatenate(2,0);
-    assertEquals(2, le.distance(0,2));
+    assertEquals(-1, le.distance(0, 1));
+    le.concatenate(1, 0);
+    le.concatenate(2, 0);
+    assertEquals(2, le.distance(0, 2));
   }
 
 
   @Test
-  void foodChainTest(){
+  void foodChainTest() {
     // A B C A
     assertEquals(2, ACM0x40.foodChain(4,
             List.of(
@@ -33,26 +34,40 @@ class ACM0x40Test{
   }
 
   @Test
-  void treelikeArrayTest(){
-    var ds = IntStream.range(1,17).toArray();
+  void treelikeArrayTest() {
+    var ds = IntStream.range(1, 17).toArray();
     var ta = new ACM0x40.TreelikeArray(ds);
     var acc = ds[0];
-    for(int i = 1; i < ds.length; i++){
+    for (int i = 1; i < ds.length; i++) {
       acc += ds[i];
-      ds[i] =  acc;
+      ds[i] = acc;
     }
-    for(int i = 0; i < ds.length; i++){
-      assertEquals(ds[i], ta.prefixSumOf(i+1));
+    for (int i = 0; i < ds.length; i++) {
+      assertEquals(ds[i], ta.prefixSumOf(i + 1));
     }
   }
 
   @Test
-  void rangeAddRangeSumQueryTest(){
+  void rangeAddRangeSumQueryTest() {
     var a = new int[16];
     var q = new ACM0x40.RangeAddRangeSumQuery(a);
-    q.addRange(1,16, 1);
-    assertEquals(16, q.sumOfRange(1,16));
-    q.addRange(8,11, 1);
-    assertEquals(20,q.sumOfRange(1,16));
+    q.addRange(1, 16, 1);
+    assertEquals(16, q.sumOfRange(1, 16));
+    q.addRange(8, 11, 1);
+    assertEquals(20, q.sumOfRange(1, 16));
+  }
+
+  @SuppressWarnings("OptionalGetWithoutIsPresent")
+  @Test
+  void segmentTreeTest() {
+    var t = ACM0x40.SegmentTreeTemplate.maxSegmentTree(List.of(3, 6, 4, 8, 1, 2, 5, 7, 0));
+    assertEquals(8,t.query(2,8).get());
+    assertEquals(7, t.query(8,10).get());
+    assertEquals(8, t.query(2,4).get());
+    t.update(4,9);
+    assertEquals(9,t.query(2,8).get());
+    assertEquals(7, t.query(8,10).get());
+    assertEquals(9, t.query(2,4).get());
+
   }
 }
