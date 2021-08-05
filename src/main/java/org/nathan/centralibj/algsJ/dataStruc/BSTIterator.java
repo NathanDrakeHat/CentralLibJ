@@ -9,13 +9,13 @@ import java.util.LinkedList;
 import java.util.NoSuchElementException;
 import java.util.function.Function;
 
-public class BSTIterator<Node, Target> implements Iterator<Target>{
+public class BSTIterator<Node, Format> implements Iterator<Format>{
   private final Deque<Node> stack = new LinkedList<>();
   private Node ptr;
   private boolean poppedBefore = false;
   private boolean finish = false;
   @NotNull
-  private final Function<Node, Target> getTarget;
+  private final Function<Node, Format> getTarget;
   @NotNull
   private final Node sentinel;
   @NotNull
@@ -27,7 +27,7 @@ public class BSTIterator<Node, Target> implements Iterator<Target>{
 
   public BSTIterator(
           @NotNull Node sentinel,
-          @NotNull Function<Node, Target> getTarget,
+          @NotNull Function<Node, Format> getTarget,
           @NotNull LambdaUtils.Gettable<Node> getRoot,
           @NotNull Function<Node, Node> getRight,
           @NotNull Function<Node, Node> getLeft,
@@ -52,7 +52,7 @@ public class BSTIterator<Node, Target> implements Iterator<Target>{
   }
 
   @Override
-  public Target next(){
+  public Format next(){
     while(ptr != null) {
       if(getLeft.apply(ptr) != sentinel && !poppedBefore){
         stack.push(ptr);
