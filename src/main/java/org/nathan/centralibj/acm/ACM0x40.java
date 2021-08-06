@@ -234,7 +234,8 @@ class ACM0x40 {
   }
 
   /**
-   *
+   * range addable data maintenance
+   * (SPOJ/GSS3)
    * @param <Data> null compatible data type
    * @param <Node> node
    */
