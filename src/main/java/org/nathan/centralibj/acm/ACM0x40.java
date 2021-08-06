@@ -234,9 +234,9 @@ class ACM0x40 {
   }
 
   /**
-   * range addable query, maintain node info to augment tree, delay update for better performance
    *
-   * @param <Data>
+   * @param <Data> null compatible data type
+   * @param <Node> node
    */
   public static class SegmentTreeTemplate<Data, Node> {
 
@@ -253,15 +253,15 @@ class ACM0x40 {
     public static SegmentTreeTemplate<Integer, MaxNode<Integer>> maxSegmentTree(@NotNull List<Integer> a) {
       return new SegmentTreeTemplate<>(
               a,
-              (i,j)->{
-                if(i == null){
+              (i, j) -> {
+                if (i == null) {
                   return j;
                 }
-                else if(j == null){
+                else if (j == null) {
                   return i;
                 }
                 else {
-                  return Math.max(i,j);
+                  return Math.max(i, j);
                 }
               },
               MaxNode::new,
@@ -277,15 +277,15 @@ class ACM0x40 {
     public static SegmentTreeTemplate<Integer, SumNode<Integer>> maxContinuousSumSegmentTree(@NotNull List<Integer> a) {
       return new SegmentTreeTemplate<>(
               a,
-              (i,j)->{
-                if(i == null){
+              (i, j) -> {
+                if (i == null) {
                   return j;
                 }
-                else if(j == null){
+                else if (j == null) {
                   return i;
                 }
                 else {
-                  return Math.max(i,j);
+                  return Math.max(i, j);
                 }
               },
               SumNode::new,
@@ -299,12 +299,20 @@ class ACM0x40 {
                 var ap = l.get(p);
                 var left = l.get(2 * p);
                 var right = l.get(2 * p + 1);
-                ap.sum = left.sum + right.sum;
-                ap.lMax = Arrays.stream(new int[]{left.lMax, right.lMax, left.sum}).max().getAsInt();
-                ap.rMax = Arrays.stream(new int[]{left.rMax, right.rMax, right.sum}).max().getAsInt();
-                ap.data = Arrays.stream(new int[]{left.data, right.data, left.rMax, right.lMax}).max().getAsInt();
+                int leftSum = unBoxInt(left.sum), rightSum = unBoxInt(right.sum);
+                ap.sum = leftSum + rightSum;
+                int leftLMax = unBoxInt(left.lMax), rightLMax = unBoxInt(right.lMax);
+                int leftRMax = unBoxInt(left.rMax), rightRMax = unBoxInt(right.rMax);
+                int leftData = unBoxInt(left.data), rightData = unBoxInt(right.data);
+                ap.lMax = Arrays.stream(new int[]{leftLMax, rightLMax, leftSum}).max().getAsInt();
+                ap.rMax = Arrays.stream(new int[]{leftRMax, rightRMax, rightSum}).max().getAsInt();
+                ap.data = Arrays.stream(new int[]{leftData, rightData, leftRMax, rightLMax}).max().getAsInt();
               }
       );
+    }
+
+    private static int unBoxInt(Integer a) {
+      return a != null ? a : 0;
     }
 
     /**
@@ -344,7 +352,7 @@ class ACM0x40 {
           setLeft.accept(al, l);
           setRight.accept(al, r);
           if (l == r) {
-            setData.accept(al, Objects.requireNonNull(a.get(l-1)));
+            setData.accept(al, Objects.requireNonNull(a.get(l - 1)));
             return;
           }
           int mid = (l + r) / 2;

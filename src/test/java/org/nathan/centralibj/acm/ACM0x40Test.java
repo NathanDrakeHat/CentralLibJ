@@ -59,7 +59,7 @@ class ACM0x40Test {
 
   @SuppressWarnings("OptionalGetWithoutIsPresent")
   @Test
-  void segmentTreeTest() {
+  void maxSegmentTreeTest() {
     var t = ACM0x40.SegmentTreeTemplate.maxSegmentTree(List.of(3, 6, 4, 8, 1, 2, 5, 7, 0));
     assertEquals(8,t.query(2,8).get());
     assertEquals(7, t.query(8,10).get());
@@ -68,6 +68,13 @@ class ACM0x40Test {
     assertEquals(9,t.query(2,8).get());
     assertEquals(7, t.query(8,10).get());
     assertEquals(9, t.query(2,4).get());
+  }
 
+  @SuppressWarnings("OptionalGetWithoutIsPresent")
+  @Test
+  void maxContinuousSumSegmentTreeTest(){
+    var t=  ACM0x40.SegmentTreeTemplate.maxContinuousSumSegmentTree(List.of(1,-2,3,-4,5,-6,7,-8,9,10,-11,12));
+    assertEquals(10, t.query(1,11).get());
+    assertEquals(10, t.query(1,10).get());
   }
 }
