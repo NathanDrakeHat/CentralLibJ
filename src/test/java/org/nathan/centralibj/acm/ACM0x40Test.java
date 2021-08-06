@@ -45,6 +45,7 @@ class ACM0x40Test {
     for (int i = 0; i < ds.length; i++) {
       assertEquals(ds[i], ta.prefixSumOf(i + 1));
     }
+    assertEquals(5,ta.prefixSumOfRange(2,3));
   }
 
   @Test
