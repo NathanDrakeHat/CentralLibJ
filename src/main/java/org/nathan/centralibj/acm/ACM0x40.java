@@ -316,10 +316,6 @@ class ACM0x40 {
       return a != null ? a : 0;
     }
 
-    /**
-     * @param a  array
-     * @param op null compatible operation
-     */
     public SegmentTreeTemplate(
             @NotNull List<Data> a,
             @NotNull BiFunction<Data, Data, Data> op,
