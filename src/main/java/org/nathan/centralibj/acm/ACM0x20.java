@@ -9,7 +9,7 @@ import org.nathan.centralibj.utils.tuples.Triad;
 import org.nathan.centralibj.utils.tuples.Tuple;
 
 import java.util.*;
-
+//TODO dancing links
 class ACM0x20{
   public static <ID, Vert extends BaseVert<ID>, Edge extends BaseEdge<Vert>>
   @NotNull List<Vert> topologicalSort(@NotNull LinkedGraph<Vert, Edge> graph){
