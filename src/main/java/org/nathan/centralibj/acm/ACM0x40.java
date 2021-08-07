@@ -421,9 +421,4 @@ class ACM0x40 {
       T1 data, sum, rMax, lMax;
     }
   }
-
-  // TODO 点分治
-  public static void tree(){
-
-  }
 }
