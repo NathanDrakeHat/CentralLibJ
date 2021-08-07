@@ -423,4 +423,7 @@ class ACM0x40 {
   }
 
   // TODO 点分治
+  public static void tree(){
+
+  }
 }
