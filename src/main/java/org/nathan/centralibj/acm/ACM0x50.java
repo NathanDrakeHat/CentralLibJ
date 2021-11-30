@@ -7,7 +7,4 @@ import java.util.*;
 
 class ACM0x50 {
 
-  public @NotNull String maxSumOfTwoPath(int[][] m){
-    return null;
-  }
 }

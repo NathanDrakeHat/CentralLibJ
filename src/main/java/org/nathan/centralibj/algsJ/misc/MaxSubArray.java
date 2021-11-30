@@ -58,20 +58,20 @@ public final class MaxSubArray{
   }
 
   public static Interval onlineMaxSub(int[] array, int len){
-    int a = 0, b, acc_sum;
+    int left = 0, right, acc_sum;
     int start = 0, end = 1;
-    acc_sum = array[0];
-    int max_sum = 0;
-    for(int i = 1; i < len; i++){
-      b = i + 1;
+    acc_sum = 0;
+    int max_sum = Integer.MIN_VALUE;
+    for(int i = 0; i < len; i++){
+      right = i + 1;
       acc_sum += array[i];
       if(acc_sum > max_sum){
-        end = b;
-        start = a;
+        end = right;
+        start = left;
         max_sum = acc_sum;
       }
       if(acc_sum < 0){
-        a = i + 1;
+        left = i + 1;
         acc_sum = 0;
       }
     }
