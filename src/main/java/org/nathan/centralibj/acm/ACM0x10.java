@@ -3,6 +3,7 @@ package org.nathan.centralibj.acm;
 import org.jetbrains.annotations.NotNull;
 import org.nathan.centralibj.algsJ.dataStruc.DynamicPriQueue;
 import org.nathan.centralibj.algsJ.dataStruc.TernaryTries;
+import org.nathan.centralibj.algsJ.strMatch.KMP;
 import org.nathan.centralibj.utils.tuples.Triad;
 import org.nathan.centralibj.utils.tuples.Tuple;
 
@@ -82,7 +83,7 @@ class ACM0x10{
    * @return prefix string to its min iterate cell and max iterate count
    */
   public static @NotNull Map<String, Tuple<String, Integer>> period(@NotNull String txt){
-    var next = org.nathan.centralibj.algsJ.strMatch.KMP.computePrefixFunction(txt);
+    var next = KMP.computePrefixFunction(txt);
     Map<String, Tuple<String, Integer>> ans = new HashMap<>();
     for(int i = 2; i < txt.length(); i++){
       if(i % (i - next[i]) == 0 && i / (i - next[i]) > 1){

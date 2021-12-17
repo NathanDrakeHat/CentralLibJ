@@ -6,4 +6,5 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ACM0x50Test {
 
+
 }
