@@ -39,8 +39,7 @@ class ACM0x50 {
     Arrays.fill(f, Integer.MIN_VALUE);
     f[0] = 0;
     for(int i = 0; i < weights.length; i++){
-      //noinspection OverflowingLoopIndex
-      for(int w = weights[i]; w <= capacity; w--){
+      for(int w = weights[i]; w <= capacity; w++){
         f[w] = Math.max(f[w], f[w-weights[i]]+values[i]);
       }
     }
