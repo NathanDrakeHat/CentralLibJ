@@ -81,7 +81,7 @@ class RBTreeTemplate<Key, Node>{
     var x = getRoot.get();
     while(x != sentinel) {
       y = x;
-      {//
+      {// walk through
         if(x instanceof OrderStatTree.Node<?, ?> xo){
           xo.size++;
         }
@@ -117,7 +117,7 @@ class RBTreeTemplate<Key, Node>{
     setLeft.accept(z, sentinel);
     setRight.accept(z, sentinel);
     setColor.accept(z, RED);
-    {//
+    {// before insert fix up
       if(z instanceof OrderStatTree.Node<?, ?> zo){
         zo.size = 1;
       }
@@ -199,7 +199,7 @@ class RBTreeTemplate<Key, Node>{
       setColor.accept(y, getColor.apply(z));
     }
 
-    {//
+    {// before delete fix up
       if(y instanceof OrderStatTree.Node<?, ?>){
         if(getRight.apply(y) != sentinel){
           y = minimumNodeOf(getRight.apply(y));
@@ -330,7 +330,7 @@ class RBTreeTemplate<Key, Node>{
 
     setLeft.accept(y, x);
     setParent.accept(x, y);
-    {//
+    {// after left rotate
       if(x instanceof OrderStatTree.Node<?, ?> xo && y instanceof OrderStatTree.Node<?, ?> yo){
         yo.size = xo.size;
         xo.size = xo.left.size + xo.right.size + 1;
@@ -369,7 +369,7 @@ class RBTreeTemplate<Key, Node>{
 
     setRight.accept(y, x);
     setParent.accept(x, y);
-    {//
+    {// after right rotate
       if(x instanceof OrderStatTree.Node<?, ?> xo && y instanceof OrderStatTree.Node<?, ?> yo){
         yo.size = xo.size;
         xo.size = xo.left.size + xo.right.size + 1;
