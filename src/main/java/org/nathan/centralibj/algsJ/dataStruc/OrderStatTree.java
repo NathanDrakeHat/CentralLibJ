@@ -13,7 +13,7 @@ import static org.nathan.centralibj.algsJ.dataStruc.RBTreeTemplate.RED;
  * @param <K> key
  * @param <V> value
  */
-public class OrderStatTree<K, V> implements Iterable<Tuple<K, V>>{
+public class OrderStatTree<K, V> implements Iterable<Tuple<K, V>> {
   @NotNull
   final Comparator<K> comparator;
   @NotNull
@@ -23,7 +23,7 @@ public class OrderStatTree<K, V> implements Iterable<Tuple<K, V>>{
   @NotNull
   private final RBTreeTemplate<K, Node<K, V>> template;
 
-  public OrderStatTree(@NotNull Comparator<K> comparator){
+  public OrderStatTree(@NotNull Comparator<K> comparator) {
     this.comparator = comparator;
     template = new RBTreeTemplate<>(
             sentinel, comparator,
@@ -38,14 +38,25 @@ public class OrderStatTree<K, V> implements Iterable<Tuple<K, V>>{
             (n, r) -> n.right = r,
             n -> n.color,
             (n, c) -> n.color = c,
-            (current_node, input_node)-> current_node.size++);
+            (current_node, input_node) -> current_node.size++,
+            input_node -> input_node.size = 1,
+            template -> n -> {
+              if (n.right != sentinel) {
+                n = minimumNodeOf(n.right);
+              }
+              var yo = n;
+              while (yo != sentinel) {
+                yo.size = yo.right.size + yo.left.size + 1;
+                yo = yo.parent;
+              }
+            });
   }
 
-  public static <V> OrderStatTree<Integer, V> ofInt(){
+  public static <V> OrderStatTree<Integer, V> ofInt() {
     return new OrderStatTree<>(Integer::compareTo);
   }
 
-  public static <V> OrderStatTree<Double, V> ofDouble(){
+  public static <V> OrderStatTree<Double, V> ofDouble() {
     return new OrderStatTree<>(Double::compareTo);
   }
 
@@ -56,204 +67,204 @@ public class OrderStatTree<K, V> implements Iterable<Tuple<K, V>>{
    * @param high high (inclusive)
    * @return list of key-value in range
    */
-  public List<Tuple<K, V>> keyRangeSearch(@NotNull K low, @NotNull K high){
+  public List<Tuple<K, V>> keyRangeSearch(@NotNull K low, @NotNull K high) {
     List<Tuple<K, V>> res = new ArrayList<>();
-    if(root == sentinel){
+    if (root == sentinel) {
       return res;
     }
     keyRangeSearch(root, low, high, res);
     return res;
   }
 
-  private void keyRangeSearch(Node<K, V> n, @NotNull K low, @NotNull K high, List<Tuple<K, V>> l){
-    if(n == sentinel){
+  private void keyRangeSearch(Node<K, V> n, @NotNull K low, @NotNull K high, List<Tuple<K, V>> l) {
+    if (n == sentinel) {
       return;
     }
 
-    if(comparator.compare(n.key, low) > 0){
+    if (comparator.compare(n.key, low) > 0) {
       keyRangeSearch(n.left, low, high, l);
     }
 
-    if(comparator.compare(n.key, low) >= 0 && comparator.compare(n.key, high) <= 0){
+    if (comparator.compare(n.key, low) >= 0 && comparator.compare(n.key, high) <= 0) {
       l.add(new Tuple<>(n.key, n.value));
     }
 
-    if(comparator.compare(n.key, high) < 0){
+    if (comparator.compare(n.key, high) < 0) {
       keyRangeSearch(n.right, low, high, l);
     }
   }
 
-  public V getValueOfMinKey(){
-    if(sentinel != root){
+  public V getValueOfMinKey() {
+    if (sentinel != root) {
       return minimumNodeOf(root).value;
     }
-    else{
+    else {
       throw new NoSuchElementException("null tree");
     }
   }
 
-  public K getMinKey(){
-    if(sentinel != root){
+  public K getMinKey() {
+    if (sentinel != root) {
       return minimumNodeOf(root).key;
     }
-    else{
+    else {
       throw new NoSuchElementException("null tree");
     }
   }
 
-  public V getValueOfMaxKey(){
-    if(root != sentinel){
+  public V getValueOfMaxKey() {
+    if (root != sentinel) {
       return maximumNodeOf(root).value;
     }
-    else{
+    else {
       throw new NoSuchElementException("null tree");
     }
   }
 
-  public K getMaxKey(){
-    if(root != sentinel){
+  public K getMaxKey() {
+    if (root != sentinel) {
       return maximumNodeOf(root).key;
     }
-    else{
+    else {
       throw new NoSuchElementException("null tree");
     }
   }
 
-  public Optional<K> floorOfKey(K key){
-    if(root == sentinel){
+  public Optional<K> floorOfKey(K key) {
+    if (root == sentinel) {
       return Optional.empty();
     }
-    else{
+    else {
       Node<K, V> x = floor(root, key);
-      if(x == sentinel){
+      if (x == sentinel) {
         return Optional.empty();
       }
-      else{
+      else {
         return Optional.of(x.key);
       }
     }
   }
 
-  public K forceGetFloorOfKey(K key){
-    if(root == sentinel){
+  public K forceGetFloorOfKey(K key) {
+    if (root == sentinel) {
       throw new NoSuchElementException();
     }
-    else{
+    else {
       Node<K, V> x = floor(root, key);
-      if(x == sentinel){
+      if (x == sentinel) {
         throw new NoSuchElementException();
       }
-      else{
+      else {
         return x.key;
       }
     }
   }
 
-  private Node<K, V> floor(Node<K, V> x, K key){
-    if(x == sentinel){
+  private Node<K, V> floor(Node<K, V> x, K key) {
+    if (x == sentinel) {
       return sentinel;
     }
-    else{
+    else {
       int cmp = comparator.compare(key, x.key);
-      if(cmp == 0){
+      if (cmp == 0) {
         return x;
       }
-      else if(cmp < 0){
+      else if (cmp < 0) {
         return floor(x.left, key);
       }
-      else{
+      else {
         var t = floor(x.right, key);
         return t != sentinel ? t : x;
       }
     }
   }
 
-  public Optional<K> ceilingOfKey(K key){
-    if(root == sentinel){
+  public Optional<K> ceilingOfKey(K key) {
+    if (root == sentinel) {
       return Optional.empty();
     }
-    else{
+    else {
       var x = ceiling(root, key);
-      if(x == sentinel){
+      if (x == sentinel) {
         return Optional.empty();
       }
-      else{
+      else {
         return Optional.of(x.key);
       }
     }
   }
 
-  public K forceGetCeilingOfKey(K key){
-    if(root == sentinel){
+  public K forceGetCeilingOfKey(K key) {
+    if (root == sentinel) {
       throw new NoSuchElementException();
     }
-    else{
+    else {
       var x = ceiling(root, key);
-      if(x == sentinel){
+      if (x == sentinel) {
         throw new NoSuchElementException();
       }
-      else{
+      else {
         return x.key;
       }
     }
   }
 
-  private Node<K, V> ceiling(Node<K, V> x, K key){
-    if(x == sentinel){
+  private Node<K, V> ceiling(Node<K, V> x, K key) {
+    if (x == sentinel) {
       return sentinel;
     }
-    else{
+    else {
       int cmp = comparator.compare(key, x.key);
-      if(cmp == 0){
+      if (cmp == 0) {
         return x;
       }
-      else if(cmp > 0){
+      else if (cmp > 0) {
         return ceiling(x.right, key);
       }
-      else{
+      else {
         var t = ceiling(x.left, key);
         return t != sentinel ? t : x;
       }
     }
   }
 
-  public K getKeyOfRank(int rank){
-    if(rank <= 0 || rank > size()){
+  public K getKeyOfRank(int rank) {
+    if (rank <= 0 || rank > size()) {
       throw new IndexOutOfBoundsException();
     }
     Node<K, V> n = getNodeOfRank(rank);
     return n.key;
   }
 
-  Node<K, V> getNodeOfRank(int ith){
+  Node<K, V> getNodeOfRank(int ith) {
     return getNodeOfRank(root, ith);
   }
 
-  Node<K, V> getNodeOfRank(Node<K, V> current, int ith){
+  Node<K, V> getNodeOfRank(Node<K, V> current, int ith) {
     int rank = current.left.size + 1;
-    if(rank == ith){
+    if (rank == ith) {
       return current;
     }
-    else if(ith < rank){
+    else if (ith < rank) {
       return getNodeOfRank(current.left, ith);
     }
-    else{
+    else {
       return getNodeOfRank(current.right, ith - rank);
     }
   }
 
-  public int getRankOfKey(K key){
+  public int getRankOfKey(K key) {
     Node<K, V> n = template.getNodeOfKey(root, key);
-    if(n == sentinel){
+    if (n == sentinel) {
       throw new NoSuchElementException();
     }
     return getRankOfNode(n);
   }
 
-  int getRankOfNode(Node<K, V> node){
+  int getRankOfNode(Node<K, V> node) {
     int rank = node.left.size + 1;
-    while(node != root) {
-      if(node == node.parent.right){
+    while (node != root) {
+      if (node == node.parent.right) {
         rank += node.parent.left.size + 1;
       }
       node = node.parent;
@@ -261,12 +272,12 @@ public class OrderStatTree<K, V> implements Iterable<Tuple<K, V>>{
     return rank;
   }
 
-  public int size(){
+  public int size() {
     return root.size;
   }
 
-  public int getHeight(){
-    if(root == sentinel){
+  public int getHeight() {
+    if (root == sentinel) {
       return 0;
     }
     int height = 1;
@@ -275,85 +286,87 @@ public class OrderStatTree<K, V> implements Iterable<Tuple<K, V>>{
     return Math.max(left_max, right_max);
   }
 
-  private int getHeight(Node<K, V> n, int height){
-    if(n != sentinel){
+  private int getHeight(Node<K, V> n, int height) {
+    if (n != sentinel) {
       int left_max = getHeight(n.left, height + 1);
       int right_max = getHeight(n.right, height + 1);
       return Math.max(left_max, right_max);
     }
-    else{
+    else {
       return height;
     }
   }
 
-  public void insertKV(@NotNull K key, V val){
+  public void insertKV(@NotNull K key, V val) {
     modified();
     var n = new Node<>(key, val);
     template.insert(n);
   }
 
-  public void updateKV(@NotNull K key, V val){
+  public void updateKV(@NotNull K key, V val) {
     modified();
     var n = (Node<K, V>) template.getNodeOfKey(root, key);
-    if(n == sentinel){
+    if (n == sentinel) {
       throw new NoSuchElementException();
     }
     n.value = val;
   }
 
-  public void deleteKey(@NotNull K key){
+  public void deleteKey(@NotNull K key) {
     modified();
     var n = (Node<K, V>) template.getNodeOfKey(root, key);
-    if(n != sentinel){
+    if (n != sentinel) {
       template.delete(n);
     }
   }
 
-  public boolean containKey(@NotNull K key){
-    if(root == sentinel){
+  public boolean containKey(@NotNull K key) {
+    if (root == sentinel) {
       return false;
     }
-    else{ return sentinel != template.getNodeOfKey(root, key); }
+    else {
+      return sentinel != template.getNodeOfKey(root, key);
+    }
   }
 
-  public V getValOfKey(@NotNull K key){
-    if(root == sentinel){
+  public V getValOfKey(@NotNull K key) {
+    if (root == sentinel) {
       throw new NoSuchElementException();
     }
     var res = template.getNodeOfKey(root, key).value;
-    if(res == sentinel){
+    if (res == sentinel) {
       throw new NoSuchElementException();
     }
     return res;
   }
 
-  private Node<K, V> minimumNodeOf(Node<K, V> x){
-    while(x.left != sentinel) {
+  private Node<K, V> minimumNodeOf(Node<K, V> x) {
+    while (x.left != sentinel) {
       x = x.left;
     }
     return x;
   }
 
-  private Node<K, V> maximumNodeOf(Node<K, V> x){
-    while(x.right != sentinel) {
+  private Node<K, V> maximumNodeOf(Node<K, V> x) {
+    while (x.right != sentinel) {
       x = x.right;
     }
     return x;
   }
 
   @Override
-  public @NotNull Iterator<Tuple<K, V>> iterator(){
+  public @NotNull Iterator<Tuple<K, V>> iterator() {
     iterating = true;
     return new BSTIterator<>(sentinel, n -> new Tuple<>(n.key, n.value), () -> this.root, n -> n.right, n -> n.left,
             () -> this.iterating);
   }
 
 
-  private void modified(){
+  private void modified() {
     iterating = false;
   }
 
-  static final class Node<key, val>{
+  static final class Node<key, val> {
     key key;
     val value;
     boolean color;
@@ -362,18 +375,18 @@ public class OrderStatTree<K, V> implements Iterable<Tuple<K, V>>{
     Node<key, val> right;
     int size;
 
-    Node(boolean color){
+    Node(boolean color) {
       this.color = color;
     }
 
-    Node(@NotNull key key, val val){
+    Node(@NotNull key key, val val) {
       color = RED;
       this.key = key;
       this.value = val;
     }
 
     @Override
-    public String toString(){
+    public String toString() {
       return "Node{" +
               "key=" + key +
               ", value=" + value +

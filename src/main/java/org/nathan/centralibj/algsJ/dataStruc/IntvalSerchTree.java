@@ -40,7 +40,19 @@ public class IntvalSerchTree<Key, Val> implements Iterable<Triad<Key, Key, Val>>
             (n, r) -> n.right = r,
             n -> n.color,
             (n, c) -> n.color = c,
-            (current_node, input_node) -> current_node.max = comparator.compare(current_node.max, input_node.max) < 0 ? input_node.max : current_node.max);
+            (current_node, input_node) -> current_node.max = comparator.compare(current_node.max, input_node.max) < 0 ? input_node.max : current_node.max,
+            null,
+            template -> (n)->{
+              var p = n;
+              if (p.right != sentinel) {
+                p = template.minimumNodeOf(p.right);
+              }
+
+              while (p != sentinel) {
+                template.updateIntvalSerchNode(p);
+                p = p.parent;
+              }
+            });
 
   }
 
