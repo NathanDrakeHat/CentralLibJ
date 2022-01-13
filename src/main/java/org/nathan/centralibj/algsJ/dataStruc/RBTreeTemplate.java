@@ -40,6 +40,7 @@ class RBTreeTemplate<Key, Node>{
   final Function<Node, Boolean> getColor;
   final BiConsumer<Node, Boolean> setColor;
   final Function<Node, Key> getKey;
+  final BiConsumer<Node,Node> walkThrough;
 
   RBTreeTemplate(@NotNull Node sentinel,
                  @NotNull Comparator<Key> comparator,
@@ -53,7 +54,8 @@ class RBTreeTemplate<Key, Node>{
                  @NotNull Function<Node, Node> getRight,
                  @NotNull BiConsumer<Node, Node> setRight,
                  @NotNull Function<Node, Boolean> getColor,
-                 @NotNull BiConsumer<Node, Boolean> setColor){
+                 @NotNull BiConsumer<Node, Boolean> setColor,
+                         BiConsumer<Node,Node> walkThrough){
     this.sentinel = sentinel;
     this.comparator = comparator;
     this.getRoot = getRoot;
@@ -67,6 +69,7 @@ class RBTreeTemplate<Key, Node>{
     this.getColor = getColor;
     this.setColor = setColor;
     this.getKey = getKey;
+    this.walkThrough = walkThrough;
   }
 
   /**
@@ -75,27 +78,13 @@ class RBTreeTemplate<Key, Node>{
    * @param z node or sentinel
    */
   @Template
-  @SuppressWarnings({"SuspiciousNameCombination", "unchecked"})
+  @SuppressWarnings({"SuspiciousNameCombination"})
   void insert(Node z){
     var y = sentinel;
     var x = getRoot.get();
     while(x != sentinel) {
       y = x;
-      {// walk through
-        var func = new Object(){
-          void walkThrough(Node current_node, Node input_node){
-            if(current_node instanceof OrderStatTree.Node<?, ?> xo){
-              xo.size++;
-            }
-            else if(current_node instanceof IntvalSerchTree.Node<?, ?>){
-              var xi = (IntvalSerchTree.Node<Key, ?>) current_node;
-              var zi = (IntvalSerchTree.Node<Key, ?>) input_node;
-              xi.max = comparator.compare(xi.max, zi.max) < 0 ? zi.max : xi.max;
-            }
-          }
-        };
-        func.walkThrough(x,z);
-      }
+      if(walkThrough != null) walkThrough.accept(x,z);
       if(comparator.compare(getKey.apply(z), getKey.apply(x)) < 0){
         x = getLeft.apply(x);
       }

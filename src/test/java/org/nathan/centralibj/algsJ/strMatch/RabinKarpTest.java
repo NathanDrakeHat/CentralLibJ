@@ -1,7 +1,6 @@
-package org.nathan.centralibj.algsJ.natch;
+package org.nathan.centralibj.algsJ.strMatch;
 
 import org.junit.jupiter.api.Test;
-import org.nathan.centralibj.algsJ.strMatch.RabinKarp;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

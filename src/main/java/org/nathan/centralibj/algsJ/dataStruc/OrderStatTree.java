@@ -37,7 +37,8 @@ public class OrderStatTree<K, V> implements Iterable<Tuple<K, V>>{
             n -> n.right,
             (n, r) -> n.right = r,
             n -> n.color,
-            (n, c) -> n.color = c);
+            (n, c) -> n.color = c,
+            (current_node, input_node)-> current_node.size++);
   }
 
   public static <V> OrderStatTree<Integer, V> ofInt(){

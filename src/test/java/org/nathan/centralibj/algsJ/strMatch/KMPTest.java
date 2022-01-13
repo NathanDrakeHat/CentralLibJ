@@ -1,7 +1,6 @@
-package org.nathan.centralibj.algsJ.natch;
+package org.nathan.centralibj.algsJ.strMatch;
 
 import org.junit.jupiter.api.Test;
-import org.nathan.centralibj.algsJ.strMatch.KMP;
 
 import java.util.Arrays;
 
@@ -32,6 +31,5 @@ class KMPTest{
     assertEquals(0, res4.get(0));
 
     var pi = KMP.computePrefixFunction("ababaca");
-    System.out.println(Arrays.toString(pi));
   }
 }
