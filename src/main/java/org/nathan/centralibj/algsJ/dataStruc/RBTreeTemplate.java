@@ -82,14 +82,19 @@ class RBTreeTemplate<Key, Node>{
     while(x != sentinel) {
       y = x;
       {// walk through
-        if(x instanceof OrderStatTree.Node<?, ?> xo){
-          xo.size++;
-        }
-        else if(x instanceof IntvalSerchTree.Node<?, ?>){
-          var xi = (IntvalSerchTree.Node<Key, ?>) x;
-          var zi = (IntvalSerchTree.Node<Key, ?>) z;
-          xi.max = comparator.compare(xi.max, zi.max) < 0 ? zi.max : xi.max;
-        }
+        var func = new Object(){
+          void walkThrough(Node current_node, Node input_node){
+            if(current_node instanceof OrderStatTree.Node<?, ?> xo){
+              xo.size++;
+            }
+            else if(current_node instanceof IntvalSerchTree.Node<?, ?>){
+              var xi = (IntvalSerchTree.Node<Key, ?>) current_node;
+              var zi = (IntvalSerchTree.Node<Key, ?>) input_node;
+              xi.max = comparator.compare(xi.max, zi.max) < 0 ? zi.max : xi.max;
+            }
+          }
+        };
+        func.walkThrough(x,z);
       }
       if(comparator.compare(getKey.apply(z), getKey.apply(x)) < 0){
         x = getLeft.apply(x);
@@ -118,9 +123,14 @@ class RBTreeTemplate<Key, Node>{
     setRight.accept(z, sentinel);
     setColor.accept(z, RED);
     {// before insert fix up
-      if(z instanceof OrderStatTree.Node<?, ?> zo){
-        zo.size = 1;
-      }
+      var func = new Object(){
+        void beforeInsertFixUp(Node input_node){
+          if(input_node instanceof OrderStatTree.Node<?, ?> zo){
+            zo.size = 1;
+          }
+        }
+      };
+      func.beforeInsertFixUp(z);
     }
     insertFixUp(z);
   }
@@ -200,28 +210,33 @@ class RBTreeTemplate<Key, Node>{
     }
 
     {// before delete fix up
-      if(y instanceof OrderStatTree.Node<?, ?>){
-        if(getRight.apply(y) != sentinel){
-          y = minimumNodeOf(getRight.apply(y));
+      var func = new Object(){
+        void beforeDeleteFixUp(Node n){
+          if(n instanceof OrderStatTree.Node<?, ?>){
+            if(getRight.apply(n) != sentinel){
+              n = minimumNodeOf(getRight.apply(n));
+            }
+            //noinspection PatternVariableCanBeUsed
+            var yo = (OrderStatTree.Node<?, ?>) n;
+            while(yo != sentinel) {
+              yo.size = yo.right.size + yo.left.size + 1;
+              yo = yo.parent;
+            }
+          }
+          else if(n instanceof IntvalSerchTree.Node<?, ?>){
+            var p = n;
+            if(getRight.apply(p) != sentinel){
+              p = minimumNodeOf(getRight.apply(p));
+            }
+            var pi = (IntvalSerchTree.Node<Key, ?>) p;
+            while(pi != sentinel) {
+              updateIntvalSerchNode(pi);
+              pi = pi.parent;
+            }
+          }
         }
-        //noinspection PatternVariableCanBeUsed
-        var yo = (OrderStatTree.Node<?, ?>) y;
-        while(yo != sentinel) {
-          yo.size = yo.right.size + yo.left.size + 1;
-          yo = yo.parent;
-        }
-      }
-      else if(y instanceof IntvalSerchTree.Node<?, ?>){
-        var p = y;
-        if(getRight.apply(p) != sentinel){
-          p = minimumNodeOf(getRight.apply(p));
-        }
-        var pi = (IntvalSerchTree.Node<Key, ?>) p;
-        while(pi != sentinel) {
-          updateIntvalSerchNode(pi);
-          pi = pi.parent;
-        }
-      }
+      };
+      func.beforeDeleteFixUp(y);
     }
 
     if(y_origin_color == BLACK){
@@ -331,18 +346,23 @@ class RBTreeTemplate<Key, Node>{
     setLeft.accept(y, x);
     setParent.accept(x, y);
     {// after left rotate
-      if(x instanceof OrderStatTree.Node<?, ?> xo && y instanceof OrderStatTree.Node<?, ?> yo){
-        yo.size = xo.size;
-        xo.size = xo.left.size + xo.right.size + 1;
-      }
-      else if(x instanceof IntvalSerchTree.Node<?, ?>){
-        var xi = (IntvalSerchTree.Node<Key, ?>) x;
-        updateIntvalSerchNode(xi);
-        xi = xi.parent;
-        if(xi != sentinel){
-          updateIntvalSerchNode(xi);
+      var func = new Object(){
+        void afterLeftRotate(Node node, Node parent, Node sentinel){
+          if(node instanceof OrderStatTree.Node<?, ?> xo && parent instanceof OrderStatTree.Node<?, ?> yo){
+            yo.size = xo.size;
+            xo.size = xo.left.size + xo.right.size + 1;
+          }
+          else if(node instanceof IntvalSerchTree.Node<?, ?>){
+            var xi = (IntvalSerchTree.Node<Key, ?>) node;
+            updateIntvalSerchNode(xi);
+            xi = xi.parent;
+            if(xi != sentinel){
+              updateIntvalSerchNode(xi);
+            }
+          }
         }
-      }
+      };
+      func.afterLeftRotate(x,y,sentinel);
     }
   }
 
@@ -370,18 +390,23 @@ class RBTreeTemplate<Key, Node>{
     setRight.accept(y, x);
     setParent.accept(x, y);
     {// after right rotate
-      if(x instanceof OrderStatTree.Node<?, ?> xo && y instanceof OrderStatTree.Node<?, ?> yo){
-        yo.size = xo.size;
-        xo.size = xo.left.size + xo.right.size + 1;
-      }
-      else if(x instanceof IntvalSerchTree.Node<?, ?>){
-        var xi = (IntvalSerchTree.Node<Key, ?>) x;
-        updateIntvalSerchNode(xi);
-        xi = xi.parent;
-        if(xi != sentinel){
-          updateIntvalSerchNode(xi);
+      var func = new Object(){
+        void afterRightRotate(Node node, Node parent , Node sentinel){
+          if(node instanceof OrderStatTree.Node<?, ?> xo && parent instanceof OrderStatTree.Node<?, ?> yo){
+            yo.size = xo.size;
+            xo.size = xo.left.size + xo.right.size + 1;
+          }
+          else if(node instanceof IntvalSerchTree.Node<?, ?>){
+            var xi = (IntvalSerchTree.Node<Key, ?>) node;
+            updateIntvalSerchNode(xi);
+            xi = xi.parent;
+            if(xi != sentinel){
+              updateIntvalSerchNode(xi);
+            }
+          }
         }
-      }
+      };
+      func.afterRightRotate(x,y,sentinel);
     }
   }
 

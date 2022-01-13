@@ -11,7 +11,7 @@ import java.util.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ACM0x30Test{
-  static final int iteration = 100;
+  static final int iteration = 30;
 
   List<Tuple<Integer, Integer>> pdCases;
   IntList primes;

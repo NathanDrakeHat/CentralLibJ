@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.nathan.centralibj.acm.ACM0x20.*;
 
 public class ACM0x20Test{
-  static final int iteration = 100;
+  static final int iteration = 5;
 
   LinkedGraph<BaseVert<Integer>, BaseEdge<BaseVert<Integer>>> tsCase;
 
@@ -205,7 +205,7 @@ public class ACM0x20Test{
     assertTrue(checkNPuzzle(ans));
   }
 
-  static final int bookSortIteration = 30;
+  static final int bookSortIteration = 5;
   int[][] bookSortCases = new int[bookSortIteration][];
 
   {

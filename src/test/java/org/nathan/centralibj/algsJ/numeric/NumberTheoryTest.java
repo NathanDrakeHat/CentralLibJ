@@ -34,7 +34,7 @@ public class NumberTheoryTest{
 
   @Test
   void primesGenTest(){
-    assertEquals(664579,	 NumberTheory.primesGenEulerSieve((int)Math.pow(10,7)).size());
+    assertEquals(1229,	 NumberTheory.primesGenEulerSieve((int)Math.pow(10,4)).size());
   }
 
   @Test
