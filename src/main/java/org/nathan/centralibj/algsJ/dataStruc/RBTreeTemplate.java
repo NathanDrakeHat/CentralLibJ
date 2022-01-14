@@ -43,6 +43,8 @@ class RBTreeTemplate<Key, Node> {
   final BiConsumer<Node, Node> walkThrough;
   final Consumer<Node> beforeInsertFixUp;
   final Consumer<Node> beforeDeleteFixUp;
+  final LambdaUtils.TriConsumer<Node, Node, Node> afterLeftRotate;
+  final LambdaUtils.TriConsumer<Node, Node, Node> afterRightRotate;
 
   RBTreeTemplate(@NotNull Node sentinel,
                  @NotNull Comparator<Key> comparator,
@@ -59,7 +61,9 @@ class RBTreeTemplate<Key, Node> {
                  @NotNull BiConsumer<Node, Boolean> setColor,
                  BiConsumer<Node, Node> walkThrough,
                  Consumer<Node> beforeInsertFixUp,
-                 Function<RBTreeTemplate<Key, Node>, Consumer<Node>> beforeDeleteFixUpWrapper) {
+                 Function<RBTreeTemplate<Key, Node>, Consumer<Node>> beforeDeleteFixUpWrapper,
+                 Function<RBTreeTemplate<Key, Node>, LambdaUtils.TriConsumer<Node, Node, Node>> afterLeftRotateWrapper,
+                 Function<RBTreeTemplate<Key, Node>, LambdaUtils.TriConsumer<Node, Node, Node>> afterRightRotateWrapper) {
     this.sentinel = sentinel;
     this.comparator = comparator;
     this.getRoot = getRoot;
@@ -76,6 +80,8 @@ class RBTreeTemplate<Key, Node> {
     this.walkThrough = walkThrough;
     this.beforeInsertFixUp = beforeInsertFixUp;
     this.beforeDeleteFixUp = beforeDeleteFixUpWrapper.apply(this);
+    this.afterLeftRotate = afterLeftRotateWrapper.apply(this);
+    this.afterRightRotate = afterRightRotateWrapper.apply(this);
   }
 
   /**
@@ -281,7 +287,6 @@ class RBTreeTemplate<Key, Node> {
     setParent.accept(v, getParent.apply(u));
   }
 
-  @SuppressWarnings("unchecked")
   @Template
   private void leftRotate(Node x) {
     var y = getRight.apply(x);
@@ -304,28 +309,10 @@ class RBTreeTemplate<Key, Node> {
 
     setLeft.accept(y, x);
     setParent.accept(x, y);
-    {// after left rotate
-      var func = new Object() {
-        void afterLeftRotate(Node node, Node parent, Node sentinel) {
-          if (node instanceof OrderStatTree.Node<?, ?> xo && parent instanceof OrderStatTree.Node<?, ?> yo) {
-            yo.size = xo.size;
-            xo.size = xo.left.size + xo.right.size + 1;
-          }
-          else if (node instanceof IntvalSerchTree.Node<?, ?>) {
-            var xi = (IntvalSerchTree.Node<Key, ?>) node;
-            updateIntvalSerchNode(xi);
-            xi = xi.parent;
-            if (xi != sentinel) {
-              updateIntvalSerchNode(xi);
-            }
-          }
-        }
-      };
-      func.afterLeftRotate(x, y, sentinel);
-    }
+    if (afterLeftRotate != null) afterLeftRotate.accept(x, y, sentinel);
+
   }
 
-  @SuppressWarnings("unchecked")
   @Template
   private void rightRotate(Node x) {
     var y = getLeft.apply(x);
@@ -348,41 +335,9 @@ class RBTreeTemplate<Key, Node> {
 
     setRight.accept(y, x);
     setParent.accept(x, y);
-    {// after right rotate
-      var func = new Object() {
-        void afterRightRotate(Node node, Node parent, Node sentinel) {
-          if (node instanceof OrderStatTree.Node<?, ?> xo && parent instanceof OrderStatTree.Node<?, ?> yo) {
-            yo.size = xo.size;
-            xo.size = xo.left.size + xo.right.size + 1;
-          }
-          else if (node instanceof IntvalSerchTree.Node<?, ?>) {
-            var xi = (IntvalSerchTree.Node<Key, ?>) node;
-            updateIntvalSerchNode(xi);
-            xi = xi.parent;
-            if (xi != sentinel) {
-              updateIntvalSerchNode(xi);
-            }
-          }
-        }
-      };
-      func.afterRightRotate(x, y, sentinel);
-    }
-  }
 
-  void updateIntvalSerchNode(IntvalSerchTree.Node<Key, ?> n) {
-    if (n.left != sentinel && n.right != sentinel) {
-      n.max = comparator.compare(n.right.max, n.left.max) < 0 ? n.left.max : n.right.max;
-      n.max = comparator.compare(n.max, n.high) < 0 ? n.high : n.max;
-    }
-    else if (n.left != sentinel) {
-      n.max = comparator.compare(n.high, n.left.max) < 0 ? n.left.max : n.high;
-    }
-    else if (n.right != sentinel) {
-      n.max = comparator.compare(n.high, n.right.max) < 0 ? n.right.max : n.high;
-    }
-    else {
-      n.max = n.high;
-    }
+    if (afterRightRotate != null) afterRightRotate.accept(x, y, sentinel);
+
   }
 
   /**

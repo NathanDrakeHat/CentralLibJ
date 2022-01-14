@@ -42,18 +42,48 @@ public class IntvalSerchTree<Key, Val> implements Iterable<Triad<Key, Key, Val>>
             (n, c) -> n.color = c,
             (current_node, input_node) -> current_node.max = comparator.compare(current_node.max, input_node.max) < 0 ? input_node.max : current_node.max,
             null,
-            template -> (n)->{
+            template -> (n) -> {
               var p = n;
               if (p.right != sentinel) {
                 p = template.minimumNodeOf(p.right);
               }
 
               while (p != sentinel) {
-                template.updateIntvalSerchNode(p);
+                updateIntvalSerchNode(p);
                 p = p.parent;
+              }
+            },
+            template -> (node, parent, sentinel) -> {
+              updateIntvalSerchNode(node);
+              node = node.parent;
+              if (node != sentinel) {
+                updateIntvalSerchNode(node);
+              }
+            },
+            template -> (node, parent, sentinel) -> {
+              updateIntvalSerchNode(node);
+              node = node.parent;
+              if (node != sentinel) {
+                updateIntvalSerchNode(node);
               }
             });
 
+  }
+
+  void updateIntvalSerchNode(IntvalSerchTree.Node<Key, ?> n) {
+    if (n.left != sentinel && n.right != sentinel) {
+      n.max = comparator.compare(n.right.max, n.left.max) < 0 ? n.left.max : n.right.max;
+      n.max = comparator.compare(n.max, n.high) < 0 ? n.high : n.max;
+    }
+    else if (n.left != sentinel) {
+      n.max = comparator.compare(n.high, n.left.max) < 0 ? n.left.max : n.high;
+    }
+    else if (n.right != sentinel) {
+      n.max = comparator.compare(n.high, n.right.max) < 0 ? n.right.max : n.high;
+    }
+    else {
+      n.max = n.high;
+    }
   }
 
   public static <V> IntvalSerchTree<Integer, V> ofInt() {

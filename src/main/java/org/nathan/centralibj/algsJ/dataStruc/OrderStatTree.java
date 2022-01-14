@@ -49,6 +49,14 @@ public class OrderStatTree<K, V> implements Iterable<Tuple<K, V>> {
                 yo.size = yo.right.size + yo.left.size + 1;
                 yo = yo.parent;
               }
+            },
+            template -> (node, parent, sentinel) -> {
+              parent.size = node.size;
+              node.size = node.left.size + node.right.size + 1;
+            },
+            template -> (node, parent, sentinel) -> {
+              parent.size = node.size;
+              node.size = node.left.size + node.right.size + 1;
             });
   }
 
