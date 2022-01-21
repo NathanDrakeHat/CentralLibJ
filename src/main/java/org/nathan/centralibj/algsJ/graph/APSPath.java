@@ -101,7 +101,7 @@ public class APSPath{
 
 
   /**
-   * sparse org.nathan.Algorithms.graph
+   * sparse
    * Fibonacci heap: O(V^2*lgV + V*E)
    * min heap: O(V*E*lgV)
    *
