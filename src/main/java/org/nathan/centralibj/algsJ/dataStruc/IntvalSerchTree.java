@@ -66,6 +66,9 @@ public class IntvalSerchTree<Key, Val> implements Iterable<Triad<Key, Key, Val>>
               if (node != sentinel) {
                 updateIntvalSerchNode(node);
               }
+            },
+            n->{
+              throw new RuntimeException("duplicate");
             });
 
   }

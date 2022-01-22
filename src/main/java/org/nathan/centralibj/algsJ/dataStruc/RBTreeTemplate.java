@@ -1,7 +1,5 @@
 package org.nathan.centralibj.algsJ.dataStruc;
 
-import org.jetbrains.annotations.NotNull;
-import org.nathan.centralibj.utils.LambdaUtils;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Target;
@@ -25,9 +23,19 @@ class RBTreeTemplate<Key, Node> {
 
   }
 
+  @FunctionalInterface
+  public interface Gettable<Item> {
+    Item get();
+  }
+
+  @FunctionalInterface
+  public interface TriConsumer<T1, T2, T3> {
+    void accept(T1 t1, T2 t2, T3 t3);
+  }
+
   final Node sentinel;
   final Comparator<Key> comparator;
-  final LambdaUtils.Gettable<Node> getRoot;
+  final Gettable<Node> getRoot;
   final Consumer<Node> setRoot;
   static final boolean RED = false;
   static final boolean BLACK = true;
@@ -43,27 +51,29 @@ class RBTreeTemplate<Key, Node> {
   final BiConsumer<Node, Node> walkThrough;
   final Consumer<Node> beforeInsertFixUp;
   final Consumer<Node> beforeDeleteFixUp;
-  final LambdaUtils.TriConsumer<Node, Node, Node> afterLeftRotate;
-  final LambdaUtils.TriConsumer<Node, Node, Node> afterRightRotate;
+  final TriConsumer<Node, Node, Node> afterLeftRotate;
+  final TriConsumer<Node, Node, Node> afterRightRotate;
+  final Consumer<Node> handleDuplicate;
 
-  RBTreeTemplate(@NotNull Node sentinel,
-                 @NotNull Comparator<Key> comparator,
-                 @NotNull Function<Node, Key> getKey,
-                 @NotNull LambdaUtils.Gettable<Node> getRoot,
-                 @NotNull Consumer<Node> setRoot,
-                 @NotNull Function<Node, Node> getParent,
-                 @NotNull BiConsumer<Node, Node> setParent,
-                 @NotNull Function<Node, Node> getLeft,
-                 @NotNull BiConsumer<Node, Node> setLeft,
-                 @NotNull Function<Node, Node> getRight,
-                 @NotNull BiConsumer<Node, Node> setRight,
-                 @NotNull Function<Node, Boolean> getColor,
-                 @NotNull BiConsumer<Node, Boolean> setColor,
+  RBTreeTemplate(Node sentinel,
+                 Comparator<Key> comparator,
+                 Function<Node, Key> getKey,
+                 Gettable<Node> getRoot,
+                 Consumer<Node> setRoot,
+                 Function<Node, Node> getParent,
+                 BiConsumer<Node, Node> setParent,
+                 Function<Node, Node> getLeft,
+                 BiConsumer<Node, Node> setLeft,
+                 Function<Node, Node> getRight,
+                 BiConsumer<Node, Node> setRight,
+                 Function<Node, Boolean> getColor,
+                 BiConsumer<Node, Boolean> setColor,
                  BiConsumer<Node, Node> walkThrough,
                  Consumer<Node> beforeInsertFixUp,
                  Function<RBTreeTemplate<Key, Node>, Consumer<Node>> beforeDeleteFixUpWrapper,
-                 Function<RBTreeTemplate<Key, Node>, LambdaUtils.TriConsumer<Node, Node, Node>> afterLeftRotateWrapper,
-                 Function<RBTreeTemplate<Key, Node>, LambdaUtils.TriConsumer<Node, Node, Node>> afterRightRotateWrapper) {
+                 Function<RBTreeTemplate<Key, Node>, TriConsumer<Node, Node, Node>> afterLeftRotateWrapper,
+                 Function<RBTreeTemplate<Key, Node>, TriConsumer<Node, Node, Node>> afterRightRotateWrapper,
+                 Consumer<Node> handleDuplicate) {
     this.sentinel = sentinel;
     this.comparator = comparator;
     this.getRoot = getRoot;
@@ -82,6 +92,8 @@ class RBTreeTemplate<Key, Node> {
     this.beforeDeleteFixUp = beforeDeleteFixUpWrapper.apply(this);
     this.afterLeftRotate = afterLeftRotateWrapper.apply(this);
     this.afterRightRotate = afterRightRotateWrapper.apply(this);
+    this.handleDuplicate = handleDuplicate;
+
   }
 
   /**
@@ -104,7 +116,8 @@ class RBTreeTemplate<Key, Node> {
         x = getRight.apply(x);
       }
       else {
-        throw new IllegalArgumentException("duplicate key.");
+        handleDuplicate.accept(x);
+        return;
       }
     }
     setParent.accept(z, y);
@@ -118,7 +131,7 @@ class RBTreeTemplate<Key, Node> {
       setRight.accept(y, z);
     }
     else {
-      throw new RuntimeException("impossible error.");
+      throw new RuntimeException("impossible.");
     }
     setLeft.accept(z, sentinel);
     setRight.accept(z, sentinel);

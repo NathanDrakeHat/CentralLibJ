@@ -57,6 +57,9 @@ public class OrderStatTree<K, V> implements Iterable<Tuple<K, V>> {
             template -> (node, parent, sentinel) -> {
               parent.size = node.size;
               node.size = node.left.size + node.right.size + 1;
+            },
+            n -> {
+              throw new RuntimeException("duplicate");
             });
   }
 
