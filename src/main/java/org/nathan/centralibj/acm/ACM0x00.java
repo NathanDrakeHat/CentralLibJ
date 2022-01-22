@@ -555,7 +555,7 @@ public class ACM0x00{
   }
 
   /**
-   * decent order pairs
+   * descend order pairs
    * <br/>compute exchange count of bubble sort/count of decent order pairs
    * <br/>(POJ2299)
    *
