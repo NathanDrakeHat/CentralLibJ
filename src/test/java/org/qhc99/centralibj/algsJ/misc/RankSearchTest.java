@@ -45,9 +45,9 @@ class RankSearchTest{
 
   @Test
   void randomSelectCase2(){
-    var res = RankSearch.rankSearch(Data.test2, 4);
-    Arrays.sort(Data.test2);
-    assertEquals(Data.test2[4], res);
+    var res = RankSearch.rankSearch(Data.test1, 4);
+    Arrays.sort(Data.test1);
+    assertEquals(Data.test1[4], res);
 
     res = RankSearch.rankSearch(Data.test2, 5);
     Arrays.sort(Data.test2);
@@ -64,9 +64,9 @@ class RankSearchTest{
 
   @Test
   void randomSelectCase3(){
-    var res = RankSearch.rankSearch(Data.test3, 8);
-    Arrays.sort(Data.test3);
-    assertEquals(Data.test3[8], res);
+    var res = RankSearch.rankSearch(Data.test1, 8);
+    Arrays.sort(Data.test1);
+    assertEquals(Data.test1[8], res);
 
     res = RankSearch.rankSearch(Data.test2, 9);
     Arrays.sort(Data.test2);
@@ -83,9 +83,9 @@ class RankSearchTest{
 
   @Test
   void randomSelectCase4(){
-    var res = RankSearch.rankSearch(Data.test4, 12);
-    Arrays.sort(Data.test4);
-    assertEquals(Data.test4[12], res);
+    var res = RankSearch.rankSearch(Data.test1, 12);
+    Arrays.sort(Data.test1);
+    assertEquals(Data.test1[12], res);
 
     res = RankSearch.rankSearch(Data.test2, 13);
     Arrays.sort(Data.test2);
