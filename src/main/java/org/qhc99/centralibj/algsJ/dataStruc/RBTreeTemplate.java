@@ -1,6 +1,9 @@
 package org.qhc99.centralibj.algsJ.dataStruc;
 
 
+import org.qhc99.centralibj.utils.LambdaUtils;
+import org.qhc99.centralibj.utils.LambdaUtils.TriConsumer;
+
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Target;
 import java.util.Comparator;
@@ -28,11 +31,6 @@ class RBTreeTemplate<Key, Node> {
     Item get();
   }
 
-  @FunctionalInterface
-  public interface TriConsumer<T1, T2, T3> {
-    void accept(T1 t1, T2 t2, T3 t3);
-  }
-
   final Node sentinel;
   final Comparator<Key> comparator;
   final Gettable<Node> getRoot;
@@ -52,7 +50,7 @@ class RBTreeTemplate<Key, Node> {
   final Consumer<Node> beforeInsertFixUp;
   final Consumer<Node> beforeDeleteFixUp;
   final TriConsumer<Node, Node, Node> afterLeftRotate;
-  final TriConsumer<Node, Node, Node> afterRightRotate;
+  final LambdaUtils.TriConsumer<Node, Node, Node> afterRightRotate;
   final Consumer<Node> handleDuplicate;
 
   RBTreeTemplate(Node sentinel,
