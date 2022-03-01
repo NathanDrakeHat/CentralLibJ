@@ -54,6 +54,11 @@ public class TreelikeArray {
 
   }
 
+  /**
+   *
+   * @param idx start from 1
+   * @param diff difference
+   */
   public void prefixSumAdd(int idx, int diff) {
     if (idx <= 0 || idx >= arr.length) {
       throw new IllegalArgumentException();

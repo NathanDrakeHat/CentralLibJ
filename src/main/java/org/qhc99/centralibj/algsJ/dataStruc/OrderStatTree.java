@@ -1,6 +1,6 @@
 package org.qhc99.centralibj.algsJ.dataStruc;
 
-import org.jetbrains.annotations.NotNull;
+
 import org.qhc99.centralibj.utils.tuples.Tuple;
 
 import java.util.*;
@@ -14,16 +14,13 @@ import static org.qhc99.centralibj.algsJ.dataStruc.RBTreeTemplate.RED;
  * @param <V> value
  */
 public class OrderStatTree<K, V> implements Iterable<Tuple<K, V>> {
-  @NotNull
   final Comparator<K> comparator;
-  @NotNull
   final Node<K, V> sentinel = new Node<>(RBTreeTemplate.BLACK);
-  @NotNull Node<K, V> root = sentinel;
+  Node<K, V> root = sentinel;
   private boolean iterating = false;
-  @NotNull
   private final RBTreeTemplate<K, Node<K, V>> template;
 
-  public OrderStatTree(@NotNull Comparator<K> comparator) {
+  public OrderStatTree(Comparator<K> comparator) {
     this.comparator = comparator;
     template = new RBTreeTemplate<>(
             sentinel, comparator,
@@ -78,7 +75,7 @@ public class OrderStatTree<K, V> implements Iterable<Tuple<K, V>> {
    * @param high high (inclusive)
    * @return list of key-value in range
    */
-  public List<Tuple<K, V>> keyRangeSearch(@NotNull K low, @NotNull K high) {
+  public List<Tuple<K, V>> keyRangeSearch(K low, K high) {
     List<Tuple<K, V>> res = new ArrayList<>();
     if (root == sentinel) {
       return res;
@@ -87,7 +84,7 @@ public class OrderStatTree<K, V> implements Iterable<Tuple<K, V>> {
     return res;
   }
 
-  private void keyRangeSearch(Node<K, V> n, @NotNull K low, @NotNull K high, List<Tuple<K, V>> l) {
+  private void keyRangeSearch(Node<K, V> n, K low, K high, List<Tuple<K, V>> l) {
     if (n == sentinel) {
       return;
     }
@@ -308,13 +305,13 @@ public class OrderStatTree<K, V> implements Iterable<Tuple<K, V>> {
     }
   }
 
-  public void insertKV(@NotNull K key, V val) {
+  public void insertKV(K key, V val) {
     modified();
     var n = new Node<>(key, val);
     template.insert(n);
   }
 
-  public void updateKV(@NotNull K key, V val) {
+  public void updateKV(K key, V val) {
     modified();
     var n = (Node<K, V>) template.getNodeOfKey(root, key);
     if (n == sentinel) {
@@ -323,7 +320,7 @@ public class OrderStatTree<K, V> implements Iterable<Tuple<K, V>> {
     n.value = val;
   }
 
-  public void deleteKey(@NotNull K key) {
+  public void deleteKey(K key) {
     modified();
     var n = (Node<K, V>) template.getNodeOfKey(root, key);
     if (n != sentinel) {
@@ -331,7 +328,7 @@ public class OrderStatTree<K, V> implements Iterable<Tuple<K, V>> {
     }
   }
 
-  public boolean containKey(@NotNull K key) {
+  public boolean containKey(K key) {
     if (root == sentinel) {
       return false;
     }
@@ -340,7 +337,7 @@ public class OrderStatTree<K, V> implements Iterable<Tuple<K, V>> {
     }
   }
 
-  public V getValOfKey(@NotNull K key) {
+  public V getValOfKey(K key) {
     if (root == sentinel) {
       throw new NoSuchElementException();
     }
@@ -366,7 +363,7 @@ public class OrderStatTree<K, V> implements Iterable<Tuple<K, V>> {
   }
 
   @Override
-  public @NotNull Iterator<Tuple<K, V>> iterator() {
+  public Iterator<Tuple<K, V>> iterator() {
     iterating = true;
     return new BSTIterator<>(sentinel, n -> new Tuple<>(n.key, n.value), () -> this.root, n -> n.right, n -> n.left,
             () -> this.iterating);
@@ -390,7 +387,7 @@ public class OrderStatTree<K, V> implements Iterable<Tuple<K, V>> {
       this.color = color;
     }
 
-    Node(@NotNull key key, val val) {
+    Node(key key, val val) {
       color = RED;
       this.key = key;
       this.value = val;
