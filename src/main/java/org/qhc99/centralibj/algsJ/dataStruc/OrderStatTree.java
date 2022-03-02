@@ -138,7 +138,7 @@ public class OrderStatTree<K, V> implements Iterable<Tuple<K, V>> {
     }
   }
 
-  public Optional<K> floorOfKey(K key) {
+  public Optional<K> floorOfOptKey(K key) {
     if (root == sentinel) {
       return Optional.empty();
     }
@@ -153,7 +153,7 @@ public class OrderStatTree<K, V> implements Iterable<Tuple<K, V>> {
     }
   }
 
-  public K forceGetFloorOfKey(K key) {
+  public K floorOfKey(K key) {
     if (root == sentinel) {
       throw new NoSuchElementException();
     }
@@ -187,7 +187,7 @@ public class OrderStatTree<K, V> implements Iterable<Tuple<K, V>> {
     }
   }
 
-  public Optional<K> ceilingOfKey(K key) {
+  public Optional<K> ceilingOfOptKey(K key) {
     if (root == sentinel) {
       return Optional.empty();
     }
@@ -202,7 +202,7 @@ public class OrderStatTree<K, V> implements Iterable<Tuple<K, V>> {
     }
   }
 
-  public K forceGetCeilingOfKey(K key) {
+  public K ceilingOfKey(K key) {
     if (root == sentinel) {
       throw new NoSuchElementException();
     }

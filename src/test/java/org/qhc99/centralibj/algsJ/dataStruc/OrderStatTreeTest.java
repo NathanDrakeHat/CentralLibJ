@@ -179,12 +179,12 @@ class OrderStatTreeTest{
     assertEquals(16, funcTestTree.size());
     assertEquals(0, funcTestTree.getMinKey());
     assertEquals(15, funcTestTree.getMaxKey());
-    assertEquals(15, funcTestTree.floorOfKey(16.).get());
-    assertEquals(0, funcTestTree.ceilingOfKey(-1.).get());
-    assertEquals(15, funcTestTree.forceGetFloorOfKey(16.));
-    assertEquals(0, funcTestTree.forceGetCeilingOfKey(-1.));
-    assertEquals(5, funcTestTree.ceilingOfKey(4.5).get());
-    assertEquals(8, funcTestTree.floorOfKey(8.5).get());
+    assertEquals(15, funcTestTree.floorOfOptKey(16.).get());
+    assertEquals(0, funcTestTree.ceilingOfOptKey(-1.).get());
+    assertEquals(15, funcTestTree.floorOfKey(16.));
+    assertEquals(0, funcTestTree.ceilingOfKey(-1.));
+    assertEquals(5, funcTestTree.ceilingOfOptKey(4.5).get());
+    assertEquals(8, funcTestTree.floorOfOptKey(8.5).get());
     assertEquals("15.0", funcTestTree.getValueOfMaxKey());
     assertEquals("0.0", funcTestTree.getValueOfMinKey());
     for(var kv : funcTestTree){
