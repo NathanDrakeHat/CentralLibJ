@@ -5,7 +5,6 @@ import org.qhc99.centralibj.utils.tuples.Tuple;
 
 import java.util.*;
 
-import static org.qhc99.centralibj.algsJ.dataStruc.RBTreeTemplate.RED;
 
 /**
  * order statistic tree
@@ -388,7 +387,7 @@ public class OrderStatTree<K, V> implements Iterable<Tuple<K, V>> {
     }
 
     Node(key key, val val) {
-      color = RED;
+      color = RBTreeTemplate.RED;
       this.key = key;
       this.value = val;
     }
