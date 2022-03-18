@@ -1,12 +1,11 @@
 package org.qhc99.centralibj.algsJ.dataStruc;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 class TreelikeArrayTest {
 
   static int[] a = new int[10];
-  static TreelikeArray treelikeArray = new TreelikeArray(a.length);
+  static BinaryIndexedArray treelikeArray = new BinaryIndexedArray(a.length);
 
   @Test
   void test() {
