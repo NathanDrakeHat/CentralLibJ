@@ -1,10 +1,10 @@
 package org.qhc99.centralibj.algsJ.dataStruc;
 
-public class BinaryIndexedArray {
+public class BinaryIndexedTree {
   final int[] arr;
   public final int ArrayLength;
 
-  public BinaryIndexedArray(int[] array) {
+  public BinaryIndexedTree(int[] array) {
     ArrayLength = array.length;
     arr = new int[ArrayLength + 1];
 
@@ -18,7 +18,7 @@ public class BinaryIndexedArray {
    *
    * @param N number
    */
-  public BinaryIndexedArray(int N) {
+  public BinaryIndexedTree(int N) {
     ArrayLength = N;
     arr = new int[N + 1];
   }

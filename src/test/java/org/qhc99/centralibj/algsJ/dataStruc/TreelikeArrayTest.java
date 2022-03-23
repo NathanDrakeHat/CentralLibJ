@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class TreelikeArrayTest {
 
   static int[] a = new int[10];
-  static BinaryIndexedArray treelikeArray = new BinaryIndexedArray(a.length);
+  static BinaryIndexedTree treelikeArray = new BinaryIndexedTree(a.length);
 
   @Test
   void test() {
