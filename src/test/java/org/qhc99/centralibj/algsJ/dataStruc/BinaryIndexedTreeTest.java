@@ -2,7 +2,7 @@ package org.qhc99.centralibj.algsJ.dataStruc;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
-class TreelikeArrayTest {
+class BinaryIndexedTreeTest {
 
   static int[] a = new int[10];
   static BinaryIndexedTree treelikeArray = new BinaryIndexedTree(a.length);
