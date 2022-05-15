@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="CentralLibJ" target="18" />
+      <module name="CentralLibJ" target="17" />
       <module name="CentralUtils" target="16" />
     </bytecodeTargetLevel>
   </component>
