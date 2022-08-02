@@ -5,4 +5,4 @@
 *.txt
 *.jar
 .idea/workspace.xml
-*Main.java
+*/Main.java
