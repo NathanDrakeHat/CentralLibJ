@@ -1,6 +1,5 @@
 package dev.qhc99.centralibj.algsJ.dataStruc;
 
-import org.jetbrains.annotations.NotNull;
 import dev.qhc99.centralibj.utils.tuples.Tuple;
 
 import java.util.*;
@@ -12,14 +11,14 @@ public class DynamicPriQueue<K, V> implements Iterable<Tuple<K, V>>{
   private final Comparator<K> key_comparer;
   private boolean iterating = false;
 
-  public DynamicPriQueue(@NotNull Comparator<K> comparer){
+  public DynamicPriQueue( Comparator<K> comparer){
     key_comparer = comparer;
   }
 
   public DynamicPriQueue(
-          @NotNull Iterable<V> values,
-          @NotNull Function<V, K> getKey,
-          @NotNull Comparator<K> comparer){
+           Iterable<V> values,
+           Function<V, K> getKey,
+           Comparator<K> comparer){
     key_comparer = comparer;
     for(var value : values){
       Objects.requireNonNull(value);
@@ -54,7 +53,7 @@ public class DynamicPriQueue<K, V> implements Iterable<Tuple<K, V>>{
     return new Tuple<>(head.key, head.value);
   }
 
-  public void add(V value, @NotNull K key){
+  public void add(V value,  K key){
     modified();
     if(value_node_map.containsKey(value)){
       throw new IllegalArgumentException("value should be unique");
@@ -66,7 +65,7 @@ public class DynamicPriQueue<K, V> implements Iterable<Tuple<K, V>>{
 
   }
 
-  public boolean contains(@NotNull V value){
+  public boolean contains( V value){
     return value_node_map.containsKey(value);
   }
 
@@ -74,7 +73,7 @@ public class DynamicPriQueue<K, V> implements Iterable<Tuple<K, V>>{
     return heapSize();
   }
 
-  public void updateKey(@NotNull V value, @NotNull K new_key){
+  public void updateKey( V value,  K new_key){
     modified();
     var node = value_node_map.get(value);
     if(node == null){
@@ -185,7 +184,7 @@ public class DynamicPriQueue<K, V> implements Iterable<Tuple<K, V>>{
     }
   }
 
-  @NotNull
+  
   @Override
   public Iterator<Tuple<K, V>> iterator(){
     return new HeapIterator();

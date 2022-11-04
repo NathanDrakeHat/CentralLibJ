@@ -1,12 +1,11 @@
 package dev.qhc99.centralibj.algsJ.graph;
 
-import org.jetbrains.annotations.NotNull;
 
 public class FlowEdge<V> extends BaseEdge<V>{
   final double capacity;
   double flow;
 
-  public FlowEdge(@NotNull V f, @NotNull V l, double capacity, double flow){
+  public FlowEdge( V f,  V l, double capacity, double flow){
     super(f, l);
     this.capacity = capacity;
     this.flow = flow;
@@ -20,7 +19,7 @@ public class FlowEdge<V> extends BaseEdge<V>{
     return flow;
   }
 
-  public double residualCapacityTo(@NotNull V v){
+  public double residualCapacityTo( V v){
     if(v == vert_to){
       return capacity - flow;
     }
@@ -32,7 +31,7 @@ public class FlowEdge<V> extends BaseEdge<V>{
     }
   }
 
-  public void addFlowTo(@NotNull V v, double delta){
+  public void addFlowTo( V v, double delta){
     if(v == vert_to){
       flow += delta;
     }

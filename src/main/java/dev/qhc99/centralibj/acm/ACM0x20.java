@@ -4,7 +4,7 @@ import dev.qhc99.centralibj.algsJ.dataStruc.SharedList;
 import dev.qhc99.centralibj.algsJ.graph.*;
 import dev.qhc99.centralibj.algsJ.numeric.NumberTheory;
 import dev.qhc99.centralibj.utils.tuples.Quaternion;
-import org.jetbrains.annotations.NotNull;
+
 
 import dev.qhc99.centralibj.utils.tuples.Triad;
 import dev.qhc99.centralibj.utils.tuples.Tuple;
@@ -13,7 +13,7 @@ import java.util.*;
 //TODO dancing links
 class ACM0x20{
   public static <ID, Vert extends BaseVert<ID>, Edge extends BaseEdge<Vert>>
-  @NotNull List<Vert> topologicalSort(@NotNull LinkedGraph<Vert, Edge> graph){
+   List<Vert> topologicalSort( LinkedGraph<Vert, Edge> graph){
     if(!graph.isDirected()){
       throw new IllegalArgumentException();
     }
@@ -49,7 +49,7 @@ class ACM0x20{
   }
 
   public static <ID, V extends BaseVert<ID>, E extends BaseEdge<V>>
-  @NotNull Map<V, Integer> reachabilityCount(@NotNull LinkedGraph<V, E> graph){
+   Map<V, Integer> reachabilityCount( LinkedGraph<V, E> graph){
     if(!graph.isDirected()){
       throw new IllegalArgumentException();
     }
@@ -207,7 +207,7 @@ class ACM0x20{
    * @return k th minimum path
    */
   public static <ID, V extends BFS.Vert<ID>, E extends WeightEdge<V>>
-  double kthMinPath(@NotNull LinkedGraph<V, E> graph, LinkedGraph<V, E> reversed, V source, V destination, int K){
+  double kthMinPath( LinkedGraph<V, E> graph, LinkedGraph<V, E> reversed, V source, V destination, int K){
     if(!SSSPath.BellmanFord(reversed, destination)){
       throw new IllegalArgumentException("negative cyclic graph.");
     }
@@ -384,7 +384,7 @@ class ACM0x20{
    * @param nPuzzle eight
    * @return min answer
    */
-  public static @NotNull NPuzzle[] eight(@NotNull NPuzzle nPuzzle){
+  public static  NPuzzle[] eight( NPuzzle nPuzzle){
     // step, estimate, n-puzzle, last space
     PriorityQueue<Quaternion<Integer, Integer, NPuzzle, SharedList<Tuple<Integer, Integer>>>> queue =
             new PriorityQueue<>(Comparator.comparing(t -> t.first() + t.second()));

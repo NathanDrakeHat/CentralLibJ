@@ -1,6 +1,5 @@
 package dev.qhc99.centralibj.algsJ.dataStruc;
 
-import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
@@ -13,7 +12,7 @@ public class SharedList<T>{
     this.Data = data;
   }
 
-  public void setParent(@NotNull SharedList<T> p){
+  public void setParent( SharedList<T> p){
     parent = p;
   }
 

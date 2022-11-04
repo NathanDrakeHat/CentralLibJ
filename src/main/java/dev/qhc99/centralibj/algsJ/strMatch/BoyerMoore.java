@@ -1,14 +1,14 @@
 package dev.qhc99.centralibj.algsJ.strMatch;
 
-import org.jetbrains.annotations.NotNull;
+
 
 public class BoyerMoore{
 
-  public static int search(@NotNull String txt, @NotNull String pat){
+  public static int search( String txt,  String pat){
     return search(txt, pat, 256);
   }
 
-  public static int search(@NotNull String txt, @NotNull String pat, int radix){
+  public static int search( String txt,  String pat, int radix){
     int[] right = new int[radix];
     for(int c = 0; c < radix; c++){
       right[c] = -1;

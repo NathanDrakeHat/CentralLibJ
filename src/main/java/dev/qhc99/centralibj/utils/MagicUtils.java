@@ -25,8 +25,6 @@
 package dev.qhc99.centralibj.utils;
 
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.Optional;
 
@@ -35,7 +33,7 @@ import java.util.Optional;
  */
 public final class MagicUtils {
 
-  public static @NotNull Optional<Integer> tryParseInt(@NotNull String s) {
+  public static  Optional<Integer> tryParseInt( String s) {
     return tryParseInt(s, 10);
   }
 
@@ -46,7 +44,7 @@ public final class MagicUtils {
    * @return Optional Integer
    * @see Integer#parseInt(String, int)
    */
-  public static @NotNull Optional<Integer> tryParseInt(@Nullable String s, int radix) {
+  public static  Optional<Integer> tryParseInt( String s, int radix) {
 
     if (s == null) {
       return Optional.empty();

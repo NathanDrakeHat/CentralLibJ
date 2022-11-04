@@ -1,6 +1,6 @@
 package dev.qhc99.centralibj.utils.misc;
 
-import org.jetbrains.annotations.NotNull;
+
 import dev.qhc99.centralibj.utils.LambdaUtils;
 
 import java.io.PrintStream;
@@ -9,15 +9,15 @@ import java.util.function.Function;
 
 public class BTreePrinter<Node> {
 
-  private final @NotNull Callable<Node> getRoot;
-  private final @NotNull Function<Node, String> formatNode;
-  private final @NotNull Function<Node, Node> getLeft;
-  private final @NotNull Function<Node, Node> getRight;
+  private final  Callable<Node> getRoot;
+  private final  Function<Node, String> formatNode;
+  private final  Function<Node, Node> getLeft;
+  private final  Function<Node, Node> getRight;
 
-  public BTreePrinter(@NotNull Callable<Node> getRoot,
-                      @NotNull Function<Node, String> formatNode,
-                      @NotNull Function<Node, Node> getLeft,
-                      @NotNull Function<Node, Node> getRight) {
+  public BTreePrinter( Callable<Node> getRoot,
+                       Function<Node, String> formatNode,
+                       Function<Node, Node> getLeft,
+                       Function<Node, Node> getRight) {
     this.getRoot = getRoot;
     this.getLeft = getLeft;
     this.getRight = getRight;

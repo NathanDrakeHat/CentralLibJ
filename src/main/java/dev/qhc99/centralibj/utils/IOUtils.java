@@ -1,7 +1,7 @@
 package dev.qhc99.centralibj.utils;
 
 import dev.qhc99.centralibj.utils.misc.Ref;
-import org.jetbrains.annotations.NotNull;
+
 
 import javax.swing.*;
 import javax.swing.filechooser.FileSystemView;
@@ -20,11 +20,11 @@ import static dev.qhc99.centralibj.utils.LambdaUtils.stripCE;
 @SuppressWarnings("unused")
 public class IOUtils {
 
-  public static @NotNull String pwd() {
+  public static  String pwd() {
     return new File(".").getAbsolutePath();
   }
 
-  public static @NotNull String getPathDialog(@NotNull PathDialogOption option) {
+  public static  String getPathDialog( PathDialogOption option) {
     return getPathDialog("打开", option);
   }
 
@@ -37,7 +37,7 @@ public class IOUtils {
    * @param title title
    * @return absolute path
    */
-  public static @NotNull String getPathDialog(@NotNull String title, @NotNull PathDialogOption option) {
+  public static  String getPathDialog( String title,  PathDialogOption option) {
     JFileChooser jfc = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
     if (option == PathDialogOption.FILES) {
       jfc.setFileSelectionMode(JFileChooser.FILES_ONLY);
@@ -63,7 +63,7 @@ public class IOUtils {
    * @param path path
    * @return absolute path
    */
-  public static @NotNull Stream<Path> listDir(@NotNull Path path) {
+  public static  Stream<Path> listDir( Path path) {
     var f = path.toFile();
     if (f.exists()) {
       return stripCE(() -> Files.list(f.toPath()));
@@ -71,7 +71,7 @@ public class IOUtils {
     throw new RuntimeException(new NoSuchFileException(f.getAbsolutePath()));
   }
 
-  public static void forFileLines(@NotNull Path path, @NotNull Consumer<String> action) {
+  public static void forFileLines( Path path,  Consumer<String> action) {
     try (var r = stripCE(() -> new BufferedReader(new FileReader(path.toFile())))) {
       var lineRef = new Ref<String>();
       var boolRef = Ref.of(true);
@@ -91,11 +91,11 @@ public class IOUtils {
     }
   }
 
-  public static void writeFile(@NotNull String path, @NotNull Consumer<BufferedWriter> action) {
+  public static void writeFile( String path,  Consumer<BufferedWriter> action) {
     writeFile(path, action, false);
   }
 
-  public static void writeFile(@NotNull String path, @NotNull Consumer<BufferedWriter> action, boolean append) {
+  public static void writeFile( String path,  Consumer<BufferedWriter> action, boolean append) {
     try (var w = stripCE(() -> new BufferedWriter(new FileWriter(path, StandardCharsets.UTF_8, append)))) {
       action.accept(w);
     } catch (IOException e) {
@@ -104,7 +104,7 @@ public class IOUtils {
 
   }
 
-  public static @NotNull File createOrOpenFile(@NotNull Path path) {
+  public static  File createOrOpenFile( Path path) {
     var f = path.toFile();
     if (!f.exists()) {
       var ret = stripCE(f::createNewFile);
@@ -130,7 +130,7 @@ public class IOUtils {
     }
   }
 
-  public static void renameFile(@NotNull Path file_path, @NotNull Path new_path) {
+  public static void renameFile( Path file_path,  Path new_path) {
     if (Files.exists(file_path)) {
       if (!Files.exists(new_path)) {
         stripCE(() -> Files.move(file_path, new_path));
@@ -144,7 +144,7 @@ public class IOUtils {
     }
   }
 
-  public static void coverMoveFile(@NotNull Path origin_path, @NotNull Path new_path) {
+  public static void coverMoveFile( Path origin_path,  Path new_path) {
     if (Files.exists(origin_path)) {
       if (Files.exists(new_path)) {
         removeFile(new_path);
@@ -156,7 +156,7 @@ public class IOUtils {
     }
   }
 
-  public static void removeFile(@NotNull Path path) {
+  public static void removeFile( Path path) {
     if (Files.exists(path)) {
       stripCE(() -> Files.delete(path));
     }

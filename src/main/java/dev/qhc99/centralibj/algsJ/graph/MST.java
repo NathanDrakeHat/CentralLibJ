@@ -3,7 +3,7 @@ package dev.qhc99.centralibj.algsJ.graph;
 import dev.qhc99.centralibj.algsJ.dataStruc.DisjointSet;
 import dev.qhc99.centralibj.algsJ.dataStruc.DynamicPriQueue;
 import dev.qhc99.centralibj.algsJ.dataStruc.FibonacciMinHeap;
-import org.jetbrains.annotations.NotNull;
+
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -15,7 +15,7 @@ import java.util.Set;
  */
 public final class MST{
   public static <ID, V extends VertKruskal<ID>, E extends WeightEdge<V>>
-  @NotNull Set<E> Kruskal(@NotNull LinkedGraph<V, E> graph){
+   Set<E> Kruskal( LinkedGraph<V, E> graph){
     if(graph.directed){
       throw new IllegalArgumentException();
     }
@@ -35,7 +35,7 @@ public final class MST{
   }
 
   public static <ID, V extends VertPrim<ID>, E extends WeightEdge<V>>
-  void MSTPrimFibonacciHeap(@NotNull LinkedGraph<V, E> graph, @NotNull V r){
+  void MSTPrimFibonacciHeap( LinkedGraph<V, E> graph,  V r){
     if(graph.directed){
       throw new IllegalArgumentException();
     }
@@ -66,7 +66,7 @@ public final class MST{
   }
 
   public static <ID, V extends VertPrim<ID>, E extends WeightEdge<V>>
-  void MSTPrimMinHeap(@NotNull LinkedGraph<V, E> graph, @NotNull V r){
+  void MSTPrimMinHeap( LinkedGraph<V, E> graph,  V r){
     if(graph.directed){
       throw new IllegalArgumentException();
     }
@@ -96,16 +96,16 @@ public final class MST{
   }
 
   public static class VertKruskal<Id>{
-    @NotNull
+    
     private final Id identity;
     final DisjointSet setId = new DisjointSet();
 
-    VertKruskal(@NotNull Id n){
+    VertKruskal( Id n){
       identity = n;
     }
 
     @SuppressWarnings("unused")
-    public @NotNull Id identity(){
+    public  Id identity(){
       return identity;
     }
 
@@ -120,7 +120,7 @@ public final class MST{
     VertPrim<Id> parent;
     double key = 0;
 
-    VertPrim(@NotNull Id name){
+    VertPrim( Id name){
       super(name);
     }
 

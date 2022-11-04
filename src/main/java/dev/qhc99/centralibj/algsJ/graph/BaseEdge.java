@@ -1,27 +1,26 @@
 package dev.qhc99.centralibj.algsJ.graph;
 
-import org.jetbrains.annotations.NotNull;
 
 public class BaseEdge<V>{
-  @NotNull
+  
   final V vert_from;
-  @NotNull
+  
   final V vert_to;
 
-  public BaseEdge(@NotNull V f, @NotNull V l){
+  public BaseEdge( V f,  V l){
     vert_from = f;
     vert_to = l;
   }
 
-  public @NotNull V from(){
+  public  V from(){
     return vert_from;
   }
 
-  public @NotNull V to(){
+  public  V to(){
     return vert_to;
   }
 
-  public @NotNull V another(V vertex){
+  public  V another(V vertex){
     if(vertex.equals(vert_from)){
       return vert_to;
     }

@@ -1,10 +1,10 @@
 package dev.qhc99.centralibj.utils.literalLexer;
 
-import org.jetbrains.annotations.NotNull;
+
 
 class FloatDecimalLiteral extends LiteralLexChecker {
 
-  FloatDecimalLiteral(@NotNull String source) {
+  FloatDecimalLiteral( String source) {
     super(source);
   }
 

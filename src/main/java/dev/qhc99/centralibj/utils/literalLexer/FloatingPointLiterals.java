@@ -1,9 +1,9 @@
 package dev.qhc99.centralibj.utils.literalLexer;
 
-import org.jetbrains.annotations.NotNull;
+
 
 public class FloatingPointLiterals {
-  static boolean isFloatingPointLiteral(@NotNull String source) {
+  static boolean isFloatingPointLiteral( String source) {
     if (source.length() <= 1) {
       return false;
     }
@@ -33,7 +33,7 @@ public class FloatingPointLiterals {
    * @return whether a double literal
    * @see <a href="https://docs.oracle.com/javase/specs/jls/se15/html/jls-3.html#jls-3.10.2">java 15 specification</a>
    */
-  public static boolean isDoubleParsable(@NotNull String source) {
+  public static boolean isDoubleParsable( String source) {
     return isFloatingPointLiteral(source);
   }
 
@@ -42,7 +42,7 @@ public class FloatingPointLiterals {
    * @return whether a float literal
    * @see <a href="https://docs.oracle.com/javase/specs/jls/se15/html/jls-3.html#jls-3.10.2">java 15 specification</a>
    */
-  public static boolean isFloatParsable(@NotNull String source) {
+  public static boolean isFloatParsable( String source) {
     return (source.endsWith("f") || source.endsWith("F")) && isFloatingPointLiteral(source);
   }
 }

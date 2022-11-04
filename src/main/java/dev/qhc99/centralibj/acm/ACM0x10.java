@@ -3,7 +3,7 @@ package dev.qhc99.centralibj.acm;
 import dev.qhc99.centralibj.algsJ.dataStruc.DynamicPriQueue;
 import dev.qhc99.centralibj.algsJ.dataStruc.TernaryTries;
 import dev.qhc99.centralibj.algsJ.strMatch.KMP;
-import org.jetbrains.annotations.NotNull;
+
 import dev.qhc99.centralibj.utils.tuples.Triad;
 import dev.qhc99.centralibj.utils.tuples.Tuple;
 
@@ -82,7 +82,7 @@ class ACM0x10{
    * @param txt string
    * @return prefix string to its min iterate cell and max iterate count
    */
-  public static @NotNull Map<String, Tuple<String, Integer>> period(@NotNull String txt){
+  public static  Map<String, Tuple<String, Integer>> period( String txt){
     var next = KMP.computePrefixFunction(txt);
     Map<String, Tuple<String, Integer>> ans = new HashMap<>();
     for(int i = 2; i < txt.length(); i++){
@@ -106,7 +106,7 @@ class ACM0x10{
    * @param s string
    * @return min cyclic representation
    */
-  public static @NotNull String minCyclicShift(@NotNull String s){
+  public static  String minCyclicShift( String s){
     var ss = s + s;
     int i = 0, j = 1, min = -1, s_len = s.length();
     var funcCompare = new Object(){
@@ -159,7 +159,7 @@ class ACM0x10{
    * @param integers array of int
    * @return largest xor pair
    */
-  public static @NotNull Tuple<Integer, Integer> largestXORPair(int[] integers){
+  public static  Tuple<Integer, Integer> largestXORPair(int[] integers){
     var funcBinStr = new Object(){
       String apply(int i){
         var s = Integer.toBinaryString(i);

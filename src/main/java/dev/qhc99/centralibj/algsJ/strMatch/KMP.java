@@ -1,12 +1,12 @@
 package dev.qhc99.centralibj.algsJ.strMatch;
 
-import org.jetbrains.annotations.NotNull;
+
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class KMP {
-  public static List<Integer> search(@NotNull String T, @NotNull String P) {
+  public static List<Integer> search( String T,  String P) {
     int n = T.length(), m = P.length();
     int[] pi = computePrefixFunction(P);
     int q = 0;
@@ -32,7 +32,7 @@ public class KMP {
    * @param P string
    * @return prefix function (length = len(p) + 1)
    */
-  public static int[] computePrefixFunction(@NotNull String P) {
+  public static int[] computePrefixFunction( String P) {
     int m = P.length();
     int[] pi = new int[m + 1];
     pi[1] = 0;

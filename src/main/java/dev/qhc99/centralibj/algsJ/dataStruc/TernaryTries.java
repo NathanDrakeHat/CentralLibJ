@@ -1,6 +1,6 @@
 package dev.qhc99.centralibj.algsJ.dataStruc;
 
-import org.jetbrains.annotations.NotNull;
+
 
 import java.util.ArrayDeque;
 import java.util.Deque;
@@ -58,12 +58,12 @@ public class TernaryTries<Value>{
     return n;
   }
 
-  public boolean contains(@NotNull String key){
+  public boolean contains( String key){
     var n = get(root, key, 0);
     return n != null && n.contain;
   }
 
-  public Value get(@NotNull String key){
+  public Value get( String key){
     if(key.length() == 0){ throw new IllegalArgumentException("key must have length >= 1"); }
     var x = get(root, key, 0);
     if(x == null){ return null; }
@@ -84,7 +84,7 @@ public class TernaryTries<Value>{
     LEFT, MID, RIGHT
   }
 
-  public boolean remove(@NotNull String key){
+  public boolean remove( String key){
     if(key.length() == 0){ throw new IllegalArgumentException("key must have length >= 1"); }
     var ret = remove(root, null, null, key, 0);
     if(ret){
@@ -134,7 +134,7 @@ public class TernaryTries<Value>{
     }
   }
 
-  public void put(@NotNull String key, Value val){
+  public void put( String key, Value val){
     if(!contains(key)){ n++; }
     root = put(root, key, val, 0);
   }
@@ -155,7 +155,7 @@ public class TernaryTries<Value>{
     return x;
   }
 
-  public String longestPrefixOf(@NotNull String query){
+  public String longestPrefixOf( String query){
     if(query.length() == 0){ return null; }
     int length = 0;
     var x = root;
@@ -179,7 +179,7 @@ public class TernaryTries<Value>{
     return queue;
   }
 
-  public Deque<String> keysWithPrefix(@NotNull String prefix){
+  public Deque<String> keysWithPrefix( String prefix){
     Deque<String> queue = new ArrayDeque<>();
     Node<Value> x = get(root, prefix, 0);
     if(x == null){ return queue; }

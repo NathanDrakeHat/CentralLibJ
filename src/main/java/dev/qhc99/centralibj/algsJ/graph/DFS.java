@@ -1,7 +1,6 @@
 package dev.qhc99.centralibj.algsJ.graph;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +12,7 @@ import java.util.function.BiFunction;
  */
 public final class DFS{
   public static <ID, V extends Vert<ID>, E extends BaseEdge<V>>
-  void depthFirstSearch(@NotNull LinkedGraph<V, E> G){
+  void depthFirstSearch( LinkedGraph<V, E> G){
     var vertices = G.allVertices();
     vertices.forEach(v -> {
       v.color = COLOR.WHITE;
@@ -48,7 +47,7 @@ public final class DFS{
 
 
   public static <ID, V extends Vert<ID>, E extends BaseEdge<V>>
-  List<V> topologicalSort(@NotNull LinkedGraph<V, E> G){
+  List<V> topologicalSort( LinkedGraph<V, E> G){
     if(!G.isDirected()){
       throw new IllegalArgumentException();
     }
@@ -64,7 +63,7 @@ public final class DFS{
    * @param <Id> id
    */
   public static <Id, V extends Vert<Id>, E extends BaseEdge<V>>
-  void stronglyConnectedComponents(@NotNull LinkedGraph<V, E> G, @NotNull BiFunction<V,V,E> newEdge){
+  void stronglyConnectedComponents( LinkedGraph<V, E> G,  BiFunction<V,V,E> newEdge){
     if(!G.isDirected()){
       throw new IllegalArgumentException();
     }
@@ -109,7 +108,6 @@ public final class DFS{
   enum COLOR{WHITE, GRAY, BLACK}
 
   public static class Vert<V> extends BaseVert<V>{
-    @Nullable
     DFS.Vert<V> parent;
     int discover; //d
     int finish; // f
@@ -123,11 +121,11 @@ public final class DFS{
       return finish;
     }
 
-    Vert(@NotNull V name){
+    Vert( V name){
       super(name);
     }
 
-    public @Nullable DFS.Vert<V> getParent(){
+    public DFS.Vert<V> getParent(){
       return parent;
     }
 

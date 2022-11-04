@@ -1,6 +1,6 @@
 package dev.qhc99.centralibj.algsJ.misc;
 
-import org.jetbrains.annotations.NotNull;
+
 
 import java.util.*;
 
@@ -23,7 +23,7 @@ public class Huffman{
     }
   }
 
-  public static @NotNull Map<String, String> encode(@NotNull Map<String, Double> freq, int radix){
+  public static  Map<String, String> encode( Map<String, Double> freq, int radix){
     if(radix <= 1){
       throw new IllegalArgumentException();
     }

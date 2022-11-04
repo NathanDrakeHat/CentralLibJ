@@ -1,7 +1,7 @@
 package dev.qhc99.centralibj.utils;
 
 import it.unimi.dsi.util.XoRoShiRo128PlusRandom;
-import org.jetbrains.annotations.NotNull;
+
 
 import java.io.*;
 import java.util.*;
@@ -12,7 +12,7 @@ import java.util.stream.IntStream;
 
 @SuppressWarnings("unused")
 public class ArrayUtils{
-  public static <T> boolean isMatrix(@NotNull T[][] array2d){
+  public static <T> boolean isMatrix( T[][] array2d){
     int len = array2d.length;
     return Arrays.stream(array2d).allMatch(array -> array.length == len);
   }
@@ -57,7 +57,7 @@ public class ArrayUtils{
     return Arrays.stream(array2d).allMatch(array -> array.length == len);
   }
 
-  public static <T> @NotNull List<T> iterableToList(Iterable<T> i){
+  public static <T>  List<T> iterableToList(Iterable<T> i){
     List<T> a = new ArrayList<>();
     for(var item : i){
       a.add(item);
@@ -65,7 +65,7 @@ public class ArrayUtils{
     return a;
   }
 
-  public static <T> @NotNull List<T> sampleList(List<T> list, int n){
+  public static <T>  List<T> sampleList(List<T> list, int n){
     var r = ThreadLocalRandom.current();
     List<T> a = new ArrayList<>(n);
     Set<Integer> set = new HashSet<>(n);
@@ -108,7 +108,7 @@ public class ArrayUtils{
    * @param high exclusive
    * @return shuffle
    */
-  public static @NotNull List<Integer> shuffledRangeList(int low, int high){
+  public static  List<Integer> shuffledRangeList(int low, int high){
     var res = IntStream.range(low, high).boxed().collect(Collectors.toList());
     Collections.shuffle(res);
     return res;
@@ -154,7 +154,7 @@ public class ArrayUtils{
    * @param step  step
    * @return linespace
    */
-  public static @NotNull List<Integer> lineSpace(int start, int end, int step){
+  public static  List<Integer> lineSpace(int start, int end, int step){
     return IntStream.iterate(start, i -> i <= end, i -> i += step).parallel().boxed().collect(Collectors.toList());
   }
 
@@ -166,7 +166,7 @@ public class ArrayUtils{
    * @param step  step
    * @return linespace
    */
-  public static @NotNull List<Double> lineSpace(double start, double end, int step){
+  public static  List<Double> lineSpace(double start, double end, int step){
     return DoubleStream.iterate(start, d -> d <= end, d -> d += step).parallel().boxed().collect(Collectors.toList());
   }
 
@@ -181,7 +181,7 @@ public class ArrayUtils{
     }
   }
 
-  public static @NotNull Object deserializeFile(String fullName){
+  public static  Object deserializeFile(String fullName){
     try(var in = new ObjectInputStream(new FileInputStream(fullName))){
       return in.readObject();
     }
@@ -205,7 +205,7 @@ public class ArrayUtils{
    * @return T[]
    */
   @SafeVarargs
-  public static <T> @NotNull T[] primitiveArray(int len, T... vars){
+  public static <T>  T[] primitiveArray(int len, T... vars){
     return Arrays.copyOf(vars, len);
   }
 

@@ -28,6 +28,21 @@ public class ConvexHullTest{
     points.add(new Tuple<>(355, 80));
     points.add(new Tuple<>(515, 45));
     points.add(new Tuple<>(149, 90));
+    /*
+    [217,463]
+    [515,395]
+    [320,374]
+    [409,373]
+    [113,278]
+    [252,226]
+    [320,224]
+    [444,188]
+    [54,222]
+    [140,167]
+    [355,80]
+    [515,45]
+    [149,90]
+    * */
 
     convexHullAnswer.add(new Tuple<>(515, 45));
     convexHullAnswer.add(new Tuple<>(515, 395));

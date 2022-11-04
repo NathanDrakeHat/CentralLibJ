@@ -1,7 +1,7 @@
 package dev.qhc99.centralibj.algsJ.numeric;
 
 import it.unimi.dsi.fastutil.ints.IntArrayList;
-import org.jetbrains.annotations.NotNull;
+
 
 import java.math.BigInteger;
 import java.security.SecureRandom;
@@ -222,7 +222,7 @@ public class NumberTheory{
    * @param num number
    * @return all divisors of number
    */
-  public static @NotNull List<Integer> allDivisorsOf(int num){
+  public static  List<Integer> allDivisorsOf(int num){
     List<Integer> primeFactors = primeFactorizationPollardsRho(num);
     List<Integer> l = new ArrayList<>(16);
     l.add(1);

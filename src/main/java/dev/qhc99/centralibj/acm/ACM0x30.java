@@ -1,7 +1,7 @@
 package dev.qhc99.centralibj.acm;
 
 import dev.qhc99.centralibj.algsJ.numeric.NumberTheory;
-import org.jetbrains.annotations.NotNull;
+
 
 import java.util.HashMap;
 import java.util.Map;
@@ -33,7 +33,7 @@ class ACM0x30{
    * @param N N
    * @return prime factorization of factorial(N!)
    */
-  public static @NotNull Map<Integer, Integer> factorialPrimeFactorization(int N){
+  public static  Map<Integer, Integer> factorialPrimeFactorization(int N){
     var primes = NumberTheory.primesGenEulerSieve(N);
     Map<Integer, Integer> ans = new HashMap<>(primes.size());
     for(var p : primes){

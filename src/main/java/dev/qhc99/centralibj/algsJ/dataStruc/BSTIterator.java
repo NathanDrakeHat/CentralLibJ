@@ -1,6 +1,5 @@
 package dev.qhc99.centralibj.algsJ.dataStruc;
 
-import org.jetbrains.annotations.NotNull;
 import dev.qhc99.centralibj.utils.LambdaUtils;
 
 import java.util.Deque;
@@ -14,24 +13,24 @@ public class BSTIterator<Node, Format> implements Iterator<Format>{
   private Node ptr;
   private boolean poppedBefore = false;
   private boolean finish = false;
-  @NotNull
+  
   private final Function<Node, Format> getTarget;
-  @NotNull
+  
   private final Node sentinel;
-  @NotNull
+  
   private final Function<Node, Node> getLeft;
-  @NotNull
+  
   private final Function<Node, Node> getRight;
-  @NotNull
+  
   private final LambdaUtils.Gettable<Boolean> iterating;
 
   public BSTIterator(
-          @NotNull Node sentinel,
-          @NotNull Function<Node, Format> getTarget,
-          @NotNull LambdaUtils.Gettable<Node> getRoot,
-          @NotNull Function<Node, Node> getRight,
-          @NotNull Function<Node, Node> getLeft,
-          @NotNull LambdaUtils.Gettable<Boolean> getIterating){
+           Node sentinel,
+           Function<Node, Format> getTarget,
+           LambdaUtils.Gettable<Node> getRoot,
+           Function<Node, Node> getRight,
+           Function<Node, Node> getLeft,
+           LambdaUtils.Gettable<Boolean> getIterating){
     this.getTarget = getTarget;
     this.sentinel = sentinel;
     ptr = getRoot.get();

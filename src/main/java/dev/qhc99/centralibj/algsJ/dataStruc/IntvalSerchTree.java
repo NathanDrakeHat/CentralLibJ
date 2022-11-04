@@ -1,6 +1,6 @@
 package dev.qhc99.centralibj.algsJ.dataStruc;
 
-import org.jetbrains.annotations.NotNull;
+
 import dev.qhc99.centralibj.utils.tuples.Triad;
 
 import java.util.ArrayList;
@@ -12,12 +12,12 @@ import java.util.List;
  * interval search tree
  */
 public class IntvalSerchTree<Key, Val> implements Iterable<Triad<Key, Key, Val>> {
-  @NotNull
+  
   final Node<Key, Val> sentinel = new Node<>(RBTreeTemplate.BLACK);
-  @NotNull Node<Key, Val> root = sentinel;
-  @NotNull
+   Node<Key, Val> root = sentinel;
+  
   final Comparator<Key> comparator;
-  @NotNull
+  
   final RBTreeTemplate<Key, Node<Key, Val>> template;
   private boolean iterating;
 
@@ -25,7 +25,7 @@ public class IntvalSerchTree<Key, Val> implements Iterable<Triad<Key, Key, Val>>
     iterating = false;
   }
 
-  public IntvalSerchTree(@NotNull Comparator<Key> comparator) {
+  public IntvalSerchTree( Comparator<Key> comparator) {
     this.comparator = comparator;
     template = new RBTreeTemplate<>(
             sentinel, comparator,
@@ -97,13 +97,13 @@ public class IntvalSerchTree<Key, Val> implements Iterable<Triad<Key, Key, Val>>
     return new IntvalSerchTree<>(Double::compareTo);
   }
 
-  public void insertInterval(@NotNull Key low, @NotNull Key high, Val val) {
+  public void insertInterval( Key low,  Key high, Val val) {
     modified();
     Node<Key, Val> n = new Node<>(low, high, val);
     template.insert(n);
   }
 
-  public void deleteInterval(@NotNull Key low) {
+  public void deleteInterval( Key low) {
     modified();
     var n = template.getNodeOfKey(root, low);
     if (n != sentinel) {
@@ -111,7 +111,7 @@ public class IntvalSerchTree<Key, Val> implements Iterable<Triad<Key, Key, Val>>
     }
   }
 
-  public List<Triad<Key, Key, Val>> intersects(@NotNull Key lo, @NotNull Key high) {
+  public List<Triad<Key, Key, Val>> intersects( Key lo,  Key high) {
     List<Triad<Key, Key, Val>> res = new ArrayList<>();
     var funcIntersect = new Object() {
       boolean apply(Key lo, Key hi, Key k) {
@@ -138,7 +138,7 @@ public class IntvalSerchTree<Key, Val> implements Iterable<Triad<Key, Key, Val>>
     return res;
   }
 
-  @NotNull
+  
   @Override
   public Iterator<Triad<Key, Key, Val>> iterator() {
     iterating = true;

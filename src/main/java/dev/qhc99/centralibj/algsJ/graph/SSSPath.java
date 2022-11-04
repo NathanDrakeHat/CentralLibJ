@@ -2,7 +2,7 @@ package dev.qhc99.centralibj.algsJ.graph;
 
 
 import dev.qhc99.centralibj.algsJ.dataStruc.DynamicPriQueue;
-import org.jetbrains.annotations.NotNull;
+
 import dev.qhc99.centralibj.algsJ.dataStruc.FibonacciMinHeap;
 
 import java.util.HashMap;
@@ -22,7 +22,7 @@ public final class SSSPath{
    * @return has shortest path
    */
   public static <ID, V extends BFS.Vert<ID>, E extends WeightEdge<V>>
-  boolean BellmanFord(@NotNull LinkedGraph<V, E> graph, @NotNull V s){
+  boolean BellmanFord( LinkedGraph<V, E> graph,  V s){
     if(!graph.directed){
       throw new IllegalArgumentException();
     }
@@ -75,7 +75,7 @@ public final class SSSPath{
    * @param <E> edge
    */
   public static <ID, V extends BFS.Vert<ID>, E extends WeightEdge<V>>
-  void ssDAG(@NotNull LinkedGraph<V, E> BFS_Linked_graph, @NotNull V s){
+  void ssDAG( LinkedGraph<V, E> BFS_Linked_graph,  V s){
     if(!BFS_Linked_graph.directed){
       throw new IllegalArgumentException();
     }
@@ -124,7 +124,7 @@ public final class SSSPath{
    * @param <E> edge
    */
   public static <ID, V extends BFS.Vert<ID>, E extends WeightEdge<V>>
-  void DijkstraFibonacciHeap(@NotNull LinkedGraph<V, E> G, @NotNull V s){
+  void DijkstraFibonacciHeap( LinkedGraph<V, E> G,  V s){
     if(!G.directed){
       throw new IllegalArgumentException();
     }
@@ -157,7 +157,7 @@ public final class SSSPath{
    * @param <E> edge
    */
   public static<ID, V extends BFS.Vert<ID>, E extends WeightEdge<V>>
-  void DijkstraMinHeap(@NotNull LinkedGraph<V, E> G, @NotNull V s){
+  void DijkstraMinHeap( LinkedGraph<V, E> G,  V s){
     if(!G.directed){
       throw new IllegalArgumentException();
     }

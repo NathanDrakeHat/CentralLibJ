@@ -1,6 +1,6 @@
 package dev.qhc99.centralibj.algsJ.misc;
 
-import org.jetbrains.annotations.NotNull;
+
 import dev.qhc99.centralibj.algsJ.dataStruc.OrderStatTree;
 import dev.qhc99.centralibj.utils.tuples.Tuple;
 
@@ -24,11 +24,11 @@ public class OrthoLineIntersect{
    * @param <P>      Point type
    * @return intersection result
    */
-  public static @NotNull <L, P> Map<L, Set<L>> intersects(
-          @NotNull List<L> lines,
-          @NotNull Function<L, Tuple<P, P>> toPoints,
-          @NotNull ToDoubleFunction<P> getX,
-          @NotNull ToDoubleFunction<P> getY){
+  public static  <L, P> Map<L, Set<L>> intersects(
+           List<L> lines,
+           Function<L, Tuple<P, P>> toPoints,
+           ToDoubleFunction<P> getX,
+           ToDoubleFunction<P> getY){
     Map<Double, Set<L>> lineOfX = new HashMap<>(lines.size() * 2);
     List<Double> scanX = new ArrayList<>(lines.size() * 2);
 

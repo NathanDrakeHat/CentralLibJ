@@ -1,7 +1,6 @@
 package dev.qhc99.centralibj.algsJ.graph;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -13,7 +12,7 @@ import java.util.Queue;
  */
 public final class BFS{
   public static <ID, V extends Vert<ID>, E extends BaseEdge<V>>
-  void breathFirstSearch(@NotNull LinkedGraph<V, E> G, @NotNull V s){
+  void breathFirstSearch( LinkedGraph<V, E> G,  V s){
     var vs = G.allVertices();
     for(var v : vs){
       if(!v.equals(s)){
@@ -43,7 +42,7 @@ public final class BFS{
     }
   }
 
-  public static <T> List<T> getPath(@NotNull BFS.Vert<T> s, @NotNull BFS.Vert<T> v){
+  public static <T> List<T> getPath( BFS.Vert<T> s,  BFS.Vert<T> v){
     List<T> t = new ArrayList<>();
     traverse(s, v, t);
     int idx = 0;
@@ -67,12 +66,11 @@ public final class BFS{
   enum COLOR{WHITE, GRAY, BLACK}
 
   public static class Vert<ID> extends BaseVert<ID>{
-    @Nullable
     BFS.Vert<ID> parent;
     double distance; // d
     COLOR color;
 
-    public Vert(@NotNull ID name){
+    public Vert( ID name){
       super(name);
     }
 
@@ -80,7 +78,7 @@ public final class BFS{
       super(null);
     }
 
-    public @Nullable BFS.Vert<ID> getParent(){
+    public BFS.Vert<ID> getParent(){
       return parent;
     }
 

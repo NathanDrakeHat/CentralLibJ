@@ -1,13 +1,13 @@
 package dev.qhc99.centralibj.algsJ.strMatch;
 
-import org.jetbrains.annotations.NotNull;
+
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class RabinKarp{
 
-  public static List<Integer> search(@NotNull String text, @NotNull String pattern, int radix, int prime){
+  public static List<Integer> search( String text,  String pattern, int radix, int prime){
     int n = text.length(), m = pattern.length();
     int h = (int) (Math.pow(radix, m - 1) % prime);
     int p = 0, t_i = 0;

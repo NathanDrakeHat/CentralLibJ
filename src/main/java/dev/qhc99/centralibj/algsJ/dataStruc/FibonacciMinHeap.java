@@ -1,7 +1,7 @@
 package dev.qhc99.centralibj.algsJ.dataStruc;
 
 
-import org.jetbrains.annotations.NotNull;
+
 
 import java.util.*;
 
@@ -13,7 +13,7 @@ public class FibonacciMinHeap<K, V>{
   Node<K, V> rootList = null;
   int count = 0; // number of nodes
 
-  public FibonacciMinHeap(@NotNull Comparator<K> keyComparator){
+  public FibonacciMinHeap( Comparator<K> keyComparator){
     this.keyComparator = keyComparator;
   }
 
@@ -25,7 +25,7 @@ public class FibonacciMinHeap<K, V>{
     return new FibonacciMinHeap<>(Double::compareTo);
   }
 
-  public static <K, V> FibonacciMinHeap<K, V> union(@NotNull FibonacciMinHeap<K, V> f1, @NotNull FibonacciMinHeap<K,
+  public static <K, V> FibonacciMinHeap<K, V> union( FibonacciMinHeap<K, V> f1,  FibonacciMinHeap<K,
           V> f2){
     var res = new FibonacciMinHeap<K, V>(f1.keyComparator);
     res.rootList = f1.rootList;
@@ -205,7 +205,7 @@ public class FibonacciMinHeap<K, V>{
     }
   }
 
-  public void decreaseKey(@NotNull V val, K new_key){
+  public void decreaseKey( V val, K new_key){
     var x = value_Node_map.get(val);
     if(keyComparator.compare(new_key, x.key) > 0){
       throw new IllegalArgumentException("New key should smaller than old key.");

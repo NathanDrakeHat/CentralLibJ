@@ -1,6 +1,5 @@
 package dev.qhc99.centralibj.acm;
 
-import org.jetbrains.annotations.NotNull;
 import dev.qhc99.centralibj.algsJ.dataStruc.DisjointSet;
 import dev.qhc99.centralibj.utils.LambdaUtils;
 import dev.qhc99.centralibj.utils.tuples.Triad;
@@ -70,7 +69,7 @@ class ACM0x40 {
    * @param statement same
    * @return falsehood
    */
-  public static int foodChain(int N, @NotNull List<Triad<Integer, Integer, Integer>> statement) {
+  public static int foodChain(int N,  List<Triad<Integer, Integer, Integer>> statement) {
     // self, eat, enemy
     List<Triad<DisjointSet, DisjointSet, DisjointSet>> aniFields = new ArrayList<>(N);
     for (int i = 0; i < N; i++) {
@@ -251,7 +250,7 @@ class ACM0x40 {
     final Function<Node, Data> getData;
     final BiConsumer<Node, Data> setData;
 
-    public static SegmentTreeTemplate<Integer, MaxNode<Integer>> maxSegmentTree(@NotNull List<Integer> a) {
+    public static SegmentTreeTemplate<Integer, MaxNode<Integer>> maxSegmentTree( List<Integer> a) {
       return new SegmentTreeTemplate<>(
               a,
               (i, j) -> {
@@ -275,7 +274,7 @@ class ACM0x40 {
               (l, p) -> l.get(p).data = Math.max(l.get(2 * p).data, l.get(2 * p + 1).data));
     }
 
-    public static SegmentTreeTemplate<Integer, SumNode<Integer>> maxContinuousSumSegmentTree(@NotNull List<Integer> a) {
+    public static SegmentTreeTemplate<Integer, SumNode<Integer>> maxContinuousSumSegmentTree( List<Integer> a) {
       return new SegmentTreeTemplate<>(
               a,
               (i, j) -> {
@@ -317,16 +316,16 @@ class ACM0x40 {
     }
 
     public SegmentTreeTemplate(
-            @NotNull List<Data> a,
-            @NotNull BiFunction<Data, Data, Data> op,
-            @NotNull LambdaUtils.Gettable<Node> nodeInit,
-            @NotNull Function<Node, Integer> getLeft,
-            @NotNull BiConsumer<Node, Integer> setLeft,
-            @NotNull Function<Node, Integer> getRight,
-            @NotNull BiConsumer<Node, Integer> setRight,
-            @NotNull Function<Node, Data> getData,
-            @NotNull BiConsumer<Node, Data> setData,
-            @NotNull BiConsumer<List<Node>, Integer> update) {
+             List<Data> a,
+             BiFunction<Data, Data, Data> op,
+             LambdaUtils.Gettable<Node> nodeInit,
+             Function<Node, Integer> getLeft,
+             BiConsumer<Node, Integer> setLeft,
+             Function<Node, Integer> getRight,
+             BiConsumer<Node, Integer> setRight,
+             Function<Node, Data> getData,
+             BiConsumer<Node, Data> setData,
+             BiConsumer<List<Node>, Integer> update) {
       this.getLeft = getLeft;
       this.getRight = getRight;
       this.setLeft = setLeft;
@@ -383,7 +382,7 @@ class ACM0x40 {
       update.accept(array, p);
     }
 
-    public @NotNull Optional<Data> query(int l, int r) {
+    public  Optional<Data> query(int l, int r) {
       var ans = query(1, l, r);
       if (ans == null) {
         return Optional.empty();

@@ -1,13 +1,13 @@
 package dev.qhc99.centralibj.algsJ.strMatch;
 
-import org.jetbrains.annotations.NotNull;
+
 
 import java.util.*;
 
 public class FiniteAutomata{
   private static
-  @NotNull Map<TransitionEntry, Integer> computeTransitionPattern(
-          @NotNull String pattern,
+   Map<TransitionEntry, Integer> computeTransitionPattern(
+           String pattern,
           char[] input_char_set){
     int m = pattern.length();
     Map<TransitionEntry, Integer> map = new HashMap<>();
@@ -25,8 +25,8 @@ public class FiniteAutomata{
   }
 
   private static List<Integer> finiteAutomationSearch(
-          @NotNull String T,
-          @NotNull Map<TransitionEntry, Integer> delta,
+           String T,
+           Map<TransitionEntry, Integer> delta,
           int states_count){
     List<Integer> res = new ArrayList<>();
     int n = T.length();
@@ -51,7 +51,7 @@ public class FiniteAutomata{
    * @param input_char_set all char set of data
    * @return list of end index(matched start index - 1)
    */
-  public static List<Integer> search(@NotNull String data, @NotNull String pat, char[] input_char_set){
+  public static List<Integer> search( String data,  String pat, char[] input_char_set){
     var delta = computeTransitionPattern(pat, input_char_set);
     return finiteAutomationSearch(data, delta, pat.length());
   }

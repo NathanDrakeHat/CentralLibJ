@@ -1,12 +1,12 @@
 package dev.qhc99.centralibj.utils.literalLexer;
 
-import org.jetbrains.annotations.NotNull;
+
 
 abstract class LiteralLexChecker {
-  protected final @NotNull String s;
+  protected final  String s;
   protected int idx;
 
-  protected LiteralLexChecker(@NotNull String s) {
+  protected LiteralLexChecker( String s) {
     this.s = s;
   }
 

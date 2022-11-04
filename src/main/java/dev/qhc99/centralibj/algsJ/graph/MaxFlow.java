@@ -1,6 +1,6 @@
 package dev.qhc99.centralibj.algsJ.graph;
 
-import org.jetbrains.annotations.NotNull;
+
 
 import java.util.*;
 
@@ -16,7 +16,7 @@ public class MaxFlow{
     private final Deque<V> queue = new ArrayDeque<>();
 
 
-    public ForFulkersonSolver(@NotNull LinkedGraph<V, E> graph){
+    public ForFulkersonSolver( LinkedGraph<V, E> graph){
       if(graph.directed){
         throw new IllegalArgumentException();
       }
@@ -29,7 +29,7 @@ public class MaxFlow{
       }
     }
 
-    public void solve(@NotNull V source, @NotNull V destination){
+    public void solve( V source,  V destination){
       s = source;
       t = destination;
       double flow = Double.POSITIVE_INFINITY;
@@ -84,7 +84,7 @@ public class MaxFlow{
      * @param vert vert
      * @return in the source cut
      */
-    public boolean inMinCut(@NotNull V vert){
+    public boolean inMinCut( V vert){
       if(!marked.containsKey(vert)){
         return false;
       }
