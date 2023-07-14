@@ -1,9 +1,6 @@
 package dev.qhc99.centralibj.algsJ.dataStruc;
 
-/**
- * to use union() and findSet(),
- * extends this class or initial it in a public field
- */
+
 public final class DisjointSet{
   private int rank = 0;
   private DisjointSet parent = this;
