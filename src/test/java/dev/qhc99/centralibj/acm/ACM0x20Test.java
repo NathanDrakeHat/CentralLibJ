@@ -170,14 +170,7 @@ public class ACM0x20Test{
     Assertions.assertEquals(16., ACM0x20.kthMinPath(kmpCase, kmpCaseReverse, kmpVs.get(0), kmpVs.get(3), 4));
   }
 
-  ACM0x20.NPuzzle nPuzzleCase;
-
-  {
-    nPuzzleCase = new ACM0x20.NPuzzle(10);
-    while(nPuzzleCase.solved()) {
-      nPuzzleCase = new ACM0x20.NPuzzle(10);
-    }
-  }
+  
 
   private static boolean checkNPuzzle(ACM0x20.NPuzzle[] ans){
     for(int i = 0; i < ans.length - 1; i++){
@@ -202,6 +195,10 @@ public class ACM0x20Test{
 
   @Test
   void nPuzzleTest(){
+    var nPuzzleCase = new ACM0x20.NPuzzle(10);
+    while(nPuzzleCase.solved()) {
+      nPuzzleCase = new ACM0x20.NPuzzle(10);
+    }
     var ans = ACM0x20.eight(nPuzzleCase);
     assertTrue(checkNPuzzle(ans));
   }

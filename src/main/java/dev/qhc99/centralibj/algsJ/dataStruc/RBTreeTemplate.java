@@ -19,7 +19,7 @@ import java.util.function.Function;
  */
 class RBTreeTemplate<Key, Node> {
   /**
-   * annotate which function to be augmented
+   * annotate the function to be augmented
    */
   @Target(ElementType.METHOD)
   @interface Template {
