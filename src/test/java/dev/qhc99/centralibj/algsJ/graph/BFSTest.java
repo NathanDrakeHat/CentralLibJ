@@ -37,7 +37,6 @@ class BFSTest{
     }
 
     public static LinkedGraph<BFS.Vert<Character>, BaseEdge<BFS.Vert<Character>>> makeGraph(List<BFS.Vert<Character>> vs){
-      var c = BFS.Vert.class;
       LinkedGraph<BFS.Vert<Character>, BaseEdge<BFS.Vert<Character>>> G = new LinkedGraph<>(false, vs);
       G.addEdge(new BaseEdge<>(vs.get(0), vs.get(1)));
       G.addEdge(new BaseEdge<>(vs.get(0), vs.get(4)));
