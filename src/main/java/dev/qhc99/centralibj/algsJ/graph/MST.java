@@ -104,7 +104,6 @@ public final class MST{
       identity = n;
     }
 
-    @SuppressWarnings("unused")
     public  Id identity(){
       return identity;
     }

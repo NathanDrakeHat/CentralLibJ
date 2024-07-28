@@ -195,7 +195,7 @@ class OrderStatTreeTest{
     funcTestTree.updateKV(15., "test");
     assertEquals("test", funcTestTree.getValOfKey(15.));
     assertThrows(IllegalStateException.class, () -> {
-      for(var ignored : funcTestTree){
+      for(@SuppressWarnings("unused") var ignored : funcTestTree){
         funcTestTree.insertKV(-1., "i");
       }
     });

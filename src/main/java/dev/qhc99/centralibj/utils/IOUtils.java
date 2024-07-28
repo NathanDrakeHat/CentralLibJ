@@ -17,7 +17,6 @@ import java.util.stream.Stream;
 import static dev.qhc99.centralibj.utils.ExceptionUtils.CEStripper.raise;
 import static dev.qhc99.centralibj.utils.LambdaUtils.stripCE;
 
-@SuppressWarnings("unused")
 public class IOUtils {
 
   public static  String pwd() {

@@ -10,7 +10,6 @@ import java.util.stream.Collectors;
 import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
 
-@SuppressWarnings("unused")
 public class ArrayUtils{
   public static <T> boolean isMatrix( T[][] array2d){
     int len = array2d.length;

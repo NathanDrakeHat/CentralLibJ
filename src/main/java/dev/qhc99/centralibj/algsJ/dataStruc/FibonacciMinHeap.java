@@ -1,8 +1,6 @@
 package dev.qhc99.centralibj.algsJ.dataStruc;
 
 
-
-
 import java.util.*;
 
 // dynamic minimum priority queue
@@ -262,7 +260,8 @@ public class FibonacciMinHeap<K, V>{
     }
   }
 
-  private void delete(Node<K, V> x){
+  @SuppressWarnings("unused")
+private void delete(Node<K, V> x){
     decreaseKey(x, minKey());
     extractMin();
   }

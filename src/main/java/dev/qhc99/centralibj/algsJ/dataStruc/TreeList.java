@@ -18,7 +18,6 @@ package dev.qhc99.centralibj.algsJ.dataStruc;
 
 import java.util.*;
 
-@SuppressWarnings("unused")
 interface OrderedIterator<E> extends Iterator<E> {
 
   /**
@@ -40,10 +39,10 @@ interface OrderedIterator<E> extends Iterator<E> {
 
 
 /**
- * A <code>List</code> implementation that is optimised for fast insertions and
+ * A <code>List</code> implementation that is optimized for fast insertions and
  * removals at any index in the list.
  * <p>
- * This list implementation utilises a tree structure internally to ensure that
+ * This list implementation utilities a tree structure internally to ensure that
  * all insertions and removals are O(log n). This provides much faster performance
  * than both an <code>ArrayList</code> and a <code>LinkedList</code> where elements
  * are inserted and removed repeatedly from anywhere in the list.
@@ -71,7 +70,6 @@ interface OrderedIterator<E> extends Iterator<E> {
  *
  * @since 3.1
  */
-@SuppressWarnings("unused")
 public class TreeList<E> extends AbstractList<E> {
 //    add; toArray; iterator; insert; get; indexOf; remove
 //    TreeList = 1260;7360;3080;  160;   170;3400;  170;
@@ -428,7 +426,7 @@ public class TreeList<E> extends AbstractList<E> {
         rightIsNext = true;
         right = next;
       }
-      recalcHeight();
+      reCalcHeight();
     }
 
     /**
@@ -554,7 +552,7 @@ public class TreeList<E> extends AbstractList<E> {
         relativePosition++;
       }
       final AVLNode<E> ret = balance();
-      recalcHeight();
+      reCalcHeight();
       return ret;
     }
 
@@ -569,7 +567,7 @@ public class TreeList<E> extends AbstractList<E> {
         relativePosition--;
       }
       final AVLNode<E> ret = balance();
-      recalcHeight();
+      reCalcHeight();
       return ret;
     }
 
@@ -631,7 +629,7 @@ public class TreeList<E> extends AbstractList<E> {
           relativePosition--;
         }
       }
-      recalcHeight();
+      reCalcHeight();
       return balance();
     }
 
@@ -643,7 +641,7 @@ public class TreeList<E> extends AbstractList<E> {
       if (relativePosition < 0) {
         relativePosition++;
       }
-      recalcHeight();
+      reCalcHeight();
       return balance();
     }
 
@@ -655,7 +653,7 @@ public class TreeList<E> extends AbstractList<E> {
       if (relativePosition > 0) {
         relativePosition--;
       }
-      recalcHeight();
+      reCalcHeight();
       return balance();
     }
 
@@ -712,7 +710,7 @@ public class TreeList<E> extends AbstractList<E> {
           relativePosition--;
         }
       }
-      recalcHeight();
+      reCalcHeight();
       return this;
     }
 
@@ -755,19 +753,19 @@ public class TreeList<E> extends AbstractList<E> {
     /**
      * Sets the relative position.
      */
-    private int setOffset(final AVLNode<E> node, final int newOffest) {
+    private int setOffset(final AVLNode<E> node, final int newOffset) {
       if (node == null) {
         return 0;
       }
       final int oldOffset = getOffset(node);
-      node.relativePosition = newOffest;
+      node.relativePosition = newOffset;
       return oldOffset;
     }
 
     /**
      * Sets the height by calculation.
      */
-    private void recalcHeight() {
+    private void reCalcHeight() {
       height = Math.max(
               getLeftSubTree() == null ? -1 : getLeftSubTree().height,
               getRightSubTree() == null ? -1 : getRightSubTree().height) + 1;
@@ -830,7 +828,7 @@ public class TreeList<E> extends AbstractList<E> {
     private void setLeft(final AVLNode<E> node, final AVLNode<E> previous) {
       leftIsPrevious = node == null;
       left = leftIsPrevious ? previous : node;
-      recalcHeight();
+      reCalcHeight();
     }
 
     /**
@@ -842,7 +840,7 @@ public class TreeList<E> extends AbstractList<E> {
     private void setRight(final AVLNode<E> node, final AVLNode<E> next) {
       rightIsNext = node == null;
       right = rightIsNext ? next : node;
-      recalcHeight();
+      reCalcHeight();
     }
 
     /**

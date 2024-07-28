@@ -9,6 +9,7 @@ public class GenericTypeUtils {
      * @param type_string guava type token string
      * @return human readable string
      */
+    @SuppressWarnings("unused")
     private static String processRawTypeName(String type_string) {
         var origin_types = Arrays.stream(type_string.split("[<>, ]")).filter(s -> !s.equals("")).distinct().toList();
         for (var origin_type : origin_types) {

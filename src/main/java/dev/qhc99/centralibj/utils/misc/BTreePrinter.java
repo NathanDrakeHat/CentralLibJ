@@ -68,7 +68,6 @@ public class BTreePrinter<Node> {
     }
   }
 
-  @SuppressWarnings("unused")
   public void println() {
     print(System.out);
   }
