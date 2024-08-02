@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>dev.qhc99</groupId>
@@ -34,8 +34,6 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
 
-
-
     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
         <dependency>
@@ -65,21 +63,16 @@
             <version>33.2.1-jre</version>
         </dependency>
         <dependency>
-            <groupId>it.unimi.dsi</groupId>
-            <artifactId>fastutil</artifactId>
-            <version>8.5.14</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/it.unimi.dsi/dsiutils -->
-        <dependency>
+            <!-- https://mvnrepository.com/artifact/it.unimi.dsi/dsiutils -->
             <groupId>it.unimi.dsi</groupId>
             <artifactId>dsiutils</artifactId>
             <version>2.7.3</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/net.java.dev.jna/jna -->
         <dependency>
             <groupId>net.java.dev.jna</groupId>
             <artifactId>jna</artifactId>
             <version>5.14.0</version>
         </dependency>
     </dependencies>
-
 </project>
